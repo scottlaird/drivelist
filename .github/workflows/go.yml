@@ -16,6 +16,9 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
+    - name: install libzfs
+      run: sudo apt install -y libzfslinux-dev
+
     - name: Set up Go
       uses: actions/setup-go@v3
       with:

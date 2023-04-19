@@ -14,7 +14,11 @@ drives in about a half second and identify how they're used.
 
 ## Building
 
-You'll need to have a recent Go compiler installed.  Then do something like this:
+You'll need to have a recent Go compiler installed.  This also depends
+on having `libzfs` installed; on Ubuntu you can install this via `apt
+install libzfslinux-dev`.
+
+Then do something like this:
 
 ```
   $ go checkout https://github.com/scottlaird/drivelist.git
