@@ -4,23 +4,27 @@ import (
 	"bytes"
 	"flag"
 	"fmt"
-	"github.com/scottlaird/drivelist"
 	"os"
+
+	"github.com/scottlaird/drivelist"
+
 	//"sort"
 	"strings"
 	"text/tabwriter"
 )
 
+var (
+	unusedFlag    = flag.Bool("unused", false, "Only show unused devices")
+	allFieldsFlag = flag.Bool("allfields", false, "Show all fields (will be wide)")
+	ledctl        = flag.String("ledctl", "", "Call ledctl instead of listing drives.  Use --unused --ledctl=locate for ledctl --locate=<unused drives>")
+)
+
 func main() {
-	unusedFlag := flag.Bool("unused", false, "Only show unused devices")
-	allFieldsFlag := flag.Bool("allfields", false, "Show all fields (will be wide)")
-	ledctl := flag.String("ledctl", "", "Call ledctl instead of listing drives.  Use --unused --ledctl=locate for ledctl --locate=<unused drives>")
 	flag.Parse()
 
 	if *allFieldsFlag {
 		drivelist.FieldFlag = drivelist.Fields
 	}
-
 
 	disks, err := drivelist.GetAllDisks()
 	if err != nil {
@@ -34,7 +38,7 @@ func main() {
 		}
 	}
 
-	if len(*ledctl)>0 {
+	if len(*ledctl) > 0 {
 		devices := []string{}
 		for _, d := range unused {
 			devices = append(devices, d.DeviceName)

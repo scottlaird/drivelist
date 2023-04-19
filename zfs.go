@@ -61,7 +61,8 @@ func AnnotateDisksZFS(disks *Disks) error {
 			if disk != nil {
 				disk.Uses = append(disk.Uses, prefix)
 			} else {
-				glog.Errorf("** Disk is nil, but in use!? (%#v)\n", dev)
+				poolname, _ := pool.Name()
+				glog.Errorf("** ZFS Pool %q references an unknown disk (ID %q).  Perhaps a drive failed completely or was removed?", poolname, dev)
 			}
 		}
 	}
