@@ -9,4 +9,4 @@ require (
 	github.com/moby/sys/mountinfo v0.5.0
 )
 
-require golang.org/x/sys v0.0.0-20211025201205-69cdffdb9359 // indirect
+require golang.org/x/sys v0.1.0 // indirect
