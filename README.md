@@ -184,6 +184,12 @@ Then, from anywhere, with `DRIVELIST_SERVER` and
   $ drivelist missing
 ```
 
+The server exposes Prometheus metrics at `/metrics` without a token:
+drives, missing drives, ghosts, staleness and last report time per
+host; known drives by status; kernel warnings and events in the last
+24 hours; and report counts and ingest latency.  Per-drive values are
+not exported; they live in the database and the CLI.
+
 A drive is referred to by serial, WWN, or an unambiguous prefix of
 either.  Every command takes `--json` for the raw response.  A drive
 that a complete report no longer lists is recorded as vanished with

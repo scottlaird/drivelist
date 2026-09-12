@@ -3,9 +3,11 @@ package server
 import (
 	"context"
 	"errors"
+	"io"
 	"net/http"
 	"net/http/httptest"
 	"path/filepath"
+	"strings"
 	"testing"
 	"time"
 
@@ -204,6 +206,34 @@ func TestKernelRoundTrip(t *testing.T) {
 	evs, _ := env.query.ListEvents(ctx, connect.NewRequest(&pb.ListEventsRequest{Kinds: []string{"kernel_warning"}}))
 	if len(evs.Msg.Events) != 1 || evs.Msg.Events[0].Serial != "X1" {
 		t.Errorf("kernel_warning events = %v", evs.Msg.GetEvents())
+	}
+}
+
+func TestMetrics(t *testing.T) {
+	env := newEnv(t)
+	ctx := context.Background()
+	env.collector.ReportInventory(ctx, connect.NewRequest(report(time.Now().Add(-time.Minute),
+		device("sda", "X1", "0x5000000000000001", "1"), device("sdb", "Y1", "0x5000000000000002", "2"))))
+	env.query.Annotate(ctx, connect.NewRequest(&pb.AnnotateRequest{Ref: "Y1", Status: "bad", Actor: "t"}))
+	resp, err := http.Get(env.url + "/metrics")
+	if err != nil || resp.StatusCode != 200 {
+		t.Fatalf("/metrics: %v %v", resp, err)
+	}
+	body, _ := io.ReadAll(resp.Body)
+	for _, want := range []string{
+		`drivelist_host_drives{host="storage1"} 2`,
+		`drivelist_host_missing{host="storage1"} 0`,
+		`drivelist_host_stale{host="storage1"} 0`,
+		`drivelist_drives{status="bad"} 1`,
+		`drivelist_drives{status="ok"} 1`,
+		`drivelist_reports_total{host="storage1",outcome="changed"} 1`,
+		`drivelist_kernel_warnings_24h 0`,
+		`drivelist_scrape_error 0`,
+		`go_goroutines`,
+	} {
+		if !strings.Contains(string(body), want) {
+			t.Errorf("/metrics lacks %q", want)
+		}
 	}
 }
 

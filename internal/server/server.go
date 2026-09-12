@@ -33,9 +33,10 @@ type Config struct {
 
 // Server implements both services.
 type Server struct {
-	store *store.Store
-	cfg   Config
-	log   *slog.Logger
+	store   *store.Store
+	cfg     Config
+	log     *slog.Logger
+	metrics *metrics
 }
 
 // New returns a server over st. It fails rather than run without tokens.
@@ -49,15 +50,18 @@ func New(st *store.Store, cfg Config, log *slog.Logger) (*Server, error) {
 	if log == nil {
 		log = slog.Default()
 	}
-	return &Server{store: st, cfg: cfg, log: log}, nil
+	return &Server{store: st, cfg: cfg, log: log, metrics: newMetrics(st)}, nil
 }
 
-// Handler mounts both services plus /healthz.
+// Handler mounts both services, /healthz, and /metrics. Metrics carry
+// hostnames and counts only and are served without a token, as Prometheus
+// scrapers expect.
 func (s *Server) Handler() http.Handler {
 	mux := http.NewServeMux()
 	mux.Handle(drivelistv1connect.NewCollectorHandler(s, connect.WithInterceptors(bearerAuth(s.cfg.AgentToken))))
 	mux.Handle(drivelistv1connect.NewQueryHandler(s, connect.WithInterceptors(bearerAuth(s.cfg.OperatorToken))))
 	mux.HandleFunc("/healthz", func(w http.ResponseWriter, _ *http.Request) { w.Write([]byte("ok\n")) })
+	mux.Handle("/metrics", s.metrics.handler())
 	return mux
 }
 
@@ -98,16 +102,23 @@ func bearerAuth(token string) connect.UnaryInterceptorFunc {
 
 func (s *Server) ReportInventory(ctx context.Context, req *connect.Request[pb.ReportInventoryRequest]) (*connect.Response[pb.ReportInventoryResponse], error) {
 	r := reportFromProto(req.Msg)
+	start := time.Now()
 	res, err := s.store.Ingest(ctx, r)
 	if err != nil {
+		s.metrics.observeReport(r.Host.Hostname, "error", time.Since(start))
 		s.log.Error("ingest", "host", r.Host.Hostname, "err", err)
 		return nil, connect.NewError(connect.CodeInternal, err)
 	}
-	if !res.Accepted {
+	outcome := "heartbeat"
+	switch {
+	case !res.Accepted:
+		outcome = "rejected"
 		s.log.Warn("report rejected", "host", r.Host.Hostname, "reason", res.RejectReason)
-	} else if res.Changed {
+	case res.Changed:
+		outcome = "changed"
 		s.log.Info("inventory changed", "host", r.Host.Hostname, "devices", len(r.Devices))
 	}
+	s.metrics.observeReport(r.Host.Hostname, outcome, time.Since(start))
 	out := &pb.ReportInventoryResponse{
 		Accepted:     res.Accepted,
 		RejectReason: res.RejectReason,
