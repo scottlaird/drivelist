@@ -26,6 +26,7 @@ type listOptions struct {
 func newRootCmd() *cobra.Command {
 	opts := listOptions{fields: fieldList(defaultFields)}
 	var captureDir string
+	cfg := &clientConfig{}
 
 	cmd := &cobra.Command{
 		Use:   "drivelist",
@@ -51,7 +52,12 @@ pool membership, mounts). With no subcommand it prints that listing.`,
 	f.StringVar(&captureDir, "capture", "", "")
 	_ = f.MarkDeprecated("capture", "use 'drivelist capture DIR'")
 
+	pf := cmd.PersistentFlags()
+	pf.StringVar(&cfg.server, "server", "", "fleet server, host:port or URL (also DRIVELIST_SERVER or the config file)")
+	pf.BoolVar(&cfg.json, "json", false, "print the server's response as JSON")
+
 	cmd.AddCommand(newCaptureCmd(), newServeCmd())
+	cmd.AddCommand(fleetCommands(cfg)...)
 	return cmd
 }
 
