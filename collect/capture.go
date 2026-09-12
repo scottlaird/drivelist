@@ -62,6 +62,15 @@ func (c *Collector) Capture(dir string) error {
 				return err
 			}
 		}
+		// SMART output, so fixtures carry every dialect the parser has to
+		// read. Needs root and smartmontools; skipped otherwise.
+		if out, err := c.run("smartctl", SmartCaptureArgs(name)...); err == nil || len(out) > 0 {
+			if err := c.captureExec(dir, out, "smartctl", SmartCaptureArgs(name)...); err != nil {
+				return err
+			}
+		} else {
+			slog.Warn("capture: smartctl failed, skipped", "device", name, "err", err)
+		}
 	}
 
 	if err := c.copyFile(c.proc()+"/self/mountinfo", filepath.Join(dir, "proc", "self", "mountinfo")); err != nil {
