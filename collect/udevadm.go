@@ -24,10 +24,11 @@ func (c *Collector) udevInfo(name string) (*udevData, error) {
 
 // udevIgnoredRecords are the record types udevadm info prints that carry
 // nothing the E: properties do not: P sysfs path, M sysfs name, R sysfs
-// number, U subsystem, T device type, D major:minor, I ifindex, L symlink
-// priority, S symlink, Q diskseq, V driver. Newer systemd adds types over
-// time; an unknown one is logged once per process rather than per device.
-const udevIgnoredRecords = "PMRUTDILSQV"
+// number, J device id, U subsystem, T device type, D major:minor, I ifindex,
+// L symlink priority, S symlink, Q diskseq, V driver. Newer systemd adds
+// types over time; an unknown one is logged once per process rather than
+// per device.
+const udevIgnoredRecords = "PMRJUTDILSQV"
 
 var unknownUdevRecords sync.Map
 

@@ -13,6 +13,7 @@ N: sdaa
 L: 0
 M: sdaa
 R: 0
+J: b65:160
 U: block
 T: disk
 D: b 65:160
