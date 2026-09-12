@@ -35,12 +35,31 @@ func (c *Collector) disks() (*drivelist.Inventory, error) {
 
 // isDiskName reports whether a /sys/block entry is a whole disk drivelist
 // handles: SCSI-like (sd*) or an NVMe namespace (nvmeXnY). Partitions do not
-// appear in /sys/block, so no suffix check is needed.
+// appear in /sys/block, so no suffix check is needed. With native NVMe
+// multipathing the kernel also lists one hidden nvmeXcYnZ entry per
+// controller path; those have no device node and are skipped.
 func isDiskName(name string) bool {
 	if strings.HasPrefix(name, "sd") {
 		return true
 	}
-	return strings.HasPrefix(name, "nvme") && strings.Contains(name[4:], "n")
+	rest, ok := strings.CutPrefix(name, "nvme")
+	if !ok {
+		return false
+	}
+	ctrl, ns, ok := strings.Cut(rest, "n")
+	return ok && allDigits(ctrl) && allDigits(ns)
+}
+
+func allDigits(s string) bool {
+	if s == "" {
+		return false
+	}
+	for i := 0; i < len(s); i++ {
+		if s[i] < '0' || s[i] > '9' {
+			return false
+		}
+	}
+	return true
 }
 
 func (c *Collector) diskNames() ([]string, error) {
