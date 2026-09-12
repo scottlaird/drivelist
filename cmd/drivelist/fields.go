@@ -30,6 +30,7 @@ var columns = []column{
 	{"bay", "Bay", func(d *drivelist.Device) string { return d.EnclosureBay }},
 	{"size", "Size", func(d *drivelist.Device) string { return drivelist.FormatDiskSize(d.Size) }},
 	{"error", "Error", func(d *drivelist.Device) string { return d.Error }},
+	{"status", "Status", func(d *drivelist.Device) string { return serverStatus[d] }},
 }
 
 var defaultFields = []string{"devicename", "model", "wwn", "serial", "expander", "bay", "size"}

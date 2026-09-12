@@ -139,11 +139,18 @@ one for operators:
       --operator-token-file /etc/drivelist/operator-token
 ```
 
-On each host, send a report (from cron until the agent exists):
+On each host, run the agent, which reports every five minutes (the
+server can change the interval), spools reports while the server is
+unreachable and replays them in order afterwards, and writes the
+server's status for each local drive to `/var/lib/drivelist/status.json`
+so the plain `drivelist` listing gains a `status` column:
 
 ```
-  $ DRIVELIST_SERVER=fleet:9450 DRIVELIST_AGENT_TOKEN=agent-secret drivelist report
+  $ DRIVELIST_SERVER=fleet:9450 DRIVELIST_AGENT_TOKEN=agent-secret drivelist agent
 ```
+
+`contrib/drivelist-agent.service` is a systemd unit for it.  For a
+one-off report, or from cron, `drivelist report` does one cycle.
 
 Then, from anywhere, with `DRIVELIST_SERVER` and
 `DRIVELIST_OPERATOR_TOKEN` set or written as `server = …` and
