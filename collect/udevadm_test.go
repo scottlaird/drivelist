@@ -1,4 +1,4 @@
-package drivelist
+package collect
 
 import (
 	"testing"
@@ -63,12 +63,12 @@ E: DEVLINKS=/dev/disk/by-id/scsi-SHITACHI_HUH72808CLAR8000_VJG3WK3X /dev/disk/by
 E: TAGS=:systemd:
 E: CURRENT_TAGS=:systemd:
 `
-	got, err := parseUdevAdmData("/dev/sdaa", []byte(data))
+	got, err := parseUdevInfo([]byte(data))
 	if err != nil {
-		t.Fatalf("parseUdefAdmData returned error: %v", err)
+		t.Fatalf("parseUdevInfo returned error: %v", err)
 	}
 
-	want := &UdevAdmData{
+	want := &udevData{
 		DeviceName: "sdaa",
 		Attribs: map[string]string{
 			"CURRENT_TAGS":              ":systemd:",

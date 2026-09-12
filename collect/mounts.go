@@ -1,4 +1,4 @@
-package drivelist
+package collect
 
 import (
 	"bufio"
@@ -8,6 +8,8 @@ import (
 	"os"
 	"strconv"
 	"strings"
+
+	"github.com/scottlaird/drivelist"
 )
 
 // mountEntry is one line of /proc/self/mountinfo, reduced to the fields
@@ -18,10 +20,10 @@ type mountEntry struct {
 	FSType     string
 }
 
-// AnnotateDisksMounts adds a "mount > <mountpoint>" use to every disk that
-// backs a mounted filesystem, matching by device path (partitions are
-// resolved to their parent disk by GetDiskByName).
-func AnnotateDisksMounts(disks *Disks) error {
+// annotateMounts adds a "mount > <mountpoint>" use to every disk that backs
+// a mounted filesystem, matching by device path (partitions resolve to
+// their parent disk through Inventory.ByName).
+func annotateMounts(inv *drivelist.Inventory) error {
 	f, err := os.Open("/proc/self/mountinfo")
 	if err != nil {
 		return err
@@ -35,7 +37,7 @@ func AnnotateDisksMounts(disks *Disks) error {
 
 	for _, mount := range mounts {
 		slog.Debug("mount", "source", mount.Source, "mountpoint", mount.Mountpoint)
-		disk := disks.GetDiskByName(mount.Source)
+		disk := inv.ByName(mount.Source)
 		if disk != nil {
 			disk.Uses = append(disk.Uses, "mount > "+mount.Mountpoint)
 		}

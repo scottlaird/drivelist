@@ -1,4 +1,4 @@
-package drivelist
+package collect
 
 import (
 	"strings"

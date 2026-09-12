@@ -1,132 +1,64 @@
+// Command drivelist lists the drives in this system, where they are, and
+// what they are used for.
 package main
 
 import (
-	"bytes"
 	"flag"
 	"fmt"
 	"os"
-
-	"github.com/scottlaird/drivelist"
-
-	//"sort"
 	"strings"
 	"text/tabwriter"
+
+	"github.com/scottlaird/drivelist"
+	"github.com/scottlaird/drivelist/collect"
 )
 
 var (
 	unusedFlag    = flag.Bool("unused", false, "Only show unused devices")
 	allFieldsFlag = flag.Bool("allfields", false, "Show all fields (will be wide)")
 	ledctl        = flag.String("ledctl", "", "Call ledctl instead of listing drives.  Use --unused --ledctl=locate for ledctl --locate=<unused drives>")
+	fields        = fieldList(defaultFields)
 )
 
 func main() {
+	flag.Var(&fields, "fields", "Comma-separated list of fields to show")
 	flag.Parse()
 
 	if *allFieldsFlag {
-		drivelist.FieldFlag = drivelist.Fields
+		fields = allFieldNames()
 	}
 
-	disks, err := drivelist.GetAllDisks()
+	inv, err := collect.All()
 	if err != nil {
-		panic(err)
+		fmt.Fprintf(os.Stderr, "drivelist: %v\n", err)
+		os.Exit(1)
 	}
 
-	var unused []*drivelist.DiskDevice
-	for _, disk := range disks.Devices {
-		if len(disk.Uses) == 0 {
-			unused = append(unused, disk)
+	var unused []*drivelist.Device
+	for _, d := range inv.Devices {
+		if d.Unused() {
+			unused = append(unused, d)
 		}
 	}
 
-	if len(*ledctl) > 0 {
-		devices := []string{}
+	if *ledctl != "" {
+		var names []string
 		for _, d := range unused {
-			devices = append(devices, d.DeviceName)
+			names = append(names, d.DeviceName)
 		}
-		fmt.Printf("ledctl %s=%s\n", *ledctl, strings.Join(devices, ","))
+		fmt.Printf("ledctl %s=%s\n", *ledctl, strings.Join(names, ","))
 		return
 	}
 
-	//for expanderName, _ := range bays {
-	//fmt.Printf("Expander %q\n", expanderName)
-	//		bayNames := []string{}
-	//		for n, _ := range bays[expanderName] {
-	//			bayNames = append(bayNames, n)
-	//		}
-	//		sort.Strings(bayNames)
-	//		for _, n := range bayNames {
-	//			fmt.Printf("  %s\n", n)
-	//		}
-	//	}
-
-	writer := tabwriter.NewWriter(os.Stdout, 0, 8, 1, '\t', 0)
-
-	buf := bytes.Buffer{} // Header
-
-	for _, f := range drivelist.FieldFlag {
-		switch f {
-		case "devicename":
-			buf.WriteString("Device Name\t")
-		case "devices":
-			buf.WriteString("Devices\t")
-		case "wwn":
-			buf.WriteString("WWN\t")
-		case "syspath":
-			buf.WriteString("Sys Path\t")
-		case "model":
-			buf.WriteString("Model\t")
-		case "serial":
-			buf.WriteString("Serial\t")
-		case "uses":
-			buf.WriteString("Uses\t")
-		case "genericdevice":
-			buf.WriteString("Generic Device\t")
-		case "expander":
-			buf.WriteString("Expander\t")
-		case "expanderpath":
-			buf.WriteString("Expander Path\t")
-		case "bay":
-			buf.WriteString("Bay\t")
-		case "size":
-			buf.WriteString("Size\t")
-		default:
-			panic(fmt.Sprintf("unknown field %q", f))
-		}
-	}
-
-	buf.WriteString("\n")
-	b2 := buf.String()
-	buf.WriteTo(writer)
-
-	div := strings.Map(func(r rune) rune {
-		if r < ' ' {
-			return r
-		} else {
-			return '='
-		}
-	}, b2)
-	fmt.Fprint(writer, div)
-
-	displayDisks := disks.Devices
+	devices := inv.Devices
 	if *unusedFlag {
-		displayDisks = unused
+		devices = unused
 	}
 
-	for _, disk := range displayDisks {
-		disk.WriteTabs(writer)
+	w := tabwriter.NewWriter(os.Stdout, 0, 8, 1, '\t', 0)
+	if err := table(w, fields, devices); err != nil {
+		fmt.Fprintf(os.Stderr, "drivelist: %v\n", err)
+		os.Exit(1)
 	}
-
-	writer.Flush()
-
+	w.Flush()
 }
-
-// TODO
-//  - Include empty bays.
-//    - Scan through <enclosure> directories looking for <bay_ident> subdirs, and gather all (enclosure,bay_ident) pairs.
-//    - Create "fake" drives for unoccupied bays.
-//    - Add --empty and --all flags; empty only shows empty bays, while --all skips all filters.
-//  - Include size.
-//    - Add flag for rounding
-//  - Add sorting
-//    - Use a flag like --fields, but for sorting.
-//  - Add CSV output
