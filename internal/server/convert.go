@@ -140,6 +140,40 @@ func eventToProto(e store.Event) *pb.Event {
 	}
 }
 
+func kernelSamplesFromProto(samples []*pb.KernelSample) []store.KernelSample {
+	out := make([]store.KernelSample, 0, len(samples))
+	for _, k := range samples {
+		s := store.KernelSample{
+			Identity:   identityFromProto(k.GetIdentity()),
+			DevName:    k.GetDevName(),
+			BucketSecs: int(k.GetBucketSecs()),
+			Class:      k.GetClass(),
+			Code:       k.GetScsiCode(),
+			Count:      int(k.GetCount()),
+			Sample:     k.GetSample(),
+		}
+		if b := k.GetBucketStart(); b != nil {
+			s.BucketStart = b.AsTime()
+		}
+		out = append(out, s)
+	}
+	return out
+}
+
+func kernelSampleToProto(k store.KernelSample) *pb.KernelSample {
+	return &pb.KernelSample{
+		Identity:    identityToProto(k.Identity),
+		DevName:     k.DevName,
+		BucketStart: ts(k.BucketStart),
+		BucketSecs:  uint32(k.BucketSecs),
+		Class:       k.Class,
+		ScsiCode:    k.Code,
+		Count:       uint32(k.Count),
+		Sample:      k.Sample,
+		Hostname:    k.Hostname,
+	}
+}
+
 func ghostToProto(g store.Ghost) *pb.Ghost {
 	return &pb.Ghost{
 		Hostname:  g.Hostname,

@@ -3,9 +3,11 @@ package server
 import (
 	"context"
 	"errors"
+	"io"
 	"net/http"
 	"net/http/httptest"
 	"path/filepath"
+	"strings"
 	"testing"
 	"time"
 
@@ -179,6 +181,59 @@ func TestErrorsAndAuth(t *testing.T) {
 	var ce *connect.Error
 	if !errors.As(err, &ce) && err != nil {
 		t.Logf("last error was not a connect error: %v", err)
+	}
+}
+
+func TestKernelRoundTrip(t *testing.T) {
+	env := newEnv(t)
+	ctx := context.Background()
+	hour := time.Now().Add(-2 * time.Hour).Truncate(time.Hour)
+	env.collector.ReportInventory(ctx, connect.NewRequest(report(hour, device("sda", "X1", "0x5000000000000001", "1"))))
+	ack, err := env.collector.ReportKernel(ctx, connect.NewRequest(&pb.ReportKernelRequest{
+		Host: &pb.HostIdentity{MachineId: "m1", Hostname: "storage1"},
+		Samples: []*pb.KernelSample{{
+			Identity: &pb.DriveIdentity{Wwn: "0x5000000000000001"}, DevName: "sda", BucketStart: timestamppb.New(hour), BucketSecs: 3600,
+			Class: "predictive_failure", ScsiCode: "1:5d:90", Count: 3, Sample: "sd 4:0:0:0: [sda] tag#1 ASC=0x5d",
+		}},
+	}))
+	if err != nil || ack.Msg.Stored != 1 {
+		t.Fatalf("ReportKernel = %v, %v", ack.Msg, err)
+	}
+	res, err := env.query.GetKernel(ctx, connect.NewRequest(&pb.GetKernelRequest{Ref: "X1"}))
+	if err != nil || len(res.Msg.Samples) != 1 || res.Msg.Samples[0].Hostname != "storage1" || res.Msg.Samples[0].Count != 3 {
+		t.Errorf("GetKernel = %v, %v", res.Msg, err)
+	}
+	evs, _ := env.query.ListEvents(ctx, connect.NewRequest(&pb.ListEventsRequest{Kinds: []string{"kernel_warning"}}))
+	if len(evs.Msg.Events) != 1 || evs.Msg.Events[0].Serial != "X1" {
+		t.Errorf("kernel_warning events = %v", evs.Msg.GetEvents())
+	}
+}
+
+func TestMetrics(t *testing.T) {
+	env := newEnv(t)
+	ctx := context.Background()
+	env.collector.ReportInventory(ctx, connect.NewRequest(report(time.Now().Add(-time.Minute),
+		device("sda", "X1", "0x5000000000000001", "1"), device("sdb", "Y1", "0x5000000000000002", "2"))))
+	env.query.Annotate(ctx, connect.NewRequest(&pb.AnnotateRequest{Ref: "Y1", Status: "bad", Actor: "t"}))
+	resp, err := http.Get(env.url + "/metrics")
+	if err != nil || resp.StatusCode != 200 {
+		t.Fatalf("/metrics: %v %v", resp, err)
+	}
+	body, _ := io.ReadAll(resp.Body)
+	for _, want := range []string{
+		`drivelist_host_drives{host="storage1"} 2`,
+		`drivelist_host_missing{host="storage1"} 0`,
+		`drivelist_host_stale{host="storage1"} 0`,
+		`drivelist_drives{status="bad"} 1`,
+		`drivelist_drives{status="ok"} 1`,
+		`drivelist_reports_total{host="storage1",outcome="changed"} 1`,
+		`drivelist_kernel_warnings_24h 0`,
+		`drivelist_scrape_error 0`,
+		`go_goroutines`,
+	} {
+		if !strings.Contains(string(body), want) {
+			t.Errorf("/metrics lacks %q", want)
+		}
 	}
 }
 

@@ -162,6 +162,8 @@ func describe(e *pb.Event) string {
 		return fmt.Sprintf("note          %s: %q", strings.TrimPrefix(e.GetSource(), "user:"), str(d, "note"))
 	case "identity_conflict":
 		return fmt.Sprintf("identity conflict  keys %v match drives %v", d["keys"], d["drives"])
+	case "kernel_warning":
+		return fmt.Sprintf("kernel        %s  %s %s ×%v  %s", host, str(d, "class"), str(d, "code"), num(d, "count"), str(d, "dev_name"))
 	case "pool_missing_member":
 		return fmt.Sprintf("pool ghost    %s  pool %s expects %s (%s)", host, str(d, "pool"), str(d, "path"), str(d, "state"))
 	case "host_first_seen":

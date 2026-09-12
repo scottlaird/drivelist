@@ -38,6 +38,8 @@ const (
 	// CollectorReportInventoryProcedure is the fully-qualified name of the Collector's ReportInventory
 	// RPC.
 	CollectorReportInventoryProcedure = "/drivelist.v1.Collector/ReportInventory"
+	// CollectorReportKernelProcedure is the fully-qualified name of the Collector's ReportKernel RPC.
+	CollectorReportKernelProcedure = "/drivelist.v1.Collector/ReportKernel"
 	// QueryListHostsProcedure is the fully-qualified name of the Query's ListHosts RPC.
 	QueryListHostsProcedure = "/drivelist.v1.Query/ListHosts"
 	// QueryListDrivesProcedure is the fully-qualified name of the Query's ListDrives RPC.
@@ -52,12 +54,17 @@ const (
 	QueryListMissingProcedure = "/drivelist.v1.Query/ListMissing"
 	// QueryAnnotateProcedure is the fully-qualified name of the Query's Annotate RPC.
 	QueryAnnotateProcedure = "/drivelist.v1.Query/Annotate"
+	// QueryGetKernelProcedure is the fully-qualified name of the Query's GetKernel RPC.
+	QueryGetKernelProcedure = "/drivelist.v1.Query/GetKernel"
 )
 
 // CollectorClient is a client for the drivelist.v1.Collector service.
 type CollectorClient interface {
 	// ReportInventory posts the complete current inventory of one host.
 	ReportInventory(context.Context, *connect.Request[drivelistv1.ReportInventoryRequest]) (*connect.Response[drivelistv1.ReportInventoryResponse], error)
+	// ReportKernel posts hourly counts of classified kernel log lines per
+	// drive. Each bucket is sent once, complete; resending replaces.
+	ReportKernel(context.Context, *connect.Request[drivelistv1.ReportKernelRequest]) (*connect.Response[drivelistv1.ReportAck], error)
 }
 
 // NewCollectorClient constructs a client for the drivelist.v1.Collector service. By default, it
@@ -77,12 +84,19 @@ func NewCollectorClient(httpClient connect.HTTPClient, baseURL string, opts ...c
 			connect.WithSchema(collectorMethods.ByName("ReportInventory")),
 			connect.WithClientOptions(opts...),
 		),
+		reportKernel: connect.NewClient[drivelistv1.ReportKernelRequest, drivelistv1.ReportAck](
+			httpClient,
+			baseURL+CollectorReportKernelProcedure,
+			connect.WithSchema(collectorMethods.ByName("ReportKernel")),
+			connect.WithClientOptions(opts...),
+		),
 	}
 }
 
 // collectorClient implements CollectorClient.
 type collectorClient struct {
 	reportInventory *connect.Client[drivelistv1.ReportInventoryRequest, drivelistv1.ReportInventoryResponse]
+	reportKernel    *connect.Client[drivelistv1.ReportKernelRequest, drivelistv1.ReportAck]
 }
 
 // ReportInventory calls drivelist.v1.Collector.ReportInventory.
@@ -90,10 +104,18 @@ func (c *collectorClient) ReportInventory(ctx context.Context, req *connect.Requ
 	return c.reportInventory.CallUnary(ctx, req)
 }
 
+// ReportKernel calls drivelist.v1.Collector.ReportKernel.
+func (c *collectorClient) ReportKernel(ctx context.Context, req *connect.Request[drivelistv1.ReportKernelRequest]) (*connect.Response[drivelistv1.ReportAck], error) {
+	return c.reportKernel.CallUnary(ctx, req)
+}
+
 // CollectorHandler is an implementation of the drivelist.v1.Collector service.
 type CollectorHandler interface {
 	// ReportInventory posts the complete current inventory of one host.
 	ReportInventory(context.Context, *connect.Request[drivelistv1.ReportInventoryRequest]) (*connect.Response[drivelistv1.ReportInventoryResponse], error)
+	// ReportKernel posts hourly counts of classified kernel log lines per
+	// drive. Each bucket is sent once, complete; resending replaces.
+	ReportKernel(context.Context, *connect.Request[drivelistv1.ReportKernelRequest]) (*connect.Response[drivelistv1.ReportAck], error)
 }
 
 // NewCollectorHandler builds an HTTP handler from the service implementation. It returns the path
@@ -109,10 +131,18 @@ func NewCollectorHandler(svc CollectorHandler, opts ...connect.HandlerOption) (s
 		connect.WithSchema(collectorMethods.ByName("ReportInventory")),
 		connect.WithHandlerOptions(opts...),
 	)
+	collectorReportKernelHandler := connect.NewUnaryHandler(
+		CollectorReportKernelProcedure,
+		svc.ReportKernel,
+		connect.WithSchema(collectorMethods.ByName("ReportKernel")),
+		connect.WithHandlerOptions(opts...),
+	)
 	return "/drivelist.v1.Collector/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
 		case CollectorReportInventoryProcedure:
 			collectorReportInventoryHandler.ServeHTTP(w, r)
+		case CollectorReportKernelProcedure:
+			collectorReportKernelHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -124,6 +154,10 @@ type UnimplementedCollectorHandler struct{}
 
 func (UnimplementedCollectorHandler) ReportInventory(context.Context, *connect.Request[drivelistv1.ReportInventoryRequest]) (*connect.Response[drivelistv1.ReportInventoryResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("drivelist.v1.Collector.ReportInventory is not implemented"))
+}
+
+func (UnimplementedCollectorHandler) ReportKernel(context.Context, *connect.Request[drivelistv1.ReportKernelRequest]) (*connect.Response[drivelistv1.ReportAck], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("drivelist.v1.Collector.ReportKernel is not implemented"))
 }
 
 // QueryClient is a client for the drivelist.v1.Query service.
@@ -141,6 +175,8 @@ type QueryClient interface {
 	ListMissing(context.Context, *connect.Request[drivelistv1.ListMissingRequest]) (*connect.Response[drivelistv1.ListMissingResponse], error)
 	// Annotate records a manual status change or note as an event.
 	Annotate(context.Context, *connect.Request[drivelistv1.AnnotateRequest]) (*connect.Response[drivelistv1.AnnotateResponse], error)
+	// GetKernel returns a drive's kernel log counts, newest bucket first.
+	GetKernel(context.Context, *connect.Request[drivelistv1.GetKernelRequest]) (*connect.Response[drivelistv1.GetKernelResponse], error)
 }
 
 // NewQueryClient constructs a client for the drivelist.v1.Query service. By default, it uses the
@@ -196,6 +232,12 @@ func NewQueryClient(httpClient connect.HTTPClient, baseURL string, opts ...conne
 			connect.WithSchema(queryMethods.ByName("Annotate")),
 			connect.WithClientOptions(opts...),
 		),
+		getKernel: connect.NewClient[drivelistv1.GetKernelRequest, drivelistv1.GetKernelResponse](
+			httpClient,
+			baseURL+QueryGetKernelProcedure,
+			connect.WithSchema(queryMethods.ByName("GetKernel")),
+			connect.WithClientOptions(opts...),
+		),
 	}
 }
 
@@ -208,6 +250,7 @@ type queryClient struct {
 	listEvents      *connect.Client[drivelistv1.ListEventsRequest, drivelistv1.ListEventsResponse]
 	listMissing     *connect.Client[drivelistv1.ListMissingRequest, drivelistv1.ListMissingResponse]
 	annotate        *connect.Client[drivelistv1.AnnotateRequest, drivelistv1.AnnotateResponse]
+	getKernel       *connect.Client[drivelistv1.GetKernelRequest, drivelistv1.GetKernelResponse]
 }
 
 // ListHosts calls drivelist.v1.Query.ListHosts.
@@ -245,6 +288,11 @@ func (c *queryClient) Annotate(ctx context.Context, req *connect.Request[driveli
 	return c.annotate.CallUnary(ctx, req)
 }
 
+// GetKernel calls drivelist.v1.Query.GetKernel.
+func (c *queryClient) GetKernel(ctx context.Context, req *connect.Request[drivelistv1.GetKernelRequest]) (*connect.Response[drivelistv1.GetKernelResponse], error) {
+	return c.getKernel.CallUnary(ctx, req)
+}
+
 // QueryHandler is an implementation of the drivelist.v1.Query service.
 type QueryHandler interface {
 	ListHosts(context.Context, *connect.Request[drivelistv1.ListHostsRequest]) (*connect.Response[drivelistv1.ListHostsResponse], error)
@@ -260,6 +308,8 @@ type QueryHandler interface {
 	ListMissing(context.Context, *connect.Request[drivelistv1.ListMissingRequest]) (*connect.Response[drivelistv1.ListMissingResponse], error)
 	// Annotate records a manual status change or note as an event.
 	Annotate(context.Context, *connect.Request[drivelistv1.AnnotateRequest]) (*connect.Response[drivelistv1.AnnotateResponse], error)
+	// GetKernel returns a drive's kernel log counts, newest bucket first.
+	GetKernel(context.Context, *connect.Request[drivelistv1.GetKernelRequest]) (*connect.Response[drivelistv1.GetKernelResponse], error)
 }
 
 // NewQueryHandler builds an HTTP handler from the service implementation. It returns the path on
@@ -311,6 +361,12 @@ func NewQueryHandler(svc QueryHandler, opts ...connect.HandlerOption) (string, h
 		connect.WithSchema(queryMethods.ByName("Annotate")),
 		connect.WithHandlerOptions(opts...),
 	)
+	queryGetKernelHandler := connect.NewUnaryHandler(
+		QueryGetKernelProcedure,
+		svc.GetKernel,
+		connect.WithSchema(queryMethods.ByName("GetKernel")),
+		connect.WithHandlerOptions(opts...),
+	)
 	return "/drivelist.v1.Query/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
 		case QueryListHostsProcedure:
@@ -327,6 +383,8 @@ func NewQueryHandler(svc QueryHandler, opts ...connect.HandlerOption) (string, h
 			queryListMissingHandler.ServeHTTP(w, r)
 		case QueryAnnotateProcedure:
 			queryAnnotateHandler.ServeHTTP(w, r)
+		case QueryGetKernelProcedure:
+			queryGetKernelHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -362,4 +420,8 @@ func (UnimplementedQueryHandler) ListMissing(context.Context, *connect.Request[d
 
 func (UnimplementedQueryHandler) Annotate(context.Context, *connect.Request[drivelistv1.AnnotateRequest]) (*connect.Response[drivelistv1.AnnotateResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("drivelist.v1.Query.Annotate is not implemented"))
+}
+
+func (UnimplementedQueryHandler) GetKernel(context.Context, *connect.Request[drivelistv1.GetKernelRequest]) (*connect.Response[drivelistv1.GetKernelResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("drivelist.v1.Query.GetKernel is not implemented"))
 }

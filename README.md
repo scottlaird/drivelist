@@ -149,6 +149,15 @@ so the plain `drivelist` listing gains a `status` column:
   $ DRIVELIST_SERVER=fleet:9450 DRIVELIST_AGENT_TOKEN=agent-secret drivelist agent
 ```
 
+The agent also follows `/dev/kmsg`.  When the kernel attaches or
+removes a disk it reports again a few seconds later (after udev has
+settled), so a drive's appearance or disappearance is timestamped
+within seconds rather than at the next tick.  Drive errors in the log
+are classified (a SCSI additional sense code of 0x5D is a predictive
+failure whatever the sense key says; medium, hardware and I/O errors,
+timeouts, link resets, and plain recovered errors are told apart) and
+counted per hour.  `--kmsg=false` turns the follower off.
+
 For a one-off report, or from cron, `drivelist report` does one cycle.
 
 On Debian and Ubuntu hosts, install the package instead: `make deb`
@@ -174,6 +183,12 @@ Then, from anywhere, with `DRIVELIST_SERVER` and
   $ drivelist events [--since 24h] [--kind vanished,moved_host] [--host fs2]
   $ drivelist missing
 ```
+
+The server exposes Prometheus metrics at `/metrics` without a token:
+drives, missing drives, ghosts, staleness and last report time per
+host; known drives by status; kernel warnings and events in the last
+24 hours; and report counts and ingest latency.  Per-drive values are
+not exported; they live in the database and the CLI.
 
 A drive is referred to by serial, WWN, or an unambiguous prefix of
 either.  Every command takes `--json` for the raw response.  A drive
