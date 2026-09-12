@@ -121,6 +121,54 @@ sdal            PX02SMU020      0x500003964c8806e4      5520A0CAT2AA    expander
 sdbt            HUH728080ALE601 0x5000cca260c165e2      VLG32AEY        expander-11:1   17      8 TB
 ```
 
+## Fleet tracking
+
+drivelist can also run as a small fleet service: every host with
+drives reports its inventory to one server, the server keeps a
+lifetime history per drive, and the CLI answers questions like "where
+is serial VJG24UZX, where has it been, and when did it go missing."
+
+Run the server somewhere with two bearer tokens, one for agents and
+one for operators:
+
+```
+  $ echo agent-secret > /etc/drivelist/agent-token
+  $ echo operator-secret > /etc/drivelist/operator-token
+  $ drivelist serve --db /var/lib/drivelist/drivelist.db --listen :9450 \
+      --agent-token-file /etc/drivelist/agent-token \
+      --operator-token-file /etc/drivelist/operator-token
+```
+
+On each host, send a report (from cron until the agent exists):
+
+```
+  $ DRIVELIST_SERVER=fleet:9450 DRIVELIST_AGENT_TOKEN=agent-secret drivelist report
+```
+
+Then, from anywhere, with `DRIVELIST_SERVER` and
+`DRIVELIST_OPERATOR_TOKEN` set or written as `server = …` and
+`operator_token = …` in `~/.config/drivelist/config`:
+
+```
+  $ drivelist hosts
+  $ drivelist drives [--host fs2] [--status bad,suspect] [--unused] [--missing]
+  $ drivelist drive VJG24UZX
+  $ drivelist drive VJG24UZX history
+  $ drivelist drive VJG24UZX mark suspect --note "r_await 3x siblings"
+  $ drivelist drive VJG24UZX note "RMA 4471 opened"
+  $ drivelist events [--since 24h] [--kind vanished,moved_host] [--host fs2]
+  $ drivelist missing
+```
+
+A drive is referred to by serial, WWN, or an unambiguous prefix of
+either.  Every command takes `--json` for the raw response.  A drive
+that a complete report no longer lists is recorded as vanished with
+the last time it was confirmed; a host that stops reporting is marked
+stale and its drives are left in place, since only a report from the
+host itself can say a drive is gone.  Marking a drive `bad`,
+`shelved`, or `retired` means its absence is expected and it drops
+out of `missing`.
+
 ## Testing and fixtures
 
 The collector reads sysfs, `/proc/self/mountinfo`, and the output of
@@ -129,7 +177,7 @@ captured trees that the tests run against on any OS, including macOS.
 To capture a fixture from a real system:
 
 ```
-  $ drivelist --capture /tmp/myhost
+  $ drivelist capture /tmp/myhost
 ```
 
 This writes the parts of sysfs the collector reads, the mount table,

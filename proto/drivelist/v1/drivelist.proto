@@ -1,0 +1,261 @@
+syntax = "proto3";
+
+package drivelist.v1;
+
+option go_package = "github.com/scottlaird/drivelist/internal/pb/drivelistv1;drivelistv1";
+
+import "google/protobuf/duration.proto";
+import "google/protobuf/timestamp.proto";
+
+// Collector is the agent-facing service. Agents post what they see; the
+// server decides what changed.
+service Collector {
+  // ReportInventory posts the complete current inventory of one host.
+  rpc ReportInventory(ReportInventoryRequest) returns (ReportInventoryResponse);
+}
+
+// Query is the operator-facing service behind the CLI.
+service Query {
+  rpc ListHosts(ListHostsRequest) returns (ListHostsResponse);
+  rpc ListDrives(ListDrivesRequest) returns (ListDrivesResponse);
+  // GetDrive resolves a serial, WWN, or unambiguous prefix of either.
+  rpc GetDrive(GetDriveRequest) returns (GetDriveResponse);
+  // GetDriveHistory returns every placement and event for one drive,
+  // oldest first.
+  rpc GetDriveHistory(GetDriveHistoryRequest) returns (GetDriveHistoryResponse);
+  rpc ListEvents(ListEventsRequest) returns (ListEventsResponse);
+  // ListMissing returns drives whose last placement ended with vanished and
+  // whose status does not expect absence, plus open pool ghosts.
+  rpc ListMissing(ListMissingRequest) returns (ListMissingResponse);
+  // Annotate records a manual status change or note as an event.
+  rpc Annotate(AnnotateRequest) returns (AnnotateResponse);
+}
+
+// ---------- shared ----------
+
+message HostIdentity {
+  string machine_id = 1;    // /etc/machine-id or IOPlatformUUID; the key, never shown
+  string hostname = 2;
+  string os = 3;            // "linux", "darwin"
+  string agent_version = 4;
+}
+
+// DriveIdentity is how an agent names a drive. The server resolves it to a
+// drive record through its keys; agents never see drive ids.
+message DriveIdentity {
+  string wwn = 1;           // "0x5000cca25206c808", "eui.…", or ""
+  string vendor = 2;
+  string model = 3;
+  string serial = 4;
+}
+
+enum Bus {
+  BUS_UNSPECIFIED = 0;
+  BUS_SAS = 1;
+  BUS_SATA = 2;
+  BUS_NVME = 3;
+  BUS_USB = 4;
+  BUS_VIRTIO = 5;
+}
+
+// ---------- Collector ----------
+
+message Device {
+  string dev_name = 1;                // "sdab", "nvme0n1"
+  DriveIdentity identity = 2;
+  Bus bus = 3;
+  uint64 size_bytes = 4;
+  string expander = 5;                // "expander-11:0"
+  string bay = 6;                     // "54"
+  string enclosure_path = 7;
+  repeated string uses = 8;           // "zfs > space … > disk …", "mount > /boot"
+  repeated string dev_links = 9;      // /dev/disk/by-id/…, used to match pool members
+  string error = 10;                  // non-empty: identity unreadable; the report is degraded
+  string member_state = 11;           // ZFS vdev state for the zfs use, "" otherwise
+  string scsi_addr = 12;              // "11:0:17:0"
+}
+
+message EmptyBay {
+  string expander = 1;
+  string bay = 2;
+  string enclosure_path = 3;
+}
+
+// UnmappedMember is a pool member the collector could not map to a Device.
+message UnmappedMember {
+  string pool = 1;
+  string path = 2;
+  string guid = 3;
+  string state = 4;
+}
+
+message ReportInventoryRequest {
+  HostIdentity host = 1;
+  google.protobuf.Timestamp observed_at = 2;
+  repeated Device devices = 3;
+  repeated EmptyBay empty_bays = 4;
+  repeated UnmappedMember unmapped_members = 5;
+  bool complete = 6;                  // false if a collector stage failed outright
+  repeated string collector_errors = 7;
+}
+
+// DriveStatus is the server's status for a drive, returned to the agent so
+// the local listing can show it without network access.
+message DriveStatus {
+  DriveIdentity identity = 1;
+  string status = 2;                  // ok | suspect | bad | shelved | retired
+  string note = 3;
+}
+
+// AgentConfig is server-driven cadence; the agent applies it on its next
+// tick.
+message AgentConfig {
+  google.protobuf.Duration inventory_interval = 1;
+  google.protobuf.Duration smart_interval = 2;
+  google.protobuf.Duration io_bucket = 3;
+  bool collect_smart = 4;
+  bool collect_io = 5;
+}
+
+message ReportInventoryResponse {
+  bool accepted = 1;
+  string reject_reason = 2;           // "clock_skew", "stale", "malformed"
+  bool changed = 3;                   // the state differed from the previous snapshot
+  repeated DriveStatus statuses = 4;
+  AgentConfig config = 5;
+}
+
+// ---------- Query ----------
+
+message Host {
+  string hostname = 1;
+  string machine_id = 2;
+  string os = 3;
+  string agent_version = 4;
+  google.protobuf.Timestamp first_seen = 5;
+  google.protobuf.Timestamp last_report = 6;
+  google.protobuf.Timestamp stale_since = 7;   // unset when the host is reporting
+  int32 drive_count = 8;              // open placements
+  int32 missing_count = 9;            // drives that vanished from this host and are not back
+  int32 ghost_count = 10;             // open pool ghosts
+}
+
+message Placement {
+  string hostname = 1;
+  string expander = 2;
+  string bay = 3;
+  string dev_name = 4;
+  repeated string uses = 5;
+  google.protobuf.Timestamp first_seen = 6;
+  google.protobuf.Timestamp last_seen = 7;     // last heartbeat that confirmed it
+  google.protobuf.Timestamp ended_at = 8;      // unset while current
+  string end_reason = 9;              // vanished | moved | use_changed | merged
+}
+
+message Drive {
+  int64 drive_id = 1;
+  string wwn = 2;
+  string vendor = 3;
+  string model = 4;
+  string serial = 5;
+  uint64 size_bytes = 6;
+  Bus bus = 7;
+  string status = 8;
+  google.protobuf.Timestamp first_seen = 9;
+  google.protobuf.Timestamp last_seen = 10;
+  Placement current = 11;             // unset when the drive is not currently placed
+  Placement last = 12;                // the most recent placement when current is unset
+  string member_state = 13;
+}
+
+message Event {
+  int64 event_id = 1;
+  google.protobuf.Timestamp ts = 2;
+  string kind = 3;
+  string serial = 4;                  // of the drive, when the event is about one
+  string wwn = 5;
+  string hostname = 6;                // when the event is about, or happened on, a host
+  string detail = 7;                  // JSON object; keys depend on kind
+  string source = 8;                  // "snapshot:123" | "user:scott@laptop" | "sweeper"
+}
+
+message ListHostsRequest {}
+
+message ListHostsResponse {
+  repeated Host hosts = 1;
+}
+
+message ListDrivesRequest {
+  string host = 1;                    // hostname or unambiguous prefix; "" = all
+  repeated string status = 2;         // filter: ok suspect bad shelved retired
+  bool unused_only = 3;
+  bool missing_only = 4;
+  string model = 5;                   // substring match
+}
+
+message ListDrivesResponse {
+  repeated Drive drives = 1;
+}
+
+message GetDriveRequest {
+  string ref = 1;                     // serial, WWN, or unambiguous prefix of either
+}
+
+message GetDriveResponse {
+  Drive drive = 1;
+  repeated string keys = 2;           // every identity key the drive has been seen under
+  Event last_status = 3;              // the status_changed event behind Drive.status, if any
+}
+
+message GetDriveHistoryRequest {
+  string ref = 1;
+}
+
+message GetDriveHistoryResponse {
+  Drive drive = 1;
+  repeated Placement placements = 2;  // oldest first
+  repeated Event events = 3;          // oldest first
+}
+
+message ListEventsRequest {
+  google.protobuf.Timestamp since = 1;
+  repeated string kinds = 2;
+  string host = 3;
+  int32 limit = 4;                    // 0 = server default
+}
+
+message ListEventsResponse {
+  repeated Event events = 1;
+}
+
+message ListMissingRequest {}
+
+// Ghost is a pool member a host still expects that matches no present
+// device.
+message Ghost {
+  string hostname = 1;
+  string pool = 2;
+  string path = 3;
+  string guid = 4;
+  string state = 5;
+  string serial = 6;                  // when the path resolved to a known drive
+  string wwn = 7;
+  google.protobuf.Timestamp first_seen = 8;
+  google.protobuf.Timestamp last_seen = 9;
+}
+
+message ListMissingResponse {
+  repeated Drive drives = 1;          // each with last set
+  repeated Ghost ghosts = 2;
+}
+
+message AnnotateRequest {
+  string ref = 1;
+  string status = 2;                  // "" = note only
+  string note = 3;
+  string actor = 4;
+}
+
+message AnnotateResponse {
+  Event event = 1;
+}
