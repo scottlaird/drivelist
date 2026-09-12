@@ -48,6 +48,9 @@ type fieldList []string
 
 func (f *fieldList) String() string { return strings.Join(*f, ",") }
 
+// Type names the flag value in help output, as pflag.Value requires.
+func (f *fieldList) Type() string { return "fields" }
+
 func (f *fieldList) Set(value string) error {
 	var fields []string
 	for _, name := range strings.Split(value, ",") {

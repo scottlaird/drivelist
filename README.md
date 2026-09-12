@@ -129,7 +129,7 @@ captured trees that the tests run against on any OS, including macOS.
 To capture a fixture from a real system:
 
 ```
-  $ drivelist --capture /tmp/myhost
+  $ drivelist capture /tmp/myhost
 ```
 
 This writes the parts of sysfs the collector reads, the mount table,
