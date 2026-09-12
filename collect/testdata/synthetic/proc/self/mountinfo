@@ -1,0 +1,4 @@
+22 28 0:21 / /proc rw,nosuid,nodev,noexec,relatime shared:13 - proc proc rw
+28 1 259:2 / / rw,relatime shared:1 - ext4 /dev/nvme0n1p2 rw,errors=remount-ro
+101 28 8:17 / /backup rw,relatime shared:50 - ext4 /dev/sdb1 rw
+102 28 0:45 / /space rw,xattr,noacl shared:60 - zfs space rw,xattr,noacl
