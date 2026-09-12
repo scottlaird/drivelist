@@ -46,6 +46,9 @@ func main() {
 	for _, d := range inv.Degraded() {
 		fmt.Fprintf(os.Stderr, "drivelist: %s could not be identified: %s\n", d.DeviceName, d.Error)
 	}
+	for _, m := range inv.Unmapped {
+		fmt.Fprintf(os.Stderr, "drivelist: pool %s expects %s (%s) but no such device is present; perhaps a drive failed completely or was removed\n", m.Pool, m.Path, m.State)
+	}
 
 	var unused []*drivelist.Device
 	for _, d := range inv.Devices {

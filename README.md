@@ -15,9 +15,8 @@ drives in about a half second and identify how they're used.
 ## Building
 
 You'll need a recent Go compiler installed (see `go.mod` for the
-minimum version).  ZFS pool membership is detected through `libzfs`,
-so for the full feature set you also need its headers; on Ubuntu
-that's `apt install libzfslinux-dev`.
+minimum version).  There are no C dependencies; the binary
+cross-compiles.
 
 ```
   $ git clone https://github.com/scottlaird/drivelist.git
@@ -27,11 +26,16 @@ that's `apt install libzfslinux-dev`.
 
 This will leave a runable `drivelist` binary in the current directory.
 
-To build without `libzfs` (no ZFS detection, but no cgo and no
-headers needed), add `-tags nolibzfs`.  On macOS and other non-Linux
-systems the ZFS code is left out automatically; the tool builds and
-its tests run there, but it cannot enumerate drives, since it depends
-on Linux sysfs and udev.
+ZFS pool membership is read by running `zpool status`, so `zpool`
+needs to be on the `PATH` of whoever runs drivelist; a host without it
+simply reports no pools.  The original implementation linked `libzfs`
+through cgo and is still in the tree behind `-tags libzfs` as a
+reference, but it does not compile against OpenZFS 2.2 or later
+headers.
+
+On macOS and other non-Linux systems the tool builds and its tests
+run, but it cannot enumerate drives, since it depends on Linux sysfs
+and udev.
 
 ## Status
 
@@ -47,7 +51,10 @@ a note on stderr.  One unresponsive drive does not hide the others.
 
 Currently, drivelist can identify drives in use by checking
 mountpoints and by looking into ZFS pools and vdevs.  It successfully
-deals with ZFS spares, log devices, pending resilvers, and so on.
+deals with ZFS spares, log, cache and special devices, pending
+resilvers, and so on.  A pool member that no present device matches
+(a drive that has failed completely, been pulled, or is installed but
+invisible to the block layer) is reported on stderr.
 
 Linux MD, LVM, and btrfs support is currently missing.  Stub code
 exists for MD and LVM, but I'm not currently using either.

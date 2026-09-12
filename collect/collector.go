@@ -20,8 +20,8 @@ type Collector struct {
 	// Exec runs a command and returns its standard output. nil means
 	// os/exec with the command found on PATH.
 	Exec func(name string, args ...string) ([]byte, error)
-	// ZFS annotates pool membership. nil means the platform default: libzfs
-	// where it is compiled in, otherwise nothing.
+	// ZFS annotates pool membership. nil means the default: run zpool
+	// through Exec (or libzfs, in builds with the libzfs tag).
 	ZFS func(*drivelist.Inventory) error
 }
 
@@ -56,7 +56,7 @@ func (c *Collector) Collect() (*drivelist.Inventory, error) {
 	}
 	zfs := c.ZFS
 	if zfs == nil {
-		zfs = annotateZFS
+		zfs = c.annotateZFS
 	}
 	for _, annotate := range []func(*drivelist.Inventory) error{
 		zfs,
@@ -74,17 +74,19 @@ func (c *Collector) Collect() (*drivelist.Inventory, error) {
 
 // Fixture returns a Collector that reads a captured tree instead of the
 // live system: sysfs under dir/sys, procfs under dir/proc, and command
-// output from dir/exec/<command line> as written by Capture. ZFS
-// annotation is disabled; tests set ZFS themselves.
+// output from dir/exec/<command line> as written by Capture. Pool
+// membership comes from the captured zpool output whatever the build tag;
+// a tree without it has no pools.
 func Fixture(dir string) *Collector {
-	return &Collector{
+	c := &Collector{
 		Sys:  filepath.Join(dir, "sys"),
 		Proc: filepath.Join(dir, "proc"),
 		Exec: func(name string, args ...string) ([]byte, error) {
 			return os.ReadFile(filepath.Join(dir, "exec", execKey(name, args)))
 		},
-		ZFS: func(*drivelist.Inventory) error { return nil },
 	}
+	c.ZFS = c.annotateZFSExec
+	return c
 }
 
 // execKey is the fixture file name for a command line: the command's base
