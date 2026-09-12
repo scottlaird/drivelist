@@ -4,9 +4,9 @@ package drivelist
 
 import (
 	"fmt"
+	"log/slog"
 
 	zfs "github.com/bicomsystems/go-libzfs"
-	"github.com/golang/glog"
 )
 
 func GetDevicesFromZfsPool(pool zfs.Pool) (map[string]string, error) {
@@ -64,7 +64,7 @@ func AnnotateDisksZFS(disks *Disks) error {
 				disk.Uses = append(disk.Uses, prefix)
 			} else {
 				poolname, _ := pool.Name()
-				glog.Errorf("** ZFS Pool %q references an unknown disk (ID %q).  Perhaps a drive failed completely or was removed?", poolname, dev)
+				slog.Error("ZFS pool references an unknown disk; perhaps a drive failed completely or was removed", "pool", poolname, "disk", dev)
 			}
 		}
 	}

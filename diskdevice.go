@@ -3,11 +3,10 @@ package drivelist
 import (
 	"bytes"
 	"io"
+	"log/slog"
 	"os"
 	"strconv"
 	"strings"
-
-	"github.com/golang/glog"
 )
 
 type DiskDevice struct {
@@ -59,7 +58,7 @@ func NewDiskDevice(name string) (*DiskDevice, error) {
 
 	sizeString, err := os.ReadFile("/sys/class/block/" + d.DeviceName + "/size")
 	if err != nil {
-		glog.Errorf("Error reading file: %v\n", err)
+		slog.Error("reading disk size", "device", d.DeviceName, "err", err)
 	} else {
 		sizeBlocks, _ := strconv.ParseUint(strings.TrimSuffix(string(sizeString), "\n"), 10, 64)
 		d.Size = sizeBlocks * 512

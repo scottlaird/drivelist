@@ -2,11 +2,10 @@ package drivelist
 
 import (
 	"io/fs"
+	"log/slog"
 	"os"
 	"path/filepath"
 	"strings"
-
-	"github.com/golang/glog"
 )
 
 // function AnnotateEmptyBays attempts to build up a list of drive
@@ -46,7 +45,7 @@ func AnnotateEmptyBays(disks *Disks) error {
 
 				b, err := os.ReadFile(path)
 				if err != nil {
-					glog.Errorf("Failed to read bay_identifier for %q: %v\n", path, err)
+					slog.Warn("reading bay_identifier", "path", path, "err", err)
 					return nil // Ignore errors
 				}
 				bay := strings.TrimSuffix(string(b), "\n")
