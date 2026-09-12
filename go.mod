@@ -1,6 +1,6 @@
 module github.com/scottlaird/drivelist
 
-go 1.17
+go 1.27
 
 require (
 	github.com/bicomsystems/go-libzfs v0.3.4-0.20210120103208-f957d22f5c47

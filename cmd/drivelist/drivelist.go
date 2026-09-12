@@ -105,7 +105,7 @@ func main() {
 			return '='
 		}
 	}, b2)
-	fmt.Fprintf(writer, div)
+	fmt.Fprint(writer, div)
 
 	displayDisks := disks.Devices
 	if *unusedFlag {

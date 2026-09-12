@@ -21,12 +21,12 @@ import "fmt"
 func FormatDiskSize(byteSize uint64) string {
 	var size, exponent uint64
 
-	if byteSize==0 {
+	if byteSize == 0 {
 		return ""
 	}
-	
+
 	// this is the only case where singular/plural matters, so hard-code it.
-	if byteSize==1 {
+	if byteSize == 1 {
 		return "1 byte"
 	}
 
@@ -56,4 +56,3 @@ func FormatDiskSize(byteSize uint64) string {
 
 	return fmt.Sprintf("%d %s", size, unit)
 }
-
