@@ -3,6 +3,8 @@ package main
 import (
 	"fmt"
 	"io"
+	"os"
+	"slices"
 	"strings"
 	"text/tabwriter"
 
@@ -10,6 +12,7 @@ import (
 
 	"github.com/scottlaird/drivelist"
 	"github.com/scottlaird/drivelist/collect"
+	"github.com/scottlaird/drivelist/internal/agent"
 )
 
 // collectAll is what the listing runs; tests point it at a fixture.
@@ -56,9 +59,30 @@ pool membership, mounts). With no subcommand it prints that listing.`,
 	pf.StringVar(&cfg.server, "server", "", "fleet server, host:port or URL (also DRIVELIST_SERVER or the config file)")
 	pf.BoolVar(&cfg.json, "json", false, "print the server's response as JSON")
 
-	cmd.AddCommand(newCaptureCmd(), newServeCmd())
+	cmd.AddCommand(newCaptureCmd(), newServeCmd(), newAgentCmd(cfg))
 	cmd.AddCommand(fleetCommands(cfg)...)
 	return cmd
+}
+
+// statusCachePath is where the agent leaves the server's statuses;
+// DRIVELIST_STATUS_CACHE overrides it.
+func statusCachePath() string {
+	if p := os.Getenv("DRIVELIST_STATUS_CACHE"); p != "" {
+		return p
+	}
+	return defaultStateDir + "/status.json"
+}
+
+// serverStatus holds the cached server status per device for the listing's
+// status column, keyed by device pointer.
+var serverStatus = map[*drivelist.Device]string{}
+
+func annotateStatus(inv *drivelist.Inventory, cache *agent.StatusCache) {
+	for _, d := range inv.Devices {
+		if st, _ := cache.Lookup(d.WWN, d.Model, d.Serial); st != "" {
+			serverStatus[d] = st
+		}
+	}
 }
 
 // runList prints the listing for the flags in opts. Devices that could not
@@ -72,6 +96,12 @@ func runList(w, errw io.Writer, opts listOptions) error {
 	inv, err := collectAll()
 	if err != nil {
 		return err
+	}
+	if cache, err := agent.ReadStatusCache(statusCachePath()); err == nil && len(cache.Drives) > 0 {
+		annotateStatus(inv, cache)
+		if !opts.allFields && !slices.Contains(fields, "status") {
+			fields = append(fields, "status")
+		}
 	}
 	for _, d := range inv.Degraded() {
 		fmt.Fprintf(errw, "drivelist: %s could not be identified: %s\n", d.DeviceName, d.Error)
