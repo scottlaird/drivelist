@@ -190,7 +190,7 @@ func orDash(s string) string {
 // ---------- drive ----------
 
 func newDriveCmd(cfg *clientConfig) *cobra.Command {
-	var note string
+	var note, since string
 	cmd := &cobra.Command{
 		Use:   "drive REF [history | mark STATUS | note TEXT]",
 		Short: "Show one drive, its history, or record a status or note on it",
@@ -199,6 +199,7 @@ prefix of either; an ambiguous prefix lists the candidates.
 
   drivelist drive REF              summary: identity, status, where it is now
   drivelist drive REF history      everything that has happened to it, oldest first
+  drivelist drive REF kernel       kernel log error counts by hour (--since 7d)
   drivelist drive REF mark STATUS  set the status: ok, suspect, bad, shelved, retired
   drivelist drive REF note TEXT    record a note without changing the status`,
 		Args: cobra.MinimumNArgs(1),
@@ -213,6 +214,11 @@ prefix of either; an ambiguous prefix lists the candidates.
 					return fmt.Errorf("usage: drivelist drive REF history")
 				}
 				return showHistory(cmd, cfg, ref)
+			case "kernel":
+				if len(rest) != 1 {
+					return fmt.Errorf("usage: drivelist drive REF kernel [--since 7d]")
+				}
+				return showKernel(cmd, cfg, ref, since)
 			case "mark":
 				if len(rest) != 2 {
 					return fmt.Errorf("usage: drivelist drive REF mark STATUS [--note TEXT]")
@@ -224,11 +230,43 @@ prefix of either; an ambiguous prefix lists the candidates.
 				}
 				return annotate(cmd, cfg, ref, "", strings.Join(rest[1:], " "))
 			}
-			return fmt.Errorf("unknown action %q: want history, mark, or note", rest[0])
+			return fmt.Errorf("unknown action %q: want history, kernel, mark, or note", rest[0])
 		},
 	}
 	cmd.Flags().StringVar(&note, "note", "", "with mark: why the status changed")
+	cmd.Flags().StringVar(&since, "since", "168h", "with kernel: how far back, as a duration")
 	return cmd
+}
+
+func showKernel(cmd *cobra.Command, cfg *clientConfig, ref, since string) error {
+	d, err := time.ParseDuration(since)
+	if err != nil {
+		return fmt.Errorf("--since: %w", err)
+	}
+	client, err := cfg.queryClient()
+	if err != nil {
+		return err
+	}
+	res, err := client.GetKernel(cmd.Context(), connect.NewRequest(&pb.GetKernelRequest{Ref: ref, Since: timestamppb.New(time.Now().Add(-d))}))
+	if err != nil {
+		return rpcErr(err)
+	}
+	if cfg.json {
+		return printJSON(cmd.OutOrStdout(), res.Msg)
+	}
+	w := cmd.OutOrStdout()
+	printDriveHeader(w, res.Msg.Drive, nil)
+	if len(res.Msg.Samples) == 0 {
+		fmt.Fprintf(w, "no kernel log lines in the last %s\n", since)
+		return nil
+	}
+	fmt.Fprintln(w)
+	tw := tab(w)
+	fmt.Fprintln(tw, "HOUR\tHOST\tDEVICE\tCLASS\tCODE\tCOUNT\tSAMPLE")
+	for _, k := range res.Msg.Samples {
+		fmt.Fprintf(tw, "%s\t%s\t%s\t%s\t%s\t%d\t%s\n", when(k.BucketStart), k.Hostname, k.DevName, k.Class, orDash(k.ScsiCode), k.Count, k.Sample)
+	}
+	return tw.Flush()
 }
 
 func showDrive(cmd *cobra.Command, cfg *clientConfig, ref string) error {

@@ -182,6 +182,31 @@ func TestErrorsAndAuth(t *testing.T) {
 	}
 }
 
+func TestKernelRoundTrip(t *testing.T) {
+	env := newEnv(t)
+	ctx := context.Background()
+	hour := time.Now().Add(-2 * time.Hour).Truncate(time.Hour)
+	env.collector.ReportInventory(ctx, connect.NewRequest(report(hour, device("sda", "X1", "0x5000000000000001", "1"))))
+	ack, err := env.collector.ReportKernel(ctx, connect.NewRequest(&pb.ReportKernelRequest{
+		Host: &pb.HostIdentity{MachineId: "m1", Hostname: "storage1"},
+		Samples: []*pb.KernelSample{{
+			Identity: &pb.DriveIdentity{Wwn: "0x5000000000000001"}, DevName: "sda", BucketStart: timestamppb.New(hour), BucketSecs: 3600,
+			Class: "predictive_failure", ScsiCode: "1:5d:90", Count: 3, Sample: "sd 4:0:0:0: [sda] tag#1 ASC=0x5d",
+		}},
+	}))
+	if err != nil || ack.Msg.Stored != 1 {
+		t.Fatalf("ReportKernel = %v, %v", ack.Msg, err)
+	}
+	res, err := env.query.GetKernel(ctx, connect.NewRequest(&pb.GetKernelRequest{Ref: "X1"}))
+	if err != nil || len(res.Msg.Samples) != 1 || res.Msg.Samples[0].Hostname != "storage1" || res.Msg.Samples[0].Count != 3 {
+		t.Errorf("GetKernel = %v, %v", res.Msg, err)
+	}
+	evs, _ := env.query.ListEvents(ctx, connect.NewRequest(&pb.ListEventsRequest{Kinds: []string{"kernel_warning"}}))
+	if len(evs.Msg.Events) != 1 || evs.Msg.Events[0].Serial != "X1" {
+		t.Errorf("kernel_warning events = %v", evs.Msg.GetEvents())
+	}
+}
+
 func TestHealthz(t *testing.T) {
 	env := newEnv(t)
 	resp, err := http.Get(env.url + "/healthz")

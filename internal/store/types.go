@@ -124,6 +124,7 @@ const (
 	EventHostResumed        = "host_resumed"
 	EventReportDegraded     = "report_degraded"
 	EventPoolMissingMember  = "pool_missing_member"
+	EventKernelWarning      = "kernel_warning"
 )
 
 // Placement end reasons.

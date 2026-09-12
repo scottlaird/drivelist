@@ -533,14 +533,16 @@ func TestMigrateIsIdempotent(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
+	var first int
+	s.db.QueryRow(`SELECT COUNT(*) FROM schema_version`).Scan(&first)
 	s.Close()
 	s, err = Open(path)
 	if err != nil {
 		t.Fatalf("second Open: %v", err)
 	}
 	defer s.Close()
-	var n int
-	if err := s.db.QueryRow(`SELECT COUNT(*) FROM schema_version`).Scan(&n); err != nil || n != 1 {
-		t.Errorf("schema_version rows = %d, %v; want 1", n, err)
+	var second int
+	if err := s.db.QueryRow(`SELECT COUNT(*) FROM schema_version`).Scan(&second); err != nil || first == 0 || second != first {
+		t.Errorf("schema_version rows = %d then %d, %v; want the same non-zero count", first, second, err)
 	}
 }

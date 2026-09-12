@@ -120,6 +120,19 @@ func (s *Server) ReportInventory(ctx context.Context, req *connect.Request[pb.Re
 	return connect.NewResponse(out), nil
 }
 
+func (s *Server) ReportKernel(ctx context.Context, req *connect.Request[pb.ReportKernelRequest]) (*connect.Response[pb.ReportAck], error) {
+	host := hostIdentityFromProto(req.Msg.GetHost())
+	n, err := s.store.IngestKernel(ctx, host, kernelSamplesFromProto(req.Msg.GetSamples()))
+	if err != nil {
+		s.log.Error("ingest kernel", "host", host.Hostname, "err", err)
+		return nil, connect.NewError(connect.CodeInternal, err)
+	}
+	if n > 0 {
+		s.log.Info("kernel counts stored", "host", host.Hostname, "buckets", n, "received", len(req.Msg.GetSamples()))
+	}
+	return connect.NewResponse(&pb.ReportAck{Accepted: true, Stored: uint32(n)}), nil
+}
+
 // ---------- Query ----------
 
 func (s *Server) ListHosts(ctx context.Context, _ *connect.Request[pb.ListHostsRequest]) (*connect.Response[pb.ListHostsResponse], error) {
@@ -221,6 +234,22 @@ func (s *Server) Annotate(ctx context.Context, req *connect.Request[pb.AnnotateR
 	}
 	s.log.Info("annotated", "drive", ev.Serial, "kind", ev.Kind, "actor", actor)
 	return connect.NewResponse(&pb.AnnotateResponse{Event: eventToProto(ev)}), nil
+}
+
+func (s *Server) GetKernel(ctx context.Context, req *connect.Request[pb.GetKernelRequest]) (*connect.Response[pb.GetKernelResponse], error) {
+	var since time.Time
+	if t := req.Msg.GetSince(); t != nil {
+		since = t.AsTime()
+	}
+	d, samples, err := s.store.KernelSamples(ctx, req.Msg.GetRef(), since)
+	if err != nil {
+		return nil, storeErr(err)
+	}
+	out := &pb.GetKernelResponse{Drive: driveToProto(d)}
+	for _, k := range samples {
+		out.Samples = append(out.Samples, kernelSampleToProto(k))
+	}
+	return connect.NewResponse(out), nil
 }
 
 // storeErr maps store errors to connect codes: not found, invalid

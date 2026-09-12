@@ -80,6 +80,7 @@ func startKernelWatcher(ctx context.Context, a *agent.Agent, settle time.Duratio
 	}
 	events := make(chan collect.KernelEvent, 64)
 	w := agent.NewKernelWatcher(a, settle, slog.Default())
+	a.SetKernelWatcher(w)
 	go w.Run(ctx, events)
 	go func() {
 		if err := collect.FollowKernelLog(ctx, r, time.Now, events); err != nil {
@@ -96,6 +97,14 @@ type connectSender struct {
 
 func (c connectSender) Report(ctx context.Context, req *pb.ReportInventoryRequest) (*pb.ReportInventoryResponse, error) {
 	res, err := c.client.ReportInventory(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
+func (c connectSender) Kernel(ctx context.Context, req *pb.ReportKernelRequest) (*pb.ReportAck, error) {
+	res, err := c.client.ReportKernel(ctx, connect.NewRequest(req))
 	if err != nil {
 		return nil, err
 	}

@@ -19,6 +19,7 @@ import (
 type fakeSender struct {
 	mu       sync.Mutex
 	reports  []*pb.ReportInventoryRequest
+	kernel   []*pb.ReportKernelRequest
 	fail     bool
 	interval time.Duration
 	reject   string
@@ -37,6 +38,22 @@ func (f *fakeSender) Report(_ context.Context, req *pb.ReportInventoryRequest) (
 	}
 	res.Statuses = []*pb.DriveStatus{{Identity: &pb.DriveIdentity{Wwn: "0x1", Model: "M", Serial: "S1"}, Status: "bad", Note: "clicking"}}
 	return res, nil
+}
+
+func (f *fakeSender) Kernel(_ context.Context, req *pb.ReportKernelRequest) (*pb.ReportAck, error) {
+	f.mu.Lock()
+	defer f.mu.Unlock()
+	if f.fail {
+		return nil, errors.New("connection refused")
+	}
+	f.kernel = append(f.kernel, req)
+	return &pb.ReportAck{Accepted: true, Stored: uint32(len(req.Samples))}, nil
+}
+
+func (f *fakeSender) kernelReports() []*pb.ReportKernelRequest {
+	f.mu.Lock()
+	defer f.mu.Unlock()
+	return append([]*pb.ReportKernelRequest(nil), f.kernel...)
 }
 
 func (f *fakeSender) count() int {

@@ -134,6 +134,19 @@ func (w *KernelWatcher) Drain(now time.Time) []KernelCount {
 	return out
 }
 
+// restore puts drained buckets back, merging with anything counted since.
+func (w *KernelWatcher) restore(counts []KernelCount) {
+	w.mu.Lock()
+	defer w.mu.Unlock()
+	for _, c := range counts {
+		if b := w.counts[c.bucketKey]; b != nil {
+			b.Count += c.Count
+			continue
+		}
+		w.counts[c.bucketKey] = &bucket{Count: c.Count, Sample: c.Sample}
+	}
+}
+
 func truncate(s string, n int) string {
 	if len(s) <= n {
 		return s

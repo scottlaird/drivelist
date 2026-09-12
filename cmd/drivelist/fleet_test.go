@@ -119,6 +119,10 @@ func TestFleetEndToEnd(t *testing.T) {
 	if _, _, err := run(t, "drive", "VLG32AEY", "dance"); err == nil {
 		t.Error("unknown action accepted")
 	}
+	out = mustRun(t, "drive", "VLG32AEY", "kernel")
+	if !strings.Contains(out, "no kernel log lines") {
+		t.Errorf("kernel with nothing recorded:\n%s", out)
+	}
 	if !strings.HasPrefix(strings.TrimSpace(mustRun(t, "hosts", "--json")), "{") {
 		t.Error("--json did not print JSON")
 	}

@@ -12,12 +12,14 @@ import (
 	"github.com/scottlaird/drivelist"
 	pb "github.com/scottlaird/drivelist/internal/pb/drivelistv1"
 	"github.com/scottlaird/drivelist/internal/report"
+	"google.golang.org/protobuf/types/known/timestamppb"
 )
 
-// Sender posts one report. The connect client satisfies it through
-// connectSender; tests use a fake.
+// Sender posts reports. The connect client satisfies it through an
+// adapter in the command; tests use a fake.
 type Sender interface {
 	Report(ctx context.Context, req *pb.ReportInventoryRequest) (*pb.ReportInventoryResponse, error)
+	Kernel(ctx context.Context, req *pb.ReportKernelRequest) (*pb.ReportAck, error)
 }
 
 // Config is what the loop needs.
@@ -38,6 +40,9 @@ type Agent struct {
 	log     *slog.Logger
 	spool   *spool
 	trigger chan string
+
+	kernel *KernelWatcher
+	ids    identityMap
 }
 
 // New wires an agent. collect is what produces each report's inventory.
@@ -54,7 +59,7 @@ func New(cfg Config, send Sender, collect func() (*drivelist.Inventory, error), 
 	if log == nil {
 		log = slog.Default()
 	}
-	a := &Agent{cfg: cfg, send: send, collect: collect, now: time.Now, log: log, trigger: make(chan string, 1)}
+	a := &Agent{cfg: cfg, send: send, collect: collect, now: time.Now, log: log, trigger: make(chan string, 1), ids: newIdentityMap()}
 	if cfg.SpoolDir != "" {
 		sp, err := openSpool(cfg.SpoolDir, cfg.MaxSpool)
 		if err != nil {
@@ -64,6 +69,10 @@ func New(cfg Config, send Sender, collect func() (*drivelist.Inventory, error), 
 	}
 	return a, nil
 }
+
+// SetKernelWatcher makes the agent send the watcher's completed buckets
+// after each successful report.
+func (a *Agent) SetKernelWatcher(w *KernelWatcher) { a.kernel = w }
 
 // Trigger asks for a report before the next tick, naming why. Several
 // triggers before the loop gets to it collapse into one report.
@@ -105,6 +114,7 @@ func (a *Agent) cycle(ctx context.Context, reason string, interval *time.Duratio
 	if collectErr != nil {
 		a.log.Error("collect failed; reporting as incomplete", "err", collectErr)
 	}
+	a.ids.update(inv, a.now())
 	req := report.FromInventory(a.cfg.Host, inv, a.now(), collectErr)
 
 	if a.spool != nil {
@@ -121,6 +131,48 @@ func (a *Agent) cycle(ctx context.Context, reason string, interval *time.Duratio
 		return
 	}
 	a.applyResponse(res, req, reason, interval)
+	a.sendKernel(ctx)
+}
+
+// sendKernel posts the kernel watcher's completed buckets, attributed to
+// drives through the device names of recent inventories. Buckets for
+// devices no inventory has named are dropped; on a transport failure the
+// rest go back to the watcher for next time.
+func (a *Agent) sendKernel(ctx context.Context) {
+	if a.kernel == nil {
+		return
+	}
+	counts := a.kernel.Drain(a.now())
+	if len(counts) == 0 {
+		return
+	}
+	req := &pb.ReportKernelRequest{Host: a.cfg.Host}
+	for _, c := range counts {
+		id, ok := a.ids.lookup(c.DevName, c.Addr)
+		if !ok {
+			a.log.Debug("kernel bucket for an unknown device dropped", "device", c.DevName, "addr", c.Addr, "class", c.Class, "count", c.Count)
+			continue
+		}
+		req.Samples = append(req.Samples, &pb.KernelSample{
+			Identity:    id,
+			DevName:     c.DevName,
+			BucketStart: timestamppb.New(c.Hour),
+			BucketSecs:  3600,
+			Class:       c.Class,
+			ScsiCode:    c.Code,
+			Count:       uint32(c.Count),
+			Sample:      c.Sample,
+		})
+	}
+	if len(req.Samples) == 0 {
+		return
+	}
+	if _, err := a.send.Kernel(ctx, req); err != nil {
+		a.log.Warn("kernel counts not sent; keeping them", "err", err)
+		a.kernel.restore(counts)
+		return
+	}
+	a.log.Info("kernel counts sent", "buckets", len(req.Samples))
 }
 
 func (a *Agent) enqueue(req *pb.ReportInventoryRequest) {

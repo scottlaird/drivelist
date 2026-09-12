@@ -12,6 +12,9 @@ import "google/protobuf/timestamp.proto";
 service Collector {
   // ReportInventory posts the complete current inventory of one host.
   rpc ReportInventory(ReportInventoryRequest) returns (ReportInventoryResponse);
+  // ReportKernel posts hourly counts of classified kernel log lines per
+  // drive. Each bucket is sent once, complete; resending replaces.
+  rpc ReportKernel(ReportKernelRequest) returns (ReportAck);
 }
 
 // Query is the operator-facing service behind the CLI.
@@ -29,6 +32,8 @@ service Query {
   rpc ListMissing(ListMissingRequest) returns (ListMissingResponse);
   // Annotate records a manual status change or note as an event.
   rpc Annotate(AnnotateRequest) returns (AnnotateResponse);
+  // GetKernel returns a drive's kernel log counts, newest bucket first.
+  rpc GetKernel(GetKernelRequest) returns (GetKernelResponse);
 }
 
 // ---------- shared ----------
@@ -123,6 +128,30 @@ message ReportInventoryResponse {
   bool changed = 3;                   // the state differed from the previous snapshot
   repeated DriveStatus statuses = 4;
   AgentConfig config = 5;
+}
+
+// KernelSample is one hour of one class of kernel log line about one drive.
+message KernelSample {
+  DriveIdentity identity = 1;
+  string dev_name = 2;
+  google.protobuf.Timestamp bucket_start = 3;
+  uint32 bucket_secs = 4;
+  string class = 5;                   // attach detach predictive_failure medium_error hardware_error io_error timeout link_reset recovered other
+  string scsi_code = 6;               // "key:asc:ascq" in hex, e.g. "1:5d:90"; "" for non-SCSI
+  uint32 count = 7;
+  string sample = 8;                  // the first line in the bucket
+  string hostname = 9;                // set in query responses
+}
+
+message ReportKernelRequest {
+  HostIdentity host = 1;
+  repeated KernelSample samples = 2;
+}
+
+message ReportAck {
+  bool accepted = 1;
+  string reject_reason = 2;
+  uint32 stored = 3;
 }
 
 // ---------- Query ----------
@@ -258,4 +287,14 @@ message AnnotateRequest {
 
 message AnnotateResponse {
   Event event = 1;
+}
+
+message GetKernelRequest {
+  string ref = 1;
+  google.protobuf.Timestamp since = 2;
+}
+
+message GetKernelResponse {
+  Drive drive = 1;
+  repeated KernelSample samples = 2;
 }
