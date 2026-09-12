@@ -75,6 +75,10 @@ func (w *KernelWatcher) handle(ctx context.Context, ev collect.KernelEvent) {
 	case collect.ClassAttach, collect.ClassDetach:
 		w.log.Info("kernel reports a disk change; re-inventory scheduled", "class", ev.Class, "device", ev.DevName, "settle", w.settle)
 		w.scheduleTrigger(ctx, ev.Class+" "+ev.DevName)
+	case collect.ClassPredictiveFailure, collect.ClassMediumError, collect.ClassHardwareError:
+		if ev.DevName != "" {
+			w.agent.RequestSmart(ev.DevName)
+		}
 	}
 	w.count(ev)
 }

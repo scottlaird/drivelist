@@ -99,6 +99,44 @@ func firstWord(s string) string {
 	return w
 }
 
+func health(m *pb.SmartSummary) string {
+	if m == nil || m.Healthy == nil {
+		return "-"
+	}
+	if *m.Healthy {
+		return "ok"
+	}
+	return "FAILED"
+}
+
+func optU(p *uint64) string {
+	if p == nil {
+		return "-"
+	}
+	return fmt.Sprint(*p)
+}
+
+func optTemp(p *int32) string {
+	if p == nil {
+		return "-"
+	}
+	return fmt.Sprintf("%d°C", *p)
+}
+
+func optBytes(p *uint64) string {
+	if p == nil {
+		return "-"
+	}
+	return drivelist.FormatDiskSize(*p)
+}
+
+func optPct(p *uint32) string {
+	if p == nil {
+		return "-"
+	}
+	return fmt.Sprintf("%d%%", *p)
+}
+
 // detailOf decodes an event's detail JSON, tolerating anything.
 func detailOf(e *pb.Event) map[string]any {
 	m := map[string]any{}
@@ -162,6 +200,8 @@ func describe(e *pb.Event) string {
 		return fmt.Sprintf("note          %s: %q", strings.TrimPrefix(e.GetSource(), "user:"), str(d, "note"))
 	case "identity_conflict":
 		return fmt.Sprintf("identity conflict  keys %v match drives %v", d["keys"], d["drives"])
+	case "smart_warning":
+		return fmt.Sprintf("smart         %s  %v  %s", host, d["reasons"], str(d, "dev_name"))
 	case "kernel_warning":
 		return fmt.Sprintf("kernel        %s  %s %s ×%v  %s", host, str(d, "class"), str(d, "code"), num(d, "count"), str(d, "dev_name"))
 	case "pool_missing_member":

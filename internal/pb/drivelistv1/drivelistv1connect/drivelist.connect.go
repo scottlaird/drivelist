@@ -40,6 +40,8 @@ const (
 	CollectorReportInventoryProcedure = "/drivelist.v1.Collector/ReportInventory"
 	// CollectorReportKernelProcedure is the fully-qualified name of the Collector's ReportKernel RPC.
 	CollectorReportKernelProcedure = "/drivelist.v1.Collector/ReportKernel"
+	// CollectorReportSmartProcedure is the fully-qualified name of the Collector's ReportSmart RPC.
+	CollectorReportSmartProcedure = "/drivelist.v1.Collector/ReportSmart"
 	// QueryListHostsProcedure is the fully-qualified name of the Query's ListHosts RPC.
 	QueryListHostsProcedure = "/drivelist.v1.Query/ListHosts"
 	// QueryListDrivesProcedure is the fully-qualified name of the Query's ListDrives RPC.
@@ -56,6 +58,8 @@ const (
 	QueryAnnotateProcedure = "/drivelist.v1.Query/Annotate"
 	// QueryGetKernelProcedure is the fully-qualified name of the Query's GetKernel RPC.
 	QueryGetKernelProcedure = "/drivelist.v1.Query/GetKernel"
+	// QueryGetSmartProcedure is the fully-qualified name of the Query's GetSmart RPC.
+	QueryGetSmartProcedure = "/drivelist.v1.Query/GetSmart"
 )
 
 // CollectorClient is a client for the drivelist.v1.Collector service.
@@ -65,6 +69,9 @@ type CollectorClient interface {
 	// ReportKernel posts hourly counts of classified kernel log lines per
 	// drive. Each bucket is sent once, complete; resending replaces.
 	ReportKernel(context.Context, *connect.Request[drivelistv1.ReportKernelRequest]) (*connect.Response[drivelistv1.ReportAck], error)
+	// ReportSmart posts SMART summaries, with the raw smartctl JSON at most
+	// daily per drive or when the summary changed.
+	ReportSmart(context.Context, *connect.Request[drivelistv1.ReportSmartRequest]) (*connect.Response[drivelistv1.ReportAck], error)
 }
 
 // NewCollectorClient constructs a client for the drivelist.v1.Collector service. By default, it
@@ -90,6 +97,12 @@ func NewCollectorClient(httpClient connect.HTTPClient, baseURL string, opts ...c
 			connect.WithSchema(collectorMethods.ByName("ReportKernel")),
 			connect.WithClientOptions(opts...),
 		),
+		reportSmart: connect.NewClient[drivelistv1.ReportSmartRequest, drivelistv1.ReportAck](
+			httpClient,
+			baseURL+CollectorReportSmartProcedure,
+			connect.WithSchema(collectorMethods.ByName("ReportSmart")),
+			connect.WithClientOptions(opts...),
+		),
 	}
 }
 
@@ -97,6 +110,7 @@ func NewCollectorClient(httpClient connect.HTTPClient, baseURL string, opts ...c
 type collectorClient struct {
 	reportInventory *connect.Client[drivelistv1.ReportInventoryRequest, drivelistv1.ReportInventoryResponse]
 	reportKernel    *connect.Client[drivelistv1.ReportKernelRequest, drivelistv1.ReportAck]
+	reportSmart     *connect.Client[drivelistv1.ReportSmartRequest, drivelistv1.ReportAck]
 }
 
 // ReportInventory calls drivelist.v1.Collector.ReportInventory.
@@ -109,6 +123,11 @@ func (c *collectorClient) ReportKernel(ctx context.Context, req *connect.Request
 	return c.reportKernel.CallUnary(ctx, req)
 }
 
+// ReportSmart calls drivelist.v1.Collector.ReportSmart.
+func (c *collectorClient) ReportSmart(ctx context.Context, req *connect.Request[drivelistv1.ReportSmartRequest]) (*connect.Response[drivelistv1.ReportAck], error) {
+	return c.reportSmart.CallUnary(ctx, req)
+}
+
 // CollectorHandler is an implementation of the drivelist.v1.Collector service.
 type CollectorHandler interface {
 	// ReportInventory posts the complete current inventory of one host.
@@ -116,6 +135,9 @@ type CollectorHandler interface {
 	// ReportKernel posts hourly counts of classified kernel log lines per
 	// drive. Each bucket is sent once, complete; resending replaces.
 	ReportKernel(context.Context, *connect.Request[drivelistv1.ReportKernelRequest]) (*connect.Response[drivelistv1.ReportAck], error)
+	// ReportSmart posts SMART summaries, with the raw smartctl JSON at most
+	// daily per drive or when the summary changed.
+	ReportSmart(context.Context, *connect.Request[drivelistv1.ReportSmartRequest]) (*connect.Response[drivelistv1.ReportAck], error)
 }
 
 // NewCollectorHandler builds an HTTP handler from the service implementation. It returns the path
@@ -137,12 +159,20 @@ func NewCollectorHandler(svc CollectorHandler, opts ...connect.HandlerOption) (s
 		connect.WithSchema(collectorMethods.ByName("ReportKernel")),
 		connect.WithHandlerOptions(opts...),
 	)
+	collectorReportSmartHandler := connect.NewUnaryHandler(
+		CollectorReportSmartProcedure,
+		svc.ReportSmart,
+		connect.WithSchema(collectorMethods.ByName("ReportSmart")),
+		connect.WithHandlerOptions(opts...),
+	)
 	return "/drivelist.v1.Collector/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
 		case CollectorReportInventoryProcedure:
 			collectorReportInventoryHandler.ServeHTTP(w, r)
 		case CollectorReportKernelProcedure:
 			collectorReportKernelHandler.ServeHTTP(w, r)
+		case CollectorReportSmartProcedure:
+			collectorReportSmartHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -158,6 +188,10 @@ func (UnimplementedCollectorHandler) ReportInventory(context.Context, *connect.R
 
 func (UnimplementedCollectorHandler) ReportKernel(context.Context, *connect.Request[drivelistv1.ReportKernelRequest]) (*connect.Response[drivelistv1.ReportAck], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("drivelist.v1.Collector.ReportKernel is not implemented"))
+}
+
+func (UnimplementedCollectorHandler) ReportSmart(context.Context, *connect.Request[drivelistv1.ReportSmartRequest]) (*connect.Response[drivelistv1.ReportAck], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("drivelist.v1.Collector.ReportSmart is not implemented"))
 }
 
 // QueryClient is a client for the drivelist.v1.Query service.
@@ -177,6 +211,9 @@ type QueryClient interface {
 	Annotate(context.Context, *connect.Request[drivelistv1.AnnotateRequest]) (*connect.Response[drivelistv1.AnnotateResponse], error)
 	// GetKernel returns a drive's kernel log counts, newest bucket first.
 	GetKernel(context.Context, *connect.Request[drivelistv1.GetKernelRequest]) (*connect.Response[drivelistv1.GetKernelResponse], error)
+	// GetSmart returns a drive's SMART samples, newest first, optionally with
+	// the latest raw smartctl output.
+	GetSmart(context.Context, *connect.Request[drivelistv1.GetSmartRequest]) (*connect.Response[drivelistv1.GetSmartResponse], error)
 }
 
 // NewQueryClient constructs a client for the drivelist.v1.Query service. By default, it uses the
@@ -238,6 +275,12 @@ func NewQueryClient(httpClient connect.HTTPClient, baseURL string, opts ...conne
 			connect.WithSchema(queryMethods.ByName("GetKernel")),
 			connect.WithClientOptions(opts...),
 		),
+		getSmart: connect.NewClient[drivelistv1.GetSmartRequest, drivelistv1.GetSmartResponse](
+			httpClient,
+			baseURL+QueryGetSmartProcedure,
+			connect.WithSchema(queryMethods.ByName("GetSmart")),
+			connect.WithClientOptions(opts...),
+		),
 	}
 }
 
@@ -251,6 +294,7 @@ type queryClient struct {
 	listMissing     *connect.Client[drivelistv1.ListMissingRequest, drivelistv1.ListMissingResponse]
 	annotate        *connect.Client[drivelistv1.AnnotateRequest, drivelistv1.AnnotateResponse]
 	getKernel       *connect.Client[drivelistv1.GetKernelRequest, drivelistv1.GetKernelResponse]
+	getSmart        *connect.Client[drivelistv1.GetSmartRequest, drivelistv1.GetSmartResponse]
 }
 
 // ListHosts calls drivelist.v1.Query.ListHosts.
@@ -293,6 +337,11 @@ func (c *queryClient) GetKernel(ctx context.Context, req *connect.Request[drivel
 	return c.getKernel.CallUnary(ctx, req)
 }
 
+// GetSmart calls drivelist.v1.Query.GetSmart.
+func (c *queryClient) GetSmart(ctx context.Context, req *connect.Request[drivelistv1.GetSmartRequest]) (*connect.Response[drivelistv1.GetSmartResponse], error) {
+	return c.getSmart.CallUnary(ctx, req)
+}
+
 // QueryHandler is an implementation of the drivelist.v1.Query service.
 type QueryHandler interface {
 	ListHosts(context.Context, *connect.Request[drivelistv1.ListHostsRequest]) (*connect.Response[drivelistv1.ListHostsResponse], error)
@@ -310,6 +359,9 @@ type QueryHandler interface {
 	Annotate(context.Context, *connect.Request[drivelistv1.AnnotateRequest]) (*connect.Response[drivelistv1.AnnotateResponse], error)
 	// GetKernel returns a drive's kernel log counts, newest bucket first.
 	GetKernel(context.Context, *connect.Request[drivelistv1.GetKernelRequest]) (*connect.Response[drivelistv1.GetKernelResponse], error)
+	// GetSmart returns a drive's SMART samples, newest first, optionally with
+	// the latest raw smartctl output.
+	GetSmart(context.Context, *connect.Request[drivelistv1.GetSmartRequest]) (*connect.Response[drivelistv1.GetSmartResponse], error)
 }
 
 // NewQueryHandler builds an HTTP handler from the service implementation. It returns the path on
@@ -367,6 +419,12 @@ func NewQueryHandler(svc QueryHandler, opts ...connect.HandlerOption) (string, h
 		connect.WithSchema(queryMethods.ByName("GetKernel")),
 		connect.WithHandlerOptions(opts...),
 	)
+	queryGetSmartHandler := connect.NewUnaryHandler(
+		QueryGetSmartProcedure,
+		svc.GetSmart,
+		connect.WithSchema(queryMethods.ByName("GetSmart")),
+		connect.WithHandlerOptions(opts...),
+	)
 	return "/drivelist.v1.Query/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
 		case QueryListHostsProcedure:
@@ -385,6 +443,8 @@ func NewQueryHandler(svc QueryHandler, opts ...connect.HandlerOption) (string, h
 			queryAnnotateHandler.ServeHTTP(w, r)
 		case QueryGetKernelProcedure:
 			queryGetKernelHandler.ServeHTTP(w, r)
+		case QueryGetSmartProcedure:
+			queryGetSmartHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -424,4 +484,8 @@ func (UnimplementedQueryHandler) Annotate(context.Context, *connect.Request[driv
 
 func (UnimplementedQueryHandler) GetKernel(context.Context, *connect.Request[drivelistv1.GetKernelRequest]) (*connect.Response[drivelistv1.GetKernelResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("drivelist.v1.Query.GetKernel is not implemented"))
+}
+
+func (UnimplementedQueryHandler) GetSmart(context.Context, *connect.Request[drivelistv1.GetSmartRequest]) (*connect.Response[drivelistv1.GetSmartResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("drivelist.v1.Query.GetSmart is not implemented"))
 }

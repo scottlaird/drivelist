@@ -24,9 +24,9 @@ const defaultStateDir = "/var/lib/drivelist"
 
 func newAgentCmd(cfg *clientConfig) *cobra.Command {
 	var (
-		interval, settle time.Duration
-		stateDir         string
-		kmsg             bool
+		interval, settle, smartInterval time.Duration
+		stateDir                        string
+		kmsg, smart                     bool
 	)
 	cmd := &cobra.Command{
 		Use:   "agent",
@@ -53,6 +53,9 @@ can show it. Needs the agent token.`,
 			}
 			ctx, stop := signal.NotifyContext(cmd.Context(), os.Interrupt, syscall.SIGTERM)
 			defer stop()
+			if smart {
+				a.EnableSmart(agent.SmartConfig{Interval: smartInterval})
+			}
 			if kmsg {
 				startKernelWatcher(ctx, a, settle)
 			}
@@ -66,6 +69,8 @@ can show it. Needs the agent token.`,
 	f.StringVar(&stateDir, "state-dir", defaultStateDir, "directory for the spool and status cache")
 	f.BoolVar(&kmsg, "kmsg", true, "follow the kernel log and report within seconds of a disk attaching or detaching")
 	f.DurationVar(&settle, "kmsg-settle", 5*time.Second, "how long after a kernel disk change to wait for udev before reporting")
+	f.BoolVar(&smart, "smart", true, "sample SMART through smartctl (needs root and smartmontools)")
+	f.DurationVar(&smartInterval, "smart-interval", 6*time.Hour, "how often to run a full SMART pass until the server says otherwise")
 	return cmd
 }
 
@@ -105,6 +110,14 @@ func (c connectSender) Report(ctx context.Context, req *pb.ReportInventoryReques
 
 func (c connectSender) Kernel(ctx context.Context, req *pb.ReportKernelRequest) (*pb.ReportAck, error) {
 	res, err := c.client.ReportKernel(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
+func (c connectSender) Smart(ctx context.Context, req *pb.ReportSmartRequest) (*pb.ReportAck, error) {
+	res, err := c.client.ReportSmart(ctx, connect.NewRequest(req))
 	if err != nil {
 		return nil, err
 	}

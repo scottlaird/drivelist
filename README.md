@@ -158,6 +158,18 @@ failure whatever the sense key says; medium, hardware and I/O errors,
 timeouts, link resets, and plain recovered errors are told apart) and
 counted per hour.  `--kmsg=false` turns the follower off.
 
+SMART is sampled through `smartctl -j` (smartmontools 7 or later): a
+baseline pass for every drive when the agent starts, a full pass every
+six hours (the server can change it), and a sample of any drive that
+newly appears or that the kernel reports a predictive failure, medium
+error or hardware error for.  Sleeping drives are left asleep and
+recorded as skipped.  The summary (health, hours, temperature,
+reallocated, pending and uncorrectable sectors, CRC errors, bytes read
+and written, wear, last self-test) is sent every time; the full
+smartctl JSON at most daily per drive, or when the summary changed.
+`drivelist drive REF smart` shows the samples and `--raw` the newest
+JSON.  `--smart=false` turns sampling off.
+
 For a one-off report, or from cron, `drivelist report` does one cycle.
 
 On Debian and Ubuntu hosts, install the package instead.  Every

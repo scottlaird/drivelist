@@ -123,6 +123,13 @@ func TestFleetEndToEnd(t *testing.T) {
 	if !strings.Contains(out, "no kernel log lines") {
 		t.Errorf("kernel with nothing recorded:\n%s", out)
 	}
+	out = mustRun(t, "drive", "VLG32AEY", "smart")
+	if !strings.Contains(out, "no SMART samples") {
+		t.Errorf("smart with nothing recorded:\n%s", out)
+	}
+	if _, _, err := run(t, "drive", "VLG32AEY", "smart", "--raw"); err == nil {
+		t.Error("smart --raw with nothing stored succeeded")
+	}
 	if !strings.HasPrefix(strings.TrimSpace(mustRun(t, "hosts", "--json")), "{") {
 		t.Error("--json did not print JSON")
 	}

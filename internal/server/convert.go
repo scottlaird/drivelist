@@ -174,6 +174,53 @@ func kernelSampleToProto(k store.KernelSample) *pb.KernelSample {
 	}
 }
 
+func smartSummaryFromProto(m *pb.SmartSummary) *store.SmartSummary {
+	if m == nil {
+		return nil
+	}
+	s := &store.SmartSummary{Protocol: m.GetProtocol(), SelftestLast: m.GetSelftestLast()}
+	if m.Healthy != nil {
+		s.Healthy = m.Healthy
+	}
+	s.PowerOnHours, s.Reallocated, s.Pending, s.Uncorrectable = m.PowerOnHours, m.Reallocated, m.Pending, m.Uncorrectable
+	s.CRCErrors, s.ReadBytes, s.WriteBytes, s.PercentUsed = m.CrcErrors, m.ReadBytes, m.WriteBytes, m.PercentUsed
+	if m.TempC != nil {
+		v := int(*m.TempC)
+		s.TempC = &v
+	}
+	return s
+}
+
+func smartSummaryToProto(s *store.SmartSummary) *pb.SmartSummary {
+	if s == nil {
+		return nil
+	}
+	m := &pb.SmartSummary{Protocol: s.Protocol, SelftestLast: s.SelftestLast, Healthy: s.Healthy,
+		PowerOnHours: s.PowerOnHours, Reallocated: s.Reallocated, Pending: s.Pending, Uncorrectable: s.Uncorrectable,
+		CrcErrors: s.CRCErrors, ReadBytes: s.ReadBytes, WriteBytes: s.WriteBytes, PercentUsed: s.PercentUsed}
+	if s.TempC != nil {
+		v := int32(*s.TempC)
+		m.TempC = &v
+	}
+	return m
+}
+
+func smartSamplesFromProto(samples []*pb.SmartSample) []store.SmartSample {
+	out := make([]store.SmartSample, 0, len(samples))
+	for _, k := range samples {
+		s := store.SmartSample{Identity: identityFromProto(k.GetIdentity()), DevName: k.GetDevName(), Summary: smartSummaryFromProto(k.GetSummary()), RawGz: k.GetRawJsonGz(), Skipped: k.GetSkipped()}
+		if t := k.GetTs(); t != nil {
+			s.TS = t.AsTime()
+		}
+		out = append(out, s)
+	}
+	return out
+}
+
+func smartSampleToProto(k store.SmartSample) *pb.SmartSample {
+	return &pb.SmartSample{Identity: identityToProto(k.Identity), DevName: k.DevName, Ts: ts(k.TS), Summary: smartSummaryToProto(k.Summary), Skipped: k.Skipped, Hostname: k.Hostname, HasRaw: k.HasRaw}
+}
+
 func ghostToProto(g store.Ghost) *pb.Ghost {
 	return &pb.Ghost{
 		Hostname:  g.Hostname,

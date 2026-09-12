@@ -20,6 +20,7 @@ import (
 type Sender interface {
 	Report(ctx context.Context, req *pb.ReportInventoryRequest) (*pb.ReportInventoryResponse, error)
 	Kernel(ctx context.Context, req *pb.ReportKernelRequest) (*pb.ReportAck, error)
+	Smart(ctx context.Context, req *pb.ReportSmartRequest) (*pb.ReportAck, error)
 }
 
 // Config is what the loop needs.
@@ -43,6 +44,9 @@ type Agent struct {
 
 	kernel *KernelWatcher
 	ids    identityMap
+
+	smart    *smartState
+	smartReq chan struct{}
 }
 
 // New wires an agent. collect is what produces each report's inventory.
@@ -59,7 +63,7 @@ func New(cfg Config, send Sender, collect func() (*drivelist.Inventory, error), 
 	if log == nil {
 		log = slog.Default()
 	}
-	a := &Agent{cfg: cfg, send: send, collect: collect, now: time.Now, log: log, trigger: make(chan string, 1), ids: newIdentityMap()}
+	a := &Agent{cfg: cfg, send: send, collect: collect, now: time.Now, log: log, trigger: make(chan string, 1), ids: newIdentityMap(), smartReq: make(chan struct{}, 1)}
 	if cfg.SpoolDir != "" {
 		sp, err := openSpool(cfg.SpoolDir, cfg.MaxSpool)
 		if err != nil {
@@ -91,6 +95,17 @@ func (a *Agent) Run(ctx context.Context) {
 	a.cycle(ctx, "start", &interval)
 	timer := time.NewTimer(interval)
 	defer timer.Stop()
+
+	// SMART runs on its own clock: a baseline pass right away, then every
+	// smart interval, plus out-of-band passes for requested devices.
+	smartTick := make(<-chan time.Time)
+	var smartTimer *time.Timer
+	if a.smart != nil {
+		a.smartPass(ctx, "baseline", nil)
+		smartTimer = time.NewTimer(a.smart.cfg.Interval)
+		defer smartTimer.Stop()
+		smartTick = smartTimer.C
+	}
 	for {
 		select {
 		case <-ctx.Done():
@@ -100,10 +115,16 @@ func (a *Agent) Run(ctx context.Context) {
 				<-timer.C
 			}
 			a.cycle(ctx, reason, &interval)
+			timer.Reset(interval)
 		case <-timer.C:
 			a.cycle(ctx, "tick", &interval)
+			timer.Reset(interval)
+		case <-smartTick:
+			a.smartPass(ctx, "tick", nil)
+			smartTimer.Reset(a.smart.cfg.Interval)
+		case <-a.smartReq:
+			a.smartPass(ctx, "request", a.smart.takePending())
 		}
-		timer.Reset(interval)
 	}
 }
 
@@ -114,7 +135,10 @@ func (a *Agent) cycle(ctx context.Context, reason string, interval *time.Duratio
 	if collectErr != nil {
 		a.log.Error("collect failed; reporting as incomplete", "err", collectErr)
 	}
-	a.ids.update(inv, a.now())
+	appeared := a.ids.update(inv, a.now())
+	if len(appeared) > 0 && reason != "start" {
+		a.RequestSmart(appeared...)
+	}
 	req := report.FromInventory(a.cfg.Host, inv, a.now(), collectErr)
 
 	if a.spool != nil {
@@ -223,6 +247,10 @@ func (a *Agent) applyResponse(res *pb.ReportInventoryResponse, req *pb.ReportInv
 	if d := res.GetConfig().GetInventoryInterval(); d != nil && d.AsDuration() > 0 && d.AsDuration() != *interval {
 		a.log.Info("server set the interval", "interval", d.AsDuration())
 		*interval = d.AsDuration()
+	}
+	if d := res.GetConfig().GetSmartInterval(); d != nil && d.AsDuration() > 0 && a.smart != nil && d.AsDuration() != a.smart.cfg.Interval {
+		a.log.Info("server set the smart interval", "interval", d.AsDuration())
+		a.smart.cfg.Interval = d.AsDuration()
 	}
 	if a.cfg.StatusPath != "" {
 		if err := WriteStatusCache(a.cfg.StatusPath, a.now(), res.GetStatuses()); err != nil {
