@@ -1,0 +1,546 @@
+package store
+
+import (
+	"context"
+	"encoding/json"
+	"path/filepath"
+	"testing"
+	"time"
+)
+
+// harness drives a store with a fake clock. Reports are observed at the
+// clock's current time, which advances between calls.
+type harness struct {
+	t   *testing.T
+	s   *Store
+	ctx context.Context
+	now time.Time
+}
+
+func newHarness(t *testing.T) *harness {
+	t.Helper()
+	s, err := Open(filepath.Join(t.TempDir(), "test.db"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	t.Cleanup(func() { s.Close() })
+	h := &harness{t: t, s: s, ctx: context.Background(), now: time.Date(2026, 9, 12, 12, 0, 0, 0, time.UTC)}
+	s.now = func() time.Time { return h.now }
+	return h
+}
+
+func (h *harness) advance(d time.Duration) { h.now = h.now.Add(d) }
+
+var (
+	hostA = HostIdentity{MachineID: "aaaa", Hostname: "storage1", OS: "linux"}
+	hostB = HostIdentity{MachineID: "bbbb", Hostname: "backup", OS: "linux"}
+)
+
+func dev(name, serial, wwn, expander, bay string, uses ...string) ReportDevice {
+	return ReportDevice{
+		DevName:   name,
+		Identity:  DriveIdentity{WWN: wwn, Model: "HUH72808", Serial: serial},
+		Bus:       "sas",
+		SizeBytes: 8_000_000_000_000,
+		Expander:  expander,
+		Bay:       bay,
+		Uses:      uses,
+	}
+}
+
+var (
+	devX = dev("sda", "X1", "0x5000000000000001", "expander-4:0", "1", "zfs > tank 1 > raidz2 10 > disk 100")
+	devY = dev("sdb", "Y1", "0x5000000000000002", "expander-4:0", "2", "zfs > tank 1 > raidz2 10 > disk 101")
+	devZ = dev("sdc", "Z1", "0x5000000000000003", "expander-4:0", "3")
+)
+
+// report submits a complete report for host with devices, observed now.
+func (h *harness) report(host HostIdentity, devices ...ReportDevice) IngestResult {
+	h.t.Helper()
+	return h.submit(Report{Host: host, ObservedAt: h.now, Devices: devices, Complete: true})
+}
+
+func (h *harness) submit(r Report) IngestResult {
+	h.t.Helper()
+	res, err := h.s.Ingest(h.ctx, r)
+	if err != nil {
+		h.t.Fatalf("Ingest: %v", err)
+	}
+	return res
+}
+
+func (h *harness) mustAccept(res IngestResult) IngestResult {
+	h.t.Helper()
+	if !res.Accepted {
+		h.t.Fatalf("report rejected: %s", res.RejectReason)
+	}
+	return res
+}
+
+// events returns the kinds of every event about the drive with serial,
+// oldest first, with the detail of each.
+func (h *harness) events(serial string) (kinds []string, details []map[string]any) {
+	h.t.Helper()
+	rows, err := h.s.db.Query(`SELECT e.kind, e.detail FROM event e JOIN drive d USING (drive_id) WHERE d.serial = ? ORDER BY e.event_id`, serial)
+	if err != nil {
+		h.t.Fatal(err)
+	}
+	defer rows.Close()
+	for rows.Next() {
+		var kind, detail string
+		if err := rows.Scan(&kind, &detail); err != nil {
+			h.t.Fatal(err)
+		}
+		var m map[string]any
+		json.Unmarshal([]byte(detail), &m)
+		kinds = append(kinds, kind)
+		details = append(details, m)
+	}
+	return kinds, details
+}
+
+func (h *harness) hostEvents(hostname string) []string {
+	h.t.Helper()
+	rows, err := h.s.db.Query(`SELECT e.kind FROM event e JOIN host h USING (host_id) WHERE h.hostname = ? AND e.drive_id IS NULL ORDER BY e.event_id`, hostname)
+	if err != nil {
+		h.t.Fatal(err)
+	}
+	defer rows.Close()
+	var kinds []string
+	for rows.Next() {
+		var k string
+		rows.Scan(&k)
+		kinds = append(kinds, k)
+	}
+	return kinds
+}
+
+type placementFact struct {
+	host, expander, bay, uses string
+	firstSeen, lastSeen       int64
+	ended                     bool
+	endReason                 string
+}
+
+// placements returns every placement of the drive, oldest first.
+func (h *harness) placements(serial string) []placementFact {
+	h.t.Helper()
+	rows, err := h.s.db.Query(`
+		SELECT ho.hostname, p.expander, p.bay, p.uses, p.first_seen, p.last_seen, p.ended_at IS NOT NULL, p.end_reason
+		FROM placement p JOIN drive d USING (drive_id) JOIN host ho USING (host_id)
+		WHERE d.serial = ? ORDER BY p.placement_id`, serial)
+	if err != nil {
+		h.t.Fatal(err)
+	}
+	defer rows.Close()
+	var out []placementFact
+	for rows.Next() {
+		var p placementFact
+		if err := rows.Scan(&p.host, &p.expander, &p.bay, &p.uses, &p.firstSeen, &p.lastSeen, &p.ended, &p.endReason); err != nil {
+			h.t.Fatal(err)
+		}
+		out = append(out, p)
+	}
+	return out
+}
+
+func (h *harness) count(query string, args ...any) int {
+	h.t.Helper()
+	var n int
+	if err := h.s.db.QueryRow(query, args...).Scan(&n); err != nil {
+		h.t.Fatal(err)
+	}
+	return n
+}
+
+func equalKinds(got, want []string) bool {
+	if len(got) != len(want) {
+		return false
+	}
+	for i := range got {
+		if got[i] != want[i] {
+			return false
+		}
+	}
+	return true
+}
+
+func TestFirstReportAndHeartbeat(t *testing.T) {
+	h := newHarness(t)
+	res := h.mustAccept(h.report(hostA, devX, devY, devZ))
+	if !res.Changed {
+		t.Error("first report: Changed = false, want true")
+	}
+	if len(res.Statuses) != 3 || res.Statuses[0].Status != StatusOK {
+		t.Errorf("statuses = %+v, want three ok", res.Statuses)
+	}
+	if got := h.hostEvents("storage1"); !equalKinds(got, []string{EventHostFirstSeen}) {
+		t.Errorf("host events = %v", got)
+	}
+	for _, serial := range []string{"X1", "Y1", "Z1"} {
+		if kinds, _ := h.events(serial); !equalKinds(kinds, []string{EventFirstSeen}) {
+			t.Errorf("%s events = %v, want [first_seen]", serial, kinds)
+		}
+	}
+	first := h.now.Unix()
+
+	h.advance(5 * time.Minute)
+	res = h.mustAccept(h.report(hostA, devX, devY, devZ))
+	if res.Changed {
+		t.Error("heartbeat: Changed = true, want false")
+	}
+	if n := h.count(`SELECT COUNT(*) FROM snapshot`); n != 1 {
+		t.Errorf("snapshots after heartbeat = %d, want 1", n)
+	}
+	if n := h.count(`SELECT COUNT(*) FROM event`); n != 4 {
+		t.Errorf("events after heartbeat = %d, want 4", n)
+	}
+	ps := h.placements("Z1")
+	if len(ps) != 1 || ps[0].firstSeen != first || ps[0].lastSeen != h.now.Unix() || ps[0].ended {
+		t.Errorf("Z placement after heartbeat = %+v", ps)
+	}
+	var lastAt int64
+	h.s.db.QueryRow(`SELECT last_at FROM snapshot`).Scan(&lastAt)
+	if lastAt != h.now.Unix() {
+		t.Errorf("snapshot.last_at = %d, want %d", lastAt, h.now.Unix())
+	}
+}
+
+func TestVanishAndReappear(t *testing.T) {
+	h := newHarness(t)
+	h.report(hostA, devX, devY, devZ)
+	h.advance(5 * time.Minute)
+	h.report(hostA, devX, devY, devZ)
+	lastConfirmed := h.now.Unix()
+
+	h.advance(5 * time.Minute)
+	res := h.mustAccept(h.report(hostA, devX, devY))
+	if !res.Changed {
+		t.Fatal("report without Z: Changed = false")
+	}
+	kinds, details := h.events("Z1")
+	if !equalKinds(kinds, []string{EventFirstSeen, EventVanished}) {
+		t.Fatalf("Z events = %v", kinds)
+	}
+	if got := details[1]["last_seen"]; got != float64(lastConfirmed) {
+		t.Errorf("vanished.last_seen = %v, want %d", got, lastConfirmed)
+	}
+	ps := h.placements("Z1")
+	if len(ps) != 1 || !ps[0].ended || ps[0].endReason != EndVanished || ps[0].lastSeen != lastConfirmed {
+		t.Errorf("Z placement = %+v", ps)
+	}
+	// X and Y are untouched.
+	if kinds, _ := h.events("X1"); !equalKinds(kinds, []string{EventFirstSeen}) {
+		t.Errorf("X events = %v", kinds)
+	}
+
+	h.advance(6 * time.Hour)
+	h.report(hostA, devX, devY, devZ)
+	kinds, details = h.events("Z1")
+	if !equalKinds(kinds, []string{EventFirstSeen, EventVanished, EventReappeared}) {
+		t.Fatalf("Z events = %v", kinds)
+	}
+	re := details[2]
+	if re["gap_secs"] != float64(h.now.Unix()-lastConfirmed) || re["same_slot"] != true || re["from_host"] != "storage1" {
+		t.Errorf("reappeared detail = %v", re)
+	}
+	ps = h.placements("Z1")
+	if len(ps) != 2 || ps[1].ended || ps[1].firstSeen != h.now.Unix() {
+		t.Errorf("Z placements = %+v", ps)
+	}
+}
+
+func TestMoveHostNewHostReportsFirst(t *testing.T) {
+	h := newHarness(t)
+	h.report(hostA, devX, devY)
+	h.advance(time.Hour)
+	h.report(hostB, dev("sdq", "X1", "0x5000000000000001", "expander-9:0", "7"))
+	kinds, details := h.events("X1")
+	if !equalKinds(kinds, []string{EventFirstSeen, EventMovedHost}) {
+		t.Fatalf("X events = %v", kinds)
+	}
+	if details[1]["from_host"] != "storage1" || details[1]["to_bay"] != "7" || details[1]["from_bay"] != "1" {
+		t.Errorf("moved_host detail = %v", details[1])
+	}
+	ps := h.placements("X1")
+	if len(ps) != 2 || !ps[0].ended || ps[0].endReason != EndMoved || ps[1].host != "backup" || ps[1].ended {
+		t.Errorf("X placements = %+v", ps)
+	}
+	// The old host noticing is not a second event.
+	h.advance(time.Minute)
+	h.report(hostA, devY)
+	if kinds, _ := h.events("X1"); len(kinds) != 2 {
+		t.Errorf("X events after old host reports = %v", kinds)
+	}
+}
+
+func TestMoveHostOldHostReportsFirst(t *testing.T) {
+	h := newHarness(t)
+	h.report(hostA, devX, devY)
+	h.advance(time.Hour)
+	h.report(hostA, devY)
+	h.advance(time.Hour)
+	h.report(hostB, dev("sdq", "X1", "0x5000000000000001", "expander-9:0", "7", "spare"))
+	kinds, details := h.events("X1")
+	if !equalKinds(kinds, []string{EventFirstSeen, EventVanished, EventReappeared}) {
+		t.Fatalf("X events = %v", kinds)
+	}
+	if details[2]["from_host"] != "storage1" || details[2]["same_slot"] != false {
+		t.Errorf("reappeared detail = %v", details[2])
+	}
+}
+
+func TestUseAndBayChanges(t *testing.T) {
+	h := newHarness(t)
+	h.report(hostA, devX, devZ)
+	h.advance(time.Hour)
+	z := devZ
+	z.Uses = []string{"zfs > tank 1 > raidz2 10 > disk 102"}
+	h.report(hostA, devX, z)
+	kinds, details := h.events("Z1")
+	if !equalKinds(kinds, []string{EventFirstSeen, EventUseChanged}) {
+		t.Fatalf("Z events = %v", kinds)
+	}
+	if details[1]["from_uses"] == nil || details[1]["to_uses"] == nil {
+		t.Errorf("use_changed detail = %v", details[1])
+	}
+	h.advance(time.Hour)
+	z.Bay = "9"
+	h.report(hostA, devX, z)
+	kinds, _ = h.events("Z1")
+	if !equalKinds(kinds, []string{EventFirstSeen, EventUseChanged, EventMovedBay}) {
+		t.Fatalf("Z events = %v", kinds)
+	}
+	ps := h.placements("Z1")
+	if len(ps) != 3 || ps[0].endReason != EndUseChanged || ps[1].endReason != EndMoved || ps[2].ended || ps[2].bay != "9" {
+		t.Errorf("Z placements = %+v", ps)
+	}
+	// Use order does not matter.
+	h.advance(time.Hour)
+	x := devX
+	x.Uses = []string{"mount > /data", devX.Uses[0]}
+	h.report(hostA, x, z)
+	x.Uses = []string{devX.Uses[0], "mount > /data"}
+	h.advance(time.Hour)
+	res := h.report(hostA, x, z)
+	if res.Changed {
+		t.Error("reordered uses counted as a change")
+	}
+}
+
+func TestDegradedReports(t *testing.T) {
+	h := newHarness(t)
+	h.report(hostA, devX, devY, devZ)
+
+	// Z's udevadm failed but it is still in bay 3: attributed, nothing vanishes.
+	h.advance(time.Hour)
+	broken := ReportDevice{DevName: "sdc", Expander: "expander-4:0", Bay: "3", Error: "udevadm: exit status 1"}
+	res := h.mustAccept(h.report(hostA, devX, devY, broken))
+	if !res.Changed {
+		t.Fatal("degraded report: Changed = false")
+	}
+	if n := h.count(`SELECT COUNT(*) FROM event WHERE kind IN (?, ?)`, EventVanished, EventReportDegraded); n != 0 {
+		t.Errorf("attributed device produced %d vanish/degraded events, want 0", n)
+	}
+	if ps := h.placements("Z1"); len(ps) != 1 || ps[0].ended || ps[0].lastSeen != h.now.Unix() {
+		t.Errorf("Z placement after attribution = %+v", ps)
+	}
+	if n := h.count(`SELECT complete FROM snapshot ORDER BY snapshot_id DESC LIMIT 1`); n != 1 {
+		t.Error("snapshot with an attributed device marked incomplete")
+	}
+
+	// A device that failed with no bay cannot be attributed: the report is
+	// degraded, X is absent, and X must not vanish.
+	h.advance(time.Hour)
+	broken.Bay, broken.Expander = "", ""
+	h.report(hostA, devY, broken)
+	if got := h.hostEvents("storage1"); !equalKinds(got, []string{EventHostFirstSeen, EventReportDegraded}) {
+		t.Errorf("host events = %v", got)
+	}
+	if kinds, _ := h.events("X1"); !equalKinds(kinds, []string{EventFirstSeen}) {
+		t.Errorf("X events under degraded report = %v, want no vanish", kinds)
+	}
+	// Still degraded next time: no second report_degraded event.
+	h.advance(time.Hour)
+	broken.DevName = "sdd"
+	h.report(hostA, devY, broken)
+	if got := h.hostEvents("storage1"); len(got) != 2 {
+		t.Errorf("host events repeated degraded = %v", got)
+	}
+
+	// A complete report finally says X and Z are gone.
+	h.advance(time.Hour)
+	h.report(hostA, devY)
+	for _, serial := range []string{"X1", "Z1"} {
+		if kinds, _ := h.events(serial); !equalKinds(kinds, []string{EventFirstSeen, EventVanished}) {
+			t.Errorf("%s events after complete report = %v", serial, kinds)
+		}
+	}
+}
+
+func TestIncompleteReportChangesNothing(t *testing.T) {
+	h := newHarness(t)
+	h.report(hostA, devX, devY)
+	h.advance(time.Hour)
+	x, y := devX, devY
+	x.Uses, y.Uses = nil, nil // zpool failed: no uses at all
+	h.submit(Report{Host: hostA, ObservedAt: h.now, Devices: []ReportDevice{x, y}, Complete: false, CollectorErrors: []string{"zpool status -P: exit status 1"}})
+	if n := h.count(`SELECT COUNT(*) FROM event WHERE kind IN (?, ?)`, EventUseChanged, EventVanished); n != 0 {
+		t.Errorf("incomplete report produced %d use/vanish events, want 0", n)
+	}
+	if ps := h.placements("X1"); len(ps) != 1 || ps[0].lastSeen != h.now.Unix() {
+		t.Errorf("X placement under incomplete report = %+v", ps)
+	}
+	if got := h.hostEvents("storage1"); !equalKinds(got, []string{EventHostFirstSeen, EventReportDegraded}) {
+		t.Errorf("host events = %v", got)
+	}
+}
+
+func TestGhosts(t *testing.T) {
+	h := newHarness(t)
+	h.report(hostA, devX, devY, devZ)
+	h.advance(time.Hour)
+	member := PoolMember{Pool: "tank", Path: "/dev/disk/by-id/wwn-0x5000000000000003-part1", GUID: "999", State: "UNAVAIL"}
+	h.submit(Report{Host: hostA, ObservedAt: h.now, Devices: []ReportDevice{devX, devY}, Unmapped: []PoolMember{member}, Complete: true})
+	kinds, details := h.events("Z1")
+	if !equalKinds(kinds, []string{EventFirstSeen, EventVanished, EventPoolMissingMember}) {
+		t.Fatalf("Z events = %v", kinds)
+	}
+	if details[1]["still_in_pool"] != "tank" || details[1]["pool_state"] != "UNAVAIL" {
+		t.Errorf("vanished detail lacks the pool reference: %v", details[1])
+	}
+	if n := h.count(`SELECT COUNT(*) FROM ghost g JOIN drive d USING (drive_id) WHERE d.serial = 'Z1' AND g.ended_at IS NULL`); n != 1 {
+		t.Errorf("open ghosts for Z = %d, want 1", n)
+	}
+	h.advance(time.Hour)
+	h.submit(Report{Host: hostA, ObservedAt: h.now, Devices: []ReportDevice{devX, devY}, Unmapped: []PoolMember{member}, Complete: true})
+	if n := h.count(`SELECT COUNT(*) FROM ghost`); n != 1 {
+		t.Errorf("ghost rows after repeat = %d, want 1", n)
+	}
+	h.advance(time.Hour)
+	h.report(hostA, devX, devY)
+	if n := h.count(`SELECT COUNT(*) FROM ghost WHERE ended_at IS NULL`); n != 0 {
+		t.Errorf("open ghosts after the pool forgot the member = %d, want 0", n)
+	}
+}
+
+func TestMemberStateChange(t *testing.T) {
+	h := newHarness(t)
+	x := devX
+	x.MemberState = "ONLINE"
+	h.report(hostA, x)
+	h.advance(time.Hour)
+	x.MemberState = "FAULTED"
+	res := h.report(hostA, x)
+	if !res.Changed {
+		t.Fatal("state change not seen as a change")
+	}
+	kinds, details := h.events("X1")
+	if !equalKinds(kinds, []string{EventFirstSeen, EventMemberStateChanged}) {
+		t.Fatalf("X events = %v", kinds)
+	}
+	if details[1]["from"] != "ONLINE" || details[1]["to"] != "FAULTED" {
+		t.Errorf("member_state_changed detail = %v", details[1])
+	}
+	if ps := h.placements("X1"); len(ps) != 1 {
+		t.Errorf("state change split the placement: %+v", ps)
+	}
+}
+
+func TestRejects(t *testing.T) {
+	h := newHarness(t)
+	res := h.submit(Report{Host: hostA, ObservedAt: h.now.Add(time.Hour), Devices: []ReportDevice{devX}, Complete: true})
+	if res.Accepted || res.RejectReason != "clock_skew" {
+		t.Errorf("future report: %+v", res)
+	}
+	h.report(hostA, devX)
+	res = h.submit(Report{Host: hostA, ObservedAt: h.now.Add(-time.Minute), Devices: []ReportDevice{devX}, Complete: true})
+	if res.Accepted || res.RejectReason != "stale" {
+		t.Errorf("older report: %+v", res)
+	}
+	if n := h.count(`SELECT COUNT(*) FROM snapshot`); n != 1 {
+		t.Errorf("rejected reports left %d snapshots, want 1", n)
+	}
+	// Same second as the last report: accepted, and a heartbeat.
+	res = h.report(hostA, devX)
+	if !res.Accepted || res.Changed {
+		t.Errorf("same-second report: %+v, want accepted and unchanged", res)
+	}
+}
+
+func TestIdentityConflictAndNoIdentity(t *testing.T) {
+	h := newHarness(t)
+	h.report(hostA, devX, devY)
+	h.advance(time.Hour)
+	// X's WWN with Y's serial: two keys, two drives.
+	mixed := dev("sdz", "Y1", "0x5000000000000001", "expander-4:0", "5")
+	nobody := ReportDevice{DevName: "sdu", Identity: DriveIdentity{Model: "USB thing"}, Bus: "usb"}
+	h.report(hostA, mixed, nobody)
+	if n := h.count(`SELECT COUNT(*) FROM event WHERE kind = ?`, EventIdentityConflict); n != 1 {
+		t.Errorf("identity_conflict events = %d, want 1", n)
+	}
+	if n := h.count(`SELECT COUNT(*) FROM drive`); n != 2 {
+		t.Errorf("drives = %d, want 2 (no new drive under a conflict)", n)
+	}
+	// The unidentifiable USB device is recorded but does not degrade the
+	// report or place anything.
+	if n := h.count(`SELECT COUNT(*) FROM snapshot_device WHERE dev_name = 'sdu' AND drive_id IS NULL`); n != 1 {
+		t.Error("no-identity device not recorded")
+	}
+	if got := h.hostEvents("storage1"); !equalKinds(got, []string{EventHostFirstSeen}) {
+		t.Errorf("host events = %v, want no report_degraded", got)
+	}
+	h.advance(time.Hour)
+	if n := h.count(`SELECT COUNT(*) FROM event WHERE kind = ?`, EventIdentityConflict); n != 1 {
+		t.Errorf("conflict re-reported: %d events", n)
+	}
+}
+
+func TestSweep(t *testing.T) {
+	h := newHarness(t)
+	h.report(hostA, devX)
+	h.report(hostB, devY)
+	h.advance(10 * time.Minute)
+	h.report(hostB, devY)
+	h.advance(10 * time.Minute) // A silent for 20 min: > 3 × 5 min
+	n, err := h.s.Sweep(h.ctx, 5*time.Minute)
+	if err != nil || n != 1 {
+		t.Fatalf("Sweep = %d, %v; want 1", n, err)
+	}
+	if got := h.hostEvents("storage1"); !equalKinds(got, []string{EventHostFirstSeen, EventHostStale}) {
+		t.Errorf("A events = %v", got)
+	}
+	if got := h.hostEvents("backup"); !equalKinds(got, []string{EventHostFirstSeen}) {
+		t.Errorf("B events = %v", got)
+	}
+	if ps := h.placements("X1"); ps[0].ended {
+		t.Error("stale host's placement was closed")
+	}
+	n, _ = h.s.Sweep(h.ctx, 5*time.Minute)
+	if n != 0 {
+		t.Errorf("second Sweep marked %d hosts, want 0", n)
+	}
+	h.advance(time.Minute)
+	h.report(hostA, devX)
+	if got := h.hostEvents("storage1"); !equalKinds(got, []string{EventHostFirstSeen, EventHostStale, EventHostResumed}) {
+		t.Errorf("A events after resuming = %v", got)
+	}
+}
+
+func TestMigrateIsIdempotent(t *testing.T) {
+	path := filepath.Join(t.TempDir(), "m.db")
+	s, err := Open(path)
+	if err != nil {
+		t.Fatal(err)
+	}
+	s.Close()
+	s, err = Open(path)
+	if err != nil {
+		t.Fatalf("second Open: %v", err)
+	}
+	defer s.Close()
+	var n int
+	if err := s.db.QueryRow(`SELECT COUNT(*) FROM schema_version`).Scan(&n); err != nil || n != 1 {
+		t.Errorf("schema_version rows = %d, %v; want 1", n, err)
+	}
+}
