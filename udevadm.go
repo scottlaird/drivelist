@@ -3,10 +3,9 @@ package drivelist
 import (
 	"bufio"
 	"bytes"
+	"log/slog"
 	"os/exec"
 	"strings"
-
-	"github.com/golang/glog"
 )
 
 type UdevAdmData struct {
@@ -45,7 +44,7 @@ func parseUdevAdmData(name string, data []byte) (*UdevAdmData, error) {
 				sp := strings.Split(t[3:], "=")
 				d.Attribs[sp[0]] = sp[1]
 			default:
-				glog.Warningf("Found unknown udevadm line: %s\n", t)
+				slog.Warn("unknown udevadm line", "line", t)
 			}
 		}
 
