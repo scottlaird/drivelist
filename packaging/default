@@ -1,0 +1,14 @@
+# /etc/default/drivelist: environment for drivelist-agent.service and
+# drivelist-server.service.
+
+# The fleet server the agent reports to, as host:port or a URL.
+#DRIVELIST_SERVER=mgmt1:9450
+
+# The agent token lives in /etc/drivelist/agent-token (mode 600), not here.
+# The agent does not start until that file exists:
+#   openssl rand -hex 32 > /etc/drivelist/agent-token && chmod 600 /etc/drivelist/agent-token
+#   systemctl start drivelist-agent
+
+# Extra flags for the server, when this host runs drivelist-server.service.
+# It also needs /etc/drivelist/operator-token.
+#DRIVELIST_SERVE_OPTS=--listen :9450

@@ -1,0 +1,19 @@
+[Unit]
+Description=drivelist fleet agent
+Documentation=https://github.com/scottlaird/drivelist
+After=network-online.target zfs.target
+Wants=network-online.target
+# Does nothing until the agent token has been installed; see /etc/default/drivelist.
+ConditionPathExists=/etc/drivelist/agent-token
+
+[Service]
+Type=simple
+EnvironmentFile=-/etc/default/drivelist
+Environment=DRIVELIST_AGENT_TOKEN_FILE=/etc/drivelist/agent-token
+StateDirectory=drivelist
+ExecStart=/usr/bin/drivelist agent --state-dir /var/lib/drivelist
+Restart=on-failure
+RestartSec=10s
+
+[Install]
+WantedBy=multi-user.target

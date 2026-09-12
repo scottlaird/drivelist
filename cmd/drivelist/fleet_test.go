@@ -161,6 +161,19 @@ func TestConfigFile(t *testing.T) {
 	if cfg.server != "https://other:1" {
 		t.Errorf("env did not beat the file: %q", cfg.server)
 	}
+
+	// A token file, as the systemd units use.
+	tokenFile := filepath.Join(dir, "agent-token")
+	if err := os.WriteFile(tokenFile, []byte("file-secret\n"), 0o600); err != nil {
+		t.Fatal(err)
+	}
+	t.Setenv("DRIVELIST_AGENT_TOKEN", "")
+	t.Setenv("DRIVELIST_AGENT_TOKEN_FILE", tokenFile)
+	cfg = &clientConfig{}
+	cfg.resolve()
+	if cfg.agentToken != "file-secret" {
+		t.Errorf("agent token from file = %q", cfg.agentToken)
+	}
 }
 
 func writeFile(path, body string) error {

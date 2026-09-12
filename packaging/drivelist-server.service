@@ -1,0 +1,22 @@
+[Unit]
+Description=drivelist fleet server
+Documentation=https://github.com/scottlaird/drivelist
+After=network-online.target
+Wants=network-online.target
+# Needs both tokens; see /etc/default/drivelist.
+ConditionPathExists=/etc/drivelist/agent-token
+ConditionPathExists=/etc/drivelist/operator-token
+
+[Service]
+Type=simple
+EnvironmentFile=-/etc/default/drivelist
+StateDirectory=drivelist
+ExecStart=/usr/bin/drivelist serve --db /var/lib/drivelist/server.db \
+    --agent-token-file /etc/drivelist/agent-token \
+    --operator-token-file /etc/drivelist/operator-token \
+    $DRIVELIST_SERVE_OPTS
+Restart=on-failure
+RestartSec=5s
+
+[Install]
+WantedBy=multi-user.target

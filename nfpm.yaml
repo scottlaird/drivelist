@@ -1,0 +1,35 @@
+# nfpm packaging for drivelist. `make deb` builds dist/drivelist_<version>_amd64.deb.
+name: drivelist
+arch: amd64
+platform: linux
+version: ${VERSION}
+section: admin
+priority: optional
+maintainer: Scott Laird <scott@lairdmail.com>
+description: |
+  Lists the drives in a system and what they are used for, and tracks a
+  fleet of them over time: an agent reports each host's drives to a server,
+  which keeps a lifetime history per drive.
+homepage: https://github.com/scottlaird/drivelist
+license: Apache-2.0
+depends:
+  - udev
+recommends:
+  - zfsutils-linux
+contents:
+  - src: dist/drivelist-linux-amd64
+    dst: /usr/bin/drivelist
+  - src: packaging/drivelist-agent.service
+    dst: /lib/systemd/system/drivelist-agent.service
+  - src: packaging/drivelist-server.service
+    dst: /lib/systemd/system/drivelist-server.service
+  - src: packaging/default
+    dst: /etc/default/drivelist
+    type: config|noreplace
+  - dst: /etc/drivelist
+    type: dir
+    file_info:
+      mode: 0750
+scripts:
+  postinstall: packaging/postinstall.sh
+  preremove: packaging/preremove.sh
