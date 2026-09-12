@@ -59,7 +59,7 @@ pool membership, mounts). With no subcommand it prints that listing.`,
 	pf.StringVar(&cfg.server, "server", "", "fleet server, host:port or URL (also DRIVELIST_SERVER or the config file)")
 	pf.BoolVar(&cfg.json, "json", false, "print the server's response as JSON")
 
-	cmd.AddCommand(newCaptureCmd(), newServeCmd(), newAgentCmd(cfg))
+	cmd.AddCommand(newCaptureCmd(), newServeCmd(), newAgentCmd(cfg), newVersionCmd())
 	cmd.AddCommand(fleetCommands(cfg)...)
 	return cmd
 }

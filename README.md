@@ -149,8 +149,16 @@ so the plain `drivelist` listing gains a `status` column:
   $ DRIVELIST_SERVER=fleet:9450 DRIVELIST_AGENT_TOKEN=agent-secret drivelist agent
 ```
 
-`contrib/drivelist-agent.service` is a systemd unit for it.  For a
-one-off report, or from cron, `drivelist report` does one cycle.
+For a one-off report, or from cron, `drivelist report` does one cycle.
+
+On Debian and Ubuntu hosts, install the package instead: `make deb`
+builds `dist/drivelist_<version>_amd64.deb` (it needs
+[nfpm](https://nfpm.goreleaser.com/)), which ships the binary, a
+`drivelist-agent` systemd service, a disabled `drivelist-server`
+service, and `/etc/default/drivelist`.  After installing, put the
+server address in `/etc/default/drivelist`, the agent token in
+`/etc/drivelist/agent-token`, and `systemctl start drivelist-agent`;
+the service is enabled but stays inert until the token file exists.
 
 Then, from anywhere, with `DRIVELIST_SERVER` and
 `DRIVELIST_OPERATOR_TOKEN` set or written as `server = …` and

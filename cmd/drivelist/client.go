@@ -30,7 +30,7 @@ type clientConfig struct {
 
 // configFile is $XDG_CONFIG_HOME/drivelist/config or ~/.config/drivelist/config:
 // one "key = value" per line, # comments. Keys: server, operator_token,
-// agent_token, actor.
+// agent_token, operator_token_file, agent_token_file, actor.
 func configFile() string {
 	dir := os.Getenv("XDG_CONFIG_HOME")
 	if dir == "" {
@@ -80,6 +80,21 @@ func (c *clientConfig) resolve() {
 	pick(&c.operatorToken, "DRIVELIST_OPERATOR_TOKEN", "operator_token")
 	pick(&c.agentToken, "DRIVELIST_AGENT_TOKEN", "agent_token")
 	pick(&c.actor, "DRIVELIST_ACTOR", "actor")
+	// Tokens may also come from files, which is how the systemd units pass
+	// them: DRIVELIST_*_TOKEN_FILE, or *_token_file in the config file.
+	var operatorFile, agentFile string
+	pick(&operatorFile, "DRIVELIST_OPERATOR_TOKEN_FILE", "operator_token_file")
+	pick(&agentFile, "DRIVELIST_AGENT_TOKEN_FILE", "agent_token_file")
+	if c.operatorToken == "" && operatorFile != "" {
+		if b, err := os.ReadFile(operatorFile); err == nil {
+			c.operatorToken = strings.TrimSpace(string(b))
+		}
+	}
+	if c.agentToken == "" && agentFile != "" {
+		if b, err := os.ReadFile(agentFile); err == nil {
+			c.agentToken = strings.TrimSpace(string(b))
+		}
+	}
 	if c.actor == "" {
 		user := os.Getenv("USER")
 		host, _ := os.Hostname()
