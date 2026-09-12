@@ -26,7 +26,7 @@ func TestCapturedFixtures(t *testing.T) {
 			if err != nil {
 				t.Fatalf("Collect: %v", err)
 			}
-			got := forGolden(inv.Devices)
+			got := golden{Devices: forGolden(inv.Devices), Unmapped: inv.Unmapped}
 
 			goldenPath := filepath.Join(root, "inventory.json")
 			if *update {
@@ -43,7 +43,7 @@ func TestCapturedFixtures(t *testing.T) {
 			if err != nil {
 				t.Fatalf("%v (run with -update to create it)", err)
 			}
-			var want []*drivelist.Device
+			var want golden
 			if err := json.Unmarshal(data, &want); err != nil {
 				t.Fatalf("parsing %s: %v", goldenPath, err)
 			}
@@ -52,6 +52,12 @@ func TestCapturedFixtures(t *testing.T) {
 			}
 		})
 	}
+}
+
+// golden is the shape of inventory.json.
+type golden struct {
+	Devices  []*drivelist.Device
+	Unmapped []drivelist.PoolMember `json:",omitempty"`
 }
 
 // forGolden strips the raw udev property map, which is large and already
@@ -75,25 +81,31 @@ func forGolden(devices []*drivelist.Device) []*drivelist.Device {
 
 // TestFS2Shape checks the facts about fs2 that a reader can verify against
 // the capture without the golden file: the number of drives, that every one
-// of them was identified, and that every drive behind an expander reports a
-// bay.
+// of them was identified, that every drive behind an expander reports a
+// bay, and that pool membership comes out exactly as the libzfs
+// implementation printed it.
 func TestFS2Shape(t *testing.T) {
 	inv, err := Fixture(filepath.Join("testdata", "fs2")).Collect()
 	if err != nil {
 		t.Fatalf("Collect: %v", err)
 	}
-	var drives, emptyBays, inExpander, withBay int
+	var drives, emptyBays, inExpander, withBay, inPool int
+	bySerial := make(map[string]*drivelist.Device)
 	for _, d := range inv.Devices {
 		switch {
 		case d.IsEmptyBay():
 			emptyBays++
 		default:
 			drives++
+			bySerial[d.Serial] = d
 			if d.Expander != "" {
 				inExpander++
 				if d.EnclosureBay != "" {
 					withBay++
 				}
+			}
+			if d.MemberState != "" {
+				inPool++
 			}
 		}
 	}
@@ -106,5 +118,38 @@ func TestFS2Shape(t *testing.T) {
 	if inExpander != withBay {
 		t.Errorf("drives in an expander = %d, with a bay = %d; want equal", inExpander, withBay)
 	}
-	t.Logf("fs2: %d drives, %d behind expanders, %d empty bays", drives, inExpander, emptyBays)
+	if inPool != 88 {
+		t.Errorf("drives in a pool = %d, want 88", inPool)
+	}
+
+	// Two drives whose use strings the README recorded from the libzfs
+	// implementation, and whose vdevs still exist. The zpool implementation
+	// must reproduce them byte for byte.
+	libzfsRef := map[string]string{
+		"001619PJLREV_VKJJLREV": "zfs > space 5925914041408872576 > raidz2 5236016460003016805 > disk 9810514795403010748",
+		"VJG24UZX":              "zfs > space 5925914041408872576 > raidz2 12372305547527317295 > disk 4484622911110778645",
+	}
+	for serial, want := range libzfsRef {
+		d := bySerial[serial]
+		if d == nil {
+			t.Errorf("serial %s not in inventory", serial)
+			continue
+		}
+		if len(d.Uses) != 1 || d.Uses[0] != want {
+			t.Errorf("serial %s uses = %q, want [%q]", serial, d.Uses, want)
+		}
+	}
+
+	// backups has a REMOVED member under spare-6 that no present device
+	// matches: the fleet design's "installed but invisible" case.
+	want := []drivelist.PoolMember{{
+		Pool:  "backups",
+		Path:  "/dev/disk/by-id/scsi-35000cca25492cd80-part1",
+		GUID:  "1082024170414391897",
+		State: "REMOVED",
+	}}
+	if diff := cmp.Diff(want, inv.Unmapped); diff != "" {
+		t.Errorf("Unmapped mismatch (-want +got):\n%s", diff)
+	}
+	t.Logf("fs2: %d drives, %d behind expanders, %d in pools, %d empty bays", drives, inExpander, inPool, emptyBays)
 }

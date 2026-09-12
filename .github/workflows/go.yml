@@ -19,7 +19,7 @@ jobs:
           out=$(gofmt -l .)
           if [ -n "$out" ]; then echo "gofmt needed on:"; echo "$out"; exit 1; fi
       - name: vet
-        run: go vet -tags nolibzfs ./...
+        run: go vet ./...
 
   test:
     name: test (${{ matrix.name }})
@@ -28,17 +28,17 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          # go-libzfs (2021 snapshot) does not compile against the OpenZFS 2.2
-          # headers on ubuntu-24.04; 22.04 ships 2.1. The exec-zpool path from
-          # the fleet design is what retires this pin.
+          - name: linux
+            os: ubuntu-latest
+            tags: ""
+            libzfs: false
+          # The reference libzfs implementation, opt-in. go-libzfs (2021
+          # snapshot) does not compile against the OpenZFS 2.2 headers on
+          # ubuntu-24.04; 22.04 ships 2.1.
           - name: linux libzfs
             os: ubuntu-22.04
-            tags: ""
+            tags: libzfs
             libzfs: true
-          - name: linux nolibzfs
-            os: ubuntu-latest
-            tags: nolibzfs
-            libzfs: false
           - name: macos
             os: macos-latest
             tags: ""

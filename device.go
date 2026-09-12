@@ -16,6 +16,9 @@ type Device struct {
 	Serial     string
 	Attribs    map[string]string // raw udev properties
 	Uses       []string          // what the disk is used for; empty means unused
+	// MemberState is the ZFS vdev state (ONLINE, DEGRADED, FAULTED, REMOVED,
+	// UNAVAIL, AVAIL, INUSE) when the disk belongs to a pool, else "".
+	MemberState string
 	// GenericDevice is the SCSI generic (bsg) node for the SAS end device.
 	GenericDevice string
 
@@ -43,10 +46,22 @@ func (d *Device) Unused() bool {
 	return len(d.Uses) == 0
 }
 
+// PoolMember is a device a storage pool expects that matched no Device in
+// the inventory: a drive that has failed completely, been pulled, or is
+// present but invisible to the block layer.
+type PoolMember struct {
+	Pool  string
+	Path  string // as the pool reports it, e.g. /dev/disk/by-id/wwn-0x…-part1
+	GUID  string
+	State string // UNAVAIL, REMOVED, FAULTED, …
+}
+
 // Inventory is the set of devices found on one host, indexed by every
 // name they are known under.
 type Inventory struct {
 	Devices []*Device
+	// Unmapped lists pool members with no matching device.
+	Unmapped []PoolMember
 
 	byName map[string]int
 }

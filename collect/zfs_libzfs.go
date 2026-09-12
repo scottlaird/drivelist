@@ -1,4 +1,4 @@
-//go:build linux && cgo && !nolibzfs
+//go:build linux && cgo && libzfs
 
 package collect
 
@@ -12,7 +12,10 @@ import (
 
 // annotateZFS marks every disk that belongs to an imported pool with its
 // position in the pool's vdev tree, as "zfs > <pool> <guid> > … > disk <guid>".
-func annotateZFS(inv *drivelist.Inventory) error {
+// This is the original libzfs implementation, kept behind the libzfs build
+// tag as the reference for the zpool-based one in zpool.go; it does not
+// compile against OpenZFS 2.2 or later headers.
+func (c *Collector) annotateZFS(inv *drivelist.Inventory) error {
 	pools, err := zfs.PoolOpenAll()
 	if err != nil {
 		return err
