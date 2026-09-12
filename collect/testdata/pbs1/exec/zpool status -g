@@ -1,0 +1,36 @@
+  pool: backups
+ state: ONLINE
+  scan: resilvered 312K in 00:00:00 with 0 errors on Sat Aug 29 11:00:45 2026
+config:
+
+	NAME                      STATE     READ WRITE CKSUM
+	backups                   ONLINE       0     0     0
+	  12638130268554546894    ONLINE       0     0     0
+	    12397832929899529994  ONLINE       0     0     0
+	    6909562996738010975   ONLINE       0     0     0
+	    12294050993797249670  ONLINE       0     0     0
+	    11120317111489606304  ONLINE       0     0     0
+	    6583091953762439930   ONLINE       0     0     0
+	    10414938989999790616  ONLINE       0     0     0
+	    12715670843202606742  ONLINE       0     0     0
+	    9310739970432676503   ONLINE       0     0     0
+	    17702091168007131095  ONLINE       0     0     0
+	    10255298623913385142  ONLINE       0     0     0
+	    2427754677181354078   ONLINE       0     0     0
+	spares
+	  15127882886004909357    AVAIL   
+
+errors: No known data errors
+
+  pool: rpool
+ state: ONLINE
+  scan: scrub repaired 0B in 00:00:01 with 0 errors on Sun Jul 12 00:24:02 2026
+config:
+
+	NAME                     STATE     READ WRITE CKSUM
+	rpool                    ONLINE       0     0     0
+	  5264883868435595074    ONLINE       0     0     0
+	    1250468358385806965  ONLINE       0     0     0
+	    5223049671745381668  ONLINE       0     0     0
+
+errors: No known data errors
