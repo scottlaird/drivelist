@@ -11,8 +11,8 @@ import (
 
 // newDevice identifies one block device through udev and locates it through
 // the SAS topology in sysfs.
-func newDevice(name string) (*drivelist.Device, error) {
-	u, err := udevInfo(name)
+func (c *Collector) newDevice(name string) (*drivelist.Device, error) {
+	u, err := c.udevInfo(name)
 	if err != nil {
 		return nil, err
 	}
@@ -21,23 +21,25 @@ func newDevice(name string) (*drivelist.Device, error) {
 		Attribs:    u.Attribs,
 		Uses:       []string{},
 	}
-	d.SysPath = "/sys" + d.Attribs["DEVPATH"]
+	d.SysPath = c.sys() + d.Attribs["DEVPATH"]
 	d.WWN = d.Attribs["ID_WWN"]
 	d.Model = d.Attribs["ID_MODEL"]
 	d.Serial = d.Attribs["SCSI_IDENT_SERIAL"]
 
 	d.Devices = []string{"/dev/" + d.DeviceName}
 	for _, link := range strings.Split(d.Attribs["DEVLINKS"], " ") {
-		d.Devices = append(d.Devices, link)
+		if link != "" {
+			d.Devices = append(d.Devices, link)
+		}
 	}
 
 	populateSES(d)
 
-	sizeString, err := os.ReadFile("/sys/class/block/" + d.DeviceName + "/size")
+	sizeString, err := os.ReadFile(d.SysPath + "/size")
 	if err != nil {
 		slog.Error("reading disk size", "device", d.DeviceName, "err", err)
 	} else {
-		sizeBlocks, _ := strconv.ParseUint(strings.TrimSuffix(string(sizeString), "\n"), 10, 64)
+		sizeBlocks, _ := strconv.ParseUint(strings.TrimSpace(string(sizeString)), 10, 64)
 		d.Size = sizeBlocks * 512
 	}
 	return d, nil
@@ -48,8 +50,11 @@ func newDevice(name string) (*drivelist.Device, error) {
 func populateSES(d *drivelist.Device) {
 	var prefix, endDevice, endDevicePath string
 
-	for _, p := range strings.Split(d.SysPath, "/") {
-		prefix += "/" + p
+	for i, p := range strings.Split(d.SysPath, "/") {
+		if i > 0 {
+			prefix += "/"
+		}
+		prefix += p
 		if strings.HasPrefix(p, "expander-") {
 			d.Expander = p
 			d.ExpanderPath = prefix
@@ -63,7 +68,7 @@ func populateSES(d *drivelist.Device) {
 	if endDevice != "" {
 		bay, err := os.ReadFile(endDevicePath + "/sas_device/" + endDevice + "/bay_identifier")
 		if err == nil {
-			d.EnclosureBay = strings.TrimSuffix(string(bay), "\n")
+			d.EnclosureBay = strings.TrimSpace(string(bay))
 		}
 	}
 }

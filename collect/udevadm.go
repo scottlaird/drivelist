@@ -4,7 +4,6 @@ import (
 	"bufio"
 	"bytes"
 	"log/slog"
-	"os/exec"
 	"strings"
 )
 
@@ -14,8 +13,8 @@ type udevData struct {
 	Attribs    map[string]string
 }
 
-func udevInfo(name string) (*udevData, error) {
-	data, err := exec.Command("/bin/udevadm", "info", "--query=all", "--name="+name).Output()
+func (c *Collector) udevInfo(name string) (*udevData, error) {
+	data, err := c.run("udevadm", "info", "--query=all", "--name="+name)
 	if err != nil {
 		return nil, err
 	}

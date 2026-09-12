@@ -7,15 +7,15 @@ import (
 	"github.com/scottlaird/drivelist"
 )
 
-// disks enumerates the sd* block devices in /sys/block and identifies each.
-func disks() (*drivelist.Inventory, error) {
+// disks enumerates the sd* block devices in sysfs and identifies each.
+func (c *Collector) disks() (*drivelist.Inventory, error) {
 	inv := drivelist.NewInventory()
-	names, err := diskNames()
+	names, err := c.diskNames()
 	if err != nil {
 		return inv, err
 	}
 	for _, name := range names {
-		dev, err := newDevice("/dev/" + name)
+		dev, err := c.newDevice("/dev/" + name)
 		if err != nil {
 			return inv, err
 		}
@@ -24,9 +24,9 @@ func disks() (*drivelist.Inventory, error) {
 	return inv, nil
 }
 
-func diskNames() ([]string, error) {
+func (c *Collector) diskNames() ([]string, error) {
 	var names []string
-	entries, err := os.ReadDir("/sys/block/")
+	entries, err := os.ReadDir(c.sys() + "/block/")
 	if err != nil {
 		return names, err
 	}

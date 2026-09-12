@@ -18,6 +18,7 @@ var (
 	allFieldsFlag = flag.Bool("allfields", false, "Show all fields (will be wide)")
 	ledctl        = flag.String("ledctl", "", "Call ledctl instead of listing drives.  Use --unused --ledctl=locate for ledctl --locate=<unused drives>")
 	fields        = fieldList(defaultFields)
+	captureDir    = flag.String("capture", "", "Write this system's collector inputs to DIR as a test fixture and exit")
 )
 
 func main() {
@@ -26,6 +27,14 @@ func main() {
 
 	if *allFieldsFlag {
 		fields = allFieldNames()
+	}
+
+	if *captureDir != "" {
+		if err := (&collect.Collector{}).Capture(*captureDir); err != nil {
+			fmt.Fprintf(os.Stderr, "drivelist: capture: %v\n", err)
+			os.Exit(1)
+		}
+		return
 	}
 
 	inv, err := collect.All()

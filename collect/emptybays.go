@@ -16,7 +16,15 @@ import (
 //
 // This does not work quite right on every SAS enclosure, so its output is
 // best treated as a hint.
-func annotateEmptyBays(inv *drivelist.Inventory) error {
+// isExpanderOwnBay reports whether path is the expander's own bay_identifier
+// (…/sas_device/expander-N:M/bay_identifier) rather than an end device's.
+// The expander has one, at least in Linux 5.15, but reading it returns an
+// I/O error and it is not a drive bay.
+func isExpanderOwnBay(path string) bool {
+	return strings.HasPrefix(filepath.Base(filepath.Dir(path)), "expander-")
+}
+
+func (c *Collector) annotateEmptyBays(inv *drivelist.Inventory) error {
 	expanders := make(map[string]bool)
 	usedBays := make(map[string]bool)
 	for _, d := range inv.Devices {
@@ -32,9 +40,7 @@ func annotateEmptyBays(inv *drivelist.Inventory) error {
 			if err != nil || filepath.Base(path) != "bay_identifier" {
 				return nil
 			}
-			// The expander itself has a bay_identifier (at least in Linux
-			// 5.15), but reading it returns an I/O error; skip it.
-			if ok, _ := filepath.Match("*/expander-*/bay_identifier", path); ok {
+			if isExpanderOwnBay(path) {
 				return nil
 			}
 			b, err := os.ReadFile(path)

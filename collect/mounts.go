@@ -23,8 +23,8 @@ type mountEntry struct {
 // annotateMounts adds a "mount > <mountpoint>" use to every disk that backs
 // a mounted filesystem, matching by device path (partitions resolve to
 // their parent disk through Inventory.ByName).
-func annotateMounts(inv *drivelist.Inventory) error {
-	f, err := os.Open("/proc/self/mountinfo")
+func (c *Collector) annotateMounts(inv *drivelist.Inventory) error {
+	f, err := os.Open(c.proc() + "/self/mountinfo")
 	if err != nil {
 		return err
 	}

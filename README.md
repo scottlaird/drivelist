@@ -110,12 +110,27 @@ sdal            PX02SMU020      0x500003964c8806e4      5520A0CAT2AA    expander
 sdbt            HUH728080ALE601 0x5000cca260c165e2      VLG32AEY        expander-11:1   17      8 TB
 ```
 
+## Testing and fixtures
+
+The collector reads sysfs, `/proc/self/mountinfo`, and the output of
+`udevadm`. All three are injectable, and `collect/testdata/` holds
+captured trees that the tests run against on any OS, including macOS.
+To capture a fixture from a real system:
+
+```
+  $ drivelist --capture /tmp/myhost
+```
+
+This writes the parts of sysfs the collector reads, the mount table,
+the `udevadm` output for every disk, and the output of several
+`zpool` commands (skipped where they fail) in the layout
+`collect.Fixture` expects.  Note that it records the serial numbers
+and WWNs of every drive in the system.
+
 ## Roadmap
 
-* Improve testing.
-  * Add a `testdata/` directory with multiple sets of test `/sys` and
-    `/proc` data, and run tests across each.
-  * Find a reasonable way to fake zfs.PoolOpenAll().
+* Improve testing: capture fixtures from more real systems (see
+  `--capture`) and find a reasonable way to fake zfs.PoolOpenAll().
 * Flesh out MD support
 * Flesh out LVM support
 * Add btrfs support
