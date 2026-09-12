@@ -11,6 +11,12 @@ func TestParseUdevAdmData(t *testing.T) {
 P: /devices/pci0000:00/0000:00:03.0/0000:03:00.0/host11/port-11:0/expander-11:0/port-11:0:5/end_device-11:0:5/target11:0:12/11:0:12:0/block/sdaa
 N: sdaa
 L: 0
+M: sdaa
+R: 0
+U: block
+T: disk
+D: b 65:160
+Q: 35
 S: disk/by-id/scsi-SHITACHI_HUH72808CLAR8000_VJG3WK3X
 S: disk/by-vdev/D22
 S: disk/by-id/scsi-35000cca261071228
