@@ -1,0 +1,83 @@
+{
+  "Devices": [
+    {
+      "DeviceName": "nvme0n1",
+      "Devices": [
+        "/dev/nvme0n1",
+        "/dev/disk/by-path/pci-0000:85:00.0-nvme-1",
+        "/dev/disk/by-id/nvme-eui.0100000004000000e4d25c0000000000",
+        "/dev/disk/by-id/nvme-INTEL_SSDPD2KS076T7M_BTLD7486036U8P0F_1",
+        "/dev/disk/by-id/nvme-INTEL_SSDPD2KS076T7M_BTLD7486036U8P0F",
+        "/dev/disk/by-diskseq/13"
+      ],
+      "WWN": "eui.0100000004000000e4d25c0000000000",
+      "SysPath": "testdata/mgmt1/sys/devices/virtual/nvme-subsystem/nvme-subsys0/nvme0n1",
+      "Model": "INTEL SSDPD2KS076T7M",
+      "Serial": "BTLD7486036U8P0F",
+      "Attribs": null,
+      "Uses": [
+        "zfs \u003e fast 15353959934024797625 \u003e mirror 6580501177608322094 \u003e disk 12657478369450022007"
+      ],
+      "MemberState": "ONLINE",
+      "GenericDevice": "",
+      "Expander": "",
+      "ExpanderPath": "",
+      "EnclosureBay": "",
+      "Size": 7681502044160,
+      "Error": ""
+    },
+    {
+      "DeviceName": "nvme1n1",
+      "Devices": [
+        "/dev/nvme1n1",
+        "/dev/disk/by-path/pci-0000:86:00.0-nvme-1",
+        "/dev/disk/by-id/nvme-INTEL_SSDPD2KS076T7M_BTLD7486046B8P0F_1",
+        "/dev/disk/by-diskseq/11",
+        "/dev/disk/by-id/nvme-eui.0100000006000000e4d25c0000000000",
+        "/dev/disk/by-id/nvme-INTEL_SSDPD2KS076T7M_BTLD7486046B8P0F"
+      ],
+      "WWN": "eui.0100000006000000e4d25c0000000000",
+      "SysPath": "testdata/mgmt1/sys/devices/virtual/nvme-subsystem/nvme-subsys1/nvme1n1",
+      "Model": "INTEL SSDPD2KS076T7M",
+      "Serial": "BTLD7486046B8P0F",
+      "Attribs": null,
+      "Uses": [
+        "zfs \u003e fast 15353959934024797625 \u003e mirror 6580501177608322094 \u003e disk 12717556308881655532"
+      ],
+      "MemberState": "ONLINE",
+      "GenericDevice": "",
+      "Expander": "",
+      "ExpanderPath": "",
+      "EnclosureBay": "",
+      "Size": 7681502044160,
+      "Error": ""
+    },
+    {
+      "DeviceName": "nvme2n1",
+      "Devices": [
+        "/dev/nvme2n1",
+        "/dev/disk/by-id/nvme-nvme.1987-3746363030373034314439443032393039393934-53616272656e7420526f636b657420342e3020315442-00000001",
+        "/dev/disk/by-id/nvme-Sabrent_Rocket_4.0_1TB_7F6007041D9D02909994_1",
+        "/dev/disk/by-id/nvme-Sabrent_Rocket_4.0_1TB_7F6007041D9D02909994",
+        "/dev/disk/by-path/pci-0000:41:00.0-nvme-1",
+        "/dev/disk/by-diskseq/9"
+      ],
+      "WWN": "nvme.1987-3746363030373034314439443032393039393934-53616272656e7420526f636b657420342e3020315442-00000001",
+      "SysPath": "testdata/mgmt1/sys/devices/pci0000:40/0000:40:01.2/0000:41:00.0/nvme/nvme2/nvme2n1",
+      "Model": "Sabrent Rocket 4.0 1TB",
+      "Serial": "7F6007041D9D02909994",
+      "Attribs": null,
+      "Uses": [
+        "mount \u003e /",
+        "mount \u003e /boot/efi"
+      ],
+      "MemberState": "",
+      "GenericDevice": "",
+      "Expander": "",
+      "ExpanderPath": "",
+      "EnclosureBay": "",
+      "Size": 1000204886016,
+      "Error": ""
+    }
+  ]
+}
