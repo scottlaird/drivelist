@@ -51,7 +51,7 @@ pool membership, mounts). With no subcommand it prints that listing.`,
 	f.StringVar(&captureDir, "capture", "", "")
 	_ = f.MarkDeprecated("capture", "use 'drivelist capture DIR'")
 
-	cmd.AddCommand(newCaptureCmd())
+	cmd.AddCommand(newCaptureCmd(), newServeCmd())
 	return cmd
 }
 
