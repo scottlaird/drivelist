@@ -1,7 +1,6 @@
 package drivelist
 
-import (
-)
+import ()
 
 func AnnotateDisksMD(disks *Disks) error {
 	return nil

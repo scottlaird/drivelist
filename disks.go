@@ -1,7 +1,7 @@
 package drivelist
 
 import (
-	"io/ioutil"
+	"os"
 	"strings"
 )
 
@@ -57,7 +57,7 @@ func (d *Disks) GetDiskByName(name string) *DiskDevice {
 func GetDiskNames() ([]string, error) {
 	disks := []string{}
 
-	files, err := ioutil.ReadDir("/sys/block/")
+	files, err := os.ReadDir("/sys/block/")
 	if err != nil {
 		return disks, err
 	}

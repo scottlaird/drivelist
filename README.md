@@ -14,19 +14,24 @@ drives in about a half second and identify how they're used.
 
 ## Building
 
-You'll need to have a recent Go compiler installed.  This also depends
-on having `libzfs` installed; on Ubuntu you can install this via `apt
-install libzfslinux-dev`.
-
-Then do something like this:
+You'll need a recent Go compiler installed (see `go.mod` for the
+minimum version).  ZFS pool membership is detected through `libzfs`,
+so for the full feature set you also need its headers; on Ubuntu
+that's `apt install libzfslinux-dev`.
 
 ```
-  $ go checkout https://github.com/scottlaird/drivelist.git
-  $ go get
-  $ go build cmd/drivelist/drivelist.go
+  $ git clone https://github.com/scottlaird/drivelist.git
+  $ cd drivelist
+  $ go build ./cmd/drivelist
 ```
 
 This will leave a runable `drivelist` binary in the current directory.
+
+To build without `libzfs` (no ZFS detection, but no cgo and no
+headers needed), add `-tags nolibzfs`.  On macOS and other non-Linux
+systems the ZFS code is left out automatically; the tool builds and
+its tests run there, but it cannot enumerate drives, since it depends
+on Linux sysfs and udev.
 
 ## Status
 

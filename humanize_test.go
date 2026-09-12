@@ -26,7 +26,7 @@ func TestHumanize(t *testing.T) {
 	for i, _ := range sizes {
 		v := FormatDiskSize(sizes[i])
 		if v != results[i] {
-			t.Fatalf("FormatDiskSize(%d) = %q, wants %q", sizes[i],v,results[i])
+			t.Fatalf("FormatDiskSize(%d) = %q, wants %q", sizes[i], v, results[i])
 		}
 	}
 }
