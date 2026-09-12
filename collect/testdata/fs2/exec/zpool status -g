@@ -1,0 +1,172 @@
+  pool: backups
+ state: DEGRADED
+status: One or more devices has experienced an error resulting in data
+	corruption.  Applications may be affected.
+action: Restore the file in question if possible.  Otherwise restore the
+	entire pool from backup.
+   see: https://openzfs.github.io/openzfs-docs/msg/ZFS-8000-8A
+  scan: resilvered 3.80T in 3 days 23:49:03 with 3 errors on Fri Sep 11 07:37:34 2026
+config:
+
+	NAME                       STATE     READ WRITE CKSUM
+	backups                    DEGRADED     0     0     0
+	  5338052500984404557      ONLINE       0     0     0
+	    17976892840358164373   ONLINE       0     0     0
+	    18335223806475789631   ONLINE       0     0     0
+	    1541146137294520958    ONLINE       0     0     0
+	    16862381265388060190   ONLINE       0     0     0
+	    16774907883495458181   ONLINE       0     0     0
+	    10946084812727461689   ONLINE       0     0     0
+	    2922563178447707709    ONLINE       0     0     0
+	    3322808112866682979    ONLINE       0     0     0
+	  17954131499336888302     DEGRADED     0     0     0
+	    13607477501350774139   ONLINE       0     0     0
+	    3016384749925427947    ONLINE       0     0     0
+	    17267404244838488514   ONLINE       0     0     0
+	    6405638789467097001    ONLINE       0     0     0
+	    686487638661057379     ONLINE       0     0     0
+	    12734872772442045668   ONLINE       0     0     0
+	    14284403722272976910   DEGRADED     0     0     0
+	      1082024170414391897  REMOVED      0     0     0
+	      891643583844207151   ONLINE       0     0     0
+	    11687791957475096531   ONLINE       0     0     0
+	special	
+	  4044852472690946034      ONLINE       0     0     0
+	    11828207356583110866   ONLINE       0     0     6
+	    16075576088670221827   ONLINE       0     0     6
+	  10433001683690774586     ONLINE       0     0     0
+	    2013986898276113415    ONLINE       0     0    12
+	    7733054877028270239    ONLINE       0     0    12
+	spares
+	  891643583844207151       INUSE     currently in use
+
+errors: 1 data errors, use '-v' for a list
+
+  pool: bpool
+ state: ONLINE
+  scan: scrub repaired 0B in 00:00:07 with 0 errors on Sun Aug  9 00:24:08 2026
+config:
+
+	NAME                      STATE     READ WRITE CKSUM
+	bpool                     ONLINE       0     0     0
+	  7879420759522091481     ONLINE       0     0     0
+	    10940132855821023010  ONLINE       0     0     0
+	    16883674818163482239  ONLINE       0     0     0
+
+errors: No known data errors
+
+  pool: rpool
+ state: ONLINE
+status: Some supported and requested features are not enabled on the pool.
+	The pool can still be used, but some features are unavailable.
+action: Enable all features using 'zpool upgrade'. Once this is done,
+	the pool may no longer be accessible by software that does not support
+	the features. See zpool-features(7) for details.
+  scan: scrub repaired 0B in 01:45:02 with 0 errors on Sun Aug  9 02:09:04 2026
+    scan warning: skipped blocks that are only referenced by the checkpoint.
+checkpoint: created Fri Apr 18 09:43:26 2025, consumes 117G
+config:
+
+	NAME                      STATE     READ WRITE CKSUM
+	rpool                     ONLINE       0     0     0
+	  10116968943579434558    ONLINE       0     0     0
+	    13477747630627346864  ONLINE       0     0     0
+	    4017281962645193462   ONLINE       0     0     0
+
+errors: No known data errors
+
+  pool: space
+ state: ONLINE
+status: Some supported and requested features are not enabled on the pool.
+	The pool can still be used, but some features are unavailable.
+action: Enable all features using 'zpool upgrade'. Once this is done,
+	the pool may no longer be accessible by software that does not support
+	the features. See zpool-features(7) for details.
+  scan: scrub repaired 0B in 19:19:12 with 0 errors on Sun Aug  9 19:43:16 2026
+config:
+
+	NAME                        STATE     READ WRITE CKSUM
+	space                       ONLINE       0     0     0
+	  5204885172110344134       ONLINE       0     0     0
+	    17157010119101828456    ONLINE       0     0     0
+	    9753708214178611793     ONLINE       0     0     0
+	    2969812317754238394     ONLINE       0     0     0
+	    6199030208081625901     ONLINE       0     0     0
+	    5369926289127318604     ONLINE       0     0     0
+	    12789853407961503446    ONLINE       0     0     0
+	    4011944550979922045     ONLINE       0     0     0
+	    13160228476946060421    ONLINE       0     0     0
+	  9007031778331642784       ONLINE       0     0     0
+	    16788047725255307764    ONLINE       0     0     0
+	    3409693676319033394     ONLINE       0     0     0
+	    3487896885370626489     ONLINE       0     0     0
+	    15351399526994441874    ONLINE       0     0     0
+	    13919307554659960383    ONLINE       0     0     0
+	    13320454780145336341    ONLINE       0     0     0
+	    4275947122481209035     ONLINE       0     0     0
+	    5460098026287034887     ONLINE       0     0     0
+	  5236016460003016805       ONLINE       0     0     0
+	    10354587686331016347    ONLINE       0     0     0
+	    17283963709945061389    ONLINE       0     0     0
+	    6614421116723416414     ONLINE       0     0     0
+	    9810514795403010748     ONLINE       0     0     0
+	    18306089983861482320    ONLINE       0     0     0
+	    386918665121169072      ONLINE       0     0     0
+	    14117335847534821566    ONLINE       0     0     0
+	    6116510512297950695     ONLINE       0     0     0
+	  3388823558429738332       ONLINE       0     0     0
+	    1541592169950923378     ONLINE       0     0     0
+	    16809762363229148826    ONLINE       0     0     0
+	    779833430179635364      ONLINE       0     0     0
+	    8173906984701470597     ONLINE       0     0     0
+	    13797029297166725296    ONLINE       0     0     0
+	    18371018139643991268    ONLINE       0     0     0
+	    17108523430413874900    ONLINE       0     0     0
+	    15584877991290069928    ONLINE       0     0     0
+	  1731578064309998343       ONLINE       0     0     0
+	    5376298655796057137     ONLINE       0     0     0
+	    10240545959618689249    ONLINE       0     0     0
+	    3095252915821648391     ONLINE       0     0     0
+	    13028152974510422910    ONLINE       0     0     0
+	    4424673123196391603     ONLINE       0     0     0
+	    18396237114283760904    ONLINE       0     0     0
+	    886436519714569443      ONLINE       0     0     0
+	    17320259033768849942    ONLINE       0     0     0
+	  12372305547527317295      ONLINE       0     0     0
+	    15192423959397411076    ONLINE       0     0     0
+	    15837447166093813087    ONLINE       0     0     0
+	    4484622911110778645     ONLINE       0     0     0
+	    5227188687168818047     ONLINE       0     0     0
+	    1709552244939736735     ONLINE       0     0     0
+	    2305530796469611037     ONLINE       0     0     0
+	    7178308151547831118     ONLINE       0     0     0
+	    12983238309654781705    ONLINE       0     0     0
+	  16950899211129714203      ONLINE       0     0     0
+	    11330324464113506692    ONLINE       0     0     0
+	    12228003088763601407    ONLINE       0     0     0
+	    15663109361216978631    ONLINE       0     0     0
+	    9322934535608033256     ONLINE       0     0     0
+	      17885295320081759272  ONLINE       0     0     0
+	      6934462713112163834   ONLINE       0     0     0
+	    11897712593002579400    ONLINE       0     0     0
+	    7674628401698022491     ONLINE       0     0     0
+	    2622484631566025123     ONLINE       0     0     0
+	    1171797100647372475     ONLINE       0     0     0
+	special	
+	  737277534668809963        ONLINE       0     0     0
+	    2613912595685689289     ONLINE       0     0     0
+	    1161082729107973602     ONLINE       0     0     0
+	    238920797006525894      ONLINE       0     0     0
+	logs	
+	  11643308628144396865      ONLINE       0     0     0
+	    9523780891956275038     ONLINE       0     0     0
+	    6658585271831292557     ONLINE       0     0     0
+	cache
+	  9633240364690830390       ONLINE       0     0     0
+	  16862988291587455250      ONLINE       0     0     0
+	  14309469848396800428      ONLINE       0     0     0
+	  11947748110017711895      ONLINE       0     0     0
+	spares
+	  6934462713112163834       INUSE     currently in use
+
+errors: No known data errors

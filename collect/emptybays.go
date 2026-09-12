@@ -3,8 +3,10 @@ package collect
 import (
 	"io/fs"
 	"log/slog"
+	"maps"
 	"os"
 	"path/filepath"
+	"slices"
 	"strings"
 
 	"github.com/scottlaird/drivelist"
@@ -34,7 +36,8 @@ func (c *Collector) annotateEmptyBays(inv *drivelist.Inventory) error {
 		}
 	}
 
-	for expanderPath := range expanders {
+	// Walk expanders in a fixed order so the inventory is deterministic.
+	for _, expanderPath := range slices.Sorted(maps.Keys(expanders)) {
 		expander := filepath.Base(expanderPath)
 		err := filepath.WalkDir(expanderPath, func(path string, _ fs.DirEntry, err error) error {
 			if err != nil || filepath.Base(path) != "bay_identifier" {

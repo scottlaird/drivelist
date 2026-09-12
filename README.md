@@ -131,6 +131,11 @@ the `udevadm` output for every disk, and the output of several
 `collect.Fixture` expects.  Note that it records the serial numbers
 and WWNs of every drive in the system.
 
+Captured trees under `collect/testdata/` each carry an
+`inventory.json` golden file of what the collector produces from
+them.  After an intended change to the collector, regenerate them
+with `go test ./collect -update` and review the diff.
+
 ## Roadmap
 
 * Improve testing: capture fixtures from more real systems (see
