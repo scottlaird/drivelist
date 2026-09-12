@@ -160,9 +160,11 @@ counted per hour.  `--kmsg=false` turns the follower off.
 
 For a one-off report, or from cron, `drivelist report` does one cycle.
 
-On Debian and Ubuntu hosts, install the package instead: `make deb`
-builds `dist/drivelist_<version>_amd64.deb` (it needs
-[nfpm](https://nfpm.goreleaser.com/)), which ships the binary, a
+On Debian and Ubuntu hosts, install the package instead.  Every
+[release](https://github.com/scottlaird/drivelist/releases) carries
+`drivelist_<version>_amd64.deb`, built by the release workflow when a
+`v*` tag is pushed; `make deb` builds the same package locally (it
+needs [nfpm](https://nfpm.goreleaser.com/)).  The package ships the binary, a
 `drivelist-agent` systemd service, a disabled `drivelist-server`
 service, and `/etc/default/drivelist`.  After installing, put the
 server address in `/etc/default/drivelist`, the agent token in
