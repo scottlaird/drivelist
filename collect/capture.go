@@ -42,7 +42,9 @@ func (c *Collector) Capture(dir string) error {
 		}
 		out, err := c.run("udevadm", "info", "--query=all", "--name=/dev/"+name)
 		if err != nil {
-			return fmt.Errorf("udevadm for %s: %w", name, err)
+			// Same outcome as Collect: the device is listed but unidentified.
+			slog.Warn("capture: udevadm failed, device recorded without identity", "device", name, "err", err)
+			continue
 		}
 		if err := c.captureExec(dir, out, "udevadm", "info", "--query=all", "--name=/dev/"+name); err != nil {
 			return err

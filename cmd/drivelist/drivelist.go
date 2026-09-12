@@ -43,6 +43,10 @@ func main() {
 		os.Exit(1)
 	}
 
+	for _, d := range inv.Degraded() {
+		fmt.Fprintf(os.Stderr, "drivelist: %s could not be identified: %s\n", d.DeviceName, d.Error)
+	}
+
 	var unused []*drivelist.Device
 	for _, d := range inv.Devices {
 		if d.Unused() {

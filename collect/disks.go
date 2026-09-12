@@ -1,13 +1,16 @@
 package collect
 
 import (
+	"log/slog"
 	"os"
 	"strings"
 
 	"github.com/scottlaird/drivelist"
 )
 
-// disks enumerates the sd* block devices in sysfs and identifies each.
+// disks enumerates the block devices in sysfs and identifies each. A
+// device that cannot be identified is still listed, with Error set, so one
+// unresponsive drive does not hide the rest.
 func (c *Collector) disks() (*drivelist.Inventory, error) {
 	inv := drivelist.NewInventory()
 	names, err := c.diskNames()
@@ -17,11 +20,27 @@ func (c *Collector) disks() (*drivelist.Inventory, error) {
 	for _, name := range names {
 		dev, err := c.newDevice("/dev/" + name)
 		if err != nil {
-			return inv, err
+			slog.Warn("identifying device", "device", name, "err", err)
+			dev = &drivelist.Device{
+				DeviceName: name,
+				Devices:    []string{"/dev/" + name},
+				Uses:       []string{},
+				Error:      err.Error(),
+			}
 		}
 		inv.Add(dev)
 	}
 	return inv, nil
+}
+
+// isDiskName reports whether a /sys/block entry is a whole disk drivelist
+// handles: SCSI-like (sd*) or an NVMe namespace (nvmeXnY). Partitions do not
+// appear in /sys/block, so no suffix check is needed.
+func isDiskName(name string) bool {
+	if strings.HasPrefix(name, "sd") {
+		return true
+	}
+	return strings.HasPrefix(name, "nvme") && strings.Contains(name[4:], "n")
 }
 
 func (c *Collector) diskNames() ([]string, error) {
@@ -31,7 +50,7 @@ func (c *Collector) diskNames() ([]string, error) {
 		return names, err
 	}
 	for _, e := range entries {
-		if strings.HasPrefix(e.Name(), "sd") {
+		if isDiskName(e.Name()) {
 			names = append(names, e.Name())
 		}
 	}

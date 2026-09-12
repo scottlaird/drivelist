@@ -1,6 +1,8 @@
 package collect
 
 import (
+	"errors"
+	"fmt"
 	"log/slog"
 	"os"
 	"strconv"
@@ -14,7 +16,10 @@ import (
 func (c *Collector) newDevice(name string) (*drivelist.Device, error) {
 	u, err := c.udevInfo(name)
 	if err != nil {
-		return nil, err
+		return nil, fmt.Errorf("udevadm: %w", err)
+	}
+	if u.DeviceName == "" {
+		return nil, errors.New("udevadm: no N: line in output")
 	}
 	d := &drivelist.Device{
 		DeviceName: u.DeviceName,
@@ -25,6 +30,9 @@ func (c *Collector) newDevice(name string) (*drivelist.Device, error) {
 	d.WWN = d.Attribs["ID_WWN"]
 	d.Model = d.Attribs["ID_MODEL"]
 	d.Serial = d.Attribs["SCSI_IDENT_SERIAL"]
+	if d.Serial == "" {
+		d.Serial = d.Attribs["ID_SERIAL_SHORT"] // NVMe and ATA-over-USB have no SCSI VPD serial
+	}
 
 	d.Devices = []string{"/dev/" + d.DeviceName}
 	for _, link := range strings.Split(d.Attribs["DEVLINKS"], " ") {

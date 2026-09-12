@@ -35,11 +35,15 @@ on Linux sysfs and udev.
 
 ## Status
 
-drivelist currently only supports SCSI-like drives on Linux.  SAS,
-SATA, and NVMe are fine.  Actual SCSI drives might work, if you could
-find one that actually still works.  USB probably works, but if you
-have a dozen or more USB drives on one system then you have a
-*different* problem.
+drivelist currently only supports SCSI-like drives (`sd*`) and NVMe
+namespaces (`nvme*n*`) on Linux.  SAS and SATA are fine.  Actual SCSI
+drives might work, if you could find one that actually still works.
+USB probably works, but if you have a dozen or more USB drives on one
+system then you have a *different* problem.
+
+A drive that the kernel lists but `udevadm` cannot describe is still
+shown, with its kernel name and the failure in the `error` field, and
+a note on stderr.  One unresponsive drive does not hide the others.
 
 Currently, drivelist can identify drives in use by checking
 mountpoints and by looking into ZFS pools and vdevs.  It successfully

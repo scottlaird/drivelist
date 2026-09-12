@@ -24,12 +24,23 @@ func fakeZFS(inv *drivelist.Inventory) error {
 }
 
 // wantSynthetic is what Collect should produce from testdata/synthetic when
-// its sysfs root is sys: two SAS disks in bays 0 and 1 of one expander (one
-// in a pool, one mounted through a partition), a direct-attached SATA SSD
-// with no use, and the expander's empty bay 2.
+// its sysfs root is sys: an NVMe boot drive mounted through its second
+// partition, two SAS disks in bays 0 and 1 of one expander (one in a pool,
+// one mounted through a partition), a direct-attached SATA SSD with no use,
+// a disk whose udevadm output is missing, and the expander's empty bay 2.
 func wantSynthetic(sys string) []*drivelist.Device {
 	exp := sys + "/devices/pci0000:00/0000:00:01.0/0000:01:00.0/host4/port-4:0/expander-4:0"
 	return []*drivelist.Device{
+		{
+			DeviceName: "nvme0n1",
+			Devices:    []string{"/dev/nvme0n1", "/dev/disk/by-id/nvme-Samsung_SSD_980_PRO_1TB_S5GXNX0T123456B", "/dev/disk/by-id/nvme-eui.002538b311b12345"},
+			WWN:        "eui.002538b311b12345",
+			SysPath:    sys + "/devices/pci0000:00/0000:00:1b.0/0000:02:00.0/nvme/nvme0/nvme0n1",
+			Model:      "Samsung_SSD_980_PRO_1TB",
+			Serial:     "S5GXNX0T123456B",
+			Uses:       []string{"mount > /"},
+			Size:       1000204886016,
+		},
 		{
 			DeviceName:    "sda",
 			Devices:       []string{"/dev/sda", "/dev/disk/by-id/wwn-0x5000cca25206c808", "/dev/disk/by-id/scsi-35000cca25206c808", "/dev/disk/by-vdev/Ab0"},
@@ -69,6 +80,12 @@ func wantSynthetic(sys string) []*drivelist.Device {
 			Size:       1000204886016,
 		},
 		{
+			DeviceName: "sdd",
+			Devices:    []string{"/dev/sdd"},
+			Uses:       []string{},
+			Error:      "udevadm: open testdata/synthetic/exec/udevadm info --query=all --name=_dev_sdd: no such file or directory",
+		},
+		{
 			Expander:     "expander-4:0",
 			ExpanderPath: exp,
 			EnclosureBay: "2",
@@ -93,6 +110,9 @@ func TestCollectFixture(t *testing.T) {
 	}
 	if got := inv.ByName("/dev/sdb1"); got == nil || got.DeviceName != "sdb" {
 		t.Errorf("ByName(/dev/sdb1) = %v, want sdb", got)
+	}
+	if got := inv.Degraded(); len(got) != 1 || got[0].DeviceName != "sdd" {
+		t.Errorf("Degraded() = %v, want [sdd]", got)
 	}
 }
 
@@ -119,7 +139,13 @@ func TestCaptureRoundTrip(t *testing.T) {
 	if err != nil {
 		t.Fatalf("Collect from capture: %v", err)
 	}
-	if diff := cmp.Diff(wantSynthetic(c.Sys), inv.Devices, ignoreAttribs); diff != "" {
+	want := wantSynthetic(c.Sys)
+	for _, d := range want {
+		if d.Error != "" {
+			d.Error = "udevadm: open " + filepath.Join(dir, "exec", "udevadm info --query=all --name=_dev_sdd") + ": no such file or directory"
+		}
+	}
+	if diff := cmp.Diff(want, inv.Devices, ignoreAttribs); diff != "" {
 		t.Errorf("round-trip mismatch (-want +got):\n%s", diff)
 	}
 }
