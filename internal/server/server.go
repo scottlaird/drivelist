@@ -7,6 +7,7 @@ import (
 	"context"
 	"crypto/subtle"
 	"errors"
+	"fmt"
 	"log/slog"
 	"net/http"
 	"strings"
@@ -17,6 +18,7 @@ import (
 
 	pb "github.com/scottlaird/drivelist/internal/pb/drivelistv1"
 	"github.com/scottlaird/drivelist/internal/pb/drivelistv1/drivelistv1connect"
+	dlversion "github.com/scottlaird/drivelist/internal/report"
 	"github.com/scottlaird/drivelist/internal/store"
 )
 
@@ -66,7 +68,7 @@ func (s *Server) Handler() http.Handler {
 	mux := http.NewServeMux()
 	mux.Handle(drivelistv1connect.NewCollectorHandler(s, connect.WithInterceptors(bearerAuth(s.cfg.AgentToken))))
 	mux.Handle(drivelistv1connect.NewQueryHandler(s, connect.WithInterceptors(bearerAuth(s.cfg.OperatorToken))))
-	mux.HandleFunc("/healthz", func(w http.ResponseWriter, _ *http.Request) { w.Write([]byte("ok\n")) })
+	mux.HandleFunc("/healthz", func(w http.ResponseWriter, _ *http.Request) { fmt.Fprintf(w, "ok drivelist %s\n", dlversion.Version) })
 	mux.Handle("/metrics", s.metrics.handler())
 	return mux
 }

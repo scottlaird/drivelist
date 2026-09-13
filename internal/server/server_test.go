@@ -300,6 +300,10 @@ func TestHealthz(t *testing.T) {
 	env := newEnv(t)
 	resp, err := http.Get(env.url + "/healthz")
 	if err != nil || resp.StatusCode != 200 {
-		t.Errorf("/healthz: %v %v", resp, err)
+		t.Fatalf("/healthz: %v %v", resp, err)
+	}
+	body, _ := io.ReadAll(resp.Body)
+	if !strings.HasPrefix(string(body), "ok drivelist ") {
+		t.Errorf("/healthz body = %q", body)
 	}
 }
