@@ -37,19 +37,13 @@ func (c *Collector) annotateEmptyBays(inv *drivelist.Inventory) error {
 		}
 	}
 
-	// Walk owners in a fixed order so the inventory is deterministic.
+	// Walk owners in a fixed order so the inventory is deterministic. A bay
+	// belongs to the nearest expander above it, or to the HBA when there
+	// is none, so an expander cascaded behind another (an empty rear
+	// backplane) gets its own bays even though nothing sits in them.
 	for _, ownerPath := range slices.Sorted(maps.Keys(owners)) {
-		owner := filepath.Base(ownerPath)
-		err := filepath.WalkDir(ownerPath, func(path string, e fs.DirEntry, err error) error {
-			if err != nil {
-				return nil
-			}
-			// An HBA's own bays are the end devices directly on its ports;
-			// the shelves behind its expanders count their own.
-			if e.IsDir() && strings.HasPrefix(e.Name(), "expander-") && strings.HasPrefix(owner, "host") {
-				return fs.SkipDir
-			}
-			if filepath.Base(path) != "bay_identifier" || isExpanderOwnBay(path) {
+		err := filepath.WalkDir(ownerPath, func(path string, _ fs.DirEntry, err error) error {
+			if err != nil || filepath.Base(path) != "bay_identifier" || isExpanderOwnBay(path) {
 				return nil
 			}
 			b, err := os.ReadFile(path)
@@ -58,9 +52,12 @@ func (c *Collector) annotateEmptyBays(inv *drivelist.Inventory) error {
 				return nil
 			}
 			bay := strings.TrimSuffix(string(b), "\n")
-			if !usedBays[owner+" "+bay] {
-				inv.Add(newEmptyBayDevice(owner, ownerPath, filepath.Dir(path), bay))
+			via, viaDir := nearestNode(path)
+			if via == "" || usedBays[via+" "+bay] {
+				return nil
 			}
+			usedBays[via+" "+bay] = true
+			inv.Add(newEmptyBayDevice(via, viaDir, filepath.Dir(path), bay))
 			return nil
 		})
 		if err != nil {
@@ -87,4 +84,24 @@ func viaPath(d *drivelist.Device) string {
 		}
 	}
 	return ""
+}
+
+// nearestNode is the SAS node a bay_identifier path hangs off: the last
+// expander component, or the SCSI host if there is none, with its
+// directory.
+func nearestNode(path string) (name, dir string) {
+	var prefix string
+	for i, p := range strings.Split(path, "/") {
+		if i > 0 {
+			prefix += "/"
+		}
+		prefix += p
+		switch {
+		case strings.HasPrefix(p, "expander-"):
+			name, dir = p, prefix
+		case strings.HasPrefix(p, "host") && name == "":
+			name, dir = p, prefix
+		}
+	}
+	return name, dir
 }
