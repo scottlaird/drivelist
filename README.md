@@ -174,9 +174,11 @@ For a one-off report, or from cron, `drivelist report` does one cycle.
 
 On Debian and Ubuntu hosts, install the package instead.  Every
 [release](https://github.com/scottlaird/drivelist/releases) carries
-`drivelist_<version>_amd64.deb`, built by the release workflow when a
-`v*` tag is pushed; `make deb` builds the same package locally (it
-needs [nfpm](https://nfpm.goreleaser.com/)).  The package ships the binary, a
+`drivelist_<version>_<arch>.deb` for `amd64`, `arm64` (64-bit
+Raspberry Pi OS) and `armhf` (32-bit Raspberry Pi OS), built by the
+release workflow when a `v*` tag is pushed; `make deb` builds the same
+packages locally (it needs [nfpm](https://nfpm.goreleaser.com/)), and
+`make deb-arm64` just one.  The package ships the binary, a
 `drivelist-agent` systemd service, a disabled `drivelist-server`
 service, and `/etc/default/drivelist`.  After installing, put the
 server address in `/etc/default/drivelist`, the agent token in

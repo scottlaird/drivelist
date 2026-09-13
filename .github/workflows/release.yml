@@ -1,6 +1,6 @@
 # Cut a release by pushing a tag: git tag v0.1.0 && git push origin v0.1.0
-# Builds the linux/amd64 .deb with nfpm and attaches it, plus the bare
-# binary, to a GitHub release for the tag.
+# Builds the .debs for amd64, arm64 and armhf with nfpm and attaches them,
+# plus the bare binaries, to a GitHub release for the tag.
 name: Release
 
 on:
@@ -31,4 +31,4 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           gh release create "$GITHUB_REF_NAME" --generate-notes --title "$GITHUB_REF_NAME" \
-            dist/*.deb dist/drivelist-linux-amd64
+            dist/*.deb dist/drivelist-linux-*

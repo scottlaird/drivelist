@@ -1,6 +1,8 @@
-# nfpm packaging for drivelist. `make deb` builds dist/drivelist_<version>_amd64.deb.
+# nfpm packaging for drivelist. `make deb` builds one package per
+# architecture in dist/: the Makefile sets ARCH and copies that
+# architecture's binary to dist/drivelist-bin before each run.
 name: drivelist
-arch: amd64
+arch: ${ARCH}
 platform: linux
 version: ${VERSION}
 section: admin
@@ -17,7 +19,7 @@ depends:
 recommends:
   - zfsutils-linux
 contents:
-  - src: dist/drivelist-linux-amd64
+  - src: dist/drivelist-bin
     dst: /usr/bin/drivelist
   - src: packaging/drivelist-agent.service
     dst: /lib/systemd/system/drivelist-agent.service
