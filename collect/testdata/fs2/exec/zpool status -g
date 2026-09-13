@@ -83,8 +83,8 @@ status: One or more devices are faulted in response to persistent errors.
 action: Replace the faulted device, or use 'zpool clear' to mark the device
 	repaired.
   scan: scrub in progress since Sun Sep 13 00:24:06 2026
-	172T / 235T scanned at 4.43G/s, 131T / 235T issued at 3.38G/s
-	1.94M repaired, 55.82% done, 08:43:41 to go
+	172T / 235T scanned at 3.51G/s, 170T / 235T issued at 3.47G/s
+	2.15M repaired, 72.36% done, 05:19:00 to go
 config:
 
 	NAME                        STATE     READ WRITE CKSUM
@@ -147,9 +147,9 @@ config:
 	    11330324464113506692    ONLINE       0     0     0
 	    12228003088763601407    ONLINE       0     0     0
 	    15663109361216978631    ONLINE       0     0     0
-	    9322934535608033256     ONLINE       0     0     0
-	      17885295320081759272  ONLINE       0     0     0
-	      6934462713112163834   ONLINE       0     0     0
+	    9322934535608033256     ONLINE       0     0     2
+	      17885295320081759272  ONLINE       0     0     0  (repairing)
+	      6934462713112163834   ONLINE       0     0     0  (repairing)
 	    11897712593002579400    ONLINE       0     0     0
 	    7674628401698022491     ONLINE       0     0     0
 	    2622484631566025123     ONLINE       0     0     0

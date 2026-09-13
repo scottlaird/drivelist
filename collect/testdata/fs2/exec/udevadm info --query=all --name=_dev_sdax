@@ -6,11 +6,11 @@ D: b 67:16
 N: sdax
 L: 0
 S: disk/by-diskseq/58
-S: disk/by-id/wwn-0x5000cca0bee6e709
-S: disk/by-vdev/D6
-S: disk/by-id/scsi-SATA_HGST_HUS728T8TAL_VGJSKZBK
-S: disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy34-lun-0
 S: disk/by-id/scsi-35000cca0bee6e709
+S: disk/by-vdev/D6
+S: disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy34-lun-0
+S: disk/by-id/scsi-SATA_HGST_HUS728T8TAL_VGJSKZBK
+S: disk/by-id/wwn-0x5000cca0bee6e709
 Q: 58
 E: DEVPATH=/devices/pci0000:00/0000:00:03.0/0000:03:00.0/host11/port-11:0/expander-11:0/port-11:0:26/end_device-11:0:26/target11:0:34/11:0:34:0/block/sdax
 E: DEVNAME=/dev/sdax
@@ -53,7 +53,7 @@ E: ID_PART_TABLE_UUID=78ef530d-780b-7747-8ecc-91d0e9849782
 E: ID_PART_TABLE_TYPE=gpt
 E: ID_VDEV=D6
 E: ID_VDEV_PATH=disk/by-vdev/D6
-E: DEVLINKS=/dev/disk/by-diskseq/58 /dev/disk/by-id/wwn-0x5000cca0bee6e709 /dev/disk/by-vdev/D6 /dev/disk/by-id/scsi-SATA_HGST_HUS728T8TAL_VGJSKZBK /dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy34-lun-0 /dev/disk/by-id/scsi-35000cca0bee6e709
+E: DEVLINKS=/dev/disk/by-diskseq/58 /dev/disk/by-id/scsi-35000cca0bee6e709 /dev/disk/by-vdev/D6 /dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy34-lun-0 /dev/disk/by-id/scsi-SATA_HGST_HUS728T8TAL_VGJSKZBK /dev/disk/by-id/wwn-0x5000cca0bee6e709
 E: TAGS=:systemd:
 E: CURRENT_TAGS=:systemd:
 

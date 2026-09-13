@@ -5,12 +5,12 @@ T: disk
 D: b 66:224
 N: sdau
 L: 0
-S: disk/by-diskseq/55
 S: disk/by-id/wwn-0x5000cca2612a1afc
 S: disk/by-vdev/D29
 S: disk/by-id/scsi-SHITACHI_HUH72808CLAR8000_VJGS4VDX
-S: disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy31-lun-0
 S: disk/by-id/scsi-35000cca2612a1afc
+S: disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy31-lun-0
+S: disk/by-diskseq/55
 Q: 55
 E: DEVPATH=/devices/pci0000:00/0000:00:03.0/0000:03:00.0/host11/port-11:0/expander-11:0/port-11:0:23/end_device-11:0:23/target11:0:31/11:0:31:0/block/sdau
 E: DEVNAME=/dev/sdau
@@ -56,7 +56,7 @@ E: ID_PART_TABLE_TYPE=gpt
 E: ID_VDEV=D29
 E: ID_VDEV_PATH=disk/by-vdev/D29
 E: NVME_HOST_IFACE=none
-E: DEVLINKS=/dev/disk/by-diskseq/55 /dev/disk/by-id/wwn-0x5000cca2612a1afc /dev/disk/by-vdev/D29 /dev/disk/by-id/scsi-SHITACHI_HUH72808CLAR8000_VJGS4VDX /dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy31-lun-0 /dev/disk/by-id/scsi-35000cca2612a1afc
+E: DEVLINKS=/dev/disk/by-id/wwn-0x5000cca2612a1afc /dev/disk/by-vdev/D29 /dev/disk/by-id/scsi-SHITACHI_HUH72808CLAR8000_VJGS4VDX /dev/disk/by-id/scsi-35000cca2612a1afc /dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy31-lun-0 /dev/disk/by-diskseq/55
 E: TAGS=:systemd:
 E: CURRENT_TAGS=:systemd:
 

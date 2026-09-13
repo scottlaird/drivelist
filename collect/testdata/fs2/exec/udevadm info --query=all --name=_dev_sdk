@@ -5,11 +5,11 @@ T: disk
 D: b 8:160
 N: sdk
 L: 0
+S: disk/by-vdev/Ab8
 S: disk/by-id/scsi-35000cca2548cfcec
+S: disk/by-path/pci-0000:01:00.0-sas-exp0x500304800000007f-phy16-lun-0
 S: disk/by-id/wwn-0x5000cca2548cfcec
 S: disk/by-id/scsi-SHGST_H7280A520SUN8.0T_001619PHJPEV_VKJHJPEV
-S: disk/by-path/pci-0000:01:00.0-sas-exp0x500304800000007f-phy16-lun-0
-S: disk/by-vdev/Ab8
 S: disk/by-diskseq/19
 Q: 19
 E: DEVPATH=/devices/pci0000:00/0000:00:01.0/0000:01:00.0/host10/port-10:0/expander-10:0/port-10:0:8/end_device-10:0:8/target10:0:8/10:0:8:0/block/sdk
@@ -56,7 +56,7 @@ E: ID_PART_TABLE_TYPE=gpt
 E: ID_VDEV=Ab8
 E: ID_VDEV_PATH=disk/by-vdev/Ab8
 E: NVME_HOST_IFACE=none
-E: DEVLINKS=/dev/disk/by-id/scsi-35000cca2548cfcec /dev/disk/by-id/wwn-0x5000cca2548cfcec /dev/disk/by-id/scsi-SHGST_H7280A520SUN8.0T_001619PHJPEV_VKJHJPEV /dev/disk/by-path/pci-0000:01:00.0-sas-exp0x500304800000007f-phy16-lun-0 /dev/disk/by-vdev/Ab8 /dev/disk/by-diskseq/19
+E: DEVLINKS=/dev/disk/by-vdev/Ab8 /dev/disk/by-id/scsi-35000cca2548cfcec /dev/disk/by-path/pci-0000:01:00.0-sas-exp0x500304800000007f-phy16-lun-0 /dev/disk/by-id/wwn-0x5000cca2548cfcec /dev/disk/by-id/scsi-SHGST_H7280A520SUN8.0T_001619PHJPEV_VKJHJPEV /dev/disk/by-diskseq/19
 E: TAGS=:systemd:
 E: CURRENT_TAGS=:systemd:
 

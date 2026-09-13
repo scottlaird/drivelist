@@ -5,13 +5,13 @@ T: disk
 D: b 69:112
 N: sdcj
 L: 0
-S: disk/by-id/wwn-0x5000cca23b0bd454
-S: disk/by-id/scsi-SHGST_HUH728080AL4200_2EG6HP1R
-S: disk/by-vdev/E16
-S: disk/by-id/lvm-pv-uuid-I36efb-fZfZ-r2Ix-3aaJ-ccd2-MGEk-E6V5IQ
-S: disk/by-id/scsi-35000cca23b0bd454
-S: disk/by-diskseq/96
 S: disk/by-path/pci-0000:03:00.0-sas-exp0x5003048001e8967f-phy28-lun-0
+S: disk/by-diskseq/96
+S: disk/by-id/scsi-35000cca23b0bd454
+S: disk/by-id/scsi-SHGST_HUH728080AL4200_2EG6HP1R
+S: disk/by-id/lvm-pv-uuid-I36efb-fZfZ-r2Ix-3aaJ-ccd2-MGEk-E6V5IQ
+S: disk/by-vdev/E16
+S: disk/by-id/wwn-0x5000cca23b0bd454
 Q: 96
 E: DEVPATH=/devices/pci0000:00/0000:00:03.0/0000:03:00.0/host11/port-11:9/expander-11:1/port-11:1:13/end_device-11:1:13/target11:0:73/11:0:73:0/block/sdcj
 E: DEVNAME=/dev/sdcj
@@ -62,7 +62,7 @@ E: ID_PART_TABLE_TYPE=gpt
 E: ID_VDEV=E16
 E: ID_VDEV_PATH=disk/by-vdev/E16
 E: NVME_HOST_IFACE=none
-E: DEVLINKS=/dev/disk/by-id/wwn-0x5000cca23b0bd454 /dev/disk/by-id/scsi-SHGST_HUH728080AL4200_2EG6HP1R /dev/disk/by-vdev/E16 /dev/disk/by-id/lvm-pv-uuid-I36efb-fZfZ-r2Ix-3aaJ-ccd2-MGEk-E6V5IQ /dev/disk/by-id/scsi-35000cca23b0bd454 /dev/disk/by-diskseq/96 /dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5003048001e8967f-phy28-lun-0
+E: DEVLINKS=/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5003048001e8967f-phy28-lun-0 /dev/disk/by-diskseq/96 /dev/disk/by-id/scsi-35000cca23b0bd454 /dev/disk/by-id/scsi-SHGST_HUH728080AL4200_2EG6HP1R /dev/disk/by-id/lvm-pv-uuid-I36efb-fZfZ-r2Ix-3aaJ-ccd2-MGEk-E6V5IQ /dev/disk/by-vdev/E16 /dev/disk/by-id/wwn-0x5000cca23b0bd454
 E: TAGS=:systemd:
 E: CURRENT_TAGS=:systemd:
 

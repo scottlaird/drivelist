@@ -6,9 +6,9 @@ T: disk
 D: b 8:32
 N: sdc
 L: 0
-S: disk/by-id/ata-ST24000DM001-3Y7103_ZXA0XV48
 S: disk/by-id/wwn-0x5000c500e8da3221
 S: disk/by-path/pci-0000:03:00.0-sas-exp0x50030480185b9e7f-phy4-lun-0
+S: disk/by-id/ata-ST24000DM001-3Y7103_ZXA0XV48
 S: disk/by-diskseq/13
 Q: 13
 E: DEVPATH=/devices/pci0000:00/0000:00:01.3/0000:03:00.0/host0/port-0:0/expander-0:0/port-0:0:3/end_device-0:0:3/target0:0:2/0:0:2:0/block/sdc
@@ -53,7 +53,7 @@ E: ID_PATH=pci-0000:03:00.0-sas-exp0x50030480185b9e7f-phy4-lun-0
 E: ID_PATH_TAG=pci-0000_03_00_0-sas-exp0x50030480185b9e7f-phy4-lun-0
 E: ID_PART_TABLE_UUID=a1d48196-f7eb-bd47-a350-db0113a3ac1d
 E: ID_PART_TABLE_TYPE=gpt
-E: DEVLINKS=/dev/disk/by-id/ata-ST24000DM001-3Y7103_ZXA0XV48 /dev/disk/by-id/wwn-0x5000c500e8da3221 /dev/disk/by-path/pci-0000:03:00.0-sas-exp0x50030480185b9e7f-phy4-lun-0 /dev/disk/by-diskseq/13
+E: DEVLINKS=/dev/disk/by-id/wwn-0x5000c500e8da3221 /dev/disk/by-path/pci-0000:03:00.0-sas-exp0x50030480185b9e7f-phy4-lun-0 /dev/disk/by-id/ata-ST24000DM001-3Y7103_ZXA0XV48 /dev/disk/by-diskseq/13
 E: TAGS=:systemd:
 E: CURRENT_TAGS=:systemd:
 

@@ -5,12 +5,12 @@ T: disk
 D: b 68:224
 N: sdca
 L: 0
-S: disk/by-id/scsi-35000cca263c56678
-S: disk/by-id/scsi-SATA_HUH728080ALE601_R6GBW8JY
 S: disk/by-path/pci-0000:03:00.0-sas-exp0x5003048001e8967f-phy17-lun-0
-S: disk/by-vdev/E5
-S: disk/by-id/wwn-0x5000cca263c56678
 S: disk/by-diskseq/87
+S: disk/by-vdev/E5
+S: disk/by-id/scsi-35000cca263c56678
+S: disk/by-id/wwn-0x5000cca263c56678
+S: disk/by-id/scsi-SATA_HUH728080ALE601_R6GBW8JY
 Q: 87
 E: DEVPATH=/devices/pci0000:00/0000:00:03.0/0000:03:00.0/host11/port-11:9/expander-11:1/port-11:1:4/end_device-11:1:4/target11:0:64/11:0:64:0/block/sdca
 E: DEVNAME=/dev/sdca
@@ -54,7 +54,7 @@ E: ID_PART_TABLE_TYPE=gpt
 E: ID_VDEV=E5
 E: ID_VDEV_PATH=disk/by-vdev/E5
 E: NVME_HOST_IFACE=none
-E: DEVLINKS=/dev/disk/by-id/scsi-35000cca263c56678 /dev/disk/by-id/scsi-SATA_HUH728080ALE601_R6GBW8JY /dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5003048001e8967f-phy17-lun-0 /dev/disk/by-vdev/E5 /dev/disk/by-id/wwn-0x5000cca263c56678 /dev/disk/by-diskseq/87
+E: DEVLINKS=/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5003048001e8967f-phy17-lun-0 /dev/disk/by-diskseq/87 /dev/disk/by-vdev/E5 /dev/disk/by-id/scsi-35000cca263c56678 /dev/disk/by-id/wwn-0x5000cca263c56678 /dev/disk/by-id/scsi-SATA_HUH728080ALE601_R6GBW8JY
 E: TAGS=:systemd:
 E: CURRENT_TAGS=:systemd:
 

@@ -4,11 +4,11 @@
       "DeviceName": "nvme0n1",
       "Devices": [
         "/dev/nvme0n1",
-        "/dev/disk/by-path/pci-0000:05:00.0-nvme-1",
-        "/dev/disk/by-id/nvme-SHPP51-1000GM_BSE3N45261OA43O21",
+        "/dev/disk/by-id/nvme-SHPP51-1000GM_BSE3N45261OA43O21_1",
         "/dev/disk/by-id/nvme-eui.fd5b42cebc8f9d54ace42e005528cee8",
+        "/dev/disk/by-id/nvme-SHPP51-1000GM_BSE3N45261OA43O21",
         "/dev/disk/by-diskseq/10",
-        "/dev/disk/by-id/nvme-SHPP51-1000GM_BSE3N45261OA43O21_1"
+        "/dev/disk/by-path/pci-0000:05:00.0-nvme-1"
       ],
       "WWN": "eui.fd5b42cebc8f9d54ace42e005528cee8",
       "SysPath": "testdata/pbs1/sys/devices/pci0000:00/0000:00:01.5/0000:05:00.0/nvme/nvme0/nvme0n1",
@@ -31,11 +31,11 @@
       "DeviceName": "nvme1n1",
       "Devices": [
         "/dev/nvme1n1",
-        "/dev/disk/by-id/nvme-SHPP51-1000GM_BSE3N45261OA43O1H",
-        "/dev/disk/by-path/pci-0000:10:00.0-nvme-1",
-        "/dev/disk/by-id/nvme-eui.fd5b42cebc8f9d54ace42e005528ced4",
+        "/dev/disk/by-id/nvme-SHPP51-1000GM_BSE3N45261OA43O1H_1",
         "/dev/disk/by-diskseq/9",
-        "/dev/disk/by-id/nvme-SHPP51-1000GM_BSE3N45261OA43O1H_1"
+        "/dev/disk/by-id/nvme-eui.fd5b42cebc8f9d54ace42e005528ced4",
+        "/dev/disk/by-id/nvme-SHPP51-1000GM_BSE3N45261OA43O1H",
+        "/dev/disk/by-path/pci-0000:10:00.0-nvme-1"
       ],
       "WWN": "eui.fd5b42cebc8f9d54ace42e005528ced4",
       "SysPath": "testdata/pbs1/sys/devices/pci0000:00/0000:00:02.2/0000:10:00.0/nvme/nvme1/nvme1n1",
@@ -58,10 +58,10 @@
       "DeviceName": "sda",
       "Devices": [
         "/dev/sda",
+        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x50030480185b9e7f-phy2-lun-0",
         "/dev/disk/by-diskseq/11",
-        "/dev/disk/by-id/ata-ST24000DM001-3Y7103_ZXA03T5G",
         "/dev/disk/by-id/wwn-0x5000c500e9fd75c5",
-        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x50030480185b9e7f-phy2-lun-0"
+        "/dev/disk/by-id/ata-ST24000DM001-3Y7103_ZXA03T5G"
       ],
       "WWN": "0x5000c500e9fd75c5",
       "SysPath": "testdata/pbs1/sys/devices/pci0000:00/0000:00:01.3/0000:03:00.0/host0/port-0:0/expander-0:0/port-0:0:1/end_device-0:0:1/target0:0:0/0:0:0:0/block/sda",
@@ -84,10 +84,10 @@
       "DeviceName": "sdb",
       "Devices": [
         "/dev/sdb",
-        "/dev/disk/by-id/ata-ST24000DM001-3Y7103_ZXA0TCYT",
         "/dev/disk/by-id/wwn-0x5000c500e8bf1d27",
-        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x50030480185b9e7f-phy3-lun-0",
-        "/dev/disk/by-diskseq/12"
+        "/dev/disk/by-diskseq/12",
+        "/dev/disk/by-id/ata-ST24000DM001-3Y7103_ZXA0TCYT",
+        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x50030480185b9e7f-phy3-lun-0"
       ],
       "WWN": "0x5000c500e8bf1d27",
       "SysPath": "testdata/pbs1/sys/devices/pci0000:00/0000:00:01.3/0000:03:00.0/host0/port-0:0/expander-0:0/port-0:0:2/end_device-0:0:2/target0:0:1/0:0:1:0/block/sdb",
@@ -110,9 +110,9 @@
       "DeviceName": "sdc",
       "Devices": [
         "/dev/sdc",
-        "/dev/disk/by-id/ata-ST24000DM001-3Y7103_ZXA0XV48",
         "/dev/disk/by-id/wwn-0x5000c500e8da3221",
         "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x50030480185b9e7f-phy4-lun-0",
+        "/dev/disk/by-id/ata-ST24000DM001-3Y7103_ZXA0XV48",
         "/dev/disk/by-diskseq/13"
       ],
       "WWN": "0x5000c500e8da3221",
@@ -136,10 +136,10 @@
       "DeviceName": "sdd",
       "Devices": [
         "/dev/sdd",
-        "/dev/disk/by-id/wwn-0x5000c500e8d7e258",
         "/dev/disk/by-diskseq/14",
-        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x50030480185b9e7f-phy5-lun-0",
-        "/dev/disk/by-id/ata-ST24000DM001-3Y7103_ZXA0XH4E"
+        "/dev/disk/by-id/wwn-0x5000c500e8d7e258",
+        "/dev/disk/by-id/ata-ST24000DM001-3Y7103_ZXA0XH4E",
+        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x50030480185b9e7f-phy5-lun-0"
       ],
       "WWN": "0x5000c500e8d7e258",
       "SysPath": "testdata/pbs1/sys/devices/pci0000:00/0000:00:01.3/0000:03:00.0/host0/port-0:0/expander-0:0/port-0:0:4/end_device-0:0:4/target0:0:3/0:0:3:0/block/sdd",
@@ -162,10 +162,10 @@
       "DeviceName": "sde",
       "Devices": [
         "/dev/sde",
+        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x50030480185b9e7f-phy8-lun-0",
         "/dev/disk/by-id/ata-ST24000DM001-3Y7103_ZXA0V75X",
         "/dev/disk/by-id/wwn-0x5000c500e8c1b72b",
-        "/dev/disk/by-diskseq/15",
-        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x50030480185b9e7f-phy8-lun-0"
+        "/dev/disk/by-diskseq/15"
       ],
       "WWN": "0x5000c500e8c1b72b",
       "SysPath": "testdata/pbs1/sys/devices/pci0000:00/0000:00:01.3/0000:03:00.0/host0/port-0:0/expander-0:0/port-0:0:5/end_device-0:0:5/target0:0:4/0:0:4:0/block/sde",
@@ -188,10 +188,10 @@
       "DeviceName": "sdf",
       "Devices": [
         "/dev/sdf",
-        "/dev/disk/by-diskseq/16",
         "/dev/disk/by-id/ata-ST24000DM001-3Y7103_ZXA185XX",
-        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x50030480185b9e7f-phy10-lun-0",
-        "/dev/disk/by-id/wwn-0x5000c500e96efc9f"
+        "/dev/disk/by-id/wwn-0x5000c500e96efc9f",
+        "/dev/disk/by-diskseq/16",
+        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x50030480185b9e7f-phy10-lun-0"
       ],
       "WWN": "0x5000c500e96efc9f",
       "SysPath": "testdata/pbs1/sys/devices/pci0000:00/0000:00:01.3/0000:03:00.0/host0/port-0:0/expander-0:0/port-0:0:6/end_device-0:0:6/target0:0:5/0:0:5:0/block/sdf",
@@ -215,9 +215,9 @@
       "Devices": [
         "/dev/sdg",
         "/dev/disk/by-diskseq/17",
+        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x50030480185b9e7f-phy11-lun-0",
         "/dev/disk/by-id/wwn-0x5000c500e901b1e2",
-        "/dev/disk/by-id/ata-ST24000DM001-3Y7103_ZXA115Y6",
-        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x50030480185b9e7f-phy11-lun-0"
+        "/dev/disk/by-id/ata-ST24000DM001-3Y7103_ZXA115Y6"
       ],
       "WWN": "0x5000c500e901b1e2",
       "SysPath": "testdata/pbs1/sys/devices/pci0000:00/0000:00:01.3/0000:03:00.0/host0/port-0:0/expander-0:0/port-0:0:7/end_device-0:0:7/target0:0:6/0:0:6:0/block/sdg",
@@ -241,8 +241,8 @@
       "Devices": [
         "/dev/sdh",
         "/dev/disk/by-diskseq/18",
-        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x50030480185b9e7f-phy31-lun-0",
         "/dev/disk/by-id/wwn-0x5000c500e9009f9f",
+        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x50030480185b9e7f-phy31-lun-0",
         "/dev/disk/by-id/ata-ST24000DM001-3Y7103_ZXA11LGT"
       ],
       "WWN": "0x5000c500e9009f9f",
@@ -266,10 +266,10 @@
       "DeviceName": "sdi",
       "Devices": [
         "/dev/sdi",
-        "/dev/disk/by-diskseq/19",
         "/dev/disk/by-id/ata-ST24000DM001-3Y7103_ZXA0GA9D",
-        "/dev/disk/by-id/wwn-0x5000c500e867f51a",
-        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x50030480185b9e7f-phy32-lun-0"
+        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x50030480185b9e7f-phy32-lun-0",
+        "/dev/disk/by-diskseq/19",
+        "/dev/disk/by-id/wwn-0x5000c500e867f51a"
       ],
       "WWN": "0x5000c500e867f51a",
       "SysPath": "testdata/pbs1/sys/devices/pci0000:00/0000:00:01.3/0000:03:00.0/host0/port-0:0/expander-0:0/port-0:0:9/end_device-0:0:9/target0:0:8/0:0:8:0/block/sdi",
@@ -318,9 +318,9 @@
       "DeviceName": "sdk",
       "Devices": [
         "/dev/sdk",
-        "/dev/disk/by-diskseq/21",
         "/dev/disk/by-id/ata-ST24000DM001-3Y7103_ZXA10QBK",
         "/dev/disk/by-id/wwn-0x5000c500e8fd009f",
+        "/dev/disk/by-diskseq/21",
         "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x50030480185b9e7f-phy37-lun-0"
       ],
       "WWN": "0x5000c500e8fd009f",
@@ -346,8 +346,8 @@
         "/dev/sdl",
         "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x50030480185b9e7f-phy38-lun-0",
         "/dev/disk/by-diskseq/22",
-        "/dev/disk/by-id/wwn-0x5000c500e8d55d13",
-        "/dev/disk/by-id/ata-ST24000DM001-3Y7103_ZXA0XM4R"
+        "/dev/disk/by-id/ata-ST24000DM001-3Y7103_ZXA0XM4R",
+        "/dev/disk/by-id/wwn-0x5000c500e8d55d13"
       ],
       "WWN": "0x5000c500e8d55d13",
       "SysPath": "testdata/pbs1/sys/devices/pci0000:00/0000:00:01.3/0000:03:00.0/host0/port-0:0/expander-0:0/port-0:0:12/end_device-0:0:12/target0:0:11/0:0:11:0/block/sdl",
@@ -370,10 +370,10 @@
       "DeviceName": "sdm",
       "Devices": [
         "/dev/sdm",
-        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x50030480185b9e7f-phy39-lun-0",
+        "/dev/disk/by-id/ata-ST24000DM001-3Y7103_ZXA0YB6H",
         "/dev/disk/by-diskseq/23",
         "/dev/disk/by-id/wwn-0x5000c500e8df0b98",
-        "/dev/disk/by-id/ata-ST24000DM001-3Y7103_ZXA0YB6H"
+        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x50030480185b9e7f-phy39-lun-0"
       ],
       "WWN": "0x5000c500e8df0b98",
       "SysPath": "testdata/pbs1/sys/devices/pci0000:00/0000:00:01.3/0000:03:00.0/host0/port-0:0/expander-0:0/port-0:0:13/end_device-0:0:13/target0:0:12/0:0:12:0/block/sdm",

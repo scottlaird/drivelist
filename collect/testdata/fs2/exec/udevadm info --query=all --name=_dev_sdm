@@ -6,11 +6,11 @@ D: b 8:192
 N: sdm
 L: 0
 S: disk/by-id/wwn-0x5000cca2548ef570
-S: disk/by-diskseq/21
-S: disk/by-path/pci-0000:01:00.0-sas-exp0x500304800000007f-phy19-lun-0
-S: disk/by-vdev/Ab11
 S: disk/by-id/scsi-35000cca2548ef570
 S: disk/by-id/scsi-SHGST_H7280A520SUN8.0T_001619PJM90V_VKJJM90V
+S: disk/by-path/pci-0000:01:00.0-sas-exp0x500304800000007f-phy19-lun-0
+S: disk/by-vdev/Ab11
+S: disk/by-diskseq/21
 Q: 21
 E: DEVPATH=/devices/pci0000:00/0000:00:01.0/0000:01:00.0/host10/port-10:0/expander-10:0/port-10:0:10/end_device-10:0:10/target10:0:10/10:0:10:0/block/sdm
 E: DEVNAME=/dev/sdm
@@ -56,7 +56,7 @@ E: ID_PART_TABLE_TYPE=gpt
 E: ID_VDEV=Ab11
 E: ID_VDEV_PATH=disk/by-vdev/Ab11
 E: NVME_HOST_IFACE=none
-E: DEVLINKS=/dev/disk/by-id/wwn-0x5000cca2548ef570 /dev/disk/by-diskseq/21 /dev/disk/by-path/pci-0000:01:00.0-sas-exp0x500304800000007f-phy19-lun-0 /dev/disk/by-vdev/Ab11 /dev/disk/by-id/scsi-35000cca2548ef570 /dev/disk/by-id/scsi-SHGST_H7280A520SUN8.0T_001619PJM90V_VKJJM90V
+E: DEVLINKS=/dev/disk/by-id/wwn-0x5000cca2548ef570 /dev/disk/by-id/scsi-35000cca2548ef570 /dev/disk/by-id/scsi-SHGST_H7280A520SUN8.0T_001619PJM90V_VKJJM90V /dev/disk/by-path/pci-0000:01:00.0-sas-exp0x500304800000007f-phy19-lun-0 /dev/disk/by-vdev/Ab11 /dev/disk/by-diskseq/21
 E: TAGS=:systemd:
 E: CURRENT_TAGS=:systemd:
 

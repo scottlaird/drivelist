@@ -7,11 +7,11 @@ T: disk
 D: b 259:1
 N: nvme0n1
 L: 0
-S: disk/by-path/pci-0000:05:00.0-nvme-1
-S: disk/by-id/nvme-SHPP51-1000GM_BSE3N45261OA43O21
-S: disk/by-id/nvme-eui.fd5b42cebc8f9d54ace42e005528cee8
-S: disk/by-diskseq/10
 S: disk/by-id/nvme-SHPP51-1000GM_BSE3N45261OA43O21_1
+S: disk/by-id/nvme-eui.fd5b42cebc8f9d54ace42e005528cee8
+S: disk/by-id/nvme-SHPP51-1000GM_BSE3N45261OA43O21
+S: disk/by-diskseq/10
+S: disk/by-path/pci-0000:05:00.0-nvme-1
 Q: 10
 E: DEVPATH=/devices/pci0000:00/0000:00:01.5/0000:05:00.0/nvme/nvme0/nvme0n1
 E: DEVNAME=/dev/nvme0n1
@@ -31,7 +31,7 @@ E: ID_PATH=pci-0000:05:00.0-nvme-1
 E: ID_PATH_TAG=pci-0000_05_00_0-nvme-1
 E: ID_PART_TABLE_UUID=d982f114-6332-45f2-ac8e-10916ded1b12
 E: ID_PART_TABLE_TYPE=gpt
-E: DEVLINKS=/dev/disk/by-path/pci-0000:05:00.0-nvme-1 /dev/disk/by-id/nvme-SHPP51-1000GM_BSE3N45261OA43O21 /dev/disk/by-id/nvme-eui.fd5b42cebc8f9d54ace42e005528cee8 /dev/disk/by-diskseq/10 /dev/disk/by-id/nvme-SHPP51-1000GM_BSE3N45261OA43O21_1
+E: DEVLINKS=/dev/disk/by-id/nvme-SHPP51-1000GM_BSE3N45261OA43O21_1 /dev/disk/by-id/nvme-eui.fd5b42cebc8f9d54ace42e005528cee8 /dev/disk/by-id/nvme-SHPP51-1000GM_BSE3N45261OA43O21 /dev/disk/by-diskseq/10 /dev/disk/by-path/pci-0000:05:00.0-nvme-1
 E: TAGS=:systemd:
 E: CURRENT_TAGS=:systemd:
 
