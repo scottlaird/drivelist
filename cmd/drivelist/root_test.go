@@ -12,9 +12,10 @@ import (
 // useFixture points the listing at the synthetic fixture for one test.
 func useFixture(t *testing.T) {
 	t.Helper()
-	saved := collectAll
-	collectAll = collect.Fixture(filepath.Join("..", "..", "collect", "testdata", "synthetic")).Collect
-	t.Cleanup(func() { collectAll = saved })
+	saved, savedSAS := collectAll, collectSAS
+	fx := collect.Fixture(filepath.Join("..", "..", "collect", "testdata", "synthetic"))
+	collectAll, collectSAS = fx.Collect, fx.SAS
+	t.Cleanup(func() { collectAll, collectSAS = saved, savedSAS })
 }
 
 func run(t *testing.T, args ...string) (stdout, stderr string, err error) {

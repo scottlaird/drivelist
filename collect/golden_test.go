@@ -11,7 +11,7 @@ import (
 	"github.com/scottlaird/drivelist"
 )
 
-var update = flag.Bool("update", false, "rewrite the inventory.json golden file in each captured fixture")
+var update = flag.Bool("update", false, "rewrite the golden files (inventory.json, smart.json, sas.json) in each captured fixture")
 
 // capturedFixtures are trees recorded from real hosts with --capture. Each
 // carries an inventory.json golden file of what Collect produces from it;
@@ -49,6 +49,50 @@ func TestCapturedFixtures(t *testing.T) {
 			}
 			if diff := cmp.Diff(want, got); diff != "" {
 				t.Errorf("inventory differs from %s (-want +got); run with -update if the change is intended:\n%s", goldenPath, diff)
+			}
+		})
+	}
+}
+
+// TestCapturedSAS checks each captured fixture that has a SAS transport
+// class against its sas.json golden, the topology SAS produces from the
+// tree. Fixtures captured before the SAS trees were recorded, and hosts
+// without SAS, have neither and are skipped.
+func TestCapturedSAS(t *testing.T) {
+	for _, name := range capturedFixtures {
+		t.Run(name, func(t *testing.T) {
+			root := filepath.Join("testdata", name)
+			if _, err := os.Stat(filepath.Join(root, "sys", "class", "sas_host")); err != nil {
+				t.Skip("no SAS transport in this capture")
+			}
+			got, err := Fixture(root).SAS()
+			if err != nil {
+				t.Fatalf("SAS: %v", err)
+			}
+			for _, n := range got.Nodes {
+				n.Path = "" // the fixture directory, not part of the topology
+			}
+			goldenPath := filepath.Join(root, "sas.json")
+			if *update {
+				data, err := json.MarshalIndent(got, "", "  ")
+				if err != nil {
+					t.Fatal(err)
+				}
+				if err := os.WriteFile(goldenPath, append(data, '\n'), 0o644); err != nil {
+					t.Fatal(err)
+				}
+				return
+			}
+			data, err := os.ReadFile(goldenPath)
+			if err != nil {
+				t.Fatalf("%v (run with -update to create it)", err)
+			}
+			var want SASTopology
+			if err := json.Unmarshal(data, &want); err != nil {
+				t.Fatalf("parsing %s: %v", goldenPath, err)
+			}
+			if diff := cmp.Diff(&want, got); diff != "" {
+				t.Errorf("topology differs from %s (-want +got); run with -update if the change is intended:\n%s", goldenPath, diff)
 			}
 		})
 	}
