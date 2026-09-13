@@ -99,7 +99,7 @@ func newHostsCmd(cfg *clientConfig) *cobra.Command {
 			}
 			now := time.Now()
 			w := tab(cmd.OutOrStdout())
-			fmt.Fprint(w, "HOST\tDRIVES\tMISSING\tGHOSTS\tLAST REPORT\tSTATE")
+			fmt.Fprint(w, "HOST\tDRIVES\tMISSING\tGHOSTS\tLAST REPORT\tSTATE\tAGENT")
 			if ids {
 				fmt.Fprint(w, "\tMACHINE ID")
 			}
@@ -109,7 +109,7 @@ func newHostsCmd(cfg *clientConfig) *cobra.Command {
 				if h.StaleSince != nil {
 					state = "stale since " + when(h.StaleSince)
 				}
-				fmt.Fprintf(w, "%s\t%d\t%d\t%d\t%s\t%s", h.Hostname, h.DriveCount, h.MissingCount, h.GhostCount, ago(h.LastReport, now), state)
+				fmt.Fprintf(w, "%s\t%d\t%d\t%d\t%s\t%s\t%s", h.Hostname, h.DriveCount, h.MissingCount, h.GhostCount, ago(h.LastReport, now), state, orDash(h.AgentVersion))
 				if ids {
 					fmt.Fprintf(w, "\t%s", h.MachineId)
 				}
