@@ -41,7 +41,7 @@ func (s *Store) ListExpanders(ctx context.Context) ([]Expander, error) {
 	rows, err := s.db.QueryContext(ctx, `
 		SELECT n.address, h.hostname, n.name, TRIM(n.vendor || ' ' || n.product), COALESCE(x.name, ''), COALESCE(x.note, ''), n.first_seen, n.last_seen
 		FROM sas_node n JOIN host h USING (host_id) LEFT JOIN expander_name x ON x.expander = n.address
-		WHERE n.kind = 'expander' AND n.gone_at IS NULL`)
+		WHERE n.gone_at IS NULL`)
 	if err != nil {
 		return nil, err
 	}
@@ -61,6 +61,9 @@ func (s *Store) ListExpanders(ctx context.Context) ([]Expander, error) {
 		if i, ok := index[hostKey{e.Hostname, e.Key}]; ok {
 			out[i].Product = e.Product
 			continue
+		}
+		if !strings.HasPrefix(e.Dev, "expander-") {
+			continue // an HBA is listed only when drives sit on its own bays
 		}
 		e.FirstSeen, e.LastSeen = time.Unix(first, 0).UTC(), time.Unix(last, 0).UTC()
 		out = append(out, e)

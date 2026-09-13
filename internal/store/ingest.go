@@ -363,10 +363,11 @@ func (t *tx) placeDrive(host *hostRow, row devRow, here *placementRow, source st
 // renameExpanders spots an expander whose key changed under every drive
 // on it while each drive kept its bay: the kernel numbered the host's
 // SAS controllers differently after a boot, or the agent started sending
-// SAS addresses instead of kernel names. That is one shelf with a new
-// name, not a set of moves, so the open placements are updated in place
-// (the ones for drives absent from this report too; they sit in the same
-// shelf) and one host-level event records it. A single drive is not
+// SAS addresses instead of kernel names, or started naming the HBA as the
+// owner of its own bays (the old key is then ""). That is one shelf with
+// a new name, not a set of moves, so the open placements are updated in
+// place (the ones for drives absent from this report too; they sit in the
+// same shelf) and one host-level event records it. A single drive is not
 // enough evidence; it may really have moved to another shelf's same bay.
 func (t *tx) renameExpanders(host *hostRow, rows []devRow, byDrive map[int64]*placementRow, source string, snapshotID int64) error {
 	type target struct{ key, dev string }
@@ -377,7 +378,7 @@ func (t *tx) renameExpanders(host *hostRow, rows []devRow, byDrive map[int64]*pl
 			continue
 		}
 		p := byDrive[row.driveID]
-		if p == nil || p.expander == "" || p.bay == "" {
+		if p == nil || p.bay == "" {
 			continue
 		}
 		key := expanderKey(row.dev)

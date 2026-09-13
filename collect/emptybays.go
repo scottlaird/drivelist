@@ -14,7 +14,8 @@ import (
 
 // annotateEmptyBays appends a nameless device for every enclosure bay that
 // has a bay_identifier in sysfs but no disk in the inventory. It only looks
-// under expanders that already have at least one known disk.
+// under SAS nodes (expanders, or an HBA with drives on its own ports) that
+// already have at least one known disk.
 //
 // This does not work quite right on every SAS enclosure, so its output is
 // best treated as a hint.
@@ -39,8 +40,16 @@ func (c *Collector) annotateEmptyBays(inv *drivelist.Inventory) error {
 	// Walk expanders in a fixed order so the inventory is deterministic.
 	for _, expanderPath := range slices.Sorted(maps.Keys(expanders)) {
 		expander := filepath.Base(expanderPath)
-		err := filepath.WalkDir(expanderPath, func(path string, _ fs.DirEntry, err error) error {
-			if err != nil || filepath.Base(path) != "bay_identifier" {
+		err := filepath.WalkDir(expanderPath, func(path string, d fs.DirEntry, err error) error {
+			if err != nil {
+				return nil
+			}
+			// An HBA's own bays are the end devices directly on its ports;
+			// the shelves behind its expanders count their own.
+			if d.IsDir() && strings.HasPrefix(d.Name(), "expander-") && strings.HasPrefix(expander, "host") {
+				return fs.SkipDir
+			}
+			if filepath.Base(path) != "bay_identifier" {
 				return nil
 			}
 			if isExpanderOwnBay(path) {

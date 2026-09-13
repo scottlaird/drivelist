@@ -200,6 +200,8 @@ rather than a move per drive (a single drive is not enough evidence;
 it may really have moved).  `drivelist expanders` lists the shelves
 drives are on, and `drivelist expander KEY name "front shelf"` gives
 one a name, which every listing then shows in place of the kernel's.
+A drive on the HBA's own ports (a server's front panel) has the HBA as
+its owner, so `host11 bay 4` can be named the same way.
 
 For a one-off report, or from cron, `drivelist report` does one cycle.
 

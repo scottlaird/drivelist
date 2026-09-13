@@ -667,3 +667,28 @@ func TestExpanderNames(t *testing.T) {
 		t.Errorf("clear = %+v, %v", e, err)
 	}
 }
+
+// TestDirectAttachedGetsOwner: an agent upgrade starts naming the HBA as
+// the owner of the bays on its own ports. Drives that had no owner and
+// keep their bays are a rename, not moves.
+func TestDirectAttachedGetsOwner(t *testing.T) {
+	h := newHarness(t)
+	a := dev("sdq", "A1", "0x5000000000000021", "", "0", "zfs > space 1 > mirror 3 > disk 0")
+	b := dev("sdr", "B1", "0x5000000000000022", "", "7", "zfs > space 1 > mirror 3 > disk 1")
+	h.report(hostA, a, b)
+	h.advance(5 * time.Minute)
+	a.Expander, a.ExpanderID = "host11", "0x500062b2047b51c5"
+	b.Expander, b.ExpanderID = "host11", "0x500062b2047b51c5"
+	h.report(hostA, a, b)
+	for _, serial := range []string{"A1", "B1"} {
+		if kinds, _ := h.events(serial); len(kinds) != 1 {
+			t.Errorf("%s events = %v, want only first_seen", serial, kinds)
+		}
+		if ps := h.placements(serial); len(ps) != 1 || ps[0].expander != "0x500062b2047b51c5" {
+			t.Errorf("%s placements = %+v", serial, ps)
+		}
+	}
+	if kinds := h.hostEvents("storage1"); len(kinds) != 2 || kinds[1] != EventExpanderRenamed {
+		t.Errorf("host events = %v", kinds)
+	}
+}
