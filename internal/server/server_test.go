@@ -1,6 +1,8 @@
 package server
 
 import (
+	"bytes"
+	"compress/gzip"
 	"context"
 	"errors"
 	"io"
@@ -206,6 +208,40 @@ func TestKernelRoundTrip(t *testing.T) {
 	evs, _ := env.query.ListEvents(ctx, connect.NewRequest(&pb.ListEventsRequest{Kinds: []string{"kernel_warning"}}))
 	if len(evs.Msg.Events) != 1 || evs.Msg.Events[0].Serial != "X1" {
 		t.Errorf("kernel_warning events = %v", evs.Msg.GetEvents())
+	}
+}
+
+func TestSmartRoundTrip(t *testing.T) {
+	env := newEnv(t)
+	ctx := context.Background()
+	env.collector.ReportInventory(ctx, connect.NewRequest(report(time.Now().Add(-time.Hour), device("sda", "X1", "0x5000000000000001", "1"))))
+	healthy := false
+	realloc := uint64(7)
+	var buf bytes.Buffer
+	w := gzip.NewWriter(&buf)
+	w.Write([]byte(`{"smart_status":{"passed":false}}`))
+	w.Close()
+	ack, err := env.collector.ReportSmart(ctx, connect.NewRequest(&pb.ReportSmartRequest{
+		Host: &pb.HostIdentity{MachineId: "m1", Hostname: "storage1"},
+		Samples: []*pb.SmartSample{{
+			Identity: &pb.DriveIdentity{Wwn: "0x5000000000000001"}, DevName: "sda", Ts: timestamppb.Now(),
+			Summary:   &pb.SmartSummary{Protocol: "SCSI", Healthy: &healthy, Reallocated: &realloc},
+			RawJsonGz: buf.Bytes(),
+		}},
+	}))
+	if err != nil || ack.Msg.Stored != 1 {
+		t.Fatalf("ReportSmart = %v, %v", ack.Msg, err)
+	}
+	res, err := env.query.GetSmart(ctx, connect.NewRequest(&pb.GetSmartRequest{Ref: "X1", IncludeRaw: true}))
+	if err != nil || len(res.Msg.Samples) != 1 || res.Msg.Samples[0].Summary.GetHealthy() || res.Msg.Samples[0].Summary.GetReallocated() != 7 || !res.Msg.Samples[0].HasRaw {
+		t.Errorf("GetSmart = %v, %v", res.Msg, err)
+	}
+	if string(res.Msg.RawJson) != `{"smart_status":{"passed":false}}` {
+		t.Errorf("raw = %q", res.Msg.RawJson)
+	}
+	evs, _ := env.query.ListEvents(ctx, connect.NewRequest(&pb.ListEventsRequest{Kinds: []string{"smart_warning"}}))
+	if len(evs.Msg.Events) != 1 {
+		t.Errorf("smart_warning events = %v", evs.Msg.GetEvents())
 	}
 }
 

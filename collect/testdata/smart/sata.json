@@ -1,0 +1,30 @@
+{
+  "json_format_version": [1, 0],
+  "smartctl": {"version": [7, 4], "exit_status": 0},
+  "device": {"name": "/dev/sdc", "type": "sat", "protocol": "ATA"},
+  "model_name": "Samsung SSD 870 EVO 1TB",
+  "serial_number": "S5RRNF0R123456A",
+  "logical_block_size": 512,
+  "smart_status": {"passed": true},
+  "power_on_time": {"hours": 12345},
+  "temperature": {"current": 31},
+  "ata_smart_attributes": {
+    "table": [
+      {"id": 5, "name": "Reallocated_Sector_Ct", "value": 100, "worst": 100, "thresh": 10, "raw": {"value": 0, "string": "0"}},
+      {"id": 9, "name": "Power_On_Hours", "value": 97, "worst": 97, "thresh": 0, "raw": {"value": 12345, "string": "12345"}},
+      {"id": 177, "name": "Wear_Leveling_Count", "value": 96, "worst": 96, "thresh": 0, "raw": {"value": 45, "string": "45"}},
+      {"id": 194, "name": "Temperature_Celsius", "value": 69, "worst": 51, "thresh": 0, "raw": {"value": 31, "string": "31"}},
+      {"id": 197, "name": "Current_Pending_Sector", "value": 100, "worst": 100, "thresh": 0, "raw": {"value": 2, "string": "2"}},
+      {"id": 198, "name": "Offline_Uncorrectable", "value": 100, "worst": 100, "thresh": 0, "raw": {"value": 0, "string": "0"}},
+      {"id": 199, "name": "UDMA_CRC_Error_Count", "value": 100, "worst": 100, "thresh": 0, "raw": {"value": 3, "string": "3"}},
+      {"id": 241, "name": "Total_LBAs_Written", "value": 99, "worst": 99, "thresh": 0, "raw": {"value": 40000000000, "string": "40000000000"}}
+    ]
+  },
+  "ata_smart_self_test_log": {
+    "standard": {
+      "table": [
+        {"type": {"value": 1, "string": "Short offline"}, "status": {"value": 0, "string": "Completed without error", "passed": true}, "lifetime_hours": 12000}
+      ]
+    }
+  }
+}

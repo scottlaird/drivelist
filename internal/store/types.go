@@ -125,6 +125,7 @@ const (
 	EventReportDegraded     = "report_degraded"
 	EventPoolMissingMember  = "pool_missing_member"
 	EventKernelWarning      = "kernel_warning"
+	EventSmartWarning       = "smart_warning"
 )
 
 // Placement end reasons.

@@ -15,6 +15,9 @@ service Collector {
   // ReportKernel posts hourly counts of classified kernel log lines per
   // drive. Each bucket is sent once, complete; resending replaces.
   rpc ReportKernel(ReportKernelRequest) returns (ReportAck);
+  // ReportSmart posts SMART summaries, with the raw smartctl JSON at most
+  // daily per drive or when the summary changed.
+  rpc ReportSmart(ReportSmartRequest) returns (ReportAck);
 }
 
 // Query is the operator-facing service behind the CLI.
@@ -34,6 +37,9 @@ service Query {
   rpc Annotate(AnnotateRequest) returns (AnnotateResponse);
   // GetKernel returns a drive's kernel log counts, newest bucket first.
   rpc GetKernel(GetKernelRequest) returns (GetKernelResponse);
+  // GetSmart returns a drive's SMART samples, newest first, optionally with
+  // the latest raw smartctl output.
+  rpc GetSmart(GetSmartRequest) returns (GetSmartResponse);
 }
 
 // ---------- shared ----------
@@ -116,7 +122,7 @@ message DriveStatus {
 // tick.
 message AgentConfig {
   google.protobuf.Duration inventory_interval = 1;
-  google.protobuf.Duration smart_interval = 2;
+  google.protobuf.Duration smart_interval = 2;   // unset: agent default (6h)
   google.protobuf.Duration io_bucket = 3;
   bool collect_smart = 4;
   bool collect_io = 5;
@@ -141,6 +147,39 @@ message KernelSample {
   uint32 count = 7;
   string sample = 8;                  // the first line in the bucket
   string hostname = 9;                // set in query responses
+}
+
+// SmartSummary is the per-sample subset of SMART kept in the database.
+// Unset fields are ones the drive's bus does not report, never zero.
+message SmartSummary {
+  string protocol = 1;                // "ATA", "SCSI", "NVMe"
+  optional bool healthy = 2;
+  optional uint64 power_on_hours = 3;
+  optional int32 temp_c = 4;
+  optional uint64 reallocated = 5;    // SATA 5 | SAS grown defect list
+  optional uint64 pending = 6;        // SATA 197
+  optional uint64 uncorrectable = 7;  // SATA 198 | SAS uncorrected r+w | NVMe media_errors
+  optional uint64 crc_errors = 8;     // SATA 199
+  optional uint64 read_bytes = 9;
+  optional uint64 write_bytes = 10;
+  optional uint32 percent_used = 11;  // wear
+  string selftest_last = 12;
+}
+
+message SmartSample {
+  DriveIdentity identity = 1;
+  string dev_name = 2;
+  google.protobuf.Timestamp ts = 3;
+  SmartSummary summary = 4;           // unset when skipped
+  bytes raw_json_gz = 5;              // gzip of smartctl -j output; optional
+  string skipped = 6;                 // "" | "standby" | "timeout" | "unsupported" | "error: …"
+  string hostname = 7;                // set in query responses
+  bool has_raw = 8;                   // set in query responses: raw is stored for this sample
+}
+
+message ReportSmartRequest {
+  HostIdentity host = 1;
+  repeated SmartSample samples = 2;
 }
 
 message ReportKernelRequest {
@@ -297,4 +336,17 @@ message GetKernelRequest {
 message GetKernelResponse {
   Drive drive = 1;
   repeated KernelSample samples = 2;
+}
+
+message GetSmartRequest {
+  string ref = 1;
+  google.protobuf.Timestamp since = 2;
+  bool include_raw = 3;               // attach the newest raw smartctl JSON
+}
+
+message GetSmartResponse {
+  Drive drive = 1;
+  repeated SmartSample samples = 2;
+  bytes raw_json = 3;                 // uncompressed, newest stored, when include_raw
+  google.protobuf.Timestamp raw_ts = 4;
 }

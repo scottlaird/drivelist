@@ -1,6 +1,7 @@
 package agent
 
 import (
+	"sort"
 	"time"
 
 	"github.com/scottlaird/drivelist"
@@ -28,7 +29,9 @@ func newIdentityMap() identityMap {
 	return identityMap{byName: map[string]idEntry{}, byAddr: map[string]idEntry{}}
 }
 
-func (m identityMap) update(inv *drivelist.Inventory, now time.Time) {
+// update records the inventory's devices and returns the names that were
+// not known before.
+func (m identityMap) update(inv *drivelist.Inventory, now time.Time) (appeared []string) {
 	if inv != nil {
 		for _, d := range inv.Devices {
 			if d.DeviceName == "" || d.Error != "" || (d.WWN == "" && d.Serial == "") {
@@ -36,6 +39,9 @@ func (m identityMap) update(inv *drivelist.Inventory, now time.Time) {
 			}
 			pd := report.Device(d)
 			e := idEntry{id: pd.Identity, seen: now}
+			if _, known := m.byName[d.DeviceName]; !known {
+				appeared = append(appeared, d.DeviceName)
+			}
 			m.byName[d.DeviceName] = e
 			if pd.ScsiAddr != "" {
 				m.byAddr[pd.ScsiAddr] = e
@@ -49,6 +55,18 @@ func (m identityMap) update(inv *drivelist.Inventory, now time.Time) {
 			}
 		}
 	}
+	return appeared
+}
+
+// names lists the current device names, sorted; entries in their grace
+// period are included, since they may still answer smartctl.
+func (m identityMap) names() []string {
+	out := make([]string, 0, len(m.byName))
+	for n := range m.byName {
+		out = append(out, n)
+	}
+	sort.Strings(out)
+	return out
 }
 
 func (m identityMap) lookup(devName, addr string) (*pb.DriveIdentity, bool) {

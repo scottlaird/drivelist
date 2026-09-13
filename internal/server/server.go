@@ -144,6 +144,17 @@ func (s *Server) ReportKernel(ctx context.Context, req *connect.Request[pb.Repor
 	return connect.NewResponse(&pb.ReportAck{Accepted: true, Stored: uint32(n)}), nil
 }
 
+func (s *Server) ReportSmart(ctx context.Context, req *connect.Request[pb.ReportSmartRequest]) (*connect.Response[pb.ReportAck], error) {
+	host := hostIdentityFromProto(req.Msg.GetHost())
+	n, err := s.store.IngestSmart(ctx, host, smartSamplesFromProto(req.Msg.GetSamples()))
+	if err != nil {
+		s.log.Error("ingest smart", "host", host.Hostname, "err", err)
+		return nil, connect.NewError(connect.CodeInternal, err)
+	}
+	s.log.Info("smart samples stored", "host", host.Hostname, "stored", n, "received", len(req.Msg.GetSamples()))
+	return connect.NewResponse(&pb.ReportAck{Accepted: true, Stored: uint32(n)}), nil
+}
+
 // ---------- Query ----------
 
 func (s *Server) ListHosts(ctx context.Context, _ *connect.Request[pb.ListHostsRequest]) (*connect.Response[pb.ListHostsResponse], error) {
@@ -259,6 +270,22 @@ func (s *Server) GetKernel(ctx context.Context, req *connect.Request[pb.GetKerne
 	out := &pb.GetKernelResponse{Drive: driveToProto(d)}
 	for _, k := range samples {
 		out.Samples = append(out.Samples, kernelSampleToProto(k))
+	}
+	return connect.NewResponse(out), nil
+}
+
+func (s *Server) GetSmart(ctx context.Context, req *connect.Request[pb.GetSmartRequest]) (*connect.Response[pb.GetSmartResponse], error) {
+	var since time.Time
+	if t := req.Msg.GetSince(); t != nil {
+		since = t.AsTime()
+	}
+	d, samples, raw, rawTS, err := s.store.SmartSamples(ctx, req.Msg.GetRef(), since, req.Msg.GetIncludeRaw())
+	if err != nil {
+		return nil, storeErr(err)
+	}
+	out := &pb.GetSmartResponse{Drive: driveToProto(d), RawJson: raw, RawTs: ts(rawTS)}
+	for _, k := range samples {
+		out.Samples = append(out.Samples, smartSampleToProto(k))
 	}
 	return connect.NewResponse(out), nil
 }
