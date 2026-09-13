@@ -5,12 +5,12 @@ T: disk
 D: b 67:0
 N: sdaw
 L: 0
-S: disk/by-id/wwn-0x5000cca23bf5465d
-S: disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy33-lun-0
-S: disk/by-vdev/D28
-S: disk/by-diskseq/57
 S: disk/by-id/scsi-35000cca23bf5465d
+S: disk/by-diskseq/57
 S: disk/by-id/scsi-SATA_HUH728080ALE601_2EKT63HX
+S: disk/by-id/wwn-0x5000cca23bf5465d
+S: disk/by-vdev/D28
+S: disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy33-lun-0
 Q: 57
 E: DEVPATH=/devices/pci0000:00/0000:00:03.0/0000:03:00.0/host11/port-11:0/expander-11:0/port-11:0:25/end_device-11:0:25/target11:0:33/11:0:33:0/block/sdaw
 E: DEVNAME=/dev/sdaw
@@ -53,7 +53,7 @@ E: ID_PART_TABLE_UUID=3b939a04-63a7-554e-87d7-4d67a4d11e63
 E: ID_PART_TABLE_TYPE=gpt
 E: ID_VDEV=D28
 E: ID_VDEV_PATH=disk/by-vdev/D28
-E: DEVLINKS=/dev/disk/by-id/wwn-0x5000cca23bf5465d /dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy33-lun-0 /dev/disk/by-vdev/D28 /dev/disk/by-diskseq/57 /dev/disk/by-id/scsi-35000cca23bf5465d /dev/disk/by-id/scsi-SATA_HUH728080ALE601_2EKT63HX
+E: DEVLINKS=/dev/disk/by-id/scsi-35000cca23bf5465d /dev/disk/by-diskseq/57 /dev/disk/by-id/scsi-SATA_HUH728080ALE601_2EKT63HX /dev/disk/by-id/wwn-0x5000cca23bf5465d /dev/disk/by-vdev/D28 /dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy33-lun-0
 E: TAGS=:systemd:
 E: CURRENT_TAGS=:systemd:
 

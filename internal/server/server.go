@@ -287,6 +287,37 @@ func (s *Server) ListExpanders(ctx context.Context, _ *connect.Request[pb.ListEx
 	return connect.NewResponse(out), nil
 }
 
+func (s *Server) GetSAS(ctx context.Context, req *connect.Request[pb.GetSASRequest]) (*connect.Response[pb.GetSASResponse], error) {
+	nodes, phys, err := s.store.SASState(ctx, req.Msg.GetHost())
+	if err != nil {
+		return nil, storeErr(err)
+	}
+	out := &pb.GetSASResponse{}
+	for _, n := range nodes {
+		out.Nodes = append(out.Nodes, &pb.SasNodeState{Node: sasNodeToProto(n.SASNode), Hostname: n.Hostname, FirstSeen: ts(n.FirstSeen), LastSeen: ts(n.LastSeen), GoneAt: ts(n.GoneAt)})
+	}
+	for _, p := range phys {
+		out.Phys = append(out.Phys, &pb.SasPhyState{Phy: sasPhyToProto(p.SASPhy), Hostname: p.Hostname, OwnerName: p.OwnerName, Serial: p.Serial, FirstSeen: ts(p.FirstSeen), LastSeen: ts(p.LastSeen), GoneAt: ts(p.GoneAt)})
+	}
+	return connect.NewResponse(out), nil
+}
+
+func (s *Server) ListSASErrors(ctx context.Context, req *connect.Request[pb.ListSASErrorsRequest]) (*connect.Response[pb.ListSASErrorsResponse], error) {
+	var since time.Time
+	if t := req.Msg.GetSince(); t != nil {
+		since = t.AsTime()
+	}
+	rows, err := s.store.SASErrors(ctx, req.Msg.GetHost(), since)
+	if err != nil {
+		return nil, storeErr(err)
+	}
+	out := &pb.ListSASErrorsResponse{}
+	for _, r := range rows {
+		out.Rows = append(out.Rows, sasErrorRowToProto(r))
+	}
+	return connect.NewResponse(out), nil
+}
+
 func (s *Server) NameExpander(ctx context.Context, req *connect.Request[pb.NameExpanderRequest]) (*connect.Response[pb.NameExpanderResponse], error) {
 	e, err := s.store.NameExpander(ctx, req.Msg.GetRef(), req.Msg.GetName(), req.Msg.GetNote(), actorOr(req.Msg.GetActor()))
 	if err != nil {

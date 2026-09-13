@@ -6,10 +6,10 @@ D: b 69:0
 N: sdcc
 L: 0
 S: disk/by-id/scsi-SHGST_HUH728080AL5200_2EGV9EPX
-S: disk/by-path/pci-0000:03:00.0-sas-exp0x5003048001e8967f-phy21-lun-0
-S: disk/by-id/wwn-0x5000cca23b2fd45c
 S: disk/by-vdev/E9
+S: disk/by-path/pci-0000:03:00.0-sas-exp0x5003048001e8967f-phy21-lun-0
 S: disk/by-id/scsi-35000cca23b2fd45c
+S: disk/by-id/wwn-0x5000cca23b2fd45c
 S: disk/by-diskseq/89
 Q: 89
 E: DEVPATH=/devices/pci0000:00/0000:00:03.0/0000:03:00.0/host11/port-11:9/expander-11:1/port-11:1:6/end_device-11:1:6/target11:0:66/11:0:66:0/block/sdcc
@@ -56,7 +56,7 @@ E: ID_PART_TABLE_TYPE=gpt
 E: ID_VDEV=E9
 E: ID_VDEV_PATH=disk/by-vdev/E9
 E: NVME_HOST_IFACE=none
-E: DEVLINKS=/dev/disk/by-id/scsi-SHGST_HUH728080AL5200_2EGV9EPX /dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5003048001e8967f-phy21-lun-0 /dev/disk/by-id/wwn-0x5000cca23b2fd45c /dev/disk/by-vdev/E9 /dev/disk/by-id/scsi-35000cca23b2fd45c /dev/disk/by-diskseq/89
+E: DEVLINKS=/dev/disk/by-id/scsi-SHGST_HUH728080AL5200_2EGV9EPX /dev/disk/by-vdev/E9 /dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5003048001e8967f-phy21-lun-0 /dev/disk/by-id/scsi-35000cca23b2fd45c /dev/disk/by-id/wwn-0x5000cca23b2fd45c /dev/disk/by-diskseq/89
 E: TAGS=:systemd:
 E: CURRENT_TAGS=:systemd:
 

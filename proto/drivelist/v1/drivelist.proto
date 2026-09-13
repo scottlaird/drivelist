@@ -64,6 +64,10 @@ service Query {
   // NameExpander records what a person calls an expander; every view
   // shows the name in place of the kernel's expander-H:N from then on.
   rpc NameExpander(NameExpanderRequest) returns (NameExpanderResponse);
+  // GetSAS returns one host's SAS topology as the server last saw it.
+  rpc GetSAS(GetSASRequest) returns (GetSASResponse);
+  // ListSASErrors lists the phys whose error counters climbed in a window.
+  rpc ListSASErrors(ListSASErrorsRequest) returns (ListSASErrorsResponse);
 }
 
 // ---------- shared ----------
@@ -134,6 +138,42 @@ message ReportInventoryRequest {
   repeated UnmappedMember unmapped_members = 5;
   bool complete = 6;                  // false if a collector stage failed outright
   repeated string collector_errors = 7;
+  repeated SasNode sas_nodes = 8;     // the SAS topology, empty from agents before 0.6 or hosts without SAS
+  repeated SasPhy sas_phys = 9;
+}
+
+// SasNode is an HBA or expander: something with phys of its own.
+message SasNode {
+  string kind = 1;                    // "hba" | "expander"
+  string name = 2;                    // the kernel's name: "host11", "expander-11:0"
+  string address = 3;                 // SAS address, the key
+  string vendor = 4;
+  string product = 5;
+  string revision = 6;                // firmware
+  string parent_address = 7;          // the node upstream; "" for an HBA
+  string upstream_port = 8;           // the upstream node's port that leads here
+}
+
+// SasPhy is one phy of a node: its link, what is on the far end, and the
+// four SAS error counters the kernel keeps for it, cumulative since boot.
+message SasPhy {
+  string owner_address = 1;           // the node's address
+  uint32 phy_id = 2;
+  string name = 3;                    // "phy-11:0:5"
+  string port = 4;                    // the port it is bundled into; "" when nothing is attached
+  uint32 port_width = 5;              // phys in that port
+  string rate = 6;                    // negotiated_linkrate as the kernel prints it
+  double rate_gbit = 7;               // 0 without a link
+  string attached_kind = 8;           // "expander" | "drive" | "device" | "upstream" | ""
+  string attached = 9;                // "expander-11:1", "end_device-11:0:4"
+  string attached_address = 10;
+  string dev_name = 11;               // the block device behind it, if a drive
+  string bay = 12;
+  bool enabled = 13;
+  uint64 invalid_dword = 14;
+  uint64 disparity_error = 15;
+  uint64 loss_dword_sync = 16;
+  uint64 phy_reset_problem = 17;
 }
 
 // DriveStatus is the server's status for a drive, returned to the agent so
@@ -310,6 +350,62 @@ message NameExpanderRequest {
 
 message NameExpanderResponse {
   Expander expander = 1;
+}
+
+message GetSASRequest {
+  string host = 1;
+}
+
+message SasNodeState {
+  SasNode node = 1;
+  string hostname = 2;
+  google.protobuf.Timestamp first_seen = 3;
+  google.protobuf.Timestamp last_seen = 4;
+  google.protobuf.Timestamp gone_at = 5;   // unset while present
+}
+
+message SasPhyState {
+  SasPhy phy = 1;
+  string hostname = 2;
+  string owner_name = 3;              // the node's kernel name
+  string serial = 4;                  // of the drive behind it, if any
+  google.protobuf.Timestamp first_seen = 5;
+  google.protobuf.Timestamp last_seen = 6;
+  google.protobuf.Timestamp gone_at = 7;
+}
+
+message GetSASResponse {
+  repeated SasNodeState nodes = 1;
+  repeated SasPhyState phys = 2;
+}
+
+message ListSASErrorsRequest {
+  string host = 1;                    // "" for every host
+  google.protobuf.Timestamp since = 2;
+}
+
+// SasErrorRow is one phy's counter growth over the window.
+message SasErrorRow {
+  string hostname = 1;
+  string owner_name = 2;
+  string owner_address = 3;
+  uint32 phy_id = 4;
+  string port = 5;
+  string attached_kind = 6;
+  string attached = 7;
+  string dev_name = 8;
+  string serial = 9;
+  string bay = 10;
+  uint64 invalid_dword = 11;          // growth in the window
+  uint64 disparity_error = 12;
+  uint64 loss_dword_sync = 13;
+  uint64 phy_reset_problem = 14;
+  google.protobuf.Timestamp last_at = 15;
+  uint32 samples = 16;                // reports in which a counter grew
+}
+
+message ListSASErrorsResponse {
+  repeated SasErrorRow rows = 1;
 }
 
 message Drive {

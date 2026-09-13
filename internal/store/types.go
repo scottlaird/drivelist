@@ -66,6 +66,42 @@ type Report struct {
 	Unmapped        []PoolMember
 	Complete        bool // false if a collector stage failed outright
 	CollectorErrors []string
+	SASNodes        []SASNode // empty from agents before 0.6 or hosts without SAS
+	SASPhys         []SASPhy
+}
+
+// SASNode is an HBA or expander as an agent reports it.
+type SASNode struct {
+	Kind          string // "hba" | "expander"
+	Name          string
+	Address       string // the key
+	Vendor        string
+	Product       string
+	Revision      string
+	ParentAddress string
+	UpstreamPort  string
+}
+
+// SASPhy is one phy of a node as an agent reports it: link, far end, and
+// the four error counters, cumulative since boot.
+type SASPhy struct {
+	OwnerAddress    string
+	PhyID           int
+	Name            string
+	Port            string
+	PortWidth       int
+	Rate            string
+	RateGbit        float64
+	AttachedKind    string // "expander" | "drive" | "device" | "upstream" | ""
+	Attached        string
+	AttachedAddress string
+	DevName         string
+	Bay             string
+	Enabled         bool
+	InvalidDword    uint64
+	DisparityError  uint64
+	LossDwordSync   uint64
+	PhyResetProblem uint64
 }
 
 // DriveStatus is the server's status for one drive, returned to the agent.
@@ -129,6 +165,11 @@ const (
 	EventKernelWarning      = "kernel_warning"
 	EventSmartWarning       = "smart_warning"
 	EventMerged             = "merged"
+	EventSASLinkChanged     = "sas_link_changed"     // a phy's negotiated rate changed, or its link came or went
+	EventSASAttachedChanged = "sas_attached_changed" // something else is on the far end of a phy
+	EventSASPortChanged     = "sas_port_changed"     // a port bundles a different number of phys
+	EventSASErrors          = "sas_errors"           // a phy's error counters grew; once per phy per day
+	EventSASNodeChanged     = "sas_node_changed"     // an HBA or expander appeared, vanished, or changed firmware
 	EventHostMerged         = "host_merged"
 )
 

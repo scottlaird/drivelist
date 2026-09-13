@@ -3,6 +3,7 @@ package server
 import (
 	"context"
 	"net/http"
+	"strconv"
 	"time"
 
 	"github.com/prometheus/client_golang/prometheus"
@@ -65,10 +66,12 @@ var (
 	descKernelWarn     = prometheus.NewDesc("drivelist_kernel_warnings_24h", "kernel_warning events in the last 24 hours.", nil, nil)
 	descEvents24       = prometheus.NewDesc("drivelist_events_24h", "Events of any kind in the last 24 hours.", nil, nil)
 	descScrapeError    = prometheus.NewDesc("drivelist_scrape_error", "1 if reading the fleet summary failed on this scrape.", nil, nil)
+	descSASErrors      = prometheus.NewDesc("drivelist_sas_phy_errors_total", "SAS error counter of one phy since the host booted, as last reported. counter is invalid_dword, disparity_error, loss_dword_sync or phy_reset_problem.", []string{"host", "node", "phy", "port", "attached", "device", "counter"}, nil)
+	descSASRate        = prometheus.NewDesc("drivelist_sas_phy_rate_gbit", "Negotiated link rate of one phy in Gbit/s, 0 without a link.", []string{"host", "node", "phy", "port", "attached", "device"}, nil)
 )
 
 func (c *fleetCollector) Describe(ch chan<- *prometheus.Desc) {
-	for _, d := range []*prometheus.Desc{descHostDrives, descHostMissing, descHostGhosts, descHostStale, descHostLastReport, descDrives, descKernelWarn, descEvents24, descScrapeError} {
+	for _, d := range []*prometheus.Desc{descHostDrives, descHostMissing, descHostGhosts, descHostStale, descHostLastReport, descDrives, descKernelWarn, descEvents24, descScrapeError, descSASErrors, descSASRate} {
 		ch <- d
 	}
 }
@@ -100,4 +103,18 @@ func (c *fleetCollector) Collect(ch chan<- prometheus.Metric) {
 	}
 	ch <- prometheus.MustNewConstMetric(descKernelWarn, prometheus.GaugeValue, float64(m.KernelWarnings24))
 	ch <- prometheus.MustNewConstMetric(descEvents24, prometheus.GaugeValue, float64(m.Events24))
+
+	// Per-phy SAS counters are the exception to "no per-device series":
+	// watching them climb over time is the reason they are collected.
+	phys, err := c.store.SASPhyTotals(ctx)
+	if err != nil {
+		return
+	}
+	for _, p := range phys {
+		labels := []string{p.Hostname, p.OwnerName, strconv.Itoa(p.PhyID), p.Port, p.Attached, p.DevName}
+		ch <- prometheus.MustNewConstMetric(descSASRate, prometheus.GaugeValue, p.RateGbit, labels...)
+		for name, v := range map[string]uint64{"invalid_dword": p.InvalidDword, "disparity_error": p.DisparityError, "loss_dword_sync": p.LossDwordSync, "phy_reset_problem": p.PhyResetProblem} {
+			ch <- prometheus.MustNewConstMetric(descSASErrors, prometheus.CounterValue, float64(v), append(labels, name)...)
+		}
+	}
 }

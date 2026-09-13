@@ -76,6 +76,10 @@ const (
 	QueryListExpandersProcedure = "/drivelist.v1.Query/ListExpanders"
 	// QueryNameExpanderProcedure is the fully-qualified name of the Query's NameExpander RPC.
 	QueryNameExpanderProcedure = "/drivelist.v1.Query/NameExpander"
+	// QueryGetSASProcedure is the fully-qualified name of the Query's GetSAS RPC.
+	QueryGetSASProcedure = "/drivelist.v1.Query/GetSAS"
+	// QueryListSASErrorsProcedure is the fully-qualified name of the Query's ListSASErrors RPC.
+	QueryListSASErrorsProcedure = "/drivelist.v1.Query/ListSASErrors"
 )
 
 // CollectorClient is a client for the drivelist.v1.Collector service.
@@ -281,6 +285,10 @@ type QueryClient interface {
 	// NameExpander records what a person calls an expander; every view
 	// shows the name in place of the kernel's expander-H:N from then on.
 	NameExpander(context.Context, *connect.Request[drivelistv1.NameExpanderRequest]) (*connect.Response[drivelistv1.NameExpanderResponse], error)
+	// GetSAS returns one host's SAS topology as the server last saw it.
+	GetSAS(context.Context, *connect.Request[drivelistv1.GetSASRequest]) (*connect.Response[drivelistv1.GetSASResponse], error)
+	// ListSASErrors lists the phys whose error counters climbed in a window.
+	ListSASErrors(context.Context, *connect.Request[drivelistv1.ListSASErrorsRequest]) (*connect.Response[drivelistv1.ListSASErrorsResponse], error)
 }
 
 // NewQueryClient constructs a client for the drivelist.v1.Query service. By default, it uses the
@@ -390,6 +398,18 @@ func NewQueryClient(httpClient connect.HTTPClient, baseURL string, opts ...conne
 			connect.WithSchema(queryMethods.ByName("NameExpander")),
 			connect.WithClientOptions(opts...),
 		),
+		getSAS: connect.NewClient[drivelistv1.GetSASRequest, drivelistv1.GetSASResponse](
+			httpClient,
+			baseURL+QueryGetSASProcedure,
+			connect.WithSchema(queryMethods.ByName("GetSAS")),
+			connect.WithClientOptions(opts...),
+		),
+		listSASErrors: connect.NewClient[drivelistv1.ListSASErrorsRequest, drivelistv1.ListSASErrorsResponse](
+			httpClient,
+			baseURL+QueryListSASErrorsProcedure,
+			connect.WithSchema(queryMethods.ByName("ListSASErrors")),
+			connect.WithClientOptions(opts...),
+		),
 	}
 }
 
@@ -411,6 +431,8 @@ type queryClient struct {
 	rebuild         *connect.Client[drivelistv1.RebuildRequest, drivelistv1.RebuildResponse]
 	listExpanders   *connect.Client[drivelistv1.ListExpandersRequest, drivelistv1.ListExpandersResponse]
 	nameExpander    *connect.Client[drivelistv1.NameExpanderRequest, drivelistv1.NameExpanderResponse]
+	getSAS          *connect.Client[drivelistv1.GetSASRequest, drivelistv1.GetSASResponse]
+	listSASErrors   *connect.Client[drivelistv1.ListSASErrorsRequest, drivelistv1.ListSASErrorsResponse]
 }
 
 // ListHosts calls drivelist.v1.Query.ListHosts.
@@ -493,6 +515,16 @@ func (c *queryClient) NameExpander(ctx context.Context, req *connect.Request[dri
 	return c.nameExpander.CallUnary(ctx, req)
 }
 
+// GetSAS calls drivelist.v1.Query.GetSAS.
+func (c *queryClient) GetSAS(ctx context.Context, req *connect.Request[drivelistv1.GetSASRequest]) (*connect.Response[drivelistv1.GetSASResponse], error) {
+	return c.getSAS.CallUnary(ctx, req)
+}
+
+// ListSASErrors calls drivelist.v1.Query.ListSASErrors.
+func (c *queryClient) ListSASErrors(ctx context.Context, req *connect.Request[drivelistv1.ListSASErrorsRequest]) (*connect.Response[drivelistv1.ListSASErrorsResponse], error) {
+	return c.listSASErrors.CallUnary(ctx, req)
+}
+
 // QueryHandler is an implementation of the drivelist.v1.Query service.
 type QueryHandler interface {
 	ListHosts(context.Context, *connect.Request[drivelistv1.ListHostsRequest]) (*connect.Response[drivelistv1.ListHostsResponse], error)
@@ -534,6 +566,10 @@ type QueryHandler interface {
 	// NameExpander records what a person calls an expander; every view
 	// shows the name in place of the kernel's expander-H:N from then on.
 	NameExpander(context.Context, *connect.Request[drivelistv1.NameExpanderRequest]) (*connect.Response[drivelistv1.NameExpanderResponse], error)
+	// GetSAS returns one host's SAS topology as the server last saw it.
+	GetSAS(context.Context, *connect.Request[drivelistv1.GetSASRequest]) (*connect.Response[drivelistv1.GetSASResponse], error)
+	// ListSASErrors lists the phys whose error counters climbed in a window.
+	ListSASErrors(context.Context, *connect.Request[drivelistv1.ListSASErrorsRequest]) (*connect.Response[drivelistv1.ListSASErrorsResponse], error)
 }
 
 // NewQueryHandler builds an HTTP handler from the service implementation. It returns the path on
@@ -639,6 +675,18 @@ func NewQueryHandler(svc QueryHandler, opts ...connect.HandlerOption) (string, h
 		connect.WithSchema(queryMethods.ByName("NameExpander")),
 		connect.WithHandlerOptions(opts...),
 	)
+	queryGetSASHandler := connect.NewUnaryHandler(
+		QueryGetSASProcedure,
+		svc.GetSAS,
+		connect.WithSchema(queryMethods.ByName("GetSAS")),
+		connect.WithHandlerOptions(opts...),
+	)
+	queryListSASErrorsHandler := connect.NewUnaryHandler(
+		QueryListSASErrorsProcedure,
+		svc.ListSASErrors,
+		connect.WithSchema(queryMethods.ByName("ListSASErrors")),
+		connect.WithHandlerOptions(opts...),
+	)
 	return "/drivelist.v1.Query/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
 		case QueryListHostsProcedure:
@@ -673,6 +721,10 @@ func NewQueryHandler(svc QueryHandler, opts ...connect.HandlerOption) (string, h
 			queryListExpandersHandler.ServeHTTP(w, r)
 		case QueryNameExpanderProcedure:
 			queryNameExpanderHandler.ServeHTTP(w, r)
+		case QueryGetSASProcedure:
+			queryGetSASHandler.ServeHTTP(w, r)
+		case QueryListSASErrorsProcedure:
+			queryListSASErrorsHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -744,4 +796,12 @@ func (UnimplementedQueryHandler) ListExpanders(context.Context, *connect.Request
 
 func (UnimplementedQueryHandler) NameExpander(context.Context, *connect.Request[drivelistv1.NameExpanderRequest]) (*connect.Response[drivelistv1.NameExpanderResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("drivelist.v1.Query.NameExpander is not implemented"))
+}
+
+func (UnimplementedQueryHandler) GetSAS(context.Context, *connect.Request[drivelistv1.GetSASRequest]) (*connect.Response[drivelistv1.GetSASResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("drivelist.v1.Query.GetSAS is not implemented"))
+}
+
+func (UnimplementedQueryHandler) ListSASErrors(context.Context, *connect.Request[drivelistv1.ListSASErrorsRequest]) (*connect.Response[drivelistv1.ListSASErrorsResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("drivelist.v1.Query.ListSASErrors is not implemented"))
 }

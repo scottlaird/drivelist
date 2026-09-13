@@ -47,6 +47,7 @@ can show it. Needs the agent token.`,
 				Interval:   interval,
 				SpoolDir:   stateDir + "/spool",
 				StatusPath: stateDir + "/status.json",
+				SAS:        collectSAS,
 			}, connectSender{client}, collectAll, slog.Default())
 			if err != nil {
 				return err

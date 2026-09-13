@@ -49,6 +49,46 @@ func gap(secs float64) string {
 	return fmt.Sprintf("%dd", int(d.Hours()/24))
 }
 
+// sasWhere says what a phy leads to, for event lines: the drive and bay,
+// the expander, or "upstream".
+func sasWhere(d map[string]any) string {
+	switch str(d, "attached_kind") {
+	case "drive", "device":
+		s := " (" + str(d, "attached")
+		if dev := str(d, "dev_name"); dev != "" {
+			s = " (" + dev
+		}
+		if bay := str(d, "bay"); bay != "" {
+			s += " bay " + bay
+		}
+		return s + ")"
+	case "expander":
+		return " (" + str(d, "attached") + ")"
+	case "upstream":
+		return " (upstream)"
+	}
+	return ""
+}
+
+func sasDev(dev string) string {
+	if dev == "" {
+		return ""
+	}
+	return " " + dev
+}
+
+// sasGrowth renders the counters that grew: "+12 invalid dwords, +3 dword sync".
+func sasGrowth(v any) string {
+	m, _ := v.(map[string]any)
+	var parts []string
+	for _, k := range []struct{ key, label string }{{"invalid_dword", "invalid dwords"}, {"disparity_error", "disparity"}, {"loss_dword_sync", "dword sync"}, {"phy_reset_problem", "reset problems"}} {
+		if n := num(m, k.key); n > 0 {
+			parts = append(parts, fmt.Sprintf("+%d %s", int64(n), k.label))
+		}
+	}
+	return strings.Join(parts, ", ")
+}
+
 // count renders a counter that is usually zero as "-" so the column
 // stays quiet.
 func count(n uint32) string {
@@ -279,6 +319,20 @@ func describe(e *pb.Event) string {
 		return fmt.Sprintf("use changed   %s  %s  %s  (was %s)", host, slotD(d, "to_"), useSummary(usesOf(d["to_uses"])), useSummary(usesOf(d["from_uses"])))
 	case "expander_renamed":
 		return fmt.Sprintf("expander      %s  %s is now %s (%v drives kept their bays)", host, firstOf(str(d, "from_name"), str(d, "from_dev"), str(d, "from")), firstOf(str(d, "to_name"), str(d, "to_dev"), str(d, "to")), d["drives"])
+	case "sas_link_changed":
+		return fmt.Sprintf("sas link      %s  %s phy %v%s  %s -> %s", host, str(d, "owner_name"), d["phy"], sasWhere(d), orDash(str(d, "from")), orDash(str(d, "to")))
+	case "sas_attached_changed":
+		return fmt.Sprintf("sas recabled  %s  %s phy %v  now %s%s (was %s %s)", host, str(d, "owner_name"), d["phy"], str(d, "to_attached"), sasDev(str(d, "to_dev_name")), str(d, "from_attached"), str(d, "from_dev_name"))
+	case "sas_port_changed":
+		return fmt.Sprintf("sas port      %s  %s %s -> %s  %v -> %v phys", host, str(d, "owner_name"), str(d, "port"), orDash(str(d, "attached")), d["from"], d["to"])
+	case "sas_errors":
+		return fmt.Sprintf("sas errors    %s  %s phy %v%s  %s", host, str(d, "owner_name"), d["phy"], sasWhere(d), sasGrowth(d["grew"]))
+	case "sas_node_changed":
+		switch str(d, "change") {
+		case "revision":
+			return fmt.Sprintf("sas node      %s  %s (%s) firmware %s -> %s", host, str(d, "name"), strings.TrimSpace(str(d, "product")), str(d, "from"), str(d, "to"))
+		}
+		return fmt.Sprintf("sas node      %s  %s (%s) %s", host, str(d, "name"), strings.TrimSpace(str(d, "product")), str(d, "change"))
 	case "member_state_changed":
 		return fmt.Sprintf("zfs state     %s  %s -> %s", host, str(d, "from"), str(d, "to"))
 	case "status_changed":

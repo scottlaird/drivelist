@@ -77,6 +77,9 @@ func (s *Store) Ingest(ctx context.Context, r Report) (IngestResult, error) {
 	if err := t.resumeIfStale(host); err != nil {
 		return IngestResult{}, err
 	}
+	if err := t.ingestSAS(host, r, rows); err != nil {
+		return IngestResult{}, err
+	}
 	if _, err := t.ExecContext(ctx, `UPDATE host SET last_report = ?, last_observed = ? WHERE host_id = ?`, t.now, t.obs, host.id); err != nil {
 		return IngestResult{}, err
 	}

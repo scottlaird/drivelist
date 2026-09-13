@@ -83,8 +83,8 @@ status: One or more devices are faulted in response to persistent errors.
 action: Replace the faulted device, or use 'zpool clear' to mark the device
 	repaired.
   scan: scrub in progress since Sun Sep 13 00:24:06 2026
-	172T / 235T scanned at 4.43G/s, 131T / 235T issued at 3.38G/s
-	1.94M repaired, 55.82% done, 08:43:41 to go
+	172T / 235T scanned at 3.51G/s, 170T / 235T issued at 3.47G/s
+	2.15M repaired, 72.36% done, 05:19:00 to go
 config:
 
 	NAME                                                STATE     READ WRITE CKSUM
@@ -147,9 +147,9 @@ config:
 	    /dev/disk/by-id/wwn-0x5000cca0bee6a714-part1    ONLINE       0     0     0
 	    /dev/disk/by-id/scsi-35000039b08ca908c-part1    ONLINE       0     0     0
 	    /dev/disk/by-id/scsi-35000cca261035d88-part1    ONLINE       0     0     0
-	    spare-3                                         ONLINE       0     0     0
-	      /dev/disk/by-id/scsi-35000c500b3928e24-part1  ONLINE       0     0     0
-	      /dev/disk/by-id/scsi-35000c500cafaac4f-part1  ONLINE       0     0     0
+	    spare-3                                         ONLINE       0     0     2
+	      /dev/disk/by-id/scsi-35000c500b3928e24-part1  ONLINE       0     0     0  (repairing)
+	      /dev/disk/by-id/scsi-35000c500cafaac4f-part1  ONLINE       0     0     0  (repairing)
 	    /dev/disk/by-id/scsi-35000cca254286798-part1    ONLINE       0     0     0
 	    /dev/disk/by-id/scsi-35000cca26128b234-part1    ONLINE       0     0     0
 	    /dev/disk/by-id/wwn-0x5000c500e3f9397c-part1    ONLINE       0     0     0

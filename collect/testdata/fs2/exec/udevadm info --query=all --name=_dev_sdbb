@@ -6,11 +6,11 @@ D: b 67:80
 N: sdbb
 L: 0
 S: disk/by-diskseq/62
+S: disk/by-vdev/D16
+S: disk/by-id/wwn-0x5000cca2612a20a8
 S: disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy39-lun-0
 S: disk/by-id/scsi-SHITACHI_HUH72808CLAR8000_VJGS573X
-S: disk/by-vdev/D16
 S: disk/by-id/scsi-35000cca2612a20a8
-S: disk/by-id/wwn-0x5000cca2612a20a8
 Q: 62
 E: DEVPATH=/devices/pci0000:00/0000:00:03.0/0000:03:00.0/host11/port-11:0/expander-11:0/port-11:0:30/end_device-11:0:30/target11:0:38/11:0:38:0/block/sdbb
 E: DEVNAME=/dev/sdbb
@@ -56,7 +56,7 @@ E: ID_PART_TABLE_TYPE=gpt
 E: ID_VDEV=D16
 E: ID_VDEV_PATH=disk/by-vdev/D16
 E: NVME_HOST_IFACE=none
-E: DEVLINKS=/dev/disk/by-diskseq/62 /dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy39-lun-0 /dev/disk/by-id/scsi-SHITACHI_HUH72808CLAR8000_VJGS573X /dev/disk/by-vdev/D16 /dev/disk/by-id/scsi-35000cca2612a20a8 /dev/disk/by-id/wwn-0x5000cca2612a20a8
+E: DEVLINKS=/dev/disk/by-diskseq/62 /dev/disk/by-vdev/D16 /dev/disk/by-id/wwn-0x5000cca2612a20a8 /dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy39-lun-0 /dev/disk/by-id/scsi-SHITACHI_HUH72808CLAR8000_VJGS573X /dev/disk/by-id/scsi-35000cca2612a20a8
 E: TAGS=:systemd:
 E: CURRENT_TAGS=:systemd:
 

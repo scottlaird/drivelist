@@ -6,11 +6,11 @@ D: b 65:64
 N: sdu
 L: 0
 S: disk/by-diskseq/29
+S: disk/by-id/wwn-0x5000cca04aafd554
+S: disk/by-vdev/INTERNAL5
 S: disk/by-id/scsi-35000cca04aafd554
 S: disk/by-id/scsi-SHITACHI_HUSMH842_CLAR200_0LY3PSSA
-S: disk/by-id/wwn-0x5000cca04aafd554
 S: disk/by-path/pci-0000:03:00.0-sas-phy4-lun-0
-S: disk/by-vdev/INTERNAL5
 Q: 29
 E: DEVPATH=/devices/pci0000:00/0000:00:03.0/0000:03:00.0/host11/port-11:5/end_device-11:5/target11:0:4/11:0:4:0/block/sdu
 E: DEVNAME=/dev/sdu
@@ -55,7 +55,7 @@ E: ID_PART_TABLE_UUID=3ea5f801-8283-4b44-b652-88fb2dec7d76
 E: ID_PART_TABLE_TYPE=gpt
 E: ID_VDEV=INTERNAL5
 E: ID_VDEV_PATH=disk/by-vdev/INTERNAL5
-E: DEVLINKS=/dev/disk/by-diskseq/29 /dev/disk/by-id/scsi-35000cca04aafd554 /dev/disk/by-id/scsi-SHITACHI_HUSMH842_CLAR200_0LY3PSSA /dev/disk/by-id/wwn-0x5000cca04aafd554 /dev/disk/by-path/pci-0000:03:00.0-sas-phy4-lun-0 /dev/disk/by-vdev/INTERNAL5
+E: DEVLINKS=/dev/disk/by-diskseq/29 /dev/disk/by-id/wwn-0x5000cca04aafd554 /dev/disk/by-vdev/INTERNAL5 /dev/disk/by-id/scsi-35000cca04aafd554 /dev/disk/by-id/scsi-SHITACHI_HUSMH842_CLAR200_0LY3PSSA /dev/disk/by-path/pci-0000:03:00.0-sas-phy4-lun-0
 E: TAGS=:systemd:
 E: CURRENT_TAGS=:systemd:
 
