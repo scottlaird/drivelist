@@ -127,6 +127,17 @@ func TestFleetEndToEnd(t *testing.T) {
 	if !strings.Contains(out, "no SMART samples") {
 		t.Errorf("smart with nothing recorded:\n%s", out)
 	}
+	out = mustRun(t, "drive", "VLG32AEY", "io")
+	if !strings.Contains(out, "no I/O samples") {
+		t.Errorf("io with nothing recorded:\n%s", out)
+	}
+	out = mustRun(t, "io", "compare")
+	if !strings.Contains(out, "no I/O samples") {
+		t.Errorf("io compare with nothing recorded:\n%s", out)
+	}
+	if got := groupLabel("zfs > space 5925914041408872576 > raidz2 12372305547527317295", 8); got != "space/raidz2 …7295 (8)" {
+		t.Errorf("groupLabel = %q", got)
+	}
 	if _, _, err := run(t, "drive", "VLG32AEY", "smart", "--raw"); err == nil {
 		t.Error("smart --raw with nothing stored succeeded")
 	}

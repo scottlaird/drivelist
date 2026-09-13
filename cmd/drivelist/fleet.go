@@ -25,6 +25,7 @@ func fleetCommands(cfg *clientConfig) []*cobra.Command {
 		newDriveCmd(cfg),
 		newEventsCmd(cfg),
 		newMissingCmd(cfg),
+		newIOCmd(cfg),
 	}
 }
 
@@ -202,6 +203,7 @@ prefix of either; an ambiguous prefix lists the candidates.
   drivelist drive REF history      everything that has happened to it, oldest first
   drivelist drive REF kernel       kernel log error counts by hour (--since 7d)
   drivelist drive REF smart        SMART samples, newest first (--since 30d, --raw for the latest smartctl JSON)
+  drivelist drive REF io           hourly I/O buckets, newest first (--since 7d)
   drivelist drive REF mark STATUS  set the status: ok, suspect, bad, shelved, retired
   drivelist drive REF note TEXT    record a note without changing the status`,
 		Args: cobra.MinimumNArgs(1),
@@ -229,6 +231,14 @@ prefix of either; an ambiguous prefix lists the candidates.
 					return fmt.Errorf("usage: drivelist drive REF smart [--since 30d] [--raw]")
 				}
 				return showSmart(cmd, cfg, ref, since, raw)
+			case "io":
+				if len(rest) != 1 {
+					return fmt.Errorf("usage: drivelist drive REF io [--since 7d]")
+				}
+				if since == "" {
+					since = "168h"
+				}
+				return showIO(cmd, cfg, ref, since)
 			case "mark":
 				if len(rest) != 2 {
 					return fmt.Errorf("usage: drivelist drive REF mark STATUS [--note TEXT]")
@@ -240,12 +250,93 @@ prefix of either; an ambiguous prefix lists the candidates.
 				}
 				return annotate(cmd, cfg, ref, "", strings.Join(rest[1:], " "))
 			}
-			return fmt.Errorf("unknown action %q: want history, kernel, smart, mark, or note", rest[0])
+			return fmt.Errorf("unknown action %q: want history, kernel, smart, io, mark, or note", rest[0])
 		},
 	}
 	cmd.Flags().StringVar(&note, "note", "", "with mark: why the status changed")
 	cmd.Flags().StringVar(&since, "since", "", "with kernel or smart: how far back, as a duration (default 168h for kernel, 720h for smart)")
 	cmd.Flags().BoolVar(&raw, "raw", false, "with smart: print the newest raw smartctl JSON instead of the table")
+	return cmd
+}
+
+func showIO(cmd *cobra.Command, cfg *clientConfig, ref, since string) error {
+	d, err := time.ParseDuration(since)
+	if err != nil {
+		return fmt.Errorf("--since: %w", err)
+	}
+	client, err := cfg.queryClient()
+	if err != nil {
+		return err
+	}
+	res, err := client.GetIO(cmd.Context(), connect.NewRequest(&pb.GetIORequest{Ref: ref, Since: timestamppb.New(time.Now().Add(-d))}))
+	if err != nil {
+		return rpcErr(err)
+	}
+	if cfg.json {
+		return printJSON(cmd.OutOrStdout(), res.Msg)
+	}
+	w := cmd.OutOrStdout()
+	printDriveHeader(w, res.Msg.Drive, nil)
+	if len(res.Msg.Samples) == 0 {
+		fmt.Fprintf(w, "no I/O samples in the last %s\n", since)
+		return nil
+	}
+	fmt.Fprintln(w)
+	tw := tab(w)
+	fmt.Fprintln(tw, "START\tSPAN\tHOST\tREADS\tWRITES\tREAD\tWRITTEN\tR_AWAIT\tW_AWAIT\tUTIL\tR_MAX\tW_MAX\tUTIL_MAX")
+	for _, s := range res.Msg.Samples {
+		span := time.Duration(s.BucketSecs) * time.Second
+		fmt.Fprintf(tw, "%s\t%s\t%s\t%d\t%d\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\n", when(s.BucketStart), span, s.Hostname, s.Reads, s.Writes,
+			size(s.ReadBytes), size(s.WriteBytes), ms(fdiv(s.ReadMs, s.Reads)), ms(fdiv(s.WriteMs, s.Writes)), pct(fdiv(s.IoMs, uint64(s.BucketSecs)*1000)),
+			ms(s.RAwaitMaxMs), ms(s.WAwaitMaxMs), pct(s.UtilMax))
+	}
+	return tw.Flush()
+}
+
+func newIOCmd(cfg *clientConfig) *cobra.Command {
+	var host, since string
+	cmd := &cobra.Command{
+		Use:   "io compare",
+		Short: "Compare each drive's latency and utilisation with its vdev's median",
+		Long: `io compare lists every currently placed drive with its average read and
+write latency and utilisation over the window, next to the median of
+the vdev it belongs to, worst first within each vdev. A drive whose
+latency is several times its siblings' is the one to look at.`,
+		Args: cobra.ExactArgs(1),
+		RunE: func(cmd *cobra.Command, args []string) error {
+			if args[0] != "compare" {
+				return fmt.Errorf("usage: drivelist io compare [--host H] [--since 24h]")
+			}
+			d, err := time.ParseDuration(since)
+			if err != nil {
+				return fmt.Errorf("--since: %w", err)
+			}
+			client, err := cfg.queryClient()
+			if err != nil {
+				return err
+			}
+			res, err := client.CompareIO(cmd.Context(), connect.NewRequest(&pb.CompareIORequest{Host: host, Since: timestamppb.New(time.Now().Add(-d))}))
+			if err != nil {
+				return rpcErr(err)
+			}
+			if cfg.json {
+				return printJSON(cmd.OutOrStdout(), res.Msg)
+			}
+			if len(res.Msg.Rows) == 0 {
+				fmt.Fprintf(cmd.OutOrStdout(), "no I/O samples in the last %s\n", since)
+				return nil
+			}
+			tw := tab(cmd.OutOrStdout())
+			fmt.Fprintln(tw, "VDEV\tHOST\tDEVICE\tSERIAL\tMODEL\tR_AWAIT\tvs MED\tW_AWAIT\tvs MED\tUTIL\tvs MED\tREADS\tWRITES")
+			for _, r := range res.Msg.Rows {
+				fmt.Fprintf(tw, "%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%d\t%d\n", groupLabel(r.Group, int(r.GroupSize)), r.Hostname, r.DevName, r.Serial, r.Model,
+					ms(r.RAwaitMs), times(r.RAwaitMs, r.GroupRAwaitMs), ms(r.WAwaitMs), times(r.WAwaitMs, r.GroupWAwaitMs), pct(r.Util), times(r.Util, r.GroupUtil), r.Reads, r.Writes)
+			}
+			return tw.Flush()
+		},
+	}
+	cmd.Flags().StringVar(&host, "host", "", "only drives on this host")
+	cmd.Flags().StringVar(&since, "since", "24h", "window, as a duration")
 	return cmd
 }
 

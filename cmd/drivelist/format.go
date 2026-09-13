@@ -99,6 +99,57 @@ func firstWord(s string) string {
 	return w
 }
 
+func fdiv(a, b uint64) float64 {
+	if b == 0 {
+		return 0
+	}
+	return float64(a) / float64(b)
+}
+
+func ms(v float64) string {
+	if v == 0 {
+		return "-"
+	}
+	return fmt.Sprintf("%.1fms", v)
+}
+
+func pct(v float64) string {
+	return fmt.Sprintf("%.0f%%", v*100)
+}
+
+// times renders v relative to a group median: "1.0×", "3.2×", or "-"
+// when there is no median to compare with.
+func times(v, median float64) string {
+	if median == 0 {
+		if v == 0 {
+			return "1.0×"
+		}
+		return "-"
+	}
+	return fmt.Sprintf("%.1f×", v/median)
+}
+
+// groupLabel shortens a vdev group key: "zfs > space 5925… > raidz2 1237…"
+// becomes "space/raidz2 …7295 (8)"; the empty group is "no pool".
+func groupLabel(group string, size int) string {
+	if group == "" {
+		return fmt.Sprintf("no pool (%d)", size)
+	}
+	parts := strings.Split(group, " > ")
+	if len(parts) < 2 {
+		return group
+	}
+	label := firstWord(parts[1])
+	for _, p := range parts[2:] {
+		w, guid, _ := strings.Cut(p, " ")
+		if len(guid) > 4 {
+			guid = "…" + guid[len(guid)-4:]
+		}
+		label += "/" + w + " " + guid
+	}
+	return fmt.Sprintf("%s (%d)", label, size)
+}
+
 func health(m *pb.SmartSummary) string {
 	if m == nil || m.Healthy == nil {
 		return "-"

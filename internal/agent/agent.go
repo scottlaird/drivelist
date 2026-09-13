@@ -21,6 +21,7 @@ type Sender interface {
 	Report(ctx context.Context, req *pb.ReportInventoryRequest) (*pb.ReportInventoryResponse, error)
 	Kernel(ctx context.Context, req *pb.ReportKernelRequest) (*pb.ReportAck, error)
 	Smart(ctx context.Context, req *pb.ReportSmartRequest) (*pb.ReportAck, error)
+	IO(ctx context.Context, req *pb.ReportIORequest) (*pb.ReportAck, error)
 }
 
 // Config is what the loop needs.
@@ -47,6 +48,7 @@ type Agent struct {
 
 	smart    *smartState
 	smartReq chan struct{}
+	io       *ioState
 }
 
 // New wires an agent. collect is what produces each report's inventory.
@@ -106,10 +108,19 @@ func (a *Agent) Run(ctx context.Context) {
 		defer smartTimer.Stop()
 		smartTick = smartTimer.C
 	}
+	ioTick := make(<-chan time.Time)
+	if a.io != nil {
+		a.ioSample(ctx) // the first reading only primes the counters
+		t := time.NewTicker(a.io.cfg.Interval)
+		defer t.Stop()
+		ioTick = t.C
+	}
 	for {
 		select {
 		case <-ctx.Done():
 			return
+		case <-ioTick:
+			a.ioSample(ctx)
 		case reason := <-a.trigger:
 			if !timer.Stop() {
 				<-timer.C
