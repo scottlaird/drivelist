@@ -33,9 +33,11 @@ through cgo and is still in the tree behind `-tags libzfs` as a
 reference, but it does not compile against OpenZFS 2.2 or later
 headers.
 
-On macOS and other non-Linux systems the tool builds and its tests
-run, but it cannot enumerate drives, since it depends on Linux sysfs
-and udev.
+On macOS, drives are enumerated through `diskutil` and identified
+(model and serial) through `system_profiler`, with mounted volumes as
+their uses; there are no WWNs, enclosure bays or ZFS states there, but
+a Mac can run the agent and its drives join the fleet.  Other systems
+build and run the server and CLI but cannot enumerate drives.
 
 ## Status
 

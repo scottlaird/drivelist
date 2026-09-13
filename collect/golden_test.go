@@ -16,7 +16,7 @@ var update = flag.Bool("update", false, "rewrite the inventory.json golden file 
 // capturedFixtures are trees recorded from real hosts with --capture. Each
 // carries an inventory.json golden file of what Collect produces from it;
 // regenerate with `go test ./collect -update` and review the diff.
-var capturedFixtures = []string{"fs2", "mgmt1", "pbs1"}
+var capturedFixtures = []string{"fs2", "mgmt1", "pbs1", "mac"}
 
 func TestCapturedFixtures(t *testing.T) {
 	for _, name := range capturedFixtures {

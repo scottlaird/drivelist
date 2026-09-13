@@ -4,6 +4,7 @@ import (
 	"os"
 	"os/exec"
 	"path/filepath"
+	"runtime"
 	"strings"
 
 	"github.com/scottlaird/drivelist"
@@ -13,6 +14,10 @@ import (
 // the live system; tests and captures point the fields at a fixture tree
 // (see Fixture and Capture).
 type Collector struct {
+	// Platform selects the collection path: "linux" (sysfs, udev, zpool)
+	// or "darwin" (diskutil, system_profiler). Empty means runtime.GOOS. A
+	// fixture carries its platform, so a Mac's capture collects on Linux.
+	Platform string
 	// Sys is the root of sysfs. Empty means /sys.
 	Sys string
 	// Proc is the root of procfs. Empty means /proc.
@@ -23,6 +28,18 @@ type Collector struct {
 	// ZFS annotates pool membership. nil means the default: run zpool
 	// through Exec (or libzfs, in builds with the libzfs tag).
 	ZFS func(*drivelist.Inventory) error
+}
+
+func (c *Collector) platform() string {
+	if c.Platform == "" {
+		return runtime.GOOS
+	}
+	return c.Platform
+}
+
+// All collects from the live system with default settings.
+func All() (*drivelist.Inventory, error) {
+	return (&Collector{}).Collect()
 }
 
 func (c *Collector) sys() string {
@@ -47,19 +64,26 @@ func (c *Collector) run(name string, args ...string) ([]byte, error) {
 }
 
 // Collect enumerates every disk and annotates each with its uses (ZFS pool
-// membership, mounts) and, where the enclosure reports it, its physical
-// bay. Empty enclosure bays are appended as devices with no name.
+// membership, mounts) and, on Linux, where the enclosure reports it, its
+// physical bay; empty enclosure bays are appended as devices with no name.
+// Platforms other than Linux and macOS get ErrUnsupported.
 func (c *Collector) Collect() (*drivelist.Inventory, error) {
+	switch c.platform() {
+	case "linux":
+		return c.collectLinux()
+	case "darwin":
+		return c.collectDarwin()
+	}
+	return nil, ErrUnsupported
+}
+
+func (c *Collector) collectLinux() (*drivelist.Inventory, error) {
 	inv, err := c.disks()
 	if err != nil {
 		return inv, err
 	}
-	zfs := c.ZFS
-	if zfs == nil {
-		zfs = c.annotateZFS
-	}
 	for _, annotate := range []func(*drivelist.Inventory) error{
-		zfs,
+		c.zfsAnnotator(),
 		c.annotateMounts,
 		annotateMD,
 		annotateLVM,
@@ -72,18 +96,31 @@ func (c *Collector) Collect() (*drivelist.Inventory, error) {
 	return inv, nil
 }
 
+// zfsAnnotator is the ZFS hook, or the platform default when unset.
+func (c *Collector) zfsAnnotator() func(*drivelist.Inventory) error {
+	if c.ZFS != nil {
+		return c.ZFS
+	}
+	return c.annotateZFS
+}
+
 // Fixture returns a Collector that reads a captured tree instead of the
 // live system: sysfs under dir/sys, procfs under dir/proc, and command
-// output from dir/exec/<command line> as written by Capture. Pool
-// membership comes from the captured zpool output whatever the build tag;
-// a tree without it has no pools.
+// output from dir/exec/<command line> as written by Capture. The tree's
+// platform file says which path to take; an old tree without one is
+// Linux. Pool membership comes from the captured zpool output whatever
+// the build tag; a tree without it has no pools.
 func Fixture(dir string) *Collector {
 	c := &Collector{
-		Sys:  filepath.Join(dir, "sys"),
-		Proc: filepath.Join(dir, "proc"),
+		Platform: "linux",
+		Sys:      filepath.Join(dir, "sys"),
+		Proc:     filepath.Join(dir, "proc"),
 		Exec: func(name string, args ...string) ([]byte, error) {
 			return os.ReadFile(filepath.Join(dir, "exec", execKey(name, args)))
 		},
+	}
+	if b, err := os.ReadFile(filepath.Join(dir, "platform")); err == nil {
+		c.Platform = strings.TrimSpace(string(b))
 	}
 	c.ZFS = c.annotateZFSExec
 	return c
