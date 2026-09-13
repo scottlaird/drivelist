@@ -3,7 +3,9 @@ package store
 import (
 	"context"
 	"encoding/json"
+	"errors"
 	"path/filepath"
+	"strings"
 	"testing"
 	"time"
 )
@@ -544,5 +546,124 @@ func TestMigrateIsIdempotent(t *testing.T) {
 	var second int
 	if err := s.db.QueryRow(`SELECT COUNT(*) FROM schema_version`).Scan(&second); err != nil || first == 0 || second != first {
 		t.Errorf("schema_version rows = %d then %d, %v; want the same non-zero count", first, second, err)
+	}
+}
+
+// TestExpanderRenamed: after a reboot the kernel numbers the SAS host
+// differently, so every drive reports a new expander name in its old bay.
+// That is a rename of the shelf, not eleven moves.
+func TestExpanderRenamed(t *testing.T) {
+	h := newHarness(t)
+	a := dev("sda", "A1", "0x5000000000000011", "expander-6:0", "3", "zfs > backups 1 > raidz3 0 > disk 0")
+	b := dev("sdb", "B1", "0x5000000000000012", "expander-6:0", "4", "zfs > backups 1 > raidz3 0 > disk 1")
+	c := dev("sdc", "C1", "0x5000000000000013", "expander-6:0", "5", "zfs > backups 1 > raidz3 0 > disk 2")
+	h.report(hostA, a, b, c)
+	h.advance(time.Hour)
+	// C is out for the reboot; A and B come back under expander-0:0.
+	a.Expander, b.Expander = "expander-0:0", "expander-0:0"
+	h.report(hostA, a, b)
+	for _, serial := range []string{"A1", "B1"} {
+		kinds, _ := h.events(serial)
+		if len(kinds) != 1 || kinds[0] != EventFirstSeen {
+			t.Errorf("%s events = %v, want only first_seen", serial, kinds)
+		}
+		ps := h.placements(serial)
+		if len(ps) != 1 || ps[0].expander != "expander-0:0" || ps[0].ended {
+			t.Errorf("%s placements = %+v", serial, ps)
+		}
+	}
+	// C was absent from the report, but it sits in the same shelf.
+	if ps := h.placements("C1"); len(ps) != 1 || ps[0].expander != "expander-0:0" || !ps[0].ended || ps[0].endReason != EndVanished {
+		t.Errorf("C1 placements = %+v", ps)
+	}
+	if kinds := h.hostEvents("storage1"); len(kinds) != 2 || kinds[1] != EventExpanderRenamed {
+		t.Errorf("host events = %v", kinds)
+	}
+	var detail string
+	h.s.db.QueryRow(`SELECT detail FROM event WHERE kind = ?`, EventExpanderRenamed).Scan(&detail)
+	for _, want := range []string{`"from":"expander-6:0"`, `"to":"expander-0:0"`, `"drives":2`} {
+		if !strings.Contains(detail, want) {
+			t.Errorf("rename detail %s lacks %s", detail, want)
+		}
+	}
+
+	// The agent upgrades and starts sending SAS addresses: the key changes
+	// under both drives again, same bays, so it is another rename.
+	h.advance(time.Hour)
+	a.ExpanderID, b.ExpanderID = "0x500605b000000001", "0x500605b000000001"
+	h.report(hostA, a, b)
+	if ps := h.placements("A1"); len(ps) != 1 || ps[0].expander != "0x500605b000000001" {
+		t.Errorf("after SAS address: %+v", ps)
+	}
+	// A rename with the same address but a new kernel name is nothing at
+	// all: the name is display only.
+	h.advance(time.Hour)
+	a.Expander, b.Expander = "expander-9:0", "expander-9:0"
+	h.report(hostA, a, b)
+	if kinds := h.hostEvents("storage1"); len(kinds) != 3 {
+		t.Errorf("host events after dev rename = %v", kinds)
+	}
+	var dev string
+	h.s.db.QueryRow(`SELECT expander_dev FROM placement WHERE ended_at IS NULL LIMIT 1`).Scan(&dev)
+	if dev != "expander-9:0" {
+		t.Errorf("expander_dev = %q, want expander-9:0", dev)
+	}
+
+	// One drive alone going to another expander's same bay is a move.
+	h.advance(time.Hour)
+	a.ExpanderID, a.Expander = "0x500605b000000002", "expander-9:1"
+	h.report(hostA, a, b)
+	if kinds, _ := h.events("A1"); len(kinds) != 2 || kinds[1] != EventMovedBay {
+		t.Errorf("single drive: %v, want moved_bay", kinds)
+	}
+}
+
+func TestExpanderNames(t *testing.T) {
+	h := fleet(t)
+	all, err := h.s.ListExpanders(h.ctx)
+	if err != nil || len(all) == 0 {
+		t.Fatalf("ListExpanders = %+v, %v", all, err)
+	}
+	var shelf Expander // storage1's, where X sits
+	for _, e := range all {
+		if e.Hostname == "storage1" {
+			shelf = e
+		}
+	}
+	if shelf.Key == "" || shelf.Drives < 1 {
+		t.Fatalf("storage1's expander missing from %+v", all)
+	}
+	e, err := h.s.NameExpander(h.ctx, shelf.Dev, "front shelf", "the one by the door", "scott")
+	if err != nil || e.Name != "front shelf" || e.Key != shelf.Key || e.Drives != shelf.Drives {
+		t.Fatalf("NameExpander = %+v, %v", e, err)
+	}
+	d, _, _, err := h.s.GetDrive(h.ctx, "X1")
+	if err != nil || d.Current == nil || d.Current.ExpanderName != "front shelf" || d.Current.ExpanderDev != shelf.Dev {
+		t.Errorf("placement after naming = %+v, %v", d.Current, err)
+	}
+	names, _ := h.s.ExpanderNames(h.ctx)
+	if names[shelf.Key] != "front shelf" {
+		t.Errorf("ExpanderNames = %v", names)
+	}
+	if _, err := h.s.NameExpander(h.ctx, "nosuch", "x", "", "scott"); !errors.Is(err, ErrNotFound) {
+		t.Errorf("unknown expander: %v", err)
+	}
+	// Two hosts whose kernels both call a shelf expander-7:0: the kernel
+	// name is ambiguous, a distinctive part of either SAS address is not.
+	q := dev("sdz", "Q1", "0x5000000000000009", "expander-7:0", "1")
+	q.ExpanderID = "0x500605b0000000aa"
+	h.report(hostB, dev("sdq", "Y1", "0x5000000000000002", "expander-9:0", "7", "spare"), q)
+	r := dev("sdz", "R1", "0x500000000000000a", "expander-7:0", "1")
+	r.ExpanderID = "0x500605b0000000bb"
+	h.report(HostIdentity{MachineID: "cccc", Hostname: "third", OS: "linux"}, r)
+	var amb *AmbiguousError
+	if _, err := h.s.NameExpander(h.ctx, "expander-7:0", "x", "", "scott"); !errors.As(err, &amb) || len(amb.Candidates) != 2 {
+		t.Errorf("ambiguous kernel name: %v", err)
+	}
+	if e, err := h.s.NameExpander(h.ctx, "00aa", "left JBOD", "", "scott"); err != nil || e.Key != "0x500605b0000000aa" || e.Hostname != "backup" {
+		t.Errorf("partial key: %+v, %v", e, err)
+	}
+	if e, err := h.s.NameExpander(h.ctx, shelf.Key, "", "", "scott"); err != nil || e.Name != "" {
+		t.Errorf("clear = %+v, %v", e, err)
 	}
 }

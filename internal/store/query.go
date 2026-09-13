@@ -27,15 +27,17 @@ type Host struct {
 
 // Placement is one interval of a drive's history.
 type Placement struct {
-	Hostname  string
-	Expander  string
-	Bay       string
-	DevName   string
-	Uses      []string
-	FirstSeen time.Time
-	LastSeen  time.Time
-	EndedAt   time.Time // zero while current
-	EndReason string
+	Hostname     string
+	Expander     string // the key: SAS address, or kernel name from an agent that sent none
+	ExpanderDev  string // the kernel's current name
+	ExpanderName string // what a person called it, "" if nothing
+	Bay          string
+	DevName      string
+	Uses         []string
+	FirstSeen    time.Time
+	LastSeen     time.Time
+	EndedAt      time.Time // zero while current
+	EndReason    string
 }
 
 // Drive is a drive with its current or most recent placement.
@@ -501,7 +503,7 @@ func (s *Store) drives(ctx context.Context, tail string, args ...any) ([]Drive, 
 }
 
 func (s *Store) placements(ctx context.Context, tail string, args ...any) ([]Placement, error) {
-	rows, err := s.db.QueryContext(ctx, `SELECT h.hostname, p.expander, p.bay, p.dev_name, p.uses, p.first_seen, p.last_seen, p.ended_at, p.end_reason FROM placement p JOIN host h USING (host_id) `+tail, args...)
+	rows, err := s.db.QueryContext(ctx, `SELECT h.hostname, p.expander, p.expander_dev, COALESCE(n.name, ''), p.bay, p.dev_name, p.uses, p.first_seen, p.last_seen, p.ended_at, p.end_reason FROM placement p JOIN host h USING (host_id) LEFT JOIN expander_name n ON n.expander = p.expander `+tail, args...)
 	if err != nil {
 		return nil, err
 	}
@@ -512,7 +514,7 @@ func (s *Store) placements(ctx context.Context, tail string, args ...any) ([]Pla
 		var uses string
 		var first, last int64
 		var ended sql.NullInt64
-		if err := rows.Scan(&p.Hostname, &p.Expander, &p.Bay, &p.DevName, &uses, &first, &last, &ended, &p.EndReason); err != nil {
+		if err := rows.Scan(&p.Hostname, &p.Expander, &p.ExpanderDev, &p.ExpanderName, &p.Bay, &p.DevName, &uses, &first, &last, &ended, &p.EndReason); err != nil {
 			return nil, err
 		}
 		json.Unmarshal([]byte(uses), &p.Uses)

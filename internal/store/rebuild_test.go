@@ -65,6 +65,12 @@ func TestRebuildReproducesIngest(t *testing.T) {
 	h.advance(time.Hour)
 	h.report(hostA, x, devZ) // Z reappears
 	h.advance(time.Hour)
+	xr, zr := x, devZ
+	xr.Expander, zr.Expander = "expander-0:0", "expander-0:0"
+	h.report(hostA, xr, zr) // a reboot renumbered the expander: renamed, not moved
+	h.advance(time.Hour)
+	h.report(hostA, x, devZ) // and back
+	h.advance(time.Hour)
 	broken := ReportDevice{DevName: "sdc", Expander: "expander-4:0", Bay: "3", Error: "udevadm: exit status 1"}
 	h.report(hostA, x, broken) // Z attributed by bay
 	h.advance(time.Hour)
@@ -81,8 +87,8 @@ func TestRebuildReproducesIngest(t *testing.T) {
 	before := h.tableRows(placementsQuery)
 	beforeEvents := h.tableRows(eventsQuery)
 	// 3 first_seen, vanished, member_state_changed, moved_host, reappeared,
-	// report_degraded, use_changed.
-	if len(before) < 6 || len(beforeEvents) < 9 {
+	// 2 expander_renamed, report_degraded, use_changed.
+	if len(before) < 6 || len(beforeEvents) < 11 {
 		t.Fatalf("history too small to prove anything: %d placements, %d events", len(before), len(beforeEvents))
 	}
 

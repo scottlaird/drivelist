@@ -240,7 +240,20 @@ func (s *Server) GetDriveHistory(ctx context.Context, req *connect.Request[pb.Ge
 	for _, e := range evs {
 		out.Events = append(out.Events, eventToProto(e))
 	}
+	if err := s.nameEvents(ctx, out.Events); err != nil {
+		return nil, storeErr(err)
+	}
 	return connect.NewResponse(out), nil
+}
+
+// nameEvents decorates events with expander names.
+func (s *Server) nameEvents(ctx context.Context, evs []*pb.Event) error {
+	names, err := s.store.ExpanderNames(ctx)
+	if err != nil {
+		return err
+	}
+	nameExpanders(names, evs)
+	return nil
 }
 
 func (s *Server) ListEvents(ctx context.Context, req *connect.Request[pb.ListEventsRequest]) (*connect.Response[pb.ListEventsResponse], error) {
@@ -256,7 +269,31 @@ func (s *Server) ListEvents(ctx context.Context, req *connect.Request[pb.ListEve
 	for _, e := range evs {
 		out.Events = append(out.Events, eventToProto(e))
 	}
+	if err := s.nameEvents(ctx, out.Events); err != nil {
+		return nil, storeErr(err)
+	}
 	return connect.NewResponse(out), nil
+}
+
+func (s *Server) ListExpanders(ctx context.Context, _ *connect.Request[pb.ListExpandersRequest]) (*connect.Response[pb.ListExpandersResponse], error) {
+	es, err := s.store.ListExpanders(ctx)
+	if err != nil {
+		return nil, storeErr(err)
+	}
+	out := &pb.ListExpandersResponse{}
+	for _, e := range es {
+		out.Expanders = append(out.Expanders, expanderToProto(e))
+	}
+	return connect.NewResponse(out), nil
+}
+
+func (s *Server) NameExpander(ctx context.Context, req *connect.Request[pb.NameExpanderRequest]) (*connect.Response[pb.NameExpanderResponse], error) {
+	e, err := s.store.NameExpander(ctx, req.Msg.GetRef(), req.Msg.GetName(), req.Msg.GetNote(), actorOr(req.Msg.GetActor()))
+	if err != nil {
+		return nil, storeErr(err)
+	}
+	s.log.Info("expander named", "expander", e.Key, "name", e.Name, "actor", req.Msg.GetActor())
+	return connect.NewResponse(&pb.NameExpanderResponse{Expander: expanderToProto(e)}), nil
 }
 
 func (s *Server) ListMissing(ctx context.Context, _ *connect.Request[pb.ListMissingRequest]) (*connect.Response[pb.ListMissingResponse], error) {

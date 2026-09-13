@@ -79,12 +79,28 @@ func populateSES(d *drivelist.Device) {
 			d.EnclosureBay = strings.TrimSpace(string(bay))
 		}
 	}
+	if d.Expander != "" {
+		d.ExpanderID = expanderAddress(d.ExpanderPath, d.Expander)
+	}
+}
+
+// expanderAddress reads the expander's SAS address from sysfs. It names
+// the expander across boots, which the kernel's expander-H:N does not:
+// H is the SCSI host number, which follows probe order. Empty when sysfs
+// has none.
+func expanderAddress(expanderPath, expander string) string {
+	b, err := os.ReadFile(expanderPath + "/sas_device/" + expander + "/sas_address")
+	if err != nil {
+		return ""
+	}
+	return strings.TrimSpace(string(b))
 }
 
 // newEmptyBayDevice describes an enclosure bay with nothing in it.
 func newEmptyBayDevice(expander, expanderPath, bay string) *drivelist.Device {
 	return &drivelist.Device{
 		Expander:     expander,
+		ExpanderID:   expanderAddress(expanderPath, expander),
 		ExpanderPath: expanderPath,
 		EnclosureBay: bay,
 		Uses:         []string{"empty"},

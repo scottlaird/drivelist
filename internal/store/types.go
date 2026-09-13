@@ -39,7 +39,8 @@ type ReportDevice struct {
 	Identity      DriveIdentity
 	Bus           string
 	SizeBytes     uint64
-	Expander      string
+	Expander      string // the kernel's name
+	ExpanderID    string // the SAS address; "" from agents before 0.4
 	Bay           string
 	EnclosurePath string
 	Uses          []string
@@ -114,6 +115,7 @@ const (
 	EventReappeared         = "reappeared"
 	EventMovedHost          = "moved_host"
 	EventMovedBay           = "moved_bay"
+	EventExpanderRenamed    = "expander_renamed" // host-level: an expander's key changed under every drive on it
 	EventUseChanged         = "use_changed"
 	EventMemberStateChanged = "member_state_changed"
 	EventIdentityConflict   = "identity_conflict"

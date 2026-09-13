@@ -59,6 +59,11 @@ service Query {
   // Rebuild recomputes every placement and derived event from the stored
   // snapshots. Annotations, merges, samples and ghosts are kept.
   rpc Rebuild(RebuildRequest) returns (RebuildResponse);
+  // ListExpanders lists the expanders drives are currently placed on.
+  rpc ListExpanders(ListExpandersRequest) returns (ListExpandersResponse);
+  // NameExpander records what a person calls an expander; every view
+  // shows the name in place of the kernel's expander-H:N from then on.
+  rpc NameExpander(NameExpanderRequest) returns (NameExpanderResponse);
 }
 
 // ---------- shared ----------
@@ -103,12 +108,14 @@ message Device {
   string error = 10;                  // non-empty: identity unreadable; the report is degraded
   string member_state = 11;           // ZFS vdev state for the zfs use, "" otherwise
   string scsi_addr = 12;              // "11:0:17:0"
+  string expander_id = 13;            // the expander's SAS address, stable across boots; "" if unknown
 }
 
 message EmptyBay {
   string expander = 1;
   string bay = 2;
   string enclosure_path = 3;
+  string expander_id = 4;
 }
 
 // UnmappedMember is a pool member the collector could not map to a Device.
@@ -263,7 +270,7 @@ message Host {
 
 message Placement {
   string hostname = 1;
-  string expander = 2;
+  string expander = 2;                // stable key: the SAS address, or the kernel name from agents that sent none
   string bay = 3;
   string dev_name = 4;
   repeated string uses = 5;
@@ -271,6 +278,38 @@ message Placement {
   google.protobuf.Timestamp last_seen = 7;     // last heartbeat that confirmed it
   google.protobuf.Timestamp ended_at = 8;      // unset while current
   string end_reason = 9;              // vanished | moved | use_changed | merged
+  string expander_dev = 10;           // the kernel's current name for the expander, "expander-11:0"
+  string expander_name = 11;          // the name a person gave it, "" if none
+}
+
+// Expander is one SAS expander (a drive shelf or backplane) on one host
+// as the open placements see it.
+message Expander {
+  string expander = 1;                // the key placements carry
+  string hostname = 2;
+  string expander_dev = 3;
+  string name = 4;
+  string note = 5;
+  int32 drives = 6;                   // drives currently placed on it
+  google.protobuf.Timestamp first_seen = 7;
+  google.protobuf.Timestamp last_seen = 8;
+}
+
+message ListExpandersRequest {}
+
+message ListExpandersResponse {
+  repeated Expander expanders = 1;
+}
+
+message NameExpanderRequest {
+  string ref = 1;                     // the key, an unambiguous part of it, or the kernel name if only one host has it
+  string name = 2;                    // "" clears the name
+  string note = 3;
+  string actor = 4;
+}
+
+message NameExpanderResponse {
+  Expander expander = 1;
 }
 
 message Drive {

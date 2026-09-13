@@ -113,7 +113,7 @@ func canonicalUses(uses []string) string {
 func contentHash(rows []devRow, unmapped []PoolMember, complete bool) string {
 	lines := make([]string, 0, len(rows)+len(unmapped)+1)
 	for _, r := range rows {
-		lines = append(lines, fmt.Sprintf("d|%d|%s|%s|%s|%s|%s|%s", r.driveID, r.dev.DevName, r.dev.Expander, r.dev.Bay, r.uses, r.dev.MemberState, r.dev.Error))
+		lines = append(lines, fmt.Sprintf("d|%d|%s|%s|%s|%s|%s|%s|%s", r.driveID, r.dev.DevName, expanderKey(r.dev), r.dev.Expander, r.dev.Bay, r.uses, r.dev.MemberState, r.dev.Error))
 	}
 	for _, m := range unmapped {
 		lines = append(lines, fmt.Sprintf("u|%s|%s|%s|%s", m.Pool, m.Path, m.GUID, m.State))
@@ -153,18 +153,29 @@ func (t *tx) resumeIfStale(host *hostRow) error {
 	return t.event(EventHostResumed, 0, host.id, map[string]any{"stale_since": host.staleSince.Int64, "silent_secs": t.obs - host.staleSince.Int64}, "report", 0)
 }
 
+// expanderKey is what placements are keyed on: the expander's SAS address,
+// or the kernel's name from an agent that sent none. The kernel's name is
+// kept beside it as expander_dev for display.
+func expanderKey(d ReportDevice) string {
+	if d.ExpanderID != "" {
+		return d.ExpanderID
+	}
+	return d.Expander
+}
+
 type placementRow struct {
-	id        int64
-	driveID   int64
-	hostID    int64
-	hostname  string
-	expander  string
-	bay       string
-	uses      string
-	devName   string
-	firstSeen int64
-	lastSeen  int64
-	endReason string
+	id          int64
+	driveID     int64
+	hostID      int64
+	hostname    string
+	expander    string // the key
+	expanderDev string
+	bay         string
+	uses        string
+	devName     string
+	firstSeen   int64
+	lastSeen    int64
+	endReason   string
 }
 
 // applySnapshot records a changed state and diffs it against the host's open
@@ -199,7 +210,7 @@ func (t *tx) applySnapshot(host *hostRow, r Report, rows []devRow, hash string, 
 		if row.dev.Error == "" || row.driveID != 0 {
 			continue
 		}
-		if p := byBay[row.dev.Expander+"\x00"+row.dev.Bay]; p != nil && row.dev.Expander != "" && !present[p.driveID] {
+		if p := byBay[expanderKey(row.dev)+"\x00"+row.dev.Bay]; p != nil && row.dev.Expander != "" && !present[p.driveID] {
 			present[p.driveID] = true
 			if _, err := t.ExecContext(t.ctx, `UPDATE placement SET last_seen = ? WHERE placement_id = ?`, t.obs, p.id); err != nil {
 				return err
@@ -221,8 +232,8 @@ func (t *tx) applySnapshot(host *hostRow, r Report, rows []devRow, hash string, 
 		snapshotID, _ = res.LastInsertId()
 		for _, row := range rows {
 			links, _ := json.Marshal(append([]string{}, row.dev.DevLinks...))
-			if _, err := t.ExecContext(t.ctx, `INSERT INTO snapshot_device (snapshot_id, dev_name, drive_id, expander, bay, enclosure_path, size_bytes, uses, member_state, dev_links, scsi_addr, error) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
-				snapshotID, row.dev.DevName, nullID(row.driveID), row.dev.Expander, row.dev.Bay, row.dev.EnclosurePath, row.dev.SizeBytes, row.uses, row.dev.MemberState, string(links), row.dev.SCSIAddr, row.dev.Error); err != nil {
+			if _, err := t.ExecContext(t.ctx, `INSERT INTO snapshot_device (snapshot_id, dev_name, drive_id, expander, expander_id, bay, enclosure_path, size_bytes, uses, member_state, dev_links, scsi_addr, error) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+				snapshotID, row.dev.DevName, nullID(row.driveID), row.dev.Expander, row.dev.ExpanderID, row.dev.Bay, row.dev.EnclosurePath, row.dev.SizeBytes, row.uses, row.dev.MemberState, string(links), row.dev.SCSIAddr, row.dev.Error); err != nil {
 				return err
 			}
 		}
@@ -241,6 +252,9 @@ func (t *tx) applySnapshot(host *hostRow, r Report, rows []devRow, hash string, 
 			return err
 		}
 	} else {
+		if err := t.renameExpanders(host, rows, byDrive, source, snapshotID); err != nil {
+			return err
+		}
 		for _, row := range rows {
 			if row.driveID == 0 {
 				continue
@@ -283,13 +297,14 @@ func (t *tx) applySnapshot(host *hostRow, r Report, rows []devRow, hash string, 
 // the event that explains the change.
 func (t *tx) placeDrive(host *hostRow, row devRow, here *placementRow, source string, snapshotID int64) error {
 	d := row.dev
-	if here != nil && here.expander == d.Expander && here.bay == d.Bay && here.uses == row.uses {
-		_, err := t.ExecContext(t.ctx, `UPDATE placement SET last_seen = ?, dev_name = ? WHERE placement_id = ?`, t.obs, d.DevName, here.id)
+	key := expanderKey(d)
+	if here != nil && here.expander == key && here.bay == d.Bay && here.uses == row.uses {
+		_, err := t.ExecContext(t.ctx, `UPDATE placement SET last_seen = ?, dev_name = ?, expander_dev = ? WHERE placement_id = ?`, t.obs, d.DevName, d.Expander, here.id)
 		return err
 	}
 	// Uses go in as the canonical JSON so live ingest and Rebuild write the
 	// same detail.
-	slot := map[string]any{"expander": d.Expander, "bay": d.Bay, "uses": json.RawMessage(row.uses), "dev_name": d.DevName}
+	slot := map[string]any{"expander": key, "expander_dev": d.Expander, "bay": d.Bay, "uses": json.RawMessage(row.uses), "dev_name": d.DevName}
 
 	prev, err := t.openPlacementAnywhere(row.driveID)
 	if err != nil {
@@ -301,13 +316,13 @@ func (t *tx) placeDrive(host *hostRow, row devRow, here *placementRow, source st
 		switch {
 		case prev.hostID != host.id:
 			kind = EventMovedHost
-		case prev.expander == d.Expander && prev.bay == d.Bay:
+		case prev.expander == key && prev.bay == d.Bay:
 			reason, kind = EndUseChanged, EventUseChanged
 		}
 		if err := t.closePlacement(prev.id, reason); err != nil {
 			return err
 		}
-		detail := map[string]any{"from_host": prev.hostname, "from_expander": prev.expander, "from_bay": prev.bay, "from_uses": json.RawMessage(prev.uses)}
+		detail := map[string]any{"from_host": prev.hostname, "from_expander": prev.expander, "from_expander_dev": prev.expanderDev, "from_bay": prev.bay, "from_uses": json.RawMessage(prev.uses)}
 		for k, v := range slot {
 			detail["to_"+k] = v
 		}
@@ -329,16 +344,74 @@ func (t *tx) placeDrive(host *hostRow, row devRow, here *placementRow, source st
 			slot["gap_secs"] = t.obs - last.lastSeen
 			slot["from_host"] = last.hostname
 			slot["from_expander"] = last.expander
+			slot["from_expander_dev"] = last.expanderDev
 			slot["from_bay"] = last.bay
-			slot["same_slot"] = last.hostID == host.id && last.expander == d.Expander && last.bay == d.Bay
+			slot["same_slot"] = last.hostID == host.id && last.expander == key && last.bay == d.Bay
 		}
 		if err := t.event(kind, row.driveID, host.id, slot, source, snapshotID); err != nil {
 			return err
 		}
 	}
-	_, err = t.ExecContext(t.ctx, `INSERT INTO placement (drive_id, host_id, expander, bay, uses, dev_name, first_seen, last_seen) VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
-		row.driveID, host.id, d.Expander, d.Bay, row.uses, d.DevName, t.obs, t.obs)
+	_, err = t.ExecContext(t.ctx, `INSERT INTO placement (drive_id, host_id, expander, expander_dev, bay, uses, dev_name, first_seen, last_seen) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+		row.driveID, host.id, key, d.Expander, d.Bay, row.uses, d.DevName, t.obs, t.obs)
 	return err
+}
+
+// renameExpanders spots an expander whose key changed under every drive
+// on it while each drive kept its bay: the kernel numbered the host's
+// SAS controllers differently after a boot, or the agent started sending
+// SAS addresses instead of kernel names. That is one shelf with a new
+// name, not a set of moves, so the open placements are updated in place
+// (the ones for drives absent from this report too; they sit in the same
+// shelf) and one host-level event records it. A single drive is not
+// enough evidence; it may really have moved to another shelf's same bay.
+func (t *tx) renameExpanders(host *hostRow, rows []devRow, byDrive map[int64]*placementRow, source string, snapshotID int64) error {
+	type target struct{ key, dev string }
+	moved := map[string]map[target]int{}
+	unchanged := map[string]bool{} // some drive still reports the old key, or moved to another bay
+	for _, row := range rows {
+		if row.driveID == 0 {
+			continue
+		}
+		p := byDrive[row.driveID]
+		if p == nil || p.expander == "" || p.bay == "" {
+			continue
+		}
+		key := expanderKey(row.dev)
+		if key == p.expander || key == "" || row.dev.Bay != p.bay {
+			unchanged[p.expander] = true
+			continue
+		}
+		if moved[p.expander] == nil {
+			moved[p.expander] = map[target]int{}
+		}
+		moved[p.expander][target{key, row.dev.Expander}]++
+	}
+	for old, targets := range moved {
+		if unchanged[old] || len(targets) != 1 {
+			continue
+		}
+		for to, n := range targets {
+			if n < 2 {
+				continue
+			}
+			if _, err := t.ExecContext(t.ctx, `UPDATE placement SET expander = ?, expander_dev = ? WHERE host_id = ? AND expander = ? AND ended_at IS NULL`, to.key, to.dev, host.id, old); err != nil {
+				return err
+			}
+			var oldDev string
+			for _, p := range byDrive {
+				if p.expander == old {
+					oldDev = p.expanderDev
+					p.expander, p.expanderDev = to.key, to.dev
+				}
+			}
+			detail := map[string]any{"from": old, "from_dev": oldDev, "to": to.key, "to_dev": to.dev, "drives": n}
+			if err := t.event(EventExpanderRenamed, 0, host.id, detail, source, snapshotID); err != nil {
+				return err
+			}
+		}
+	}
+	return nil
 }
 
 // vanish closes a placement the host no longer reports. If a pool on the
@@ -348,7 +421,7 @@ func (t *tx) vanish(p *placementRow, unmapped []PoolMember, source string, snaps
 	if err := t.closePlacement(p.id, EndVanished); err != nil {
 		return err
 	}
-	detail := map[string]any{"last_seen": p.lastSeen, "expander": p.expander, "bay": p.bay, "uses": json.RawMessage(p.uses), "dev_name": p.devName}
+	detail := map[string]any{"last_seen": p.lastSeen, "expander": p.expander, "expander_dev": p.expanderDev, "bay": p.bay, "uses": json.RawMessage(p.uses), "dev_name": p.devName}
 	for _, m := range unmapped {
 		id, err := t.driveForPath(m.Path)
 		if err != nil {
@@ -418,11 +491,11 @@ func (t *tx) reconcileGhosts(host *hostRow, unmapped []PoolMember, source string
 	return nil
 }
 
-const placementColumns = `p.placement_id, p.drive_id, p.host_id, h.hostname, p.expander, p.bay, p.uses, p.dev_name, p.first_seen, p.last_seen, p.end_reason`
+const placementColumns = `p.placement_id, p.drive_id, p.host_id, h.hostname, p.expander, p.expander_dev, p.bay, p.uses, p.dev_name, p.first_seen, p.last_seen, p.end_reason`
 
 func scanPlacement(row interface{ Scan(...any) error }) (*placementRow, error) {
 	p := &placementRow{}
-	err := row.Scan(&p.id, &p.driveID, &p.hostID, &p.hostname, &p.expander, &p.bay, &p.uses, &p.devName, &p.firstSeen, &p.lastSeen, &p.endReason)
+	err := row.Scan(&p.id, &p.driveID, &p.hostID, &p.hostname, &p.expander, &p.expanderDev, &p.bay, &p.uses, &p.devName, &p.firstSeen, &p.lastSeen, &p.endReason)
 	return p, err
 }
 

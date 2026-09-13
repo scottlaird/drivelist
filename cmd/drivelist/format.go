@@ -58,6 +58,30 @@ func count(n uint32) string {
 	return strconv.FormatUint(uint64(n), 10)
 }
 
+// slotOf renders a placement's slot with the expander as a person would
+// name it: the name they gave it, else the kernel's name, else the key.
+func slotOf(p *pb.Placement) string {
+	if p == nil {
+		return "-"
+	}
+	return slot(firstOf(p.ExpanderName, p.ExpanderDev, p.Expander), p.Bay)
+}
+
+// slotD renders the slot an event's detail describes under a key prefix
+// ("", "from_", "to_"), preferring the person's name, then the kernel's.
+func slotD(d map[string]any, prefix string) string {
+	return slot(firstOf(str(d, prefix+"expander_name"), str(d, prefix+"expander_dev"), str(d, prefix+"expander")), str(d, prefix+"bay"))
+}
+
+func firstOf(s ...string) string {
+	for _, v := range s {
+		if v != "" {
+			return v
+		}
+	}
+	return ""
+}
+
 func slot(expander, bay string) string {
 	switch {
 	case expander == "" && bay == "":
@@ -233,26 +257,28 @@ func describe(e *pb.Event) string {
 	host := e.GetHostname()
 	switch e.GetKind() {
 	case "first_seen":
-		return fmt.Sprintf("first seen    %s  %s  %s", host, slot(str(d, "expander"), str(d, "bay")), useSummary(usesOf(d["uses"])))
+		return fmt.Sprintf("first seen    %s  %s  %s", host, slotD(d, ""), useSummary(usesOf(d["uses"])))
 	case "appeared":
-		return fmt.Sprintf("appeared      %s  %s  %s", host, slot(str(d, "expander"), str(d, "bay")), useSummary(usesOf(d["uses"])))
+		return fmt.Sprintf("appeared      %s  %s  %s", host, slotD(d, ""), useSummary(usesOf(d["uses"])))
 	case "vanished":
-		s := fmt.Sprintf("vanished      %s  %s  last confirmed %s", host, slot(str(d, "expander"), str(d, "bay")), time.Unix(int64(num(d, "last_seen")), 0).Local().Format("2006-01-02 15:04"))
+		s := fmt.Sprintf("vanished      %s  %s  last confirmed %s", host, slotD(d, ""), time.Unix(int64(num(d, "last_seen")), 0).Local().Format("2006-01-02 15:04"))
 		if p := str(d, "still_in_pool"); p != "" {
 			s += fmt.Sprintf("; pool %s still references it (%s)", p, str(d, "pool_state"))
 		}
 		return s
 	case "reappeared":
 		if same, _ := d["same_slot"].(bool); same {
-			return fmt.Sprintf("reappeared    %s  %s  gap %s  %s", host, slot(str(d, "expander"), str(d, "bay")), gap(num(d, "gap_secs")), useSummary(usesOf(d["uses"])))
+			return fmt.Sprintf("reappeared    %s  %s  gap %s  %s", host, slotD(d, ""), gap(num(d, "gap_secs")), useSummary(usesOf(d["uses"])))
 		}
-		return fmt.Sprintf("moved         %s  %s  %s  (from %s %s, gap %s)", host, slot(str(d, "expander"), str(d, "bay")), useSummary(usesOf(d["uses"])), str(d, "from_host"), slot(str(d, "from_expander"), str(d, "from_bay")), gap(num(d, "gap_secs")))
+		return fmt.Sprintf("moved         %s  %s  %s  (from %s %s, gap %s)", host, slotD(d, ""), useSummary(usesOf(d["uses"])), str(d, "from_host"), slotD(d, "from_"), gap(num(d, "gap_secs")))
 	case "moved_host":
-		return fmt.Sprintf("moved         %s  %s  %s  (from %s %s)", host, slot(str(d, "to_expander"), str(d, "to_bay")), useSummary(usesOf(d["to_uses"])), str(d, "from_host"), slot(str(d, "from_expander"), str(d, "from_bay")))
+		return fmt.Sprintf("moved         %s  %s  %s  (from %s %s)", host, slotD(d, "to_"), useSummary(usesOf(d["to_uses"])), str(d, "from_host"), slotD(d, "from_"))
 	case "moved_bay":
-		return fmt.Sprintf("moved bay     %s  %s  (from %s)", host, slot(str(d, "to_expander"), str(d, "to_bay")), slot(str(d, "from_expander"), str(d, "from_bay")))
+		return fmt.Sprintf("moved bay     %s  %s  (from %s)", host, slotD(d, "to_"), slotD(d, "from_"))
 	case "use_changed":
-		return fmt.Sprintf("use changed   %s  %s  %s  (was %s)", host, slot(str(d, "to_expander"), str(d, "to_bay")), useSummary(usesOf(d["to_uses"])), useSummary(usesOf(d["from_uses"])))
+		return fmt.Sprintf("use changed   %s  %s  %s  (was %s)", host, slotD(d, "to_"), useSummary(usesOf(d["to_uses"])), useSummary(usesOf(d["from_uses"])))
+	case "expander_renamed":
+		return fmt.Sprintf("expander      %s  %s is now %s (%v drives kept their bays)", host, firstOf(str(d, "from_name"), str(d, "from_dev"), str(d, "from")), firstOf(str(d, "to_name"), str(d, "to_dev"), str(d, "to")), d["drives"])
 	case "member_state_changed":
 		return fmt.Sprintf("zfs state     %s  %s -> %s", host, str(d, "from"), str(d, "to"))
 	case "status_changed":
