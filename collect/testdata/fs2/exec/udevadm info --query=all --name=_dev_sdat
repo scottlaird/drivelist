@@ -5,12 +5,12 @@ T: disk
 D: b 66:208
 N: sdat
 L: 0
-S: disk/by-id/scsi-35000c500caf55bbb
-S: disk/by-id/scsi-SSEAGATE_STMPSED1CLAR8000_ZA1K1X7E
-S: disk/by-vdev/D41
-S: disk/by-diskseq/54
-S: disk/by-id/wwn-0x5000c500caf55bbb
 S: disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy30-lun-0
+S: disk/by-id/wwn-0x5000c500caf55bbb
+S: disk/by-id/scsi-SSEAGATE_STMPSED1CLAR8000_ZA1K1X7E
+S: disk/by-id/scsi-35000c500caf55bbb
+S: disk/by-diskseq/54
+S: disk/by-vdev/D41
 Q: 54
 E: DEVPATH=/devices/pci0000:00/0000:00:03.0/0000:03:00.0/host11/port-11:0/expander-11:0/port-11:0:22/end_device-11:0:22/target11:0:30/11:0:30:0/block/sdat
 E: DEVNAME=/dev/sdat
@@ -56,7 +56,7 @@ E: ID_PART_TABLE_TYPE=gpt
 E: ID_VDEV=D41
 E: ID_VDEV_PATH=disk/by-vdev/D41
 E: NVME_HOST_IFACE=none
-E: DEVLINKS=/dev/disk/by-id/scsi-35000c500caf55bbb /dev/disk/by-id/scsi-SSEAGATE_STMPSED1CLAR8000_ZA1K1X7E /dev/disk/by-vdev/D41 /dev/disk/by-diskseq/54 /dev/disk/by-id/wwn-0x5000c500caf55bbb /dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy30-lun-0
+E: DEVLINKS=/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy30-lun-0 /dev/disk/by-id/wwn-0x5000c500caf55bbb /dev/disk/by-id/scsi-SSEAGATE_STMPSED1CLAR8000_ZA1K1X7E /dev/disk/by-id/scsi-35000c500caf55bbb /dev/disk/by-diskseq/54 /dev/disk/by-vdev/D41
 E: TAGS=:systemd:
 E: CURRENT_TAGS=:systemd:
 

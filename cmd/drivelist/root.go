@@ -18,6 +18,9 @@ import (
 // collectAll is what the listing runs; tests point it at a fixture.
 var collectAll = collect.All
 
+// collectSAS reads the SAS topology; tests point it at a fixture.
+var collectSAS = func() (*collect.SASTopology, error) { return (&collect.Collector{}).SAS() }
+
 // listOptions are the flags of the bare drivelist command.
 type listOptions struct {
 	unused    bool
@@ -59,7 +62,7 @@ pool membership, mounts). With no subcommand it prints that listing.`,
 	pf.StringVar(&cfg.server, "server", "", "fleet server, host:port or URL (also DRIVELIST_SERVER or the config file)")
 	pf.BoolVar(&cfg.json, "json", false, "print the server's response as JSON")
 
-	cmd.AddCommand(newCaptureCmd(), newServeCmd(), newAgentCmd(cfg), newVersionCmd())
+	cmd.AddCommand(newCaptureCmd(), newServeCmd(), newAgentCmd(cfg), newVersionCmd(), newSASCmd(cfg))
 	cmd.AddCommand(fleetCommands(cfg)...)
 	return cmd
 }

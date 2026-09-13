@@ -5,12 +5,12 @@ T: disk
 D: b 65:176
 N: sdab
 L: 0
-S: disk/by-vdev/D57
-S: disk/by-id/wwn-0x5000c500b3928e24
-S: disk/by-id/scsi-35000c500b3928e24
 S: disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy6-lun-0
 S: disk/by-diskseq/36
+S: disk/by-id/scsi-35000c500b3928e24
+S: disk/by-vdev/D57
 S: disk/by-id/scsi-SATA_ST8000DM004-2CX1_ZCT0ELAY
+S: disk/by-id/wwn-0x5000c500b3928e24
 Q: 36
 E: DEVPATH=/devices/pci0000:00/0000:00:03.0/0000:03:00.0/host11/port-11:0/expander-11:0/port-11:0:4/end_device-11:0:4/target11:0:12/11:0:12:0/block/sdab
 E: DEVNAME=/dev/sdab
@@ -53,7 +53,7 @@ E: ID_PART_TABLE_UUID=d461a517-3b5d-8d49-9d45-cfd600215d11
 E: ID_PART_TABLE_TYPE=gpt
 E: ID_VDEV=D57
 E: ID_VDEV_PATH=disk/by-vdev/D57
-E: DEVLINKS=/dev/disk/by-vdev/D57 /dev/disk/by-id/wwn-0x5000c500b3928e24 /dev/disk/by-id/scsi-35000c500b3928e24 /dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy6-lun-0 /dev/disk/by-diskseq/36 /dev/disk/by-id/scsi-SATA_ST8000DM004-2CX1_ZCT0ELAY
+E: DEVLINKS=/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy6-lun-0 /dev/disk/by-diskseq/36 /dev/disk/by-id/scsi-35000c500b3928e24 /dev/disk/by-vdev/D57 /dev/disk/by-id/scsi-SATA_ST8000DM004-2CX1_ZCT0ELAY /dev/disk/by-id/wwn-0x5000c500b3928e24
 E: TAGS=:systemd:
 E: CURRENT_TAGS=:systemd:
 

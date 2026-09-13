@@ -30,9 +30,11 @@ var captureCommands = [][]string{
 // produce a test fixture for that host's configuration.
 //
 // Only the parts of sysfs the collector touches are copied: the block
-// device list (as each device's dev file), each device's size, and every
-// bay_identifier under each expander. Sysfs symlinks are followed and
-// written as directories.
+// device list (as each device's dev file), each device's size, every
+// bay_identifier under each expander, and the SAS transport trees (phys,
+// ports, expanders, end devices, HBAs). Sysfs symlinks are followed and
+// written as directories, except the phy links in port directories and
+// the sas_host class links, which SAS reads as links.
 func (c *Collector) Capture(dir string) error {
 	if err := os.MkdirAll(dir, 0o755); err != nil {
 		return err
@@ -95,6 +97,9 @@ func (c *Collector) captureLinux(dir string) error {
 	}
 
 	if err := c.copyFile(c.proc()+"/self/mountinfo", filepath.Join(dir, "proc", "self", "mountinfo")); err != nil {
+		return err
+	}
+	if err := c.captureSAS(dir); err != nil {
 		return err
 	}
 

@@ -203,6 +203,15 @@ one a name, which every listing then shows in place of the kernel's.
 
 For a one-off report, or from cron, `drivelist report` does one cycle.
 
+`drivelist sas` prints the host's SAS topology from sysfs: each HBA and
+expander with its phys, the port each phy is bundled into (a wide port
+is several phys sharing one), the negotiated link rate, what is on the
+far end (an expander, or a drive with its bay), and the four SAS error
+counters the kernel keeps per phy since boot: invalid dwords, running
+disparity errors, loss of dword sync, and phy reset problems.
+`--errors` shows only phys with a nonzero counter, which is the quick
+way to find the cable or backplane lane that is going bad.
+
 On Debian and Ubuntu hosts, install the package instead.  Every
 [release](https://github.com/scottlaird/drivelist/releases) carries
 `drivelist_<version>_<arch>.deb` for `amd64`, `arm64` (64-bit

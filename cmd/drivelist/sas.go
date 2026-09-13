@@ -1,0 +1,155 @@
+package main
+
+import (
+	"encoding/json"
+	"fmt"
+	"io"
+	"strings"
+
+	"github.com/spf13/cobra"
+
+	"github.com/scottlaird/drivelist/collect"
+)
+
+func newSASCmd(cfg *clientConfig) *cobra.Command {
+	var errorsOnly bool
+	var fixture string
+	cmd := &cobra.Command{
+		Use:   "sas",
+		Short: "Show this host's SAS topology: HBAs, expanders, phys, link rates and error counters",
+		Long: `sas walks the SAS transport class in sysfs and prints every HBA and
+expander with its phys: which port each phy is in, its negotiated link
+rate, what is on the other end (an expander, or a drive with its bay),
+and the four SAS error counters the kernel keeps per phy, cumulative
+since boot: invalid dwords, running disparity errors, loss of dword
+sync, and phy reset problems. A wide port shows as several phys sharing
+a port. Reads sysfs only; no privileges needed.`,
+		Args: cobra.NoArgs,
+		RunE: func(cmd *cobra.Command, _ []string) error {
+			read := collectSAS
+			if fixture != "" {
+				read = collect.Fixture(fixture).SAS
+			}
+			topo, err := read()
+			if err != nil {
+				return err
+			}
+			if cfg.json {
+				enc := json.NewEncoder(cmd.OutOrStdout())
+				enc.SetIndent("", "  ")
+				return enc.Encode(topo)
+			}
+			return printSAS(cmd.OutOrStdout(), topo, errorsOnly)
+		},
+	}
+	cmd.Flags().BoolVar(&errorsOnly, "errors", false, "only phys with a nonzero error counter")
+	cmd.Flags().StringVar(&fixture, "fixture", "", "read a captured tree (from drivelist capture) instead of this host")
+	return cmd
+}
+
+// printSAS prints one block per node: a header naming it and where it
+// hangs, then a row per phy.
+func printSAS(w io.Writer, topo *collect.SASTopology, errorsOnly bool) error {
+	if len(topo.Nodes) == 0 {
+		fmt.Fprintln(w, "no SAS hosts")
+		return nil
+	}
+	drives := map[string]string{} // node -> count summary
+	for _, n := range topo.Nodes {
+		disks := 0
+		for _, d := range n.Devices {
+			if d.DevName != "" {
+				disks++
+			}
+		}
+		drives[n.Name] = fmt.Sprintf("%d drives", disks)
+	}
+	first := true
+	for _, n := range topo.Nodes {
+		rows := sasRows(topo, n, errorsOnly)
+		if errorsOnly && len(rows) == 0 {
+			continue
+		}
+		if !first {
+			fmt.Fprintln(w)
+		}
+		first = false
+		where := ""
+		if n.Parent != "" {
+			where = fmt.Sprintf("  via %s %s", n.Parent, n.Upstream)
+		}
+		fmt.Fprintf(w, "%s  %s  %s  %d phys, %s%s\n", n.Name, strings.TrimSpace(n.Vendor+" "+n.Product+" "+n.Revision), orDash(n.Address), len(n.Phys), drives[n.Name], where)
+		tw := tab(w)
+		fmt.Fprintln(tw, "PHY\tPORT\tRATE\tATTACHED\tINVALID\tDISPARITY\tDWSYNC\tRESET")
+		for _, r := range rows {
+			fmt.Fprintln(tw, r)
+		}
+		if err := tw.Flush(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+func sasRows(topo *collect.SASTopology, n *collect.SASNode, errorsOnly bool) []string {
+	var rows []string
+	for _, p := range n.Phys {
+		if errorsOnly && p.Errors() == 0 {
+			continue
+		}
+		rate := "-"
+		if p.Up() {
+			rate = p.Rate
+		} else if p.Rate != "" && p.Rate != "Unknown" {
+			rate = strings.ToLower(p.Rate)
+		}
+		rows = append(rows, fmt.Sprintf("%d\t%s\t%s\t%s\t%d\t%d\t%d\t%d", p.ID, orDash(p.Port), rate, sasAttached(topo, n, p), p.InvalidDword, p.DisparityErr, p.LossDwordSync, p.ResetProblem))
+	}
+	return rows
+}
+
+// sasAttached says what is on the far end of a phy: the expander or the
+// drive its port leads to, or "upstream" for an expander phy that has a
+// link but no port of its own, which is how the link back towards the
+// HBA looks from the expander's side.
+func sasAttached(topo *collect.SASTopology, n *collect.SASNode, p *collect.SASPhy) string {
+	if p.Port == "" {
+		if p.Up() && n.Kind == "expander" {
+			return "upstream"
+		}
+		return "-"
+	}
+	port := n.Port(p.Port)
+	if port == nil {
+		return "-"
+	}
+	if strings.HasPrefix(port.Attached, "expander-") {
+		s := port.Attached
+		if e := topo.Node(port.Attached); e != nil && e.Product != "" {
+			s += " (" + strings.TrimSpace(e.Vendor+" "+e.Product) + ")"
+		}
+		if len(port.Phys) > 1 {
+			s += fmt.Sprintf("  ×%d", len(port.Phys))
+		}
+		return s
+	}
+	for _, d := range n.Devices {
+		if d.Name != port.Attached {
+			continue
+		}
+		parts := []string{}
+		if d.DevName != "" {
+			parts = append(parts, d.DevName)
+		}
+		if d.Bay != "" {
+			parts = append(parts, "bay "+d.Bay)
+		}
+		if d.DevName == "" {
+			parts = append(parts, "no disk")
+		} else if d.Protocols != "" {
+			parts = append(parts, d.Protocols)
+		}
+		return strings.Join(parts, "  ")
+	}
+	return port.Attached
+}
