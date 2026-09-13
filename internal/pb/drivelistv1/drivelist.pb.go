@@ -2101,6 +2101,7 @@ type Expander struct {
 	Drives        int32                  `protobuf:"varint,6,opt,name=drives,proto3" json:"drives,omitempty"` // drives currently placed on it
 	FirstSeen     *timestamppb.Timestamp `protobuf:"bytes,7,opt,name=first_seen,json=firstSeen,proto3" json:"first_seen,omitempty"`
 	LastSeen      *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=last_seen,json=lastSeen,proto3" json:"last_seen,omitempty"`
+	Product       string                 `protobuf:"bytes,9,opt,name=product,proto3" json:"product,omitempty"` // vendor and product from the SAS topology, "" if unknown
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -2189,6 +2190,13 @@ func (x *Expander) GetLastSeen() *timestamppb.Timestamp {
 		return x.LastSeen
 	}
 	return nil
+}
+
+func (x *Expander) GetProduct() string {
+	if x != nil {
+		return x.Product
+	}
+	return ""
 }
 
 type ListExpandersRequest struct {
@@ -5095,7 +5103,7 @@ const file_drivelist_v1_drivelist_proto_rawDesc = "" +
 	"end_reason\x18\t \x01(\tR\tendReason\x12!\n" +
 	"\fexpander_dev\x18\n" +
 	" \x01(\tR\vexpanderDev\x12#\n" +
-	"\rexpander_name\x18\v \x01(\tR\fexpanderName\"\x99\x02\n" +
+	"\rexpander_name\x18\v \x01(\tR\fexpanderName\"\xb3\x02\n" +
 	"\bExpander\x12\x1a\n" +
 	"\bexpander\x18\x01 \x01(\tR\bexpander\x12\x1a\n" +
 	"\bhostname\x18\x02 \x01(\tR\bhostname\x12!\n" +
@@ -5105,7 +5113,8 @@ const file_drivelist_v1_drivelist_proto_rawDesc = "" +
 	"\x06drives\x18\x06 \x01(\x05R\x06drives\x129\n" +
 	"\n" +
 	"first_seen\x18\a \x01(\v2\x1a.google.protobuf.TimestampR\tfirstSeen\x127\n" +
-	"\tlast_seen\x18\b \x01(\v2\x1a.google.protobuf.TimestampR\blastSeen\"\x16\n" +
+	"\tlast_seen\x18\b \x01(\v2\x1a.google.protobuf.TimestampR\blastSeen\x12\x18\n" +
+	"\aproduct\x18\t \x01(\tR\aproduct\"\x16\n" +
 	"\x14ListExpandersRequest\"M\n" +
 	"\x15ListExpandersResponse\x124\n" +
 	"\texpanders\x18\x01 \x03(\v2\x16.drivelist.v1.ExpanderR\texpanders\"e\n" +

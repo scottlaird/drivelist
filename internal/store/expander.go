@@ -5,6 +5,7 @@ import (
 	"database/sql"
 	"errors"
 	"fmt"
+	"sort"
 	"strings"
 	"time"
 )
@@ -15,6 +16,7 @@ type Expander struct {
 	Key       string // what placements carry: the SAS address, or the kernel name from agents that sent none
 	Hostname  string
 	Dev       string // the kernel's current name
+	Product   string // vendor and product from the SAS topology, "" if the host has not reported one
 	Name      string // what a person called it
 	Note      string
 	Drives    int
@@ -28,9 +30,51 @@ const expanderSelect = `
 	WHERE p.ended_at IS NULL AND p.expander != ''`
 
 // ListExpanders returns every expander with a drive currently placed on
-// it, by host.
+// it or present in the host's SAS topology, by host. An expander with no
+// drives (a cascaded one, an empty shelf) is only known from the
+// topology; the address is the same key in both, so the two views join.
 func (s *Store) ListExpanders(ctx context.Context) ([]Expander, error) {
-	return s.expanders(ctx, expanderSelect+` GROUP BY p.expander, p.host_id ORDER BY h.hostname, MAX(p.expander_dev), p.expander`)
+	placed, err := s.expanders(ctx, expanderSelect+` GROUP BY p.expander, p.host_id ORDER BY h.hostname, MAX(p.expander_dev), p.expander`)
+	if err != nil {
+		return nil, err
+	}
+	rows, err := s.db.QueryContext(ctx, `
+		SELECT n.address, h.hostname, n.name, TRIM(n.vendor || ' ' || n.product), COALESCE(x.name, ''), COALESCE(x.note, ''), n.first_seen, n.last_seen
+		FROM sas_node n JOIN host h USING (host_id) LEFT JOIN expander_name x ON x.expander = n.address
+		WHERE n.kind = 'expander' AND n.gone_at IS NULL`)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	type hostKey struct{ host, key string }
+	index := map[hostKey]int{}
+	for i, e := range placed {
+		index[hostKey{e.Hostname, e.Key}] = i
+	}
+	out := placed
+	for rows.Next() {
+		var e Expander
+		var first, last int64
+		if err := rows.Scan(&e.Key, &e.Hostname, &e.Dev, &e.Product, &e.Name, &e.Note, &first, &last); err != nil {
+			return nil, err
+		}
+		if i, ok := index[hostKey{e.Hostname, e.Key}]; ok {
+			out[i].Product = e.Product
+			continue
+		}
+		e.FirstSeen, e.LastSeen = time.Unix(first, 0).UTC(), time.Unix(last, 0).UTC()
+		out = append(out, e)
+	}
+	if err := rows.Err(); err != nil {
+		return nil, err
+	}
+	sort.SliceStable(out, func(i, j int) bool {
+		if out[i].Hostname != out[j].Hostname {
+			return out[i].Hostname < out[j].Hostname
+		}
+		return out[i].Dev < out[j].Dev
+	})
+	return out, nil
 }
 
 func (s *Store) expanders(ctx context.Context, query string, args ...any) ([]Expander, error) {
@@ -125,14 +169,16 @@ func (s *Store) NameExpander(ctx context.Context, ref, name, note, actor string)
 	if err != nil {
 		return Expander{}, err
 	}
-	rows, err := s.expanders(ctx, expanderSelect+` AND p.expander = ? GROUP BY p.expander, p.host_id ORDER BY h.hostname`, key)
+	all, err := s.ListExpanders(ctx)
 	if err != nil {
 		return Expander{}, err
 	}
-	if len(rows) == 0 {
-		return Expander{Key: key, Name: name, Note: note}, nil
+	for _, e := range all {
+		if e.Key == key {
+			return e, nil
+		}
 	}
-	return rows[0], nil
+	return Expander{Key: key, Name: name, Note: note}, nil
 }
 
 // ExpanderNames returns every name a person has given, by key.

@@ -670,9 +670,9 @@ address), and the name a person gave it with 'expander KEY name'.`,
 				return printJSON(cmd.OutOrStdout(), res.Msg)
 			}
 			w := tab(cmd.OutOrStdout())
-			fmt.Fprintln(w, "HOST\tEXPANDER\tNAME\tDRIVES\tKEY\tNOTE")
+			fmt.Fprintln(w, "HOST\tEXPANDER\tMODEL\tNAME\tDRIVES\tKEY\tNOTE")
 			for _, e := range res.Msg.Expanders {
-				fmt.Fprintf(w, "%s\t%s\t%s\t%d\t%s\t%s\n", e.Hostname, orDash(e.ExpanderDev), orDash(e.Name), e.Drives, e.Expander, e.Note)
+				fmt.Fprintf(w, "%s\t%s\t%s\t%s\t%d\t%s\t%s\n", e.Hostname, orDash(e.ExpanderDev), orDash(e.Product), orDash(e.Name), e.Drives, e.Expander, e.Note)
 			}
 			return w.Flush()
 		},
