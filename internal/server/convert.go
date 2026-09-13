@@ -41,23 +41,29 @@ func reportFromProto(req *pb.ReportInventoryRequest) store.Report {
 	}
 	for _, d := range req.GetDevices() {
 		r.Devices = append(r.Devices, store.ReportDevice{
-			DevName:       d.GetDevName(),
-			Identity:      identityFromProto(d.GetIdentity()),
-			Bus:           busNames[d.GetBus()],
-			SizeBytes:     d.GetSizeBytes(),
-			Expander:      d.GetExpander(),
-			ExpanderID:    d.GetExpanderId(),
-			Bay:           d.GetBay(),
-			EnclosurePath: d.GetEnclosurePath(),
-			Uses:          d.GetUses(),
-			DevLinks:      d.GetDevLinks(),
-			Error:         d.GetError(),
-			MemberState:   d.GetMemberState(),
-			SCSIAddr:      d.GetScsiAddr(),
+			DevName:        d.GetDevName(),
+			Identity:       identityFromProto(d.GetIdentity()),
+			Bus:            busNames[d.GetBus()],
+			SizeBytes:      d.GetSizeBytes(),
+			Expander:       d.GetExpander(),
+			ExpanderID:     d.GetExpanderId(),
+			Bay:            d.GetBay(),
+			EnclosureID:    d.GetEnclosureId(),
+			EnclosureVia:   d.GetEnclosureVia(),
+			EnclosureViaID: d.GetEnclosureViaId(),
+			EnclosurePath:  d.GetEnclosurePath(),
+			Uses:           d.GetUses(),
+			DevLinks:       d.GetDevLinks(),
+			Error:          d.GetError(),
+			MemberState:    d.GetMemberState(),
+			SCSIAddr:       d.GetScsiAddr(),
 		})
 	}
 	for _, m := range req.GetUnmappedMembers() {
 		r.Unmapped = append(r.Unmapped, store.PoolMember{Pool: m.GetPool(), Path: m.GetPath(), GUID: m.GetGuid(), State: m.GetState()})
+	}
+	for _, b := range req.GetEmptyBays() {
+		r.EmptyBays = append(r.EmptyBays, store.ReportBay{EnclosureID: b.GetEnclosureId(), EnclosureVia: b.GetEnclosureVia(), EnclosureViaID: b.GetEnclosureViaId(), Bay: b.GetBay()})
 	}
 	for _, n := range req.GetSasNodes() {
 		r.SASNodes = append(r.SASNodes, sasNodeFromProto(n))
@@ -128,28 +134,29 @@ func placementToProto(p *store.Placement) *pb.Placement {
 		return nil
 	}
 	return &pb.Placement{
-		Hostname:     p.Hostname,
-		Expander:     p.Expander,
-		ExpanderDev:  p.ExpanderDev,
-		ExpanderName: p.ExpanderName,
-		Bay:          p.Bay,
-		DevName:      p.DevName,
-		Uses:         p.Uses,
-		FirstSeen:    ts(p.FirstSeen),
-		LastSeen:     ts(p.LastSeen),
-		EndedAt:      ts(p.EndedAt),
-		EndReason:    p.EndReason,
+		Hostname:      p.Hostname,
+		Enclosure:     p.Enclosure,
+		EnclosureVia:  p.EnclosureVia,
+		EnclosureName: p.EnclosureName,
+		Bay:           p.Bay,
+		DevName:       p.DevName,
+		Uses:          p.Uses,
+		FirstSeen:     ts(p.FirstSeen),
+		LastSeen:      ts(p.LastSeen),
+		EndedAt:       ts(p.EndedAt),
+		EndReason:     p.EndReason,
 	}
 }
 
-func expanderToProto(e store.Expander) *pb.Expander {
-	return &pb.Expander{Expander: e.Key, Hostname: e.Hostname, ExpanderDev: e.Dev, Product: e.Product, Name: e.Name, Note: e.Note, Drives: int32(e.Drives), FirstSeen: ts(e.FirstSeen), LastSeen: ts(e.LastSeen)}
+func enclosureToProto(e store.Enclosure) *pb.Enclosure {
+	return &pb.Enclosure{Enclosure: e.Key, Hostname: e.Hostname, Via: e.Via, Product: e.Product, Name: e.Name, Note: e.Note, Drives: int32(e.Drives), Bays: int32(e.Bays), FirstSeen: ts(e.FirstSeen), LastSeen: ts(e.LastSeen)}
 }
 
-// nameExpanders adds the names people gave expanders to the events that
-// mention one, as expander_name beside each expander key in the detail,
-// so the client can print the name without another round trip.
-func nameExpanders(names map[string]string, evs []*pb.Event) {
+// nameEnclosures adds the names people gave enclosures to the events that
+// mention one, as enclosure_name beside each key in the detail, so the
+// client can print the name without another round trip. Events from
+// before 0.7 carry the key as "expander".
+func nameEnclosures(names map[string]string, evs []*pb.Event) {
 	if len(names) == 0 {
 		return
 	}
@@ -159,7 +166,7 @@ func nameExpanders(names map[string]string, evs []*pb.Event) {
 			continue
 		}
 		changed := false
-		for _, k := range []string{"expander", "from_expander", "to_expander", "from", "to"} {
+		for _, k := range []string{"enclosure", "from_enclosure", "to_enclosure", "expander", "from_expander", "to_expander", "from", "to"} {
 			key, _ := d[k].(string)
 			if n, ok := names[key]; ok && key != "" {
 				d[k+"_name"] = n

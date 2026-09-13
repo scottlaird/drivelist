@@ -80,6 +80,11 @@ func (s *Store) Ingest(ctx context.Context, r Report) (IngestResult, error) {
 	if err := t.ingestSAS(host, r, rows); err != nil {
 		return IngestResult{}, err
 	}
+	if r.Complete {
+		if err := t.noteEnclosures(host, r, rows); err != nil {
+			return IngestResult{}, err
+		}
+	}
 	if _, err := t.ExecContext(ctx, `UPDATE host SET last_report = ?, last_observed = ? WHERE host_id = ?`, t.now, t.obs, host.id); err != nil {
 		return IngestResult{}, err
 	}
@@ -116,7 +121,7 @@ func canonicalUses(uses []string) string {
 func contentHash(rows []devRow, unmapped []PoolMember, complete bool) string {
 	lines := make([]string, 0, len(rows)+len(unmapped)+1)
 	for _, r := range rows {
-		lines = append(lines, fmt.Sprintf("d|%d|%s|%s|%s|%s|%s|%s|%s", r.driveID, r.dev.DevName, expanderKey(r.dev), r.dev.Expander, r.dev.Bay, r.uses, r.dev.MemberState, r.dev.Error))
+		lines = append(lines, fmt.Sprintf("d|%d|%s|%s|%s|%s|%s|%s|%s", r.driveID, r.dev.DevName, enclosureKey(r.dev), enclosureVia(r.dev), r.dev.Bay, r.uses, r.dev.MemberState, r.dev.Error))
 	}
 	for _, m := range unmapped {
 		lines = append(lines, fmt.Sprintf("u|%s|%s|%s|%s", m.Pool, m.Path, m.GUID, m.State))
@@ -156,29 +161,46 @@ func (t *tx) resumeIfStale(host *hostRow) error {
 	return t.event(EventHostResumed, 0, host.id, map[string]any{"stale_since": host.staleSince.Int64, "silent_secs": t.obs - host.staleSince.Int64}, "report", 0)
 }
 
-// expanderKey is what placements are keyed on: the expander's SAS address,
-// or the kernel's name from an agent that sent none. The kernel's name is
-// kept beside it as expander_dev for display.
-func expanderKey(d ReportDevice) string {
-	if d.ExpanderID != "" {
+// enclosureKey is what placements are keyed on: the SES enclosure the
+// drive sits in, or failing that the SAS address of the node that reaches
+// it (the expander, or the HBA for its own bays), or failing that the
+// kernel's name for that node. Agents before 0.7 sent only the expander,
+// so their drives key on its address as before. The kernel's name is kept
+// beside the key as enclosure_via for display.
+func enclosureKey(d ReportDevice) string {
+	switch {
+	case d.EnclosureID != "":
+		return d.EnclosureID
+	case d.EnclosureViaID != "":
+		return d.EnclosureViaID
+	case d.ExpanderID != "":
 		return d.ExpanderID
+	case d.EnclosureVia != "":
+		return d.EnclosureVia
+	}
+	return d.Expander
+}
+
+func enclosureVia(d ReportDevice) string {
+	if d.EnclosureVia != "" {
+		return d.EnclosureVia
 	}
 	return d.Expander
 }
 
 type placementRow struct {
-	id          int64
-	driveID     int64
-	hostID      int64
-	hostname    string
-	expander    string // the key
-	expanderDev string
-	bay         string
-	uses        string
-	devName     string
-	firstSeen   int64
-	lastSeen    int64
-	endReason   string
+	id           int64
+	driveID      int64
+	hostID       int64
+	hostname     string
+	enclosure    string // the key
+	enclosureVia string
+	bay          string
+	uses         string
+	devName      string
+	firstSeen    int64
+	lastSeen     int64
+	endReason    string
 }
 
 // applySnapshot records a changed state and diffs it against the host's open
@@ -194,8 +216,8 @@ func (t *tx) applySnapshot(host *hostRow, r Report, rows []devRow, hash string, 
 	byBay := map[string]*placementRow{}
 	for _, p := range open {
 		byDrive[p.driveID] = p
-		if p.expander != "" {
-			byBay[p.expander+"\x00"+p.bay] = p
+		if p.enclosure != "" {
+			byBay[p.enclosure+"\x00"+p.bay] = p
 		}
 	}
 
@@ -213,7 +235,7 @@ func (t *tx) applySnapshot(host *hostRow, r Report, rows []devRow, hash string, 
 		if row.dev.Error == "" || row.driveID != 0 {
 			continue
 		}
-		if p := byBay[expanderKey(row.dev)+"\x00"+row.dev.Bay]; p != nil && row.dev.Expander != "" && !present[p.driveID] {
+		if p := byBay[enclosureKey(row.dev)+"\x00"+row.dev.Bay]; p != nil && enclosureKey(row.dev) != "" && !present[p.driveID] {
 			present[p.driveID] = true
 			if _, err := t.ExecContext(t.ctx, `UPDATE placement SET last_seen = ? WHERE placement_id = ?`, t.obs, p.id); err != nil {
 				return err
@@ -235,8 +257,8 @@ func (t *tx) applySnapshot(host *hostRow, r Report, rows []devRow, hash string, 
 		snapshotID, _ = res.LastInsertId()
 		for _, row := range rows {
 			links, _ := json.Marshal(append([]string{}, row.dev.DevLinks...))
-			if _, err := t.ExecContext(t.ctx, `INSERT INTO snapshot_device (snapshot_id, dev_name, drive_id, expander, expander_id, bay, enclosure_path, size_bytes, uses, member_state, dev_links, scsi_addr, error) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
-				snapshotID, row.dev.DevName, nullID(row.driveID), row.dev.Expander, row.dev.ExpanderID, row.dev.Bay, row.dev.EnclosurePath, row.dev.SizeBytes, row.uses, row.dev.MemberState, string(links), row.dev.SCSIAddr, row.dev.Error); err != nil {
+			if _, err := t.ExecContext(t.ctx, `INSERT INTO snapshot_device (snapshot_id, dev_name, drive_id, expander, expander_id, bay, enclosure_path, size_bytes, uses, member_state, dev_links, scsi_addr, error, enclosure_id, enclosure_via, enclosure_via_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+				snapshotID, row.dev.DevName, nullID(row.driveID), row.dev.Expander, row.dev.ExpanderID, row.dev.Bay, row.dev.EnclosurePath, row.dev.SizeBytes, row.uses, row.dev.MemberState, string(links), row.dev.SCSIAddr, row.dev.Error, row.dev.EnclosureID, row.dev.EnclosureVia, row.dev.EnclosureViaID); err != nil {
 				return err
 			}
 		}
@@ -255,7 +277,7 @@ func (t *tx) applySnapshot(host *hostRow, r Report, rows []devRow, hash string, 
 			return err
 		}
 	} else {
-		if err := t.renameExpanders(host, rows, byDrive, source, snapshotID); err != nil {
+		if err := t.renameEnclosures(host, rows, byDrive, source, snapshotID); err != nil {
 			return err
 		}
 		for _, row := range rows {
@@ -300,14 +322,14 @@ func (t *tx) applySnapshot(host *hostRow, r Report, rows []devRow, hash string, 
 // the event that explains the change.
 func (t *tx) placeDrive(host *hostRow, row devRow, here *placementRow, source string, snapshotID int64) error {
 	d := row.dev
-	key := expanderKey(d)
-	if here != nil && here.expander == key && here.bay == d.Bay && here.uses == row.uses {
-		_, err := t.ExecContext(t.ctx, `UPDATE placement SET last_seen = ?, dev_name = ?, expander_dev = ? WHERE placement_id = ?`, t.obs, d.DevName, d.Expander, here.id)
+	key, via := enclosureKey(d), enclosureVia(d)
+	if here != nil && here.enclosure == key && here.bay == d.Bay && here.uses == row.uses {
+		_, err := t.ExecContext(t.ctx, `UPDATE placement SET last_seen = ?, dev_name = ?, enclosure_via = ? WHERE placement_id = ?`, t.obs, d.DevName, via, here.id)
 		return err
 	}
 	// Uses go in as the canonical JSON so live ingest and Rebuild write the
 	// same detail.
-	slot := map[string]any{"expander": key, "expander_dev": d.Expander, "bay": d.Bay, "uses": json.RawMessage(row.uses), "dev_name": d.DevName}
+	slot := map[string]any{"enclosure": key, "enclosure_via": via, "bay": d.Bay, "uses": json.RawMessage(row.uses), "dev_name": d.DevName}
 
 	prev, err := t.openPlacementAnywhere(row.driveID)
 	if err != nil {
@@ -319,13 +341,13 @@ func (t *tx) placeDrive(host *hostRow, row devRow, here *placementRow, source st
 		switch {
 		case prev.hostID != host.id:
 			kind = EventMovedHost
-		case prev.expander == key && prev.bay == d.Bay:
+		case prev.enclosure == key && prev.bay == d.Bay:
 			reason, kind = EndUseChanged, EventUseChanged
 		}
 		if err := t.closePlacement(prev.id, reason); err != nil {
 			return err
 		}
-		detail := map[string]any{"from_host": prev.hostname, "from_expander": prev.expander, "from_expander_dev": prev.expanderDev, "from_bay": prev.bay, "from_uses": json.RawMessage(prev.uses)}
+		detail := map[string]any{"from_host": prev.hostname, "from_enclosure": prev.enclosure, "from_enclosure_via": prev.enclosureVia, "from_bay": prev.bay, "from_uses": json.RawMessage(prev.uses)}
 		for k, v := range slot {
 			detail["to_"+k] = v
 		}
@@ -346,30 +368,33 @@ func (t *tx) placeDrive(host *hostRow, row devRow, here *placementRow, source st
 			kind = EventReappeared
 			slot["gap_secs"] = t.obs - last.lastSeen
 			slot["from_host"] = last.hostname
-			slot["from_expander"] = last.expander
-			slot["from_expander_dev"] = last.expanderDev
+			slot["from_enclosure"] = last.enclosure
+			slot["from_enclosure_via"] = last.enclosureVia
 			slot["from_bay"] = last.bay
-			slot["same_slot"] = last.hostID == host.id && last.expander == key && last.bay == d.Bay
+			slot["same_slot"] = last.hostID == host.id && last.enclosure == key && last.bay == d.Bay
 		}
 		if err := t.event(kind, row.driveID, host.id, slot, source, snapshotID); err != nil {
 			return err
 		}
 	}
-	_, err = t.ExecContext(t.ctx, `INSERT INTO placement (drive_id, host_id, expander, expander_dev, bay, uses, dev_name, first_seen, last_seen) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
-		row.driveID, host.id, key, d.Expander, d.Bay, row.uses, d.DevName, t.obs, t.obs)
+	_, err = t.ExecContext(t.ctx, `INSERT INTO placement (drive_id, host_id, enclosure, enclosure_via, bay, uses, dev_name, first_seen, last_seen) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+		row.driveID, host.id, key, via, d.Bay, row.uses, d.DevName, t.obs, t.obs)
 	return err
 }
 
-// renameExpanders spots an expander whose key changed under every drive
-// on it while each drive kept its bay: the kernel numbered the host's
-// SAS controllers differently after a boot, or the agent started sending
-// SAS addresses instead of kernel names. That is one shelf with a new
-// name, not a set of moves, so the open placements are updated in place
-// (the ones for drives absent from this report too; they sit in the same
-// shelf) and one host-level event records it. A single drive is not
-// enough evidence; it may really have moved to another shelf's same bay.
-func (t *tx) renameExpanders(host *hostRow, rows []devRow, byDrive map[int64]*placementRow, source string, snapshotID int64) error {
-	type target struct{ key, dev string }
+// renameEnclosures spots an enclosure whose key changed under every
+// drive in it while each drive kept its bay: the kernel numbered the
+// host's SAS controllers differently after a boot, or an upgraded agent
+// started reporting SES enclosure identifiers instead of expander
+// addresses, or reporting the HBA's own bays at all (the old key is then
+// ""). That is one enclosure with a new name, not a set of moves, so the
+// open placements are updated in place (the ones for drives absent from
+// this report too; they sit in the same enclosure), a name given to the
+// old key follows it, and one host-level event records it. A single
+// drive is not enough evidence; it may really have moved to another
+// enclosure's same bay.
+func (t *tx) renameEnclosures(host *hostRow, rows []devRow, byDrive map[int64]*placementRow, source string, snapshotID int64) error {
+	type target struct{ key, via string }
 	moved := map[string]map[target]int{}
 	unchanged := map[string]bool{} // some drive still reports the old key, or moved to another bay
 	for _, row := range rows {
@@ -377,18 +402,18 @@ func (t *tx) renameExpanders(host *hostRow, rows []devRow, byDrive map[int64]*pl
 			continue
 		}
 		p := byDrive[row.driveID]
-		if p == nil || p.expander == "" || p.bay == "" {
+		if p == nil || p.bay == "" {
 			continue
 		}
-		key := expanderKey(row.dev)
-		if key == p.expander || key == "" || row.dev.Bay != p.bay {
-			unchanged[p.expander] = true
+		key := enclosureKey(row.dev)
+		if key == p.enclosure || key == "" || row.dev.Bay != p.bay {
+			unchanged[p.enclosure] = true
 			continue
 		}
-		if moved[p.expander] == nil {
-			moved[p.expander] = map[target]int{}
+		if moved[p.enclosure] == nil {
+			moved[p.enclosure] = map[target]int{}
 		}
-		moved[p.expander][target{key, row.dev.Expander}]++
+		moved[p.enclosure][target{key, enclosureVia(row.dev)}]++
 	}
 	for old, targets := range moved {
 		if unchanged[old] || len(targets) != 1 {
@@ -398,20 +423,76 @@ func (t *tx) renameExpanders(host *hostRow, rows []devRow, byDrive map[int64]*pl
 			if n < 2 {
 				continue
 			}
-			if _, err := t.ExecContext(t.ctx, `UPDATE placement SET expander = ?, expander_dev = ? WHERE host_id = ? AND expander = ? AND ended_at IS NULL`, to.key, to.dev, host.id, old); err != nil {
+			if _, err := t.ExecContext(t.ctx, `UPDATE placement SET enclosure = ?, enclosure_via = ? WHERE host_id = ? AND enclosure = ? AND ended_at IS NULL`, to.key, to.via, host.id, old); err != nil {
 				return err
 			}
-			var oldDev string
-			for _, p := range byDrive {
-				if p.expander == old {
-					oldDev = p.expanderDev
-					p.expander, p.expanderDev = to.key, to.dev
+			if old != "" {
+				if _, err := t.ExecContext(t.ctx, `UPDATE enclosure_name SET enclosure = ?1 WHERE enclosure = ?2 AND NOT EXISTS (SELECT 1 FROM enclosure_name WHERE enclosure = ?1)`, to.key, old); err != nil {
+					return err
+				}
+				if _, err := t.ExecContext(t.ctx, `DELETE FROM enclosure WHERE host_id = ? AND enclosure = ?`, host.id, old); err != nil {
+					return err
 				}
 			}
-			detail := map[string]any{"from": old, "from_dev": oldDev, "to": to.key, "to_dev": to.dev, "drives": n}
-			if err := t.event(EventExpanderRenamed, 0, host.id, detail, source, snapshotID); err != nil {
+			var oldVia string
+			for _, p := range byDrive {
+				if p.enclosure == old {
+					oldVia = p.enclosureVia
+					p.enclosure, p.enclosureVia = to.key, to.via
+				}
+			}
+			detail := map[string]any{"from": old, "from_via": oldVia, "to": to.key, "to_via": to.via, "drives": n}
+			if err := t.event(EventEnclosureRenamed, 0, host.id, detail, source, snapshotID); err != nil {
 				return err
 			}
+		}
+	}
+	return nil
+}
+
+// noteEnclosures records every enclosure the report mentions, through a
+// drive or an empty bay, with how many bays were seen in it, so an empty
+// shelf can be listed and named before anything sits in it.
+func (t *tx) noteEnclosures(host *hostRow, r Report, rows []devRow) error {
+	type enc struct {
+		via, viaID string
+		bays       map[string]bool
+	}
+	seen := map[string]*enc{}
+	note := func(key, via, viaID, bay string) {
+		if key == "" {
+			return
+		}
+		e := seen[key]
+		if e == nil {
+			e = &enc{via: via, viaID: viaID, bays: map[string]bool{}}
+			seen[key] = e
+		}
+		if bay != "" {
+			e.bays[bay] = true
+		}
+	}
+	for _, row := range rows {
+		d := row.dev
+		if d.Error != "" && enclosureKey(d) == "" {
+			continue
+		}
+		viaID := d.EnclosureViaID
+		if viaID == "" {
+			viaID = d.ExpanderID
+		}
+		note(enclosureKey(d), enclosureVia(d), viaID, d.Bay)
+	}
+	for _, b := range r.EmptyBays {
+		note(enclosureKey(ReportDevice{EnclosureID: b.EnclosureID, EnclosureVia: b.EnclosureVia, EnclosureViaID: b.EnclosureViaID}), b.EnclosureVia, b.EnclosureViaID, b.Bay)
+	}
+	for key, e := range seen {
+		if _, err := t.ExecContext(t.ctx, `
+			INSERT INTO enclosure (host_id, enclosure, via, via_address, bays, first_seen, last_seen) VALUES (?, ?, ?, ?, ?, ?, ?)
+			ON CONFLICT (host_id, enclosure) DO UPDATE SET via = excluded.via, via_address = CASE WHEN excluded.via_address != '' THEN excluded.via_address ELSE via_address END,
+				bays = MAX(bays, excluded.bays), last_seen = excluded.last_seen`,
+			host.id, key, e.via, e.viaID, len(e.bays), t.obs, t.obs); err != nil {
+			return err
 		}
 	}
 	return nil
@@ -424,7 +505,7 @@ func (t *tx) vanish(p *placementRow, unmapped []PoolMember, source string, snaps
 	if err := t.closePlacement(p.id, EndVanished); err != nil {
 		return err
 	}
-	detail := map[string]any{"last_seen": p.lastSeen, "expander": p.expander, "expander_dev": p.expanderDev, "bay": p.bay, "uses": json.RawMessage(p.uses), "dev_name": p.devName}
+	detail := map[string]any{"last_seen": p.lastSeen, "enclosure": p.enclosure, "enclosure_via": p.enclosureVia, "bay": p.bay, "uses": json.RawMessage(p.uses), "dev_name": p.devName}
 	for _, m := range unmapped {
 		id, err := t.driveForPath(m.Path)
 		if err != nil {
@@ -494,11 +575,11 @@ func (t *tx) reconcileGhosts(host *hostRow, unmapped []PoolMember, source string
 	return nil
 }
 
-const placementColumns = `p.placement_id, p.drive_id, p.host_id, h.hostname, p.expander, p.expander_dev, p.bay, p.uses, p.dev_name, p.first_seen, p.last_seen, p.end_reason`
+const placementColumns = `p.placement_id, p.drive_id, p.host_id, h.hostname, p.enclosure, p.enclosure_via, p.bay, p.uses, p.dev_name, p.first_seen, p.last_seen, p.end_reason`
 
 func scanPlacement(row interface{ Scan(...any) error }) (*placementRow, error) {
 	p := &placementRow{}
-	err := row.Scan(&p.id, &p.driveID, &p.hostID, &p.hostname, &p.expander, &p.expanderDev, &p.bay, &p.uses, &p.devName, &p.firstSeen, &p.lastSeen, &p.endReason)
+	err := row.Scan(&p.id, &p.driveID, &p.hostID, &p.hostname, &p.enclosure, &p.enclosureVia, &p.bay, &p.uses, &p.devName, &p.firstSeen, &p.lastSeen, &p.endReason)
 	return p, err
 }
 

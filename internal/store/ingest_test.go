@@ -128,7 +128,7 @@ type placementFact struct {
 func (h *harness) placements(serial string) []placementFact {
 	h.t.Helper()
 	rows, err := h.s.db.Query(`
-		SELECT ho.hostname, p.expander, p.bay, p.uses, p.first_seen, p.last_seen, p.ended_at IS NOT NULL, p.end_reason
+		SELECT ho.hostname, p.enclosure, p.bay, p.uses, p.first_seen, p.last_seen, p.ended_at IS NOT NULL, p.end_reason
 		FROM placement p JOIN drive d USING (drive_id) JOIN host ho USING (host_id)
 		WHERE d.serial = ? ORDER BY p.placement_id`, serial)
 	if err != nil {
@@ -576,11 +576,11 @@ func TestExpanderRenamed(t *testing.T) {
 	if ps := h.placements("C1"); len(ps) != 1 || ps[0].expander != "expander-0:0" || !ps[0].ended || ps[0].endReason != EndVanished {
 		t.Errorf("C1 placements = %+v", ps)
 	}
-	if kinds := h.hostEvents("storage1"); len(kinds) != 2 || kinds[1] != EventExpanderRenamed {
+	if kinds := h.hostEvents("storage1"); len(kinds) != 2 || kinds[1] != EventEnclosureRenamed {
 		t.Errorf("host events = %v", kinds)
 	}
 	var detail string
-	h.s.db.QueryRow(`SELECT detail FROM event WHERE kind = ?`, EventExpanderRenamed).Scan(&detail)
+	h.s.db.QueryRow(`SELECT detail FROM event WHERE kind = ?`, EventEnclosureRenamed).Scan(&detail)
 	for _, want := range []string{`"from":"expander-6:0"`, `"to":"expander-0:0"`, `"drives":2`} {
 		if !strings.Contains(detail, want) {
 			t.Errorf("rename detail %s lacks %s", detail, want)
@@ -604,9 +604,9 @@ func TestExpanderRenamed(t *testing.T) {
 		t.Errorf("host events after dev rename = %v", kinds)
 	}
 	var dev string
-	h.s.db.QueryRow(`SELECT expander_dev FROM placement WHERE ended_at IS NULL LIMIT 1`).Scan(&dev)
+	h.s.db.QueryRow(`SELECT enclosure_via FROM placement WHERE ended_at IS NULL LIMIT 1`).Scan(&dev)
 	if dev != "expander-9:0" {
-		t.Errorf("expander_dev = %q, want expander-9:0", dev)
+		t.Errorf("enclosure_via = %q, want expander-9:0", dev)
 	}
 
 	// One drive alone going to another expander's same bay is a move.
@@ -618,52 +618,120 @@ func TestExpanderRenamed(t *testing.T) {
 	}
 }
 
-func TestExpanderNames(t *testing.T) {
+func TestEnclosureNames(t *testing.T) {
 	h := fleet(t)
-	all, err := h.s.ListExpanders(h.ctx)
+	all, err := h.s.ListEnclosures(h.ctx)
 	if err != nil || len(all) == 0 {
-		t.Fatalf("ListExpanders = %+v, %v", all, err)
+		t.Fatalf("ListEnclosures = %+v, %v", all, err)
 	}
-	var shelf Expander // storage1's, where X sits
+	var shelf Enclosure // storage1's, where X sits
 	for _, e := range all {
 		if e.Hostname == "storage1" {
 			shelf = e
 		}
 	}
 	if shelf.Key == "" || shelf.Drives < 1 {
-		t.Fatalf("storage1's expander missing from %+v", all)
+		t.Fatalf("storage1's enclosure missing from %+v", all)
 	}
-	e, err := h.s.NameExpander(h.ctx, shelf.Dev, "front shelf", "the one by the door", "scott")
+	e, err := h.s.NameEnclosure(h.ctx, shelf.Via, "front shelf", "the one by the door", "scott")
 	if err != nil || e.Name != "front shelf" || e.Key != shelf.Key || e.Drives != shelf.Drives {
-		t.Fatalf("NameExpander = %+v, %v", e, err)
+		t.Fatalf("NameEnclosure = %+v, %v", e, err)
 	}
 	d, _, _, err := h.s.GetDrive(h.ctx, "X1")
-	if err != nil || d.Current == nil || d.Current.ExpanderName != "front shelf" || d.Current.ExpanderDev != shelf.Dev {
+	if err != nil || d.Current == nil || d.Current.EnclosureName != "front shelf" || d.Current.EnclosureVia != shelf.Via {
 		t.Errorf("placement after naming = %+v, %v", d.Current, err)
 	}
-	names, _ := h.s.ExpanderNames(h.ctx)
+	names, _ := h.s.EnclosureNames(h.ctx)
 	if names[shelf.Key] != "front shelf" {
-		t.Errorf("ExpanderNames = %v", names)
+		t.Errorf("EnclosureNames = %v", names)
 	}
-	if _, err := h.s.NameExpander(h.ctx, "nosuch", "x", "", "scott"); !errors.Is(err, ErrNotFound) {
-		t.Errorf("unknown expander: %v", err)
+	if _, err := h.s.NameEnclosure(h.ctx, "nosuch", "x", "", "scott"); !errors.Is(err, ErrNotFound) {
+		t.Errorf("unknown enclosure: %v", err)
 	}
 	// Two hosts whose kernels both call a shelf expander-7:0: the kernel
-	// name is ambiguous, a distinctive part of either SAS address is not.
+	// name is ambiguous, a distinctive part of either key is not.
 	q := dev("sdz", "Q1", "0x5000000000000009", "expander-7:0", "1")
-	q.ExpanderID = "0x500605b0000000aa"
+	q.EnclosureID, q.EnclosureVia, q.EnclosureViaID = "0x500605b0000000aa", "expander-7:0", "0x500605b0000000a0"
 	h.report(hostB, dev("sdq", "Y1", "0x5000000000000002", "expander-9:0", "7", "spare"), q)
 	r := dev("sdz", "R1", "0x500000000000000a", "expander-7:0", "1")
-	r.ExpanderID = "0x500605b0000000bb"
+	r.EnclosureID, r.EnclosureVia, r.EnclosureViaID = "0x500605b0000000bb", "expander-7:0", "0x500605b0000000b0"
 	h.report(HostIdentity{MachineID: "cccc", Hostname: "third", OS: "linux"}, r)
 	var amb *AmbiguousError
-	if _, err := h.s.NameExpander(h.ctx, "expander-7:0", "x", "", "scott"); !errors.As(err, &amb) || len(amb.Candidates) != 2 {
+	if _, err := h.s.NameEnclosure(h.ctx, "expander-7:0", "x", "", "scott"); !errors.As(err, &amb) || len(amb.Candidates) != 2 {
 		t.Errorf("ambiguous kernel name: %v", err)
 	}
-	if e, err := h.s.NameExpander(h.ctx, "00aa", "left JBOD", "", "scott"); err != nil || e.Key != "0x500605b0000000aa" || e.Hostname != "backup" {
+	if e, err := h.s.NameEnclosure(h.ctx, "00aa", "left JBOD", "", "scott"); err != nil || e.Key != "0x500605b0000000aa" || e.Hostname != "backup" || e.Bays != 1 {
 		t.Errorf("partial key: %+v, %v", e, err)
 	}
-	if e, err := h.s.NameExpander(h.ctx, shelf.Key, "", "", "scott"); err != nil || e.Name != "" {
+	// A name resolves back to its enclosure.
+	if key, err := h.s.ResolveEnclosure(h.ctx, "left JBOD"); err != nil || key != "0x500605b0000000aa" {
+		t.Errorf("resolve by name: %q, %v", key, err)
+	}
+	if e, err := h.s.NameEnclosure(h.ctx, shelf.Key, "", "", "scott"); err != nil || e.Name != "" {
 		t.Errorf("clear = %+v, %v", e, err)
+	}
+}
+
+// TestEnclosureKeys: the SES enclosure id is the key; the fallbacks and
+// the upgrade renames from older keys keep names and placements intact.
+func TestEnclosureKeys(t *testing.T) {
+	h := newHarness(t)
+	// A 0.4 agent: drives keyed on the expander's address; the front-panel
+	// drives on the HBA's own ports have no owner at all.
+	a := dev("sda", "A1", "0x5000000000000011", "expander-11:0", "3", "zfs > space 1 > raidz2 0 > disk 0")
+	b := dev("sdb", "B1", "0x5000000000000012", "expander-11:0", "4", "zfs > space 1 > raidz2 0 > disk 1")
+	a.ExpanderID, b.ExpanderID = "0x5000ccab0200947e", "0x5000ccab0200947e"
+	f := dev("sdq", "F1", "0x5000000000000021", "", "0", "zfs > space 1 > mirror 3 > disk 0")
+	g := dev("sdr", "G1", "0x5000000000000022", "", "7", "zfs > space 1 > mirror 3 > disk 1")
+	h.report(hostA, a, b, f, g)
+	if _, err := h.s.NameEnclosure(h.ctx, "947e", "big shelf", "", "scott"); err != nil {
+		t.Fatal(err)
+	}
+	if ps := h.placements("F1"); len(ps) != 1 || ps[0].expander != "" {
+		t.Errorf("front panel drive before 0.7 = %+v", ps)
+	}
+
+	// A 0.7 agent: the shelf's enclosure id differs from its expander's
+	// address, and the front panel has an enclosure of its own.
+	h.advance(5 * time.Minute)
+	for _, d := range []*ReportDevice{&a, &b} {
+		d.EnclosureID, d.EnclosureVia, d.EnclosureViaID = "0x5000ccab020094ff", "expander-11:0", "0x5000ccab0200947e"
+	}
+	for _, d := range []*ReportDevice{&f, &g} {
+		d.EnclosureID, d.EnclosureVia, d.EnclosureViaID = "0x500062b2047b51c0", "host11", "0x500062b2047b51c5"
+	}
+	h.report(hostA, a, b, f, g)
+	for serial, key := range map[string]string{"A1": "0x5000ccab020094ff", "B1": "0x5000ccab020094ff", "F1": "0x500062b2047b51c0", "G1": "0x500062b2047b51c0"} {
+		if kinds, _ := h.events(serial); len(kinds) != 1 {
+			t.Errorf("%s events = %v, want only first_seen", serial, kinds)
+		}
+		if ps := h.placements(serial); len(ps) != 1 || ps[0].expander != key {
+			t.Errorf("%s placements = %+v, want key %s", serial, ps, key)
+		}
+	}
+	renames := h.hostEvents("storage1")
+	n := 0
+	for _, k := range renames {
+		if k == EventEnclosureRenamed {
+			n++
+		}
+	}
+	if n != 2 {
+		t.Errorf("host events = %v, want two renames", renames)
+	}
+	names, _ := h.s.EnclosureNames(h.ctx)
+	if names["0x5000ccab020094ff"] != "big shelf" || names["0x5000ccab0200947e"] != "" {
+		t.Errorf("name did not follow the rename: %v", names)
+	}
+	es, err := h.s.ListEnclosures(h.ctx)
+	if err != nil || len(es) != 2 {
+		t.Fatalf("ListEnclosures = %+v, %v", es, err)
+	}
+	if es[0].Via != "expander-11:0" || es[0].Name != "big shelf" || es[0].Drives != 2 || es[0].Bays != 2 || es[1].Via != "host11" || es[1].Drives != 2 {
+		t.Errorf("enclosures = %+v", es)
+	}
+	d, _, _, err := h.s.GetDrive(h.ctx, "F1")
+	if err != nil || d.Current == nil || d.Current.EnclosureVia != "host11" || d.Current.Bay != "0" {
+		t.Errorf("F1 = %+v, %v", d.Current, err)
 	}
 }

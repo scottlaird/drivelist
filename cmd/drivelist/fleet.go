@@ -28,8 +28,8 @@ func fleetCommands(cfg *clientConfig) []*cobra.Command {
 		newIOCmd(cfg),
 		newHostCmd(cfg),
 		newAdminCmd(cfg),
-		newExpandersCmd(cfg),
-		newExpanderCmd(cfg),
+		newEnclosuresCmd(cfg),
+		newEnclosureCmd(cfg),
 	}
 }
 
@@ -647,22 +647,24 @@ func newEventsCmd(cfg *clientConfig) *cobra.Command {
 	return cmd
 }
 
-// ---------- expanders ----------
+// ---------- enclosures ----------
 
-func newExpandersCmd(cfg *clientConfig) *cobra.Command {
+func newEnclosuresCmd(cfg *clientConfig) *cobra.Command {
 	return &cobra.Command{
-		Use:   "expanders",
-		Short: "List the SAS expanders (shelves, backplanes) drives are placed on",
-		Long: `expanders lists every expander with a drive on it: the host, the
-kernel's current name for it, the stable key placements use (its SAS
-address), and the name a person gave it with 'expander KEY name'.`,
+		Use:   "enclosures",
+		Short: "List the enclosures (shelves, backplanes, front panels) drives sit in",
+		Long: `enclosures lists every enclosure a host has reported: the host, the
+node that reaches it (an expander, or the HBA for its own bays), that
+node's model, the name a person gave it with 'enclosure KEY name', the
+drives in it and the bays seen, and the key placements use (the SES
+enclosure identifier).`,
 		Args: cobra.NoArgs,
 		RunE: func(cmd *cobra.Command, _ []string) error {
 			client, err := cfg.queryClient()
 			if err != nil {
 				return err
 			}
-			res, err := client.ListExpanders(cmd.Context(), connect.NewRequest(&pb.ListExpandersRequest{}))
+			res, err := client.ListEnclosures(cmd.Context(), connect.NewRequest(&pb.ListEnclosuresRequest{}))
 			if err != nil {
 				return rpcErr(err)
 			}
@@ -670,47 +672,47 @@ address), and the name a person gave it with 'expander KEY name'.`,
 				return printJSON(cmd.OutOrStdout(), res.Msg)
 			}
 			w := tab(cmd.OutOrStdout())
-			fmt.Fprintln(w, "HOST\tEXPANDER\tMODEL\tNAME\tDRIVES\tKEY\tNOTE")
-			for _, e := range res.Msg.Expanders {
-				fmt.Fprintf(w, "%s\t%s\t%s\t%s\t%d\t%s\t%s\n", e.Hostname, orDash(e.ExpanderDev), orDash(e.Product), orDash(e.Name), e.Drives, e.Expander, e.Note)
+			fmt.Fprintln(w, "HOST\tVIA\tMODEL\tNAME\tDRIVES\tBAYS\tKEY\tNOTE")
+			for _, e := range res.Msg.Enclosures {
+				fmt.Fprintf(w, "%s\t%s\t%s\t%s\t%d\t%s\t%s\t%s\n", e.Hostname, orDash(e.Via), orDash(e.Product), orDash(e.Name), e.Drives, count(uint32(e.Bays)), e.Enclosure, e.Note)
 			}
 			return w.Flush()
 		},
 	}
 }
 
-func newExpanderCmd(cfg *clientConfig) *cobra.Command {
+func newEnclosureCmd(cfg *clientConfig) *cobra.Command {
 	var note string
 	cmd := &cobra.Command{
-		Use:   "expander KEY name NAME",
-		Short: "Give an expander a name, shown wherever its slot is",
-		Long: `expander KEY name NAME records what you call an expander: "front shelf",
-"JBOD 2". Every listing shows the name in place of the kernel's
-expander-H:N from then on. KEY is the key 'expanders' prints, an
-unambiguous part of it, or the kernel's name if only one host has an
-expander so named. An empty NAME clears it.`,
+		Use:   "enclosure KEY name NAME",
+		Short: "Give an enclosure a name, shown wherever its bays are",
+		Long: `enclosure KEY name NAME records what you call an enclosure: "front
+shelf", "JBOD 2", "fs2-front". Every listing shows the name in place of
+the kernel's expander-H:N or hostH from then on. KEY is the key
+'enclosures' prints, an unambiguous part of it, or the reaching node's
+kernel name if only one host has one so named. An empty NAME clears it.`,
 		Args: cobra.MinimumNArgs(2),
 		RunE: func(cmd *cobra.Command, args []string) error {
 			if args[1] != "name" {
-				return fmt.Errorf("usage: drivelist expander KEY name NAME [--note TEXT]")
+				return fmt.Errorf("usage: drivelist enclosure KEY name NAME [--note TEXT]")
 			}
 			client, err := cfg.queryClient()
 			if err != nil {
 				return err
 			}
 			cfg.resolve()
-			res, err := client.NameExpander(cmd.Context(), connect.NewRequest(&pb.NameExpanderRequest{Ref: args[0], Name: strings.Join(args[2:], " "), Note: note, Actor: cfg.actor}))
+			res, err := client.NameEnclosure(cmd.Context(), connect.NewRequest(&pb.NameEnclosureRequest{Ref: args[0], Name: strings.Join(args[2:], " "), Note: note, Actor: cfg.actor}))
 			if err != nil {
 				return rpcErr(err)
 			}
 			if cfg.json {
 				return printJSON(cmd.OutOrStdout(), res.Msg)
 			}
-			e := res.Msg.Expander
+			e := res.Msg.Enclosure
 			if e.Name == "" {
-				fmt.Fprintf(cmd.OutOrStdout(), "%s: name cleared\n", e.Expander)
+				fmt.Fprintf(cmd.OutOrStdout(), "%s: name cleared\n", e.Enclosure)
 			} else {
-				fmt.Fprintf(cmd.OutOrStdout(), "%s (%s on %s): named %q\n", e.Expander, orDash(e.ExpanderDev), orDash(e.Hostname), e.Name)
+				fmt.Fprintf(cmd.OutOrStdout(), "%s (%s on %s): named %q\n", e.Enclosure, orDash(e.Via), orDash(e.Hostname), e.Name)
 			}
 			return nil
 		},

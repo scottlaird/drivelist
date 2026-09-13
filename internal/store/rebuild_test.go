@@ -39,7 +39,7 @@ func (h *harness) tableRows(query string) []map[string]any {
 	return out
 }
 
-const placementsQuery = `SELECT drive_id, host_id, expander, bay, uses, dev_name, first_seen, last_seen, ended_at, end_reason FROM placement ORDER BY drive_id, first_seen, host_id, bay`
+const placementsQuery = `SELECT drive_id, host_id, enclosure, bay, uses, dev_name, first_seen, last_seen, ended_at, end_reason FROM placement ORDER BY drive_id, first_seen, host_id, bay`
 const eventsQuery = `SELECT ts, kind, drive_id, host_id, detail, source FROM event WHERE kind NOT IN ('host_first_seen','host_stale','host_resumed','status_changed','note','identity_conflict','pool_missing_member') ORDER BY ts, drive_id, kind, detail`
 
 // TestRebuildReproducesIngest runs a busy history through Ingest, rebuilds
@@ -87,7 +87,7 @@ func TestRebuildReproducesIngest(t *testing.T) {
 	before := h.tableRows(placementsQuery)
 	beforeEvents := h.tableRows(eventsQuery)
 	// 3 first_seen, vanished, member_state_changed, moved_host, reappeared,
-	// 2 expander_renamed, report_degraded, use_changed.
+	// 2 enclosure_renamed, report_degraded, use_changed.
 	if len(before) < 6 || len(beforeEvents) < 11 {
 		t.Fatalf("history too small to prove anything: %d placements, %d events", len(before), len(beforeEvents))
 	}

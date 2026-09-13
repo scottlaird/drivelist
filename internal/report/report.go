@@ -74,7 +74,8 @@ func FromInventory(host *pb.HostIdentity, inv *drivelist.Inventory, topo *collec
 	}
 	for _, d := range inv.Devices {
 		if d.IsEmptyBay() {
-			req.EmptyBays = append(req.EmptyBays, &pb.EmptyBay{Expander: d.Expander, ExpanderId: d.ExpanderID, Bay: d.EnclosureBay, EnclosurePath: d.ExpanderPath})
+			req.EmptyBays = append(req.EmptyBays, &pb.EmptyBay{Expander: d.Expander, ExpanderId: d.ExpanderID, Bay: d.EnclosureBay, EnclosurePath: d.ExpanderPath,
+				EnclosureId: d.EnclosureID, EnclosureVia: d.EnclosureVia, EnclosureViaId: d.EnclosureViaID})
 			continue
 		}
 		req.Devices = append(req.Devices, Device(d))
@@ -138,19 +139,22 @@ func Device(d *drivelist.Device) *pb.Device {
 		}
 	}
 	return &pb.Device{
-		DevName:       d.DeviceName,
-		Identity:      &pb.DriveIdentity{Wwn: d.WWN, Vendor: d.Attribs["ID_VENDOR"], Model: d.Model, Serial: d.Serial},
-		Bus:           bus(d),
-		SizeBytes:     d.Size,
-		Expander:      d.Expander,
-		ExpanderId:    d.ExpanderID,
-		Bay:           d.EnclosureBay,
-		EnclosurePath: d.ExpanderPath,
-		Uses:          d.Uses,
-		DevLinks:      links,
-		Error:         d.Error,
-		MemberState:   d.MemberState,
-		ScsiAddr:      scsiAddr(d.SysPath),
+		DevName:        d.DeviceName,
+		Identity:       &pb.DriveIdentity{Wwn: d.WWN, Vendor: d.Attribs["ID_VENDOR"], Model: d.Model, Serial: d.Serial},
+		Bus:            bus(d),
+		SizeBytes:      d.Size,
+		Expander:       d.Expander,
+		ExpanderId:     d.ExpanderID,
+		Bay:            d.EnclosureBay,
+		EnclosureId:    d.EnclosureID,
+		EnclosureVia:   d.EnclosureVia,
+		EnclosureViaId: d.EnclosureViaID,
+		EnclosurePath:  d.ExpanderPath,
+		Uses:           d.Uses,
+		DevLinks:       links,
+		Error:          d.Error,
+		MemberState:    d.MemberState,
+		ScsiAddr:       scsiAddr(d.SysPath),
 	}
 }
 

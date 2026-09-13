@@ -246,13 +246,13 @@ func (s *Server) GetDriveHistory(ctx context.Context, req *connect.Request[pb.Ge
 	return connect.NewResponse(out), nil
 }
 
-// nameEvents decorates events with expander names.
+// nameEvents decorates events with enclosure names.
 func (s *Server) nameEvents(ctx context.Context, evs []*pb.Event) error {
-	names, err := s.store.ExpanderNames(ctx)
+	names, err := s.store.EnclosureNames(ctx)
 	if err != nil {
 		return err
 	}
-	nameExpanders(names, evs)
+	nameEnclosures(names, evs)
 	return nil
 }
 
@@ -275,14 +275,14 @@ func (s *Server) ListEvents(ctx context.Context, req *connect.Request[pb.ListEve
 	return connect.NewResponse(out), nil
 }
 
-func (s *Server) ListExpanders(ctx context.Context, _ *connect.Request[pb.ListExpandersRequest]) (*connect.Response[pb.ListExpandersResponse], error) {
-	es, err := s.store.ListExpanders(ctx)
+func (s *Server) ListEnclosures(ctx context.Context, _ *connect.Request[pb.ListEnclosuresRequest]) (*connect.Response[pb.ListEnclosuresResponse], error) {
+	es, err := s.store.ListEnclosures(ctx)
 	if err != nil {
 		return nil, storeErr(err)
 	}
-	out := &pb.ListExpandersResponse{}
+	out := &pb.ListEnclosuresResponse{}
 	for _, e := range es {
-		out.Expanders = append(out.Expanders, expanderToProto(e))
+		out.Enclosures = append(out.Enclosures, enclosureToProto(e))
 	}
 	return connect.NewResponse(out), nil
 }
@@ -318,13 +318,13 @@ func (s *Server) ListSASErrors(ctx context.Context, req *connect.Request[pb.List
 	return connect.NewResponse(out), nil
 }
 
-func (s *Server) NameExpander(ctx context.Context, req *connect.Request[pb.NameExpanderRequest]) (*connect.Response[pb.NameExpanderResponse], error) {
-	e, err := s.store.NameExpander(ctx, req.Msg.GetRef(), req.Msg.GetName(), req.Msg.GetNote(), actorOr(req.Msg.GetActor()))
+func (s *Server) NameEnclosure(ctx context.Context, req *connect.Request[pb.NameEnclosureRequest]) (*connect.Response[pb.NameEnclosureResponse], error) {
+	e, err := s.store.NameEnclosure(ctx, req.Msg.GetRef(), req.Msg.GetName(), req.Msg.GetNote(), actorOr(req.Msg.GetActor()))
 	if err != nil {
 		return nil, storeErr(err)
 	}
-	s.log.Info("expander named", "expander", e.Key, "name", e.Name, "actor", req.Msg.GetActor())
-	return connect.NewResponse(&pb.NameExpanderResponse{Expander: expanderToProto(e)}), nil
+	s.log.Info("enclosure named", "enclosure", e.Key, "name", e.Name, "actor", req.Msg.GetActor())
+	return connect.NewResponse(&pb.NameEnclosureResponse{Enclosure: enclosureToProto(e)}), nil
 }
 
 func (s *Server) ListMissing(ctx context.Context, _ *connect.Request[pb.ListMissingRequest]) (*connect.Response[pb.ListMissingResponse], error) {

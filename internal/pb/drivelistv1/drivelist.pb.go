@@ -234,8 +234,16 @@ type Device struct {
 	MemberState   string                 `protobuf:"bytes,11,opt,name=member_state,json=memberState,proto3" json:"member_state,omitempty"` // ZFS vdev state for the zfs use, "" otherwise
 	ScsiAddr      string                 `protobuf:"bytes,12,opt,name=scsi_addr,json=scsiAddr,proto3" json:"scsi_addr,omitempty"`          // "11:0:17:0"
 	ExpanderId    string                 `protobuf:"bytes,13,opt,name=expander_id,json=expanderId,proto3" json:"expander_id,omitempty"`    // the expander's SAS address, stable across boots; "" if unknown
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	// Where the drive physically is: the SES enclosure it sits in (its
+	// logical identifier, which end devices report with or without an
+	// expander in the path) and the node whose port reaches it, an
+	// expander or the HBA itself for its own bays. Placements are keyed on
+	// enclosure_id, falling back to enclosure_via_id, then enclosure_via.
+	EnclosureId    string `protobuf:"bytes,14,opt,name=enclosure_id,json=enclosureId,proto3" json:"enclosure_id,omitempty"`
+	EnclosureVia   string `protobuf:"bytes,15,opt,name=enclosure_via,json=enclosureVia,proto3" json:"enclosure_via,omitempty"`         // "expander-11:0", "host11"
+	EnclosureViaId string `protobuf:"bytes,16,opt,name=enclosure_via_id,json=enclosureViaId,proto3" json:"enclosure_via_id,omitempty"` // that node's SAS address
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
 }
 
 func (x *Device) Reset() {
@@ -359,14 +367,38 @@ func (x *Device) GetExpanderId() string {
 	return ""
 }
 
+func (x *Device) GetEnclosureId() string {
+	if x != nil {
+		return x.EnclosureId
+	}
+	return ""
+}
+
+func (x *Device) GetEnclosureVia() string {
+	if x != nil {
+		return x.EnclosureVia
+	}
+	return ""
+}
+
+func (x *Device) GetEnclosureViaId() string {
+	if x != nil {
+		return x.EnclosureViaId
+	}
+	return ""
+}
+
 type EmptyBay struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Expander      string                 `protobuf:"bytes,1,opt,name=expander,proto3" json:"expander,omitempty"`
-	Bay           string                 `protobuf:"bytes,2,opt,name=bay,proto3" json:"bay,omitempty"`
-	EnclosurePath string                 `protobuf:"bytes,3,opt,name=enclosure_path,json=enclosurePath,proto3" json:"enclosure_path,omitempty"`
-	ExpanderId    string                 `protobuf:"bytes,4,opt,name=expander_id,json=expanderId,proto3" json:"expander_id,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	state          protoimpl.MessageState `protogen:"open.v1"`
+	Expander       string                 `protobuf:"bytes,1,opt,name=expander,proto3" json:"expander,omitempty"`
+	Bay            string                 `protobuf:"bytes,2,opt,name=bay,proto3" json:"bay,omitempty"`
+	EnclosurePath  string                 `protobuf:"bytes,3,opt,name=enclosure_path,json=enclosurePath,proto3" json:"enclosure_path,omitempty"`
+	ExpanderId     string                 `protobuf:"bytes,4,opt,name=expander_id,json=expanderId,proto3" json:"expander_id,omitempty"`
+	EnclosureId    string                 `protobuf:"bytes,5,opt,name=enclosure_id,json=enclosureId,proto3" json:"enclosure_id,omitempty"`
+	EnclosureVia   string                 `protobuf:"bytes,6,opt,name=enclosure_via,json=enclosureVia,proto3" json:"enclosure_via,omitempty"`
+	EnclosureViaId string                 `protobuf:"bytes,7,opt,name=enclosure_via_id,json=enclosureViaId,proto3" json:"enclosure_via_id,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
 }
 
 func (x *EmptyBay) Reset() {
@@ -423,6 +455,27 @@ func (x *EmptyBay) GetEnclosurePath() string {
 func (x *EmptyBay) GetExpanderId() string {
 	if x != nil {
 		return x.ExpanderId
+	}
+	return ""
+}
+
+func (x *EmptyBay) GetEnclosureId() string {
+	if x != nil {
+		return x.EnclosureId
+	}
+	return ""
+}
+
+func (x *EmptyBay) GetEnclosureVia() string {
+	if x != nil {
+		return x.EnclosureVia
+	}
+	return ""
+}
+
+func (x *EmptyBay) GetEnclosureViaId() string {
+	if x != nil {
+		return x.EnclosureViaId
 	}
 	return ""
 }
@@ -1968,16 +2021,16 @@ func (x *Host) GetGhostCount() int32 {
 type Placement struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Hostname      string                 `protobuf:"bytes,1,opt,name=hostname,proto3" json:"hostname,omitempty"`
-	Expander      string                 `protobuf:"bytes,2,opt,name=expander,proto3" json:"expander,omitempty"` // stable key: the SAS address, or the kernel name from agents that sent none
+	Enclosure     string                 `protobuf:"bytes,2,opt,name=enclosure,proto3" json:"enclosure,omitempty"` // stable key: the SES enclosure id, else the reaching node's SAS address, else its kernel name
 	Bay           string                 `protobuf:"bytes,3,opt,name=bay,proto3" json:"bay,omitempty"`
 	DevName       string                 `protobuf:"bytes,4,opt,name=dev_name,json=devName,proto3" json:"dev_name,omitempty"`
 	Uses          []string               `protobuf:"bytes,5,rep,name=uses,proto3" json:"uses,omitempty"`
 	FirstSeen     *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=first_seen,json=firstSeen,proto3" json:"first_seen,omitempty"`
-	LastSeen      *timestamppb.Timestamp `protobuf:"bytes,7,opt,name=last_seen,json=lastSeen,proto3" json:"last_seen,omitempty"`              // last heartbeat that confirmed it
-	EndedAt       *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=ended_at,json=endedAt,proto3" json:"ended_at,omitempty"`                 // unset while current
-	EndReason     string                 `protobuf:"bytes,9,opt,name=end_reason,json=endReason,proto3" json:"end_reason,omitempty"`           // vanished | moved | use_changed | merged
-	ExpanderDev   string                 `protobuf:"bytes,10,opt,name=expander_dev,json=expanderDev,proto3" json:"expander_dev,omitempty"`    // the kernel's current name for the expander, "expander-11:0"
-	ExpanderName  string                 `protobuf:"bytes,11,opt,name=expander_name,json=expanderName,proto3" json:"expander_name,omitempty"` // the name a person gave it, "" if none
+	LastSeen      *timestamppb.Timestamp `protobuf:"bytes,7,opt,name=last_seen,json=lastSeen,proto3" json:"last_seen,omitempty"`                 // last heartbeat that confirmed it
+	EndedAt       *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=ended_at,json=endedAt,proto3" json:"ended_at,omitempty"`                    // unset while current
+	EndReason     string                 `protobuf:"bytes,9,opt,name=end_reason,json=endReason,proto3" json:"end_reason,omitempty"`              // vanished | moved | use_changed | merged
+	EnclosureVia  string                 `protobuf:"bytes,10,opt,name=enclosure_via,json=enclosureVia,proto3" json:"enclosure_via,omitempty"`    // the kernel's current name for the node that reaches the enclosure, "expander-11:0" or "host11"
+	EnclosureName string                 `protobuf:"bytes,11,opt,name=enclosure_name,json=enclosureName,proto3" json:"enclosure_name,omitempty"` // the name a person gave the enclosure, "" if none
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -2019,9 +2072,9 @@ func (x *Placement) GetHostname() string {
 	return ""
 }
 
-func (x *Placement) GetExpander() string {
+func (x *Placement) GetEnclosure() string {
 	if x != nil {
-		return x.Expander
+		return x.Enclosure
 	}
 	return ""
 }
@@ -2075,51 +2128,52 @@ func (x *Placement) GetEndReason() string {
 	return ""
 }
 
-func (x *Placement) GetExpanderDev() string {
+func (x *Placement) GetEnclosureVia() string {
 	if x != nil {
-		return x.ExpanderDev
+		return x.EnclosureVia
 	}
 	return ""
 }
 
-func (x *Placement) GetExpanderName() string {
+func (x *Placement) GetEnclosureName() string {
 	if x != nil {
-		return x.ExpanderName
+		return x.EnclosureName
 	}
 	return ""
 }
 
-// Expander is one SAS expander (a drive shelf or backplane) on one host
-// as the open placements see it.
-type Expander struct {
+// Enclosure is one physical place drives sit in (a shelf, a backplane,
+// a server's front panel) on one host.
+type Enclosure struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Expander      string                 `protobuf:"bytes,1,opt,name=expander,proto3" json:"expander,omitempty"` // the key placements carry
+	Enclosure     string                 `protobuf:"bytes,1,opt,name=enclosure,proto3" json:"enclosure,omitempty"` // the key placements carry
 	Hostname      string                 `protobuf:"bytes,2,opt,name=hostname,proto3" json:"hostname,omitempty"`
-	ExpanderDev   string                 `protobuf:"bytes,3,opt,name=expander_dev,json=expanderDev,proto3" json:"expander_dev,omitempty"`
+	Via           string                 `protobuf:"bytes,3,opt,name=via,proto3" json:"via,omitempty"` // the node that reaches it: "expander-11:0", "host11"
 	Name          string                 `protobuf:"bytes,4,opt,name=name,proto3" json:"name,omitempty"`
 	Note          string                 `protobuf:"bytes,5,opt,name=note,proto3" json:"note,omitempty"`
-	Drives        int32                  `protobuf:"varint,6,opt,name=drives,proto3" json:"drives,omitempty"` // drives currently placed on it
+	Drives        int32                  `protobuf:"varint,6,opt,name=drives,proto3" json:"drives,omitempty"` // drives currently placed in it
 	FirstSeen     *timestamppb.Timestamp `protobuf:"bytes,7,opt,name=first_seen,json=firstSeen,proto3" json:"first_seen,omitempty"`
 	LastSeen      *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=last_seen,json=lastSeen,proto3" json:"last_seen,omitempty"`
-	Product       string                 `protobuf:"bytes,9,opt,name=product,proto3" json:"product,omitempty"` // vendor and product from the SAS topology, "" if unknown
+	Product       string                 `protobuf:"bytes,9,opt,name=product,proto3" json:"product,omitempty"` // vendor and product of the reaching node, from the SAS topology
+	Bays          int32                  `protobuf:"varint,10,opt,name=bays,proto3" json:"bays,omitempty"`     // bays seen, empty ones included; 0 if the host has not reported them
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *Expander) Reset() {
-	*x = Expander{}
+func (x *Enclosure) Reset() {
+	*x = Enclosure{}
 	mi := &file_drivelist_v1_drivelist_proto_msgTypes[21]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *Expander) String() string {
+func (x *Enclosure) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*Expander) ProtoMessage() {}
+func (*Enclosure) ProtoMessage() {}
 
-func (x *Expander) ProtoReflect() protoreflect.Message {
+func (x *Enclosure) ProtoReflect() protoreflect.Message {
 	mi := &file_drivelist_v1_drivelist_proto_msgTypes[21]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -2131,94 +2185,101 @@ func (x *Expander) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use Expander.ProtoReflect.Descriptor instead.
-func (*Expander) Descriptor() ([]byte, []int) {
+// Deprecated: Use Enclosure.ProtoReflect.Descriptor instead.
+func (*Enclosure) Descriptor() ([]byte, []int) {
 	return file_drivelist_v1_drivelist_proto_rawDescGZIP(), []int{21}
 }
 
-func (x *Expander) GetExpander() string {
+func (x *Enclosure) GetEnclosure() string {
 	if x != nil {
-		return x.Expander
+		return x.Enclosure
 	}
 	return ""
 }
 
-func (x *Expander) GetHostname() string {
+func (x *Enclosure) GetHostname() string {
 	if x != nil {
 		return x.Hostname
 	}
 	return ""
 }
 
-func (x *Expander) GetExpanderDev() string {
+func (x *Enclosure) GetVia() string {
 	if x != nil {
-		return x.ExpanderDev
+		return x.Via
 	}
 	return ""
 }
 
-func (x *Expander) GetName() string {
+func (x *Enclosure) GetName() string {
 	if x != nil {
 		return x.Name
 	}
 	return ""
 }
 
-func (x *Expander) GetNote() string {
+func (x *Enclosure) GetNote() string {
 	if x != nil {
 		return x.Note
 	}
 	return ""
 }
 
-func (x *Expander) GetDrives() int32 {
+func (x *Enclosure) GetDrives() int32 {
 	if x != nil {
 		return x.Drives
 	}
 	return 0
 }
 
-func (x *Expander) GetFirstSeen() *timestamppb.Timestamp {
+func (x *Enclosure) GetFirstSeen() *timestamppb.Timestamp {
 	if x != nil {
 		return x.FirstSeen
 	}
 	return nil
 }
 
-func (x *Expander) GetLastSeen() *timestamppb.Timestamp {
+func (x *Enclosure) GetLastSeen() *timestamppb.Timestamp {
 	if x != nil {
 		return x.LastSeen
 	}
 	return nil
 }
 
-func (x *Expander) GetProduct() string {
+func (x *Enclosure) GetProduct() string {
 	if x != nil {
 		return x.Product
 	}
 	return ""
 }
 
-type ListExpandersRequest struct {
+func (x *Enclosure) GetBays() int32 {
+	if x != nil {
+		return x.Bays
+	}
+	return 0
+}
+
+type ListEnclosuresRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ListExpandersRequest) Reset() {
-	*x = ListExpandersRequest{}
+func (x *ListEnclosuresRequest) Reset() {
+	*x = ListEnclosuresRequest{}
 	mi := &file_drivelist_v1_drivelist_proto_msgTypes[22]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *ListExpandersRequest) String() string {
+func (x *ListEnclosuresRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*ListExpandersRequest) ProtoMessage() {}
+func (*ListEnclosuresRequest) ProtoMessage() {}
 
-func (x *ListExpandersRequest) ProtoReflect() protoreflect.Message {
+func (x *ListEnclosuresRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_drivelist_v1_drivelist_proto_msgTypes[22]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -2230,32 +2291,32 @@ func (x *ListExpandersRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use ListExpandersRequest.ProtoReflect.Descriptor instead.
-func (*ListExpandersRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use ListEnclosuresRequest.ProtoReflect.Descriptor instead.
+func (*ListEnclosuresRequest) Descriptor() ([]byte, []int) {
 	return file_drivelist_v1_drivelist_proto_rawDescGZIP(), []int{22}
 }
 
-type ListExpandersResponse struct {
+type ListEnclosuresResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Expanders     []*Expander            `protobuf:"bytes,1,rep,name=expanders,proto3" json:"expanders,omitempty"`
+	Enclosures    []*Enclosure           `protobuf:"bytes,1,rep,name=enclosures,proto3" json:"enclosures,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ListExpandersResponse) Reset() {
-	*x = ListExpandersResponse{}
+func (x *ListEnclosuresResponse) Reset() {
+	*x = ListEnclosuresResponse{}
 	mi := &file_drivelist_v1_drivelist_proto_msgTypes[23]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *ListExpandersResponse) String() string {
+func (x *ListEnclosuresResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*ListExpandersResponse) ProtoMessage() {}
+func (*ListEnclosuresResponse) ProtoMessage() {}
 
-func (x *ListExpandersResponse) ProtoReflect() protoreflect.Message {
+func (x *ListEnclosuresResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_drivelist_v1_drivelist_proto_msgTypes[23]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -2267,21 +2328,21 @@ func (x *ListExpandersResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use ListExpandersResponse.ProtoReflect.Descriptor instead.
-func (*ListExpandersResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use ListEnclosuresResponse.ProtoReflect.Descriptor instead.
+func (*ListEnclosuresResponse) Descriptor() ([]byte, []int) {
 	return file_drivelist_v1_drivelist_proto_rawDescGZIP(), []int{23}
 }
 
-func (x *ListExpandersResponse) GetExpanders() []*Expander {
+func (x *ListEnclosuresResponse) GetEnclosures() []*Enclosure {
 	if x != nil {
-		return x.Expanders
+		return x.Enclosures
 	}
 	return nil
 }
 
-type NameExpanderRequest struct {
+type NameEnclosureRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Ref           string                 `protobuf:"bytes,1,opt,name=ref,proto3" json:"ref,omitempty"`   // the key, an unambiguous part of it, or the kernel name if only one host has it
+	Ref           string                 `protobuf:"bytes,1,opt,name=ref,proto3" json:"ref,omitempty"`   // the key, an unambiguous part of it, or the reaching node's kernel name if only one host has it
 	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"` // "" clears the name
 	Note          string                 `protobuf:"bytes,3,opt,name=note,proto3" json:"note,omitempty"`
 	Actor         string                 `protobuf:"bytes,4,opt,name=actor,proto3" json:"actor,omitempty"`
@@ -2289,20 +2350,20 @@ type NameExpanderRequest struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *NameExpanderRequest) Reset() {
-	*x = NameExpanderRequest{}
+func (x *NameEnclosureRequest) Reset() {
+	*x = NameEnclosureRequest{}
 	mi := &file_drivelist_v1_drivelist_proto_msgTypes[24]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *NameExpanderRequest) String() string {
+func (x *NameEnclosureRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*NameExpanderRequest) ProtoMessage() {}
+func (*NameEnclosureRequest) ProtoMessage() {}
 
-func (x *NameExpanderRequest) ProtoReflect() protoreflect.Message {
+func (x *NameEnclosureRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_drivelist_v1_drivelist_proto_msgTypes[24]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -2314,60 +2375,60 @@ func (x *NameExpanderRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use NameExpanderRequest.ProtoReflect.Descriptor instead.
-func (*NameExpanderRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use NameEnclosureRequest.ProtoReflect.Descriptor instead.
+func (*NameEnclosureRequest) Descriptor() ([]byte, []int) {
 	return file_drivelist_v1_drivelist_proto_rawDescGZIP(), []int{24}
 }
 
-func (x *NameExpanderRequest) GetRef() string {
+func (x *NameEnclosureRequest) GetRef() string {
 	if x != nil {
 		return x.Ref
 	}
 	return ""
 }
 
-func (x *NameExpanderRequest) GetName() string {
+func (x *NameEnclosureRequest) GetName() string {
 	if x != nil {
 		return x.Name
 	}
 	return ""
 }
 
-func (x *NameExpanderRequest) GetNote() string {
+func (x *NameEnclosureRequest) GetNote() string {
 	if x != nil {
 		return x.Note
 	}
 	return ""
 }
 
-func (x *NameExpanderRequest) GetActor() string {
+func (x *NameEnclosureRequest) GetActor() string {
 	if x != nil {
 		return x.Actor
 	}
 	return ""
 }
 
-type NameExpanderResponse struct {
+type NameEnclosureResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Expander      *Expander              `protobuf:"bytes,1,opt,name=expander,proto3" json:"expander,omitempty"`
+	Enclosure     *Enclosure             `protobuf:"bytes,1,opt,name=enclosure,proto3" json:"enclosure,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *NameExpanderResponse) Reset() {
-	*x = NameExpanderResponse{}
+func (x *NameEnclosureResponse) Reset() {
+	*x = NameEnclosureResponse{}
 	mi := &file_drivelist_v1_drivelist_proto_msgTypes[25]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *NameExpanderResponse) String() string {
+func (x *NameEnclosureResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*NameExpanderResponse) ProtoMessage() {}
+func (*NameEnclosureResponse) ProtoMessage() {}
 
-func (x *NameExpanderResponse) ProtoReflect() protoreflect.Message {
+func (x *NameEnclosureResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_drivelist_v1_drivelist_proto_msgTypes[25]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -2379,14 +2440,14 @@ func (x *NameExpanderResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use NameExpanderResponse.ProtoReflect.Descriptor instead.
-func (*NameExpanderResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use NameEnclosureResponse.ProtoReflect.Descriptor instead.
+func (*NameEnclosureResponse) Descriptor() ([]byte, []int) {
 	return file_drivelist_v1_drivelist_proto_rawDescGZIP(), []int{25}
 }
 
-func (x *NameExpanderResponse) GetExpander() *Expander {
+func (x *NameEnclosureResponse) GetEnclosure() *Enclosure {
 	if x != nil {
-		return x.Expander
+		return x.Enclosure
 	}
 	return nil
 }
@@ -4896,7 +4957,7 @@ const file_drivelist_v1_drivelist_proto_rawDesc = "" +
 	"\x03wwn\x18\x01 \x01(\tR\x03wwn\x12\x16\n" +
 	"\x06vendor\x18\x02 \x01(\tR\x06vendor\x12\x14\n" +
 	"\x05model\x18\x03 \x01(\tR\x05model\x12\x16\n" +
-	"\x06serial\x18\x04 \x01(\tR\x06serial\"\x9d\x03\n" +
+	"\x06serial\x18\x04 \x01(\tR\x06serial\"\x8f\x04\n" +
 	"\x06Device\x12\x19\n" +
 	"\bdev_name\x18\x01 \x01(\tR\adevName\x127\n" +
 	"\bidentity\x18\x02 \x01(\v2\x1b.drivelist.v1.DriveIdentityR\bidentity\x12#\n" +
@@ -4913,13 +4974,19 @@ const file_drivelist_v1_drivelist_proto_rawDesc = "" +
 	"\fmember_state\x18\v \x01(\tR\vmemberState\x12\x1b\n" +
 	"\tscsi_addr\x18\f \x01(\tR\bscsiAddr\x12\x1f\n" +
 	"\vexpander_id\x18\r \x01(\tR\n" +
-	"expanderId\"\x80\x01\n" +
+	"expanderId\x12!\n" +
+	"\fenclosure_id\x18\x0e \x01(\tR\venclosureId\x12#\n" +
+	"\renclosure_via\x18\x0f \x01(\tR\fenclosureVia\x12(\n" +
+	"\x10enclosure_via_id\x18\x10 \x01(\tR\x0eenclosureViaId\"\xf2\x01\n" +
 	"\bEmptyBay\x12\x1a\n" +
 	"\bexpander\x18\x01 \x01(\tR\bexpander\x12\x10\n" +
 	"\x03bay\x18\x02 \x01(\tR\x03bay\x12%\n" +
 	"\x0eenclosure_path\x18\x03 \x01(\tR\renclosurePath\x12\x1f\n" +
 	"\vexpander_id\x18\x04 \x01(\tR\n" +
-	"expanderId\"b\n" +
+	"expanderId\x12!\n" +
+	"\fenclosure_id\x18\x05 \x01(\tR\venclosureId\x12#\n" +
+	"\renclosure_via\x18\x06 \x01(\tR\fenclosureVia\x12(\n" +
+	"\x10enclosure_via_id\x18\a \x01(\tR\x0eenclosureViaId\"b\n" +
 	"\x0eUnmappedMember\x12\x12\n" +
 	"\x04pool\x18\x01 \x01(\tR\x04pool\x12\x12\n" +
 	"\x04path\x18\x02 \x01(\tR\x04path\x12\x12\n" +
@@ -5088,10 +5155,10 @@ const file_drivelist_v1_drivelist_proto_rawDesc = "" +
 	"\rmissing_count\x18\t \x01(\x05R\fmissingCount\x12\x1f\n" +
 	"\vghost_count\x18\n" +
 	" \x01(\x05R\n" +
-	"ghostCount\"\x96\x03\n" +
+	"ghostCount\"\x9c\x03\n" +
 	"\tPlacement\x12\x1a\n" +
-	"\bhostname\x18\x01 \x01(\tR\bhostname\x12\x1a\n" +
-	"\bexpander\x18\x02 \x01(\tR\bexpander\x12\x10\n" +
+	"\bhostname\x18\x01 \x01(\tR\bhostname\x12\x1c\n" +
+	"\tenclosure\x18\x02 \x01(\tR\tenclosure\x12\x10\n" +
 	"\x03bay\x18\x03 \x01(\tR\x03bay\x12\x19\n" +
 	"\bdev_name\x18\x04 \x01(\tR\adevName\x12\x12\n" +
 	"\x04uses\x18\x05 \x03(\tR\x04uses\x129\n" +
@@ -5100,31 +5167,35 @@ const file_drivelist_v1_drivelist_proto_rawDesc = "" +
 	"\tlast_seen\x18\a \x01(\v2\x1a.google.protobuf.TimestampR\blastSeen\x125\n" +
 	"\bended_at\x18\b \x01(\v2\x1a.google.protobuf.TimestampR\aendedAt\x12\x1d\n" +
 	"\n" +
-	"end_reason\x18\t \x01(\tR\tendReason\x12!\n" +
-	"\fexpander_dev\x18\n" +
-	" \x01(\tR\vexpanderDev\x12#\n" +
-	"\rexpander_name\x18\v \x01(\tR\fexpanderName\"\xb3\x02\n" +
-	"\bExpander\x12\x1a\n" +
-	"\bexpander\x18\x01 \x01(\tR\bexpander\x12\x1a\n" +
-	"\bhostname\x18\x02 \x01(\tR\bhostname\x12!\n" +
-	"\fexpander_dev\x18\x03 \x01(\tR\vexpanderDev\x12\x12\n" +
+	"end_reason\x18\t \x01(\tR\tendReason\x12#\n" +
+	"\renclosure_via\x18\n" +
+	" \x01(\tR\fenclosureVia\x12%\n" +
+	"\x0eenclosure_name\x18\v \x01(\tR\renclosureName\"\xb9\x02\n" +
+	"\tEnclosure\x12\x1c\n" +
+	"\tenclosure\x18\x01 \x01(\tR\tenclosure\x12\x1a\n" +
+	"\bhostname\x18\x02 \x01(\tR\bhostname\x12\x10\n" +
+	"\x03via\x18\x03 \x01(\tR\x03via\x12\x12\n" +
 	"\x04name\x18\x04 \x01(\tR\x04name\x12\x12\n" +
 	"\x04note\x18\x05 \x01(\tR\x04note\x12\x16\n" +
 	"\x06drives\x18\x06 \x01(\x05R\x06drives\x129\n" +
 	"\n" +
 	"first_seen\x18\a \x01(\v2\x1a.google.protobuf.TimestampR\tfirstSeen\x127\n" +
 	"\tlast_seen\x18\b \x01(\v2\x1a.google.protobuf.TimestampR\blastSeen\x12\x18\n" +
-	"\aproduct\x18\t \x01(\tR\aproduct\"\x16\n" +
-	"\x14ListExpandersRequest\"M\n" +
-	"\x15ListExpandersResponse\x124\n" +
-	"\texpanders\x18\x01 \x03(\v2\x16.drivelist.v1.ExpanderR\texpanders\"e\n" +
-	"\x13NameExpanderRequest\x12\x10\n" +
+	"\aproduct\x18\t \x01(\tR\aproduct\x12\x12\n" +
+	"\x04bays\x18\n" +
+	" \x01(\x05R\x04bays\"\x17\n" +
+	"\x15ListEnclosuresRequest\"Q\n" +
+	"\x16ListEnclosuresResponse\x127\n" +
+	"\n" +
+	"enclosures\x18\x01 \x03(\v2\x17.drivelist.v1.EnclosureR\n" +
+	"enclosures\"f\n" +
+	"\x14NameEnclosureRequest\x12\x10\n" +
 	"\x03ref\x18\x01 \x01(\tR\x03ref\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x12\n" +
 	"\x04note\x18\x03 \x01(\tR\x04note\x12\x14\n" +
-	"\x05actor\x18\x04 \x01(\tR\x05actor\"J\n" +
-	"\x14NameExpanderResponse\x122\n" +
-	"\bexpander\x18\x01 \x01(\v2\x16.drivelist.v1.ExpanderR\bexpander\"#\n" +
+	"\x05actor\x18\x04 \x01(\tR\x05actor\"N\n" +
+	"\x15NameEnclosureResponse\x125\n" +
+	"\tenclosure\x18\x01 \x01(\v2\x17.drivelist.v1.EnclosureR\tenclosure\"#\n" +
 	"\rGetSASRequest\x12\x12\n" +
 	"\x04host\x18\x01 \x01(\tR\x04host\"\xfe\x01\n" +
 	"\fSasNodeState\x12)\n" +
@@ -5332,7 +5403,7 @@ const file_drivelist_v1_drivelist_proto_rawDesc = "" +
 	"\x0fReportInventory\x12$.drivelist.v1.ReportInventoryRequest\x1a%.drivelist.v1.ReportInventoryResponse\x12J\n" +
 	"\fReportKernel\x12!.drivelist.v1.ReportKernelRequest\x1a\x17.drivelist.v1.ReportAck\x12H\n" +
 	"\vReportSmart\x12 .drivelist.v1.ReportSmartRequest\x1a\x17.drivelist.v1.ReportAck\x12B\n" +
-	"\bReportIO\x12\x1d.drivelist.v1.ReportIORequest\x1a\x17.drivelist.v1.ReportAck2\xa7\v\n" +
+	"\bReportIO\x12\x1d.drivelist.v1.ReportIORequest\x1a\x17.drivelist.v1.ReportAck2\xad\v\n" +
 	"\x05Query\x12L\n" +
 	"\tListHosts\x12\x1e.drivelist.v1.ListHostsRequest\x1a\x1f.drivelist.v1.ListHostsResponse\x12O\n" +
 	"\n" +
@@ -5350,9 +5421,9 @@ const file_drivelist_v1_drivelist_proto_rawDesc = "" +
 	"\vMergeDrives\x12 .drivelist.v1.MergeDrivesRequest\x1a!.drivelist.v1.MergeDrivesResponse\x12O\n" +
 	"\n" +
 	"MergeHosts\x12\x1f.drivelist.v1.MergeHostsRequest\x1a .drivelist.v1.MergeHostsResponse\x12F\n" +
-	"\aRebuild\x12\x1c.drivelist.v1.RebuildRequest\x1a\x1d.drivelist.v1.RebuildResponse\x12X\n" +
-	"\rListExpanders\x12\".drivelist.v1.ListExpandersRequest\x1a#.drivelist.v1.ListExpandersResponse\x12U\n" +
-	"\fNameExpander\x12!.drivelist.v1.NameExpanderRequest\x1a\".drivelist.v1.NameExpanderResponse\x12C\n" +
+	"\aRebuild\x12\x1c.drivelist.v1.RebuildRequest\x1a\x1d.drivelist.v1.RebuildResponse\x12[\n" +
+	"\x0eListEnclosures\x12#.drivelist.v1.ListEnclosuresRequest\x1a$.drivelist.v1.ListEnclosuresResponse\x12X\n" +
+	"\rNameEnclosure\x12\".drivelist.v1.NameEnclosureRequest\x1a#.drivelist.v1.NameEnclosureResponse\x12C\n" +
 	"\x06GetSAS\x12\x1b.drivelist.v1.GetSASRequest\x1a\x1c.drivelist.v1.GetSASResponse\x12X\n" +
 	"\rListSASErrors\x12\".drivelist.v1.ListSASErrorsRequest\x1a#.drivelist.v1.ListSASErrorsResponseBEZCgithub.com/scottlaird/drivelist/internal/pb/drivelistv1;drivelistv1b\x06proto3"
 
@@ -5393,11 +5464,11 @@ var file_drivelist_v1_drivelist_proto_goTypes = []any{
 	(*ReportAck)(nil),               // 19: drivelist.v1.ReportAck
 	(*Host)(nil),                    // 20: drivelist.v1.Host
 	(*Placement)(nil),               // 21: drivelist.v1.Placement
-	(*Expander)(nil),                // 22: drivelist.v1.Expander
-	(*ListExpandersRequest)(nil),    // 23: drivelist.v1.ListExpandersRequest
-	(*ListExpandersResponse)(nil),   // 24: drivelist.v1.ListExpandersResponse
-	(*NameExpanderRequest)(nil),     // 25: drivelist.v1.NameExpanderRequest
-	(*NameExpanderResponse)(nil),    // 26: drivelist.v1.NameExpanderResponse
+	(*Enclosure)(nil),               // 22: drivelist.v1.Enclosure
+	(*ListEnclosuresRequest)(nil),   // 23: drivelist.v1.ListEnclosuresRequest
+	(*ListEnclosuresResponse)(nil),  // 24: drivelist.v1.ListEnclosuresResponse
+	(*NameEnclosureRequest)(nil),    // 25: drivelist.v1.NameEnclosureRequest
+	(*NameEnclosureResponse)(nil),   // 26: drivelist.v1.NameEnclosureResponse
 	(*GetSASRequest)(nil),           // 27: drivelist.v1.GetSASRequest
 	(*SasNodeState)(nil),            // 28: drivelist.v1.SasNodeState
 	(*SasPhyState)(nil),             // 29: drivelist.v1.SasPhyState
@@ -5475,10 +5546,10 @@ var file_drivelist_v1_drivelist_proto_depIdxs = []int32{
 	66,  // 31: drivelist.v1.Placement.first_seen:type_name -> google.protobuf.Timestamp
 	66,  // 32: drivelist.v1.Placement.last_seen:type_name -> google.protobuf.Timestamp
 	66,  // 33: drivelist.v1.Placement.ended_at:type_name -> google.protobuf.Timestamp
-	66,  // 34: drivelist.v1.Expander.first_seen:type_name -> google.protobuf.Timestamp
-	66,  // 35: drivelist.v1.Expander.last_seen:type_name -> google.protobuf.Timestamp
-	22,  // 36: drivelist.v1.ListExpandersResponse.expanders:type_name -> drivelist.v1.Expander
-	22,  // 37: drivelist.v1.NameExpanderResponse.expander:type_name -> drivelist.v1.Expander
+	66,  // 34: drivelist.v1.Enclosure.first_seen:type_name -> google.protobuf.Timestamp
+	66,  // 35: drivelist.v1.Enclosure.last_seen:type_name -> google.protobuf.Timestamp
+	22,  // 36: drivelist.v1.ListEnclosuresResponse.enclosures:type_name -> drivelist.v1.Enclosure
+	22,  // 37: drivelist.v1.NameEnclosureResponse.enclosure:type_name -> drivelist.v1.Enclosure
 	7,   // 38: drivelist.v1.SasNodeState.node:type_name -> drivelist.v1.SasNode
 	66,  // 39: drivelist.v1.SasNodeState.first_seen:type_name -> google.protobuf.Timestamp
 	66,  // 40: drivelist.v1.SasNodeState.last_seen:type_name -> google.protobuf.Timestamp
@@ -5544,8 +5615,8 @@ var file_drivelist_v1_drivelist_proto_depIdxs = []int32{
 	60,  // 100: drivelist.v1.Query.MergeDrives:input_type -> drivelist.v1.MergeDrivesRequest
 	62,  // 101: drivelist.v1.Query.MergeHosts:input_type -> drivelist.v1.MergeHostsRequest
 	64,  // 102: drivelist.v1.Query.Rebuild:input_type -> drivelist.v1.RebuildRequest
-	23,  // 103: drivelist.v1.Query.ListExpanders:input_type -> drivelist.v1.ListExpandersRequest
-	25,  // 104: drivelist.v1.Query.NameExpander:input_type -> drivelist.v1.NameExpanderRequest
+	23,  // 103: drivelist.v1.Query.ListEnclosures:input_type -> drivelist.v1.ListEnclosuresRequest
+	25,  // 104: drivelist.v1.Query.NameEnclosure:input_type -> drivelist.v1.NameEnclosureRequest
 	27,  // 105: drivelist.v1.Query.GetSAS:input_type -> drivelist.v1.GetSASRequest
 	31,  // 106: drivelist.v1.Query.ListSASErrors:input_type -> drivelist.v1.ListSASErrorsRequest
 	11,  // 107: drivelist.v1.Collector.ReportInventory:output_type -> drivelist.v1.ReportInventoryResponse
@@ -5566,8 +5637,8 @@ var file_drivelist_v1_drivelist_proto_depIdxs = []int32{
 	61,  // 122: drivelist.v1.Query.MergeDrives:output_type -> drivelist.v1.MergeDrivesResponse
 	63,  // 123: drivelist.v1.Query.MergeHosts:output_type -> drivelist.v1.MergeHostsResponse
 	65,  // 124: drivelist.v1.Query.Rebuild:output_type -> drivelist.v1.RebuildResponse
-	24,  // 125: drivelist.v1.Query.ListExpanders:output_type -> drivelist.v1.ListExpandersResponse
-	26,  // 126: drivelist.v1.Query.NameExpander:output_type -> drivelist.v1.NameExpanderResponse
+	24,  // 125: drivelist.v1.Query.ListEnclosures:output_type -> drivelist.v1.ListEnclosuresResponse
+	26,  // 126: drivelist.v1.Query.NameEnclosure:output_type -> drivelist.v1.NameEnclosureResponse
 	30,  // 127: drivelist.v1.Query.GetSAS:output_type -> drivelist.v1.GetSASResponse
 	33,  // 128: drivelist.v1.Query.ListSASErrors:output_type -> drivelist.v1.ListSASErrorsResponse
 	107, // [107:129] is the sub-list for method output_type
