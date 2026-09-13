@@ -459,7 +459,7 @@ func showHistory(cmd *cobra.Command, cfg *clientConfig, ref string) error {
 		fmt.Fprintf(w, "%s  %s\n", when(e.Ts), describe(e))
 	}
 	if p := res.Msg.Drive.Current; p != nil {
-		fmt.Fprintf(w, "%s  present       %s  %s  %s  last confirmed %s\n", when(p.LastSeen), p.Hostname, slot(p.Expander, p.Bay), useSummary(p.Uses), when(p.LastSeen))
+		fmt.Fprintf(w, "\nstill present on %s %s  %s  last confirmed %s\n", p.Hostname, slot(p.Expander, p.Bay), useSummary(p.Uses), when(p.LastSeen))
 	}
 	return nil
 }
