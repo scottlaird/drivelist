@@ -5,12 +5,12 @@ T: disk
 D: b 68:64
 N: sdbq
 L: 0
-S: disk/by-id/wwn-0x5002538a06a04540
-S: disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy54-lun-0
 S: disk/by-diskseq/77
-S: disk/by-id/scsi-35002538a06a04540
-S: disk/by-vdev/D1
+S: disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy54-lun-0
 S: disk/by-id/scsi-SSAMSUNG_P1633N19_EMC1920_P0NA0HA00483
+S: disk/by-id/scsi-35002538a06a04540
+S: disk/by-id/wwn-0x5002538a06a04540
+S: disk/by-vdev/D1
 Q: 77
 E: DEVPATH=/devices/pci0000:00/0000:00:03.0/0000:03:00.0/host11/port-11:0/expander-11:0/port-11:0:45/end_device-11:0:45/target11:0:53/11:0:53:0/block/sdbq
 E: DEVNAME=/dev/sdbq
@@ -56,7 +56,7 @@ E: ID_PART_TABLE_TYPE=gpt
 E: ID_VDEV=D1
 E: ID_VDEV_PATH=disk/by-vdev/D1
 E: NVME_HOST_IFACE=none
-E: DEVLINKS=/dev/disk/by-id/wwn-0x5002538a06a04540 /dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy54-lun-0 /dev/disk/by-diskseq/77 /dev/disk/by-id/scsi-35002538a06a04540 /dev/disk/by-vdev/D1 /dev/disk/by-id/scsi-SSAMSUNG_P1633N19_EMC1920_P0NA0HA00483
+E: DEVLINKS=/dev/disk/by-diskseq/77 /dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy54-lun-0 /dev/disk/by-id/scsi-SSAMSUNG_P1633N19_EMC1920_P0NA0HA00483 /dev/disk/by-id/scsi-35002538a06a04540 /dev/disk/by-id/wwn-0x5002538a06a04540 /dev/disk/by-vdev/D1
 E: TAGS=:systemd:
 E: CURRENT_TAGS=:systemd:
 

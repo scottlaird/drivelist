@@ -5,12 +5,12 @@ T: disk
 D: b 67:240
 N: sdbl
 L: 0
-S: disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy49-lun-0
-S: disk/by-id/scsi-SHITACHI_HUH72808CLAR8000_VJGREREX
-S: disk/by-vdev/D14
 S: disk/by-id/wwn-0x5000cca26128ceb8
-S: disk/by-id/scsi-35000cca26128ceb8
 S: disk/by-diskseq/72
+S: disk/by-vdev/D14
+S: disk/by-id/scsi-SHITACHI_HUH72808CLAR8000_VJGREREX
+S: disk/by-id/scsi-35000cca26128ceb8
+S: disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy49-lun-0
 Q: 72
 E: DEVPATH=/devices/pci0000:00/0000:00:03.0/0000:03:00.0/host11/port-11:0/expander-11:0/port-11:0:40/end_device-11:0:40/target11:0:48/11:0:48:0/block/sdbl
 E: DEVNAME=/dev/sdbl
@@ -56,7 +56,7 @@ E: ID_PART_TABLE_TYPE=gpt
 E: ID_VDEV=D14
 E: ID_VDEV_PATH=disk/by-vdev/D14
 E: NVME_HOST_IFACE=none
-E: DEVLINKS=/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy49-lun-0 /dev/disk/by-id/scsi-SHITACHI_HUH72808CLAR8000_VJGREREX /dev/disk/by-vdev/D14 /dev/disk/by-id/wwn-0x5000cca26128ceb8 /dev/disk/by-id/scsi-35000cca26128ceb8 /dev/disk/by-diskseq/72
+E: DEVLINKS=/dev/disk/by-id/wwn-0x5000cca26128ceb8 /dev/disk/by-diskseq/72 /dev/disk/by-vdev/D14 /dev/disk/by-id/scsi-SHITACHI_HUH72808CLAR8000_VJGREREX /dev/disk/by-id/scsi-35000cca26128ceb8 /dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy49-lun-0
 E: TAGS=:systemd:
 E: CURRENT_TAGS=:systemd:
 

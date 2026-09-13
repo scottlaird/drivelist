@@ -5,12 +5,12 @@ T: disk
 D: b 67:192
 N: sdbi
 L: 0
-S: disk/by-id/scsi-35000cca2548ef9d4
-S: disk/by-vdev/D50
-S: disk/by-diskseq/69
-S: disk/by-id/wwn-0x5000cca2548ef9d4
-S: disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy46-lun-0
 S: disk/by-id/scsi-SHGST_H7280A520SUN8.0T_001619PJML2V_VKJJML2V
+S: disk/by-id/wwn-0x5000cca2548ef9d4
+S: disk/by-vdev/D50
+S: disk/by-id/scsi-35000cca2548ef9d4
+S: disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy46-lun-0
+S: disk/by-diskseq/69
 Q: 69
 E: DEVPATH=/devices/pci0000:00/0000:00:03.0/0000:03:00.0/host11/port-11:0/expander-11:0/port-11:0:37/end_device-11:0:37/target11:0:45/11:0:45:0/block/sdbi
 E: DEVNAME=/dev/sdbi
@@ -56,7 +56,7 @@ E: ID_PART_TABLE_TYPE=gpt
 E: ID_VDEV=D50
 E: ID_VDEV_PATH=disk/by-vdev/D50
 E: NVME_HOST_IFACE=none
-E: DEVLINKS=/dev/disk/by-id/scsi-35000cca2548ef9d4 /dev/disk/by-vdev/D50 /dev/disk/by-diskseq/69 /dev/disk/by-id/wwn-0x5000cca2548ef9d4 /dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy46-lun-0 /dev/disk/by-id/scsi-SHGST_H7280A520SUN8.0T_001619PJML2V_VKJJML2V
+E: DEVLINKS=/dev/disk/by-id/scsi-SHGST_H7280A520SUN8.0T_001619PJML2V_VKJJML2V /dev/disk/by-id/wwn-0x5000cca2548ef9d4 /dev/disk/by-vdev/D50 /dev/disk/by-id/scsi-35000cca2548ef9d4 /dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy46-lun-0 /dev/disk/by-diskseq/69
 E: TAGS=:systemd:
 E: CURRENT_TAGS=:systemd:
 

@@ -5,12 +5,12 @@ T: disk
 D: b 67:96
 N: sdbc
 L: 0
-S: disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy40-lun-0
 S: disk/by-diskseq/63
-S: disk/by-vdev/D4
-S: disk/by-id/wwn-0x5000cca254301d64
-S: disk/by-id/scsi-35000cca254301d64
+S: disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy40-lun-0
 S: disk/by-id/scsi-SHITACHI_HUH72808CLAR8000_VKGVG9GX
+S: disk/by-id/wwn-0x5000cca254301d64
+S: disk/by-vdev/D4
+S: disk/by-id/scsi-35000cca254301d64
 Q: 63
 E: DEVPATH=/devices/pci0000:00/0000:00:03.0/0000:03:00.0/host11/port-11:0/expander-11:0/port-11:0:31/end_device-11:0:31/target11:0:39/11:0:39:0/block/sdbc
 E: DEVNAME=/dev/sdbc
@@ -56,7 +56,7 @@ E: ID_PART_TABLE_TYPE=gpt
 E: ID_VDEV=D4
 E: ID_VDEV_PATH=disk/by-vdev/D4
 E: NVME_HOST_IFACE=none
-E: DEVLINKS=/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy40-lun-0 /dev/disk/by-diskseq/63 /dev/disk/by-vdev/D4 /dev/disk/by-id/wwn-0x5000cca254301d64 /dev/disk/by-id/scsi-35000cca254301d64 /dev/disk/by-id/scsi-SHITACHI_HUH72808CLAR8000_VKGVG9GX
+E: DEVLINKS=/dev/disk/by-diskseq/63 /dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy40-lun-0 /dev/disk/by-id/scsi-SHITACHI_HUH72808CLAR8000_VKGVG9GX /dev/disk/by-id/wwn-0x5000cca254301d64 /dev/disk/by-vdev/D4 /dev/disk/by-id/scsi-35000cca254301d64
 E: TAGS=:systemd:
 E: CURRENT_TAGS=:systemd:
 

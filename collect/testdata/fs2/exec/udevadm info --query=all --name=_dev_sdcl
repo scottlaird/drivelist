@@ -5,12 +5,12 @@ T: disk
 D: b 69:144
 N: sdcl
 L: 0
-S: disk/by-id/scsi-SATA_TOSHIBA_HDWR180_71J0A191FBLG
 S: disk/by-vdev/E18
 S: disk/by-id/scsi-35000039b08d8b993
-S: disk/by-diskseq/98
-S: disk/by-id/wwn-0x5000039b08d8b993
 S: disk/by-path/pci-0000:03:00.0-sas-exp0x5003048001e8967f-phy30-lun-0
+S: disk/by-id/wwn-0x5000039b08d8b993
+S: disk/by-diskseq/98
+S: disk/by-id/scsi-SATA_TOSHIBA_HDWR180_71J0A191FBLG
 Q: 98
 E: DEVPATH=/devices/pci0000:00/0000:00:03.0/0000:03:00.0/host11/port-11:9/expander-11:1/port-11:1:15/end_device-11:1:15/target11:0:75/11:0:75:0/block/sdcl
 E: DEVNAME=/dev/sdcl
@@ -54,7 +54,7 @@ E: ID_PART_TABLE_TYPE=gpt
 E: ID_VDEV=E18
 E: ID_VDEV_PATH=disk/by-vdev/E18
 E: NVME_HOST_IFACE=none
-E: DEVLINKS=/dev/disk/by-id/scsi-SATA_TOSHIBA_HDWR180_71J0A191FBLG /dev/disk/by-vdev/E18 /dev/disk/by-id/scsi-35000039b08d8b993 /dev/disk/by-diskseq/98 /dev/disk/by-id/wwn-0x5000039b08d8b993 /dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5003048001e8967f-phy30-lun-0
+E: DEVLINKS=/dev/disk/by-vdev/E18 /dev/disk/by-id/scsi-35000039b08d8b993 /dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5003048001e8967f-phy30-lun-0 /dev/disk/by-id/wwn-0x5000039b08d8b993 /dev/disk/by-diskseq/98 /dev/disk/by-id/scsi-SATA_TOSHIBA_HDWR180_71J0A191FBLG
 E: TAGS=:systemd:
 E: CURRENT_TAGS=:systemd:
 

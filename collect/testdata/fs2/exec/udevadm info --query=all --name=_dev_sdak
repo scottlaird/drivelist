@@ -5,12 +5,12 @@ T: disk
 D: b 66:64
 N: sdak
 L: 0
-S: disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy17-lun-0
-S: disk/by-id/scsi-SATA_ST8000VN004-3CP1_WWZ62CA0
 S: disk/by-vdev/D9
 S: disk/by-id/wwn-0x5000c500e8e71e56
 S: disk/by-id/scsi-35000c500e8e71e56
+S: disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy17-lun-0
 S: disk/by-diskseq/45
+S: disk/by-id/scsi-SATA_ST8000VN004-3CP1_WWZ62CA0
 Q: 45
 E: DEVPATH=/devices/pci0000:00/0000:00:03.0/0000:03:00.0/host11/port-11:0/expander-11:0/port-11:0:13/end_device-11:0:13/target11:0:21/11:0:21:0/block/sdak
 E: DEVNAME=/dev/sdak
@@ -53,7 +53,7 @@ E: ID_PART_TABLE_UUID=45f7736a-0a26-e64a-b20d-48df8420c12b
 E: ID_PART_TABLE_TYPE=gpt
 E: ID_VDEV=D9
 E: ID_VDEV_PATH=disk/by-vdev/D9
-E: DEVLINKS=/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy17-lun-0 /dev/disk/by-id/scsi-SATA_ST8000VN004-3CP1_WWZ62CA0 /dev/disk/by-vdev/D9 /dev/disk/by-id/wwn-0x5000c500e8e71e56 /dev/disk/by-id/scsi-35000c500e8e71e56 /dev/disk/by-diskseq/45
+E: DEVLINKS=/dev/disk/by-vdev/D9 /dev/disk/by-id/wwn-0x5000c500e8e71e56 /dev/disk/by-id/scsi-35000c500e8e71e56 /dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy17-lun-0 /dev/disk/by-diskseq/45 /dev/disk/by-id/scsi-SATA_ST8000VN004-3CP1_WWZ62CA0
 E: TAGS=:systemd:
 E: CURRENT_TAGS=:systemd:
 
