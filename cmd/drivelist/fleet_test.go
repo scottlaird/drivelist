@@ -1,6 +1,7 @@
 package main
 
 import (
+	"net/http"
 	"net/http/httptest"
 	"os"
 	"path/filepath"
@@ -143,6 +144,19 @@ func TestFleetEndToEnd(t *testing.T) {
 	}
 	if !strings.HasPrefix(strings.TrimSpace(mustRun(t, "hosts", "--json")), "{") {
 		t.Error("--json did not print JSON")
+	}
+}
+
+func TestOlderServer(t *testing.T) {
+	// A server with no handler for a call answers 404 at the HTTP layer.
+	hs := httptest.NewServer(http.NotFoundHandler())
+	t.Cleanup(hs.Close)
+	t.Setenv("DRIVELIST_SERVER", hs.URL)
+	t.Setenv("DRIVELIST_OPERATOR_TOKEN", "o")
+	t.Setenv("XDG_CONFIG_HOME", t.TempDir())
+	_, _, err := run(t, "io", "compare")
+	if err == nil || !strings.Contains(err.Error(), "older than this client") {
+		t.Errorf("old server: %v", err)
 	}
 }
 

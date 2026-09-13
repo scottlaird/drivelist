@@ -16,6 +16,7 @@ import (
 	"google.golang.org/protobuf/proto"
 
 	"github.com/scottlaird/drivelist/internal/pb/drivelistv1/drivelistv1connect"
+	"github.com/scottlaird/drivelist/internal/report"
 )
 
 // clientConfig is how the fleet commands find the server. Each value comes
@@ -165,6 +166,10 @@ func rpcErr(err error) error {
 			return errors.New("server rejected the token")
 		case connect.CodeUnavailable:
 			return fmt.Errorf("server unreachable: %s", ce.Message())
+		case connect.CodeUnimplemented:
+			// A 404 from the HTTP layer: the server has no handler for this
+			// call, which means it is older than this client.
+			return fmt.Errorf("the server does not know this call (%s); it is older than this client, so upgrade the server (this is drivelist %s)", ce.Message(), report.Version)
 		}
 		return errors.New(ce.Message())
 	}
