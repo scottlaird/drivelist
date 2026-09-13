@@ -351,6 +351,31 @@ func (s *Server) CompareIO(ctx context.Context, req *connect.Request[pb.CompareI
 	return connect.NewResponse(out), nil
 }
 
+func (s *Server) MergeDrives(ctx context.Context, req *connect.Request[pb.MergeDrivesRequest]) (*connect.Response[pb.MergeDrivesResponse], error) {
+	ev, err := s.store.MergeDrives(ctx, req.Msg.GetInto(), req.Msg.GetFrom(), actorOr(req.Msg.GetActor()))
+	if err != nil {
+		return nil, storeErr(err)
+	}
+	s.log.Info("drives merged", "into", ev.Serial, "detail", ev.Detail, "actor", req.Msg.GetActor())
+	return connect.NewResponse(&pb.MergeDrivesResponse{Event: eventToProto(ev)}), nil
+}
+
+func (s *Server) MergeHosts(ctx context.Context, req *connect.Request[pb.MergeHostsRequest]) (*connect.Response[pb.MergeHostsResponse], error) {
+	ev, err := s.store.MergeHosts(ctx, req.Msg.GetInto(), req.Msg.GetFrom(), actorOr(req.Msg.GetActor()))
+	if err != nil {
+		return nil, storeErr(err)
+	}
+	s.log.Info("hosts merged", "into", ev.Hostname, "detail", ev.Detail, "actor", req.Msg.GetActor())
+	return connect.NewResponse(&pb.MergeHostsResponse{Event: eventToProto(ev)}), nil
+}
+
+func actorOr(actor string) string {
+	if actor == "" {
+		return "unknown"
+	}
+	return actor
+}
+
 // storeErr maps store errors to connect codes: not found, invalid
 // (ambiguous reference or bad argument), else internal.
 func storeErr(err error) error {
@@ -360,7 +385,7 @@ func storeErr(err error) error {
 		return connect.NewError(connect.CodeNotFound, err)
 	case errors.As(err, &amb):
 		return connect.NewError(connect.CodeInvalidArgument, err)
-	case strings.Contains(err.Error(), "is not one of") || strings.Contains(err.Error(), "nothing to record"):
+	case strings.Contains(err.Error(), "is not one of") || strings.Contains(err.Error(), "nothing to record") || strings.Contains(err.Error(), "resolve to the same"):
 		return connect.NewError(connect.CodeInvalidArgument, err)
 	}
 	return connect.NewError(connect.CodeInternal, err)

@@ -26,6 +26,7 @@ func fleetCommands(cfg *clientConfig) []*cobra.Command {
 		newEventsCmd(cfg),
 		newMissingCmd(cfg),
 		newIOCmd(cfg),
+		newHostCmd(cfg),
 	}
 }
 
@@ -204,6 +205,7 @@ prefix of either; an ambiguous prefix lists the candidates.
   drivelist drive REF kernel       kernel log error counts by hour (--since 7d)
   drivelist drive REF smart        SMART samples, newest first (--since 30d, --raw for the latest smartctl JSON)
   drivelist drive REF io           hourly I/O buckets, newest first (--since 7d)
+  drivelist drive REF merge OTHER  fold OTHER's record into REF: one drive that got two records
   drivelist drive REF mark STATUS  set the status: ok, suspect, bad, shelved, retired
   drivelist drive REF note TEXT    record a note without changing the status`,
 		Args: cobra.MinimumNArgs(1),
@@ -249,14 +251,68 @@ prefix of either; an ambiguous prefix lists the candidates.
 					return fmt.Errorf("usage: drivelist drive REF note TEXT")
 				}
 				return annotate(cmd, cfg, ref, "", strings.Join(rest[1:], " "))
+			case "merge":
+				if len(rest) != 2 {
+					return fmt.Errorf("usage: drivelist drive REF merge OTHER")
+				}
+				return mergeDrives(cmd, cfg, ref, rest[1])
 			}
-			return fmt.Errorf("unknown action %q: want history, kernel, smart, io, mark, or note", rest[0])
+			return fmt.Errorf("unknown action %q: want history, kernel, smart, io, mark, note, or merge", rest[0])
 		},
 	}
 	cmd.Flags().StringVar(&note, "note", "", "with mark: why the status changed")
 	cmd.Flags().StringVar(&since, "since", "", "with kernel or smart: how far back, as a duration (default 168h for kernel, 720h for smart)")
 	cmd.Flags().BoolVar(&raw, "raw", false, "with smart: print the newest raw smartctl JSON instead of the table")
 	return cmd
+}
+
+func mergeDrives(cmd *cobra.Command, cfg *clientConfig, into, from string) error {
+	client, err := cfg.queryClient()
+	if err != nil {
+		return err
+	}
+	cfg.resolve()
+	res, err := client.MergeDrives(cmd.Context(), connect.NewRequest(&pb.MergeDrivesRequest{Into: into, From: from, Actor: cfg.actor}))
+	if err != nil {
+		return rpcErr(err)
+	}
+	if cfg.json {
+		return printJSON(cmd.OutOrStdout(), res.Msg)
+	}
+	fmt.Fprintf(cmd.OutOrStdout(), "%s  %s  %s\n", res.Msg.Event.Serial, when(res.Msg.Event.Ts), describe(res.Msg.Event))
+	return nil
+}
+
+func newHostCmd(cfg *clientConfig) *cobra.Command {
+	return &cobra.Command{
+		Use:   "host merge INTO FROM",
+		Short: "Fold one host record into another, after a reinstall gave it a new machine id",
+		Long: `host merge moves everything recorded under host FROM (placements,
+snapshots, events, samples) to host INTO and keeps FROM's machine id
+resolving to INTO, so an agent still reporting under the old id lands
+on the merged host. INTO and FROM are hostnames or, when two hosts
+share a name, machine ids as 'hosts --ids' shows them.`,
+		Args: cobra.ExactArgs(3),
+		RunE: func(cmd *cobra.Command, args []string) error {
+			if args[0] != "merge" {
+				return fmt.Errorf("usage: drivelist host merge INTO FROM")
+			}
+			client, err := cfg.queryClient()
+			if err != nil {
+				return err
+			}
+			cfg.resolve()
+			res, err := client.MergeHosts(cmd.Context(), connect.NewRequest(&pb.MergeHostsRequest{Into: args[1], From: args[2], Actor: cfg.actor}))
+			if err != nil {
+				return rpcErr(err)
+			}
+			if cfg.json {
+				return printJSON(cmd.OutOrStdout(), res.Msg)
+			}
+			fmt.Fprintf(cmd.OutOrStdout(), "%s  %s\n", when(res.Msg.Event.Ts), describe(res.Msg.Event))
+			return nil
+		},
+	}
 }
 
 func showIO(cmd *cobra.Command, cfg *clientConfig, ref, since string) error {

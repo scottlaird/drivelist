@@ -126,6 +126,8 @@ const (
 	EventPoolMissingMember  = "pool_missing_member"
 	EventKernelWarning      = "kernel_warning"
 	EventSmartWarning       = "smart_warning"
+	EventMerged             = "merged"
+	EventHostMerged         = "host_merged"
 )
 
 // Placement end reasons.

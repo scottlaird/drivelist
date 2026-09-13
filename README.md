@@ -217,7 +217,12 @@ host; known drives by status; kernel warnings and events in the last
 not exported; they live in the database and the CLI.
 
 A drive is referred to by serial, WWN, or an unambiguous prefix of
-either.  Every command takes `--json` for the raw response.  A drive
+either.  If one physical drive ends up with two records (seen once
+without its WWN, say), `drivelist drive REF merge OTHER` folds OTHER's
+history into REF and keeps OTHER's identity resolving to it; if a host
+is reinstalled and comes back with a new machine id, `drivelist host
+merge INTO FROM` does the same for hosts, with machine ids from
+`hosts --ids` when two share a name.  Every command takes `--json` for the raw response.  A drive
 that a complete report no longer lists is recorded as vanished with
 the last time it was confirmed; a host that stops reporting is marked
 stale and its drives are left in place, since only a report from the

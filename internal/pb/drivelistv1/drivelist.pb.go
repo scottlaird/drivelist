@@ -3390,6 +3390,214 @@ func (x *CompareIOResponse) GetRows() []*IOComparison {
 	return nil
 }
 
+type MergeDrivesRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Into          string                 `protobuf:"bytes,1,opt,name=into,proto3" json:"into,omitempty"`
+	From          string                 `protobuf:"bytes,2,opt,name=from,proto3" json:"from,omitempty"`
+	Actor         string                 `protobuf:"bytes,3,opt,name=actor,proto3" json:"actor,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *MergeDrivesRequest) Reset() {
+	*x = MergeDrivesRequest{}
+	mi := &file_drivelist_v1_drivelist_proto_msgTypes[45]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *MergeDrivesRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*MergeDrivesRequest) ProtoMessage() {}
+
+func (x *MergeDrivesRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_drivelist_v1_drivelist_proto_msgTypes[45]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use MergeDrivesRequest.ProtoReflect.Descriptor instead.
+func (*MergeDrivesRequest) Descriptor() ([]byte, []int) {
+	return file_drivelist_v1_drivelist_proto_rawDescGZIP(), []int{45}
+}
+
+func (x *MergeDrivesRequest) GetInto() string {
+	if x != nil {
+		return x.Into
+	}
+	return ""
+}
+
+func (x *MergeDrivesRequest) GetFrom() string {
+	if x != nil {
+		return x.From
+	}
+	return ""
+}
+
+func (x *MergeDrivesRequest) GetActor() string {
+	if x != nil {
+		return x.Actor
+	}
+	return ""
+}
+
+type MergeDrivesResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Event         *Event                 `protobuf:"bytes,1,opt,name=event,proto3" json:"event,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *MergeDrivesResponse) Reset() {
+	*x = MergeDrivesResponse{}
+	mi := &file_drivelist_v1_drivelist_proto_msgTypes[46]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *MergeDrivesResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*MergeDrivesResponse) ProtoMessage() {}
+
+func (x *MergeDrivesResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_drivelist_v1_drivelist_proto_msgTypes[46]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use MergeDrivesResponse.ProtoReflect.Descriptor instead.
+func (*MergeDrivesResponse) Descriptor() ([]byte, []int) {
+	return file_drivelist_v1_drivelist_proto_rawDescGZIP(), []int{46}
+}
+
+func (x *MergeDrivesResponse) GetEvent() *Event {
+	if x != nil {
+		return x.Event
+	}
+	return nil
+}
+
+type MergeHostsRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Into          string                 `protobuf:"bytes,1,opt,name=into,proto3" json:"into,omitempty"`
+	From          string                 `protobuf:"bytes,2,opt,name=from,proto3" json:"from,omitempty"`
+	Actor         string                 `protobuf:"bytes,3,opt,name=actor,proto3" json:"actor,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *MergeHostsRequest) Reset() {
+	*x = MergeHostsRequest{}
+	mi := &file_drivelist_v1_drivelist_proto_msgTypes[47]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *MergeHostsRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*MergeHostsRequest) ProtoMessage() {}
+
+func (x *MergeHostsRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_drivelist_v1_drivelist_proto_msgTypes[47]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use MergeHostsRequest.ProtoReflect.Descriptor instead.
+func (*MergeHostsRequest) Descriptor() ([]byte, []int) {
+	return file_drivelist_v1_drivelist_proto_rawDescGZIP(), []int{47}
+}
+
+func (x *MergeHostsRequest) GetInto() string {
+	if x != nil {
+		return x.Into
+	}
+	return ""
+}
+
+func (x *MergeHostsRequest) GetFrom() string {
+	if x != nil {
+		return x.From
+	}
+	return ""
+}
+
+func (x *MergeHostsRequest) GetActor() string {
+	if x != nil {
+		return x.Actor
+	}
+	return ""
+}
+
+type MergeHostsResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Event         *Event                 `protobuf:"bytes,1,opt,name=event,proto3" json:"event,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *MergeHostsResponse) Reset() {
+	*x = MergeHostsResponse{}
+	mi := &file_drivelist_v1_drivelist_proto_msgTypes[48]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *MergeHostsResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*MergeHostsResponse) ProtoMessage() {}
+
+func (x *MergeHostsResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_drivelist_v1_drivelist_proto_msgTypes[48]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use MergeHostsResponse.ProtoReflect.Descriptor instead.
+func (*MergeHostsResponse) Descriptor() ([]byte, []int) {
+	return file_drivelist_v1_drivelist_proto_rawDescGZIP(), []int{48}
+}
+
+func (x *MergeHostsResponse) GetEvent() *Event {
+	if x != nil {
+		return x.Event
+	}
+	return nil
+}
+
 var File_drivelist_v1_drivelist_proto protoreflect.FileDescriptor
 
 const file_drivelist_v1_drivelist_proto_rawDesc = "" +
@@ -3699,7 +3907,19 @@ const file_drivelist_v1_drivelist_proto_rawDesc = "" +
 	"\n" +
 	"group_size\x18\x0e \x01(\x05R\tgroupSize\"C\n" +
 	"\x11CompareIOResponse\x12.\n" +
-	"\x04rows\x18\x01 \x03(\v2\x1a.drivelist.v1.IOComparisonR\x04rows*`\n" +
+	"\x04rows\x18\x01 \x03(\v2\x1a.drivelist.v1.IOComparisonR\x04rows\"R\n" +
+	"\x12MergeDrivesRequest\x12\x12\n" +
+	"\x04into\x18\x01 \x01(\tR\x04into\x12\x12\n" +
+	"\x04from\x18\x02 \x01(\tR\x04from\x12\x14\n" +
+	"\x05actor\x18\x03 \x01(\tR\x05actor\"@\n" +
+	"\x13MergeDrivesResponse\x12)\n" +
+	"\x05event\x18\x01 \x01(\v2\x13.drivelist.v1.EventR\x05event\"Q\n" +
+	"\x11MergeHostsRequest\x12\x12\n" +
+	"\x04into\x18\x01 \x01(\tR\x04into\x12\x12\n" +
+	"\x04from\x18\x02 \x01(\tR\x04from\x12\x14\n" +
+	"\x05actor\x18\x03 \x01(\tR\x05actor\"?\n" +
+	"\x12MergeHostsResponse\x12)\n" +
+	"\x05event\x18\x01 \x01(\v2\x13.drivelist.v1.EventR\x05event*`\n" +
 	"\x03Bus\x12\x13\n" +
 	"\x0fBUS_UNSPECIFIED\x10\x00\x12\v\n" +
 	"\aBUS_SAS\x10\x01\x12\f\n" +
@@ -3712,7 +3932,7 @@ const file_drivelist_v1_drivelist_proto_rawDesc = "" +
 	"\x0fReportInventory\x12$.drivelist.v1.ReportInventoryRequest\x1a%.drivelist.v1.ReportInventoryResponse\x12J\n" +
 	"\fReportKernel\x12!.drivelist.v1.ReportKernelRequest\x1a\x17.drivelist.v1.ReportAck\x12H\n" +
 	"\vReportSmart\x12 .drivelist.v1.ReportSmartRequest\x1a\x17.drivelist.v1.ReportAck\x12B\n" +
-	"\bReportIO\x12\x1d.drivelist.v1.ReportIORequest\x1a\x17.drivelist.v1.ReportAck2\xea\x06\n" +
+	"\bReportIO\x12\x1d.drivelist.v1.ReportIORequest\x1a\x17.drivelist.v1.ReportAck2\x8f\b\n" +
 	"\x05Query\x12L\n" +
 	"\tListHosts\x12\x1e.drivelist.v1.ListHostsRequest\x1a\x1f.drivelist.v1.ListHostsResponse\x12O\n" +
 	"\n" +
@@ -3726,7 +3946,10 @@ const file_drivelist_v1_drivelist_proto_rawDesc = "" +
 	"\tGetKernel\x12\x1e.drivelist.v1.GetKernelRequest\x1a\x1f.drivelist.v1.GetKernelResponse\x12I\n" +
 	"\bGetSmart\x12\x1d.drivelist.v1.GetSmartRequest\x1a\x1e.drivelist.v1.GetSmartResponse\x12@\n" +
 	"\x05GetIO\x12\x1a.drivelist.v1.GetIORequest\x1a\x1b.drivelist.v1.GetIOResponse\x12L\n" +
-	"\tCompareIO\x12\x1e.drivelist.v1.CompareIORequest\x1a\x1f.drivelist.v1.CompareIOResponseBEZCgithub.com/scottlaird/drivelist/internal/pb/drivelistv1;drivelistv1b\x06proto3"
+	"\tCompareIO\x12\x1e.drivelist.v1.CompareIORequest\x1a\x1f.drivelist.v1.CompareIOResponse\x12R\n" +
+	"\vMergeDrives\x12 .drivelist.v1.MergeDrivesRequest\x1a!.drivelist.v1.MergeDrivesResponse\x12O\n" +
+	"\n" +
+	"MergeHosts\x12\x1f.drivelist.v1.MergeHostsRequest\x1a .drivelist.v1.MergeHostsResponseBEZCgithub.com/scottlaird/drivelist/internal/pb/drivelistv1;drivelistv1b\x06proto3"
 
 var (
 	file_drivelist_v1_drivelist_proto_rawDescOnce sync.Once
@@ -3741,7 +3964,7 @@ func file_drivelist_v1_drivelist_proto_rawDescGZIP() []byte {
 }
 
 var file_drivelist_v1_drivelist_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
-var file_drivelist_v1_drivelist_proto_msgTypes = make([]protoimpl.MessageInfo, 45)
+var file_drivelist_v1_drivelist_proto_msgTypes = make([]protoimpl.MessageInfo, 49)
 var file_drivelist_v1_drivelist_proto_goTypes = []any{
 	(Bus)(0),                        // 0: drivelist.v1.Bus
 	(*HostIdentity)(nil),            // 1: drivelist.v1.HostIdentity
@@ -3789,48 +4012,52 @@ var file_drivelist_v1_drivelist_proto_goTypes = []any{
 	(*CompareIORequest)(nil),        // 43: drivelist.v1.CompareIORequest
 	(*IOComparison)(nil),            // 44: drivelist.v1.IOComparison
 	(*CompareIOResponse)(nil),       // 45: drivelist.v1.CompareIOResponse
-	(*timestamppb.Timestamp)(nil),   // 46: google.protobuf.Timestamp
-	(*durationpb.Duration)(nil),     // 47: google.protobuf.Duration
+	(*MergeDrivesRequest)(nil),      // 46: drivelist.v1.MergeDrivesRequest
+	(*MergeDrivesResponse)(nil),     // 47: drivelist.v1.MergeDrivesResponse
+	(*MergeHostsRequest)(nil),       // 48: drivelist.v1.MergeHostsRequest
+	(*MergeHostsResponse)(nil),      // 49: drivelist.v1.MergeHostsResponse
+	(*timestamppb.Timestamp)(nil),   // 50: google.protobuf.Timestamp
+	(*durationpb.Duration)(nil),     // 51: google.protobuf.Duration
 }
 var file_drivelist_v1_drivelist_proto_depIdxs = []int32{
 	2,  // 0: drivelist.v1.Device.identity:type_name -> drivelist.v1.DriveIdentity
 	0,  // 1: drivelist.v1.Device.bus:type_name -> drivelist.v1.Bus
 	1,  // 2: drivelist.v1.ReportInventoryRequest.host:type_name -> drivelist.v1.HostIdentity
-	46, // 3: drivelist.v1.ReportInventoryRequest.observed_at:type_name -> google.protobuf.Timestamp
+	50, // 3: drivelist.v1.ReportInventoryRequest.observed_at:type_name -> google.protobuf.Timestamp
 	3,  // 4: drivelist.v1.ReportInventoryRequest.devices:type_name -> drivelist.v1.Device
 	4,  // 5: drivelist.v1.ReportInventoryRequest.empty_bays:type_name -> drivelist.v1.EmptyBay
 	5,  // 6: drivelist.v1.ReportInventoryRequest.unmapped_members:type_name -> drivelist.v1.UnmappedMember
 	2,  // 7: drivelist.v1.DriveStatus.identity:type_name -> drivelist.v1.DriveIdentity
-	47, // 8: drivelist.v1.AgentConfig.inventory_interval:type_name -> google.protobuf.Duration
-	47, // 9: drivelist.v1.AgentConfig.smart_interval:type_name -> google.protobuf.Duration
-	47, // 10: drivelist.v1.AgentConfig.io_bucket:type_name -> google.protobuf.Duration
+	51, // 8: drivelist.v1.AgentConfig.inventory_interval:type_name -> google.protobuf.Duration
+	51, // 9: drivelist.v1.AgentConfig.smart_interval:type_name -> google.protobuf.Duration
+	51, // 10: drivelist.v1.AgentConfig.io_bucket:type_name -> google.protobuf.Duration
 	7,  // 11: drivelist.v1.ReportInventoryResponse.statuses:type_name -> drivelist.v1.DriveStatus
 	8,  // 12: drivelist.v1.ReportInventoryResponse.config:type_name -> drivelist.v1.AgentConfig
 	2,  // 13: drivelist.v1.KernelSample.identity:type_name -> drivelist.v1.DriveIdentity
-	46, // 14: drivelist.v1.KernelSample.bucket_start:type_name -> google.protobuf.Timestamp
+	50, // 14: drivelist.v1.KernelSample.bucket_start:type_name -> google.protobuf.Timestamp
 	2,  // 15: drivelist.v1.SmartSample.identity:type_name -> drivelist.v1.DriveIdentity
-	46, // 16: drivelist.v1.SmartSample.ts:type_name -> google.protobuf.Timestamp
+	50, // 16: drivelist.v1.SmartSample.ts:type_name -> google.protobuf.Timestamp
 	11, // 17: drivelist.v1.SmartSample.summary:type_name -> drivelist.v1.SmartSummary
 	1,  // 18: drivelist.v1.ReportSmartRequest.host:type_name -> drivelist.v1.HostIdentity
 	12, // 19: drivelist.v1.ReportSmartRequest.samples:type_name -> drivelist.v1.SmartSample
 	2,  // 20: drivelist.v1.IOSample.identity:type_name -> drivelist.v1.DriveIdentity
-	46, // 21: drivelist.v1.IOSample.bucket_start:type_name -> google.protobuf.Timestamp
+	50, // 21: drivelist.v1.IOSample.bucket_start:type_name -> google.protobuf.Timestamp
 	1,  // 22: drivelist.v1.ReportIORequest.host:type_name -> drivelist.v1.HostIdentity
 	14, // 23: drivelist.v1.ReportIORequest.samples:type_name -> drivelist.v1.IOSample
 	1,  // 24: drivelist.v1.ReportKernelRequest.host:type_name -> drivelist.v1.HostIdentity
 	10, // 25: drivelist.v1.ReportKernelRequest.samples:type_name -> drivelist.v1.KernelSample
-	46, // 26: drivelist.v1.Host.first_seen:type_name -> google.protobuf.Timestamp
-	46, // 27: drivelist.v1.Host.last_report:type_name -> google.protobuf.Timestamp
-	46, // 28: drivelist.v1.Host.stale_since:type_name -> google.protobuf.Timestamp
-	46, // 29: drivelist.v1.Placement.first_seen:type_name -> google.protobuf.Timestamp
-	46, // 30: drivelist.v1.Placement.last_seen:type_name -> google.protobuf.Timestamp
-	46, // 31: drivelist.v1.Placement.ended_at:type_name -> google.protobuf.Timestamp
+	50, // 26: drivelist.v1.Host.first_seen:type_name -> google.protobuf.Timestamp
+	50, // 27: drivelist.v1.Host.last_report:type_name -> google.protobuf.Timestamp
+	50, // 28: drivelist.v1.Host.stale_since:type_name -> google.protobuf.Timestamp
+	50, // 29: drivelist.v1.Placement.first_seen:type_name -> google.protobuf.Timestamp
+	50, // 30: drivelist.v1.Placement.last_seen:type_name -> google.protobuf.Timestamp
+	50, // 31: drivelist.v1.Placement.ended_at:type_name -> google.protobuf.Timestamp
 	0,  // 32: drivelist.v1.Drive.bus:type_name -> drivelist.v1.Bus
-	46, // 33: drivelist.v1.Drive.first_seen:type_name -> google.protobuf.Timestamp
-	46, // 34: drivelist.v1.Drive.last_seen:type_name -> google.protobuf.Timestamp
+	50, // 33: drivelist.v1.Drive.first_seen:type_name -> google.protobuf.Timestamp
+	50, // 34: drivelist.v1.Drive.last_seen:type_name -> google.protobuf.Timestamp
 	19, // 35: drivelist.v1.Drive.current:type_name -> drivelist.v1.Placement
 	19, // 36: drivelist.v1.Drive.last:type_name -> drivelist.v1.Placement
-	46, // 37: drivelist.v1.Event.ts:type_name -> google.protobuf.Timestamp
+	50, // 37: drivelist.v1.Event.ts:type_name -> google.protobuf.Timestamp
 	18, // 38: drivelist.v1.ListHostsResponse.hosts:type_name -> drivelist.v1.Host
 	20, // 39: drivelist.v1.ListDrivesResponse.drives:type_name -> drivelist.v1.Drive
 	20, // 40: drivelist.v1.GetDriveResponse.drive:type_name -> drivelist.v1.Drive
@@ -3838,60 +4065,66 @@ var file_drivelist_v1_drivelist_proto_depIdxs = []int32{
 	20, // 42: drivelist.v1.GetDriveHistoryResponse.drive:type_name -> drivelist.v1.Drive
 	19, // 43: drivelist.v1.GetDriveHistoryResponse.placements:type_name -> drivelist.v1.Placement
 	21, // 44: drivelist.v1.GetDriveHistoryResponse.events:type_name -> drivelist.v1.Event
-	46, // 45: drivelist.v1.ListEventsRequest.since:type_name -> google.protobuf.Timestamp
+	50, // 45: drivelist.v1.ListEventsRequest.since:type_name -> google.protobuf.Timestamp
 	21, // 46: drivelist.v1.ListEventsResponse.events:type_name -> drivelist.v1.Event
-	46, // 47: drivelist.v1.Ghost.first_seen:type_name -> google.protobuf.Timestamp
-	46, // 48: drivelist.v1.Ghost.last_seen:type_name -> google.protobuf.Timestamp
+	50, // 47: drivelist.v1.Ghost.first_seen:type_name -> google.protobuf.Timestamp
+	50, // 48: drivelist.v1.Ghost.last_seen:type_name -> google.protobuf.Timestamp
 	20, // 49: drivelist.v1.ListMissingResponse.drives:type_name -> drivelist.v1.Drive
 	33, // 50: drivelist.v1.ListMissingResponse.ghosts:type_name -> drivelist.v1.Ghost
 	21, // 51: drivelist.v1.AnnotateResponse.event:type_name -> drivelist.v1.Event
-	46, // 52: drivelist.v1.GetKernelRequest.since:type_name -> google.protobuf.Timestamp
+	50, // 52: drivelist.v1.GetKernelRequest.since:type_name -> google.protobuf.Timestamp
 	20, // 53: drivelist.v1.GetKernelResponse.drive:type_name -> drivelist.v1.Drive
 	10, // 54: drivelist.v1.GetKernelResponse.samples:type_name -> drivelist.v1.KernelSample
-	46, // 55: drivelist.v1.GetSmartRequest.since:type_name -> google.protobuf.Timestamp
+	50, // 55: drivelist.v1.GetSmartRequest.since:type_name -> google.protobuf.Timestamp
 	20, // 56: drivelist.v1.GetSmartResponse.drive:type_name -> drivelist.v1.Drive
 	12, // 57: drivelist.v1.GetSmartResponse.samples:type_name -> drivelist.v1.SmartSample
-	46, // 58: drivelist.v1.GetSmartResponse.raw_ts:type_name -> google.protobuf.Timestamp
-	46, // 59: drivelist.v1.GetIORequest.since:type_name -> google.protobuf.Timestamp
+	50, // 58: drivelist.v1.GetSmartResponse.raw_ts:type_name -> google.protobuf.Timestamp
+	50, // 59: drivelist.v1.GetIORequest.since:type_name -> google.protobuf.Timestamp
 	20, // 60: drivelist.v1.GetIOResponse.drive:type_name -> drivelist.v1.Drive
 	14, // 61: drivelist.v1.GetIOResponse.samples:type_name -> drivelist.v1.IOSample
-	46, // 62: drivelist.v1.CompareIORequest.since:type_name -> google.protobuf.Timestamp
+	50, // 62: drivelist.v1.CompareIORequest.since:type_name -> google.protobuf.Timestamp
 	44, // 63: drivelist.v1.CompareIOResponse.rows:type_name -> drivelist.v1.IOComparison
-	6,  // 64: drivelist.v1.Collector.ReportInventory:input_type -> drivelist.v1.ReportInventoryRequest
-	16, // 65: drivelist.v1.Collector.ReportKernel:input_type -> drivelist.v1.ReportKernelRequest
-	13, // 66: drivelist.v1.Collector.ReportSmart:input_type -> drivelist.v1.ReportSmartRequest
-	15, // 67: drivelist.v1.Collector.ReportIO:input_type -> drivelist.v1.ReportIORequest
-	22, // 68: drivelist.v1.Query.ListHosts:input_type -> drivelist.v1.ListHostsRequest
-	24, // 69: drivelist.v1.Query.ListDrives:input_type -> drivelist.v1.ListDrivesRequest
-	26, // 70: drivelist.v1.Query.GetDrive:input_type -> drivelist.v1.GetDriveRequest
-	28, // 71: drivelist.v1.Query.GetDriveHistory:input_type -> drivelist.v1.GetDriveHistoryRequest
-	30, // 72: drivelist.v1.Query.ListEvents:input_type -> drivelist.v1.ListEventsRequest
-	32, // 73: drivelist.v1.Query.ListMissing:input_type -> drivelist.v1.ListMissingRequest
-	35, // 74: drivelist.v1.Query.Annotate:input_type -> drivelist.v1.AnnotateRequest
-	37, // 75: drivelist.v1.Query.GetKernel:input_type -> drivelist.v1.GetKernelRequest
-	39, // 76: drivelist.v1.Query.GetSmart:input_type -> drivelist.v1.GetSmartRequest
-	41, // 77: drivelist.v1.Query.GetIO:input_type -> drivelist.v1.GetIORequest
-	43, // 78: drivelist.v1.Query.CompareIO:input_type -> drivelist.v1.CompareIORequest
-	9,  // 79: drivelist.v1.Collector.ReportInventory:output_type -> drivelist.v1.ReportInventoryResponse
-	17, // 80: drivelist.v1.Collector.ReportKernel:output_type -> drivelist.v1.ReportAck
-	17, // 81: drivelist.v1.Collector.ReportSmart:output_type -> drivelist.v1.ReportAck
-	17, // 82: drivelist.v1.Collector.ReportIO:output_type -> drivelist.v1.ReportAck
-	23, // 83: drivelist.v1.Query.ListHosts:output_type -> drivelist.v1.ListHostsResponse
-	25, // 84: drivelist.v1.Query.ListDrives:output_type -> drivelist.v1.ListDrivesResponse
-	27, // 85: drivelist.v1.Query.GetDrive:output_type -> drivelist.v1.GetDriveResponse
-	29, // 86: drivelist.v1.Query.GetDriveHistory:output_type -> drivelist.v1.GetDriveHistoryResponse
-	31, // 87: drivelist.v1.Query.ListEvents:output_type -> drivelist.v1.ListEventsResponse
-	34, // 88: drivelist.v1.Query.ListMissing:output_type -> drivelist.v1.ListMissingResponse
-	36, // 89: drivelist.v1.Query.Annotate:output_type -> drivelist.v1.AnnotateResponse
-	38, // 90: drivelist.v1.Query.GetKernel:output_type -> drivelist.v1.GetKernelResponse
-	40, // 91: drivelist.v1.Query.GetSmart:output_type -> drivelist.v1.GetSmartResponse
-	42, // 92: drivelist.v1.Query.GetIO:output_type -> drivelist.v1.GetIOResponse
-	45, // 93: drivelist.v1.Query.CompareIO:output_type -> drivelist.v1.CompareIOResponse
-	79, // [79:94] is the sub-list for method output_type
-	64, // [64:79] is the sub-list for method input_type
-	64, // [64:64] is the sub-list for extension type_name
-	64, // [64:64] is the sub-list for extension extendee
-	0,  // [0:64] is the sub-list for field type_name
+	21, // 64: drivelist.v1.MergeDrivesResponse.event:type_name -> drivelist.v1.Event
+	21, // 65: drivelist.v1.MergeHostsResponse.event:type_name -> drivelist.v1.Event
+	6,  // 66: drivelist.v1.Collector.ReportInventory:input_type -> drivelist.v1.ReportInventoryRequest
+	16, // 67: drivelist.v1.Collector.ReportKernel:input_type -> drivelist.v1.ReportKernelRequest
+	13, // 68: drivelist.v1.Collector.ReportSmart:input_type -> drivelist.v1.ReportSmartRequest
+	15, // 69: drivelist.v1.Collector.ReportIO:input_type -> drivelist.v1.ReportIORequest
+	22, // 70: drivelist.v1.Query.ListHosts:input_type -> drivelist.v1.ListHostsRequest
+	24, // 71: drivelist.v1.Query.ListDrives:input_type -> drivelist.v1.ListDrivesRequest
+	26, // 72: drivelist.v1.Query.GetDrive:input_type -> drivelist.v1.GetDriveRequest
+	28, // 73: drivelist.v1.Query.GetDriveHistory:input_type -> drivelist.v1.GetDriveHistoryRequest
+	30, // 74: drivelist.v1.Query.ListEvents:input_type -> drivelist.v1.ListEventsRequest
+	32, // 75: drivelist.v1.Query.ListMissing:input_type -> drivelist.v1.ListMissingRequest
+	35, // 76: drivelist.v1.Query.Annotate:input_type -> drivelist.v1.AnnotateRequest
+	37, // 77: drivelist.v1.Query.GetKernel:input_type -> drivelist.v1.GetKernelRequest
+	39, // 78: drivelist.v1.Query.GetSmart:input_type -> drivelist.v1.GetSmartRequest
+	41, // 79: drivelist.v1.Query.GetIO:input_type -> drivelist.v1.GetIORequest
+	43, // 80: drivelist.v1.Query.CompareIO:input_type -> drivelist.v1.CompareIORequest
+	46, // 81: drivelist.v1.Query.MergeDrives:input_type -> drivelist.v1.MergeDrivesRequest
+	48, // 82: drivelist.v1.Query.MergeHosts:input_type -> drivelist.v1.MergeHostsRequest
+	9,  // 83: drivelist.v1.Collector.ReportInventory:output_type -> drivelist.v1.ReportInventoryResponse
+	17, // 84: drivelist.v1.Collector.ReportKernel:output_type -> drivelist.v1.ReportAck
+	17, // 85: drivelist.v1.Collector.ReportSmart:output_type -> drivelist.v1.ReportAck
+	17, // 86: drivelist.v1.Collector.ReportIO:output_type -> drivelist.v1.ReportAck
+	23, // 87: drivelist.v1.Query.ListHosts:output_type -> drivelist.v1.ListHostsResponse
+	25, // 88: drivelist.v1.Query.ListDrives:output_type -> drivelist.v1.ListDrivesResponse
+	27, // 89: drivelist.v1.Query.GetDrive:output_type -> drivelist.v1.GetDriveResponse
+	29, // 90: drivelist.v1.Query.GetDriveHistory:output_type -> drivelist.v1.GetDriveHistoryResponse
+	31, // 91: drivelist.v1.Query.ListEvents:output_type -> drivelist.v1.ListEventsResponse
+	34, // 92: drivelist.v1.Query.ListMissing:output_type -> drivelist.v1.ListMissingResponse
+	36, // 93: drivelist.v1.Query.Annotate:output_type -> drivelist.v1.AnnotateResponse
+	38, // 94: drivelist.v1.Query.GetKernel:output_type -> drivelist.v1.GetKernelResponse
+	40, // 95: drivelist.v1.Query.GetSmart:output_type -> drivelist.v1.GetSmartResponse
+	42, // 96: drivelist.v1.Query.GetIO:output_type -> drivelist.v1.GetIOResponse
+	45, // 97: drivelist.v1.Query.CompareIO:output_type -> drivelist.v1.CompareIOResponse
+	47, // 98: drivelist.v1.Query.MergeDrives:output_type -> drivelist.v1.MergeDrivesResponse
+	49, // 99: drivelist.v1.Query.MergeHosts:output_type -> drivelist.v1.MergeHostsResponse
+	83, // [83:100] is the sub-list for method output_type
+	66, // [66:83] is the sub-list for method input_type
+	66, // [66:66] is the sub-list for extension type_name
+	66, // [66:66] is the sub-list for extension extendee
+	0,  // [0:66] is the sub-list for field type_name
 }
 
 func init() { file_drivelist_v1_drivelist_proto_init() }
@@ -3906,7 +4139,7 @@ func file_drivelist_v1_drivelist_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_drivelist_v1_drivelist_proto_rawDesc), len(file_drivelist_v1_drivelist_proto_rawDesc)),
 			NumEnums:      1,
-			NumMessages:   45,
+			NumMessages:   49,
 			NumExtensions: 0,
 			NumServices:   2,
 		},
