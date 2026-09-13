@@ -49,6 +49,16 @@ service Query {
   // utilisation over a window next to the median of its vdev, so an
   // outlier among identical drives stands out.
   rpc CompareIO(CompareIORequest) returns (CompareIOResponse);
+  // MergeDrives folds one drive record into another: use it when one
+  // physical drive got two records, such as from being seen once without
+  // its WWN. Everything moves to `into`; `from` keeps resolving to it.
+  rpc MergeDrives(MergeDrivesRequest) returns (MergeDrivesResponse);
+  // MergeHosts folds one host record into another, for a host reinstalled
+  // with a new machine id. Refs are hostnames or machine ids.
+  rpc MergeHosts(MergeHostsRequest) returns (MergeHostsResponse);
+  // Rebuild recomputes every placement and derived event from the stored
+  // snapshots. Annotations, merges, samples and ghosts are kept.
+  rpc Rebuild(RebuildRequest) returns (RebuildResponse);
 }
 
 // ---------- shared ----------
@@ -210,6 +220,14 @@ message IOSample {
   double w_await_max_ms = 14;
   double util_max = 15;
   string hostname = 16;               // set in query responses
+  // The completions read_ms and write_ms account for. Equal to reads and
+  // writes unless the agent rejected an interval whose time counter jumped
+  // by the host's uptime (a kernel accounting bug); then that interval's
+  // completions count for throughput but not latency. Agents before 0.4
+  // leave them 0, which the server reads as "all of them".
+  uint64 await_reads = 17;
+  uint64 await_writes = 18;
+  uint32 glitches = 19;               // time counters rejected this hour
 }
 
 message ReportIORequest {
@@ -419,8 +437,37 @@ message IOComparison {
   double group_w_await_ms = 12;
   double group_util = 13;
   int32 group_size = 14;
+  uint32 glitches = 15;               // time counters rejected in the window
 }
 
 message CompareIOResponse {
   repeated IOComparison rows = 1;
+}
+
+message MergeDrivesRequest {
+  string into = 1;
+  string from = 2;
+  string actor = 3;
+}
+
+message MergeDrivesResponse {
+  Event event = 1;
+}
+
+message MergeHostsRequest {
+  string into = 1;
+  string from = 2;
+  string actor = 3;
+}
+
+message MergeHostsResponse {
+  Event event = 1;
+}
+
+message RebuildRequest {}
+
+message RebuildResponse {
+  int32 snapshots = 1;
+  int32 placements = 2;
+  int32 events = 3;
 }

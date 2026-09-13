@@ -26,7 +26,43 @@ func fleetCommands(cfg *clientConfig) []*cobra.Command {
 		newEventsCmd(cfg),
 		newMissingCmd(cfg),
 		newIOCmd(cfg),
+		newHostCmd(cfg),
+		newAdminCmd(cfg),
 	}
+}
+
+func newAdminCmd(cfg *clientConfig) *cobra.Command {
+	cmd := &cobra.Command{
+		Use:   "admin",
+		Short: "Server maintenance",
+	}
+	cmd.AddCommand(&cobra.Command{
+		Use:   "rebuild",
+		Short: "Recompute every placement and derived event from the stored snapshots",
+		Long: `rebuild throws away the placements and the events derived from reports
+(first seen, vanished, moved, use changed, and so on) and recomputes
+them from the snapshots the server kept, through the same logic
+ingest uses. Manual annotations, merges, samples, ghosts and host
+events are kept. Use it after a fix to the ingest logic; it is also
+the check that history is a pure function of the reports.`,
+		Args: cobra.NoArgs,
+		RunE: func(cmd *cobra.Command, _ []string) error {
+			client, err := cfg.queryClient()
+			if err != nil {
+				return err
+			}
+			res, err := client.Rebuild(cmd.Context(), connect.NewRequest(&pb.RebuildRequest{}))
+			if err != nil {
+				return rpcErr(err)
+			}
+			if cfg.json {
+				return printJSON(cmd.OutOrStdout(), res.Msg)
+			}
+			fmt.Fprintf(cmd.OutOrStdout(), "rebuilt from %d snapshots: %d placements, %d events\n", res.Msg.Snapshots, res.Msg.Placements, res.Msg.Events)
+			return nil
+		},
+	})
+	return cmd
 }
 
 func tab(w io.Writer) *tabwriter.Writer { return tabwriter.NewWriter(w, 0, 8, 2, ' ', 0) }
@@ -204,6 +240,7 @@ prefix of either; an ambiguous prefix lists the candidates.
   drivelist drive REF kernel       kernel log error counts by hour (--since 7d)
   drivelist drive REF smart        SMART samples, newest first (--since 30d, --raw for the latest smartctl JSON)
   drivelist drive REF io           hourly I/O buckets, newest first (--since 7d)
+  drivelist drive REF merge OTHER  fold OTHER's record into REF: one drive that got two records
   drivelist drive REF mark STATUS  set the status: ok, suspect, bad, shelved, retired
   drivelist drive REF note TEXT    record a note without changing the status`,
 		Args: cobra.MinimumNArgs(1),
@@ -249,14 +286,68 @@ prefix of either; an ambiguous prefix lists the candidates.
 					return fmt.Errorf("usage: drivelist drive REF note TEXT")
 				}
 				return annotate(cmd, cfg, ref, "", strings.Join(rest[1:], " "))
+			case "merge":
+				if len(rest) != 2 {
+					return fmt.Errorf("usage: drivelist drive REF merge OTHER")
+				}
+				return mergeDrives(cmd, cfg, ref, rest[1])
 			}
-			return fmt.Errorf("unknown action %q: want history, kernel, smart, io, mark, or note", rest[0])
+			return fmt.Errorf("unknown action %q: want history, kernel, smart, io, mark, note, or merge", rest[0])
 		},
 	}
 	cmd.Flags().StringVar(&note, "note", "", "with mark: why the status changed")
 	cmd.Flags().StringVar(&since, "since", "", "with kernel or smart: how far back, as a duration (default 168h for kernel, 720h for smart)")
 	cmd.Flags().BoolVar(&raw, "raw", false, "with smart: print the newest raw smartctl JSON instead of the table")
 	return cmd
+}
+
+func mergeDrives(cmd *cobra.Command, cfg *clientConfig, into, from string) error {
+	client, err := cfg.queryClient()
+	if err != nil {
+		return err
+	}
+	cfg.resolve()
+	res, err := client.MergeDrives(cmd.Context(), connect.NewRequest(&pb.MergeDrivesRequest{Into: into, From: from, Actor: cfg.actor}))
+	if err != nil {
+		return rpcErr(err)
+	}
+	if cfg.json {
+		return printJSON(cmd.OutOrStdout(), res.Msg)
+	}
+	fmt.Fprintf(cmd.OutOrStdout(), "%s  %s  %s\n", res.Msg.Event.Serial, when(res.Msg.Event.Ts), describe(res.Msg.Event))
+	return nil
+}
+
+func newHostCmd(cfg *clientConfig) *cobra.Command {
+	return &cobra.Command{
+		Use:   "host merge INTO FROM",
+		Short: "Fold one host record into another, after a reinstall gave it a new machine id",
+		Long: `host merge moves everything recorded under host FROM (placements,
+snapshots, events, samples) to host INTO and keeps FROM's machine id
+resolving to INTO, so an agent still reporting under the old id lands
+on the merged host. INTO and FROM are hostnames or, when two hosts
+share a name, machine ids as 'hosts --ids' shows them.`,
+		Args: cobra.ExactArgs(3),
+		RunE: func(cmd *cobra.Command, args []string) error {
+			if args[0] != "merge" {
+				return fmt.Errorf("usage: drivelist host merge INTO FROM")
+			}
+			client, err := cfg.queryClient()
+			if err != nil {
+				return err
+			}
+			cfg.resolve()
+			res, err := client.MergeHosts(cmd.Context(), connect.NewRequest(&pb.MergeHostsRequest{Into: args[1], From: args[2], Actor: cfg.actor}))
+			if err != nil {
+				return rpcErr(err)
+			}
+			if cfg.json {
+				return printJSON(cmd.OutOrStdout(), res.Msg)
+			}
+			fmt.Fprintf(cmd.OutOrStdout(), "%s  %s\n", when(res.Msg.Event.Ts), describe(res.Msg.Event))
+			return nil
+		},
+	}
 }
 
 func showIO(cmd *cobra.Command, cfg *clientConfig, ref, since string) error {
@@ -283,12 +374,12 @@ func showIO(cmd *cobra.Command, cfg *clientConfig, ref, since string) error {
 	}
 	fmt.Fprintln(w)
 	tw := tab(w)
-	fmt.Fprintln(tw, "START\tSPAN\tHOST\tREADS\tWRITES\tREAD\tWRITTEN\tR_AWAIT\tW_AWAIT\tUTIL\tR_MAX\tW_MAX\tUTIL_MAX")
+	fmt.Fprintln(tw, "START\tSPAN\tHOST\tREADS\tWRITES\tREAD\tWRITTEN\tR_AWAIT\tW_AWAIT\tUTIL\tR_MAX\tW_MAX\tUTIL_MAX\tDROPPED")
 	for _, s := range res.Msg.Samples {
 		span := time.Duration(s.BucketSecs) * time.Second
-		fmt.Fprintf(tw, "%s\t%s\t%s\t%d\t%d\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\n", when(s.BucketStart), span, s.Hostname, s.Reads, s.Writes,
-			size(s.ReadBytes), size(s.WriteBytes), ms(fdiv(s.ReadMs, s.Reads)), ms(fdiv(s.WriteMs, s.Writes)), pct(fdiv(s.IoMs, uint64(s.BucketSecs)*1000)),
-			ms(s.RAwaitMaxMs), ms(s.WAwaitMaxMs), pct(s.UtilMax))
+		fmt.Fprintf(tw, "%s\t%s\t%s\t%d\t%d\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\n", when(s.BucketStart), span, s.Hostname, s.Reads, s.Writes,
+			size(s.ReadBytes), size(s.WriteBytes), ms(fdiv(s.ReadMs, s.AwaitReads)), ms(fdiv(s.WriteMs, s.AwaitWrites)), pct(fdiv(s.IoMs, uint64(s.BucketSecs)*1000)),
+			ms(s.RAwaitMaxMs), ms(s.WAwaitMaxMs), pct(s.UtilMax), count(s.Glitches))
 	}
 	return tw.Flush()
 }

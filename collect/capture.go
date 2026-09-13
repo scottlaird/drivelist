@@ -1,6 +1,7 @@
 package collect
 
 import (
+	"bytes"
 	"fmt"
 	"io/fs"
 	"log/slog"
@@ -32,6 +33,22 @@ var captureCommands = [][]string{
 // bay_identifier under each expander. Sysfs symlinks are followed and
 // written as directories.
 func (c *Collector) Capture(dir string) error {
+	if err := os.MkdirAll(dir, 0o755); err != nil {
+		return err
+	}
+	if err := os.WriteFile(filepath.Join(dir, "platform"), []byte(c.platform()+"\n"), 0o644); err != nil {
+		return err
+	}
+	switch c.platform() {
+	case "linux":
+		return c.captureLinux(dir)
+	case "darwin":
+		return c.captureDarwin(dir)
+	}
+	return ErrUnsupported
+}
+
+func (c *Collector) captureLinux(dir string) error {
 	names, err := c.diskNames()
 	if err != nil {
 		return err
@@ -86,6 +103,41 @@ func (c *Collector) Capture(dir string) error {
 		if err := c.captureExec(dir, out, argv[0], argv[1:]...); err != nil {
 			return err
 		}
+	}
+	return nil
+}
+
+// captureDarwin records what collectDarwin reads: the two diskutil
+// listings, diskutil info for every whole disk, and the three
+// system_profiler storage reports.
+func (c *Collector) captureDarwin(dir string) error {
+	record := func(name string, args ...string) ([]byte, error) {
+		out, err := c.run(name, args...)
+		if err != nil {
+			slog.Warn("capture: command failed, skipped", "argv", name+" "+strings.Join(args, " "), "err", err)
+			return nil, err
+		}
+		return out, c.captureExec(dir, out, name, args...)
+	}
+	if _, err := record("diskutil", "list", "-plist"); err != nil {
+		return err
+	}
+	out, err := record("diskutil", "list", "-plist", "physical")
+	if err != nil {
+		return err
+	}
+	listed, err := parsePlist(bytes.NewReader(out))
+	if err != nil {
+		return err
+	}
+	top, _ := listed.(map[string]any)
+	for _, v := range dictAny(top, "WholeDisks") {
+		if name, ok := v.(string); ok {
+			record("diskutil", "info", "-plist", name)
+		}
+	}
+	for _, typ := range profilerTypes {
+		record("system_profiler", typ, "-json")
 	}
 	return nil
 }

@@ -143,6 +143,27 @@ func TestFleetEndToEnd(t *testing.T) {
 	if got := groupLabel("zfs > space 5925914041408872576 > raidz2 12372305547527317295", 8); got != "space/raidz2 …7295 (8)" {
 		t.Errorf("groupLabel = %q", got)
 	}
+	if _, _, err := run(t, "drive", "VLG32AEY", "merge", "VLG32AEY"); err == nil || !strings.Contains(err.Error(), "same drive") {
+		t.Errorf("merge into itself: %v", err)
+	}
+	out = mustRun(t, "drive", "VLG32AEY", "merge", "7SG3RM2G")
+	if !strings.Contains(out, "merged        record 7SG3RM2G") {
+		t.Errorf("merge:\n%s", out)
+	}
+	if _, _, err := run(t, "drive", "7SG3RM2G"); err != nil {
+		t.Errorf("merged serial no longer resolves: %v", err)
+	}
+	if _, _, err := run(t, "host", "merge", "nosuch", "other"); err == nil || !strings.Contains(err.Error(), "not found") {
+		t.Errorf("host merge with unknown hosts: %v", err)
+	}
+	out = mustRun(t, "admin", "rebuild")
+	if !strings.HasPrefix(out, "rebuilt from 1 snapshots: 4 placements") {
+		t.Errorf("admin rebuild:\n%s", out)
+	}
+	out = mustRun(t, "drive", "VLG32AEY", "history")
+	if !strings.Contains(out, "first seen    ") || !strings.Contains(out, "present       ") {
+		t.Errorf("history after rebuild:\n%s", out)
+	}
 	if _, _, err := run(t, "drive", "VLG32AEY", "smart", "--raw"); err == nil {
 		t.Error("smart --raw with nothing stored succeeded")
 	}

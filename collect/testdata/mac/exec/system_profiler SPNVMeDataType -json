@@ -1,0 +1,205 @@
+{
+  "SPNVMeDataType" : [
+    {
+      "_items" : [
+        {
+          "_name" : "APPLE SSD AP1024Z",
+          "bsd_name" : "disk0",
+          "detachable_drive" : "no",
+          "device_model" : "APPLE SSD AP1024Z",
+          "device_revision" : "2973.120",
+          "device_serial" : "0ba028a32130602c",
+          "partition_map_type" : "guid_partition_map_type",
+          "removable_media" : "no",
+          "size" : "1 TB",
+          "size_in_bytes" : 1000555581440,
+          "smart_status" : "Verified",
+          "spnvme_trim_support" : "Yes",
+          "volumes" : [
+            {
+              "_name" : "iSCPreboot",
+              "bsd_name" : "disk0s1",
+              "iocontent" : "Apple_APFS_ISC",
+              "size" : "524.3 MB",
+              "size_in_bytes" : 524288000
+            },
+            {
+              "_name" : "Macintosh HD",
+              "bsd_name" : "disk0s2",
+              "iocontent" : "Apple_APFS",
+              "size" : "994.66 GB",
+              "size_in_bytes" : 994662584320
+            },
+            {
+              "_name" : "Recovery",
+              "bsd_name" : "disk0s3",
+              "iocontent" : "Apple_APFS_Recovery",
+              "size" : "5.37 GB",
+              "size_in_bytes" : 5368664064
+            }
+          ]
+        }
+      ],
+      "_name" : "Apple SSD Controller"
+    },
+    {
+      "_items" : [
+        {
+          "_name" : "Lexar SSD NM790 4TB",
+          "bsd_name" : "disk6",
+          "detachable_drive" : "no",
+          "device_model" : "Lexar SSD NM790 4TB",
+          "device_revision" : "V4.0.4",
+          "device_serial" : "QB4263W100917P220J",
+          "partition_map_type" : "guid_partition_map_type",
+          "removable_media" : "no",
+          "size" : "4.1 TB",
+          "size_in_bytes" : 4096805658624,
+          "smart_status" : "Verified",
+          "spnvme_linkspeed" : "16.0 GT/s",
+          "spnvme_linkwidth" : "x4",
+          "spnvme_trim_support" : "Yes",
+          "volumes" : [
+            {
+              "_name" : "EFI",
+              "bsd_name" : "disk6s1",
+              "file_system" : "MS-DOS FAT16",
+              "iocontent" : "EFI",
+              "size" : "218 MB",
+              "size_in_bytes" : 218021888,
+              "volume_uuid" : "0AAEC296-43D1-3690-A262-521F7141EFC6"
+            },
+            {
+              "_name" : "m2",
+              "bsd_name" : "disk6s2",
+              "file_system" : "ExFAT",
+              "free_space" : "3.03 TB",
+              "free_space_in_bytes" : 3026909003776,
+              "iocontent" : "Microsoft Basic Data",
+              "mount_point" : "/Volumes/m2",
+              "size" : "4.1 TB",
+              "size_in_bytes" : 4096576716800,
+              "volume_uuid" : "106FBA0C-9795-31EF-BD24-A295DCD16E20",
+              "writable" : "yes"
+            }
+          ]
+        }
+      ],
+      "_name" : "Generic SSD Controller"
+    },
+    {
+      "_items" : [
+        {
+          "_name" : "KIOXIA KCD8XRUG15T3",
+          "bsd_name" : "disk8",
+          "detachable_drive" : "no",
+          "device_model" : "KIOXIA KCD8XRUG15T3",
+          "device_revision" : "0103",
+          "device_serial" : "9230A00QTMA9",
+          "partition_map_type" : "guid_partition_map_type",
+          "removable_media" : "no",
+          "size" : "15.36 TB",
+          "size_in_bytes" : 15360950534144,
+          "smart_status" : "Verified",
+          "spnvme_linkspeed" : "8.0 GT/s",
+          "spnvme_linkwidth" : "x1",
+          "spnvme_trim_support" : "Yes",
+          "volumes" : [
+            {
+              "_name" : "EFI",
+              "bsd_name" : "disk8s1",
+              "file_system" : "MS-DOS FAT32",
+              "iocontent" : "EFI",
+              "size" : "209.7 MB",
+              "size_in_bytes" : 209715200,
+              "volume_uuid" : "0E239BC6-F960-3107-89CF-1C97F78BB46B"
+            },
+            {
+              "_name" : "Cache",
+              "bsd_name" : "disk8s2",
+              "iocontent" : "Apple_APFS",
+              "size" : "15.36 TB",
+              "size_in_bytes" : 15360740777984
+            }
+          ]
+        }
+      ],
+      "_name" : "Generic SSD Controller"
+    },
+    {
+      "_items" : [
+        {
+          "_name" : "Samsung SSD 990 PRO 4TB",
+          "bsd_name" : "disk10",
+          "detachable_drive" : "no",
+          "device_model" : "Samsung SSD 990 PRO 4TB",
+          "device_revision" : "4B2QJXD7",
+          "device_serial" : "S7KGNU0Y603824V",
+          "partition_map_type" : "guid_partition_map_type",
+          "removable_media" : "no",
+          "size" : "4 TB",
+          "size_in_bytes" : 4000787030016,
+          "smart_status" : "Verified",
+          "spnvme_linkspeed" : "16.0 GT/s",
+          "spnvme_linkwidth" : "x4",
+          "spnvme_trim_support" : "Yes",
+          "volumes" : [
+            {
+              "_name" : "EFI",
+              "bsd_name" : "disk10s1",
+              "file_system" : "MS-DOS FAT32",
+              "iocontent" : "EFI",
+              "size" : "209.7 MB",
+              "size_in_bytes" : 209715200,
+              "volume_uuid" : "0E239BC6-F960-3107-89CF-1C97F78BB46B"
+            },
+            {
+              "_name" : "Scott",
+              "bsd_name" : "disk10s2",
+              "iocontent" : "Apple_APFS",
+              "size" : "4 TB",
+              "size_in_bytes" : 4000577273856
+            }
+          ]
+        }
+      ],
+      "_name" : "Generic SSD Controller"
+    },
+    {
+      "_items" : [
+        {
+          "_name" : "LEXAR CFEXPRESS 2TB CARD",
+          "bsd_name" : "disk4",
+          "detachable_drive" : "no",
+          "device_model" : "LEXAR CFEXPRESS 2TB CARD",
+          "device_revision" : "V1.1.05",
+          "device_serial" : "43303251514150001138",
+          "partition_map_type" : "master_boot_record_partition_map_type",
+          "removable_media" : "no",
+          "size" : "2.05 TB",
+          "size_in_bytes" : 2048408248320,
+          "smart_status" : "Verified",
+          "spnvme_linkspeed" : "16.0 GT/s",
+          "spnvme_linkwidth" : "x2",
+          "spnvme_trim_support" : "Yes",
+          "volumes" : [
+            {
+              "_name" : "A024",
+              "bsd_name" : "disk4s2",
+              "file_system" : "ExFAT",
+              "free_space" : "5.05 GB",
+              "free_space_in_bytes" : 5046140928,
+              "iocontent" : "Windows_NTFS",
+              "mount_point" : "/Volumes/A024",
+              "size" : "2.05 TB",
+              "size_in_bytes" : 2048404054016,
+              "volume_uuid" : "D9581A82-F491-3419-832A-0D23AAE66A97",
+              "writable" : "yes"
+            }
+          ]
+        }
+      ],
+      "_name" : "Generic SSD Controller"
+    }
+  ]
+}

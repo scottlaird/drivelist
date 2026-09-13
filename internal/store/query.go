@@ -116,7 +116,7 @@ func (s *Store) ListHosts(ctx context.Context) ([]Host, error) {
 		SELECT h.host_id, h.hostname, h.machine_id, h.os, h.agent_version, h.first_seen, h.last_report, h.stale_since,
 		  (SELECT COUNT(*) FROM placement p WHERE p.host_id = h.host_id AND p.ended_at IS NULL),
 		  (SELECT COUNT(*) FROM ghost g WHERE g.host_id = h.host_id AND g.ended_at IS NULL)
-		FROM host h ORDER BY h.hostname`)
+		FROM host h WHERE h.merged_into IS NULL ORDER BY h.hostname`)
 	if err != nil {
 		return nil, err
 	}
@@ -160,7 +160,8 @@ func (s *Store) countMissing(ctx context.Context, hostID int64) (int, error) {
 	return n, err
 }
 
-// ResolveHost finds a host by hostname or unambiguous prefix.
+// ResolveHost finds a host by hostname, unambiguous prefix, or machine id
+// (which is how two hosts with the same name are told apart).
 func (s *Store) ResolveHost(ctx context.Context, ref string) (Host, error) {
 	hosts, err := s.ListHosts(ctx)
 	if err != nil {
@@ -168,12 +169,23 @@ func (s *Store) ResolveHost(ctx context.Context, ref string) (Host, error) {
 	}
 	var matches []Host
 	for _, h := range hosts {
-		if h.Hostname == ref {
+		if h.MachineID == ref {
 			return h, nil
 		}
-		if strings.HasPrefix(h.Hostname, ref) {
+	}
+	var exact []Host
+	for _, h := range hosts {
+		if h.Hostname == ref {
+			exact = append(exact, h)
+		} else if strings.HasPrefix(h.Hostname, ref) {
 			matches = append(matches, h)
 		}
+	}
+	if len(exact) == 1 {
+		return exact[0], nil
+	}
+	if len(exact) > 1 {
+		matches = exact
 	}
 	switch len(matches) {
 	case 0:
@@ -183,7 +195,7 @@ func (s *Store) ResolveHost(ctx context.Context, ref string) (Host, error) {
 	}
 	names := make([]string, len(matches))
 	for i, h := range matches {
-		names[i] = h.Hostname
+		names[i] = h.Hostname + " (" + h.MachineID + ")"
 	}
 	return Host{}, &AmbiguousError{Ref: ref, Candidates: names}
 }
@@ -196,7 +208,7 @@ func (s *Store) ResolveDrive(ctx context.Context, ref string) (int64, error) {
 	}
 	lower := strings.ToLower(ref)
 	rows, err := s.db.QueryContext(ctx, `
-		SELECT drive_id, serial, wwn, model FROM drive WHERE merged_into IS NULL AND (
+		SELECT COALESCE(merged_into, drive_id), serial, wwn, model FROM drive WHERE (
 			serial = ?1 OR lower(wwn) = ?2 OR lower(wwn) = '0x' || ?2
 			OR serial LIKE ?1 || '%' OR lower(wwn) LIKE ?2 || '%' OR lower(wwn) LIKE '0x' || ?2 || '%')
 		ORDER BY drive_id`, ref, lower)
@@ -209,11 +221,16 @@ func (s *Store) ResolveDrive(ctx context.Context, ref string) (int64, error) {
 		serial, wwn, model string
 	}
 	var exact, prefix []cand
+	seen := map[int64]bool{}
 	for rows.Next() {
 		var c cand
 		if err := rows.Scan(&c.id, &c.serial, &c.wwn, &c.model); err != nil {
 			return 0, err
 		}
+		if seen[c.id] {
+			continue // the merged record and its target are one drive
+		}
+		seen[c.id] = true
 		w := strings.ToLower(c.wwn)
 		if c.serial == ref || w == lower || w == "0x"+lower {
 			exact = append(exact, c)

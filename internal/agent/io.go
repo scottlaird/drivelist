@@ -16,16 +16,18 @@ import (
 type IOConfig struct {
 	Interval time.Duration                      // between /proc/diskstats readings. 0: 60s
 	Read     func() ([]collect.DiskStat, error) // nil: /proc/diskstats
+	Uptime   func() (time.Duration, error)      // nil: /proc/uptime; feeds collect.IODelta.DropGlitches
 }
 
 // ioState accumulates 60 s deltas into hourly buckets per device and
 // remembers the worst sub-sample in each.
 type ioState struct {
-	cfg    IOConfig
-	mu     sync.Mutex
-	prev   map[string]collect.DiskStat
-	prevAt time.Time
-	open   map[ioKey]*ioBucket
+	cfg        IOConfig
+	mu         sync.Mutex
+	prev       map[string]collect.DiskStat
+	prevAt     time.Time
+	prevUptime time.Duration // 0 when unknown: no glitch rejection
+	open       map[ioKey]*ioBucket
 }
 
 type ioKey struct {
@@ -52,6 +54,9 @@ func (a *Agent) EnableIO(cfg IOConfig) {
 	if cfg.Read == nil {
 		cfg.Read = func() ([]collect.DiskStat, error) { return collect.ReadDiskStats("/proc/diskstats") }
 	}
+	if cfg.Uptime == nil {
+		cfg.Uptime = func() (time.Duration, error) { return collect.ReadUptime("/proc/uptime") }
+	}
 	a.io = &ioState{cfg: cfg, prev: map[string]collect.DiskStat{}, open: map[ioKey]*ioBucket{}}
 }
 
@@ -68,6 +73,11 @@ func (a *Agent) ioSample(ctx context.Context) {
 		a.log.Warn("diskstats unreadable", "err", err)
 		return
 	}
+	uptime, err := st.cfg.Uptime()
+	if err != nil {
+		a.log.Warn("uptime unreadable; not rejecting glitched counters", "err", err)
+		uptime = 0
+	}
 	st.mu.Lock()
 	hour := now.UTC().Truncate(time.Hour)
 	if !st.prevAt.IsZero() {
@@ -80,6 +90,9 @@ func (a *Agent) ioSample(ctx context.Context) {
 			d, ok := collect.Delta(prev, cur, interval)
 			if !ok {
 				continue
+			}
+			if n := d.DropGlitches(st.prevUptime); n > 0 {
+				a.log.Warn("diskstats time counter jumped by the uptime; latency for the interval dropped", "device", cur.Name, "counters", n)
 			}
 			key := ioKey{Hour: hour, Dev: cur.Name}
 			b := st.open[key]
@@ -95,6 +108,9 @@ func (a *Agent) ioSample(ctx context.Context) {
 			b.WriteMs += d.WriteMs
 			b.IOMs += d.IOMs
 			b.WeightedMs += d.WeightedMs
+			b.AwaitReads += d.AwaitReads
+			b.AwaitWrites += d.AwaitWrites
+			b.Glitches += d.Glitches
 			b.Interval += interval
 			b.rMax = max(b.rMax, d.RAwait())
 			b.wMax = max(b.wMax, d.WAwait())
@@ -106,6 +122,7 @@ func (a *Agent) ioSample(ctx context.Context) {
 		st.prev[s.Name] = s
 	}
 	st.prevAt = now
+	st.prevUptime = uptime
 
 	// Completed hours, oldest first.
 	var done []ioKey
@@ -134,6 +151,7 @@ func (a *Agent) ioSample(ctx context.Context) {
 			Reads: b.Reads, Writes: b.Writes, ReadBytes: b.ReadBytes, WriteBytes: b.WriteBytes,
 			ReadMs: b.ReadMs, WriteMs: b.WriteMs, IoMs: b.IOMs, WeightedMs: b.WeightedMs,
 			RAwaitMaxMs: b.rMax, WAwaitMaxMs: b.wMax, UtilMax: b.uMax,
+			AwaitReads: b.AwaitReads, AwaitWrites: b.AwaitWrites, Glitches: uint32(b.Glitches),
 		})
 		sent = append(sent, k)
 	}

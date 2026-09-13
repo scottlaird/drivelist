@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"sort"
+	"strconv"
 	"strings"
 	"time"
 
@@ -46,6 +47,15 @@ func gap(secs float64) string {
 		return fmt.Sprintf("%dh%02dm", int(d.Hours()), int(d.Minutes())%60)
 	}
 	return fmt.Sprintf("%dd", int(d.Hours()/24))
+}
+
+// count renders a counter that is usually zero as "-" so the column
+// stays quiet.
+func count(n uint32) string {
+	if n == 0 {
+		return "-"
+	}
+	return strconv.FormatUint(uint64(n), 10)
 }
 
 func slot(expander, bay string) string {
@@ -251,6 +261,10 @@ func describe(e *pb.Event) string {
 		return fmt.Sprintf("note          %s: %q", strings.TrimPrefix(e.GetSource(), "user:"), str(d, "note"))
 	case "identity_conflict":
 		return fmt.Sprintf("identity conflict  keys %v match drives %v", d["keys"], d["drives"])
+	case "merged":
+		return fmt.Sprintf("merged        record %s (%s) folded into this drive by %s", str(d, "from_serial"), str(d, "from_wwn"), strings.TrimPrefix(e.GetSource(), "user:"))
+	case "host_merged":
+		return fmt.Sprintf("host merged   %s absorbed %s (%s) by %s", host, str(d, "from_hostname"), str(d, "from_machine_id"), strings.TrimPrefix(e.GetSource(), "user:"))
 	case "smart_warning":
 		return fmt.Sprintf("smart         %s  %v  %s", host, d["reasons"], str(d, "dev_name"))
 	case "kernel_warning":

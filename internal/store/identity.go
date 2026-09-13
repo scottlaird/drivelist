@@ -35,10 +35,20 @@ func (t *tx) upsertHost(h HostIdentity) (*hostRow, error) {
 		return nil, fmt.Errorf("report has no machine id")
 	}
 	row := &hostRow{hostname: h.Hostname}
-	err := t.QueryRowContext(t.ctx, `
+	// A merged host's machine id resolves to the host it was merged into.
+	var into sql.NullInt64
+	err := t.QueryRowContext(t.ctx, `SELECT merged_into FROM host WHERE machine_id = ?`, h.MachineID).Scan(&into)
+	if err != nil && err != sql.ErrNoRows {
+		return nil, err
+	}
+	lookup, arg := `h.machine_id = ?`, any(h.MachineID)
+	if into.Valid {
+		lookup, arg = `h.host_id = ?`, into.Int64
+	}
+	err = t.QueryRowContext(t.ctx, `
 		SELECT h.host_id, h.last_observed, h.stale_since, h.degraded, h.current_snapshot_id, COALESCE(s.content_hash, '')
 		FROM host h LEFT JOIN snapshot s ON s.snapshot_id = h.current_snapshot_id
-		WHERE h.machine_id = ?`, h.MachineID).
+		WHERE `+lookup, arg).
 		Scan(&row.id, &row.lastObserved, &row.staleSince, &row.degraded, &row.currentSnapshotID, &row.currentHash)
 	switch {
 	case err == sql.ErrNoRows:
@@ -52,6 +62,12 @@ func (t *tx) upsertHost(h HostIdentity) (*hostRow, error) {
 		return row, t.event(EventHostFirstSeen, 0, row.id, map[string]any{"hostname": h.Hostname, "os": h.OS}, "report", 0)
 	case err != nil:
 		return nil, err
+	}
+	if into.Valid {
+		// Keep the merged row's labels current too, but the target's name is
+		// the one shown.
+		_, err = t.ExecContext(t.ctx, `UPDATE host SET os = ?, agent_version = ? WHERE host_id = ?`, h.OS, h.AgentVersion, row.id)
+		return row, err
 	}
 	_, err = t.ExecContext(t.ctx, `UPDATE host SET hostname = ?, os = ?, agent_version = ? WHERE host_id = ?`, h.Hostname, h.OS, h.AgentVersion, row.id)
 	return row, err

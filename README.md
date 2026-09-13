@@ -33,9 +33,11 @@ through cgo and is still in the tree behind `-tags libzfs` as a
 reference, but it does not compile against OpenZFS 2.2 or later
 headers.
 
-On macOS and other non-Linux systems the tool builds and its tests
-run, but it cannot enumerate drives, since it depends on Linux sysfs
-and udev.
+On macOS, drives are enumerated through `diskutil` and identified
+(model and serial) through `system_profiler`, with mounted volumes as
+their uses; there are no WWNs, enclosure bays or ZFS states there, but
+a Mac can run the agent and its drives join the fleet.  Other systems
+build and run the server and CLI but cannot enumerate drives.
 
 ## Status
 
@@ -180,6 +182,16 @@ which is how a drive that is three times slower than its otherwise
 identical siblings shows up.  Hourly buckets are kept for 180 days and
 then rolled into daily ones.  `--io=false` turns sampling off.
 
+Some kernels (6.18.38 and 6.18.39, 7.1.3 and 7.1.4, and distribution
+kernels that took the same patch, such as Ubuntu 26.04's 7.0.0-31)
+occasionally account an I/O from a zero start time, which adds the
+host's uptime to the time counters and shows up in `iostat` as a
+multi-second await at 1% utilisation.  The agent reads `/proc/uptime`
+alongside `/proc/diskstats` and drops the latency of any minute whose
+read or write time jumped by about the uptime; the minute's
+completions and bytes still count.  The DROPPED column of
+`drivelist drive REF io` says how many counters an hour lost.
+
 For a one-off report, or from cron, `drivelist report` does one cycle.
 
 On Debian and Ubuntu hosts, install the package instead.  Every
@@ -208,6 +220,7 @@ Then, from anywhere, with `DRIVELIST_SERVER` and
   $ drivelist drive VJG24UZX note "RMA 4471 opened"
   $ drivelist events [--since 24h] [--kind vanished,moved_host] [--host fs2]
   $ drivelist missing
+  $ drivelist admin rebuild      # recompute history from the stored snapshots
 ```
 
 The server exposes Prometheus metrics at `/metrics` without a token:
@@ -217,7 +230,12 @@ host; known drives by status; kernel warnings and events in the last
 not exported; they live in the database and the CLI.
 
 A drive is referred to by serial, WWN, or an unambiguous prefix of
-either.  Every command takes `--json` for the raw response.  A drive
+either.  If one physical drive ends up with two records (seen once
+without its WWN, say), `drivelist drive REF merge OTHER` folds OTHER's
+history into REF and keeps OTHER's identity resolving to it; if a host
+is reinstalled and comes back with a new machine id, `drivelist host
+merge INTO FROM` does the same for hosts, with machine ids from
+`hosts --ids` when two share a name.  Every command takes `--json` for the raw response.  A drive
 that a complete report no longer lists is recorded as vanished with
 the last time it was confirmed; a host that stops reporting is marked
 stale and its drives are left in place, since only a report from the
