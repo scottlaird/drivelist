@@ -11,7 +11,10 @@ func TestIsDiskName(t *testing.T) {
 		{"sdab", true},
 		{"nvme0n1", true},
 		{"nvme10n2", true},
-		{"nvme0", false},     // controller, not a namespace; not in /sys/block anyway
+		{"nvme0", false}, // controller, not a namespace; not in /sys/block anyway
+		{"sda1", false},  // partition (diskstats lists them)
+		{"nvme0n1p2", false},
+		{"sd", false},
 		{"nvme0c0n1", false}, // hidden multipath path to nvme0n1
 		{"nvme1c3n2", false},
 		{"nvmen1", false},
@@ -22,8 +25,8 @@ func TestIsDiskName(t *testing.T) {
 		{"zd0", false},
 	}
 	for _, tc := range tests {
-		if got := isDiskName(tc.name); got != tc.want {
-			t.Errorf("isDiskName(%q) = %v, want %v", tc.name, got, tc.want)
+		if got := IsDiskName(tc.name); got != tc.want {
+			t.Errorf("IsDiskName(%q) = %v, want %v", tc.name, got, tc.want)
 		}
 	}
 }

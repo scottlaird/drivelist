@@ -245,6 +245,29 @@ func TestSmartRoundTrip(t *testing.T) {
 	}
 }
 
+func TestIORoundTrip(t *testing.T) {
+	env := newEnv(t)
+	ctx := context.Background()
+	hour := time.Now().Add(-2 * time.Hour).Truncate(time.Hour)
+	env.collector.ReportInventory(ctx, connect.NewRequest(report(hour, device("sda", "X1", "0x5000000000000001", "1", "zfs > tank 1 > raidz2 10 > disk 100"))))
+	ack, err := env.collector.ReportIO(ctx, connect.NewRequest(&pb.ReportIORequest{
+		Host: &pb.HostIdentity{MachineId: "m1", Hostname: "storage1"},
+		Samples: []*pb.IOSample{{Identity: &pb.DriveIdentity{Wwn: "0x5000000000000001"}, DevName: "sda", BucketStart: timestamppb.New(hour), BucketSecs: 3600,
+			Reads: 1000, Writes: 10, ReadBytes: 4096000, WriteBytes: 40960, ReadMs: 12000, WriteMs: 100, IoMs: 900000, WeightedMs: 1000000, RAwaitMaxMs: 40, UtilMax: 0.8}},
+	}))
+	if err != nil || ack.Msg.Stored != 1 {
+		t.Fatalf("ReportIO = %v, %v", ack.Msg, err)
+	}
+	res, err := env.query.GetIO(ctx, connect.NewRequest(&pb.GetIORequest{Ref: "X1"}))
+	if err != nil || len(res.Msg.Samples) != 1 || res.Msg.Samples[0].Reads != 1000 || res.Msg.Samples[0].Hostname != "storage1" {
+		t.Errorf("GetIO = %v, %v", res.Msg, err)
+	}
+	cmp, err := env.query.CompareIO(ctx, connect.NewRequest(&pb.CompareIORequest{}))
+	if err != nil || len(cmp.Msg.Rows) != 1 || cmp.Msg.Rows[0].Group != "zfs > tank 1 > raidz2 10" || cmp.Msg.Rows[0].RAwaitMs != 12 || cmp.Msg.Rows[0].Util != 0.25 {
+		t.Errorf("CompareIO = %v, %v", cmp.Msg, err)
+	}
+}
+
 func TestMetrics(t *testing.T) {
 	env := newEnv(t)
 	ctx := context.Background()
