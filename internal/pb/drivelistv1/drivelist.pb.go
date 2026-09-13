@@ -1186,23 +1186,31 @@ func (x *ReportSmartRequest) GetSamples() []*SmartSample {
 // IOSample is one hour of one drive's I/O, as deltas of /proc/diskstats
 // counters plus the worst 60 s sub-sample inside the hour.
 type IOSample struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Identity      *DriveIdentity         `protobuf:"bytes,1,opt,name=identity,proto3" json:"identity,omitempty"`
-	DevName       string                 `protobuf:"bytes,2,opt,name=dev_name,json=devName,proto3" json:"dev_name,omitempty"`
-	BucketStart   *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=bucket_start,json=bucketStart,proto3" json:"bucket_start,omitempty"`
-	BucketSecs    uint32                 `protobuf:"varint,4,opt,name=bucket_secs,json=bucketSecs,proto3" json:"bucket_secs,omitempty"`
-	Reads         uint64                 `protobuf:"varint,5,opt,name=reads,proto3" json:"reads,omitempty"`
-	Writes        uint64                 `protobuf:"varint,6,opt,name=writes,proto3" json:"writes,omitempty"`
-	ReadBytes     uint64                 `protobuf:"varint,7,opt,name=read_bytes,json=readBytes,proto3" json:"read_bytes,omitempty"`
-	WriteBytes    uint64                 `protobuf:"varint,8,opt,name=write_bytes,json=writeBytes,proto3" json:"write_bytes,omitempty"`
-	ReadMs        uint64                 `protobuf:"varint,9,opt,name=read_ms,json=readMs,proto3" json:"read_ms,omitempty"` // r_await = read_ms / reads
-	WriteMs       uint64                 `protobuf:"varint,10,opt,name=write_ms,json=writeMs,proto3" json:"write_ms,omitempty"`
-	IoMs          uint64                 `protobuf:"varint,11,opt,name=io_ms,json=ioMs,proto3" json:"io_ms,omitempty"`                   // util = io_ms / (bucket_secs * 1000)
-	WeightedMs    uint64                 `protobuf:"varint,12,opt,name=weighted_ms,json=weightedMs,proto3" json:"weighted_ms,omitempty"` // aqu-sz = weighted_ms / (bucket_secs * 1000)
-	RAwaitMaxMs   float64                `protobuf:"fixed64,13,opt,name=r_await_max_ms,json=rAwaitMaxMs,proto3" json:"r_await_max_ms,omitempty"`
-	WAwaitMaxMs   float64                `protobuf:"fixed64,14,opt,name=w_await_max_ms,json=wAwaitMaxMs,proto3" json:"w_await_max_ms,omitempty"`
-	UtilMax       float64                `protobuf:"fixed64,15,opt,name=util_max,json=utilMax,proto3" json:"util_max,omitempty"`
-	Hostname      string                 `protobuf:"bytes,16,opt,name=hostname,proto3" json:"hostname,omitempty"` // set in query responses
+	state       protoimpl.MessageState `protogen:"open.v1"`
+	Identity    *DriveIdentity         `protobuf:"bytes,1,opt,name=identity,proto3" json:"identity,omitempty"`
+	DevName     string                 `protobuf:"bytes,2,opt,name=dev_name,json=devName,proto3" json:"dev_name,omitempty"`
+	BucketStart *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=bucket_start,json=bucketStart,proto3" json:"bucket_start,omitempty"`
+	BucketSecs  uint32                 `protobuf:"varint,4,opt,name=bucket_secs,json=bucketSecs,proto3" json:"bucket_secs,omitempty"`
+	Reads       uint64                 `protobuf:"varint,5,opt,name=reads,proto3" json:"reads,omitempty"`
+	Writes      uint64                 `protobuf:"varint,6,opt,name=writes,proto3" json:"writes,omitempty"`
+	ReadBytes   uint64                 `protobuf:"varint,7,opt,name=read_bytes,json=readBytes,proto3" json:"read_bytes,omitempty"`
+	WriteBytes  uint64                 `protobuf:"varint,8,opt,name=write_bytes,json=writeBytes,proto3" json:"write_bytes,omitempty"`
+	ReadMs      uint64                 `protobuf:"varint,9,opt,name=read_ms,json=readMs,proto3" json:"read_ms,omitempty"` // r_await = read_ms / reads
+	WriteMs     uint64                 `protobuf:"varint,10,opt,name=write_ms,json=writeMs,proto3" json:"write_ms,omitempty"`
+	IoMs        uint64                 `protobuf:"varint,11,opt,name=io_ms,json=ioMs,proto3" json:"io_ms,omitempty"`                   // util = io_ms / (bucket_secs * 1000)
+	WeightedMs  uint64                 `protobuf:"varint,12,opt,name=weighted_ms,json=weightedMs,proto3" json:"weighted_ms,omitempty"` // aqu-sz = weighted_ms / (bucket_secs * 1000)
+	RAwaitMaxMs float64                `protobuf:"fixed64,13,opt,name=r_await_max_ms,json=rAwaitMaxMs,proto3" json:"r_await_max_ms,omitempty"`
+	WAwaitMaxMs float64                `protobuf:"fixed64,14,opt,name=w_await_max_ms,json=wAwaitMaxMs,proto3" json:"w_await_max_ms,omitempty"`
+	UtilMax     float64                `protobuf:"fixed64,15,opt,name=util_max,json=utilMax,proto3" json:"util_max,omitempty"`
+	Hostname    string                 `protobuf:"bytes,16,opt,name=hostname,proto3" json:"hostname,omitempty"` // set in query responses
+	// The completions read_ms and write_ms account for. Equal to reads and
+	// writes unless the agent rejected an interval whose time counter jumped
+	// by the host's uptime (a kernel accounting bug); then that interval's
+	// completions count for throughput but not latency. Agents before 0.4
+	// leave them 0, which the server reads as "all of them".
+	AwaitReads    uint64 `protobuf:"varint,17,opt,name=await_reads,json=awaitReads,proto3" json:"await_reads,omitempty"`
+	AwaitWrites   uint64 `protobuf:"varint,18,opt,name=await_writes,json=awaitWrites,proto3" json:"await_writes,omitempty"`
+	Glitches      uint32 `protobuf:"varint,19,opt,name=glitches,proto3" json:"glitches,omitempty"` // time counters rejected this hour
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1347,6 +1355,27 @@ func (x *IOSample) GetHostname() string {
 		return x.Hostname
 	}
 	return ""
+}
+
+func (x *IOSample) GetAwaitReads() uint64 {
+	if x != nil {
+		return x.AwaitReads
+	}
+	return 0
+}
+
+func (x *IOSample) GetAwaitWrites() uint64 {
+	if x != nil {
+		return x.AwaitWrites
+	}
+	return 0
+}
+
+func (x *IOSample) GetGlitches() uint32 {
+	if x != nil {
+		return x.Glitches
+	}
+	return 0
 }
 
 type ReportIORequest struct {
@@ -3214,6 +3243,7 @@ type IOComparison struct {
 	GroupWAwaitMs float64                `protobuf:"fixed64,12,opt,name=group_w_await_ms,json=groupWAwaitMs,proto3" json:"group_w_await_ms,omitempty"`
 	GroupUtil     float64                `protobuf:"fixed64,13,opt,name=group_util,json=groupUtil,proto3" json:"group_util,omitempty"`
 	GroupSize     int32                  `protobuf:"varint,14,opt,name=group_size,json=groupSize,proto3" json:"group_size,omitempty"`
+	Glitches      uint32                 `protobuf:"varint,15,opt,name=glitches,proto3" json:"glitches,omitempty"` // time counters rejected in the window
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -3342,6 +3372,13 @@ func (x *IOComparison) GetGroupUtil() float64 {
 func (x *IOComparison) GetGroupSize() int32 {
 	if x != nil {
 		return x.GroupSize
+	}
+	return 0
+}
+
+func (x *IOComparison) GetGlitches() uint32 {
+	if x != nil {
+		return x.Glitches
 	}
 	return 0
 }
@@ -3812,7 +3849,7 @@ const file_drivelist_v1_drivelist_proto_rawDesc = "" +
 	"\ahas_raw\x18\b \x01(\bR\x06hasRaw\"y\n" +
 	"\x12ReportSmartRequest\x12.\n" +
 	"\x04host\x18\x01 \x01(\v2\x1a.drivelist.v1.HostIdentityR\x04host\x123\n" +
-	"\asamples\x18\x02 \x03(\v2\x19.drivelist.v1.SmartSampleR\asamples\"\x97\x04\n" +
+	"\asamples\x18\x02 \x03(\v2\x19.drivelist.v1.SmartSampleR\asamples\"\xf7\x04\n" +
 	"\bIOSample\x127\n" +
 	"\bidentity\x18\x01 \x01(\v2\x1b.drivelist.v1.DriveIdentityR\bidentity\x12\x19\n" +
 	"\bdev_name\x18\x02 \x01(\tR\adevName\x12=\n" +
@@ -3834,7 +3871,11 @@ const file_drivelist_v1_drivelist_proto_rawDesc = "" +
 	"\x0er_await_max_ms\x18\r \x01(\x01R\vrAwaitMaxMs\x12#\n" +
 	"\x0ew_await_max_ms\x18\x0e \x01(\x01R\vwAwaitMaxMs\x12\x19\n" +
 	"\butil_max\x18\x0f \x01(\x01R\autilMax\x12\x1a\n" +
-	"\bhostname\x18\x10 \x01(\tR\bhostname\"s\n" +
+	"\bhostname\x18\x10 \x01(\tR\bhostname\x12\x1f\n" +
+	"\vawait_reads\x18\x11 \x01(\x04R\n" +
+	"awaitReads\x12!\n" +
+	"\fawait_writes\x18\x12 \x01(\x04R\vawaitWrites\x12\x1a\n" +
+	"\bglitches\x18\x13 \x01(\rR\bglitches\"s\n" +
 	"\x0fReportIORequest\x12.\n" +
 	"\x04host\x18\x01 \x01(\v2\x1a.drivelist.v1.HostIdentityR\x04host\x120\n" +
 	"\asamples\x18\x02 \x03(\v2\x16.drivelist.v1.IOSampleR\asamples\"{\n" +
@@ -3981,7 +4022,7 @@ const file_drivelist_v1_drivelist_proto_rawDesc = "" +
 	"\asamples\x18\x02 \x03(\v2\x16.drivelist.v1.IOSampleR\asamples\"X\n" +
 	"\x10CompareIORequest\x12\x12\n" +
 	"\x04host\x18\x01 \x01(\tR\x04host\x120\n" +
-	"\x05since\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\x05since\"\x97\x03\n" +
+	"\x05since\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\x05since\"\xb3\x03\n" +
 	"\fIOComparison\x12\x14\n" +
 	"\x05group\x18\x01 \x01(\tR\x05group\x12\x1a\n" +
 	"\bhostname\x18\x02 \x01(\tR\bhostname\x12\x16\n" +
@@ -4001,7 +4042,8 @@ const file_drivelist_v1_drivelist_proto_rawDesc = "" +
 	"\n" +
 	"group_util\x18\r \x01(\x01R\tgroupUtil\x12\x1d\n" +
 	"\n" +
-	"group_size\x18\x0e \x01(\x05R\tgroupSize\"C\n" +
+	"group_size\x18\x0e \x01(\x05R\tgroupSize\x12\x1a\n" +
+	"\bglitches\x18\x0f \x01(\rR\bglitches\"C\n" +
 	"\x11CompareIOResponse\x12.\n" +
 	"\x04rows\x18\x01 \x03(\v2\x1a.drivelist.v1.IOComparisonR\x04rows\"R\n" +
 	"\x12MergeDrivesRequest\x12\x12\n" +

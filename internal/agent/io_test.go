@@ -36,7 +36,7 @@ func TestIOBuckets(t *testing.T) {
 				{Name: "sdz", Reads: reads},
 			}, nil
 		}
-		a.EnableIO(IOConfig{Interval: time.Minute, Read: read})
+		a.EnableIO(IOConfig{Interval: time.Minute, Read: read, Uptime: uptime(30 * 24 * time.Hour)})
 		ctx, cancel := context.WithCancel(context.Background())
 		defer cancel()
 		// Start on a whole hour so the first bucket is clean.
@@ -82,7 +82,7 @@ func TestIOKeepsBucketsWhenSendFails(t *testing.T) {
 			n += 100
 			return []collect.DiskStat{{Name: "sda", Reads: n, ReadMs: n}}, nil
 		}
-		a.EnableIO(IOConfig{Interval: time.Minute, Read: read})
+		a.EnableIO(IOConfig{Interval: time.Minute, Read: read, Uptime: uptime(30 * 24 * time.Hour)})
 		ctx, cancel := context.WithCancel(context.Background())
 		defer cancel()
 		time.Sleep(time.Now().Truncate(time.Hour).Add(time.Hour).Sub(time.Now()))
@@ -99,6 +99,61 @@ func TestIOKeepsBucketsWhenSendFails(t *testing.T) {
 		synctest.Wait()
 		if got := send.ioReports(); len(got) != 1 {
 			t.Errorf("io reports after recovery = %d, want 1", len(got))
+		}
+		cancel()
+	})
+}
+
+// uptime is a fixed uptime for tests that do not exercise glitch rejection.
+func uptime(d time.Duration) func() (time.Duration, error) {
+	return func() (time.Duration, error) { return d, nil }
+}
+
+func TestIODropsUptimeGlitch(t *testing.T) {
+	synctest.Test(t, func(t *testing.T) {
+		send := &fakeSender{}
+		a := newAgent(t, send, inventory)
+		// 1000 writes and 300 ms per minute; in minute 5 the write time
+		// counter also jumps by the uptime, as the 6.18.38 kernel does.
+		const up = 14 * 24 * time.Hour
+		var mu sync.Mutex
+		minute := 0
+		var writes, writeMs uint64
+		read := func() ([]collect.DiskStat, error) {
+			mu.Lock()
+			defer mu.Unlock()
+			if minute > 0 {
+				writes += 1000
+				writeMs += 300
+				if minute == 5 {
+					writeMs += uint64(up.Milliseconds())
+				}
+			}
+			minute++
+			return []collect.DiskStat{{Name: "sda", Writes: writes, WriteMs: writeMs, WeightedIOMs: writeMs}}, nil
+		}
+		a.EnableIO(IOConfig{Interval: time.Minute, Read: read, Uptime: uptime(up)})
+		ctx, cancel := context.WithCancel(context.Background())
+		defer cancel()
+		time.Sleep(time.Now().Truncate(time.Hour).Add(time.Hour).Sub(time.Now()))
+		go a.Run(ctx)
+		synctest.Wait()
+		time.Sleep(61 * time.Minute)
+		synctest.Wait()
+		reports := send.ioReports()
+		if len(reports) != 1 || len(reports[0].Samples) != 1 {
+			t.Fatalf("io reports = %+v", reports)
+		}
+		s := reports[0].Samples[0]
+		// 59 deltas: throughput counts all of them, latency all but one.
+		if s.Writes != 59000 || s.AwaitWrites != 58000 || s.WriteMs != 58*300 || s.Glitches != 1 || s.WeightedMs != 58*300 {
+			t.Errorf("sums = writes %d await_writes %d ms %d weighted %d glitches %d", s.Writes, s.AwaitWrites, s.WriteMs, s.WeightedMs, s.Glitches)
+		}
+		if s.WAwaitMaxMs != 0.3 {
+			t.Errorf("w_await max = %v, want 0.3 (the glitch minute must not set it)", s.WAwaitMaxMs)
+		}
+		if s.AwaitReads != 0 || s.Reads != 0 {
+			t.Errorf("reads = %d/%d", s.Reads, s.AwaitReads)
 		}
 		cancel()
 	})

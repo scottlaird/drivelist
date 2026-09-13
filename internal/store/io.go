@@ -27,11 +27,14 @@ type IOSample struct {
 	RAwaitMax   float64
 	WAwaitMax   float64
 	UtilMax     float64
+	AwaitReads  uint64 // completions ReadMs covers; Reads unless intervals were rejected
+	AwaitWrites uint64
+	Glitches    int // time counters the agent rejected
 }
 
 // RAwait, WAwait and Util derive the iostat rates from the bucket.
-func (s IOSample) RAwait() float64 { return div(s.ReadMs, s.Reads) }
-func (s IOSample) WAwait() float64 { return div(s.WriteMs, s.Writes) }
+func (s IOSample) RAwait() float64 { return div(s.ReadMs, s.AwaitReads) }
+func (s IOSample) WAwait() float64 { return div(s.WriteMs, s.AwaitWrites) }
 func (s IOSample) Util() float64 {
 	if s.BucketSecs == 0 {
 		return 0
@@ -69,10 +72,14 @@ func (s *Store) IngestIO(ctx context.Context, host HostIdentity, samples []IOSam
 		if len(ids) == 0 || k.BucketSecs <= 0 {
 			continue
 		}
+		// An agent from before glitch rejection covers every completion.
+		if k.AwaitReads == 0 && k.AwaitWrites == 0 && k.Glitches == 0 {
+			k.AwaitReads, k.AwaitWrites = k.Reads, k.Writes
+		}
 		if _, err := t.ExecContext(ctx, `
-			INSERT OR REPLACE INTO io_sample (drive_id, host_id, dev_name, bucket_start, bucket_secs, reads, writes, read_bytes, write_bytes, read_ms, write_ms, io_ms, weighted_ms, r_await_max, w_await_max, util_max)
-			VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
-			ids[0], h.id, k.DevName, k.BucketStart.Unix(), k.BucketSecs, k.Reads, k.Writes, k.ReadBytes, k.WriteBytes, k.ReadMs, k.WriteMs, k.IOMs, k.WeightedMs, k.RAwaitMax, k.WAwaitMax, k.UtilMax); err != nil {
+			INSERT OR REPLACE INTO io_sample (drive_id, host_id, dev_name, bucket_start, bucket_secs, reads, writes, read_bytes, write_bytes, read_ms, write_ms, io_ms, weighted_ms, r_await_max, w_await_max, util_max, await_reads, await_writes, glitches)
+			VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+			ids[0], h.id, k.DevName, k.BucketStart.Unix(), k.BucketSecs, k.Reads, k.Writes, k.ReadBytes, k.WriteBytes, k.ReadMs, k.WriteMs, k.IOMs, k.WeightedMs, k.RAwaitMax, k.WAwaitMax, k.UtilMax, k.AwaitReads, k.AwaitWrites, k.Glitches); err != nil {
 			return 0, err
 		}
 		stored++
@@ -80,7 +87,7 @@ func (s *Store) IngestIO(ctx context.Context, host HostIdentity, samples []IOSam
 	return stored, sqlTx.Commit()
 }
 
-const ioColumns = `h.hostname, i.dev_name, i.bucket_start, i.bucket_secs, i.reads, i.writes, i.read_bytes, i.write_bytes, i.read_ms, i.write_ms, i.io_ms, i.weighted_ms, i.r_await_max, i.w_await_max, i.util_max`
+const ioColumns = `h.hostname, i.dev_name, i.bucket_start, i.bucket_secs, i.reads, i.writes, i.read_bytes, i.write_bytes, i.read_ms, i.write_ms, i.io_ms, i.weighted_ms, i.r_await_max, i.w_await_max, i.util_max, i.await_reads, i.await_writes, i.glitches`
 
 // IOSamples returns a drive's hourly buckets since a time, newest first.
 // Buckets rolled into io_daily are returned as day-sized samples.
@@ -97,7 +104,7 @@ func (s *Store) IOSamples(ctx context.Context, ref string, since time.Time) (Dri
 	rows, err := s.db.QueryContext(ctx, `
 		SELECT `+ioColumns+` FROM io_sample i JOIN host h USING (host_id) WHERE i.drive_id = ? AND i.bucket_start >= ?
 		UNION ALL
-		SELECT h.hostname, '', i.day, i.secs, i.reads, i.writes, i.read_bytes, i.write_bytes, i.read_ms, i.write_ms, i.io_ms, i.weighted_ms, i.r_await_max, i.w_await_max, i.util_max
+		SELECT h.hostname, '', i.day, i.secs, i.reads, i.writes, i.read_bytes, i.write_bytes, i.read_ms, i.write_ms, i.io_ms, i.weighted_ms, i.r_await_max, i.w_await_max, i.util_max, i.await_reads, i.await_writes, i.glitches
 		FROM io_daily i JOIN host h USING (host_id) WHERE i.drive_id = ? AND i.day >= ?
 		ORDER BY 3 DESC`, id, since.Unix(), id, since.Unix())
 	if err != nil {
@@ -108,7 +115,7 @@ func (s *Store) IOSamples(ctx context.Context, ref string, since time.Time) (Dri
 	for rows.Next() {
 		k := IOSample{Identity: identity}
 		var start int64
-		if err := rows.Scan(&k.Hostname, &k.DevName, &start, &k.BucketSecs, &k.Reads, &k.Writes, &k.ReadBytes, &k.WriteBytes, &k.ReadMs, &k.WriteMs, &k.IOMs, &k.WeightedMs, &k.RAwaitMax, &k.WAwaitMax, &k.UtilMax); err != nil {
+		if err := rows.Scan(&k.Hostname, &k.DevName, &start, &k.BucketSecs, &k.Reads, &k.Writes, &k.ReadBytes, &k.WriteBytes, &k.ReadMs, &k.WriteMs, &k.IOMs, &k.WeightedMs, &k.RAwaitMax, &k.WAwaitMax, &k.UtilMax, &k.AwaitReads, &k.AwaitWrites, &k.Glitches); err != nil {
 			return Drive{}, nil, err
 		}
 		k.BucketStart = time.Unix(start, 0).UTC()
@@ -134,6 +141,7 @@ type IOComparison struct {
 	GroupWAwait float64
 	GroupUtil   float64
 	GroupSize   int
+	Glitches    int // time counters rejected in the window
 }
 
 // CompareIO aggregates io_sample over the window for every drive with an
@@ -155,7 +163,7 @@ func (s *Store) CompareIO(ctx context.Context, host string, since time.Time) ([]
 	rows, err := s.db.QueryContext(ctx, `
 		SELECT h.hostname, d.serial, d.model, p.dev_name, p.uses,
 		       COALESCE(SUM(i.reads), 0), COALESCE(SUM(i.writes), 0), COALESCE(SUM(i.read_ms), 0), COALESCE(SUM(i.write_ms), 0),
-		       COALESCE(SUM(i.io_ms), 0), COALESCE(SUM(i.bucket_secs), 0)
+		       COALESCE(SUM(i.io_ms), 0), COALESCE(SUM(i.bucket_secs), 0), COALESCE(SUM(i.await_reads), 0), COALESCE(SUM(i.await_writes), 0), COALESCE(SUM(i.glitches), 0)
 		FROM placement p JOIN drive d USING (drive_id) JOIN host h USING (host_id)
 		LEFT JOIN io_sample i ON i.drive_id = p.drive_id AND i.bucket_start >= ?
 		WHERE `+where+`
@@ -168,15 +176,15 @@ func (s *Store) CompareIO(ctx context.Context, host string, since time.Time) ([]
 	for rows.Next() {
 		var c IOComparison
 		var uses string
-		var readMs, writeMs, ioMs, secs uint64
-		if err := rows.Scan(&c.Hostname, &c.Serial, &c.Model, &c.DevName, &uses, &c.Reads, &c.Writes, &readMs, &writeMs, &ioMs, &secs); err != nil {
+		var readMs, writeMs, ioMs, secs, awaitReads, awaitWrites uint64
+		if err := rows.Scan(&c.Hostname, &c.Serial, &c.Model, &c.DevName, &uses, &c.Reads, &c.Writes, &readMs, &writeMs, &ioMs, &secs, &awaitReads, &awaitWrites, &c.Glitches); err != nil {
 			return nil, err
 		}
 		if secs == 0 {
 			continue // no samples in the window
 		}
 		c.Group = vdevGroup(uses)
-		c.RAwait, c.WAwait = div(readMs, c.Reads), div(writeMs, c.Writes)
+		c.RAwait, c.WAwait = div(readMs, awaitReads), div(writeMs, awaitWrites)
 		c.Util = min(float64(ioMs)/float64(secs*1000), 1)
 		out = append(out, c)
 	}
@@ -257,9 +265,9 @@ func (s *Store) RetainIO(ctx context.Context, keep time.Duration) (int64, error)
 	}
 	defer sqlTx.Rollback()
 	if _, err := sqlTx.ExecContext(ctx, `
-		INSERT INTO io_daily (drive_id, host_id, day, secs, reads, writes, read_bytes, write_bytes, read_ms, write_ms, io_ms, weighted_ms, r_await_max, w_await_max, util_max)
+		INSERT INTO io_daily (drive_id, host_id, day, secs, reads, writes, read_bytes, write_bytes, read_ms, write_ms, io_ms, weighted_ms, r_await_max, w_await_max, util_max, await_reads, await_writes, glitches)
 		SELECT drive_id, host_id, (bucket_start / 86400) * 86400, SUM(bucket_secs), SUM(reads), SUM(writes), SUM(read_bytes), SUM(write_bytes),
-		       SUM(read_ms), SUM(write_ms), SUM(io_ms), SUM(weighted_ms), MAX(r_await_max), MAX(w_await_max), MAX(util_max)
+		       SUM(read_ms), SUM(write_ms), SUM(io_ms), SUM(weighted_ms), MAX(r_await_max), MAX(w_await_max), MAX(util_max), SUM(await_reads), SUM(await_writes), SUM(glitches)
 		FROM io_sample WHERE bucket_start < ?
 		GROUP BY drive_id, host_id, (bucket_start / 86400)
 		ON CONFLICT (drive_id, day) DO UPDATE SET
@@ -267,7 +275,8 @@ func (s *Store) RetainIO(ctx context.Context, keep time.Duration) (int64, error)
 		  read_bytes = read_bytes + excluded.read_bytes, write_bytes = write_bytes + excluded.write_bytes,
 		  read_ms = read_ms + excluded.read_ms, write_ms = write_ms + excluded.write_ms,
 		  io_ms = io_ms + excluded.io_ms, weighted_ms = weighted_ms + excluded.weighted_ms,
-		  r_await_max = MAX(r_await_max, excluded.r_await_max), w_await_max = MAX(w_await_max, excluded.w_await_max), util_max = MAX(util_max, excluded.util_max)`, cutoff); err != nil {
+		  r_await_max = MAX(r_await_max, excluded.r_await_max), w_await_max = MAX(w_await_max, excluded.w_await_max), util_max = MAX(util_max, excluded.util_max),
+		  await_reads = await_reads + excluded.await_reads, await_writes = await_writes + excluded.await_writes, glitches = glitches + excluded.glitches`, cutoff); err != nil {
 		return 0, err
 	}
 	res, err := sqlTx.ExecContext(ctx, `DELETE FROM io_sample WHERE bucket_start < ?`, cutoff)

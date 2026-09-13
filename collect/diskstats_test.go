@@ -1,6 +1,8 @@
 package collect
 
 import (
+	"os"
+	"path/filepath"
 	"strings"
 	"testing"
 	"time"
@@ -50,5 +52,49 @@ func TestDelta(t *testing.T) {
 	idle, _ := Delta(cur, cur, time.Minute)
 	if idle.RAwait() != 0 || idle.Util() != 0 {
 		t.Errorf("idle = %+v", idle)
+	}
+}
+
+func TestDropGlitches(t *testing.T) {
+	uptime := 14 * 24 * time.Hour // 1.2e9 ms
+	prev := DiskStat{Name: "nvme0n1", Reads: 100, ReadMs: 10, Writes: 1000, WriteMs: 300, WeightedIOMs: 310}
+	// Writes took the uptime plus a normal 300 ms; reads are honest.
+	cur := DiskStat{Name: "nvme0n1", Reads: 200, ReadMs: 20, Writes: 2800, WriteMs: 300 + uint64(uptime.Milliseconds()) + 300, WeightedIOMs: 310 + uint64(uptime.Milliseconds()) + 310}
+	d, _ := Delta(prev, cur, time.Minute)
+	if n := d.DropGlitches(uptime); n != 1 || d.Glitches != 1 {
+		t.Fatalf("DropGlitches = %d, Glitches = %d; want 1", n, d.Glitches)
+	}
+	if d.Writes != 1800 || d.AwaitWrites != 0 || d.WriteMs != 0 || d.WeightedMs != 0 {
+		t.Errorf("write side after drop = %+v", d)
+	}
+	if d.Reads != 100 || d.AwaitReads != 100 || d.ReadMs != 10 || d.RAwait() != 0.1 || d.WAwait() != 0 {
+		t.Errorf("read side changed = %+v", d)
+	}
+
+	// The same jump with under an hour of uptime is left alone: it could be
+	// a deep queue.
+	d, _ = Delta(prev, cur, time.Minute)
+	if n := d.DropGlitches(30 * time.Minute); n != 0 || d.AwaitWrites != 1800 {
+		t.Errorf("early-uptime drop = %d, AwaitWrites = %d", n, d.AwaitWrites)
+	}
+
+	// A busy hour on a deep queue: 256 requests in flight for the whole
+	// minute is 15.4e6 ms, far under a day of uptime.
+	busy := DiskStat{Name: "sda", Writes: 100000, WriteMs: 256 * 60 * 1000}
+	d, _ = Delta(DiskStat{Name: "sda"}, busy, time.Minute)
+	if n := d.DropGlitches(24 * time.Hour); n != 0 {
+		t.Errorf("busy interval rejected: %+v", d)
+	}
+}
+
+func TestReadUptime(t *testing.T) {
+	f := filepath.Join(t.TempDir(), "uptime")
+	os.WriteFile(f, []byte("1209545.48 9500000.12\n"), 0o644)
+	got, err := ReadUptime(f)
+	if err != nil || got != 1209545480*time.Millisecond {
+		t.Errorf("ReadUptime = %v, %v", got, err)
+	}
+	if _, err := ReadUptime(filepath.Join(t.TempDir(), "missing")); err == nil {
+		t.Error("missing file: no error")
 	}
 }

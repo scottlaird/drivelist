@@ -374,12 +374,12 @@ func showIO(cmd *cobra.Command, cfg *clientConfig, ref, since string) error {
 	}
 	fmt.Fprintln(w)
 	tw := tab(w)
-	fmt.Fprintln(tw, "START\tSPAN\tHOST\tREADS\tWRITES\tREAD\tWRITTEN\tR_AWAIT\tW_AWAIT\tUTIL\tR_MAX\tW_MAX\tUTIL_MAX")
+	fmt.Fprintln(tw, "START\tSPAN\tHOST\tREADS\tWRITES\tREAD\tWRITTEN\tR_AWAIT\tW_AWAIT\tUTIL\tR_MAX\tW_MAX\tUTIL_MAX\tDROPPED")
 	for _, s := range res.Msg.Samples {
 		span := time.Duration(s.BucketSecs) * time.Second
-		fmt.Fprintf(tw, "%s\t%s\t%s\t%d\t%d\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\n", when(s.BucketStart), span, s.Hostname, s.Reads, s.Writes,
-			size(s.ReadBytes), size(s.WriteBytes), ms(fdiv(s.ReadMs, s.Reads)), ms(fdiv(s.WriteMs, s.Writes)), pct(fdiv(s.IoMs, uint64(s.BucketSecs)*1000)),
-			ms(s.RAwaitMaxMs), ms(s.WAwaitMaxMs), pct(s.UtilMax))
+		fmt.Fprintf(tw, "%s\t%s\t%s\t%d\t%d\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\n", when(s.BucketStart), span, s.Hostname, s.Reads, s.Writes,
+			size(s.ReadBytes), size(s.WriteBytes), ms(fdiv(s.ReadMs, s.AwaitReads)), ms(fdiv(s.WriteMs, s.AwaitWrites)), pct(fdiv(s.IoMs, uint64(s.BucketSecs)*1000)),
+			ms(s.RAwaitMaxMs), ms(s.WAwaitMaxMs), pct(s.UtilMax), count(s.Glitches))
 	}
 	return tw.Flush()
 }

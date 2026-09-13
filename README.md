@@ -182,6 +182,16 @@ which is how a drive that is three times slower than its otherwise
 identical siblings shows up.  Hourly buckets are kept for 180 days and
 then rolled into daily ones.  `--io=false` turns sampling off.
 
+Some kernels (6.18.38 and 6.18.39, 7.1.3 and 7.1.4, and distribution
+kernels that took the same patch, such as Ubuntu 26.04's 7.0.0-31)
+occasionally account an I/O from a zero start time, which adds the
+host's uptime to the time counters and shows up in `iostat` as a
+multi-second await at 1% utilisation.  The agent reads `/proc/uptime`
+alongside `/proc/diskstats` and drops the latency of any minute whose
+read or write time jumped by about the uptime; the minute's
+completions and bytes still count.  The DROPPED column of
+`drivelist drive REF io` says how many counters an hour lost.
+
 For a one-off report, or from cron, `drivelist report` does one cycle.
 
 On Debian and Ubuntu hosts, install the package instead.  Every

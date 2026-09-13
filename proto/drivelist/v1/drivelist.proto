@@ -220,6 +220,14 @@ message IOSample {
   double w_await_max_ms = 14;
   double util_max = 15;
   string hostname = 16;               // set in query responses
+  // The completions read_ms and write_ms account for. Equal to reads and
+  // writes unless the agent rejected an interval whose time counter jumped
+  // by the host's uptime (a kernel accounting bug); then that interval's
+  // completions count for throughput but not latency. Agents before 0.4
+  // leave them 0, which the server reads as "all of them".
+  uint64 await_reads = 17;
+  uint64 await_writes = 18;
+  uint32 glitches = 19;               // time counters rejected this hour
 }
 
 message ReportIORequest {
@@ -429,6 +437,7 @@ message IOComparison {
   double group_w_await_ms = 12;
   double group_util = 13;
   int32 group_size = 14;
+  uint32 glitches = 15;               // time counters rejected in the window
 }
 
 message CompareIOResponse {

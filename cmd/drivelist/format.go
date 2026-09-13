@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"sort"
+	"strconv"
 	"strings"
 	"time"
 
@@ -46,6 +47,15 @@ func gap(secs float64) string {
 		return fmt.Sprintf("%dh%02dm", int(d.Hours()), int(d.Minutes())%60)
 	}
 	return fmt.Sprintf("%dd", int(d.Hours()/24))
+}
+
+// count renders a counter that is usually zero as "-" so the column
+// stays quiet.
+func count(n uint32) string {
+	if n == 0 {
+		return "-"
+	}
+	return strconv.FormatUint(uint64(n), 10)
 }
 
 func slot(expander, bay string) string {

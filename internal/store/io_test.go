@@ -98,3 +98,49 @@ func TestRetainIO(t *testing.T) {
 		t.Errorf("second RetainIO pruned %d", n)
 	}
 }
+
+func TestIOAwaitCoversOnlyAcceptedIntervals(t *testing.T) {
+	h := fleet(t)
+	hour := h.now.Add(-3 * time.Hour).Truncate(time.Hour)
+	// A 0.4 agent that rejected two intervals: the hour's 1000 reads all
+	// count for throughput, the 8000 ms of latency covers 900 of them.
+	glitched := ioBucket("0x5000000000000001", "sda", hour, 1000, 8000, 900000)
+	glitched.AwaitReads, glitched.AwaitWrites, glitched.Glitches = 900, 500, 2
+	// A 0.3 agent leaves the await counts zero: every completion counts.
+	old := ioBucket("0x5000000000000001", "sda", hour.Add(time.Hour), 2000, 16000, 1800000)
+	if _, err := h.s.IngestIO(h.ctx, hostA, []IOSample{glitched, old}); err != nil {
+		t.Fatal(err)
+	}
+	_, got, err := h.s.IOSamples(h.ctx, "X1", hour.Add(-time.Hour))
+	if err != nil || len(got) != 2 {
+		t.Fatalf("IOSamples = %+v, %v", got, err)
+	}
+	if got[1].AwaitReads != 900 || got[1].Glitches != 2 || got[1].RAwait() != 8000.0/900 {
+		t.Errorf("glitched hour = %+v", got[1])
+	}
+	if got[0].AwaitReads != 2000 || got[0].AwaitWrites != 1000 || got[0].RAwait() != 8 {
+		t.Errorf("old-agent hour = %+v", got[0])
+	}
+	rows, err := h.s.CompareIO(h.ctx, "storage1", hour.Add(-time.Hour))
+	if err != nil || len(rows) != 1 {
+		t.Fatalf("CompareIO = %+v, %v", rows, err)
+	}
+	if rows[0].RAwait != 24000.0/2900 || rows[0].Reads != 3000 || rows[0].Glitches != 2 {
+		t.Errorf("comparison = %+v", rows[0])
+	}
+	if _, err := h.s.RetainIO(h.ctx, 0); err != nil {
+		t.Fatal(err)
+	}
+	_, daily, err := h.s.IOSamples(h.ctx, "X1", hour.Add(-48*time.Hour))
+	if err != nil || len(daily) < 1 {
+		t.Fatalf("daily = %+v, %v", daily, err)
+	}
+	var awaitReads, glitches uint64
+	for _, d := range daily {
+		awaitReads += d.AwaitReads
+		glitches += uint64(d.Glitches)
+	}
+	if awaitReads != 2900 || glitches != 2 {
+		t.Errorf("daily rollup await_reads %d glitches %d", awaitReads, glitches)
+	}
+}

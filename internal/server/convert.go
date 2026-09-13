@@ -227,7 +227,8 @@ func ioSamplesFromProto(samples []*pb.IOSample) []store.IOSample {
 		s := store.IOSample{Identity: identityFromProto(k.GetIdentity()), DevName: k.GetDevName(), BucketSecs: int(k.GetBucketSecs()),
 			Reads: k.GetReads(), Writes: k.GetWrites(), ReadBytes: k.GetReadBytes(), WriteBytes: k.GetWriteBytes(),
 			ReadMs: k.GetReadMs(), WriteMs: k.GetWriteMs(), IOMs: k.GetIoMs(), WeightedMs: k.GetWeightedMs(),
-			RAwaitMax: k.GetRAwaitMaxMs(), WAwaitMax: k.GetWAwaitMaxMs(), UtilMax: k.GetUtilMax()}
+			RAwaitMax: k.GetRAwaitMaxMs(), WAwaitMax: k.GetWAwaitMaxMs(), UtilMax: k.GetUtilMax(),
+			AwaitReads: k.GetAwaitReads(), AwaitWrites: k.GetAwaitWrites(), Glitches: int(k.GetGlitches())}
 		if b := k.GetBucketStart(); b != nil {
 			s.BucketStart = b.AsTime()
 		}
@@ -239,12 +240,13 @@ func ioSamplesFromProto(samples []*pb.IOSample) []store.IOSample {
 func ioSampleToProto(k store.IOSample) *pb.IOSample {
 	return &pb.IOSample{Identity: identityToProto(k.Identity), DevName: k.DevName, BucketStart: ts(k.BucketStart), BucketSecs: uint32(k.BucketSecs),
 		Reads: k.Reads, Writes: k.Writes, ReadBytes: k.ReadBytes, WriteBytes: k.WriteBytes, ReadMs: k.ReadMs, WriteMs: k.WriteMs, IoMs: k.IOMs, WeightedMs: k.WeightedMs,
-		RAwaitMaxMs: k.RAwaitMax, WAwaitMaxMs: k.WAwaitMax, UtilMax: k.UtilMax, Hostname: k.Hostname}
+		RAwaitMaxMs: k.RAwaitMax, WAwaitMaxMs: k.WAwaitMax, UtilMax: k.UtilMax, Hostname: k.Hostname,
+		AwaitReads: k.AwaitReads, AwaitWrites: k.AwaitWrites, Glitches: uint32(k.Glitches)}
 }
 
 func ioComparisonToProto(c store.IOComparison) *pb.IOComparison {
 	return &pb.IOComparison{Group: c.Group, Hostname: c.Hostname, Serial: c.Serial, Model: c.Model, DevName: c.DevName, Reads: c.Reads, Writes: c.Writes,
-		RAwaitMs: c.RAwait, WAwaitMs: c.WAwait, Util: c.Util, GroupRAwaitMs: c.GroupRAwait, GroupWAwaitMs: c.GroupWAwait, GroupUtil: c.GroupUtil, GroupSize: int32(c.GroupSize)}
+		RAwaitMs: c.RAwait, WAwaitMs: c.WAwait, Util: c.Util, GroupRAwaitMs: c.GroupRAwait, GroupWAwaitMs: c.GroupWAwait, GroupUtil: c.GroupUtil, GroupSize: int32(c.GroupSize), Glitches: uint32(c.Glitches)}
 }
 
 func ghostToProto(g store.Ghost) *pb.Ghost {
