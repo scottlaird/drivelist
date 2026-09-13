@@ -85,7 +85,11 @@ try the server without the agent. Needs the agent token.`,
 				return err
 			}
 			inv, collectErr := collectAll()
-			req := report.FromInventory(report.Host(), inv, time.Now(), collectErr)
+			topo, err := collectSAS()
+			if err != nil {
+				fmt.Fprintf(cmd.ErrOrStderr(), "drivelist: sas topology unreadable, reporting without it: %v\n", err)
+			}
+			req := report.FromInventory(report.Host(), inv, topo, time.Now(), collectErr)
 			res, err := client.ReportInventory(cmd.Context(), connect.NewRequest(req))
 			if err != nil {
 				return rpcErr(err)

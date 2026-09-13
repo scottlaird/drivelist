@@ -59,7 +59,41 @@ func reportFromProto(req *pb.ReportInventoryRequest) store.Report {
 	for _, m := range req.GetUnmappedMembers() {
 		r.Unmapped = append(r.Unmapped, store.PoolMember{Pool: m.GetPool(), Path: m.GetPath(), GUID: m.GetGuid(), State: m.GetState()})
 	}
+	for _, n := range req.GetSasNodes() {
+		r.SASNodes = append(r.SASNodes, sasNodeFromProto(n))
+	}
+	for _, p := range req.GetSasPhys() {
+		r.SASPhys = append(r.SASPhys, sasPhyFromProto(p))
+	}
 	return r
+}
+
+func sasNodeFromProto(n *pb.SasNode) store.SASNode {
+	return store.SASNode{Kind: n.GetKind(), Name: n.GetName(), Address: n.GetAddress(), Vendor: n.GetVendor(), Product: n.GetProduct(), Revision: n.GetRevision(),
+		ParentAddress: n.GetParentAddress(), UpstreamPort: n.GetUpstreamPort()}
+}
+
+func sasNodeToProto(n store.SASNode) *pb.SasNode {
+	return &pb.SasNode{Kind: n.Kind, Name: n.Name, Address: n.Address, Vendor: n.Vendor, Product: n.Product, Revision: n.Revision, ParentAddress: n.ParentAddress, UpstreamPort: n.UpstreamPort}
+}
+
+func sasPhyFromProto(p *pb.SasPhy) store.SASPhy {
+	return store.SASPhy{OwnerAddress: p.GetOwnerAddress(), PhyID: int(p.GetPhyId()), Name: p.GetName(), Port: p.GetPort(), PortWidth: int(p.GetPortWidth()),
+		Rate: p.GetRate(), RateGbit: p.GetRateGbit(), AttachedKind: p.GetAttachedKind(), Attached: p.GetAttached(), AttachedAddress: p.GetAttachedAddress(),
+		DevName: p.GetDevName(), Bay: p.GetBay(), Enabled: p.GetEnabled(), InvalidDword: p.GetInvalidDword(), DisparityError: p.GetDisparityError(),
+		LossDwordSync: p.GetLossDwordSync(), PhyResetProblem: p.GetPhyResetProblem()}
+}
+
+func sasPhyToProto(p store.SASPhy) *pb.SasPhy {
+	return &pb.SasPhy{OwnerAddress: p.OwnerAddress, PhyId: uint32(p.PhyID), Name: p.Name, Port: p.Port, PortWidth: uint32(p.PortWidth), Rate: p.Rate, RateGbit: p.RateGbit,
+		AttachedKind: p.AttachedKind, Attached: p.Attached, AttachedAddress: p.AttachedAddress, DevName: p.DevName, Bay: p.Bay, Enabled: p.Enabled,
+		InvalidDword: p.InvalidDword, DisparityError: p.DisparityError, LossDwordSync: p.LossDwordSync, PhyResetProblem: p.PhyResetProblem}
+}
+
+func sasErrorRowToProto(r store.SASErrorRow) *pb.SasErrorRow {
+	return &pb.SasErrorRow{Hostname: r.Hostname, OwnerName: r.OwnerName, OwnerAddress: r.OwnerAddress, PhyId: uint32(r.PhyID), Port: r.Port, AttachedKind: r.AttachedKind, Attached: r.Attached,
+		DevName: r.DevName, Serial: r.Serial, Bay: r.Bay, InvalidDword: r.InvalidDword, DisparityError: r.DisparityError, LossDwordSync: r.LossDwordSync, PhyResetProblem: r.PhyResetProblem,
+		LastAt: ts(r.LastAt), Samples: uint32(r.Samples)}
 }
 
 func hostIdentityFromProto(h *pb.HostIdentity) store.HostIdentity {

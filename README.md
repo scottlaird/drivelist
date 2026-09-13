@@ -212,6 +212,21 @@ disparity errors, loss of dword sync, and phy reset problems.
 `--errors` shows only phys with a nonzero counter, which is the quick
 way to find the cable or backplane lane that is going bad.
 
+The agent sends the topology with every inventory report, and the
+server keeps each host's last view of it (`drivelist sas HOST`) and
+turns changes into events: a phy's link rate changing or its link
+coming and going (`sas_link_changed`), something else on the far end
+of a phy (`sas_attached_changed`), a wide port bundling a different
+number of phys (`sas_port_changed`), and an HBA or expander appearing,
+vanishing, or changing firmware (`sas_node_changed`).  Events on a
+phy that leads to a drive are attributed to that drive, so they show
+in its history beside SMART and kernel warnings.  When a phy's error
+counters grow between reports the growth is kept as a sample and a
+`sas_errors` event is recorded, at most once per phy per day;
+`drivelist sas errors [--host H] [--since 7d]` sums the growth per
+phy over a window, and `/metrics` exports every present phy's
+counters and link rate for graphing.
+
 On Debian and Ubuntu hosts, install the package instead.  Every
 [release](https://github.com/scottlaird/drivelist/releases) carries
 `drivelist_<version>_<arch>.deb` for `amd64`, `arm64` (64-bit

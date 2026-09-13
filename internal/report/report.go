@@ -13,6 +13,7 @@ import (
 	"google.golang.org/protobuf/types/known/timestamppb"
 
 	"github.com/scottlaird/drivelist"
+	"github.com/scottlaird/drivelist/collect"
 	pb "github.com/scottlaird/drivelist/internal/pb/drivelistv1"
 )
 
@@ -58,7 +59,8 @@ func machineID(fallback string) string {
 // FromInventory builds the report for inv, observed at now. It is complete
 // unless collectErr is non-nil, in which case the error is carried in
 // collector_errors and the server treats the report as untrustworthy.
-func FromInventory(host *pb.HostIdentity, inv *drivelist.Inventory, now time.Time, collectErr error) *pb.ReportInventoryRequest {
+// topo, when not nil, rides along as the SAS topology.
+func FromInventory(host *pb.HostIdentity, inv *drivelist.Inventory, topo *collect.SASTopology, now time.Time, collectErr error) *pb.ReportInventoryRequest {
 	req := &pb.ReportInventoryRequest{
 		Host:       host,
 		ObservedAt: timestamppb.New(now),
@@ -80,7 +82,51 @@ func FromInventory(host *pb.HostIdentity, inv *drivelist.Inventory, now time.Tim
 	for _, m := range inv.Unmapped {
 		req.UnmappedMembers = append(req.UnmappedMembers, &pb.UnmappedMember{Pool: m.Pool, Path: m.Path, Guid: m.GUID, State: m.State})
 	}
+	req.SasNodes, req.SasPhys = SAS(topo)
 	return req
+}
+
+// SAS flattens a topology for the wire: one node per HBA or expander, and
+// every phy with what its port leads to, so the server can diff phys
+// without walking a tree.
+func SAS(topo *collect.SASTopology) ([]*pb.SasNode, []*pb.SasPhy) {
+	if topo == nil {
+		return nil, nil
+	}
+	addrOf := map[string]string{}
+	for _, n := range topo.Nodes {
+		addrOf[n.Name] = n.Address
+	}
+	var nodes []*pb.SasNode
+	var phys []*pb.SasPhy
+	for _, n := range topo.Nodes {
+		nodes = append(nodes, &pb.SasNode{Kind: n.Kind, Name: n.Name, Address: n.Address, Vendor: n.Vendor, Product: n.Product, Revision: n.Revision,
+			ParentAddress: addrOf[n.Parent], UpstreamPort: n.Upstream})
+		for _, p := range n.Phys {
+			w := &pb.SasPhy{OwnerAddress: n.Address, PhyId: uint32(p.ID), Name: p.Name, Port: p.Port, Rate: p.Rate, RateGbit: p.Gbit(), Enabled: p.Enabled,
+				InvalidDword: p.InvalidDword, DisparityError: p.DisparityErr, LossDwordSync: p.LossDwordSync, PhyResetProblem: p.ResetProblem}
+			switch port := n.Port(p.Port); {
+			case port == nil:
+				if p.Up() && n.Kind == "expander" {
+					w.AttachedKind = "upstream"
+				}
+			case strings.HasPrefix(port.Attached, "expander-"):
+				w.PortWidth, w.AttachedKind, w.Attached, w.AttachedAddress = uint32(len(port.Phys)), "expander", port.Attached, addrOf[port.Attached]
+			default:
+				w.PortWidth, w.AttachedKind, w.Attached = uint32(len(port.Phys)), "device", port.Attached
+				for _, d := range n.Devices {
+					if d.Name == port.Attached {
+						w.AttachedAddress, w.Bay, w.DevName = d.Address, d.Bay, d.DevName
+						if d.DevName != "" {
+							w.AttachedKind = "drive"
+						}
+					}
+				}
+			}
+			phys = append(phys, w)
+		}
+	}
+	return nodes, phys
 }
 
 // Device converts one collected device.

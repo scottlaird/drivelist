@@ -10,6 +10,7 @@ import (
 	"time"
 
 	"github.com/scottlaird/drivelist"
+	dlcollect "github.com/scottlaird/drivelist/collect"
 	pb "github.com/scottlaird/drivelist/internal/pb/drivelistv1"
 	"github.com/scottlaird/drivelist/internal/report"
 	"google.golang.org/protobuf/types/known/timestamppb"
@@ -27,10 +28,11 @@ type Sender interface {
 // Config is what the loop needs.
 type Config struct {
 	Host       *pb.HostIdentity
-	Interval   time.Duration // between inventory reports; the server may change it
-	SpoolDir   string        // where undeliverable reports wait; "" disables spooling
-	MaxSpool   int           // spool entries kept before the oldest is dropped; 0 means 2000
-	StatusPath string        // the status cache; "" disables it
+	Interval   time.Duration                          // between inventory reports; the server may change it
+	SpoolDir   string                                 // where undeliverable reports wait; "" disables spooling
+	MaxSpool   int                                    // spool entries kept before the oldest is dropped; 0 means 2000
+	StatusPath string                                 // the status cache; "" disables it
+	SAS        func() (*dlcollect.SASTopology, error) // the SAS topology; nil reads sysfs
 }
 
 // Agent runs the loop.
@@ -53,6 +55,9 @@ type Agent struct {
 
 // New wires an agent. collect is what produces each report's inventory.
 func New(cfg Config, send Sender, collect func() (*drivelist.Inventory, error), log *slog.Logger) (*Agent, error) {
+	if cfg.SAS == nil {
+		cfg.SAS = func() (*dlcollect.SASTopology, error) { return (&dlcollect.Collector{}).SAS() }
+	}
 	if cfg.Host == nil {
 		return nil, errors.New("agent: no host identity")
 	}
@@ -150,7 +155,12 @@ func (a *Agent) cycle(ctx context.Context, reason string, interval *time.Duratio
 	if len(appeared) > 0 && reason != "start" {
 		a.RequestSmart(appeared...)
 	}
-	req := report.FromInventory(a.cfg.Host, inv, a.now(), collectErr)
+	topo, err := a.cfg.SAS()
+	if err != nil {
+		a.log.Warn("sas topology unreadable; reporting without it", "err", err)
+		topo = nil
+	}
+	req := report.FromInventory(a.cfg.Host, inv, topo, a.now(), collectErr)
 
 	if a.spool != nil {
 		if err := a.replay(ctx); err != nil {
