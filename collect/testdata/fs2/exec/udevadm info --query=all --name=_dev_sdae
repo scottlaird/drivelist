@@ -5,11 +5,11 @@ T: disk
 D: b 65:224
 N: sdae
 L: 0
-S: disk/by-diskseq/39
-S: disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy10-lun-0
-S: disk/by-vdev/D34
 S: disk/by-id/wwn-0x5000c500e38e0986
+S: disk/by-vdev/D34
 S: disk/by-id/scsi-35000c500e38e0986
+S: disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy10-lun-0
+S: disk/by-diskseq/39
 S: disk/by-id/scsi-SATA_ST8000VN004-2M21_WSD5T2MP
 Q: 39
 E: DEVPATH=/devices/pci0000:00/0000:00:03.0/0000:03:00.0/host11/port-11:0/expander-11:0/port-11:0:7/end_device-11:0:7/target11:0:15/11:0:15:0/block/sdae
@@ -53,7 +53,7 @@ E: ID_PART_TABLE_UUID=40bfdb93-6dda-be4d-906a-7c00b06f45c7
 E: ID_PART_TABLE_TYPE=gpt
 E: ID_VDEV=D34
 E: ID_VDEV_PATH=disk/by-vdev/D34
-E: DEVLINKS=/dev/disk/by-diskseq/39 /dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy10-lun-0 /dev/disk/by-vdev/D34 /dev/disk/by-id/wwn-0x5000c500e38e0986 /dev/disk/by-id/scsi-35000c500e38e0986 /dev/disk/by-id/scsi-SATA_ST8000VN004-2M21_WSD5T2MP
+E: DEVLINKS=/dev/disk/by-id/wwn-0x5000c500e38e0986 /dev/disk/by-vdev/D34 /dev/disk/by-id/scsi-35000c500e38e0986 /dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy10-lun-0 /dev/disk/by-diskseq/39 /dev/disk/by-id/scsi-SATA_ST8000VN004-2M21_WSD5T2MP
 E: TAGS=:systemd:
 E: CURRENT_TAGS=:systemd:
 

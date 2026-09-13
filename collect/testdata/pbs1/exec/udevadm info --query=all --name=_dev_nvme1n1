@@ -1,4 +1,4 @@
-P: /devices/pci0000:00/0000:00:01.5/0000:05:00.0/nvme/nvme1/nvme1n1
+P: /devices/pci0000:00/0000:00:02.2/0000:10:00.0/nvme/nvme1/nvme1n1
 M: nvme1n1
 R: 1
 J: b259:0
@@ -7,31 +7,31 @@ T: disk
 D: b 259:0
 N: nvme1n1
 L: 0
-S: disk/by-id/nvme-SHPP51-1000GM_BSE3N45261OA43O21_1
-S: disk/by-id/nvme-SHPP51-1000GM_BSE3N45261OA43O21
-S: disk/by-id/nvme-eui.fd5b42cebc8f9d54ace42e005528cee8
-S: disk/by-path/pci-0000:05:00.0-nvme-1
-S: disk/by-diskseq/22
-Q: 22
-E: DEVPATH=/devices/pci0000:00/0000:00:01.5/0000:05:00.0/nvme/nvme1/nvme1n1
+S: disk/by-id/nvme-SHPP51-1000GM_BSE3N45261OA43O1H
+S: disk/by-path/pci-0000:10:00.0-nvme-1
+S: disk/by-id/nvme-eui.fd5b42cebc8f9d54ace42e005528ced4
+S: disk/by-diskseq/9
+S: disk/by-id/nvme-SHPP51-1000GM_BSE3N45261OA43O1H_1
+Q: 9
+E: DEVPATH=/devices/pci0000:00/0000:00:02.2/0000:10:00.0/nvme/nvme1/nvme1n1
 E: DEVNAME=/dev/nvme1n1
 E: DEVTYPE=disk
-E: DISKSEQ=22
+E: DISKSEQ=9
 E: MAJOR=259
 E: MINOR=0
 E: SUBSYSTEM=block
-E: USEC_INITIALIZED=2013919
-E: ID_SERIAL_SHORT=BSE3N45261OA43O21
-E: ID_WWN=eui.fd5b42cebc8f9d54ace42e005528cee8
+E: USEC_INITIALIZED=745046
+E: ID_SERIAL_SHORT=BSE3N45261OA43O1H
+E: ID_WWN=eui.fd5b42cebc8f9d54ace42e005528ced4
 E: ID_MODEL=SHPP51-1000GM
 E: ID_REVISION=61060A50
 E: ID_NSID=1
-E: ID_SERIAL=SHPP51-1000GM_BSE3N45261OA43O21_1
-E: ID_PATH=pci-0000:05:00.0-nvme-1
-E: ID_PATH_TAG=pci-0000_05_00_0-nvme-1
-E: ID_PART_TABLE_UUID=d982f114-6332-45f2-ac8e-10916ded1b12
+E: ID_SERIAL=SHPP51-1000GM_BSE3N45261OA43O1H_1
+E: ID_PATH=pci-0000:10:00.0-nvme-1
+E: ID_PATH_TAG=pci-0000_10_00_0-nvme-1
+E: ID_PART_TABLE_UUID=6767f62c-1e7d-4c06-8874-16f053864342
 E: ID_PART_TABLE_TYPE=gpt
-E: DEVLINKS=/dev/disk/by-id/nvme-SHPP51-1000GM_BSE3N45261OA43O21_1 /dev/disk/by-id/nvme-SHPP51-1000GM_BSE3N45261OA43O21 /dev/disk/by-id/nvme-eui.fd5b42cebc8f9d54ace42e005528cee8 /dev/disk/by-path/pci-0000:05:00.0-nvme-1 /dev/disk/by-diskseq/22
+E: DEVLINKS=/dev/disk/by-id/nvme-SHPP51-1000GM_BSE3N45261OA43O1H /dev/disk/by-path/pci-0000:10:00.0-nvme-1 /dev/disk/by-id/nvme-eui.fd5b42cebc8f9d54ace42e005528ced4 /dev/disk/by-diskseq/9 /dev/disk/by-id/nvme-SHPP51-1000GM_BSE3N45261OA43O1H_1
 E: TAGS=:systemd:
 E: CURRENT_TAGS=:systemd:
 

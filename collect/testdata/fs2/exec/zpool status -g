@@ -44,7 +44,7 @@ errors: 1 data errors, use '-v' for a list
 
   pool: bpool
  state: ONLINE
-  scan: scrub repaired 0B in 00:00:07 with 0 errors on Sun Aug  9 00:24:08 2026
+  scan: scrub repaired 0B in 00:00:08 with 0 errors on Sun Sep 13 00:24:09 2026
 config:
 
 	NAME                      STATE     READ WRITE CKSUM
@@ -62,7 +62,7 @@ status: Some supported and requested features are not enabled on the pool.
 action: Enable all features using 'zpool upgrade'. Once this is done,
 	the pool may no longer be accessible by software that does not support
 	the features. See zpool-features(7) for details.
-  scan: scrub repaired 0B in 01:45:02 with 0 errors on Sun Aug  9 02:09:04 2026
+  scan: scrub repaired 0B in 01:51:29 with 0 errors on Sun Sep 13 02:15:31 2026
     scan warning: skipped blocks that are only referenced by the checkpoint.
 checkpoint: created Fri Apr 18 09:43:26 2025, consumes 117G
 config:
@@ -76,17 +76,19 @@ config:
 errors: No known data errors
 
   pool: space
- state: ONLINE
-status: Some supported and requested features are not enabled on the pool.
-	The pool can still be used, but some features are unavailable.
-action: Enable all features using 'zpool upgrade'. Once this is done,
-	the pool may no longer be accessible by software that does not support
-	the features. See zpool-features(7) for details.
-  scan: scrub repaired 0B in 19:19:12 with 0 errors on Sun Aug  9 19:43:16 2026
+ state: DEGRADED
+status: One or more devices are faulted in response to persistent errors.
+	Sufficient replicas exist for the pool to continue functioning in a
+	degraded state.
+action: Replace the faulted device, or use 'zpool clear' to mark the device
+	repaired.
+  scan: scrub in progress since Sun Sep 13 00:24:06 2026
+	172T / 235T scanned at 4.98G/s, 113T / 235T issued at 3.28G/s
+	1.94M repaired, 48.21% done, 10:33:08 to go
 config:
 
 	NAME                        STATE     READ WRITE CKSUM
-	space                       ONLINE       0     0     0
+	space                       DEGRADED     0     0     0
 	  5204885172110344134       ONLINE       0     0     0
 	    17157010119101828456    ONLINE       0     0     0
 	    9753708214178611793     ONLINE       0     0     0
@@ -105,11 +107,11 @@ config:
 	    13320454780145336341    ONLINE       0     0     0
 	    4275947122481209035     ONLINE       0     0     0
 	    5460098026287034887     ONLINE       0     0     0
-	  5236016460003016805       ONLINE       0     0     0
+	  5236016460003016805       DEGRADED     0     0     0
 	    10354587686331016347    ONLINE       0     0     0
 	    17283963709945061389    ONLINE       0     0     0
 	    6614421116723416414     ONLINE       0     0     0
-	    9810514795403010748     ONLINE       0     0     0
+	    9810514795403010748     FAULTED     92     0     0  too many errors
 	    18306089983861482320    ONLINE       0     0     0
 	    386918665121169072      ONLINE       0     0     0
 	    14117335847534821566    ONLINE       0     0     0

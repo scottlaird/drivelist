@@ -5,13 +5,13 @@ T: disk
 D: b 68:176
 N: sdbx
 L: 0
-S: disk/by-id/lvm-pv-uuid-tN6KUk-sweV-JemN-xk83-RIkz-MZ5u-qDI2XR
-S: disk/by-path/pci-0000:03:00.0-sas-exp0x5003048001e8967f-phy14-lun-0
-S: disk/by-id/wwn-0x5000cca052054ffc
 S: disk/by-id/scsi-SHGST_HUSMR1680ASS204_07V2XKRA
-S: disk/by-diskseq/84
 S: disk/by-id/scsi-35000cca052054ffc
+S: disk/by-path/pci-0000:03:00.0-sas-exp0x5003048001e8967f-phy14-lun-0
 S: disk/by-vdev/E2
+S: disk/by-id/lvm-pv-uuid-tN6KUk-sweV-JemN-xk83-RIkz-MZ5u-qDI2XR
+S: disk/by-id/wwn-0x5000cca052054ffc
+S: disk/by-diskseq/84
 Q: 84
 E: DEVPATH=/devices/pci0000:00/0000:00:03.0/0000:03:00.0/host11/port-11:9/expander-11:1/port-11:1:1/end_device-11:1:1/target11:0:61/11:0:61:0/block/sdbx
 E: DEVNAME=/dev/sdbx
@@ -60,7 +60,7 @@ E: ID_FS_USAGE=raid
 E: ID_VDEV=E2
 E: ID_VDEV_PATH=disk/by-vdev/E2
 E: NVME_HOST_IFACE=none
-E: DEVLINKS=/dev/disk/by-id/lvm-pv-uuid-tN6KUk-sweV-JemN-xk83-RIkz-MZ5u-qDI2XR /dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5003048001e8967f-phy14-lun-0 /dev/disk/by-id/wwn-0x5000cca052054ffc /dev/disk/by-id/scsi-SHGST_HUSMR1680ASS204_07V2XKRA /dev/disk/by-diskseq/84 /dev/disk/by-id/scsi-35000cca052054ffc /dev/disk/by-vdev/E2
+E: DEVLINKS=/dev/disk/by-id/scsi-SHGST_HUSMR1680ASS204_07V2XKRA /dev/disk/by-id/scsi-35000cca052054ffc /dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5003048001e8967f-phy14-lun-0 /dev/disk/by-vdev/E2 /dev/disk/by-id/lvm-pv-uuid-tN6KUk-sweV-JemN-xk83-RIkz-MZ5u-qDI2XR /dev/disk/by-id/wwn-0x5000cca052054ffc /dev/disk/by-diskseq/84
 E: TAGS=:systemd:
 E: CURRENT_TAGS=:systemd:
 

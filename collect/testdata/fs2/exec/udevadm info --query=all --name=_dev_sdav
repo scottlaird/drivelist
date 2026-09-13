@@ -5,12 +5,12 @@ T: disk
 D: b 66:240
 N: sdav
 L: 0
+S: disk/by-id/scsi-SATA_HUH728080ALE601_VJGSHAVX
+S: disk/by-id/wwn-0x5000cca261caae28
 S: disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy32-lun-0
-S: disk/by-diskseq/56
 S: disk/by-id/scsi-35000cca261caae28
 S: disk/by-vdev/D18
-S: disk/by-id/wwn-0x5000cca261caae28
-S: disk/by-id/scsi-SATA_HUH728080ALE601_VJGSHAVX
+S: disk/by-diskseq/56
 Q: 56
 E: DEVPATH=/devices/pci0000:00/0000:00:03.0/0000:03:00.0/host11/port-11:0/expander-11:0/port-11:0:24/end_device-11:0:24/target11:0:32/11:0:32:0/block/sdav
 E: DEVNAME=/dev/sdav
@@ -53,7 +53,8 @@ E: ID_PART_TABLE_UUID=c0e853cc-8843-b147-a923-c1b825e829e1
 E: ID_PART_TABLE_TYPE=gpt
 E: ID_VDEV=D18
 E: ID_VDEV_PATH=disk/by-vdev/D18
-E: DEVLINKS=/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy32-lun-0 /dev/disk/by-diskseq/56 /dev/disk/by-id/scsi-35000cca261caae28 /dev/disk/by-vdev/D18 /dev/disk/by-id/wwn-0x5000cca261caae28 /dev/disk/by-id/scsi-SATA_HUH728080ALE601_VJGSHAVX
+E: NVME_HOST_IFACE=none
+E: DEVLINKS=/dev/disk/by-id/scsi-SATA_HUH728080ALE601_VJGSHAVX /dev/disk/by-id/wwn-0x5000cca261caae28 /dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy32-lun-0 /dev/disk/by-id/scsi-35000cca261caae28 /dev/disk/by-vdev/D18 /dev/disk/by-diskseq/56
 E: TAGS=:systemd:
 E: CURRENT_TAGS=:systemd:
 
