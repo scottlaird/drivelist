@@ -1,4 +1,4 @@
-P: /devices/pci0000:00/0000:00:01.3/0000:03:00.0/host6/port-6:0/expander-6:0/port-6:0:12/end_device-6:0:12/target6:0:11/6:0:11:0/block/sdl
+P: /devices/pci0000:00/0000:00:01.3/0000:03:00.0/host0/port-0:0/expander-0:0/port-0:0:12/end_device-0:0:12/target0:0:11/0:0:11:0/block/sdl
 M: sdl
 J: b8:176
 U: block
@@ -6,19 +6,19 @@ T: disk
 D: b 8:176
 N: sdl
 L: 0
-S: disk/by-diskseq/20
+S: disk/by-path/pci-0000:03:00.0-sas-exp0x50030480185b9e7f-phy38-lun-0
+S: disk/by-diskseq/22
 S: disk/by-id/wwn-0x5000c500e8d55d13
 S: disk/by-id/ata-ST24000DM001-3Y7103_ZXA0XM4R
-S: disk/by-path/pci-0000:03:00.0-sas-exp0x50030480185b9e7f-phy38-lun-0
-Q: 20
-E: DEVPATH=/devices/pci0000:00/0000:00:01.3/0000:03:00.0/host6/port-6:0/expander-6:0/port-6:0:12/end_device-6:0:12/target6:0:11/6:0:11:0/block/sdl
+Q: 22
+E: DEVPATH=/devices/pci0000:00/0000:00:01.3/0000:03:00.0/host0/port-0:0/expander-0:0/port-0:0:12/end_device-0:0:12/target0:0:11/0:0:11:0/block/sdl
 E: DEVNAME=/dev/sdl
 E: DEVTYPE=disk
-E: DISKSEQ=20
+E: DISKSEQ=22
 E: MAJOR=8
 E: MINOR=176
 E: SUBSYSTEM=block
-E: USEC_INITIALIZED=1151670
+E: USEC_INITIALIZED=1092459
 E: ID_ATA=1
 E: ID_TYPE=disk
 E: ID_BUS=ata
@@ -51,9 +51,9 @@ E: ID_WWN_WITH_EXTENSION=0x5000c500e8d55d13
 E: ID_ATA_PERIPHERAL_DEVICE_TYPE=0
 E: ID_PATH=pci-0000:03:00.0-sas-exp0x50030480185b9e7f-phy38-lun-0
 E: ID_PATH_TAG=pci-0000_03_00_0-sas-exp0x50030480185b9e7f-phy38-lun-0
-E: ID_PART_TABLE_UUID=01000000-0000-0000-4e54-313757484850
+E: ID_PART_TABLE_UUID=8b5b57e0-49f8-b044-ab44-c1dd51459e32
 E: ID_PART_TABLE_TYPE=gpt
-E: DEVLINKS=/dev/disk/by-diskseq/20 /dev/disk/by-id/wwn-0x5000c500e8d55d13 /dev/disk/by-id/ata-ST24000DM001-3Y7103_ZXA0XM4R /dev/disk/by-path/pci-0000:03:00.0-sas-exp0x50030480185b9e7f-phy38-lun-0
+E: DEVLINKS=/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x50030480185b9e7f-phy38-lun-0 /dev/disk/by-diskseq/22 /dev/disk/by-id/wwn-0x5000c500e8d55d13 /dev/disk/by-id/ata-ST24000DM001-3Y7103_ZXA0XM4R
 E: TAGS=:systemd:
 E: CURRENT_TAGS=:systemd:
 

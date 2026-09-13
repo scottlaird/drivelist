@@ -6,11 +6,11 @@ D: b 69:64
 N: sdcg
 L: 0
 S: disk/by-path/pci-0000:03:00.0-sas-exp0x5003048001e8967f-phy25-lun-0
+S: disk/by-id/scsi-SHGST_HUH721008AL4200_7SJG77PW
 S: disk/by-diskseq/93
-S: disk/by-vdev/E13
 S: disk/by-id/wwn-0x5000cca2528a9da4
 S: disk/by-id/scsi-35000cca2528a9da4
-S: disk/by-id/scsi-SHGST_HUH721008AL4200_7SJG77PW
+S: disk/by-vdev/E13
 Q: 93
 E: DEVPATH=/devices/pci0000:00/0000:00:03.0/0000:03:00.0/host11/port-11:9/expander-11:1/port-11:1:10/end_device-11:1:10/target11:0:70/11:0:70:0/block/sdcg
 E: DEVNAME=/dev/sdcg
@@ -56,7 +56,7 @@ E: ID_PART_TABLE_TYPE=gpt
 E: ID_VDEV=E13
 E: ID_VDEV_PATH=disk/by-vdev/E13
 E: NVME_HOST_IFACE=none
-E: DEVLINKS=/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5003048001e8967f-phy25-lun-0 /dev/disk/by-diskseq/93 /dev/disk/by-vdev/E13 /dev/disk/by-id/wwn-0x5000cca2528a9da4 /dev/disk/by-id/scsi-35000cca2528a9da4 /dev/disk/by-id/scsi-SHGST_HUH721008AL4200_7SJG77PW
+E: DEVLINKS=/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5003048001e8967f-phy25-lun-0 /dev/disk/by-id/scsi-SHGST_HUH721008AL4200_7SJG77PW /dev/disk/by-diskseq/93 /dev/disk/by-id/wwn-0x5000cca2528a9da4 /dev/disk/by-id/scsi-35000cca2528a9da4 /dev/disk/by-vdev/E13
 E: TAGS=:systemd:
 E: CURRENT_TAGS=:systemd:
 

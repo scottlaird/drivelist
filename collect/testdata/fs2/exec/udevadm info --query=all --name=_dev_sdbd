@@ -5,10 +5,10 @@ T: disk
 D: b 67:112
 N: sdbd
 L: 0
+S: disk/by-diskseq/64
 S: disk/by-id/scsi-SHITACHI_HUH72808CLAR8000_VJGR81YX
 S: disk/by-id/scsi-35000cca2612879b8
 S: disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy41-lun-0
-S: disk/by-diskseq/64
 S: disk/by-vdev/D27
 S: disk/by-id/wwn-0x5000cca2612879b8
 Q: 64
@@ -56,7 +56,7 @@ E: ID_PART_TABLE_TYPE=gpt
 E: ID_VDEV=D27
 E: ID_VDEV_PATH=disk/by-vdev/D27
 E: NVME_HOST_IFACE=none
-E: DEVLINKS=/dev/disk/by-id/scsi-SHITACHI_HUH72808CLAR8000_VJGR81YX /dev/disk/by-id/scsi-35000cca2612879b8 /dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy41-lun-0 /dev/disk/by-diskseq/64 /dev/disk/by-vdev/D27 /dev/disk/by-id/wwn-0x5000cca2612879b8
+E: DEVLINKS=/dev/disk/by-diskseq/64 /dev/disk/by-id/scsi-SHITACHI_HUH72808CLAR8000_VJGR81YX /dev/disk/by-id/scsi-35000cca2612879b8 /dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy41-lun-0 /dev/disk/by-vdev/D27 /dev/disk/by-id/wwn-0x5000cca2612879b8
 E: TAGS=:systemd:
 E: CURRENT_TAGS=:systemd:
 

@@ -5,12 +5,12 @@ T: disk
 D: b 65:16
 N: sdr
 L: 0
-S: disk/by-id/scsi-35000cca0506b3f50
-S: disk/by-vdev/INTERNAL7
-S: disk/by-id/wwn-0x5000cca0506b3f50
-S: disk/by-path/pci-0000:03:00.0-sas-phy0-lun-0
 S: disk/by-id/scsi-SHITACHI_HUSMM111CLAR1600_0SWWZEYA
+S: disk/by-id/scsi-35000cca0506b3f50
 S: disk/by-diskseq/26
+S: disk/by-path/pci-0000:03:00.0-sas-phy0-lun-0
+S: disk/by-id/wwn-0x5000cca0506b3f50
+S: disk/by-vdev/INTERNAL7
 Q: 26
 E: DEVPATH=/devices/pci0000:00/0000:00:03.0/0000:03:00.0/host11/port-11:2/end_device-11:2/target11:0:1/11:0:1:0/block/sdr
 E: DEVNAME=/dev/sdr
@@ -53,7 +53,7 @@ E: ID_PATH=pci-0000:03:00.0-sas-phy0-lun-0
 E: ID_PATH_TAG=pci-0000_03_00_0-sas-phy0-lun-0
 E: ID_VDEV=INTERNAL7
 E: ID_VDEV_PATH=disk/by-vdev/INTERNAL7
-E: DEVLINKS=/dev/disk/by-id/scsi-35000cca0506b3f50 /dev/disk/by-vdev/INTERNAL7 /dev/disk/by-id/wwn-0x5000cca0506b3f50 /dev/disk/by-path/pci-0000:03:00.0-sas-phy0-lun-0 /dev/disk/by-id/scsi-SHITACHI_HUSMM111CLAR1600_0SWWZEYA /dev/disk/by-diskseq/26
+E: DEVLINKS=/dev/disk/by-id/scsi-SHITACHI_HUSMM111CLAR1600_0SWWZEYA /dev/disk/by-id/scsi-35000cca0506b3f50 /dev/disk/by-diskseq/26 /dev/disk/by-path/pci-0000:03:00.0-sas-phy0-lun-0 /dev/disk/by-id/wwn-0x5000cca0506b3f50 /dev/disk/by-vdev/INTERNAL7
 E: TAGS=:systemd:
 E: CURRENT_TAGS=:systemd:
 

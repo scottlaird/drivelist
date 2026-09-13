@@ -4,40 +4,14 @@
       "DeviceName": "nvme0n1",
       "Devices": [
         "/dev/nvme0n1",
-        "/dev/disk/by-diskseq/23",
-        "/dev/disk/by-path/pci-0000:10:00.0-nvme-1",
-        "/dev/disk/by-id/nvme-eui.fd5b42cebc8f9d54ace42e005528ced4",
-        "/dev/disk/by-id/nvme-SHPP51-1000GM_BSE3N45261OA43O1H",
-        "/dev/disk/by-id/nvme-SHPP51-1000GM_BSE3N45261OA43O1H_1"
-      ],
-      "WWN": "eui.fd5b42cebc8f9d54ace42e005528ced4",
-      "SysPath": "testdata/pbs1/sys/devices/pci0000:00/0000:00:02.2/0000:10:00.0/nvme/nvme0/nvme0n1",
-      "Model": "SHPP51-1000GM",
-      "Serial": "BSE3N45261OA43O1H",
-      "Attribs": null,
-      "Uses": [
-        "zfs \u003e rpool 18354710647381807540 \u003e mirror 5264883868435595074 \u003e disk 1250468358385806965"
-      ],
-      "MemberState": "ONLINE",
-      "GenericDevice": "",
-      "Expander": "",
-      "ExpanderPath": "",
-      "EnclosureBay": "",
-      "Size": 1000204886016,
-      "Error": ""
-    },
-    {
-      "DeviceName": "nvme1n1",
-      "Devices": [
-        "/dev/nvme1n1",
-        "/dev/disk/by-id/nvme-SHPP51-1000GM_BSE3N45261OA43O21_1",
+        "/dev/disk/by-path/pci-0000:05:00.0-nvme-1",
         "/dev/disk/by-id/nvme-SHPP51-1000GM_BSE3N45261OA43O21",
         "/dev/disk/by-id/nvme-eui.fd5b42cebc8f9d54ace42e005528cee8",
-        "/dev/disk/by-path/pci-0000:05:00.0-nvme-1",
-        "/dev/disk/by-diskseq/22"
+        "/dev/disk/by-diskseq/10",
+        "/dev/disk/by-id/nvme-SHPP51-1000GM_BSE3N45261OA43O21_1"
       ],
       "WWN": "eui.fd5b42cebc8f9d54ace42e005528cee8",
-      "SysPath": "testdata/pbs1/sys/devices/pci0000:00/0000:00:01.5/0000:05:00.0/nvme/nvme1/nvme1n1",
+      "SysPath": "testdata/pbs1/sys/devices/pci0000:00/0000:00:01.5/0000:05:00.0/nvme/nvme0/nvme0n1",
       "Model": "SHPP51-1000GM",
       "Serial": "BSE3N45261OA43O21",
       "Attribs": null,
@@ -47,6 +21,34 @@
       "MemberState": "ONLINE",
       "GenericDevice": "",
       "Expander": "",
+      "ExpanderID": "",
+      "ExpanderPath": "",
+      "EnclosureBay": "",
+      "Size": 1000204886016,
+      "Error": ""
+    },
+    {
+      "DeviceName": "nvme1n1",
+      "Devices": [
+        "/dev/nvme1n1",
+        "/dev/disk/by-id/nvme-SHPP51-1000GM_BSE3N45261OA43O1H",
+        "/dev/disk/by-path/pci-0000:10:00.0-nvme-1",
+        "/dev/disk/by-id/nvme-eui.fd5b42cebc8f9d54ace42e005528ced4",
+        "/dev/disk/by-diskseq/9",
+        "/dev/disk/by-id/nvme-SHPP51-1000GM_BSE3N45261OA43O1H_1"
+      ],
+      "WWN": "eui.fd5b42cebc8f9d54ace42e005528ced4",
+      "SysPath": "testdata/pbs1/sys/devices/pci0000:00/0000:00:02.2/0000:10:00.0/nvme/nvme1/nvme1n1",
+      "Model": "SHPP51-1000GM",
+      "Serial": "BSE3N45261OA43O1H",
+      "Attribs": null,
+      "Uses": [
+        "zfs \u003e rpool 18354710647381807540 \u003e mirror 5264883868435595074 \u003e disk 1250468358385806965"
+      ],
+      "MemberState": "ONLINE",
+      "GenericDevice": "",
+      "Expander": "",
+      "ExpanderID": "",
       "ExpanderPath": "",
       "EnclosureBay": "",
       "Size": 1000204886016,
@@ -56,13 +58,13 @@
       "DeviceName": "sda",
       "Devices": [
         "/dev/sda",
-        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x50030480185b9e7f-phy2-lun-0",
-        "/dev/disk/by-diskseq/9",
+        "/dev/disk/by-diskseq/11",
+        "/dev/disk/by-id/ata-ST24000DM001-3Y7103_ZXA03T5G",
         "/dev/disk/by-id/wwn-0x5000c500e9fd75c5",
-        "/dev/disk/by-id/ata-ST24000DM001-3Y7103_ZXA03T5G"
+        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x50030480185b9e7f-phy2-lun-0"
       ],
       "WWN": "0x5000c500e9fd75c5",
-      "SysPath": "testdata/pbs1/sys/devices/pci0000:00/0000:00:01.3/0000:03:00.0/host6/port-6:0/expander-6:0/port-6:0:1/end_device-6:0:1/target6:0:0/6:0:0:0/block/sda",
+      "SysPath": "testdata/pbs1/sys/devices/pci0000:00/0000:00:01.3/0000:03:00.0/host0/port-0:0/expander-0:0/port-0:0:1/end_device-0:0:1/target0:0:0/0:0:0:0/block/sda",
       "Model": "ST24000DM001-3Y7103",
       "Serial": "ZXA03T5G",
       "Attribs": null,
@@ -70,9 +72,10 @@
         "zfs \u003e backups 14184269030502626926 \u003e raidz3 12638130268554546894 \u003e disk 6909562996738010975"
       ],
       "MemberState": "ONLINE",
-      "GenericDevice": "/dev/bsg/end_device-6:0:1",
-      "Expander": "expander-6:0",
-      "ExpanderPath": "testdata/pbs1/sys/devices/pci0000:00/0000:00:01.3/0000:03:00.0/host6/port-6:0/expander-6:0",
+      "GenericDevice": "/dev/bsg/end_device-0:0:1",
+      "Expander": "expander-0:0",
+      "ExpanderID": "0x50030480185b9e7f",
+      "ExpanderPath": "testdata/pbs1/sys/devices/pci0000:00/0000:00:01.3/0000:03:00.0/host0/port-0:0/expander-0:0",
       "EnclosureBay": "2",
       "Size": 24000277250048,
       "Error": ""
@@ -81,13 +84,13 @@
       "DeviceName": "sdb",
       "Devices": [
         "/dev/sdb",
-        "/dev/disk/by-diskseq/10",
         "/dev/disk/by-id/ata-ST24000DM001-3Y7103_ZXA0TCYT",
+        "/dev/disk/by-id/wwn-0x5000c500e8bf1d27",
         "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x50030480185b9e7f-phy3-lun-0",
-        "/dev/disk/by-id/wwn-0x5000c500e8bf1d27"
+        "/dev/disk/by-diskseq/12"
       ],
       "WWN": "0x5000c500e8bf1d27",
-      "SysPath": "testdata/pbs1/sys/devices/pci0000:00/0000:00:01.3/0000:03:00.0/host6/port-6:0/expander-6:0/port-6:0:2/end_device-6:0:2/target6:0:1/6:0:1:0/block/sdb",
+      "SysPath": "testdata/pbs1/sys/devices/pci0000:00/0000:00:01.3/0000:03:00.0/host0/port-0:0/expander-0:0/port-0:0:2/end_device-0:0:2/target0:0:1/0:0:1:0/block/sdb",
       "Model": "ST24000DM001-3Y7103",
       "Serial": "ZXA0TCYT",
       "Attribs": null,
@@ -95,9 +98,10 @@
         "zfs \u003e backups 14184269030502626926 \u003e raidz3 12638130268554546894 \u003e disk 12397832929899529994"
       ],
       "MemberState": "ONLINE",
-      "GenericDevice": "/dev/bsg/end_device-6:0:2",
-      "Expander": "expander-6:0",
-      "ExpanderPath": "testdata/pbs1/sys/devices/pci0000:00/0000:00:01.3/0000:03:00.0/host6/port-6:0/expander-6:0",
+      "GenericDevice": "/dev/bsg/end_device-0:0:2",
+      "Expander": "expander-0:0",
+      "ExpanderID": "0x50030480185b9e7f",
+      "ExpanderPath": "testdata/pbs1/sys/devices/pci0000:00/0000:00:01.3/0000:03:00.0/host0/port-0:0/expander-0:0",
       "EnclosureBay": "3",
       "Size": 24000277250048,
       "Error": ""
@@ -106,13 +110,13 @@
       "DeviceName": "sdc",
       "Devices": [
         "/dev/sdc",
-        "/dev/disk/by-diskseq/11",
+        "/dev/disk/by-id/ata-ST24000DM001-3Y7103_ZXA0XV48",
         "/dev/disk/by-id/wwn-0x5000c500e8da3221",
         "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x50030480185b9e7f-phy4-lun-0",
-        "/dev/disk/by-id/ata-ST24000DM001-3Y7103_ZXA0XV48"
+        "/dev/disk/by-diskseq/13"
       ],
       "WWN": "0x5000c500e8da3221",
-      "SysPath": "testdata/pbs1/sys/devices/pci0000:00/0000:00:01.3/0000:03:00.0/host6/port-6:0/expander-6:0/port-6:0:3/end_device-6:0:3/target6:0:2/6:0:2:0/block/sdc",
+      "SysPath": "testdata/pbs1/sys/devices/pci0000:00/0000:00:01.3/0000:03:00.0/host0/port-0:0/expander-0:0/port-0:0:3/end_device-0:0:3/target0:0:2/0:0:2:0/block/sdc",
       "Model": "ST24000DM001-3Y7103",
       "Serial": "ZXA0XV48",
       "Attribs": null,
@@ -120,9 +124,10 @@
         "zfs \u003e backups 14184269030502626926 \u003e raidz3 12638130268554546894 \u003e disk 12294050993797249670"
       ],
       "MemberState": "ONLINE",
-      "GenericDevice": "/dev/bsg/end_device-6:0:3",
-      "Expander": "expander-6:0",
-      "ExpanderPath": "testdata/pbs1/sys/devices/pci0000:00/0000:00:01.3/0000:03:00.0/host6/port-6:0/expander-6:0",
+      "GenericDevice": "/dev/bsg/end_device-0:0:3",
+      "Expander": "expander-0:0",
+      "ExpanderID": "0x50030480185b9e7f",
+      "ExpanderPath": "testdata/pbs1/sys/devices/pci0000:00/0000:00:01.3/0000:03:00.0/host0/port-0:0/expander-0:0",
       "EnclosureBay": "4",
       "Size": 24000277250048,
       "Error": ""
@@ -132,12 +137,12 @@
       "Devices": [
         "/dev/sdd",
         "/dev/disk/by-id/wwn-0x5000c500e8d7e258",
+        "/dev/disk/by-diskseq/14",
         "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x50030480185b9e7f-phy5-lun-0",
-        "/dev/disk/by-id/ata-ST24000DM001-3Y7103_ZXA0XH4E",
-        "/dev/disk/by-diskseq/12"
+        "/dev/disk/by-id/ata-ST24000DM001-3Y7103_ZXA0XH4E"
       ],
       "WWN": "0x5000c500e8d7e258",
-      "SysPath": "testdata/pbs1/sys/devices/pci0000:00/0000:00:01.3/0000:03:00.0/host6/port-6:0/expander-6:0/port-6:0:4/end_device-6:0:4/target6:0:3/6:0:3:0/block/sdd",
+      "SysPath": "testdata/pbs1/sys/devices/pci0000:00/0000:00:01.3/0000:03:00.0/host0/port-0:0/expander-0:0/port-0:0:4/end_device-0:0:4/target0:0:3/0:0:3:0/block/sdd",
       "Model": "ST24000DM001-3Y7103",
       "Serial": "ZXA0XH4E",
       "Attribs": null,
@@ -145,9 +150,10 @@
         "zfs \u003e backups 14184269030502626926 \u003e raidz3 12638130268554546894 \u003e disk 11120317111489606304"
       ],
       "MemberState": "ONLINE",
-      "GenericDevice": "/dev/bsg/end_device-6:0:4",
-      "Expander": "expander-6:0",
-      "ExpanderPath": "testdata/pbs1/sys/devices/pci0000:00/0000:00:01.3/0000:03:00.0/host6/port-6:0/expander-6:0",
+      "GenericDevice": "/dev/bsg/end_device-0:0:4",
+      "Expander": "expander-0:0",
+      "ExpanderID": "0x50030480185b9e7f",
+      "ExpanderPath": "testdata/pbs1/sys/devices/pci0000:00/0000:00:01.3/0000:03:00.0/host0/port-0:0/expander-0:0",
       "EnclosureBay": "5",
       "Size": 24000277250048,
       "Error": ""
@@ -156,13 +162,13 @@
       "DeviceName": "sde",
       "Devices": [
         "/dev/sde",
+        "/dev/disk/by-id/ata-ST24000DM001-3Y7103_ZXA0V75X",
         "/dev/disk/by-id/wwn-0x5000c500e8c1b72b",
-        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x50030480185b9e7f-phy8-lun-0",
-        "/dev/disk/by-diskseq/13",
-        "/dev/disk/by-id/ata-ST24000DM001-3Y7103_ZXA0V75X"
+        "/dev/disk/by-diskseq/15",
+        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x50030480185b9e7f-phy8-lun-0"
       ],
       "WWN": "0x5000c500e8c1b72b",
-      "SysPath": "testdata/pbs1/sys/devices/pci0000:00/0000:00:01.3/0000:03:00.0/host6/port-6:0/expander-6:0/port-6:0:5/end_device-6:0:5/target6:0:4/6:0:4:0/block/sde",
+      "SysPath": "testdata/pbs1/sys/devices/pci0000:00/0000:00:01.3/0000:03:00.0/host0/port-0:0/expander-0:0/port-0:0:5/end_device-0:0:5/target0:0:4/0:0:4:0/block/sde",
       "Model": "ST24000DM001-3Y7103",
       "Serial": "ZXA0V75X",
       "Attribs": null,
@@ -170,9 +176,10 @@
         "zfs \u003e backups 14184269030502626926 \u003e raidz3 12638130268554546894 \u003e disk 6583091953762439930"
       ],
       "MemberState": "ONLINE",
-      "GenericDevice": "/dev/bsg/end_device-6:0:5",
-      "Expander": "expander-6:0",
-      "ExpanderPath": "testdata/pbs1/sys/devices/pci0000:00/0000:00:01.3/0000:03:00.0/host6/port-6:0/expander-6:0",
+      "GenericDevice": "/dev/bsg/end_device-0:0:5",
+      "Expander": "expander-0:0",
+      "ExpanderID": "0x50030480185b9e7f",
+      "ExpanderPath": "testdata/pbs1/sys/devices/pci0000:00/0000:00:01.3/0000:03:00.0/host0/port-0:0/expander-0:0",
       "EnclosureBay": "8",
       "Size": 24000277250048,
       "Error": ""
@@ -181,13 +188,13 @@
       "DeviceName": "sdf",
       "Devices": [
         "/dev/sdf",
+        "/dev/disk/by-diskseq/16",
         "/dev/disk/by-id/ata-ST24000DM001-3Y7103_ZXA185XX",
-        "/dev/disk/by-id/wwn-0x5000c500e96efc9f",
-        "/dev/disk/by-diskseq/14",
-        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x50030480185b9e7f-phy10-lun-0"
+        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x50030480185b9e7f-phy10-lun-0",
+        "/dev/disk/by-id/wwn-0x5000c500e96efc9f"
       ],
       "WWN": "0x5000c500e96efc9f",
-      "SysPath": "testdata/pbs1/sys/devices/pci0000:00/0000:00:01.3/0000:03:00.0/host6/port-6:0/expander-6:0/port-6:0:6/end_device-6:0:6/target6:0:5/6:0:5:0/block/sdf",
+      "SysPath": "testdata/pbs1/sys/devices/pci0000:00/0000:00:01.3/0000:03:00.0/host0/port-0:0/expander-0:0/port-0:0:6/end_device-0:0:6/target0:0:5/0:0:5:0/block/sdf",
       "Model": "ST24000DM001-3Y7103",
       "Serial": "ZXA185XX",
       "Attribs": null,
@@ -195,9 +202,10 @@
         "zfs \u003e backups 14184269030502626926 \u003e raidz3 12638130268554546894 \u003e disk 10414938989999790616"
       ],
       "MemberState": "ONLINE",
-      "GenericDevice": "/dev/bsg/end_device-6:0:6",
-      "Expander": "expander-6:0",
-      "ExpanderPath": "testdata/pbs1/sys/devices/pci0000:00/0000:00:01.3/0000:03:00.0/host6/port-6:0/expander-6:0",
+      "GenericDevice": "/dev/bsg/end_device-0:0:6",
+      "Expander": "expander-0:0",
+      "ExpanderID": "0x50030480185b9e7f",
+      "ExpanderPath": "testdata/pbs1/sys/devices/pci0000:00/0000:00:01.3/0000:03:00.0/host0/port-0:0/expander-0:0",
       "EnclosureBay": "10",
       "Size": 24000277250048,
       "Error": ""
@@ -206,13 +214,13 @@
       "DeviceName": "sdg",
       "Devices": [
         "/dev/sdg",
-        "/dev/disk/by-diskseq/15",
+        "/dev/disk/by-diskseq/17",
         "/dev/disk/by-id/wwn-0x5000c500e901b1e2",
         "/dev/disk/by-id/ata-ST24000DM001-3Y7103_ZXA115Y6",
         "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x50030480185b9e7f-phy11-lun-0"
       ],
       "WWN": "0x5000c500e901b1e2",
-      "SysPath": "testdata/pbs1/sys/devices/pci0000:00/0000:00:01.3/0000:03:00.0/host6/port-6:0/expander-6:0/port-6:0:7/end_device-6:0:7/target6:0:6/6:0:6:0/block/sdg",
+      "SysPath": "testdata/pbs1/sys/devices/pci0000:00/0000:00:01.3/0000:03:00.0/host0/port-0:0/expander-0:0/port-0:0:7/end_device-0:0:7/target0:0:6/0:0:6:0/block/sdg",
       "Model": "ST24000DM001-3Y7103",
       "Serial": "ZXA115Y6",
       "Attribs": null,
@@ -220,9 +228,10 @@
         "zfs \u003e backups 14184269030502626926 \u003e raidz3 12638130268554546894 \u003e disk 9310739970432676503"
       ],
       "MemberState": "ONLINE",
-      "GenericDevice": "/dev/bsg/end_device-6:0:7",
-      "Expander": "expander-6:0",
-      "ExpanderPath": "testdata/pbs1/sys/devices/pci0000:00/0000:00:01.3/0000:03:00.0/host6/port-6:0/expander-6:0",
+      "GenericDevice": "/dev/bsg/end_device-0:0:7",
+      "Expander": "expander-0:0",
+      "ExpanderID": "0x50030480185b9e7f",
+      "ExpanderPath": "testdata/pbs1/sys/devices/pci0000:00/0000:00:01.3/0000:03:00.0/host0/port-0:0/expander-0:0",
       "EnclosureBay": "11",
       "Size": 24000277250048,
       "Error": ""
@@ -231,13 +240,13 @@
       "DeviceName": "sdh",
       "Devices": [
         "/dev/sdh",
+        "/dev/disk/by-diskseq/18",
         "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x50030480185b9e7f-phy31-lun-0",
-        "/dev/disk/by-id/ata-ST24000DM001-3Y7103_ZXA11LGT",
         "/dev/disk/by-id/wwn-0x5000c500e9009f9f",
-        "/dev/disk/by-diskseq/16"
+        "/dev/disk/by-id/ata-ST24000DM001-3Y7103_ZXA11LGT"
       ],
       "WWN": "0x5000c500e9009f9f",
-      "SysPath": "testdata/pbs1/sys/devices/pci0000:00/0000:00:01.3/0000:03:00.0/host6/port-6:0/expander-6:0/port-6:0:8/end_device-6:0:8/target6:0:7/6:0:7:0/block/sdh",
+      "SysPath": "testdata/pbs1/sys/devices/pci0000:00/0000:00:01.3/0000:03:00.0/host0/port-0:0/expander-0:0/port-0:0:8/end_device-0:0:8/target0:0:7/0:0:7:0/block/sdh",
       "Model": "ST24000DM001-3Y7103",
       "Serial": "ZXA11LGT",
       "Attribs": null,
@@ -245,9 +254,10 @@
         "zfs \u003e backups 14184269030502626926 \u003e raidz3 12638130268554546894 \u003e disk 12715670843202606742"
       ],
       "MemberState": "ONLINE",
-      "GenericDevice": "/dev/bsg/end_device-6:0:8",
-      "Expander": "expander-6:0",
-      "ExpanderPath": "testdata/pbs1/sys/devices/pci0000:00/0000:00:01.3/0000:03:00.0/host6/port-6:0/expander-6:0",
+      "GenericDevice": "/dev/bsg/end_device-0:0:8",
+      "Expander": "expander-0:0",
+      "ExpanderID": "0x50030480185b9e7f",
+      "ExpanderPath": "testdata/pbs1/sys/devices/pci0000:00/0000:00:01.3/0000:03:00.0/host0/port-0:0/expander-0:0",
       "EnclosureBay": "15",
       "Size": 24000277250048,
       "Error": ""
@@ -256,13 +266,13 @@
       "DeviceName": "sdi",
       "Devices": [
         "/dev/sdi",
+        "/dev/disk/by-diskseq/19",
+        "/dev/disk/by-id/ata-ST24000DM001-3Y7103_ZXA0GA9D",
         "/dev/disk/by-id/wwn-0x5000c500e867f51a",
-        "/dev/disk/by-diskseq/17",
-        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x50030480185b9e7f-phy32-lun-0",
-        "/dev/disk/by-id/ata-ST24000DM001-3Y7103_ZXA0GA9D"
+        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x50030480185b9e7f-phy32-lun-0"
       ],
       "WWN": "0x5000c500e867f51a",
-      "SysPath": "testdata/pbs1/sys/devices/pci0000:00/0000:00:01.3/0000:03:00.0/host6/port-6:0/expander-6:0/port-6:0:9/end_device-6:0:9/target6:0:8/6:0:8:0/block/sdi",
+      "SysPath": "testdata/pbs1/sys/devices/pci0000:00/0000:00:01.3/0000:03:00.0/host0/port-0:0/expander-0:0/port-0:0:9/end_device-0:0:9/target0:0:8/0:0:8:0/block/sdi",
       "Model": "ST24000DM001-3Y7103",
       "Serial": "ZXA0GA9D",
       "Attribs": null,
@@ -270,9 +280,10 @@
         "zfs \u003e backups 14184269030502626926 \u003e raidz3 12638130268554546894 \u003e disk 17702091168007131095"
       ],
       "MemberState": "ONLINE",
-      "GenericDevice": "/dev/bsg/end_device-6:0:9",
-      "Expander": "expander-6:0",
-      "ExpanderPath": "testdata/pbs1/sys/devices/pci0000:00/0000:00:01.3/0000:03:00.0/host6/port-6:0/expander-6:0",
+      "GenericDevice": "/dev/bsg/end_device-0:0:9",
+      "Expander": "expander-0:0",
+      "ExpanderID": "0x50030480185b9e7f",
+      "ExpanderPath": "testdata/pbs1/sys/devices/pci0000:00/0000:00:01.3/0000:03:00.0/host0/port-0:0/expander-0:0",
       "EnclosureBay": "16",
       "Size": 24000277250048,
       "Error": ""
@@ -282,12 +293,12 @@
       "Devices": [
         "/dev/sdj",
         "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x50030480185b9e7f-phy33-lun-0",
-        "/dev/disk/by-diskseq/18",
-        "/dev/disk/by-id/wwn-0x5000c500ea01004e",
-        "/dev/disk/by-id/ata-ST24000DM001-3Y7103_ZXA07M8F"
+        "/dev/disk/by-diskseq/20",
+        "/dev/disk/by-id/ata-ST24000DM001-3Y7103_ZXA07M8F",
+        "/dev/disk/by-id/wwn-0x5000c500ea01004e"
       ],
       "WWN": "0x5000c500ea01004e",
-      "SysPath": "testdata/pbs1/sys/devices/pci0000:00/0000:00:01.3/0000:03:00.0/host6/port-6:0/expander-6:0/port-6:0:10/end_device-6:0:10/target6:0:9/6:0:9:0/block/sdj",
+      "SysPath": "testdata/pbs1/sys/devices/pci0000:00/0000:00:01.3/0000:03:00.0/host0/port-0:0/expander-0:0/port-0:0:10/end_device-0:0:10/target0:0:9/0:0:9:0/block/sdj",
       "Model": "ST24000DM001-3Y7103",
       "Serial": "ZXA07M8F",
       "Attribs": null,
@@ -295,9 +306,10 @@
         "zfs \u003e backups 14184269030502626926 \u003e raidz3 12638130268554546894 \u003e disk 10255298623913385142"
       ],
       "MemberState": "ONLINE",
-      "GenericDevice": "/dev/bsg/end_device-6:0:10",
-      "Expander": "expander-6:0",
-      "ExpanderPath": "testdata/pbs1/sys/devices/pci0000:00/0000:00:01.3/0000:03:00.0/host6/port-6:0/expander-6:0",
+      "GenericDevice": "/dev/bsg/end_device-0:0:10",
+      "Expander": "expander-0:0",
+      "ExpanderID": "0x50030480185b9e7f",
+      "ExpanderPath": "testdata/pbs1/sys/devices/pci0000:00/0000:00:01.3/0000:03:00.0/host0/port-0:0/expander-0:0",
       "EnclosureBay": "17",
       "Size": 24000277250048,
       "Error": ""
@@ -306,13 +318,13 @@
       "DeviceName": "sdk",
       "Devices": [
         "/dev/sdk",
-        "/dev/disk/by-id/wwn-0x5000c500e8fd009f",
-        "/dev/disk/by-diskseq/19",
+        "/dev/disk/by-diskseq/21",
         "/dev/disk/by-id/ata-ST24000DM001-3Y7103_ZXA10QBK",
+        "/dev/disk/by-id/wwn-0x5000c500e8fd009f",
         "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x50030480185b9e7f-phy37-lun-0"
       ],
       "WWN": "0x5000c500e8fd009f",
-      "SysPath": "testdata/pbs1/sys/devices/pci0000:00/0000:00:01.3/0000:03:00.0/host6/port-6:0/expander-6:0/port-6:0:11/end_device-6:0:11/target6:0:10/6:0:10:0/block/sdk",
+      "SysPath": "testdata/pbs1/sys/devices/pci0000:00/0000:00:01.3/0000:03:00.0/host0/port-0:0/expander-0:0/port-0:0:11/end_device-0:0:11/target0:0:10/0:0:10:0/block/sdk",
       "Model": "ST24000DM001-3Y7103",
       "Serial": "ZXA10QBK",
       "Attribs": null,
@@ -320,9 +332,10 @@
         "zfs \u003e backups 14184269030502626926 \u003e raidz3 12638130268554546894 \u003e disk 2427754677181354078"
       ],
       "MemberState": "ONLINE",
-      "GenericDevice": "/dev/bsg/end_device-6:0:11",
-      "Expander": "expander-6:0",
-      "ExpanderPath": "testdata/pbs1/sys/devices/pci0000:00/0000:00:01.3/0000:03:00.0/host6/port-6:0/expander-6:0",
+      "GenericDevice": "/dev/bsg/end_device-0:0:11",
+      "Expander": "expander-0:0",
+      "ExpanderID": "0x50030480185b9e7f",
+      "ExpanderPath": "testdata/pbs1/sys/devices/pci0000:00/0000:00:01.3/0000:03:00.0/host0/port-0:0/expander-0:0",
       "EnclosureBay": "21",
       "Size": 24000277250048,
       "Error": ""
@@ -331,21 +344,24 @@
       "DeviceName": "sdl",
       "Devices": [
         "/dev/sdl",
-        "/dev/disk/by-diskseq/20",
+        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x50030480185b9e7f-phy38-lun-0",
+        "/dev/disk/by-diskseq/22",
         "/dev/disk/by-id/wwn-0x5000c500e8d55d13",
-        "/dev/disk/by-id/ata-ST24000DM001-3Y7103_ZXA0XM4R",
-        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x50030480185b9e7f-phy38-lun-0"
+        "/dev/disk/by-id/ata-ST24000DM001-3Y7103_ZXA0XM4R"
       ],
       "WWN": "0x5000c500e8d55d13",
-      "SysPath": "testdata/pbs1/sys/devices/pci0000:00/0000:00:01.3/0000:03:00.0/host6/port-6:0/expander-6:0/port-6:0:12/end_device-6:0:12/target6:0:11/6:0:11:0/block/sdl",
+      "SysPath": "testdata/pbs1/sys/devices/pci0000:00/0000:00:01.3/0000:03:00.0/host0/port-0:0/expander-0:0/port-0:0:12/end_device-0:0:12/target0:0:11/0:0:11:0/block/sdl",
       "Model": "ST24000DM001-3Y7103",
       "Serial": "ZXA0XM4R",
       "Attribs": null,
-      "Uses": null,
-      "MemberState": "",
-      "GenericDevice": "/dev/bsg/end_device-6:0:12",
-      "Expander": "expander-6:0",
-      "ExpanderPath": "testdata/pbs1/sys/devices/pci0000:00/0000:00:01.3/0000:03:00.0/host6/port-6:0/expander-6:0",
+      "Uses": [
+        "zfs \u003e spare backups \u003e disk 10313488710348015701"
+      ],
+      "MemberState": "AVAIL",
+      "GenericDevice": "/dev/bsg/end_device-0:0:12",
+      "Expander": "expander-0:0",
+      "ExpanderID": "0x50030480185b9e7f",
+      "ExpanderPath": "testdata/pbs1/sys/devices/pci0000:00/0000:00:01.3/0000:03:00.0/host0/port-0:0/expander-0:0",
       "EnclosureBay": "22",
       "Size": 24000277250048,
       "Error": ""
@@ -354,13 +370,13 @@
       "DeviceName": "sdm",
       "Devices": [
         "/dev/sdm",
-        "/dev/disk/by-id/ata-ST24000DM001-3Y7103_ZXA0YB6H",
-        "/dev/disk/by-diskseq/21",
+        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x50030480185b9e7f-phy39-lun-0",
+        "/dev/disk/by-diskseq/23",
         "/dev/disk/by-id/wwn-0x5000c500e8df0b98",
-        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x50030480185b9e7f-phy39-lun-0"
+        "/dev/disk/by-id/ata-ST24000DM001-3Y7103_ZXA0YB6H"
       ],
       "WWN": "0x5000c500e8df0b98",
-      "SysPath": "testdata/pbs1/sys/devices/pci0000:00/0000:00:01.3/0000:03:00.0/host6/port-6:0/expander-6:0/port-6:0:13/end_device-6:0:13/target6:0:12/6:0:12:0/block/sdm",
+      "SysPath": "testdata/pbs1/sys/devices/pci0000:00/0000:00:01.3/0000:03:00.0/host0/port-0:0/expander-0:0/port-0:0:13/end_device-0:0:13/target0:0:12/0:0:12:0/block/sdm",
       "Model": "ST24000DM001-3Y7103",
       "Serial": "ZXA0YB6H",
       "Attribs": null,
@@ -368,9 +384,10 @@
         "zfs \u003e spare backups \u003e disk 15127882886004909357"
       ],
       "MemberState": "AVAIL",
-      "GenericDevice": "/dev/bsg/end_device-6:0:13",
-      "Expander": "expander-6:0",
-      "ExpanderPath": "testdata/pbs1/sys/devices/pci0000:00/0000:00:01.3/0000:03:00.0/host6/port-6:0/expander-6:0",
+      "GenericDevice": "/dev/bsg/end_device-0:0:13",
+      "Expander": "expander-0:0",
+      "ExpanderID": "0x50030480185b9e7f",
+      "ExpanderPath": "testdata/pbs1/sys/devices/pci0000:00/0000:00:01.3/0000:03:00.0/host0/port-0:0/expander-0:0",
       "EnclosureBay": "23",
       "Size": 24000277250048,
       "Error": ""
@@ -388,8 +405,9 @@
       ],
       "MemberState": "",
       "GenericDevice": "",
-      "Expander": "expander-6:0",
-      "ExpanderPath": "testdata/pbs1/sys/devices/pci0000:00/0000:00:01.3/0000:03:00.0/host6/port-6:0/expander-6:0",
+      "Expander": "expander-0:0",
+      "ExpanderID": "0x50030480185b9e7f",
+      "ExpanderPath": "testdata/pbs1/sys/devices/pci0000:00/0000:00:01.3/0000:03:00.0/host0/port-0:0/expander-0:0",
       "EnclosureBay": "12",
       "Size": 0,
       "Error": ""
@@ -407,8 +425,9 @@
       ],
       "MemberState": "",
       "GenericDevice": "",
-      "Expander": "expander-6:0",
-      "ExpanderPath": "testdata/pbs1/sys/devices/pci0000:00/0000:00:01.3/0000:03:00.0/host6/port-6:0/expander-6:0",
+      "Expander": "expander-0:0",
+      "ExpanderID": "0x50030480185b9e7f",
+      "ExpanderPath": "testdata/pbs1/sys/devices/pci0000:00/0000:00:01.3/0000:03:00.0/host0/port-0:0/expander-0:0",
       "EnclosureBay": "24",
       "Size": 0,
       "Error": ""

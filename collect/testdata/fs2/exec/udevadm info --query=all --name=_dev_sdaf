@@ -5,12 +5,12 @@ T: disk
 D: b 65:240
 N: sdaf
 L: 0
-S: disk/by-vdev/D22
-S: disk/by-diskseq/40
-S: disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy11-lun-0
 S: disk/by-id/scsi-35000cca23b00a598
+S: disk/by-vdev/D22
 S: disk/by-id/scsi-SHGST_HUH728080AL4200_2EG0B0WJ
+S: disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy11-lun-0
 S: disk/by-id/wwn-0x5000cca23b00a598
+S: disk/by-diskseq/40
 Q: 40
 E: DEVPATH=/devices/pci0000:00/0000:00:03.0/0000:03:00.0/host11/port-11:0/expander-11:0/port-11:0:8/end_device-11:0:8/target11:0:16/11:0:16:0/block/sdaf
 E: DEVNAME=/dev/sdaf
@@ -56,7 +56,7 @@ E: ID_PART_TABLE_TYPE=gpt
 E: ID_VDEV=D22
 E: ID_VDEV_PATH=disk/by-vdev/D22
 E: NVME_HOST_IFACE=none
-E: DEVLINKS=/dev/disk/by-vdev/D22 /dev/disk/by-diskseq/40 /dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy11-lun-0 /dev/disk/by-id/scsi-35000cca23b00a598 /dev/disk/by-id/scsi-SHGST_HUH728080AL4200_2EG0B0WJ /dev/disk/by-id/wwn-0x5000cca23b00a598
+E: DEVLINKS=/dev/disk/by-id/scsi-35000cca23b00a598 /dev/disk/by-vdev/D22 /dev/disk/by-id/scsi-SHGST_HUH728080AL4200_2EG0B0WJ /dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy11-lun-0 /dev/disk/by-id/wwn-0x5000cca23b00a598 /dev/disk/by-diskseq/40
 E: TAGS=:systemd:
 E: CURRENT_TAGS=:systemd:
 

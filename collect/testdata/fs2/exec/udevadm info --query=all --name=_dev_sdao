@@ -5,12 +5,12 @@ T: disk
 D: b 66:128
 N: sdao
 L: 0
-S: disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy24-lun-0
-S: disk/by-id/wwn-0x5000039b08ca908c
 S: disk/by-vdev/D42
+S: disk/by-id/wwn-0x5000039b08ca908c
+S: disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy24-lun-0
 S: disk/by-id/scsi-35000039b08ca908c
-S: disk/by-id/scsi-SATA_TOSHIBA_HDWG180_7160A2TZFBEG
 S: disk/by-diskseq/49
+S: disk/by-id/scsi-SATA_TOSHIBA_HDWG180_7160A2TZFBEG
 Q: 49
 E: DEVPATH=/devices/pci0000:00/0000:00:03.0/0000:03:00.0/host11/port-11:0/expander-11:0/port-11:0:17/end_device-11:0:17/target11:0:25/11:0:25:0/block/sdao
 E: DEVNAME=/dev/sdao
@@ -53,7 +53,7 @@ E: ID_PART_TABLE_UUID=befdf6fa-3412-f046-a9b9-35e4ad288948
 E: ID_PART_TABLE_TYPE=gpt
 E: ID_VDEV=D42
 E: ID_VDEV_PATH=disk/by-vdev/D42
-E: DEVLINKS=/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy24-lun-0 /dev/disk/by-id/wwn-0x5000039b08ca908c /dev/disk/by-vdev/D42 /dev/disk/by-id/scsi-35000039b08ca908c /dev/disk/by-id/scsi-SATA_TOSHIBA_HDWG180_7160A2TZFBEG /dev/disk/by-diskseq/49
+E: DEVLINKS=/dev/disk/by-vdev/D42 /dev/disk/by-id/wwn-0x5000039b08ca908c /dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy24-lun-0 /dev/disk/by-id/scsi-35000039b08ca908c /dev/disk/by-diskseq/49 /dev/disk/by-id/scsi-SATA_TOSHIBA_HDWG180_7160A2TZFBEG
 E: TAGS=:systemd:
 E: CURRENT_TAGS=:systemd:
 

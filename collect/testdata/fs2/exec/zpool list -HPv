@@ -28,15 +28,15 @@ special                                                                      -  
 	/dev/disk/by-id/scsi-35000cca0501c6728-part1	1.46T	-	-	-	-	-	-	-	ONLINE
 spare                                                                        -      -      -        -         -      -      -      -         -
 	/dev/sdy1	7.28T	-	-	-	-	-	-	-	INUSE
-bpool	1.88G	741M	1.15G	-	-	24%	38%	1.00x	ONLINE	-
-	mirror-0	1.88G	741M	1.15G	-	-	24%	38.6%	-	ONLINE
+bpool	1.88G	741M	1.15G	-	-	23%	38%	1.00x	ONLINE	-
+	mirror-0	1.88G	741M	1.15G	-	-	23%	38.6%	-	ONLINE
 	/dev/disk/by-id/ata-SAMSUNG_MZ7WD960HMHP-00003_S1E4NYAG204349-part3	2G	-	-	-	-	-	-	-	ONLINE
 	/dev/disk/by-id/ata-SAMSUNG_MZ7WD960HMHP-00003_S1E4NYAG205230-part3	2G	-	-	-	-	-	-	-	ONLINE
-rpool	888G	664G	224G	117G	-	64%	74%	1.00x	ONLINE	-
-	mirror-0	888G	664G	224G	117G	-	64%	74.8%	-	ONLINE
+rpool	888G	658G	230G	117G	-	63%	74%	1.00x	ONLINE	-
+	mirror-0	888G	658G	230G	117G	-	63%	74.1%	-	ONLINE
 	/dev/disk/by-id/ata-SAMSUNG_MZ7WD960HMHP-00003_S1E4NYAG204349-part4	892G	-	-	-	-	-	-	-	ONLINE
 	/dev/disk/by-id/ata-SAMSUNG_MZ7WD960HMHP-00003_S1E4NYAG205230-part4	892G	-	-	-	-	-	-	-	ONLINE
-space	410T	235T	176T	-	-	21%	57%	1.01x	ONLINE	-
+space	410T	235T	176T	-	-	21%	57%	1.01x	DEGRADED	-
 	raidz2-0	58.1T	35.5T	22.7T	-	-	24%	61.0%	-	ONLINE
 	/dev/disk/by-id/wwn-0x5000cca0bbe6cf6c-part1	7.28T	-	-	-	-	-	-	-	ONLINE
 	/dev/disk/by-id/scsi-35000cca2612a20a8-part1	7.28T	-	-	-	-	-	-	-	ONLINE
@@ -55,11 +55,11 @@ space	410T	235T	176T	-	-	21%	57%	1.01x	ONLINE	-
 	/dev/disk/by-id/scsi-35000c500c7913439-part1	7.28T	-	-	-	-	-	-	-	ONLINE
 	/dev/disk/by-id/scsi-35000c500e8e71bc2-part1	7.28T	-	-	-	-	-	-	-	ONLINE
 	/dev/disk/by-id/scsi-35000c500baa141ea-part1	7.28T	-	-	-	-	-	-	-	ONLINE
-	raidz2-2	58.1T	26.1T	32.1T	-	-	18%	44.8%	-	ONLINE
+	raidz2-2	58.1T	26.1T	32.1T	-	-	18%	44.8%	-	DEGRADED
 	/dev/disk/by-id/scsi-35000c500c74b82b9-part1	7.28T	-	-	-	-	-	-	-	ONLINE
 	/dev/disk/by-id/scsi-35000cca2548ef93c-part1	7.28T	-	-	-	-	-	-	-	ONLINE
 	/dev/disk/by-id/scsi-35000039b08d8b993-part1	7.28T	-	-	-	-	-	-	-	ONLINE
-	/dev/disk/by-id/scsi-35000cca2548eecec-part1	7.28T	-	-	-	-	-	-	-	ONLINE
+	/dev/disk/by-id/scsi-35000cca2548eecec-part1	7.28T	-	-	-	-	-	-	-	FAULTED
 	/dev/disk/by-id/scsi-35000cca2548d06a4-part1	7.28T	-	-	-	-	-	-	-	ONLINE
 	/dev/disk/by-id/scsi-35000cca25493d51c-part1	7.28T	-	-	-	-	-	-	-	ONLINE
 	/dev/disk/by-id/scsi-35000cca2548ef9d4-part1	7.28T	-	-	-	-	-	-	-	ONLINE
@@ -108,13 +108,13 @@ special                                                                      -  
 	/dev/disk/by-id/scsi-35002538b48a797f0-part1	3.49T	-	-	-	-	-	-	-	ONLINE
 	/dev/disk/by-id/scsi-35002538b48a79980-part1	3.49T	-	-	-	-	-	-	-	ONLINE
 logs                                                                         -      -      -        -         -      -      -      -         -
-	mirror-7	186G	1.13M	186G	-	-	0%	0.00%	-	ONLINE
+	mirror-7	186G	1.09M	186G	-	-	0%	0.00%	-	ONLINE
 	/dev/disk/by-id/wwn-0x5000cca04aafd554-part1	186G	-	-	-	-	-	-	-	ONLINE
 	/dev/disk/by-id/wwn-0x5000cca04aafd574-part1	186G	-	-	-	-	-	-	-	ONLINE
 cache                                                                        -      -      -        -         -      -      -      -         -
-	/dev/sdbe1	1.75T	1.59T	157G	-	-	0%	91.2%	-	ONLINE
-	/dev/sdan1	1.75T	1.59T	158G	-	-	0%	91.2%	-	ONLINE
-	/dev/sdbg1	1.75T	1.59T	156G	-	-	0%	91.2%	-	ONLINE
-	/dev/sdbq1	1.75T	1.59T	158G	-	-	0%	91.2%	-	ONLINE
+	/dev/sdbe1	1.75T	1.74T	8.68G	-	-	0%	99.5%	-	ONLINE
+	/dev/sdan1	1.75T	1.74T	8.60G	-	-	0%	99.5%	-	ONLINE
+	/dev/sdbg1	1.75T	1.74T	8.59G	-	-	0%	99.5%	-	ONLINE
+	/dev/sdbq1	1.75T	1.74T	8.54G	-	-	0%	99.5%	-	ONLINE
 spare                                                                        -      -      -        -         -      -      -      -         -
 	/dev/disk/by-id/scsi-35000c500cafaac4f-part1	7.28T	-	-	-	-	-	-	-	INUSE
