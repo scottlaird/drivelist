@@ -39,15 +39,28 @@ type ReportDevice struct {
 	Identity      DriveIdentity
 	Bus           string
 	SizeBytes     uint64
-	Expander      string // the kernel's name
-	ExpanderID    string // the SAS address; "" from agents before 0.4
+	Expander      string // the kernel's name of the expander in the path, "" for the HBA's own ports
+	ExpanderID    string // the expander's SAS address; "" from agents before 0.4
 	Bay           string
 	EnclosurePath string
-	Uses          []string
-	DevLinks      []string
-	Error         string // non-empty: identity unreadable
-	MemberState   string
-	SCSIAddr      string
+	// Where the drive physically is; see enclosureKey. Empty from agents
+	// before 0.7, which knew only expanders.
+	EnclosureID    string // the SES enclosure identifier
+	EnclosureVia   string // the node whose port reaches it: "expander-11:0", "host11"
+	EnclosureViaID string // that node's SAS address
+	Uses           []string
+	DevLinks       []string
+	Error          string // non-empty: identity unreadable
+	MemberState    string
+	SCSIAddr       string
+}
+
+// ReportBay is an enclosure bay with nothing in it, as an agent reports it.
+type ReportBay struct {
+	EnclosureID    string
+	EnclosureVia   string
+	EnclosureViaID string
+	Bay            string
 }
 
 // PoolMember is a pool member the agent could not map to a device.
@@ -66,6 +79,7 @@ type Report struct {
 	Unmapped        []PoolMember
 	Complete        bool // false if a collector stage failed outright
 	CollectorErrors []string
+	EmptyBays       []ReportBay
 	SASNodes        []SASNode // empty from agents before 0.6 or hosts without SAS
 	SASPhys         []SASPhy
 }
@@ -151,7 +165,7 @@ const (
 	EventReappeared         = "reappeared"
 	EventMovedHost          = "moved_host"
 	EventMovedBay           = "moved_bay"
-	EventExpanderRenamed    = "expander_renamed" // host-level: an expander's key changed under every drive on it
+	EventEnclosureRenamed   = "enclosure_renamed" // host-level: an enclosure's key changed under every drive in it (before 0.7: expander_renamed)
 	EventUseChanged         = "use_changed"
 	EventMemberStateChanged = "member_state_changed"
 	EventIdentityConflict   = "identity_conflict"

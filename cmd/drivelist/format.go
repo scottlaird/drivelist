@@ -98,19 +98,22 @@ func count(n uint32) string {
 	return strconv.FormatUint(uint64(n), 10)
 }
 
-// slotOf renders a placement's slot with the expander as a person would
-// name it: the name they gave it, else the kernel's name, else the key.
+// slotOf renders a placement's slot with the enclosure as a person would
+// name it: the name they gave it, else the kernel's name for the node
+// that reaches it, else the key.
 func slotOf(p *pb.Placement) string {
 	if p == nil {
 		return "-"
 	}
-	return slot(firstOf(p.ExpanderName, p.ExpanderDev, p.Expander), p.Bay)
+	return slot(firstOf(p.EnclosureName, p.EnclosureVia, p.Enclosure), p.Bay)
 }
 
 // slotD renders the slot an event's detail describes under a key prefix
 // ("", "from_", "to_"), preferring the person's name, then the kernel's.
+// Events from before 0.7 carry expander keys instead.
 func slotD(d map[string]any, prefix string) string {
-	return slot(firstOf(str(d, prefix+"expander_name"), str(d, prefix+"expander_dev"), str(d, prefix+"expander")), str(d, prefix+"bay"))
+	return slot(firstOf(str(d, prefix+"enclosure_name"), str(d, prefix+"enclosure_via"), str(d, prefix+"enclosure"),
+		str(d, prefix+"expander_name"), str(d, prefix+"expander_dev"), str(d, prefix+"expander")), str(d, prefix+"bay"))
 }
 
 func firstOf(s ...string) string {
@@ -317,8 +320,8 @@ func describe(e *pb.Event) string {
 		return fmt.Sprintf("moved bay     %s  %s  (from %s)", host, slotD(d, "to_"), slotD(d, "from_"))
 	case "use_changed":
 		return fmt.Sprintf("use changed   %s  %s  %s  (was %s)", host, slotD(d, "to_"), useSummary(usesOf(d["to_uses"])), useSummary(usesOf(d["from_uses"])))
-	case "expander_renamed":
-		return fmt.Sprintf("expander      %s  %s is now %s (%v drives kept their bays)", host, firstOf(str(d, "from_name"), str(d, "from_dev"), str(d, "from")), firstOf(str(d, "to_name"), str(d, "to_dev"), str(d, "to")), d["drives"])
+	case "enclosure_renamed", "expander_renamed":
+		return fmt.Sprintf("enclosure     %s  %s is now %s (%v drives kept their bays)", host, firstOf(str(d, "from_name"), str(d, "from_via"), str(d, "from_dev"), str(d, "from")), firstOf(str(d, "to_name"), str(d, "to_via"), str(d, "to_dev"), str(d, "to")), d["drives"])
 	case "sas_link_changed":
 		return fmt.Sprintf("sas link      %s  %s phy %v%s  %s -> %s", host, str(d, "owner_name"), d["phy"], sasWhere(d), orDash(str(d, "from")), orDash(str(d, "to")))
 	case "sas_attached_changed":

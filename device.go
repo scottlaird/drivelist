@@ -23,10 +23,20 @@ type Device struct {
 	GenericDevice string
 
 	// Enclosure data.
-	Expander     string // the kernel's name, expander-H:N; H follows probe order
+	Expander     string // the expander the drive hangs off, expander-H:N; "" on the HBA's own ports. H follows probe order
 	ExpanderID   string // the expander's SAS address, stable across boots; "" when unknown
 	ExpanderPath string
 	EnclosureBay string
+	// The physical place: the SES enclosure the drive sits in and its bay
+	// there. EnclosureID is the enclosure's logical identifier, which every
+	// SAS end device reports whether or not an expander is in the path;
+	// EnclosureVia is the SAS node whose port reaches it (the expander, or
+	// the HBA itself for its own bays) and EnclosureViaID that node's
+	// address, which is the fallback identity when the device reports no
+	// enclosure.
+	EnclosureID    string
+	EnclosureVia   string
+	EnclosureViaID string
 
 	Size uint64 // bytes
 

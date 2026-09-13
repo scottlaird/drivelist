@@ -54,34 +54,52 @@ func (c *Collector) newDevice(name string) (*drivelist.Device, error) {
 }
 
 // populateSES walks the device's sysfs path for the SAS expander and end
-// device it hangs off, and reads the enclosure bay number if there is one.
+// device it hangs off, and reads where the end device says it is: the SES
+// enclosure and the bay in it. A drive on the HBA's own ports has no
+// expander but still an enclosure (the backplane the HBA's SGPIO talks
+// to), so its location is as real as a shelf's.
 func populateSES(d *drivelist.Device) {
-	var prefix, endDevice, endDevicePath string
+	var prefix, endDevice, endDevicePath, host, hostPath string
 
 	for i, p := range strings.Split(d.SysPath, "/") {
 		if i > 0 {
 			prefix += "/"
 		}
 		prefix += p
-		if strings.HasPrefix(p, "expander-") {
+		switch {
+		case strings.HasPrefix(p, "expander-"):
 			d.Expander = p
 			d.ExpanderPath = prefix
-		}
-		if strings.HasPrefix(p, "end_device-") {
+		case strings.HasPrefix(p, "host") && host == "":
+			host, hostPath = p, prefix
+		case strings.HasPrefix(p, "end_device-"):
 			endDevice = p
 			endDevicePath = prefix
 			d.GenericDevice = "/dev/bsg/" + endDevice
 		}
 	}
-	if endDevice != "" {
-		bay, err := os.ReadFile(endDevicePath + "/sas_device/" + endDevice + "/bay_identifier")
-		if err == nil {
-			d.EnclosureBay = strings.TrimSpace(string(bay))
-		}
+	if endDevice == "" {
+		return // not on the SAS transport
 	}
-	if d.Expander != "" {
+	attrs := endDevicePath + "/sas_device/" + endDevice
+	d.EnclosureBay = sysAttr(attrs, "bay_identifier")
+	d.EnclosureID = enclosureID(sysAttr(attrs, "enclosure_identifier"))
+	switch {
+	case d.Expander != "":
 		d.ExpanderID = expanderAddress(d.ExpanderPath, d.Expander)
+		d.EnclosureVia, d.EnclosureViaID = d.Expander, d.ExpanderID
+	case host != "":
+		d.EnclosureVia, d.EnclosureViaID = host, sysAttr(hostPath+"/scsi_host/"+host, "host_sas_address")
 	}
+}
+
+// enclosureID normalises an enclosure_identifier: some hardware reports
+// none as 0.
+func enclosureID(s string) string {
+	if strings.Trim(strings.ToLower(s), "0x") == "" {
+		return ""
+	}
+	return s
 }
 
 // expanderAddress reads the expander's SAS address from sysfs. It names
@@ -96,13 +114,21 @@ func expanderAddress(expanderPath, expander string) string {
 	return strings.TrimSpace(string(b))
 }
 
-// newEmptyBayDevice describes an enclosure bay with nothing in it.
-func newEmptyBayDevice(expander, expanderPath, bay string) *drivelist.Device {
-	return &drivelist.Device{
-		Expander:     expander,
-		ExpanderID:   expanderAddress(expanderPath, expander),
-		ExpanderPath: expanderPath,
-		EnclosureBay: bay,
-		Uses:         []string{"empty"},
+// newEmptyBayDevice describes an enclosure bay with nothing in it, from
+// the end device that represents the bay. via is the node that reaches
+// it: an expander, or the HBA for its own bays.
+func newEmptyBayDevice(via, viaPath, bayDevice, bay string) *drivelist.Device {
+	d := &drivelist.Device{
+		EnclosureBay:   bay,
+		EnclosureID:    enclosureID(sysAttr(bayDevice, "enclosure_identifier")),
+		EnclosureVia:   via,
+		EnclosureViaID: sysAttr(viaPath+"/scsi_host/"+via, "host_sas_address"),
+		Uses:           []string{"empty"},
 	}
+	if strings.HasPrefix(via, "expander-") {
+		d.Expander, d.ExpanderPath = via, viaPath
+		d.ExpanderID = expanderAddress(viaPath, via)
+		d.EnclosureViaID = d.ExpanderID
+	}
+	return d
 }

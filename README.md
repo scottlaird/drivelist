@@ -192,14 +192,19 @@ read or write time jumped by about the uptime; the minute's
 completions and bytes still count.  The DROPPED column of
 `drivelist drive REF io` says how many counters an hour lost.
 
-Slots are reported as the expander's SAS address plus the bay, since
-the kernel's `expander-H:N` follows probe order and can change on a
-reboot.  When a whole shelf comes back under a new name with every
-drive in its old bay, the server records one `expander_renamed` event
-rather than a move per drive (a single drive is not enough evidence;
-it may really have moved).  `drivelist expanders` lists the shelves
-drives are on, and `drivelist expander KEY name "front shelf"` gives
-one a name, which every listing then shows in place of the kernel's.
+A drive's slot is the SES enclosure it sits in plus its bay there,
+read from the drive's own end device in sysfs, so it is the same for a
+drive in a shelf behind an expander and for one on the HBA's own ports
+(a server's front panel), and it survives reboots, which renumber the
+kernel's `expander-H:N`.  When a whole enclosure comes back under a
+new key with every drive in its old bay, the server records one
+`enclosure_renamed` event rather than a move per drive (a single drive
+is not enough evidence; it may really have moved), and a name given to
+the old key follows it.  `drivelist enclosures` lists every enclosure
+a host has reported, drives or not, with the model of the expander or
+HBA that reaches it, and `drivelist enclosure KEY name "front shelf"`
+gives one a name, which every listing then shows in place of the
+kernel's.
 
 For a one-off report, or from cron, `drivelist report` does one cycle.
 

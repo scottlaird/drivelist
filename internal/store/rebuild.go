@@ -10,7 +10,7 @@ import (
 // derivedEvents are the kinds Rebuild recomputes; every other kind (manual
 // annotations, merges, sweeper and sampler events) is kept.
 var derivedEvents = []string{
-	EventFirstSeen, EventAppeared, EventVanished, EventReappeared, EventMovedHost, EventMovedBay, EventExpanderRenamed,
+	EventFirstSeen, EventAppeared, EventVanished, EventReappeared, EventMovedHost, EventMovedBay, EventEnclosureRenamed, "expander_renamed",
 	EventUseChanged, EventMemberStateChanged, EventReportDegraded,
 }
 
@@ -116,7 +116,7 @@ func (t *tx) hostByID(id int64) (*hostRow, error) {
 // with no placement yet counts as newly created, which is what makes the
 // replay emit first_seen where the original ingest did.
 func (t *tx) snapshotRows(snapshotID int64) ([]devRow, error) {
-	rows, err := t.QueryContext(t.ctx, `SELECT dev_name, drive_id, expander, expander_id, bay, enclosure_path, size_bytes, uses, member_state, dev_links, scsi_addr, error FROM snapshot_device WHERE snapshot_id = ? ORDER BY dev_name`, snapshotID)
+	rows, err := t.QueryContext(t.ctx, `SELECT dev_name, drive_id, expander, expander_id, bay, enclosure_path, size_bytes, uses, member_state, dev_links, scsi_addr, error, enclosure_id, enclosure_via, enclosure_via_id FROM snapshot_device WHERE snapshot_id = ? ORDER BY dev_name`, snapshotID)
 	if err != nil {
 		return nil, err
 	}
@@ -126,7 +126,7 @@ func (t *tx) snapshotRows(snapshotID int64) ([]devRow, error) {
 		var d ReportDevice
 		var driveID sql.NullInt64
 		var uses, links string
-		if err := rows.Scan(&d.DevName, &driveID, &d.Expander, &d.ExpanderID, &d.Bay, &d.EnclosurePath, &d.SizeBytes, &uses, &d.MemberState, &links, &d.SCSIAddr, &d.Error); err != nil {
+		if err := rows.Scan(&d.DevName, &driveID, &d.Expander, &d.ExpanderID, &d.Bay, &d.EnclosurePath, &d.SizeBytes, &uses, &d.MemberState, &links, &d.SCSIAddr, &d.Error, &d.EnclosureID, &d.EnclosureVia, &d.EnclosureViaID); err != nil {
 			return nil, err
 		}
 		json.Unmarshal([]byte(uses), &d.Uses)
