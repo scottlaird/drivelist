@@ -233,6 +233,7 @@ type Device struct {
 	Error         string                 `protobuf:"bytes,10,opt,name=error,proto3" json:"error,omitempty"`                                // non-empty: identity unreadable; the report is degraded
 	MemberState   string                 `protobuf:"bytes,11,opt,name=member_state,json=memberState,proto3" json:"member_state,omitempty"` // ZFS vdev state for the zfs use, "" otherwise
 	ScsiAddr      string                 `protobuf:"bytes,12,opt,name=scsi_addr,json=scsiAddr,proto3" json:"scsi_addr,omitempty"`          // "11:0:17:0"
+	ExpanderId    string                 `protobuf:"bytes,13,opt,name=expander_id,json=expanderId,proto3" json:"expander_id,omitempty"`    // the expander's SAS address, stable across boots; "" if unknown
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -351,11 +352,19 @@ func (x *Device) GetScsiAddr() string {
 	return ""
 }
 
+func (x *Device) GetExpanderId() string {
+	if x != nil {
+		return x.ExpanderId
+	}
+	return ""
+}
+
 type EmptyBay struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Expander      string                 `protobuf:"bytes,1,opt,name=expander,proto3" json:"expander,omitempty"`
 	Bay           string                 `protobuf:"bytes,2,opt,name=bay,proto3" json:"bay,omitempty"`
 	EnclosurePath string                 `protobuf:"bytes,3,opt,name=enclosure_path,json=enclosurePath,proto3" json:"enclosure_path,omitempty"`
+	ExpanderId    string                 `protobuf:"bytes,4,opt,name=expander_id,json=expanderId,proto3" json:"expander_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -407,6 +416,13 @@ func (x *EmptyBay) GetBay() string {
 func (x *EmptyBay) GetEnclosurePath() string {
 	if x != nil {
 		return x.EnclosurePath
+	}
+	return ""
+}
+
+func (x *EmptyBay) GetExpanderId() string {
+	if x != nil {
+		return x.ExpanderId
 	}
 	return ""
 }
@@ -1661,14 +1677,16 @@ func (x *Host) GetGhostCount() int32 {
 type Placement struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Hostname      string                 `protobuf:"bytes,1,opt,name=hostname,proto3" json:"hostname,omitempty"`
-	Expander      string                 `protobuf:"bytes,2,opt,name=expander,proto3" json:"expander,omitempty"`
+	Expander      string                 `protobuf:"bytes,2,opt,name=expander,proto3" json:"expander,omitempty"` // stable key: the SAS address, or the kernel name from agents that sent none
 	Bay           string                 `protobuf:"bytes,3,opt,name=bay,proto3" json:"bay,omitempty"`
 	DevName       string                 `protobuf:"bytes,4,opt,name=dev_name,json=devName,proto3" json:"dev_name,omitempty"`
 	Uses          []string               `protobuf:"bytes,5,rep,name=uses,proto3" json:"uses,omitempty"`
 	FirstSeen     *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=first_seen,json=firstSeen,proto3" json:"first_seen,omitempty"`
-	LastSeen      *timestamppb.Timestamp `protobuf:"bytes,7,opt,name=last_seen,json=lastSeen,proto3" json:"last_seen,omitempty"`    // last heartbeat that confirmed it
-	EndedAt       *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=ended_at,json=endedAt,proto3" json:"ended_at,omitempty"`       // unset while current
-	EndReason     string                 `protobuf:"bytes,9,opt,name=end_reason,json=endReason,proto3" json:"end_reason,omitempty"` // vanished | moved | use_changed | merged
+	LastSeen      *timestamppb.Timestamp `protobuf:"bytes,7,opt,name=last_seen,json=lastSeen,proto3" json:"last_seen,omitempty"`              // last heartbeat that confirmed it
+	EndedAt       *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=ended_at,json=endedAt,proto3" json:"ended_at,omitempty"`                 // unset while current
+	EndReason     string                 `protobuf:"bytes,9,opt,name=end_reason,json=endReason,proto3" json:"end_reason,omitempty"`           // vanished | moved | use_changed | merged
+	ExpanderDev   string                 `protobuf:"bytes,10,opt,name=expander_dev,json=expanderDev,proto3" json:"expander_dev,omitempty"`    // the kernel's current name for the expander, "expander-11:0"
+	ExpanderName  string                 `protobuf:"bytes,11,opt,name=expander_name,json=expanderName,proto3" json:"expander_name,omitempty"` // the name a person gave it, "" if none
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1766,6 +1784,314 @@ func (x *Placement) GetEndReason() string {
 	return ""
 }
 
+func (x *Placement) GetExpanderDev() string {
+	if x != nil {
+		return x.ExpanderDev
+	}
+	return ""
+}
+
+func (x *Placement) GetExpanderName() string {
+	if x != nil {
+		return x.ExpanderName
+	}
+	return ""
+}
+
+// Expander is one SAS expander (a drive shelf or backplane) on one host
+// as the open placements see it.
+type Expander struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Expander      string                 `protobuf:"bytes,1,opt,name=expander,proto3" json:"expander,omitempty"` // the key placements carry
+	Hostname      string                 `protobuf:"bytes,2,opt,name=hostname,proto3" json:"hostname,omitempty"`
+	ExpanderDev   string                 `protobuf:"bytes,3,opt,name=expander_dev,json=expanderDev,proto3" json:"expander_dev,omitempty"`
+	Name          string                 `protobuf:"bytes,4,opt,name=name,proto3" json:"name,omitempty"`
+	Note          string                 `protobuf:"bytes,5,opt,name=note,proto3" json:"note,omitempty"`
+	Drives        int32                  `protobuf:"varint,6,opt,name=drives,proto3" json:"drives,omitempty"` // drives currently placed on it
+	FirstSeen     *timestamppb.Timestamp `protobuf:"bytes,7,opt,name=first_seen,json=firstSeen,proto3" json:"first_seen,omitempty"`
+	LastSeen      *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=last_seen,json=lastSeen,proto3" json:"last_seen,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *Expander) Reset() {
+	*x = Expander{}
+	mi := &file_drivelist_v1_drivelist_proto_msgTypes[19]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Expander) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Expander) ProtoMessage() {}
+
+func (x *Expander) ProtoReflect() protoreflect.Message {
+	mi := &file_drivelist_v1_drivelist_proto_msgTypes[19]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Expander.ProtoReflect.Descriptor instead.
+func (*Expander) Descriptor() ([]byte, []int) {
+	return file_drivelist_v1_drivelist_proto_rawDescGZIP(), []int{19}
+}
+
+func (x *Expander) GetExpander() string {
+	if x != nil {
+		return x.Expander
+	}
+	return ""
+}
+
+func (x *Expander) GetHostname() string {
+	if x != nil {
+		return x.Hostname
+	}
+	return ""
+}
+
+func (x *Expander) GetExpanderDev() string {
+	if x != nil {
+		return x.ExpanderDev
+	}
+	return ""
+}
+
+func (x *Expander) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *Expander) GetNote() string {
+	if x != nil {
+		return x.Note
+	}
+	return ""
+}
+
+func (x *Expander) GetDrives() int32 {
+	if x != nil {
+		return x.Drives
+	}
+	return 0
+}
+
+func (x *Expander) GetFirstSeen() *timestamppb.Timestamp {
+	if x != nil {
+		return x.FirstSeen
+	}
+	return nil
+}
+
+func (x *Expander) GetLastSeen() *timestamppb.Timestamp {
+	if x != nil {
+		return x.LastSeen
+	}
+	return nil
+}
+
+type ListExpandersRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListExpandersRequest) Reset() {
+	*x = ListExpandersRequest{}
+	mi := &file_drivelist_v1_drivelist_proto_msgTypes[20]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListExpandersRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListExpandersRequest) ProtoMessage() {}
+
+func (x *ListExpandersRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_drivelist_v1_drivelist_proto_msgTypes[20]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListExpandersRequest.ProtoReflect.Descriptor instead.
+func (*ListExpandersRequest) Descriptor() ([]byte, []int) {
+	return file_drivelist_v1_drivelist_proto_rawDescGZIP(), []int{20}
+}
+
+type ListExpandersResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Expanders     []*Expander            `protobuf:"bytes,1,rep,name=expanders,proto3" json:"expanders,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListExpandersResponse) Reset() {
+	*x = ListExpandersResponse{}
+	mi := &file_drivelist_v1_drivelist_proto_msgTypes[21]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListExpandersResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListExpandersResponse) ProtoMessage() {}
+
+func (x *ListExpandersResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_drivelist_v1_drivelist_proto_msgTypes[21]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListExpandersResponse.ProtoReflect.Descriptor instead.
+func (*ListExpandersResponse) Descriptor() ([]byte, []int) {
+	return file_drivelist_v1_drivelist_proto_rawDescGZIP(), []int{21}
+}
+
+func (x *ListExpandersResponse) GetExpanders() []*Expander {
+	if x != nil {
+		return x.Expanders
+	}
+	return nil
+}
+
+type NameExpanderRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Ref           string                 `protobuf:"bytes,1,opt,name=ref,proto3" json:"ref,omitempty"`   // the key, an unambiguous part of it, or the kernel name if only one host has it
+	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"` // "" clears the name
+	Note          string                 `protobuf:"bytes,3,opt,name=note,proto3" json:"note,omitempty"`
+	Actor         string                 `protobuf:"bytes,4,opt,name=actor,proto3" json:"actor,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *NameExpanderRequest) Reset() {
+	*x = NameExpanderRequest{}
+	mi := &file_drivelist_v1_drivelist_proto_msgTypes[22]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *NameExpanderRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*NameExpanderRequest) ProtoMessage() {}
+
+func (x *NameExpanderRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_drivelist_v1_drivelist_proto_msgTypes[22]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use NameExpanderRequest.ProtoReflect.Descriptor instead.
+func (*NameExpanderRequest) Descriptor() ([]byte, []int) {
+	return file_drivelist_v1_drivelist_proto_rawDescGZIP(), []int{22}
+}
+
+func (x *NameExpanderRequest) GetRef() string {
+	if x != nil {
+		return x.Ref
+	}
+	return ""
+}
+
+func (x *NameExpanderRequest) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *NameExpanderRequest) GetNote() string {
+	if x != nil {
+		return x.Note
+	}
+	return ""
+}
+
+func (x *NameExpanderRequest) GetActor() string {
+	if x != nil {
+		return x.Actor
+	}
+	return ""
+}
+
+type NameExpanderResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Expander      *Expander              `protobuf:"bytes,1,opt,name=expander,proto3" json:"expander,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *NameExpanderResponse) Reset() {
+	*x = NameExpanderResponse{}
+	mi := &file_drivelist_v1_drivelist_proto_msgTypes[23]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *NameExpanderResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*NameExpanderResponse) ProtoMessage() {}
+
+func (x *NameExpanderResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_drivelist_v1_drivelist_proto_msgTypes[23]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use NameExpanderResponse.ProtoReflect.Descriptor instead.
+func (*NameExpanderResponse) Descriptor() ([]byte, []int) {
+	return file_drivelist_v1_drivelist_proto_rawDescGZIP(), []int{23}
+}
+
+func (x *NameExpanderResponse) GetExpander() *Expander {
+	if x != nil {
+		return x.Expander
+	}
+	return nil
+}
+
 type Drive struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	DriveId       int64                  `protobuf:"varint,1,opt,name=drive_id,json=driveId,proto3" json:"drive_id,omitempty"`
@@ -1787,7 +2113,7 @@ type Drive struct {
 
 func (x *Drive) Reset() {
 	*x = Drive{}
-	mi := &file_drivelist_v1_drivelist_proto_msgTypes[19]
+	mi := &file_drivelist_v1_drivelist_proto_msgTypes[24]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1799,7 +2125,7 @@ func (x *Drive) String() string {
 func (*Drive) ProtoMessage() {}
 
 func (x *Drive) ProtoReflect() protoreflect.Message {
-	mi := &file_drivelist_v1_drivelist_proto_msgTypes[19]
+	mi := &file_drivelist_v1_drivelist_proto_msgTypes[24]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1812,7 +2138,7 @@ func (x *Drive) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Drive.ProtoReflect.Descriptor instead.
 func (*Drive) Descriptor() ([]byte, []int) {
-	return file_drivelist_v1_drivelist_proto_rawDescGZIP(), []int{19}
+	return file_drivelist_v1_drivelist_proto_rawDescGZIP(), []int{24}
 }
 
 func (x *Drive) GetDriveId() int64 {
@@ -1922,7 +2248,7 @@ type Event struct {
 
 func (x *Event) Reset() {
 	*x = Event{}
-	mi := &file_drivelist_v1_drivelist_proto_msgTypes[20]
+	mi := &file_drivelist_v1_drivelist_proto_msgTypes[25]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1934,7 +2260,7 @@ func (x *Event) String() string {
 func (*Event) ProtoMessage() {}
 
 func (x *Event) ProtoReflect() protoreflect.Message {
-	mi := &file_drivelist_v1_drivelist_proto_msgTypes[20]
+	mi := &file_drivelist_v1_drivelist_proto_msgTypes[25]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1947,7 +2273,7 @@ func (x *Event) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Event.ProtoReflect.Descriptor instead.
 func (*Event) Descriptor() ([]byte, []int) {
-	return file_drivelist_v1_drivelist_proto_rawDescGZIP(), []int{20}
+	return file_drivelist_v1_drivelist_proto_rawDescGZIP(), []int{25}
 }
 
 func (x *Event) GetEventId() int64 {
@@ -2014,7 +2340,7 @@ type ListHostsRequest struct {
 
 func (x *ListHostsRequest) Reset() {
 	*x = ListHostsRequest{}
-	mi := &file_drivelist_v1_drivelist_proto_msgTypes[21]
+	mi := &file_drivelist_v1_drivelist_proto_msgTypes[26]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2026,7 +2352,7 @@ func (x *ListHostsRequest) String() string {
 func (*ListHostsRequest) ProtoMessage() {}
 
 func (x *ListHostsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_drivelist_v1_drivelist_proto_msgTypes[21]
+	mi := &file_drivelist_v1_drivelist_proto_msgTypes[26]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2039,7 +2365,7 @@ func (x *ListHostsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListHostsRequest.ProtoReflect.Descriptor instead.
 func (*ListHostsRequest) Descriptor() ([]byte, []int) {
-	return file_drivelist_v1_drivelist_proto_rawDescGZIP(), []int{21}
+	return file_drivelist_v1_drivelist_proto_rawDescGZIP(), []int{26}
 }
 
 type ListHostsResponse struct {
@@ -2051,7 +2377,7 @@ type ListHostsResponse struct {
 
 func (x *ListHostsResponse) Reset() {
 	*x = ListHostsResponse{}
-	mi := &file_drivelist_v1_drivelist_proto_msgTypes[22]
+	mi := &file_drivelist_v1_drivelist_proto_msgTypes[27]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2063,7 +2389,7 @@ func (x *ListHostsResponse) String() string {
 func (*ListHostsResponse) ProtoMessage() {}
 
 func (x *ListHostsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_drivelist_v1_drivelist_proto_msgTypes[22]
+	mi := &file_drivelist_v1_drivelist_proto_msgTypes[27]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2076,7 +2402,7 @@ func (x *ListHostsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListHostsResponse.ProtoReflect.Descriptor instead.
 func (*ListHostsResponse) Descriptor() ([]byte, []int) {
-	return file_drivelist_v1_drivelist_proto_rawDescGZIP(), []int{22}
+	return file_drivelist_v1_drivelist_proto_rawDescGZIP(), []int{27}
 }
 
 func (x *ListHostsResponse) GetHosts() []*Host {
@@ -2099,7 +2425,7 @@ type ListDrivesRequest struct {
 
 func (x *ListDrivesRequest) Reset() {
 	*x = ListDrivesRequest{}
-	mi := &file_drivelist_v1_drivelist_proto_msgTypes[23]
+	mi := &file_drivelist_v1_drivelist_proto_msgTypes[28]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2111,7 +2437,7 @@ func (x *ListDrivesRequest) String() string {
 func (*ListDrivesRequest) ProtoMessage() {}
 
 func (x *ListDrivesRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_drivelist_v1_drivelist_proto_msgTypes[23]
+	mi := &file_drivelist_v1_drivelist_proto_msgTypes[28]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2124,7 +2450,7 @@ func (x *ListDrivesRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListDrivesRequest.ProtoReflect.Descriptor instead.
 func (*ListDrivesRequest) Descriptor() ([]byte, []int) {
-	return file_drivelist_v1_drivelist_proto_rawDescGZIP(), []int{23}
+	return file_drivelist_v1_drivelist_proto_rawDescGZIP(), []int{28}
 }
 
 func (x *ListDrivesRequest) GetHost() string {
@@ -2171,7 +2497,7 @@ type ListDrivesResponse struct {
 
 func (x *ListDrivesResponse) Reset() {
 	*x = ListDrivesResponse{}
-	mi := &file_drivelist_v1_drivelist_proto_msgTypes[24]
+	mi := &file_drivelist_v1_drivelist_proto_msgTypes[29]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2183,7 +2509,7 @@ func (x *ListDrivesResponse) String() string {
 func (*ListDrivesResponse) ProtoMessage() {}
 
 func (x *ListDrivesResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_drivelist_v1_drivelist_proto_msgTypes[24]
+	mi := &file_drivelist_v1_drivelist_proto_msgTypes[29]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2196,7 +2522,7 @@ func (x *ListDrivesResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListDrivesResponse.ProtoReflect.Descriptor instead.
 func (*ListDrivesResponse) Descriptor() ([]byte, []int) {
-	return file_drivelist_v1_drivelist_proto_rawDescGZIP(), []int{24}
+	return file_drivelist_v1_drivelist_proto_rawDescGZIP(), []int{29}
 }
 
 func (x *ListDrivesResponse) GetDrives() []*Drive {
@@ -2215,7 +2541,7 @@ type GetDriveRequest struct {
 
 func (x *GetDriveRequest) Reset() {
 	*x = GetDriveRequest{}
-	mi := &file_drivelist_v1_drivelist_proto_msgTypes[25]
+	mi := &file_drivelist_v1_drivelist_proto_msgTypes[30]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2227,7 +2553,7 @@ func (x *GetDriveRequest) String() string {
 func (*GetDriveRequest) ProtoMessage() {}
 
 func (x *GetDriveRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_drivelist_v1_drivelist_proto_msgTypes[25]
+	mi := &file_drivelist_v1_drivelist_proto_msgTypes[30]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2240,7 +2566,7 @@ func (x *GetDriveRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetDriveRequest.ProtoReflect.Descriptor instead.
 func (*GetDriveRequest) Descriptor() ([]byte, []int) {
-	return file_drivelist_v1_drivelist_proto_rawDescGZIP(), []int{25}
+	return file_drivelist_v1_drivelist_proto_rawDescGZIP(), []int{30}
 }
 
 func (x *GetDriveRequest) GetRef() string {
@@ -2261,7 +2587,7 @@ type GetDriveResponse struct {
 
 func (x *GetDriveResponse) Reset() {
 	*x = GetDriveResponse{}
-	mi := &file_drivelist_v1_drivelist_proto_msgTypes[26]
+	mi := &file_drivelist_v1_drivelist_proto_msgTypes[31]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2273,7 +2599,7 @@ func (x *GetDriveResponse) String() string {
 func (*GetDriveResponse) ProtoMessage() {}
 
 func (x *GetDriveResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_drivelist_v1_drivelist_proto_msgTypes[26]
+	mi := &file_drivelist_v1_drivelist_proto_msgTypes[31]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2286,7 +2612,7 @@ func (x *GetDriveResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetDriveResponse.ProtoReflect.Descriptor instead.
 func (*GetDriveResponse) Descriptor() ([]byte, []int) {
-	return file_drivelist_v1_drivelist_proto_rawDescGZIP(), []int{26}
+	return file_drivelist_v1_drivelist_proto_rawDescGZIP(), []int{31}
 }
 
 func (x *GetDriveResponse) GetDrive() *Drive {
@@ -2319,7 +2645,7 @@ type GetDriveHistoryRequest struct {
 
 func (x *GetDriveHistoryRequest) Reset() {
 	*x = GetDriveHistoryRequest{}
-	mi := &file_drivelist_v1_drivelist_proto_msgTypes[27]
+	mi := &file_drivelist_v1_drivelist_proto_msgTypes[32]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2331,7 +2657,7 @@ func (x *GetDriveHistoryRequest) String() string {
 func (*GetDriveHistoryRequest) ProtoMessage() {}
 
 func (x *GetDriveHistoryRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_drivelist_v1_drivelist_proto_msgTypes[27]
+	mi := &file_drivelist_v1_drivelist_proto_msgTypes[32]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2344,7 +2670,7 @@ func (x *GetDriveHistoryRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetDriveHistoryRequest.ProtoReflect.Descriptor instead.
 func (*GetDriveHistoryRequest) Descriptor() ([]byte, []int) {
-	return file_drivelist_v1_drivelist_proto_rawDescGZIP(), []int{27}
+	return file_drivelist_v1_drivelist_proto_rawDescGZIP(), []int{32}
 }
 
 func (x *GetDriveHistoryRequest) GetRef() string {
@@ -2365,7 +2691,7 @@ type GetDriveHistoryResponse struct {
 
 func (x *GetDriveHistoryResponse) Reset() {
 	*x = GetDriveHistoryResponse{}
-	mi := &file_drivelist_v1_drivelist_proto_msgTypes[28]
+	mi := &file_drivelist_v1_drivelist_proto_msgTypes[33]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2377,7 +2703,7 @@ func (x *GetDriveHistoryResponse) String() string {
 func (*GetDriveHistoryResponse) ProtoMessage() {}
 
 func (x *GetDriveHistoryResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_drivelist_v1_drivelist_proto_msgTypes[28]
+	mi := &file_drivelist_v1_drivelist_proto_msgTypes[33]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2390,7 +2716,7 @@ func (x *GetDriveHistoryResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetDriveHistoryResponse.ProtoReflect.Descriptor instead.
 func (*GetDriveHistoryResponse) Descriptor() ([]byte, []int) {
-	return file_drivelist_v1_drivelist_proto_rawDescGZIP(), []int{28}
+	return file_drivelist_v1_drivelist_proto_rawDescGZIP(), []int{33}
 }
 
 func (x *GetDriveHistoryResponse) GetDrive() *Drive {
@@ -2426,7 +2752,7 @@ type ListEventsRequest struct {
 
 func (x *ListEventsRequest) Reset() {
 	*x = ListEventsRequest{}
-	mi := &file_drivelist_v1_drivelist_proto_msgTypes[29]
+	mi := &file_drivelist_v1_drivelist_proto_msgTypes[34]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2438,7 +2764,7 @@ func (x *ListEventsRequest) String() string {
 func (*ListEventsRequest) ProtoMessage() {}
 
 func (x *ListEventsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_drivelist_v1_drivelist_proto_msgTypes[29]
+	mi := &file_drivelist_v1_drivelist_proto_msgTypes[34]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2451,7 +2777,7 @@ func (x *ListEventsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListEventsRequest.ProtoReflect.Descriptor instead.
 func (*ListEventsRequest) Descriptor() ([]byte, []int) {
-	return file_drivelist_v1_drivelist_proto_rawDescGZIP(), []int{29}
+	return file_drivelist_v1_drivelist_proto_rawDescGZIP(), []int{34}
 }
 
 func (x *ListEventsRequest) GetSince() *timestamppb.Timestamp {
@@ -2491,7 +2817,7 @@ type ListEventsResponse struct {
 
 func (x *ListEventsResponse) Reset() {
 	*x = ListEventsResponse{}
-	mi := &file_drivelist_v1_drivelist_proto_msgTypes[30]
+	mi := &file_drivelist_v1_drivelist_proto_msgTypes[35]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2503,7 +2829,7 @@ func (x *ListEventsResponse) String() string {
 func (*ListEventsResponse) ProtoMessage() {}
 
 func (x *ListEventsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_drivelist_v1_drivelist_proto_msgTypes[30]
+	mi := &file_drivelist_v1_drivelist_proto_msgTypes[35]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2516,7 +2842,7 @@ func (x *ListEventsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListEventsResponse.ProtoReflect.Descriptor instead.
 func (*ListEventsResponse) Descriptor() ([]byte, []int) {
-	return file_drivelist_v1_drivelist_proto_rawDescGZIP(), []int{30}
+	return file_drivelist_v1_drivelist_proto_rawDescGZIP(), []int{35}
 }
 
 func (x *ListEventsResponse) GetEvents() []*Event {
@@ -2534,7 +2860,7 @@ type ListMissingRequest struct {
 
 func (x *ListMissingRequest) Reset() {
 	*x = ListMissingRequest{}
-	mi := &file_drivelist_v1_drivelist_proto_msgTypes[31]
+	mi := &file_drivelist_v1_drivelist_proto_msgTypes[36]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2546,7 +2872,7 @@ func (x *ListMissingRequest) String() string {
 func (*ListMissingRequest) ProtoMessage() {}
 
 func (x *ListMissingRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_drivelist_v1_drivelist_proto_msgTypes[31]
+	mi := &file_drivelist_v1_drivelist_proto_msgTypes[36]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2559,7 +2885,7 @@ func (x *ListMissingRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListMissingRequest.ProtoReflect.Descriptor instead.
 func (*ListMissingRequest) Descriptor() ([]byte, []int) {
-	return file_drivelist_v1_drivelist_proto_rawDescGZIP(), []int{31}
+	return file_drivelist_v1_drivelist_proto_rawDescGZIP(), []int{36}
 }
 
 // Ghost is a pool member a host still expects that matches no present
@@ -2581,7 +2907,7 @@ type Ghost struct {
 
 func (x *Ghost) Reset() {
 	*x = Ghost{}
-	mi := &file_drivelist_v1_drivelist_proto_msgTypes[32]
+	mi := &file_drivelist_v1_drivelist_proto_msgTypes[37]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2593,7 +2919,7 @@ func (x *Ghost) String() string {
 func (*Ghost) ProtoMessage() {}
 
 func (x *Ghost) ProtoReflect() protoreflect.Message {
-	mi := &file_drivelist_v1_drivelist_proto_msgTypes[32]
+	mi := &file_drivelist_v1_drivelist_proto_msgTypes[37]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2606,7 +2932,7 @@ func (x *Ghost) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Ghost.ProtoReflect.Descriptor instead.
 func (*Ghost) Descriptor() ([]byte, []int) {
-	return file_drivelist_v1_drivelist_proto_rawDescGZIP(), []int{32}
+	return file_drivelist_v1_drivelist_proto_rawDescGZIP(), []int{37}
 }
 
 func (x *Ghost) GetHostname() string {
@@ -2682,7 +3008,7 @@ type ListMissingResponse struct {
 
 func (x *ListMissingResponse) Reset() {
 	*x = ListMissingResponse{}
-	mi := &file_drivelist_v1_drivelist_proto_msgTypes[33]
+	mi := &file_drivelist_v1_drivelist_proto_msgTypes[38]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2694,7 +3020,7 @@ func (x *ListMissingResponse) String() string {
 func (*ListMissingResponse) ProtoMessage() {}
 
 func (x *ListMissingResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_drivelist_v1_drivelist_proto_msgTypes[33]
+	mi := &file_drivelist_v1_drivelist_proto_msgTypes[38]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2707,7 +3033,7 @@ func (x *ListMissingResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListMissingResponse.ProtoReflect.Descriptor instead.
 func (*ListMissingResponse) Descriptor() ([]byte, []int) {
-	return file_drivelist_v1_drivelist_proto_rawDescGZIP(), []int{33}
+	return file_drivelist_v1_drivelist_proto_rawDescGZIP(), []int{38}
 }
 
 func (x *ListMissingResponse) GetDrives() []*Drive {
@@ -2736,7 +3062,7 @@ type AnnotateRequest struct {
 
 func (x *AnnotateRequest) Reset() {
 	*x = AnnotateRequest{}
-	mi := &file_drivelist_v1_drivelist_proto_msgTypes[34]
+	mi := &file_drivelist_v1_drivelist_proto_msgTypes[39]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2748,7 +3074,7 @@ func (x *AnnotateRequest) String() string {
 func (*AnnotateRequest) ProtoMessage() {}
 
 func (x *AnnotateRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_drivelist_v1_drivelist_proto_msgTypes[34]
+	mi := &file_drivelist_v1_drivelist_proto_msgTypes[39]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2761,7 +3087,7 @@ func (x *AnnotateRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AnnotateRequest.ProtoReflect.Descriptor instead.
 func (*AnnotateRequest) Descriptor() ([]byte, []int) {
-	return file_drivelist_v1_drivelist_proto_rawDescGZIP(), []int{34}
+	return file_drivelist_v1_drivelist_proto_rawDescGZIP(), []int{39}
 }
 
 func (x *AnnotateRequest) GetRef() string {
@@ -2801,7 +3127,7 @@ type AnnotateResponse struct {
 
 func (x *AnnotateResponse) Reset() {
 	*x = AnnotateResponse{}
-	mi := &file_drivelist_v1_drivelist_proto_msgTypes[35]
+	mi := &file_drivelist_v1_drivelist_proto_msgTypes[40]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2813,7 +3139,7 @@ func (x *AnnotateResponse) String() string {
 func (*AnnotateResponse) ProtoMessage() {}
 
 func (x *AnnotateResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_drivelist_v1_drivelist_proto_msgTypes[35]
+	mi := &file_drivelist_v1_drivelist_proto_msgTypes[40]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2826,7 +3152,7 @@ func (x *AnnotateResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AnnotateResponse.ProtoReflect.Descriptor instead.
 func (*AnnotateResponse) Descriptor() ([]byte, []int) {
-	return file_drivelist_v1_drivelist_proto_rawDescGZIP(), []int{35}
+	return file_drivelist_v1_drivelist_proto_rawDescGZIP(), []int{40}
 }
 
 func (x *AnnotateResponse) GetEvent() *Event {
@@ -2846,7 +3172,7 @@ type GetKernelRequest struct {
 
 func (x *GetKernelRequest) Reset() {
 	*x = GetKernelRequest{}
-	mi := &file_drivelist_v1_drivelist_proto_msgTypes[36]
+	mi := &file_drivelist_v1_drivelist_proto_msgTypes[41]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2858,7 +3184,7 @@ func (x *GetKernelRequest) String() string {
 func (*GetKernelRequest) ProtoMessage() {}
 
 func (x *GetKernelRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_drivelist_v1_drivelist_proto_msgTypes[36]
+	mi := &file_drivelist_v1_drivelist_proto_msgTypes[41]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2871,7 +3197,7 @@ func (x *GetKernelRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetKernelRequest.ProtoReflect.Descriptor instead.
 func (*GetKernelRequest) Descriptor() ([]byte, []int) {
-	return file_drivelist_v1_drivelist_proto_rawDescGZIP(), []int{36}
+	return file_drivelist_v1_drivelist_proto_rawDescGZIP(), []int{41}
 }
 
 func (x *GetKernelRequest) GetRef() string {
@@ -2898,7 +3224,7 @@ type GetKernelResponse struct {
 
 func (x *GetKernelResponse) Reset() {
 	*x = GetKernelResponse{}
-	mi := &file_drivelist_v1_drivelist_proto_msgTypes[37]
+	mi := &file_drivelist_v1_drivelist_proto_msgTypes[42]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2910,7 +3236,7 @@ func (x *GetKernelResponse) String() string {
 func (*GetKernelResponse) ProtoMessage() {}
 
 func (x *GetKernelResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_drivelist_v1_drivelist_proto_msgTypes[37]
+	mi := &file_drivelist_v1_drivelist_proto_msgTypes[42]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2923,7 +3249,7 @@ func (x *GetKernelResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetKernelResponse.ProtoReflect.Descriptor instead.
 func (*GetKernelResponse) Descriptor() ([]byte, []int) {
-	return file_drivelist_v1_drivelist_proto_rawDescGZIP(), []int{37}
+	return file_drivelist_v1_drivelist_proto_rawDescGZIP(), []int{42}
 }
 
 func (x *GetKernelResponse) GetDrive() *Drive {
@@ -2951,7 +3277,7 @@ type GetSmartRequest struct {
 
 func (x *GetSmartRequest) Reset() {
 	*x = GetSmartRequest{}
-	mi := &file_drivelist_v1_drivelist_proto_msgTypes[38]
+	mi := &file_drivelist_v1_drivelist_proto_msgTypes[43]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2963,7 +3289,7 @@ func (x *GetSmartRequest) String() string {
 func (*GetSmartRequest) ProtoMessage() {}
 
 func (x *GetSmartRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_drivelist_v1_drivelist_proto_msgTypes[38]
+	mi := &file_drivelist_v1_drivelist_proto_msgTypes[43]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2976,7 +3302,7 @@ func (x *GetSmartRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetSmartRequest.ProtoReflect.Descriptor instead.
 func (*GetSmartRequest) Descriptor() ([]byte, []int) {
-	return file_drivelist_v1_drivelist_proto_rawDescGZIP(), []int{38}
+	return file_drivelist_v1_drivelist_proto_rawDescGZIP(), []int{43}
 }
 
 func (x *GetSmartRequest) GetRef() string {
@@ -3012,7 +3338,7 @@ type GetSmartResponse struct {
 
 func (x *GetSmartResponse) Reset() {
 	*x = GetSmartResponse{}
-	mi := &file_drivelist_v1_drivelist_proto_msgTypes[39]
+	mi := &file_drivelist_v1_drivelist_proto_msgTypes[44]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3024,7 +3350,7 @@ func (x *GetSmartResponse) String() string {
 func (*GetSmartResponse) ProtoMessage() {}
 
 func (x *GetSmartResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_drivelist_v1_drivelist_proto_msgTypes[39]
+	mi := &file_drivelist_v1_drivelist_proto_msgTypes[44]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3037,7 +3363,7 @@ func (x *GetSmartResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetSmartResponse.ProtoReflect.Descriptor instead.
 func (*GetSmartResponse) Descriptor() ([]byte, []int) {
-	return file_drivelist_v1_drivelist_proto_rawDescGZIP(), []int{39}
+	return file_drivelist_v1_drivelist_proto_rawDescGZIP(), []int{44}
 }
 
 func (x *GetSmartResponse) GetDrive() *Drive {
@@ -3078,7 +3404,7 @@ type GetIORequest struct {
 
 func (x *GetIORequest) Reset() {
 	*x = GetIORequest{}
-	mi := &file_drivelist_v1_drivelist_proto_msgTypes[40]
+	mi := &file_drivelist_v1_drivelist_proto_msgTypes[45]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3090,7 +3416,7 @@ func (x *GetIORequest) String() string {
 func (*GetIORequest) ProtoMessage() {}
 
 func (x *GetIORequest) ProtoReflect() protoreflect.Message {
-	mi := &file_drivelist_v1_drivelist_proto_msgTypes[40]
+	mi := &file_drivelist_v1_drivelist_proto_msgTypes[45]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3103,7 +3429,7 @@ func (x *GetIORequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetIORequest.ProtoReflect.Descriptor instead.
 func (*GetIORequest) Descriptor() ([]byte, []int) {
-	return file_drivelist_v1_drivelist_proto_rawDescGZIP(), []int{40}
+	return file_drivelist_v1_drivelist_proto_rawDescGZIP(), []int{45}
 }
 
 func (x *GetIORequest) GetRef() string {
@@ -3130,7 +3456,7 @@ type GetIOResponse struct {
 
 func (x *GetIOResponse) Reset() {
 	*x = GetIOResponse{}
-	mi := &file_drivelist_v1_drivelist_proto_msgTypes[41]
+	mi := &file_drivelist_v1_drivelist_proto_msgTypes[46]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3142,7 +3468,7 @@ func (x *GetIOResponse) String() string {
 func (*GetIOResponse) ProtoMessage() {}
 
 func (x *GetIOResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_drivelist_v1_drivelist_proto_msgTypes[41]
+	mi := &file_drivelist_v1_drivelist_proto_msgTypes[46]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3155,7 +3481,7 @@ func (x *GetIOResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetIOResponse.ProtoReflect.Descriptor instead.
 func (*GetIOResponse) Descriptor() ([]byte, []int) {
-	return file_drivelist_v1_drivelist_proto_rawDescGZIP(), []int{41}
+	return file_drivelist_v1_drivelist_proto_rawDescGZIP(), []int{46}
 }
 
 func (x *GetIOResponse) GetDrive() *Drive {
@@ -3182,7 +3508,7 @@ type CompareIORequest struct {
 
 func (x *CompareIORequest) Reset() {
 	*x = CompareIORequest{}
-	mi := &file_drivelist_v1_drivelist_proto_msgTypes[42]
+	mi := &file_drivelist_v1_drivelist_proto_msgTypes[47]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3194,7 +3520,7 @@ func (x *CompareIORequest) String() string {
 func (*CompareIORequest) ProtoMessage() {}
 
 func (x *CompareIORequest) ProtoReflect() protoreflect.Message {
-	mi := &file_drivelist_v1_drivelist_proto_msgTypes[42]
+	mi := &file_drivelist_v1_drivelist_proto_msgTypes[47]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3207,7 +3533,7 @@ func (x *CompareIORequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CompareIORequest.ProtoReflect.Descriptor instead.
 func (*CompareIORequest) Descriptor() ([]byte, []int) {
-	return file_drivelist_v1_drivelist_proto_rawDescGZIP(), []int{42}
+	return file_drivelist_v1_drivelist_proto_rawDescGZIP(), []int{47}
 }
 
 func (x *CompareIORequest) GetHost() string {
@@ -3250,7 +3576,7 @@ type IOComparison struct {
 
 func (x *IOComparison) Reset() {
 	*x = IOComparison{}
-	mi := &file_drivelist_v1_drivelist_proto_msgTypes[43]
+	mi := &file_drivelist_v1_drivelist_proto_msgTypes[48]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3262,7 +3588,7 @@ func (x *IOComparison) String() string {
 func (*IOComparison) ProtoMessage() {}
 
 func (x *IOComparison) ProtoReflect() protoreflect.Message {
-	mi := &file_drivelist_v1_drivelist_proto_msgTypes[43]
+	mi := &file_drivelist_v1_drivelist_proto_msgTypes[48]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3275,7 +3601,7 @@ func (x *IOComparison) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use IOComparison.ProtoReflect.Descriptor instead.
 func (*IOComparison) Descriptor() ([]byte, []int) {
-	return file_drivelist_v1_drivelist_proto_rawDescGZIP(), []int{43}
+	return file_drivelist_v1_drivelist_proto_rawDescGZIP(), []int{48}
 }
 
 func (x *IOComparison) GetGroup() string {
@@ -3392,7 +3718,7 @@ type CompareIOResponse struct {
 
 func (x *CompareIOResponse) Reset() {
 	*x = CompareIOResponse{}
-	mi := &file_drivelist_v1_drivelist_proto_msgTypes[44]
+	mi := &file_drivelist_v1_drivelist_proto_msgTypes[49]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3404,7 +3730,7 @@ func (x *CompareIOResponse) String() string {
 func (*CompareIOResponse) ProtoMessage() {}
 
 func (x *CompareIOResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_drivelist_v1_drivelist_proto_msgTypes[44]
+	mi := &file_drivelist_v1_drivelist_proto_msgTypes[49]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3417,7 +3743,7 @@ func (x *CompareIOResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CompareIOResponse.ProtoReflect.Descriptor instead.
 func (*CompareIOResponse) Descriptor() ([]byte, []int) {
-	return file_drivelist_v1_drivelist_proto_rawDescGZIP(), []int{44}
+	return file_drivelist_v1_drivelist_proto_rawDescGZIP(), []int{49}
 }
 
 func (x *CompareIOResponse) GetRows() []*IOComparison {
@@ -3438,7 +3764,7 @@ type MergeDrivesRequest struct {
 
 func (x *MergeDrivesRequest) Reset() {
 	*x = MergeDrivesRequest{}
-	mi := &file_drivelist_v1_drivelist_proto_msgTypes[45]
+	mi := &file_drivelist_v1_drivelist_proto_msgTypes[50]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3450,7 +3776,7 @@ func (x *MergeDrivesRequest) String() string {
 func (*MergeDrivesRequest) ProtoMessage() {}
 
 func (x *MergeDrivesRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_drivelist_v1_drivelist_proto_msgTypes[45]
+	mi := &file_drivelist_v1_drivelist_proto_msgTypes[50]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3463,7 +3789,7 @@ func (x *MergeDrivesRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MergeDrivesRequest.ProtoReflect.Descriptor instead.
 func (*MergeDrivesRequest) Descriptor() ([]byte, []int) {
-	return file_drivelist_v1_drivelist_proto_rawDescGZIP(), []int{45}
+	return file_drivelist_v1_drivelist_proto_rawDescGZIP(), []int{50}
 }
 
 func (x *MergeDrivesRequest) GetInto() string {
@@ -3496,7 +3822,7 @@ type MergeDrivesResponse struct {
 
 func (x *MergeDrivesResponse) Reset() {
 	*x = MergeDrivesResponse{}
-	mi := &file_drivelist_v1_drivelist_proto_msgTypes[46]
+	mi := &file_drivelist_v1_drivelist_proto_msgTypes[51]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3508,7 +3834,7 @@ func (x *MergeDrivesResponse) String() string {
 func (*MergeDrivesResponse) ProtoMessage() {}
 
 func (x *MergeDrivesResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_drivelist_v1_drivelist_proto_msgTypes[46]
+	mi := &file_drivelist_v1_drivelist_proto_msgTypes[51]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3521,7 +3847,7 @@ func (x *MergeDrivesResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MergeDrivesResponse.ProtoReflect.Descriptor instead.
 func (*MergeDrivesResponse) Descriptor() ([]byte, []int) {
-	return file_drivelist_v1_drivelist_proto_rawDescGZIP(), []int{46}
+	return file_drivelist_v1_drivelist_proto_rawDescGZIP(), []int{51}
 }
 
 func (x *MergeDrivesResponse) GetEvent() *Event {
@@ -3542,7 +3868,7 @@ type MergeHostsRequest struct {
 
 func (x *MergeHostsRequest) Reset() {
 	*x = MergeHostsRequest{}
-	mi := &file_drivelist_v1_drivelist_proto_msgTypes[47]
+	mi := &file_drivelist_v1_drivelist_proto_msgTypes[52]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3554,7 +3880,7 @@ func (x *MergeHostsRequest) String() string {
 func (*MergeHostsRequest) ProtoMessage() {}
 
 func (x *MergeHostsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_drivelist_v1_drivelist_proto_msgTypes[47]
+	mi := &file_drivelist_v1_drivelist_proto_msgTypes[52]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3567,7 +3893,7 @@ func (x *MergeHostsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MergeHostsRequest.ProtoReflect.Descriptor instead.
 func (*MergeHostsRequest) Descriptor() ([]byte, []int) {
-	return file_drivelist_v1_drivelist_proto_rawDescGZIP(), []int{47}
+	return file_drivelist_v1_drivelist_proto_rawDescGZIP(), []int{52}
 }
 
 func (x *MergeHostsRequest) GetInto() string {
@@ -3600,7 +3926,7 @@ type MergeHostsResponse struct {
 
 func (x *MergeHostsResponse) Reset() {
 	*x = MergeHostsResponse{}
-	mi := &file_drivelist_v1_drivelist_proto_msgTypes[48]
+	mi := &file_drivelist_v1_drivelist_proto_msgTypes[53]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3612,7 +3938,7 @@ func (x *MergeHostsResponse) String() string {
 func (*MergeHostsResponse) ProtoMessage() {}
 
 func (x *MergeHostsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_drivelist_v1_drivelist_proto_msgTypes[48]
+	mi := &file_drivelist_v1_drivelist_proto_msgTypes[53]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3625,7 +3951,7 @@ func (x *MergeHostsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MergeHostsResponse.ProtoReflect.Descriptor instead.
 func (*MergeHostsResponse) Descriptor() ([]byte, []int) {
-	return file_drivelist_v1_drivelist_proto_rawDescGZIP(), []int{48}
+	return file_drivelist_v1_drivelist_proto_rawDescGZIP(), []int{53}
 }
 
 func (x *MergeHostsResponse) GetEvent() *Event {
@@ -3643,7 +3969,7 @@ type RebuildRequest struct {
 
 func (x *RebuildRequest) Reset() {
 	*x = RebuildRequest{}
-	mi := &file_drivelist_v1_drivelist_proto_msgTypes[49]
+	mi := &file_drivelist_v1_drivelist_proto_msgTypes[54]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3655,7 +3981,7 @@ func (x *RebuildRequest) String() string {
 func (*RebuildRequest) ProtoMessage() {}
 
 func (x *RebuildRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_drivelist_v1_drivelist_proto_msgTypes[49]
+	mi := &file_drivelist_v1_drivelist_proto_msgTypes[54]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3668,7 +3994,7 @@ func (x *RebuildRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RebuildRequest.ProtoReflect.Descriptor instead.
 func (*RebuildRequest) Descriptor() ([]byte, []int) {
-	return file_drivelist_v1_drivelist_proto_rawDescGZIP(), []int{49}
+	return file_drivelist_v1_drivelist_proto_rawDescGZIP(), []int{54}
 }
 
 type RebuildResponse struct {
@@ -3682,7 +4008,7 @@ type RebuildResponse struct {
 
 func (x *RebuildResponse) Reset() {
 	*x = RebuildResponse{}
-	mi := &file_drivelist_v1_drivelist_proto_msgTypes[50]
+	mi := &file_drivelist_v1_drivelist_proto_msgTypes[55]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3694,7 +4020,7 @@ func (x *RebuildResponse) String() string {
 func (*RebuildResponse) ProtoMessage() {}
 
 func (x *RebuildResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_drivelist_v1_drivelist_proto_msgTypes[50]
+	mi := &file_drivelist_v1_drivelist_proto_msgTypes[55]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3707,7 +4033,7 @@ func (x *RebuildResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RebuildResponse.ProtoReflect.Descriptor instead.
 func (*RebuildResponse) Descriptor() ([]byte, []int) {
-	return file_drivelist_v1_drivelist_proto_rawDescGZIP(), []int{50}
+	return file_drivelist_v1_drivelist_proto_rawDescGZIP(), []int{55}
 }
 
 func (x *RebuildResponse) GetSnapshots() int32 {
@@ -3746,7 +4072,7 @@ const file_drivelist_v1_drivelist_proto_rawDesc = "" +
 	"\x03wwn\x18\x01 \x01(\tR\x03wwn\x12\x16\n" +
 	"\x06vendor\x18\x02 \x01(\tR\x06vendor\x12\x14\n" +
 	"\x05model\x18\x03 \x01(\tR\x05model\x12\x16\n" +
-	"\x06serial\x18\x04 \x01(\tR\x06serial\"\xfc\x02\n" +
+	"\x06serial\x18\x04 \x01(\tR\x06serial\"\x9d\x03\n" +
 	"\x06Device\x12\x19\n" +
 	"\bdev_name\x18\x01 \x01(\tR\adevName\x127\n" +
 	"\bidentity\x18\x02 \x01(\v2\x1b.drivelist.v1.DriveIdentityR\bidentity\x12#\n" +
@@ -3761,11 +4087,15 @@ const file_drivelist_v1_drivelist_proto_rawDesc = "" +
 	"\x05error\x18\n" +
 	" \x01(\tR\x05error\x12!\n" +
 	"\fmember_state\x18\v \x01(\tR\vmemberState\x12\x1b\n" +
-	"\tscsi_addr\x18\f \x01(\tR\bscsiAddr\"_\n" +
+	"\tscsi_addr\x18\f \x01(\tR\bscsiAddr\x12\x1f\n" +
+	"\vexpander_id\x18\r \x01(\tR\n" +
+	"expanderId\"\x80\x01\n" +
 	"\bEmptyBay\x12\x1a\n" +
 	"\bexpander\x18\x01 \x01(\tR\bexpander\x12\x10\n" +
 	"\x03bay\x18\x02 \x01(\tR\x03bay\x12%\n" +
-	"\x0eenclosure_path\x18\x03 \x01(\tR\renclosurePath\"b\n" +
+	"\x0eenclosure_path\x18\x03 \x01(\tR\renclosurePath\x12\x1f\n" +
+	"\vexpander_id\x18\x04 \x01(\tR\n" +
+	"expanderId\"b\n" +
 	"\x0eUnmappedMember\x12\x12\n" +
 	"\x04pool\x18\x01 \x01(\tR\x04pool\x12\x12\n" +
 	"\x04path\x18\x02 \x01(\tR\x04path\x12\x12\n" +
@@ -3903,7 +4233,7 @@ const file_drivelist_v1_drivelist_proto_rawDesc = "" +
 	"\rmissing_count\x18\t \x01(\x05R\fmissingCount\x12\x1f\n" +
 	"\vghost_count\x18\n" +
 	" \x01(\x05R\n" +
-	"ghostCount\"\xce\x02\n" +
+	"ghostCount\"\x96\x03\n" +
 	"\tPlacement\x12\x1a\n" +
 	"\bhostname\x18\x01 \x01(\tR\bhostname\x12\x1a\n" +
 	"\bexpander\x18\x02 \x01(\tR\bexpander\x12\x10\n" +
@@ -3915,7 +4245,30 @@ const file_drivelist_v1_drivelist_proto_rawDesc = "" +
 	"\tlast_seen\x18\a \x01(\v2\x1a.google.protobuf.TimestampR\blastSeen\x125\n" +
 	"\bended_at\x18\b \x01(\v2\x1a.google.protobuf.TimestampR\aendedAt\x12\x1d\n" +
 	"\n" +
-	"end_reason\x18\t \x01(\tR\tendReason\"\xcd\x03\n" +
+	"end_reason\x18\t \x01(\tR\tendReason\x12!\n" +
+	"\fexpander_dev\x18\n" +
+	" \x01(\tR\vexpanderDev\x12#\n" +
+	"\rexpander_name\x18\v \x01(\tR\fexpanderName\"\x99\x02\n" +
+	"\bExpander\x12\x1a\n" +
+	"\bexpander\x18\x01 \x01(\tR\bexpander\x12\x1a\n" +
+	"\bhostname\x18\x02 \x01(\tR\bhostname\x12!\n" +
+	"\fexpander_dev\x18\x03 \x01(\tR\vexpanderDev\x12\x12\n" +
+	"\x04name\x18\x04 \x01(\tR\x04name\x12\x12\n" +
+	"\x04note\x18\x05 \x01(\tR\x04note\x12\x16\n" +
+	"\x06drives\x18\x06 \x01(\x05R\x06drives\x129\n" +
+	"\n" +
+	"first_seen\x18\a \x01(\v2\x1a.google.protobuf.TimestampR\tfirstSeen\x127\n" +
+	"\tlast_seen\x18\b \x01(\v2\x1a.google.protobuf.TimestampR\blastSeen\"\x16\n" +
+	"\x14ListExpandersRequest\"M\n" +
+	"\x15ListExpandersResponse\x124\n" +
+	"\texpanders\x18\x01 \x03(\v2\x16.drivelist.v1.ExpanderR\texpanders\"e\n" +
+	"\x13NameExpanderRequest\x12\x10\n" +
+	"\x03ref\x18\x01 \x01(\tR\x03ref\x12\x12\n" +
+	"\x04name\x18\x02 \x01(\tR\x04name\x12\x12\n" +
+	"\x04note\x18\x03 \x01(\tR\x04note\x12\x14\n" +
+	"\x05actor\x18\x04 \x01(\tR\x05actor\"J\n" +
+	"\x14NameExpanderResponse\x122\n" +
+	"\bexpander\x18\x01 \x01(\v2\x16.drivelist.v1.ExpanderR\bexpander\"\xcd\x03\n" +
 	"\x05Drive\x12\x19\n" +
 	"\bdrive_id\x18\x01 \x01(\x03R\adriveId\x12\x10\n" +
 	"\x03wwn\x18\x02 \x01(\tR\x03wwn\x12\x16\n" +
@@ -4077,7 +4430,8 @@ const file_drivelist_v1_drivelist_proto_rawDesc = "" +
 	"\x0fReportInventory\x12$.drivelist.v1.ReportInventoryRequest\x1a%.drivelist.v1.ReportInventoryResponse\x12J\n" +
 	"\fReportKernel\x12!.drivelist.v1.ReportKernelRequest\x1a\x17.drivelist.v1.ReportAck\x12H\n" +
 	"\vReportSmart\x12 .drivelist.v1.ReportSmartRequest\x1a\x17.drivelist.v1.ReportAck\x12B\n" +
-	"\bReportIO\x12\x1d.drivelist.v1.ReportIORequest\x1a\x17.drivelist.v1.ReportAck2\xd7\b\n" +
+	"\bReportIO\x12\x1d.drivelist.v1.ReportIORequest\x1a\x17.drivelist.v1.ReportAck2\x88\n" +
+	"\n" +
 	"\x05Query\x12L\n" +
 	"\tListHosts\x12\x1e.drivelist.v1.ListHostsRequest\x1a\x1f.drivelist.v1.ListHostsResponse\x12O\n" +
 	"\n" +
@@ -4095,7 +4449,9 @@ const file_drivelist_v1_drivelist_proto_rawDesc = "" +
 	"\vMergeDrives\x12 .drivelist.v1.MergeDrivesRequest\x1a!.drivelist.v1.MergeDrivesResponse\x12O\n" +
 	"\n" +
 	"MergeHosts\x12\x1f.drivelist.v1.MergeHostsRequest\x1a .drivelist.v1.MergeHostsResponse\x12F\n" +
-	"\aRebuild\x12\x1c.drivelist.v1.RebuildRequest\x1a\x1d.drivelist.v1.RebuildResponseBEZCgithub.com/scottlaird/drivelist/internal/pb/drivelistv1;drivelistv1b\x06proto3"
+	"\aRebuild\x12\x1c.drivelist.v1.RebuildRequest\x1a\x1d.drivelist.v1.RebuildResponse\x12X\n" +
+	"\rListExpanders\x12\".drivelist.v1.ListExpandersRequest\x1a#.drivelist.v1.ListExpandersResponse\x12U\n" +
+	"\fNameExpander\x12!.drivelist.v1.NameExpanderRequest\x1a\".drivelist.v1.NameExpanderResponseBEZCgithub.com/scottlaird/drivelist/internal/pb/drivelistv1;drivelistv1b\x06proto3"
 
 var (
 	file_drivelist_v1_drivelist_proto_rawDescOnce sync.Once
@@ -4110,7 +4466,7 @@ func file_drivelist_v1_drivelist_proto_rawDescGZIP() []byte {
 }
 
 var file_drivelist_v1_drivelist_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
-var file_drivelist_v1_drivelist_proto_msgTypes = make([]protoimpl.MessageInfo, 51)
+var file_drivelist_v1_drivelist_proto_msgTypes = make([]protoimpl.MessageInfo, 56)
 var file_drivelist_v1_drivelist_proto_goTypes = []any{
 	(Bus)(0),                        // 0: drivelist.v1.Bus
 	(*HostIdentity)(nil),            // 1: drivelist.v1.HostIdentity
@@ -4132,149 +4488,162 @@ var file_drivelist_v1_drivelist_proto_goTypes = []any{
 	(*ReportAck)(nil),               // 17: drivelist.v1.ReportAck
 	(*Host)(nil),                    // 18: drivelist.v1.Host
 	(*Placement)(nil),               // 19: drivelist.v1.Placement
-	(*Drive)(nil),                   // 20: drivelist.v1.Drive
-	(*Event)(nil),                   // 21: drivelist.v1.Event
-	(*ListHostsRequest)(nil),        // 22: drivelist.v1.ListHostsRequest
-	(*ListHostsResponse)(nil),       // 23: drivelist.v1.ListHostsResponse
-	(*ListDrivesRequest)(nil),       // 24: drivelist.v1.ListDrivesRequest
-	(*ListDrivesResponse)(nil),      // 25: drivelist.v1.ListDrivesResponse
-	(*GetDriveRequest)(nil),         // 26: drivelist.v1.GetDriveRequest
-	(*GetDriveResponse)(nil),        // 27: drivelist.v1.GetDriveResponse
-	(*GetDriveHistoryRequest)(nil),  // 28: drivelist.v1.GetDriveHistoryRequest
-	(*GetDriveHistoryResponse)(nil), // 29: drivelist.v1.GetDriveHistoryResponse
-	(*ListEventsRequest)(nil),       // 30: drivelist.v1.ListEventsRequest
-	(*ListEventsResponse)(nil),      // 31: drivelist.v1.ListEventsResponse
-	(*ListMissingRequest)(nil),      // 32: drivelist.v1.ListMissingRequest
-	(*Ghost)(nil),                   // 33: drivelist.v1.Ghost
-	(*ListMissingResponse)(nil),     // 34: drivelist.v1.ListMissingResponse
-	(*AnnotateRequest)(nil),         // 35: drivelist.v1.AnnotateRequest
-	(*AnnotateResponse)(nil),        // 36: drivelist.v1.AnnotateResponse
-	(*GetKernelRequest)(nil),        // 37: drivelist.v1.GetKernelRequest
-	(*GetKernelResponse)(nil),       // 38: drivelist.v1.GetKernelResponse
-	(*GetSmartRequest)(nil),         // 39: drivelist.v1.GetSmartRequest
-	(*GetSmartResponse)(nil),        // 40: drivelist.v1.GetSmartResponse
-	(*GetIORequest)(nil),            // 41: drivelist.v1.GetIORequest
-	(*GetIOResponse)(nil),           // 42: drivelist.v1.GetIOResponse
-	(*CompareIORequest)(nil),        // 43: drivelist.v1.CompareIORequest
-	(*IOComparison)(nil),            // 44: drivelist.v1.IOComparison
-	(*CompareIOResponse)(nil),       // 45: drivelist.v1.CompareIOResponse
-	(*MergeDrivesRequest)(nil),      // 46: drivelist.v1.MergeDrivesRequest
-	(*MergeDrivesResponse)(nil),     // 47: drivelist.v1.MergeDrivesResponse
-	(*MergeHostsRequest)(nil),       // 48: drivelist.v1.MergeHostsRequest
-	(*MergeHostsResponse)(nil),      // 49: drivelist.v1.MergeHostsResponse
-	(*RebuildRequest)(nil),          // 50: drivelist.v1.RebuildRequest
-	(*RebuildResponse)(nil),         // 51: drivelist.v1.RebuildResponse
-	(*timestamppb.Timestamp)(nil),   // 52: google.protobuf.Timestamp
-	(*durationpb.Duration)(nil),     // 53: google.protobuf.Duration
+	(*Expander)(nil),                // 20: drivelist.v1.Expander
+	(*ListExpandersRequest)(nil),    // 21: drivelist.v1.ListExpandersRequest
+	(*ListExpandersResponse)(nil),   // 22: drivelist.v1.ListExpandersResponse
+	(*NameExpanderRequest)(nil),     // 23: drivelist.v1.NameExpanderRequest
+	(*NameExpanderResponse)(nil),    // 24: drivelist.v1.NameExpanderResponse
+	(*Drive)(nil),                   // 25: drivelist.v1.Drive
+	(*Event)(nil),                   // 26: drivelist.v1.Event
+	(*ListHostsRequest)(nil),        // 27: drivelist.v1.ListHostsRequest
+	(*ListHostsResponse)(nil),       // 28: drivelist.v1.ListHostsResponse
+	(*ListDrivesRequest)(nil),       // 29: drivelist.v1.ListDrivesRequest
+	(*ListDrivesResponse)(nil),      // 30: drivelist.v1.ListDrivesResponse
+	(*GetDriveRequest)(nil),         // 31: drivelist.v1.GetDriveRequest
+	(*GetDriveResponse)(nil),        // 32: drivelist.v1.GetDriveResponse
+	(*GetDriveHistoryRequest)(nil),  // 33: drivelist.v1.GetDriveHistoryRequest
+	(*GetDriveHistoryResponse)(nil), // 34: drivelist.v1.GetDriveHistoryResponse
+	(*ListEventsRequest)(nil),       // 35: drivelist.v1.ListEventsRequest
+	(*ListEventsResponse)(nil),      // 36: drivelist.v1.ListEventsResponse
+	(*ListMissingRequest)(nil),      // 37: drivelist.v1.ListMissingRequest
+	(*Ghost)(nil),                   // 38: drivelist.v1.Ghost
+	(*ListMissingResponse)(nil),     // 39: drivelist.v1.ListMissingResponse
+	(*AnnotateRequest)(nil),         // 40: drivelist.v1.AnnotateRequest
+	(*AnnotateResponse)(nil),        // 41: drivelist.v1.AnnotateResponse
+	(*GetKernelRequest)(nil),        // 42: drivelist.v1.GetKernelRequest
+	(*GetKernelResponse)(nil),       // 43: drivelist.v1.GetKernelResponse
+	(*GetSmartRequest)(nil),         // 44: drivelist.v1.GetSmartRequest
+	(*GetSmartResponse)(nil),        // 45: drivelist.v1.GetSmartResponse
+	(*GetIORequest)(nil),            // 46: drivelist.v1.GetIORequest
+	(*GetIOResponse)(nil),           // 47: drivelist.v1.GetIOResponse
+	(*CompareIORequest)(nil),        // 48: drivelist.v1.CompareIORequest
+	(*IOComparison)(nil),            // 49: drivelist.v1.IOComparison
+	(*CompareIOResponse)(nil),       // 50: drivelist.v1.CompareIOResponse
+	(*MergeDrivesRequest)(nil),      // 51: drivelist.v1.MergeDrivesRequest
+	(*MergeDrivesResponse)(nil),     // 52: drivelist.v1.MergeDrivesResponse
+	(*MergeHostsRequest)(nil),       // 53: drivelist.v1.MergeHostsRequest
+	(*MergeHostsResponse)(nil),      // 54: drivelist.v1.MergeHostsResponse
+	(*RebuildRequest)(nil),          // 55: drivelist.v1.RebuildRequest
+	(*RebuildResponse)(nil),         // 56: drivelist.v1.RebuildResponse
+	(*timestamppb.Timestamp)(nil),   // 57: google.protobuf.Timestamp
+	(*durationpb.Duration)(nil),     // 58: google.protobuf.Duration
 }
 var file_drivelist_v1_drivelist_proto_depIdxs = []int32{
 	2,  // 0: drivelist.v1.Device.identity:type_name -> drivelist.v1.DriveIdentity
 	0,  // 1: drivelist.v1.Device.bus:type_name -> drivelist.v1.Bus
 	1,  // 2: drivelist.v1.ReportInventoryRequest.host:type_name -> drivelist.v1.HostIdentity
-	52, // 3: drivelist.v1.ReportInventoryRequest.observed_at:type_name -> google.protobuf.Timestamp
+	57, // 3: drivelist.v1.ReportInventoryRequest.observed_at:type_name -> google.protobuf.Timestamp
 	3,  // 4: drivelist.v1.ReportInventoryRequest.devices:type_name -> drivelist.v1.Device
 	4,  // 5: drivelist.v1.ReportInventoryRequest.empty_bays:type_name -> drivelist.v1.EmptyBay
 	5,  // 6: drivelist.v1.ReportInventoryRequest.unmapped_members:type_name -> drivelist.v1.UnmappedMember
 	2,  // 7: drivelist.v1.DriveStatus.identity:type_name -> drivelist.v1.DriveIdentity
-	53, // 8: drivelist.v1.AgentConfig.inventory_interval:type_name -> google.protobuf.Duration
-	53, // 9: drivelist.v1.AgentConfig.smart_interval:type_name -> google.protobuf.Duration
-	53, // 10: drivelist.v1.AgentConfig.io_bucket:type_name -> google.protobuf.Duration
+	58, // 8: drivelist.v1.AgentConfig.inventory_interval:type_name -> google.protobuf.Duration
+	58, // 9: drivelist.v1.AgentConfig.smart_interval:type_name -> google.protobuf.Duration
+	58, // 10: drivelist.v1.AgentConfig.io_bucket:type_name -> google.protobuf.Duration
 	7,  // 11: drivelist.v1.ReportInventoryResponse.statuses:type_name -> drivelist.v1.DriveStatus
 	8,  // 12: drivelist.v1.ReportInventoryResponse.config:type_name -> drivelist.v1.AgentConfig
 	2,  // 13: drivelist.v1.KernelSample.identity:type_name -> drivelist.v1.DriveIdentity
-	52, // 14: drivelist.v1.KernelSample.bucket_start:type_name -> google.protobuf.Timestamp
+	57, // 14: drivelist.v1.KernelSample.bucket_start:type_name -> google.protobuf.Timestamp
 	2,  // 15: drivelist.v1.SmartSample.identity:type_name -> drivelist.v1.DriveIdentity
-	52, // 16: drivelist.v1.SmartSample.ts:type_name -> google.protobuf.Timestamp
+	57, // 16: drivelist.v1.SmartSample.ts:type_name -> google.protobuf.Timestamp
 	11, // 17: drivelist.v1.SmartSample.summary:type_name -> drivelist.v1.SmartSummary
 	1,  // 18: drivelist.v1.ReportSmartRequest.host:type_name -> drivelist.v1.HostIdentity
 	12, // 19: drivelist.v1.ReportSmartRequest.samples:type_name -> drivelist.v1.SmartSample
 	2,  // 20: drivelist.v1.IOSample.identity:type_name -> drivelist.v1.DriveIdentity
-	52, // 21: drivelist.v1.IOSample.bucket_start:type_name -> google.protobuf.Timestamp
+	57, // 21: drivelist.v1.IOSample.bucket_start:type_name -> google.protobuf.Timestamp
 	1,  // 22: drivelist.v1.ReportIORequest.host:type_name -> drivelist.v1.HostIdentity
 	14, // 23: drivelist.v1.ReportIORequest.samples:type_name -> drivelist.v1.IOSample
 	1,  // 24: drivelist.v1.ReportKernelRequest.host:type_name -> drivelist.v1.HostIdentity
 	10, // 25: drivelist.v1.ReportKernelRequest.samples:type_name -> drivelist.v1.KernelSample
-	52, // 26: drivelist.v1.Host.first_seen:type_name -> google.protobuf.Timestamp
-	52, // 27: drivelist.v1.Host.last_report:type_name -> google.protobuf.Timestamp
-	52, // 28: drivelist.v1.Host.stale_since:type_name -> google.protobuf.Timestamp
-	52, // 29: drivelist.v1.Placement.first_seen:type_name -> google.protobuf.Timestamp
-	52, // 30: drivelist.v1.Placement.last_seen:type_name -> google.protobuf.Timestamp
-	52, // 31: drivelist.v1.Placement.ended_at:type_name -> google.protobuf.Timestamp
-	0,  // 32: drivelist.v1.Drive.bus:type_name -> drivelist.v1.Bus
-	52, // 33: drivelist.v1.Drive.first_seen:type_name -> google.protobuf.Timestamp
-	52, // 34: drivelist.v1.Drive.last_seen:type_name -> google.protobuf.Timestamp
-	19, // 35: drivelist.v1.Drive.current:type_name -> drivelist.v1.Placement
-	19, // 36: drivelist.v1.Drive.last:type_name -> drivelist.v1.Placement
-	52, // 37: drivelist.v1.Event.ts:type_name -> google.protobuf.Timestamp
-	18, // 38: drivelist.v1.ListHostsResponse.hosts:type_name -> drivelist.v1.Host
-	20, // 39: drivelist.v1.ListDrivesResponse.drives:type_name -> drivelist.v1.Drive
-	20, // 40: drivelist.v1.GetDriveResponse.drive:type_name -> drivelist.v1.Drive
-	21, // 41: drivelist.v1.GetDriveResponse.last_status:type_name -> drivelist.v1.Event
-	20, // 42: drivelist.v1.GetDriveHistoryResponse.drive:type_name -> drivelist.v1.Drive
-	19, // 43: drivelist.v1.GetDriveHistoryResponse.placements:type_name -> drivelist.v1.Placement
-	21, // 44: drivelist.v1.GetDriveHistoryResponse.events:type_name -> drivelist.v1.Event
-	52, // 45: drivelist.v1.ListEventsRequest.since:type_name -> google.protobuf.Timestamp
-	21, // 46: drivelist.v1.ListEventsResponse.events:type_name -> drivelist.v1.Event
-	52, // 47: drivelist.v1.Ghost.first_seen:type_name -> google.protobuf.Timestamp
-	52, // 48: drivelist.v1.Ghost.last_seen:type_name -> google.protobuf.Timestamp
-	20, // 49: drivelist.v1.ListMissingResponse.drives:type_name -> drivelist.v1.Drive
-	33, // 50: drivelist.v1.ListMissingResponse.ghosts:type_name -> drivelist.v1.Ghost
-	21, // 51: drivelist.v1.AnnotateResponse.event:type_name -> drivelist.v1.Event
-	52, // 52: drivelist.v1.GetKernelRequest.since:type_name -> google.protobuf.Timestamp
-	20, // 53: drivelist.v1.GetKernelResponse.drive:type_name -> drivelist.v1.Drive
-	10, // 54: drivelist.v1.GetKernelResponse.samples:type_name -> drivelist.v1.KernelSample
-	52, // 55: drivelist.v1.GetSmartRequest.since:type_name -> google.protobuf.Timestamp
-	20, // 56: drivelist.v1.GetSmartResponse.drive:type_name -> drivelist.v1.Drive
-	12, // 57: drivelist.v1.GetSmartResponse.samples:type_name -> drivelist.v1.SmartSample
-	52, // 58: drivelist.v1.GetSmartResponse.raw_ts:type_name -> google.protobuf.Timestamp
-	52, // 59: drivelist.v1.GetIORequest.since:type_name -> google.protobuf.Timestamp
-	20, // 60: drivelist.v1.GetIOResponse.drive:type_name -> drivelist.v1.Drive
-	14, // 61: drivelist.v1.GetIOResponse.samples:type_name -> drivelist.v1.IOSample
-	52, // 62: drivelist.v1.CompareIORequest.since:type_name -> google.protobuf.Timestamp
-	44, // 63: drivelist.v1.CompareIOResponse.rows:type_name -> drivelist.v1.IOComparison
-	21, // 64: drivelist.v1.MergeDrivesResponse.event:type_name -> drivelist.v1.Event
-	21, // 65: drivelist.v1.MergeHostsResponse.event:type_name -> drivelist.v1.Event
-	6,  // 66: drivelist.v1.Collector.ReportInventory:input_type -> drivelist.v1.ReportInventoryRequest
-	16, // 67: drivelist.v1.Collector.ReportKernel:input_type -> drivelist.v1.ReportKernelRequest
-	13, // 68: drivelist.v1.Collector.ReportSmart:input_type -> drivelist.v1.ReportSmartRequest
-	15, // 69: drivelist.v1.Collector.ReportIO:input_type -> drivelist.v1.ReportIORequest
-	22, // 70: drivelist.v1.Query.ListHosts:input_type -> drivelist.v1.ListHostsRequest
-	24, // 71: drivelist.v1.Query.ListDrives:input_type -> drivelist.v1.ListDrivesRequest
-	26, // 72: drivelist.v1.Query.GetDrive:input_type -> drivelist.v1.GetDriveRequest
-	28, // 73: drivelist.v1.Query.GetDriveHistory:input_type -> drivelist.v1.GetDriveHistoryRequest
-	30, // 74: drivelist.v1.Query.ListEvents:input_type -> drivelist.v1.ListEventsRequest
-	32, // 75: drivelist.v1.Query.ListMissing:input_type -> drivelist.v1.ListMissingRequest
-	35, // 76: drivelist.v1.Query.Annotate:input_type -> drivelist.v1.AnnotateRequest
-	37, // 77: drivelist.v1.Query.GetKernel:input_type -> drivelist.v1.GetKernelRequest
-	39, // 78: drivelist.v1.Query.GetSmart:input_type -> drivelist.v1.GetSmartRequest
-	41, // 79: drivelist.v1.Query.GetIO:input_type -> drivelist.v1.GetIORequest
-	43, // 80: drivelist.v1.Query.CompareIO:input_type -> drivelist.v1.CompareIORequest
-	46, // 81: drivelist.v1.Query.MergeDrives:input_type -> drivelist.v1.MergeDrivesRequest
-	48, // 82: drivelist.v1.Query.MergeHosts:input_type -> drivelist.v1.MergeHostsRequest
-	50, // 83: drivelist.v1.Query.Rebuild:input_type -> drivelist.v1.RebuildRequest
-	9,  // 84: drivelist.v1.Collector.ReportInventory:output_type -> drivelist.v1.ReportInventoryResponse
-	17, // 85: drivelist.v1.Collector.ReportKernel:output_type -> drivelist.v1.ReportAck
-	17, // 86: drivelist.v1.Collector.ReportSmart:output_type -> drivelist.v1.ReportAck
-	17, // 87: drivelist.v1.Collector.ReportIO:output_type -> drivelist.v1.ReportAck
-	23, // 88: drivelist.v1.Query.ListHosts:output_type -> drivelist.v1.ListHostsResponse
-	25, // 89: drivelist.v1.Query.ListDrives:output_type -> drivelist.v1.ListDrivesResponse
-	27, // 90: drivelist.v1.Query.GetDrive:output_type -> drivelist.v1.GetDriveResponse
-	29, // 91: drivelist.v1.Query.GetDriveHistory:output_type -> drivelist.v1.GetDriveHistoryResponse
-	31, // 92: drivelist.v1.Query.ListEvents:output_type -> drivelist.v1.ListEventsResponse
-	34, // 93: drivelist.v1.Query.ListMissing:output_type -> drivelist.v1.ListMissingResponse
-	36, // 94: drivelist.v1.Query.Annotate:output_type -> drivelist.v1.AnnotateResponse
-	38, // 95: drivelist.v1.Query.GetKernel:output_type -> drivelist.v1.GetKernelResponse
-	40, // 96: drivelist.v1.Query.GetSmart:output_type -> drivelist.v1.GetSmartResponse
-	42, // 97: drivelist.v1.Query.GetIO:output_type -> drivelist.v1.GetIOResponse
-	45, // 98: drivelist.v1.Query.CompareIO:output_type -> drivelist.v1.CompareIOResponse
-	47, // 99: drivelist.v1.Query.MergeDrives:output_type -> drivelist.v1.MergeDrivesResponse
-	49, // 100: drivelist.v1.Query.MergeHosts:output_type -> drivelist.v1.MergeHostsResponse
-	51, // 101: drivelist.v1.Query.Rebuild:output_type -> drivelist.v1.RebuildResponse
-	84, // [84:102] is the sub-list for method output_type
-	66, // [66:84] is the sub-list for method input_type
-	66, // [66:66] is the sub-list for extension type_name
-	66, // [66:66] is the sub-list for extension extendee
-	0,  // [0:66] is the sub-list for field type_name
+	57, // 26: drivelist.v1.Host.first_seen:type_name -> google.protobuf.Timestamp
+	57, // 27: drivelist.v1.Host.last_report:type_name -> google.protobuf.Timestamp
+	57, // 28: drivelist.v1.Host.stale_since:type_name -> google.protobuf.Timestamp
+	57, // 29: drivelist.v1.Placement.first_seen:type_name -> google.protobuf.Timestamp
+	57, // 30: drivelist.v1.Placement.last_seen:type_name -> google.protobuf.Timestamp
+	57, // 31: drivelist.v1.Placement.ended_at:type_name -> google.protobuf.Timestamp
+	57, // 32: drivelist.v1.Expander.first_seen:type_name -> google.protobuf.Timestamp
+	57, // 33: drivelist.v1.Expander.last_seen:type_name -> google.protobuf.Timestamp
+	20, // 34: drivelist.v1.ListExpandersResponse.expanders:type_name -> drivelist.v1.Expander
+	20, // 35: drivelist.v1.NameExpanderResponse.expander:type_name -> drivelist.v1.Expander
+	0,  // 36: drivelist.v1.Drive.bus:type_name -> drivelist.v1.Bus
+	57, // 37: drivelist.v1.Drive.first_seen:type_name -> google.protobuf.Timestamp
+	57, // 38: drivelist.v1.Drive.last_seen:type_name -> google.protobuf.Timestamp
+	19, // 39: drivelist.v1.Drive.current:type_name -> drivelist.v1.Placement
+	19, // 40: drivelist.v1.Drive.last:type_name -> drivelist.v1.Placement
+	57, // 41: drivelist.v1.Event.ts:type_name -> google.protobuf.Timestamp
+	18, // 42: drivelist.v1.ListHostsResponse.hosts:type_name -> drivelist.v1.Host
+	25, // 43: drivelist.v1.ListDrivesResponse.drives:type_name -> drivelist.v1.Drive
+	25, // 44: drivelist.v1.GetDriveResponse.drive:type_name -> drivelist.v1.Drive
+	26, // 45: drivelist.v1.GetDriveResponse.last_status:type_name -> drivelist.v1.Event
+	25, // 46: drivelist.v1.GetDriveHistoryResponse.drive:type_name -> drivelist.v1.Drive
+	19, // 47: drivelist.v1.GetDriveHistoryResponse.placements:type_name -> drivelist.v1.Placement
+	26, // 48: drivelist.v1.GetDriveHistoryResponse.events:type_name -> drivelist.v1.Event
+	57, // 49: drivelist.v1.ListEventsRequest.since:type_name -> google.protobuf.Timestamp
+	26, // 50: drivelist.v1.ListEventsResponse.events:type_name -> drivelist.v1.Event
+	57, // 51: drivelist.v1.Ghost.first_seen:type_name -> google.protobuf.Timestamp
+	57, // 52: drivelist.v1.Ghost.last_seen:type_name -> google.protobuf.Timestamp
+	25, // 53: drivelist.v1.ListMissingResponse.drives:type_name -> drivelist.v1.Drive
+	38, // 54: drivelist.v1.ListMissingResponse.ghosts:type_name -> drivelist.v1.Ghost
+	26, // 55: drivelist.v1.AnnotateResponse.event:type_name -> drivelist.v1.Event
+	57, // 56: drivelist.v1.GetKernelRequest.since:type_name -> google.protobuf.Timestamp
+	25, // 57: drivelist.v1.GetKernelResponse.drive:type_name -> drivelist.v1.Drive
+	10, // 58: drivelist.v1.GetKernelResponse.samples:type_name -> drivelist.v1.KernelSample
+	57, // 59: drivelist.v1.GetSmartRequest.since:type_name -> google.protobuf.Timestamp
+	25, // 60: drivelist.v1.GetSmartResponse.drive:type_name -> drivelist.v1.Drive
+	12, // 61: drivelist.v1.GetSmartResponse.samples:type_name -> drivelist.v1.SmartSample
+	57, // 62: drivelist.v1.GetSmartResponse.raw_ts:type_name -> google.protobuf.Timestamp
+	57, // 63: drivelist.v1.GetIORequest.since:type_name -> google.protobuf.Timestamp
+	25, // 64: drivelist.v1.GetIOResponse.drive:type_name -> drivelist.v1.Drive
+	14, // 65: drivelist.v1.GetIOResponse.samples:type_name -> drivelist.v1.IOSample
+	57, // 66: drivelist.v1.CompareIORequest.since:type_name -> google.protobuf.Timestamp
+	49, // 67: drivelist.v1.CompareIOResponse.rows:type_name -> drivelist.v1.IOComparison
+	26, // 68: drivelist.v1.MergeDrivesResponse.event:type_name -> drivelist.v1.Event
+	26, // 69: drivelist.v1.MergeHostsResponse.event:type_name -> drivelist.v1.Event
+	6,  // 70: drivelist.v1.Collector.ReportInventory:input_type -> drivelist.v1.ReportInventoryRequest
+	16, // 71: drivelist.v1.Collector.ReportKernel:input_type -> drivelist.v1.ReportKernelRequest
+	13, // 72: drivelist.v1.Collector.ReportSmart:input_type -> drivelist.v1.ReportSmartRequest
+	15, // 73: drivelist.v1.Collector.ReportIO:input_type -> drivelist.v1.ReportIORequest
+	27, // 74: drivelist.v1.Query.ListHosts:input_type -> drivelist.v1.ListHostsRequest
+	29, // 75: drivelist.v1.Query.ListDrives:input_type -> drivelist.v1.ListDrivesRequest
+	31, // 76: drivelist.v1.Query.GetDrive:input_type -> drivelist.v1.GetDriveRequest
+	33, // 77: drivelist.v1.Query.GetDriveHistory:input_type -> drivelist.v1.GetDriveHistoryRequest
+	35, // 78: drivelist.v1.Query.ListEvents:input_type -> drivelist.v1.ListEventsRequest
+	37, // 79: drivelist.v1.Query.ListMissing:input_type -> drivelist.v1.ListMissingRequest
+	40, // 80: drivelist.v1.Query.Annotate:input_type -> drivelist.v1.AnnotateRequest
+	42, // 81: drivelist.v1.Query.GetKernel:input_type -> drivelist.v1.GetKernelRequest
+	44, // 82: drivelist.v1.Query.GetSmart:input_type -> drivelist.v1.GetSmartRequest
+	46, // 83: drivelist.v1.Query.GetIO:input_type -> drivelist.v1.GetIORequest
+	48, // 84: drivelist.v1.Query.CompareIO:input_type -> drivelist.v1.CompareIORequest
+	51, // 85: drivelist.v1.Query.MergeDrives:input_type -> drivelist.v1.MergeDrivesRequest
+	53, // 86: drivelist.v1.Query.MergeHosts:input_type -> drivelist.v1.MergeHostsRequest
+	55, // 87: drivelist.v1.Query.Rebuild:input_type -> drivelist.v1.RebuildRequest
+	21, // 88: drivelist.v1.Query.ListExpanders:input_type -> drivelist.v1.ListExpandersRequest
+	23, // 89: drivelist.v1.Query.NameExpander:input_type -> drivelist.v1.NameExpanderRequest
+	9,  // 90: drivelist.v1.Collector.ReportInventory:output_type -> drivelist.v1.ReportInventoryResponse
+	17, // 91: drivelist.v1.Collector.ReportKernel:output_type -> drivelist.v1.ReportAck
+	17, // 92: drivelist.v1.Collector.ReportSmart:output_type -> drivelist.v1.ReportAck
+	17, // 93: drivelist.v1.Collector.ReportIO:output_type -> drivelist.v1.ReportAck
+	28, // 94: drivelist.v1.Query.ListHosts:output_type -> drivelist.v1.ListHostsResponse
+	30, // 95: drivelist.v1.Query.ListDrives:output_type -> drivelist.v1.ListDrivesResponse
+	32, // 96: drivelist.v1.Query.GetDrive:output_type -> drivelist.v1.GetDriveResponse
+	34, // 97: drivelist.v1.Query.GetDriveHistory:output_type -> drivelist.v1.GetDriveHistoryResponse
+	36, // 98: drivelist.v1.Query.ListEvents:output_type -> drivelist.v1.ListEventsResponse
+	39, // 99: drivelist.v1.Query.ListMissing:output_type -> drivelist.v1.ListMissingResponse
+	41, // 100: drivelist.v1.Query.Annotate:output_type -> drivelist.v1.AnnotateResponse
+	43, // 101: drivelist.v1.Query.GetKernel:output_type -> drivelist.v1.GetKernelResponse
+	45, // 102: drivelist.v1.Query.GetSmart:output_type -> drivelist.v1.GetSmartResponse
+	47, // 103: drivelist.v1.Query.GetIO:output_type -> drivelist.v1.GetIOResponse
+	50, // 104: drivelist.v1.Query.CompareIO:output_type -> drivelist.v1.CompareIOResponse
+	52, // 105: drivelist.v1.Query.MergeDrives:output_type -> drivelist.v1.MergeDrivesResponse
+	54, // 106: drivelist.v1.Query.MergeHosts:output_type -> drivelist.v1.MergeHostsResponse
+	56, // 107: drivelist.v1.Query.Rebuild:output_type -> drivelist.v1.RebuildResponse
+	22, // 108: drivelist.v1.Query.ListExpanders:output_type -> drivelist.v1.ListExpandersResponse
+	24, // 109: drivelist.v1.Query.NameExpander:output_type -> drivelist.v1.NameExpanderResponse
+	90, // [90:110] is the sub-list for method output_type
+	70, // [70:90] is the sub-list for method input_type
+	70, // [70:70] is the sub-list for extension type_name
+	70, // [70:70] is the sub-list for extension extendee
+	0,  // [0:70] is the sub-list for field type_name
 }
 
 func init() { file_drivelist_v1_drivelist_proto_init() }
@@ -4289,7 +4658,7 @@ func file_drivelist_v1_drivelist_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_drivelist_v1_drivelist_proto_rawDesc), len(file_drivelist_v1_drivelist_proto_rawDesc)),
 			NumEnums:      1,
-			NumMessages:   51,
+			NumMessages:   56,
 			NumExtensions: 0,
 			NumServices:   2,
 		},

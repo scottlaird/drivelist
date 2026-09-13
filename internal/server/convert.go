@@ -46,6 +46,7 @@ func reportFromProto(req *pb.ReportInventoryRequest) store.Report {
 			Bus:           busNames[d.GetBus()],
 			SizeBytes:     d.GetSizeBytes(),
 			Expander:      d.GetExpander(),
+			ExpanderID:    d.GetExpanderId(),
 			Bay:           d.GetBay(),
 			EnclosurePath: d.GetEnclosurePath(),
 			Uses:          d.GetUses(),
@@ -93,15 +94,49 @@ func placementToProto(p *store.Placement) *pb.Placement {
 		return nil
 	}
 	return &pb.Placement{
-		Hostname:  p.Hostname,
-		Expander:  p.Expander,
-		Bay:       p.Bay,
-		DevName:   p.DevName,
-		Uses:      p.Uses,
-		FirstSeen: ts(p.FirstSeen),
-		LastSeen:  ts(p.LastSeen),
-		EndedAt:   ts(p.EndedAt),
-		EndReason: p.EndReason,
+		Hostname:     p.Hostname,
+		Expander:     p.Expander,
+		ExpanderDev:  p.ExpanderDev,
+		ExpanderName: p.ExpanderName,
+		Bay:          p.Bay,
+		DevName:      p.DevName,
+		Uses:         p.Uses,
+		FirstSeen:    ts(p.FirstSeen),
+		LastSeen:     ts(p.LastSeen),
+		EndedAt:      ts(p.EndedAt),
+		EndReason:    p.EndReason,
+	}
+}
+
+func expanderToProto(e store.Expander) *pb.Expander {
+	return &pb.Expander{Expander: e.Key, Hostname: e.Hostname, ExpanderDev: e.Dev, Name: e.Name, Note: e.Note, Drives: int32(e.Drives), FirstSeen: ts(e.FirstSeen), LastSeen: ts(e.LastSeen)}
+}
+
+// nameExpanders adds the names people gave expanders to the events that
+// mention one, as expander_name beside each expander key in the detail,
+// so the client can print the name without another round trip.
+func nameExpanders(names map[string]string, evs []*pb.Event) {
+	if len(names) == 0 {
+		return
+	}
+	for _, e := range evs {
+		var d map[string]any
+		if json.Unmarshal([]byte(e.GetDetail()), &d) != nil {
+			continue
+		}
+		changed := false
+		for _, k := range []string{"expander", "from_expander", "to_expander", "from", "to"} {
+			key, _ := d[k].(string)
+			if n, ok := names[key]; ok && key != "" {
+				d[k+"_name"] = n
+				changed = true
+			}
+		}
+		if changed {
+			if b, err := json.Marshal(d); err == nil {
+				e.Detail = string(b)
+			}
+		}
 	}
 }
 

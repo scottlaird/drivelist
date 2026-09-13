@@ -72,6 +72,10 @@ const (
 	QueryMergeHostsProcedure = "/drivelist.v1.Query/MergeHosts"
 	// QueryRebuildProcedure is the fully-qualified name of the Query's Rebuild RPC.
 	QueryRebuildProcedure = "/drivelist.v1.Query/Rebuild"
+	// QueryListExpandersProcedure is the fully-qualified name of the Query's ListExpanders RPC.
+	QueryListExpandersProcedure = "/drivelist.v1.Query/ListExpanders"
+	// QueryNameExpanderProcedure is the fully-qualified name of the Query's NameExpander RPC.
+	QueryNameExpanderProcedure = "/drivelist.v1.Query/NameExpander"
 )
 
 // CollectorClient is a client for the drivelist.v1.Collector service.
@@ -272,6 +276,11 @@ type QueryClient interface {
 	// Rebuild recomputes every placement and derived event from the stored
 	// snapshots. Annotations, merges, samples and ghosts are kept.
 	Rebuild(context.Context, *connect.Request[drivelistv1.RebuildRequest]) (*connect.Response[drivelistv1.RebuildResponse], error)
+	// ListExpanders lists the expanders drives are currently placed on.
+	ListExpanders(context.Context, *connect.Request[drivelistv1.ListExpandersRequest]) (*connect.Response[drivelistv1.ListExpandersResponse], error)
+	// NameExpander records what a person calls an expander; every view
+	// shows the name in place of the kernel's expander-H:N from then on.
+	NameExpander(context.Context, *connect.Request[drivelistv1.NameExpanderRequest]) (*connect.Response[drivelistv1.NameExpanderResponse], error)
 }
 
 // NewQueryClient constructs a client for the drivelist.v1.Query service. By default, it uses the
@@ -369,6 +378,18 @@ func NewQueryClient(httpClient connect.HTTPClient, baseURL string, opts ...conne
 			connect.WithSchema(queryMethods.ByName("Rebuild")),
 			connect.WithClientOptions(opts...),
 		),
+		listExpanders: connect.NewClient[drivelistv1.ListExpandersRequest, drivelistv1.ListExpandersResponse](
+			httpClient,
+			baseURL+QueryListExpandersProcedure,
+			connect.WithSchema(queryMethods.ByName("ListExpanders")),
+			connect.WithClientOptions(opts...),
+		),
+		nameExpander: connect.NewClient[drivelistv1.NameExpanderRequest, drivelistv1.NameExpanderResponse](
+			httpClient,
+			baseURL+QueryNameExpanderProcedure,
+			connect.WithSchema(queryMethods.ByName("NameExpander")),
+			connect.WithClientOptions(opts...),
+		),
 	}
 }
 
@@ -388,6 +409,8 @@ type queryClient struct {
 	mergeDrives     *connect.Client[drivelistv1.MergeDrivesRequest, drivelistv1.MergeDrivesResponse]
 	mergeHosts      *connect.Client[drivelistv1.MergeHostsRequest, drivelistv1.MergeHostsResponse]
 	rebuild         *connect.Client[drivelistv1.RebuildRequest, drivelistv1.RebuildResponse]
+	listExpanders   *connect.Client[drivelistv1.ListExpandersRequest, drivelistv1.ListExpandersResponse]
+	nameExpander    *connect.Client[drivelistv1.NameExpanderRequest, drivelistv1.NameExpanderResponse]
 }
 
 // ListHosts calls drivelist.v1.Query.ListHosts.
@@ -460,6 +483,16 @@ func (c *queryClient) Rebuild(ctx context.Context, req *connect.Request[drivelis
 	return c.rebuild.CallUnary(ctx, req)
 }
 
+// ListExpanders calls drivelist.v1.Query.ListExpanders.
+func (c *queryClient) ListExpanders(ctx context.Context, req *connect.Request[drivelistv1.ListExpandersRequest]) (*connect.Response[drivelistv1.ListExpandersResponse], error) {
+	return c.listExpanders.CallUnary(ctx, req)
+}
+
+// NameExpander calls drivelist.v1.Query.NameExpander.
+func (c *queryClient) NameExpander(ctx context.Context, req *connect.Request[drivelistv1.NameExpanderRequest]) (*connect.Response[drivelistv1.NameExpanderResponse], error) {
+	return c.nameExpander.CallUnary(ctx, req)
+}
+
 // QueryHandler is an implementation of the drivelist.v1.Query service.
 type QueryHandler interface {
 	ListHosts(context.Context, *connect.Request[drivelistv1.ListHostsRequest]) (*connect.Response[drivelistv1.ListHostsResponse], error)
@@ -496,6 +529,11 @@ type QueryHandler interface {
 	// Rebuild recomputes every placement and derived event from the stored
 	// snapshots. Annotations, merges, samples and ghosts are kept.
 	Rebuild(context.Context, *connect.Request[drivelistv1.RebuildRequest]) (*connect.Response[drivelistv1.RebuildResponse], error)
+	// ListExpanders lists the expanders drives are currently placed on.
+	ListExpanders(context.Context, *connect.Request[drivelistv1.ListExpandersRequest]) (*connect.Response[drivelistv1.ListExpandersResponse], error)
+	// NameExpander records what a person calls an expander; every view
+	// shows the name in place of the kernel's expander-H:N from then on.
+	NameExpander(context.Context, *connect.Request[drivelistv1.NameExpanderRequest]) (*connect.Response[drivelistv1.NameExpanderResponse], error)
 }
 
 // NewQueryHandler builds an HTTP handler from the service implementation. It returns the path on
@@ -589,6 +627,18 @@ func NewQueryHandler(svc QueryHandler, opts ...connect.HandlerOption) (string, h
 		connect.WithSchema(queryMethods.ByName("Rebuild")),
 		connect.WithHandlerOptions(opts...),
 	)
+	queryListExpandersHandler := connect.NewUnaryHandler(
+		QueryListExpandersProcedure,
+		svc.ListExpanders,
+		connect.WithSchema(queryMethods.ByName("ListExpanders")),
+		connect.WithHandlerOptions(opts...),
+	)
+	queryNameExpanderHandler := connect.NewUnaryHandler(
+		QueryNameExpanderProcedure,
+		svc.NameExpander,
+		connect.WithSchema(queryMethods.ByName("NameExpander")),
+		connect.WithHandlerOptions(opts...),
+	)
 	return "/drivelist.v1.Query/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
 		case QueryListHostsProcedure:
@@ -619,6 +669,10 @@ func NewQueryHandler(svc QueryHandler, opts ...connect.HandlerOption) (string, h
 			queryMergeHostsHandler.ServeHTTP(w, r)
 		case QueryRebuildProcedure:
 			queryRebuildHandler.ServeHTTP(w, r)
+		case QueryListExpandersProcedure:
+			queryListExpandersHandler.ServeHTTP(w, r)
+		case QueryNameExpanderProcedure:
+			queryNameExpanderHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -682,4 +736,12 @@ func (UnimplementedQueryHandler) MergeHosts(context.Context, *connect.Request[dr
 
 func (UnimplementedQueryHandler) Rebuild(context.Context, *connect.Request[drivelistv1.RebuildRequest]) (*connect.Response[drivelistv1.RebuildResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("drivelist.v1.Query.Rebuild is not implemented"))
+}
+
+func (UnimplementedQueryHandler) ListExpanders(context.Context, *connect.Request[drivelistv1.ListExpandersRequest]) (*connect.Response[drivelistv1.ListExpandersResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("drivelist.v1.Query.ListExpanders is not implemented"))
+}
+
+func (UnimplementedQueryHandler) NameExpander(context.Context, *connect.Request[drivelistv1.NameExpanderRequest]) (*connect.Response[drivelistv1.NameExpanderResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("drivelist.v1.Query.NameExpander is not implemented"))
 }

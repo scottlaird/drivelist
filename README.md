@@ -192,6 +192,15 @@ read or write time jumped by about the uptime; the minute's
 completions and bytes still count.  The DROPPED column of
 `drivelist drive REF io` says how many counters an hour lost.
 
+Slots are reported as the expander's SAS address plus the bay, since
+the kernel's `expander-H:N` follows probe order and can change on a
+reboot.  When a whole shelf comes back under a new name with every
+drive in its old bay, the server records one `expander_renamed` event
+rather than a move per drive (a single drive is not enough evidence;
+it may really have moved).  `drivelist expanders` lists the shelves
+drives are on, and `drivelist expander KEY name "front shelf"` gives
+one a name, which every listing then shows in place of the kernel's.
+
 For a one-off report, or from cron, `drivelist report` does one cycle.
 
 On Debian and Ubuntu hosts, install the package instead.  Every

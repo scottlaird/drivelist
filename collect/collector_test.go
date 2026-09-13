@@ -51,6 +51,7 @@ func wantSynthetic(sys string) []*drivelist.Device {
 			Uses:          []string{zfsUse},
 			GenericDevice: "/dev/bsg/end_device-4:0:0",
 			Expander:      "expander-4:0",
+			ExpanderID:    "0x500605b00a1b2c3d",
 			ExpanderPath:  exp,
 			EnclosureBay:  "0",
 			Size:          8001563222016,
@@ -65,6 +66,7 @@ func wantSynthetic(sys string) []*drivelist.Device {
 			Uses:          []string{"mount > /backup"},
 			GenericDevice: "/dev/bsg/end_device-4:0:1",
 			Expander:      "expander-4:0",
+			ExpanderID:    "0x500605b00a1b2c3d",
 			ExpanderPath:  exp,
 			EnclosureBay:  "1",
 			Size:          8001563222016,
@@ -87,6 +89,7 @@ func wantSynthetic(sys string) []*drivelist.Device {
 		},
 		{
 			Expander:     "expander-4:0",
+			ExpanderID:   "0x500605b00a1b2c3d",
 			ExpanderPath: exp,
 			EnclosureBay: "2",
 			Uses:         []string{"empty"},

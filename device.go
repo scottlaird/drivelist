@@ -23,7 +23,8 @@ type Device struct {
 	GenericDevice string
 
 	// Enclosure data.
-	Expander     string
+	Expander     string // the kernel's name, expander-H:N; H follows probe order
+	ExpanderID   string // the expander's SAS address, stable across boots; "" when unknown
 	ExpanderPath string
 	EnclosureBay string
 

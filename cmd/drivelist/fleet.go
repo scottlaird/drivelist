@@ -28,6 +28,8 @@ func fleetCommands(cfg *clientConfig) []*cobra.Command {
 		newIOCmd(cfg),
 		newHostCmd(cfg),
 		newAdminCmd(cfg),
+		newExpandersCmd(cfg),
+		newExpanderCmd(cfg),
 	}
 }
 
@@ -199,7 +201,7 @@ func newDrivesCmd(cfg *clientConfig) *cobra.Command {
 				}
 				sl, uses := "-", "-"
 				if p != nil {
-					sl = slot(p.Expander, p.Bay)
+					sl = slotOf(p)
 					uses = useSummary(p.Uses)
 				}
 				fmt.Fprintf(w, "%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\n",
@@ -550,7 +552,7 @@ func showHistory(cmd *cobra.Command, cfg *clientConfig, ref string) error {
 		fmt.Fprintf(w, "%s  %s\n", when(e.Ts), describe(e))
 	}
 	if p := res.Msg.Drive.Current; p != nil {
-		fmt.Fprintf(w, "\nstill present on %s %s  %s  last confirmed %s\n", p.Hostname, slot(p.Expander, p.Bay), useSummary(p.Uses), when(p.LastSeen))
+		fmt.Fprintf(w, "\nstill present on %s %s  %s  last confirmed %s\n", p.Hostname, slotOf(p), useSummary(p.Uses), when(p.LastSeen))
 	}
 	return nil
 }
@@ -583,13 +585,13 @@ func printDriveHeader(w io.Writer, d *pb.Drive, last *pb.Event) {
 	switch {
 	case d.Current != nil:
 		p := d.Current
-		fmt.Fprintf(w, "now: %s  %s  %s  %s  since %s, confirmed %s\n", p.Hostname, slot(p.Expander, p.Bay), orDash(p.DevName), useSummary(p.Uses), when(p.FirstSeen), when(p.LastSeen))
+		fmt.Fprintf(w, "now: %s  %s  %s  %s  since %s, confirmed %s\n", p.Hostname, slotOf(p), orDash(p.DevName), useSummary(p.Uses), when(p.FirstSeen), when(p.LastSeen))
 		if d.MemberState != "" {
 			fmt.Fprintf(w, "zfs: %s\n", d.MemberState)
 		}
 	case d.Last != nil:
 		p := d.Last
-		fmt.Fprintf(w, "not present; last %s  %s  %s  %s  %s to %s (%s)\n", p.Hostname, slot(p.Expander, p.Bay), orDash(p.DevName), useSummary(p.Uses), when(p.FirstSeen), when(p.EndedAt), p.EndReason)
+		fmt.Fprintf(w, "not present; last %s  %s  %s  %s  %s to %s (%s)\n", p.Hostname, slotOf(p), orDash(p.DevName), useSummary(p.Uses), when(p.FirstSeen), when(p.EndedAt), p.EndReason)
 	}
 }
 
@@ -641,6 +643,78 @@ func newEventsCmd(cfg *clientConfig) *cobra.Command {
 	return cmd
 }
 
+// ---------- expanders ----------
+
+func newExpandersCmd(cfg *clientConfig) *cobra.Command {
+	return &cobra.Command{
+		Use:   "expanders",
+		Short: "List the SAS expanders (shelves, backplanes) drives are placed on",
+		Long: `expanders lists every expander with a drive on it: the host, the
+kernel's current name for it, the stable key placements use (its SAS
+address), and the name a person gave it with 'expander KEY name'.`,
+		Args: cobra.NoArgs,
+		RunE: func(cmd *cobra.Command, _ []string) error {
+			client, err := cfg.queryClient()
+			if err != nil {
+				return err
+			}
+			res, err := client.ListExpanders(cmd.Context(), connect.NewRequest(&pb.ListExpandersRequest{}))
+			if err != nil {
+				return rpcErr(err)
+			}
+			if cfg.json {
+				return printJSON(cmd.OutOrStdout(), res.Msg)
+			}
+			w := tab(cmd.OutOrStdout())
+			fmt.Fprintln(w, "HOST\tEXPANDER\tNAME\tDRIVES\tKEY\tNOTE")
+			for _, e := range res.Msg.Expanders {
+				fmt.Fprintf(w, "%s\t%s\t%s\t%d\t%s\t%s\n", e.Hostname, orDash(e.ExpanderDev), orDash(e.Name), e.Drives, e.Expander, e.Note)
+			}
+			return w.Flush()
+		},
+	}
+}
+
+func newExpanderCmd(cfg *clientConfig) *cobra.Command {
+	var note string
+	cmd := &cobra.Command{
+		Use:   "expander KEY name NAME",
+		Short: "Give an expander a name, shown wherever its slot is",
+		Long: `expander KEY name NAME records what you call an expander: "front shelf",
+"JBOD 2". Every listing shows the name in place of the kernel's
+expander-H:N from then on. KEY is the key 'expanders' prints, an
+unambiguous part of it, or the kernel's name if only one host has an
+expander so named. An empty NAME clears it.`,
+		Args: cobra.MinimumNArgs(2),
+		RunE: func(cmd *cobra.Command, args []string) error {
+			if args[1] != "name" {
+				return fmt.Errorf("usage: drivelist expander KEY name NAME [--note TEXT]")
+			}
+			client, err := cfg.queryClient()
+			if err != nil {
+				return err
+			}
+			cfg.resolve()
+			res, err := client.NameExpander(cmd.Context(), connect.NewRequest(&pb.NameExpanderRequest{Ref: args[0], Name: strings.Join(args[2:], " "), Note: note, Actor: cfg.actor}))
+			if err != nil {
+				return rpcErr(err)
+			}
+			if cfg.json {
+				return printJSON(cmd.OutOrStdout(), res.Msg)
+			}
+			e := res.Msg.Expander
+			if e.Name == "" {
+				fmt.Fprintf(cmd.OutOrStdout(), "%s: name cleared\n", e.Expander)
+			} else {
+				fmt.Fprintf(cmd.OutOrStdout(), "%s (%s on %s): named %q\n", e.Expander, orDash(e.ExpanderDev), orDash(e.Hostname), e.Name)
+			}
+			return nil
+		},
+	}
+	cmd.Flags().StringVar(&note, "note", "", "free text kept with the name: where it is, what is in it")
+	return cmd
+}
+
 // ---------- missing ----------
 
 func newMissingCmd(cfg *clientConfig) *cobra.Command {
@@ -668,7 +742,7 @@ func newMissingCmd(cfg *clientConfig) *cobra.Command {
 				if p == nil {
 					continue
 				}
-				fmt.Fprintf(w, "%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\n", d.Serial, d.Model, d.Status, p.Hostname, slot(p.Expander, p.Bay), useSummary(p.Uses), when(p.LastSeen), when(p.EndedAt))
+				fmt.Fprintf(w, "%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\n", d.Serial, d.Model, d.Status, p.Hostname, slotOf(p), useSummary(p.Uses), when(p.LastSeen), when(p.EndedAt))
 			}
 			w.Flush()
 			if len(res.Msg.Ghosts) > 0 {

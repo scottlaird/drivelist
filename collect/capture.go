@@ -6,6 +6,7 @@ import (
 	"io/fs"
 	"log/slog"
 	"os"
+	"path"
 	"path/filepath"
 	"strings"
 )
@@ -77,6 +78,9 @@ func (c *Collector) captureLinux(dir string) error {
 		if exp := expanderPath(devpath); exp != "" {
 			if err := c.copyBayIdentifiers(dir, exp); err != nil {
 				return err
+			}
+			if err := c.copySys(dir, exp+"/sas_device/"+path.Base(exp)+"/sas_address"); err != nil {
+				slog.Warn("capture: expander sas_address", "expander", exp, "err", err)
 			}
 		}
 		// SMART output, so fixtures carry every dialect the parser has to

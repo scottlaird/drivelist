@@ -76,6 +76,27 @@ func TestFleetEndToEnd(t *testing.T) {
 			t.Errorf("drives lacks %q:\n%s", want, out)
 		}
 	}
+	out = mustRun(t, "expanders")
+	if !strings.Contains(out, "storage1") && !strings.Contains(out, "expander-4:0") || !strings.Contains(out, "0x500605b00a1b2c3d") {
+		t.Errorf("expanders:\n%s", out)
+	}
+	out = mustRun(t, "expander", "expander-4:0", "name", "front shelf", "--note", "by the door")
+	if !strings.Contains(out, `0x500605b00a1b2c3d (expander-4:0 on `) || !strings.Contains(out, `named "front shelf"`) {
+		t.Errorf("expander name: %q", out)
+	}
+	if out = mustRun(t, "drives"); !strings.Contains(out, "front shelf bay 0") || strings.Contains(out, "expander-4:0 bay 0") {
+		t.Errorf("drives after naming:\n%s", out)
+	}
+	if out = mustRun(t, "expanders"); !strings.Contains(out, "front shelf") || !strings.Contains(out, "by the door") {
+		t.Errorf("expanders after naming:\n%s", out)
+	}
+	if out = mustRun(t, "events"); !strings.Contains(out, "first seen    ") || !strings.Contains(out, "front shelf bay") {
+		t.Errorf("events use the expander name:\n%s", out)
+	}
+	if _, _, err := run(t, "expander", "nosuch", "name", "x"); err == nil {
+		t.Error("naming an unknown expander succeeded")
+	}
+
 	out = mustRun(t, "drives", "--unused")
 	if strings.Contains(out, "VLG32AEY") || !strings.Contains(out, "S5RRNF0R123456A") {
 		t.Errorf("drives --unused:\n%s", out)
@@ -161,7 +182,7 @@ func TestFleetEndToEnd(t *testing.T) {
 		t.Errorf("admin rebuild:\n%s", out)
 	}
 	out = mustRun(t, "drive", "VLG32AEY", "history")
-	if !strings.Contains(out, "first seen    ") || !strings.Contains(out, "present       ") {
+	if !strings.Contains(out, "first seen    ") || !strings.Contains(out, "\nstill present on ") {
 		t.Errorf("history after rebuild:\n%s", out)
 	}
 	if _, _, err := run(t, "drive", "VLG32AEY", "smart", "--raw"); err == nil {
