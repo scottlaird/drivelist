@@ -86,7 +86,7 @@ func TestFleetEndToEnd(t *testing.T) {
 		t.Errorf("drive:\n%s", out)
 	}
 	out = mustRun(t, "drive", "0x5000cca260c165e2", "history")
-	if !strings.Contains(out, "first seen    ") || !strings.Contains(out, "present       ") {
+	if !strings.Contains(out, "first seen    ") || !strings.Contains(out, "\nstill present on ") {
 		t.Errorf("history:\n%s", out)
 	}
 
