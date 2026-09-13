@@ -121,6 +121,7 @@ message Device {
   string enclosure_id = 14;
   string enclosure_via = 15;          // "expander-11:0", "host11"
   string enclosure_via_id = 16;       // that node's SAS address
+  string enclosure_model = 17;        // what the enclosure is, when the host knows: the chassis from DMI for NVMe bays
 }
 
 message EmptyBay {
@@ -131,6 +132,7 @@ message EmptyBay {
   string enclosure_id = 5;
   string enclosure_via = 6;
   string enclosure_via_id = 7;
+  string enclosure_model = 8;
 }
 
 // UnmappedMember is a pool member the collector could not map to a Device.

@@ -37,6 +37,7 @@ type Device struct {
 	EnclosureID    string
 	EnclosureVia   string
 	EnclosureViaID string
+	EnclosureModel string // what the enclosure is, when the host knows (the chassis from DMI for NVMe bays); "" for SES enclosures, whose model comes from the SAS topology
 
 	Size uint64 // bytes
 

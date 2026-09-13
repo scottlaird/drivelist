@@ -206,6 +206,16 @@ HBA that reaches it, and `drivelist enclosure KEY name "front shelf"`
 gives one a name, which every listing then shows in place of the
 kernel's.
 
+NVMe drives have no SES, but a U.2 bay is a PCIe hotplug slot, and the
+firmware's slot table (`/sys/bus/pci/slots`) says which slot each
+drive's controller is in.  Those drives get the chassis as their
+enclosure, keyed on its DMI serial and described by vendor and product
+name, with the firmware's slot name as the bay (`9-1` is the second
+lane of a bifurcated slot 9).  The sibling lanes of an occupied slot
+with nothing behind them are reported as empty bays; empty add-in
+card slots cannot be told from empty bays and are left alone.  An
+onboard M.2 drive is in no hotplug slot and gets no location.
+
 For a one-off report, or from cron, `drivelist report` does one cycle.
 
 `drivelist sas` prints the host's SAS topology from sysfs: each HBA and

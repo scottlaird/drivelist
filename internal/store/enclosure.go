@@ -36,7 +36,7 @@ func (s *Store) ListEnclosures(ctx context.Context) ([]Enclosure, error) {
 		), known AS (
 			SELECT host_id, enclosure FROM enclosure UNION SELECT host_id, enclosure FROM placed
 		)
-		SELECT k.enclosure, h.hostname, COALESCE(e.via, pl.via, ''), COALESCE(e.via_address, ''), COALESCE(x.name, ''), COALESCE(x.note, ''),
+		SELECT k.enclosure, h.hostname, COALESCE(e.via, pl.via, ''), COALESCE(e.via_address, ''), COALESCE(e.product, ''), COALESCE(x.name, ''), COALESCE(x.note, ''),
 		       COALESCE(pl.drives, 0), COALESCE(e.bays, 0), COALESCE(MIN(e.first_seen, pl.first_seen), e.first_seen, pl.first_seen), COALESCE(MAX(e.last_seen, pl.last_seen), e.last_seen, pl.last_seen)
 		FROM known k JOIN host h USING (host_id)
 		LEFT JOIN enclosure e ON e.host_id = k.host_id AND e.enclosure = k.enclosure
@@ -53,7 +53,7 @@ func (s *Store) ListEnclosures(ctx context.Context) ([]Enclosure, error) {
 		var e Enclosure
 		var viaAddr string
 		var first, last int64
-		if err := rows.Scan(&e.Key, &e.Hostname, &e.Via, &viaAddr, &e.Name, &e.Note, &e.Drives, &e.Bays, &first, &last); err != nil {
+		if err := rows.Scan(&e.Key, &e.Hostname, &e.Via, &viaAddr, &e.Product, &e.Name, &e.Note, &e.Drives, &e.Bays, &first, &last); err != nil {
 			return nil, err
 		}
 		e.FirstSeen, e.LastSeen = time.Unix(first, 0).UTC(), time.Unix(last, 0).UTC()
@@ -70,6 +70,9 @@ func (s *Store) ListEnclosures(ctx context.Context) ([]Enclosure, error) {
 		return nil, err
 	}
 	for i := range out {
+		if out[i].Product != "" {
+			continue // the agent said what it is
+		}
 		if p, ok := products[hostKey{out[i].Hostname, viaAddrs[i]}]; ok {
 			out[i].Product = p
 		} else if p, ok := products[hostKey{out[i].Hostname, out[i].Key}]; ok {

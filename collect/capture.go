@@ -102,6 +102,9 @@ func (c *Collector) captureLinux(dir string) error {
 	if err := c.captureSAS(dir); err != nil {
 		return err
 	}
+	if err := c.captureNVMeSlots(dir); err != nil {
+		return err
+	}
 
 	for _, argv := range captureCommands {
 		out, err := c.run(argv[0], argv[1:]...)

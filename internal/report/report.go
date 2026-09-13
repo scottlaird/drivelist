@@ -75,7 +75,7 @@ func FromInventory(host *pb.HostIdentity, inv *drivelist.Inventory, topo *collec
 	for _, d := range inv.Devices {
 		if d.IsEmptyBay() {
 			req.EmptyBays = append(req.EmptyBays, &pb.EmptyBay{Expander: d.Expander, ExpanderId: d.ExpanderID, Bay: d.EnclosureBay, EnclosurePath: d.ExpanderPath,
-				EnclosureId: d.EnclosureID, EnclosureVia: d.EnclosureVia, EnclosureViaId: d.EnclosureViaID})
+				EnclosureId: d.EnclosureID, EnclosureVia: d.EnclosureVia, EnclosureViaId: d.EnclosureViaID, EnclosureModel: d.EnclosureModel})
 			continue
 		}
 		req.Devices = append(req.Devices, Device(d))
@@ -149,6 +149,7 @@ func Device(d *drivelist.Device) *pb.Device {
 		EnclosureId:    d.EnclosureID,
 		EnclosureVia:   d.EnclosureVia,
 		EnclosureViaId: d.EnclosureViaID,
+		EnclosureModel: d.EnclosureModel,
 		EnclosurePath:  d.ExpanderPath,
 		Uses:           d.Uses,
 		DevLinks:       links,
