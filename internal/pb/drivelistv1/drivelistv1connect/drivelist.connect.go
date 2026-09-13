@@ -70,6 +70,8 @@ const (
 	QueryMergeDrivesProcedure = "/drivelist.v1.Query/MergeDrives"
 	// QueryMergeHostsProcedure is the fully-qualified name of the Query's MergeHosts RPC.
 	QueryMergeHostsProcedure = "/drivelist.v1.Query/MergeHosts"
+	// QueryRebuildProcedure is the fully-qualified name of the Query's Rebuild RPC.
+	QueryRebuildProcedure = "/drivelist.v1.Query/Rebuild"
 )
 
 // CollectorClient is a client for the drivelist.v1.Collector service.
@@ -267,6 +269,9 @@ type QueryClient interface {
 	// MergeHosts folds one host record into another, for a host reinstalled
 	// with a new machine id. Refs are hostnames or machine ids.
 	MergeHosts(context.Context, *connect.Request[drivelistv1.MergeHostsRequest]) (*connect.Response[drivelistv1.MergeHostsResponse], error)
+	// Rebuild recomputes every placement and derived event from the stored
+	// snapshots. Annotations, merges, samples and ghosts are kept.
+	Rebuild(context.Context, *connect.Request[drivelistv1.RebuildRequest]) (*connect.Response[drivelistv1.RebuildResponse], error)
 }
 
 // NewQueryClient constructs a client for the drivelist.v1.Query service. By default, it uses the
@@ -358,6 +363,12 @@ func NewQueryClient(httpClient connect.HTTPClient, baseURL string, opts ...conne
 			connect.WithSchema(queryMethods.ByName("MergeHosts")),
 			connect.WithClientOptions(opts...),
 		),
+		rebuild: connect.NewClient[drivelistv1.RebuildRequest, drivelistv1.RebuildResponse](
+			httpClient,
+			baseURL+QueryRebuildProcedure,
+			connect.WithSchema(queryMethods.ByName("Rebuild")),
+			connect.WithClientOptions(opts...),
+		),
 	}
 }
 
@@ -376,6 +387,7 @@ type queryClient struct {
 	compareIO       *connect.Client[drivelistv1.CompareIORequest, drivelistv1.CompareIOResponse]
 	mergeDrives     *connect.Client[drivelistv1.MergeDrivesRequest, drivelistv1.MergeDrivesResponse]
 	mergeHosts      *connect.Client[drivelistv1.MergeHostsRequest, drivelistv1.MergeHostsResponse]
+	rebuild         *connect.Client[drivelistv1.RebuildRequest, drivelistv1.RebuildResponse]
 }
 
 // ListHosts calls drivelist.v1.Query.ListHosts.
@@ -443,6 +455,11 @@ func (c *queryClient) MergeHosts(ctx context.Context, req *connect.Request[drive
 	return c.mergeHosts.CallUnary(ctx, req)
 }
 
+// Rebuild calls drivelist.v1.Query.Rebuild.
+func (c *queryClient) Rebuild(ctx context.Context, req *connect.Request[drivelistv1.RebuildRequest]) (*connect.Response[drivelistv1.RebuildResponse], error) {
+	return c.rebuild.CallUnary(ctx, req)
+}
+
 // QueryHandler is an implementation of the drivelist.v1.Query service.
 type QueryHandler interface {
 	ListHosts(context.Context, *connect.Request[drivelistv1.ListHostsRequest]) (*connect.Response[drivelistv1.ListHostsResponse], error)
@@ -476,6 +493,9 @@ type QueryHandler interface {
 	// MergeHosts folds one host record into another, for a host reinstalled
 	// with a new machine id. Refs are hostnames or machine ids.
 	MergeHosts(context.Context, *connect.Request[drivelistv1.MergeHostsRequest]) (*connect.Response[drivelistv1.MergeHostsResponse], error)
+	// Rebuild recomputes every placement and derived event from the stored
+	// snapshots. Annotations, merges, samples and ghosts are kept.
+	Rebuild(context.Context, *connect.Request[drivelistv1.RebuildRequest]) (*connect.Response[drivelistv1.RebuildResponse], error)
 }
 
 // NewQueryHandler builds an HTTP handler from the service implementation. It returns the path on
@@ -563,6 +583,12 @@ func NewQueryHandler(svc QueryHandler, opts ...connect.HandlerOption) (string, h
 		connect.WithSchema(queryMethods.ByName("MergeHosts")),
 		connect.WithHandlerOptions(opts...),
 	)
+	queryRebuildHandler := connect.NewUnaryHandler(
+		QueryRebuildProcedure,
+		svc.Rebuild,
+		connect.WithSchema(queryMethods.ByName("Rebuild")),
+		connect.WithHandlerOptions(opts...),
+	)
 	return "/drivelist.v1.Query/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
 		case QueryListHostsProcedure:
@@ -591,6 +617,8 @@ func NewQueryHandler(svc QueryHandler, opts ...connect.HandlerOption) (string, h
 			queryMergeDrivesHandler.ServeHTTP(w, r)
 		case QueryMergeHostsProcedure:
 			queryMergeHostsHandler.ServeHTTP(w, r)
+		case QueryRebuildProcedure:
+			queryRebuildHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -650,4 +678,8 @@ func (UnimplementedQueryHandler) MergeDrives(context.Context, *connect.Request[d
 
 func (UnimplementedQueryHandler) MergeHosts(context.Context, *connect.Request[drivelistv1.MergeHostsRequest]) (*connect.Response[drivelistv1.MergeHostsResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("drivelist.v1.Query.MergeHosts is not implemented"))
+}
+
+func (UnimplementedQueryHandler) Rebuild(context.Context, *connect.Request[drivelistv1.RebuildRequest]) (*connect.Response[drivelistv1.RebuildResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("drivelist.v1.Query.Rebuild is not implemented"))
 }

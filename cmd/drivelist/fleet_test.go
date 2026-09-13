@@ -156,6 +156,14 @@ func TestFleetEndToEnd(t *testing.T) {
 	if _, _, err := run(t, "host", "merge", "nosuch", "other"); err == nil || !strings.Contains(err.Error(), "not found") {
 		t.Errorf("host merge with unknown hosts: %v", err)
 	}
+	out = mustRun(t, "admin", "rebuild")
+	if !strings.HasPrefix(out, "rebuilt from 1 snapshots: 4 placements") {
+		t.Errorf("admin rebuild:\n%s", out)
+	}
+	out = mustRun(t, "drive", "VLG32AEY", "history")
+	if !strings.Contains(out, "first seen    ") || !strings.Contains(out, "present       ") {
+		t.Errorf("history after rebuild:\n%s", out)
+	}
 	if _, _, err := run(t, "drive", "VLG32AEY", "smart", "--raw"); err == nil {
 		t.Error("smart --raw with nothing stored succeeded")
 	}

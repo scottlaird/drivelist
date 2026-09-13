@@ -27,7 +27,42 @@ func fleetCommands(cfg *clientConfig) []*cobra.Command {
 		newMissingCmd(cfg),
 		newIOCmd(cfg),
 		newHostCmd(cfg),
+		newAdminCmd(cfg),
 	}
+}
+
+func newAdminCmd(cfg *clientConfig) *cobra.Command {
+	cmd := &cobra.Command{
+		Use:   "admin",
+		Short: "Server maintenance",
+	}
+	cmd.AddCommand(&cobra.Command{
+		Use:   "rebuild",
+		Short: "Recompute every placement and derived event from the stored snapshots",
+		Long: `rebuild throws away the placements and the events derived from reports
+(first seen, vanished, moved, use changed, and so on) and recomputes
+them from the snapshots the server kept, through the same logic
+ingest uses. Manual annotations, merges, samples, ghosts and host
+events are kept. Use it after a fix to the ingest logic; it is also
+the check that history is a pure function of the reports.`,
+		Args: cobra.NoArgs,
+		RunE: func(cmd *cobra.Command, _ []string) error {
+			client, err := cfg.queryClient()
+			if err != nil {
+				return err
+			}
+			res, err := client.Rebuild(cmd.Context(), connect.NewRequest(&pb.RebuildRequest{}))
+			if err != nil {
+				return rpcErr(err)
+			}
+			if cfg.json {
+				return printJSON(cmd.OutOrStdout(), res.Msg)
+			}
+			fmt.Fprintf(cmd.OutOrStdout(), "rebuilt from %d snapshots: %d placements, %d events\n", res.Msg.Snapshots, res.Msg.Placements, res.Msg.Events)
+			return nil
+		},
+	})
+	return cmd
 }
 
 func tab(w io.Writer) *tabwriter.Writer { return tabwriter.NewWriter(w, 0, 8, 2, ' ', 0) }

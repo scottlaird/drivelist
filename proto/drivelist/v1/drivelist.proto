@@ -56,6 +56,9 @@ service Query {
   // MergeHosts folds one host record into another, for a host reinstalled
   // with a new machine id. Refs are hostnames or machine ids.
   rpc MergeHosts(MergeHostsRequest) returns (MergeHostsResponse);
+  // Rebuild recomputes every placement and derived event from the stored
+  // snapshots. Annotations, merges, samples and ghosts are kept.
+  rpc Rebuild(RebuildRequest) returns (RebuildResponse);
 }
 
 // ---------- shared ----------
@@ -450,4 +453,12 @@ message MergeHostsRequest {
 
 message MergeHostsResponse {
   Event event = 1;
+}
+
+message RebuildRequest {}
+
+message RebuildResponse {
+  int32 snapshots = 1;
+  int32 placements = 2;
+  int32 events = 3;
 }

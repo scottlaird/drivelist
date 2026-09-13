@@ -369,6 +369,16 @@ func (s *Server) MergeHosts(ctx context.Context, req *connect.Request[pb.MergeHo
 	return connect.NewResponse(&pb.MergeHostsResponse{Event: eventToProto(ev)}), nil
 }
 
+func (s *Server) Rebuild(ctx context.Context, _ *connect.Request[pb.RebuildRequest]) (*connect.Response[pb.RebuildResponse], error) {
+	res, err := s.store.Rebuild(ctx)
+	if err != nil {
+		s.log.Error("rebuild", "err", err)
+		return nil, connect.NewError(connect.CodeInternal, err)
+	}
+	s.log.Warn("history rebuilt from snapshots", "snapshots", res.Snapshots, "placements", res.Placements, "events", res.Events)
+	return connect.NewResponse(&pb.RebuildResponse{Snapshots: int32(res.Snapshots), Placements: int32(res.Placements), Events: int32(res.Events)}), nil
+}
+
 func actorOr(actor string) string {
 	if actor == "" {
 		return "unknown"

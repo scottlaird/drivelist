@@ -208,6 +208,7 @@ Then, from anywhere, with `DRIVELIST_SERVER` and
   $ drivelist drive VJG24UZX note "RMA 4471 opened"
   $ drivelist events [--since 24h] [--kind vanished,moved_host] [--host fs2]
   $ drivelist missing
+  $ drivelist admin rebuild      # recompute history from the stored snapshots
 ```
 
 The server exposes Prometheus metrics at `/metrics` without a token:

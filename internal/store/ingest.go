@@ -69,7 +69,7 @@ func (s *Store) Ingest(ctx context.Context, r Report) (IngestResult, error) {
 		err = t.heartbeat(host)
 	} else {
 		result.Changed = true
-		err = t.applySnapshot(host, r, rows, hash)
+		err = t.applySnapshot(host, r, rows, hash, 0)
 	}
 	if err != nil {
 		return IngestResult{}, err
@@ -168,8 +168,10 @@ type placementRow struct {
 }
 
 // applySnapshot records a changed state and diffs it against the host's open
-// placements and ghosts.
-func (t *tx) applySnapshot(host *hostRow, r Report, rows []devRow, hash string) error {
+// placements and ghosts. With replay set, the snapshot already exists
+// (Rebuild is replaying it): no snapshot rows are written and ghosts are
+// left alone, since reports' unmapped members are not kept in snapshots.
+func (t *tx) applySnapshot(host *hostRow, r Report, rows []devRow, hash string, replay int64) error {
 	open, err := t.openPlacements(host.id)
 	if err != nil {
 		return err
@@ -208,21 +210,24 @@ func (t *tx) applySnapshot(host *hostRow, r Report, rows []devRow, hash string) 
 		unattributed = append(unattributed, row.dev.DevName)
 	}
 
-	errs, _ := json.Marshal(append([]string{}, r.CollectorErrors...))
-	res, err := t.ExecContext(t.ctx, `INSERT INTO snapshot (host_id, first_at, last_at, received_at, content_hash, complete, device_count, errors) VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
-		host.id, t.obs, t.obs, t.now, hash, !degraded, len(rows), string(errs))
-	if err != nil {
-		return err
-	}
-	snapshotID, _ := res.LastInsertId()
-	source := fmt.Sprintf("snapshot:%d", snapshotID)
-	for _, row := range rows {
-		links, _ := json.Marshal(append([]string{}, row.dev.DevLinks...))
-		if _, err := t.ExecContext(t.ctx, `INSERT INTO snapshot_device (snapshot_id, dev_name, drive_id, expander, bay, enclosure_path, size_bytes, uses, member_state, dev_links, scsi_addr, error) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
-			snapshotID, row.dev.DevName, nullID(row.driveID), row.dev.Expander, row.dev.Bay, row.dev.EnclosurePath, row.dev.SizeBytes, row.uses, row.dev.MemberState, string(links), row.dev.SCSIAddr, row.dev.Error); err != nil {
+	snapshotID := replay
+	if replay == 0 {
+		errs, _ := json.Marshal(append([]string{}, r.CollectorErrors...))
+		res, err := t.ExecContext(t.ctx, `INSERT INTO snapshot (host_id, first_at, last_at, received_at, content_hash, complete, device_count, errors) VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
+			host.id, t.obs, t.obs, t.now, hash, !degraded, len(rows), string(errs))
+		if err != nil {
 			return err
 		}
+		snapshotID, _ = res.LastInsertId()
+		for _, row := range rows {
+			links, _ := json.Marshal(append([]string{}, row.dev.DevLinks...))
+			if _, err := t.ExecContext(t.ctx, `INSERT INTO snapshot_device (snapshot_id, dev_name, drive_id, expander, bay, enclosure_path, size_bytes, uses, member_state, dev_links, scsi_addr, error) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+				snapshotID, row.dev.DevName, nullID(row.driveID), row.dev.Expander, row.dev.Bay, row.dev.EnclosurePath, row.dev.SizeBytes, row.uses, row.dev.MemberState, string(links), row.dev.SCSIAddr, row.dev.Error); err != nil {
+				return err
+			}
+		}
 	}
+	source := fmt.Sprintf("snapshot:%d", snapshotID)
 
 	prevStates, err := t.memberStates(host.currentSnapshotID)
 	if err != nil {
@@ -244,7 +249,7 @@ func (t *tx) applySnapshot(host *hostRow, r Report, rows []devRow, hash string) 
 				return err
 			}
 			if prev, ok := prevStates[row.driveID]; ok && prev != row.dev.MemberState {
-				if err := t.event(EventMemberStateChanged, row.driveID, host.id, map[string]any{"from": prev, "to": row.dev.MemberState, "uses": row.dev.Uses}, source, snapshotID); err != nil {
+				if err := t.event(EventMemberStateChanged, row.driveID, host.id, map[string]any{"from": prev, "to": row.dev.MemberState, "uses": json.RawMessage(row.uses)}, source, snapshotID); err != nil {
 					return err
 				}
 			}
@@ -260,12 +265,14 @@ func (t *tx) applySnapshot(host *hostRow, r Report, rows []devRow, hash string) 
 	}
 
 	if degraded && !host.degraded {
-		if err := t.event(EventReportDegraded, 0, host.id, map[string]any{"unidentified": unattributed, "collector_errors": r.CollectorErrors}, source, snapshotID); err != nil {
+		if err := t.event(EventReportDegraded, 0, host.id, map[string]any{"unidentified": append([]string{}, unattributed...), "collector_errors": append([]string{}, r.CollectorErrors...)}, source, snapshotID); err != nil {
 			return err
 		}
 	}
-	if err := t.reconcileGhosts(host, r.Unmapped, source, snapshotID); err != nil {
-		return err
+	if replay == 0 {
+		if err := t.reconcileGhosts(host, r.Unmapped, source, snapshotID); err != nil {
+			return err
+		}
 	}
 	_, err = t.ExecContext(t.ctx, `UPDATE host SET current_snapshot_id = ?, degraded = ? WHERE host_id = ?`, snapshotID, degraded, host.id)
 	return err
@@ -280,7 +287,9 @@ func (t *tx) placeDrive(host *hostRow, row devRow, here *placementRow, source st
 		_, err := t.ExecContext(t.ctx, `UPDATE placement SET last_seen = ?, dev_name = ? WHERE placement_id = ?`, t.obs, d.DevName, here.id)
 		return err
 	}
-	slot := map[string]any{"expander": d.Expander, "bay": d.Bay, "uses": d.Uses, "dev_name": d.DevName}
+	// Uses go in as the canonical JSON so live ingest and Rebuild write the
+	// same detail.
+	slot := map[string]any{"expander": d.Expander, "bay": d.Bay, "uses": json.RawMessage(row.uses), "dev_name": d.DevName}
 
 	prev, err := t.openPlacementAnywhere(row.driveID)
 	if err != nil {
