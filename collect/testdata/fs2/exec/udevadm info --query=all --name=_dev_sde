@@ -5,12 +5,12 @@ T: disk
 D: b 8:64
 N: sde
 L: 0
-S: disk/by-id/scsi-35000cca25207ef14
-S: disk/by-path/pci-0000:01:00.0-sas-exp0x500304800000007f-phy10-lun-0
-S: disk/by-id/wwn-0x5000cca25207ef14
 S: disk/by-vdev/Ab2
 S: disk/by-id/scsi-SHGST_HUH721008AL5204_7SG4B86G
+S: disk/by-id/wwn-0x5000cca25207ef14
+S: disk/by-id/scsi-35000cca25207ef14
 S: disk/by-diskseq/13
+S: disk/by-path/pci-0000:01:00.0-sas-exp0x500304800000007f-phy10-lun-0
 Q: 13
 E: DEVPATH=/devices/pci0000:00/0000:00:01.0/0000:01:00.0/host10/port-10:0/expander-10:0/port-10:0:2/end_device-10:0:2/target10:0:2/10:0:2:0/block/sde
 E: DEVNAME=/dev/sde
@@ -56,7 +56,7 @@ E: ID_PART_TABLE_TYPE=gpt
 E: ID_VDEV=Ab2
 E: ID_VDEV_PATH=disk/by-vdev/Ab2
 E: NVME_HOST_IFACE=none
-E: DEVLINKS=/dev/disk/by-id/scsi-35000cca25207ef14 /dev/disk/by-path/pci-0000:01:00.0-sas-exp0x500304800000007f-phy10-lun-0 /dev/disk/by-id/wwn-0x5000cca25207ef14 /dev/disk/by-vdev/Ab2 /dev/disk/by-id/scsi-SHGST_HUH721008AL5204_7SG4B86G /dev/disk/by-diskseq/13
+E: DEVLINKS=/dev/disk/by-vdev/Ab2 /dev/disk/by-id/scsi-SHGST_HUH721008AL5204_7SG4B86G /dev/disk/by-id/wwn-0x5000cca25207ef14 /dev/disk/by-id/scsi-35000cca25207ef14 /dev/disk/by-diskseq/13 /dev/disk/by-path/pci-0000:01:00.0-sas-exp0x500304800000007f-phy10-lun-0
 E: TAGS=:systemd:
 E: CURRENT_TAGS=:systemd:
 

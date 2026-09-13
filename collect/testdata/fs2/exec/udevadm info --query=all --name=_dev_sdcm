@@ -6,10 +6,10 @@ D: b 69:160
 N: sdcm
 L: 0
 S: disk/by-vdev/E19
-S: disk/by-id/scsi-SIBM-E051_MZILT3T8HALS_C7XBG0ZK0KA05168
-S: disk/by-diskseq/99
 S: disk/by-id/scsi-35002538b48a79940
 S: disk/by-path/pci-0000:03:00.0-sas-exp0x5003048001e8967f-phy31-lun-0
+S: disk/by-diskseq/99
+S: disk/by-id/scsi-SIBM-E051_MZILT3T8HALS_C7XBG0ZK0KA05168
 S: disk/by-id/wwn-0x5002538b48a79940
 Q: 99
 E: DEVPATH=/devices/pci0000:00/0000:00:03.0/0000:03:00.0/host11/port-11:9/expander-11:1/port-11:1:16/end_device-11:1:16/target11:0:76/11:0:76:0/block/sdcm
@@ -56,7 +56,7 @@ E: ID_PART_TABLE_TYPE=gpt
 E: ID_VDEV=E19
 E: ID_VDEV_PATH=disk/by-vdev/E19
 E: NVME_HOST_IFACE=none
-E: DEVLINKS=/dev/disk/by-vdev/E19 /dev/disk/by-id/scsi-SIBM-E051_MZILT3T8HALS_C7XBG0ZK0KA05168 /dev/disk/by-diskseq/99 /dev/disk/by-id/scsi-35002538b48a79940 /dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5003048001e8967f-phy31-lun-0 /dev/disk/by-id/wwn-0x5002538b48a79940
+E: DEVLINKS=/dev/disk/by-vdev/E19 /dev/disk/by-id/scsi-35002538b48a79940 /dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5003048001e8967f-phy31-lun-0 /dev/disk/by-diskseq/99 /dev/disk/by-id/scsi-SIBM-E051_MZILT3T8HALS_C7XBG0ZK0KA05168 /dev/disk/by-id/wwn-0x5002538b48a79940
 E: TAGS=:systemd:
 E: CURRENT_TAGS=:systemd:
 

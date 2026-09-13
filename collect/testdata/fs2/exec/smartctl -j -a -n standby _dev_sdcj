@@ -1,0 +1,161 @@
+{
+  "json_format_version": [
+    1,
+    0
+  ],
+  "smartctl": {
+    "version": [
+      7,
+      4
+    ],
+    "pre_release": false,
+    "svn_revision": "5530",
+    "platform_info": "x86_64-linux-7.0.0-31-generic",
+    "build_info": "(local build)",
+    "argv": [
+      "smartctl",
+      "-j",
+      "-a",
+      "-n",
+      "standby",
+      "/dev/sdcj"
+    ],
+    "exit_status": 0
+  },
+  "local_time": {
+    "time_t": 1789266098,
+    "asctime": "Sat Sep 12 19:21:38 2026 PDT"
+  },
+  "device": {
+    "name": "/dev/sdcj",
+    "info_name": "/dev/sdcj",
+    "type": "scsi",
+    "protocol": "SCSI"
+  },
+  "scsi_vendor": "HGST",
+  "scsi_product": "HUH728080AL4200",
+  "scsi_model_name": "HGST HUH728080AL4200",
+  "scsi_revision": "A7D8",
+  "scsi_version": "SPC-4",
+  "user_capacity": {
+    "blocks": 1953506646,
+    "bytes": 8001563222016
+  },
+  "logical_block_size": 4096,
+  "scsi_lb_provisioning": {
+    "name": "fully provisioned",
+    "value": 0,
+    "management_enabled": {
+      "name": "LBPME",
+      "value": 0
+    },
+    "read_zeros": {
+      "name": "LBPRZ",
+      "value": 0
+    }
+  },
+  "rotation_rate": 7200,
+  "form_factor": {
+    "scsi_value": 2,
+    "name": "3.5 inches"
+  },
+  "logical_unit_id": "0x5000cca23b0bd454",
+  "serial_number": "2EG6HP1R",
+  "device_type": {
+    "scsi_terminology": "Peripheral Device Type [PDT]",
+    "scsi_value": 0,
+    "name": "disk"
+  },
+  "scsi_transport_protocol": {
+    "name": "SAS (SPL-4)",
+    "value": 6
+  },
+  "smart_support": {
+    "available": true,
+    "enabled": true
+  },
+  "temperature_warning": {
+    "enabled": true
+  },
+  "smart_status": {
+    "passed": true
+  },
+  "temperature": {
+    "current": 34,
+    "drive_trip": 85
+  },
+  "power_on_time": {
+    "hours": 14244,
+    "minutes": 14
+  },
+  "scsi_start_stop_cycle_counter": {
+    "year_of_manufacture": "2015",
+    "week_of_manufacture": "07",
+    "specified_cycle_count_over_device_lifetime": 50000,
+    "accumulated_start_stop_cycles": 66,
+    "specified_load_unload_count_over_device_lifetime": 600000,
+    "accumulated_load_unload_cycles": 23214
+  },
+  "scsi_grown_defect_list": 0,
+  "seagate_farm_log": {
+    "supported": false
+  },
+  "scsi_error_counter_log": {
+    "read": {
+      "errors_corrected_by_eccfast": 0,
+      "errors_corrected_by_eccdelayed": 8,
+      "errors_corrected_by_rereads_rewrites": 0,
+      "total_errors_corrected": 8,
+      "correction_algorithm_invocations": 14529476,
+      "gigabytes_processed": "146429.141",
+      "total_uncorrected_errors": 0
+    },
+    "write": {
+      "errors_corrected_by_eccfast": 0,
+      "errors_corrected_by_eccdelayed": 0,
+      "errors_corrected_by_rereads_rewrites": 0,
+      "total_errors_corrected": 0,
+      "correction_algorithm_invocations": 1966789,
+      "gigabytes_processed": "31301.241",
+      "total_uncorrected_errors": 0
+    },
+    "verify": {
+      "errors_corrected_by_eccfast": 0,
+      "errors_corrected_by_eccdelayed": 0,
+      "errors_corrected_by_rereads_rewrites": 0,
+      "total_errors_corrected": 0,
+      "correction_algorithm_invocations": 250812,
+      "gigabytes_processed": "0.000",
+      "total_uncorrected_errors": 0
+    }
+  },
+  "scsi_self_test_0": {
+    "code": {
+      "value": 1,
+      "string": "Background short"
+    },
+    "result": {
+      "value": 0,
+      "string": "Completed"
+    },
+    "power_on_time": {
+      "hours": 36919,
+      "aka": "accumulated_power_on_hours"
+    }
+  },
+  "scsi_self_test_1": {
+    "code": {
+      "value": 1,
+      "string": "Background short"
+    },
+    "result": {
+      "value": 0,
+      "string": "Completed"
+    },
+    "power_on_time": {
+      "hours": 36845,
+      "aka": "accumulated_power_on_hours"
+    }
+  },
+  "scsi_extended_self_test_seconds": 66960
+}

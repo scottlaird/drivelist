@@ -5,12 +5,12 @@ T: disk
 D: b 66:112
 N: sdan
 L: 0
-S: disk/by-diskseq/48
-S: disk/by-id/scsi-35002538a06a030f0
-S: disk/by-id/wwn-0x5002538a06a030f0
-S: disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy23-lun-0
-S: disk/by-id/scsi-SSAMSUNG_P1633N19_EMC1920_P0NA0HA00158
 S: disk/by-vdev/D43
+S: disk/by-diskseq/48
+S: disk/by-id/scsi-SSAMSUNG_P1633N19_EMC1920_P0NA0HA00158
+S: disk/by-id/scsi-35002538a06a030f0
+S: disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy23-lun-0
+S: disk/by-id/wwn-0x5002538a06a030f0
 Q: 48
 E: DEVPATH=/devices/pci0000:00/0000:00:03.0/0000:03:00.0/host11/port-11:0/expander-11:0/port-11:0:16/end_device-11:0:16/target11:0:24/11:0:24:0/block/sdan
 E: DEVNAME=/dev/sdan
@@ -56,7 +56,7 @@ E: ID_PART_TABLE_TYPE=gpt
 E: ID_VDEV=D43
 E: ID_VDEV_PATH=disk/by-vdev/D43
 E: NVME_HOST_IFACE=none
-E: DEVLINKS=/dev/disk/by-diskseq/48 /dev/disk/by-id/scsi-35002538a06a030f0 /dev/disk/by-id/wwn-0x5002538a06a030f0 /dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy23-lun-0 /dev/disk/by-id/scsi-SSAMSUNG_P1633N19_EMC1920_P0NA0HA00158 /dev/disk/by-vdev/D43
+E: DEVLINKS=/dev/disk/by-vdev/D43 /dev/disk/by-diskseq/48 /dev/disk/by-id/scsi-SSAMSUNG_P1633N19_EMC1920_P0NA0HA00158 /dev/disk/by-id/scsi-35002538a06a030f0 /dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy23-lun-0 /dev/disk/by-id/wwn-0x5002538a06a030f0
 E: TAGS=:systemd:
 E: CURRENT_TAGS=:systemd:
 

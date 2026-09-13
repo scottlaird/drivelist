@@ -1,0 +1,134 @@
+{
+  "json_format_version": [
+    1,
+    0
+  ],
+  "smartctl": {
+    "version": [
+      7,
+      4
+    ],
+    "pre_release": false,
+    "svn_revision": "5530",
+    "platform_info": "x86_64-linux-7.0.0-31-generic",
+    "build_info": "(local build)",
+    "argv": [
+      "smartctl",
+      "-j",
+      "-a",
+      "-n",
+      "standby",
+      "/dev/sdu"
+    ],
+    "exit_status": 0
+  },
+  "local_time": {
+    "time_t": 1789266103,
+    "asctime": "Sat Sep 12 19:21:43 2026 PDT"
+  },
+  "device": {
+    "name": "/dev/sdu",
+    "info_name": "/dev/sdu",
+    "type": "scsi",
+    "protocol": "SCSI"
+  },
+  "scsi_vendor": "HITACHI",
+  "scsi_product": "HUSMH842 CLAR200",
+  "scsi_model_name": "HITACHI HUSMH842 CLAR200",
+  "scsi_revision": "C342",
+  "scsi_version": "SPC-4",
+  "user_capacity": {
+    "blocks": 390721968,
+    "bytes": 200049647616
+  },
+  "logical_block_size": 512,
+  "physical_block_size": 4096,
+  "scsi_lb_provisioning": {
+    "name": "resource provisioned",
+    "value": 1,
+    "management_enabled": {
+      "name": "LBPME",
+      "value": 1
+    },
+    "read_zeros": {
+      "name": "LBPRZ",
+      "value": 1
+    }
+  },
+  "rotation_rate": 0,
+  "form_factor": {
+    "scsi_value": 3,
+    "name": "2.5 inches"
+  },
+  "logical_unit_id": "0x5000cca04aafd554",
+  "serial_number": "0LY3PSSA",
+  "device_type": {
+    "scsi_terminology": "Peripheral Device Type [PDT]",
+    "scsi_value": 0,
+    "name": "disk"
+  },
+  "scsi_transport_protocol": {
+    "name": "SAS (SPL-4)",
+    "value": 6
+  },
+  "smart_support": {
+    "available": true,
+    "enabled": true
+  },
+  "temperature_warning": {
+    "enabled": false
+  },
+  "smart_status": {
+    "passed": true
+  },
+  "scsi_percentage_used_endurance_indicator": 2,
+  "temperature": {
+    "current": 28,
+    "drive_trip": 65
+  },
+  "power_on_time": {
+    "hours": 18347,
+    "minutes": 34
+  },
+  "scsi_start_stop_cycle_counter": {
+    "year_of_manufacture": "2017",
+    "week_of_manufacture": "02",
+    "specified_cycle_count_over_device_lifetime": 0,
+    "accumulated_start_stop_cycles": 0,
+    "specified_load_unload_count_over_device_lifetime": 0,
+    "accumulated_load_unload_cycles": 0
+  },
+  "scsi_grown_defect_list": 0,
+  "seagate_farm_log": {
+    "supported": false
+  },
+  "scsi_error_counter_log": {
+    "read": {
+      "errors_corrected_by_eccfast": 0,
+      "errors_corrected_by_eccdelayed": 0,
+      "errors_corrected_by_rereads_rewrites": 0,
+      "total_errors_corrected": 0,
+      "correction_algorithm_invocations": 0,
+      "gigabytes_processed": "133489.111",
+      "total_uncorrected_errors": 0
+    },
+    "write": {
+      "errors_corrected_by_eccfast": 0,
+      "errors_corrected_by_eccdelayed": 0,
+      "errors_corrected_by_rereads_rewrites": 0,
+      "total_errors_corrected": 0,
+      "correction_algorithm_invocations": 0,
+      "gigabytes_processed": "187702.322",
+      "total_uncorrected_errors": 0
+    },
+    "verify": {
+      "errors_corrected_by_eccfast": 0,
+      "errors_corrected_by_eccdelayed": 0,
+      "errors_corrected_by_rereads_rewrites": 0,
+      "total_errors_corrected": 0,
+      "correction_algorithm_invocations": 0,
+      "gigabytes_processed": "106566.032",
+      "total_uncorrected_errors": 0
+    }
+  }
+}

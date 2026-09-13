@@ -5,11 +5,11 @@ T: disk
 D: b 67:208
 N: sdbj
 L: 0
-S: disk/by-id/wwn-0x5000c500e3f9397c
-S: disk/by-id/scsi-35000c500e3f9397c
 S: disk/by-vdev/D26
 S: disk/by-diskseq/70
 S: disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy47-lun-0
+S: disk/by-id/scsi-35000c500e3f9397c
+S: disk/by-id/wwn-0x5000c500e3f9397c
 S: disk/by-id/scsi-SATA_ST8000VN004-2M21_WSD6LL44
 Q: 70
 E: DEVPATH=/devices/pci0000:00/0000:00:03.0/0000:03:00.0/host11/port-11:0/expander-11:0/port-11:0:38/end_device-11:0:38/target11:0:46/11:0:46:0/block/sdbj
@@ -53,7 +53,7 @@ E: ID_PART_TABLE_UUID=cf6b839a-e345-d944-b2f9-c792b60a5062
 E: ID_PART_TABLE_TYPE=gpt
 E: ID_VDEV=D26
 E: ID_VDEV_PATH=disk/by-vdev/D26
-E: DEVLINKS=/dev/disk/by-id/wwn-0x5000c500e3f9397c /dev/disk/by-id/scsi-35000c500e3f9397c /dev/disk/by-vdev/D26 /dev/disk/by-diskseq/70 /dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy47-lun-0 /dev/disk/by-id/scsi-SATA_ST8000VN004-2M21_WSD6LL44
+E: DEVLINKS=/dev/disk/by-vdev/D26 /dev/disk/by-diskseq/70 /dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy47-lun-0 /dev/disk/by-id/scsi-35000c500e3f9397c /dev/disk/by-id/wwn-0x5000c500e3f9397c /dev/disk/by-id/scsi-SATA_ST8000VN004-2M21_WSD6LL44
 E: TAGS=:systemd:
 E: CURRENT_TAGS=:systemd:
 

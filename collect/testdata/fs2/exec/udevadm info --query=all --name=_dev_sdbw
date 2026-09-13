@@ -6,11 +6,11 @@ D: b 68:160
 N: sdbw
 L: 0
 S: disk/by-id/scsi-SATA_ST8000DM004-2CX1_WCT0VA8J
+S: disk/by-diskseq/83
+S: disk/by-id/scsi-35000c500baa141ea
+S: disk/by-id/wwn-0x5000c500baa141ea
 S: disk/by-path/pci-0000:03:00.0-sas-exp0x5003048001e8967f-phy13-lun-0
 S: disk/by-vdev/E1
-S: disk/by-id/wwn-0x5000c500baa141ea
-S: disk/by-id/scsi-35000c500baa141ea
-S: disk/by-diskseq/83
 Q: 83
 E: DEVPATH=/devices/pci0000:00/0000:00:03.0/0000:03:00.0/host11/port-11:9/expander-11:1/port-11:1:0/end_device-11:1:0/target11:0:60/11:0:60:0/block/sdbw
 E: DEVNAME=/dev/sdbw
@@ -54,7 +54,7 @@ E: ID_PART_TABLE_TYPE=gpt
 E: ID_VDEV=E1
 E: ID_VDEV_PATH=disk/by-vdev/E1
 E: NVME_HOST_IFACE=none
-E: DEVLINKS=/dev/disk/by-id/scsi-SATA_ST8000DM004-2CX1_WCT0VA8J /dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5003048001e8967f-phy13-lun-0 /dev/disk/by-vdev/E1 /dev/disk/by-id/wwn-0x5000c500baa141ea /dev/disk/by-id/scsi-35000c500baa141ea /dev/disk/by-diskseq/83
+E: DEVLINKS=/dev/disk/by-id/scsi-SATA_ST8000DM004-2CX1_WCT0VA8J /dev/disk/by-diskseq/83 /dev/disk/by-id/scsi-35000c500baa141ea /dev/disk/by-id/wwn-0x5000c500baa141ea /dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5003048001e8967f-phy13-lun-0 /dev/disk/by-vdev/E1
 E: TAGS=:systemd:
 E: CURRENT_TAGS=:systemd:
 
