@@ -36,7 +36,7 @@ NFPM_amd64   := amd64
 NFPM_arm64   := arm64
 NFPM_armhf   := arm7
 
-.PHONY: all build test deb clean
+.PHONY: all build test deb clean FORCE
 .SECONDARY:   # keep the cross-built binaries the pattern rule makes
 
 all: build
@@ -48,9 +48,15 @@ test:
 	go vet ./...
 	go test -race ./...
 
-dist/drivelist-linux-%:
+# FORCE makes the binaries rebuild every time: the version baked in by
+# LDFLAGS changes with tags, not with sources, and a stale binary in dist/
+# would otherwise be packaged under a new version. go build is incremental,
+# so this costs little.
+dist/drivelist-linux-%: FORCE
 	mkdir -p dist
 	GOOS=linux GOARCH=$(GOARCH_$*) GOARM=$(GOARM_$*) CGO_ENABLED=0 go build -ldflags '$(LDFLAGS)' -o $@ ./cmd/drivelist
+
+FORCE:
 
 deb-%: dist/drivelist-linux-%
 	cp $< dist/drivelist-bin
