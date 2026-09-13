@@ -219,7 +219,10 @@ tables) falls back to SMBIOS type 9, which names every slot the board
 vendor cared to describe (`M.2_1`, `PCIE3`, or a bare reference
 designator like `J3502`) by the root port it hangs off; most consumer
 boards describe some slots and not others, so some drives get a bay
-and some do not.
+and some do not.  A SATA drive on one of the board's own ports is
+placed by the port, named as udev names it (`pci-0000:00:1f.2-ata-5`,
+the controller and the port number on it), so a profile can say which
+bay the port feeds.
 
 Firmware identities are not what a person calls a bay.  `hardware/`
 holds a profile per enclosure model, embedded in the binary: what the
