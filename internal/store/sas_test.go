@@ -230,3 +230,25 @@ func TestEnclosuresFromEmptyBays(t *testing.T) {
 		t.Errorf("clear by partial key = %+v, %v", e, err)
 	}
 }
+
+// TestEnclosureProductFromAgent: an NVMe chassis enclosure carries its own
+// model, since no SAS node reaches it.
+func TestEnclosureProductFromAgent(t *testing.T) {
+	h := newHarness(t)
+	n := ReportDevice{DevName: "nvme0n1", Identity: DriveIdentity{WWN: "eui.1", Model: "SSDPD2KS", Serial: "N1"}, Bus: "nvme", SizeBytes: 7e12, Bay: "9-1",
+		EnclosureID: "dmi:KCS0GX0000TB", EnclosureVia: "pci", EnclosureViaID: "dmi:KCS0GX0000TB", EnclosureModel: "ASUSTeK COMPUTER INC. RS500A-E10-RS12U", Uses: []string{"zfs > fast 1 > mirror 0 > disk 0"}}
+	r := Report{Host: hostA, ObservedAt: h.now, Devices: []ReportDevice{n}, Complete: true,
+		EmptyBays: []ReportBay{{EnclosureID: "dmi:KCS0GX0000TB", EnclosureVia: "pci", EnclosureViaID: "dmi:KCS0GX0000TB", EnclosureModel: "ASUSTeK COMPUTER INC. RS500A-E10-RS12U", Bay: "9"}}}
+	h.submit(r)
+	es, err := h.s.ListEnclosures(h.ctx)
+	if err != nil || len(es) != 1 || es[0].Product != "ASUSTeK COMPUTER INC. RS500A-E10-RS12U" || es[0].Via != "pci" || es[0].Drives != 1 || es[0].Bays != 2 || es[0].Key != "dmi:KCS0GX0000TB" {
+		t.Errorf("ListEnclosures = %+v, %v", es, err)
+	}
+	if e, err := h.s.NameEnclosure(h.ctx, "KCS0GX", "mgmt1-front", "", "scott"); err != nil || e.Name != "mgmt1-front" || e.Product == "" {
+		t.Errorf("NameEnclosure = %+v, %v", e, err)
+	}
+	d, _, _, err := h.s.GetDrive(h.ctx, "N1")
+	if err != nil || d.Current == nil || d.Current.EnclosureName != "mgmt1-front" || d.Current.Bay != "9-1" {
+		t.Errorf("drive = %+v, %v", d.Current, err)
+	}
+}

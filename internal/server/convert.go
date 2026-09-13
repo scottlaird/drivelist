@@ -51,6 +51,7 @@ func reportFromProto(req *pb.ReportInventoryRequest) store.Report {
 			EnclosureID:    d.GetEnclosureId(),
 			EnclosureVia:   d.GetEnclosureVia(),
 			EnclosureViaID: d.GetEnclosureViaId(),
+			EnclosureModel: d.GetEnclosureModel(),
 			EnclosurePath:  d.GetEnclosurePath(),
 			Uses:           d.GetUses(),
 			DevLinks:       d.GetDevLinks(),
@@ -63,7 +64,7 @@ func reportFromProto(req *pb.ReportInventoryRequest) store.Report {
 		r.Unmapped = append(r.Unmapped, store.PoolMember{Pool: m.GetPool(), Path: m.GetPath(), GUID: m.GetGuid(), State: m.GetState()})
 	}
 	for _, b := range req.GetEmptyBays() {
-		r.EmptyBays = append(r.EmptyBays, store.ReportBay{EnclosureID: b.GetEnclosureId(), EnclosureVia: b.GetEnclosureVia(), EnclosureViaID: b.GetEnclosureViaId(), Bay: b.GetBay()})
+		r.EmptyBays = append(r.EmptyBays, store.ReportBay{EnclosureID: b.GetEnclosureId(), EnclosureVia: b.GetEnclosureVia(), EnclosureViaID: b.GetEnclosureViaId(), EnclosureModel: b.GetEnclosureModel(), Bay: b.GetBay()})
 	}
 	for _, n := range req.GetSasNodes() {
 		r.SASNodes = append(r.SASNodes, sasNodeFromProto(n))

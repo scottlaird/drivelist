@@ -9,6 +9,8 @@ import (
 	"path"
 	"path/filepath"
 	"strings"
+
+	"github.com/scottlaird/drivelist"
 )
 
 // captureCommands are run verbatim during Capture and their output saved,
@@ -77,6 +79,11 @@ func (c *Collector) captureLinux(dir string) error {
 		if err := c.copySys(dir, devpath+"/size"); err != nil {
 			slog.Warn("capture: size", "device", name, "err", err)
 		}
+		if strings.HasPrefix(name, "nvme") {
+			if err := c.captureNVMeTree(dir, nvmeController(&drivelist.Device{SysPath: c.sys() + devpath, Attribs: u.Attribs})); err != nil {
+				return err
+			}
+		}
 		if exp := expanderPath(devpath); exp != "" {
 			if err := c.copyBayIdentifiers(dir, exp); err != nil {
 				return err
@@ -100,6 +107,9 @@ func (c *Collector) captureLinux(dir string) error {
 		return err
 	}
 	if err := c.captureSAS(dir); err != nil {
+		return err
+	}
+	if err := c.captureNVMeSlots(dir); err != nil {
 		return err
 	}
 
