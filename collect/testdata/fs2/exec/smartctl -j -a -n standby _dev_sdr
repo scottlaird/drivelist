@@ -1,0 +1,68 @@
+{
+  "json_format_version": [
+    1,
+    0
+  ],
+  "smartctl": {
+    "version": [
+      7,
+      4
+    ],
+    "pre_release": false,
+    "svn_revision": "5530",
+    "platform_info": "x86_64-linux-7.0.0-31-generic",
+    "build_info": "(local build)",
+    "argv": [
+      "smartctl",
+      "-j",
+      "-a",
+      "-n",
+      "standby",
+      "/dev/sdr"
+    ],
+    "exit_status": 2
+  },
+  "local_time": {
+    "time_t": 1789266103,
+    "asctime": "Sat Sep 12 19:21:43 2026 PDT"
+  },
+  "device": {
+    "name": "/dev/sdr",
+    "info_name": "/dev/sdr",
+    "type": "scsi",
+    "protocol": "SCSI"
+  },
+  "scsi_vendor": "HITACHI",
+  "scsi_product": "HUSMM111CLAR1600",
+  "scsi_model_name": "HITACHI HUSMM111CLAR1600",
+  "scsi_revision": "C250",
+  "scsi_version": "SPC-4",
+  "scsi_lb_provisioning": {
+    "name": "resource provisioned",
+    "value": 1,
+    "management_enabled": {
+      "name": "LBPME",
+      "value": -1
+    },
+    "read_zeros": {
+      "name": "LBPRZ",
+      "value": 1
+    }
+  },
+  "rotation_rate": 0,
+  "form_factor": {
+    "scsi_value": 3,
+    "name": "2.5 inches"
+  },
+  "logical_unit_id": "0x5000cca0506b3f50",
+  "serial_number": "0SWWZEYA",
+  "device_type": {
+    "scsi_terminology": "Peripheral Device Type [PDT]",
+    "scsi_value": 0,
+    "name": "disk"
+  },
+  "scsi_transport_protocol": {
+    "name": "SAS (SPL-4)",
+    "value": 6
+  }
+}

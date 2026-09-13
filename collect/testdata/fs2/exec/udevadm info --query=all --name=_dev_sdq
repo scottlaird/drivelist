@@ -5,12 +5,12 @@ T: disk
 D: b 65:0
 N: sdq
 L: 0
+S: disk/by-vdev/INTERNAL0
+S: disk/by-id/scsi-35000cca0506b5f1c
+S: disk/by-id/scsi-SHITACHI_HUSMM111CLAR1600_0SWX1KLA
 S: disk/by-id/wwn-0x5000cca0506b5f1c
 S: disk/by-path/pci-0000:03:00.0-sas-phy7-lun-0
-S: disk/by-id/scsi-SHITACHI_HUSMM111CLAR1600_0SWX1KLA
 S: disk/by-diskseq/25
-S: disk/by-id/scsi-35000cca0506b5f1c
-S: disk/by-vdev/INTERNAL0
 Q: 25
 E: DEVPATH=/devices/pci0000:00/0000:00:03.0/0000:03:00.0/host11/port-11:1/end_device-11:1/target11:0:0/11:0:0:0/block/sdq
 E: DEVNAME=/dev/sdq
@@ -55,7 +55,7 @@ E: ID_PART_TABLE_UUID=64d9b84d-e0a3-3043-bb9f-9b288dfd1f12
 E: ID_PART_TABLE_TYPE=gpt
 E: ID_VDEV=INTERNAL0
 E: ID_VDEV_PATH=disk/by-vdev/INTERNAL0
-E: DEVLINKS=/dev/disk/by-id/wwn-0x5000cca0506b5f1c /dev/disk/by-path/pci-0000:03:00.0-sas-phy7-lun-0 /dev/disk/by-id/scsi-SHITACHI_HUSMM111CLAR1600_0SWX1KLA /dev/disk/by-diskseq/25 /dev/disk/by-id/scsi-35000cca0506b5f1c /dev/disk/by-vdev/INTERNAL0
+E: DEVLINKS=/dev/disk/by-vdev/INTERNAL0 /dev/disk/by-id/scsi-35000cca0506b5f1c /dev/disk/by-id/scsi-SHITACHI_HUSMM111CLAR1600_0SWX1KLA /dev/disk/by-id/wwn-0x5000cca0506b5f1c /dev/disk/by-path/pci-0000:03:00.0-sas-phy7-lun-0 /dev/disk/by-diskseq/25
 E: TAGS=:systemd:
 E: CURRENT_TAGS=:systemd:
 

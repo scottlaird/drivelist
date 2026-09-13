@@ -6,11 +6,11 @@ D: b 67:144
 N: sdbf
 L: 0
 S: disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy43-lun-0
-S: disk/by-id/scsi-35000cca261cd9a41
-S: disk/by-vdev/D15
-S: disk/by-id/wwn-0x5000cca261cd9a41
 S: disk/by-diskseq/66
+S: disk/by-id/wwn-0x5000cca261cd9a41
 S: disk/by-id/scsi-SATA_HUH728080ALE601_VJGYXMPX
+S: disk/by-vdev/D15
+S: disk/by-id/scsi-35000cca261cd9a41
 Q: 66
 E: DEVPATH=/devices/pci0000:00/0000:00:03.0/0000:03:00.0/host11/port-11:0/expander-11:0/port-11:0:34/end_device-11:0:34/target11:0:42/11:0:42:0/block/sdbf
 E: DEVNAME=/dev/sdbf
@@ -53,7 +53,7 @@ E: ID_PART_TABLE_UUID=48e35989-0fb9-9a4e-a9d7-ecc0d3f5750e
 E: ID_PART_TABLE_TYPE=gpt
 E: ID_VDEV=D15
 E: ID_VDEV_PATH=disk/by-vdev/D15
-E: DEVLINKS=/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy43-lun-0 /dev/disk/by-id/scsi-35000cca261cd9a41 /dev/disk/by-vdev/D15 /dev/disk/by-id/wwn-0x5000cca261cd9a41 /dev/disk/by-diskseq/66 /dev/disk/by-id/scsi-SATA_HUH728080ALE601_VJGYXMPX
+E: DEVLINKS=/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy43-lun-0 /dev/disk/by-diskseq/66 /dev/disk/by-id/wwn-0x5000cca261cd9a41 /dev/disk/by-id/scsi-SATA_HUH728080ALE601_VJGYXMPX /dev/disk/by-vdev/D15 /dev/disk/by-id/scsi-35000cca261cd9a41
 E: TAGS=:systemd:
 E: CURRENT_TAGS=:systemd:
 

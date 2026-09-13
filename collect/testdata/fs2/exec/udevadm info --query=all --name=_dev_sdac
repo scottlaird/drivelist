@@ -5,12 +5,12 @@ T: disk
 D: b 65:192
 N: sdac
 L: 0
-S: disk/by-id/wwn-0x5000cca26107ef78
-S: disk/by-vdev/D11
-S: disk/by-id/scsi-35000cca26107ef78
 S: disk/by-diskseq/37
-S: disk/by-id/scsi-SHITACHI_HUH72808CLAR8000_VJG4B90X
+S: disk/by-vdev/D11
+S: disk/by-id/wwn-0x5000cca26107ef78
 S: disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy8-lun-0
+S: disk/by-id/scsi-35000cca26107ef78
+S: disk/by-id/scsi-SHITACHI_HUH72808CLAR8000_VJG4B90X
 Q: 37
 E: DEVPATH=/devices/pci0000:00/0000:00:03.0/0000:03:00.0/host11/port-11:0/expander-11:0/port-11:0:5/end_device-11:0:5/target11:0:13/11:0:13:0/block/sdac
 E: DEVNAME=/dev/sdac
@@ -56,7 +56,7 @@ E: ID_PART_TABLE_TYPE=gpt
 E: ID_VDEV=D11
 E: ID_VDEV_PATH=disk/by-vdev/D11
 E: NVME_HOST_IFACE=none
-E: DEVLINKS=/dev/disk/by-id/wwn-0x5000cca26107ef78 /dev/disk/by-vdev/D11 /dev/disk/by-id/scsi-35000cca26107ef78 /dev/disk/by-diskseq/37 /dev/disk/by-id/scsi-SHITACHI_HUH72808CLAR8000_VJG4B90X /dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy8-lun-0
+E: DEVLINKS=/dev/disk/by-diskseq/37 /dev/disk/by-vdev/D11 /dev/disk/by-id/wwn-0x5000cca26107ef78 /dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy8-lun-0 /dev/disk/by-id/scsi-35000cca26107ef78 /dev/disk/by-id/scsi-SHITACHI_HUH72808CLAR8000_VJG4B90X
 E: TAGS=:systemd:
 E: CURRENT_TAGS=:systemd:
 

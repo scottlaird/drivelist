@@ -5,12 +5,12 @@ T: disk
 D: b 69:208
 N: sdcp
 L: 0
-S: disk/by-id/scsi-35000c500c7913439
-S: disk/by-path/pci-0000:03:00.0-sas-exp0x5003048001e8967f-phy34-lun-0
-S: disk/by-vdev/E22
 S: disk/by-diskseq/102
-S: disk/by-id/scsi-SATA_ST8000VN004-2M21_WKD32WVK
 S: disk/by-id/wwn-0x5000c500c7913439
+S: disk/by-id/scsi-SATA_ST8000VN004-2M21_WKD32WVK
+S: disk/by-path/pci-0000:03:00.0-sas-exp0x5003048001e8967f-phy34-lun-0
+S: disk/by-id/scsi-35000c500c7913439
+S: disk/by-vdev/E22
 Q: 102
 E: DEVPATH=/devices/pci0000:00/0000:00:03.0/0000:03:00.0/host11/port-11:9/expander-11:1/port-11:1:19/end_device-11:1:19/target11:0:79/11:0:79:0/block/sdcp
 E: DEVNAME=/dev/sdcp
@@ -54,7 +54,7 @@ E: ID_PART_TABLE_TYPE=gpt
 E: ID_VDEV=E22
 E: ID_VDEV_PATH=disk/by-vdev/E22
 E: NVME_HOST_IFACE=none
-E: DEVLINKS=/dev/disk/by-id/scsi-35000c500c7913439 /dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5003048001e8967f-phy34-lun-0 /dev/disk/by-vdev/E22 /dev/disk/by-diskseq/102 /dev/disk/by-id/scsi-SATA_ST8000VN004-2M21_WKD32WVK /dev/disk/by-id/wwn-0x5000c500c7913439
+E: DEVLINKS=/dev/disk/by-diskseq/102 /dev/disk/by-id/wwn-0x5000c500c7913439 /dev/disk/by-id/scsi-SATA_ST8000VN004-2M21_WKD32WVK /dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5003048001e8967f-phy34-lun-0 /dev/disk/by-id/scsi-35000c500c7913439 /dev/disk/by-vdev/E22
 E: TAGS=:systemd:
 E: CURRENT_TAGS=:systemd:
 

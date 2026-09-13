@@ -1,0 +1,132 @@
+{
+  "json_format_version": [
+    1,
+    0
+  ],
+  "smartctl": {
+    "version": [
+      7,
+      4
+    ],
+    "pre_release": false,
+    "svn_revision": "5530",
+    "platform_info": "x86_64-linux-7.0.0-31-generic",
+    "build_info": "(local build)",
+    "argv": [
+      "smartctl",
+      "-j",
+      "-a",
+      "-n",
+      "standby",
+      "/dev/sdbv"
+    ],
+    "exit_status": 0
+  },
+  "local_time": {
+    "time_t": 1789266094,
+    "asctime": "Sat Sep 12 19:21:34 2026 PDT"
+  },
+  "device": {
+    "name": "/dev/sdbv",
+    "info_name": "/dev/sdbv",
+    "type": "scsi",
+    "protocol": "SCSI"
+  },
+  "scsi_vendor": "HGST",
+  "scsi_product": "H7280A520SUN8.0T",
+  "scsi_model_name": "HGST H7280A520SUN8.0T",
+  "scsi_revision": "PD51",
+  "scsi_version": "SPC-4",
+  "user_capacity": {
+    "blocks": 1953506646,
+    "bytes": 8001563222016
+  },
+  "logical_block_size": 4096,
+  "scsi_lb_provisioning": {
+    "name": "fully provisioned",
+    "value": 0,
+    "management_enabled": {
+      "name": "LBPME",
+      "value": 0
+    },
+    "read_zeros": {
+      "name": "LBPRZ",
+      "value": 0
+    }
+  },
+  "rotation_rate": 7200,
+  "form_factor": {
+    "scsi_value": 2,
+    "name": "3.5 inches"
+  },
+  "logical_unit_id": "0x5000cca260de6a94",
+  "serial_number": "001851PY9YMV        VLKY9YMV",
+  "device_type": {
+    "scsi_terminology": "Peripheral Device Type [PDT]",
+    "scsi_value": 0,
+    "name": "disk"
+  },
+  "scsi_transport_protocol": {
+    "name": "SAS (SPL-4)",
+    "value": 6
+  },
+  "smart_support": {
+    "available": true,
+    "enabled": true
+  },
+  "temperature_warning": {
+    "enabled": true
+  },
+  "smart_status": {
+    "passed": true
+  },
+  "temperature": {
+    "current": 41,
+    "drive_trip": 85
+  },
+  "power_on_time": {
+    "hours": 44251,
+    "minutes": 2
+  },
+  "scsi_start_stop_cycle_counter": {
+    "year_of_manufacture": "2018",
+    "week_of_manufacture": "51",
+    "specified_cycle_count_over_device_lifetime": 50000,
+    "accumulated_start_stop_cycles": 17,
+    "specified_load_unload_count_over_device_lifetime": 600000,
+    "accumulated_load_unload_cycles": 1877
+  },
+  "scsi_grown_defect_list": 86,
+  "seagate_farm_log": {
+    "supported": false
+  },
+  "scsi_error_counter_log": {
+    "read": {
+      "errors_corrected_by_eccfast": 0,
+      "errors_corrected_by_eccdelayed": 381,
+      "errors_corrected_by_rereads_rewrites": 0,
+      "total_errors_corrected": 381,
+      "correction_algorithm_invocations": 12616247,
+      "gigabytes_processed": "159291.177",
+      "total_uncorrected_errors": 3
+    },
+    "write": {
+      "errors_corrected_by_eccfast": 0,
+      "errors_corrected_by_eccdelayed": 2,
+      "errors_corrected_by_rereads_rewrites": 0,
+      "total_errors_corrected": 2,
+      "correction_algorithm_invocations": 7585894,
+      "gigabytes_processed": "38975.142",
+      "total_uncorrected_errors": 0
+    },
+    "verify": {
+      "errors_corrected_by_eccfast": 0,
+      "errors_corrected_by_eccdelayed": 0,
+      "errors_corrected_by_rereads_rewrites": 0,
+      "total_errors_corrected": 0,
+      "correction_algorithm_invocations": 144979698,
+      "gigabytes_processed": "0.037",
+      "total_uncorrected_errors": 0
+    }
+  }
+}

@@ -4,15 +4,15 @@
       "DeviceName": "sda",
       "Devices": [
         "/dev/sda",
+        "/dev/disk/by-id/ata-SAMSUNG_MZ7WD960HMHP-00003_S1E4NYAG204349",
+        "/dev/disk/by-id/wwn-0x500253850025c532",
+        "/dev/disk/by-id/scsi-SATA_SAMSUNG_MZ7WD960_S1E4NYAG204349",
         "/dev/disk/by-id/scsi-1ATA_SAMSUNG_MZ7WD960HMHP-00003_S1E4NYAG204349",
         "/dev/disk/by-diskseq/9",
         "/dev/disk/by-path/pci-0000:00:1f.2-ata-5",
         "/dev/disk/by-path/pci-0000:00:1f.2-ata-5.0",
-        "/dev/disk/by-id/scsi-SATA_SAMSUNG_MZ7WD960_S1E4NYAG204349",
-        "/dev/disk/by-id/wwn-0x500253850025c532",
-        "/dev/disk/by-id/scsi-3500253850025c532",
         "/dev/disk/by-id/scsi-0ATA_SAMSUNG_MZ7WD960_S1E4NYAG204349",
-        "/dev/disk/by-id/ata-SAMSUNG_MZ7WD960HMHP-00003_S1E4NYAG204349"
+        "/dev/disk/by-id/scsi-3500253850025c532"
       ],
       "WWN": "0x500253850025c532",
       "SysPath": "testdata/fs2/sys/devices/pci0000:00/0000:00:1f.2/ata9/host8/target8:0:0/8:0:0:0/block/sda",
@@ -36,12 +36,12 @@
       "DeviceName": "sdaa",
       "Devices": [
         "/dev/sdaa",
-        "/dev/disk/by-diskseq/35",
         "/dev/disk/by-id/scsi-35000cca26128b1f4",
         "/dev/disk/by-vdev/D23",
         "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy4-lun-0",
+        "/dev/disk/by-id/scsi-SHITACHI_HUH72808CLAR8000_VJGRBU1X",
         "/dev/disk/by-id/wwn-0x5000cca26128b1f4",
-        "/dev/disk/by-id/scsi-SHITACHI_HUH72808CLAR8000_VJGRBU1X"
+        "/dev/disk/by-diskseq/35"
       ],
       "WWN": "0x5000cca26128b1f4",
       "SysPath": "testdata/fs2/sys/devices/pci0000:00/0000:00:03.0/0000:03:00.0/host11/port-11:0/expander-11:0/port-11:0:3/end_device-11:0:3/target11:0:11/11:0:11:0/block/sdaa",
@@ -63,11 +63,11 @@
       "DeviceName": "sdab",
       "Devices": [
         "/dev/sdab",
+        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy6-lun-0",
         "/dev/disk/by-id/wwn-0x5000c500b3928e24",
         "/dev/disk/by-id/scsi-35000c500b3928e24",
-        "/dev/disk/by-id/scsi-SATA_ST8000DM004-2CX1_ZCT0ELAY",
-        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy6-lun-0",
         "/dev/disk/by-diskseq/36",
+        "/dev/disk/by-id/scsi-SATA_ST8000DM004-2CX1_ZCT0ELAY",
         "/dev/disk/by-vdev/D57"
       ],
       "WWN": "0x5000c500b3928e24",
@@ -90,12 +90,12 @@
       "DeviceName": "sdac",
       "Devices": [
         "/dev/sdac",
-        "/dev/disk/by-id/wwn-0x5000cca26107ef78",
-        "/dev/disk/by-vdev/D11",
-        "/dev/disk/by-id/scsi-35000cca26107ef78",
         "/dev/disk/by-diskseq/37",
-        "/dev/disk/by-id/scsi-SHITACHI_HUH72808CLAR8000_VJG4B90X",
-        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy8-lun-0"
+        "/dev/disk/by-vdev/D11",
+        "/dev/disk/by-id/wwn-0x5000cca26107ef78",
+        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy8-lun-0",
+        "/dev/disk/by-id/scsi-35000cca26107ef78",
+        "/dev/disk/by-id/scsi-SHITACHI_HUH72808CLAR8000_VJG4B90X"
       ],
       "WWN": "0x5000cca26107ef78",
       "SysPath": "testdata/fs2/sys/devices/pci0000:00/0000:00:03.0/0000:03:00.0/host11/port-11:0/expander-11:0/port-11:0:5/end_device-11:0:5/target11:0:13/11:0:13:0/block/sdac",
@@ -117,12 +117,12 @@
       "DeviceName": "sdad",
       "Devices": [
         "/dev/sdad",
-        "/dev/disk/by-vdev/D46",
-        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy9-lun-0",
-        "/dev/disk/by-id/scsi-35000c500cb04e933",
         "/dev/disk/by-diskseq/38",
-        "/dev/disk/by-id/scsi-SSEAGATE_STMPSED1CLAR8000_ZA1K2WML",
-        "/dev/disk/by-id/wwn-0x5000c500cb04e933"
+        "/dev/disk/by-id/scsi-35000c500cb04e933",
+        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy9-lun-0",
+        "/dev/disk/by-id/wwn-0x5000c500cb04e933",
+        "/dev/disk/by-vdev/D46",
+        "/dev/disk/by-id/scsi-SSEAGATE_STMPSED1CLAR8000_ZA1K2WML"
       ],
       "WWN": "0x5000c500cb04e933",
       "SysPath": "testdata/fs2/sys/devices/pci0000:00/0000:00:03.0/0000:03:00.0/host11/port-11:0/expander-11:0/port-11:0:6/end_device-11:0:6/target11:0:14/11:0:14:0/block/sdad",
@@ -145,11 +145,11 @@
       "Devices": [
         "/dev/sdae",
         "/dev/disk/by-diskseq/39",
-        "/dev/disk/by-id/wwn-0x5000c500e38e0986",
-        "/dev/disk/by-id/scsi-SATA_ST8000VN004-2M21_WSD5T2MP",
-        "/dev/disk/by-id/scsi-35000c500e38e0986",
+        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy10-lun-0",
         "/dev/disk/by-vdev/D34",
-        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy10-lun-0"
+        "/dev/disk/by-id/wwn-0x5000c500e38e0986",
+        "/dev/disk/by-id/scsi-35000c500e38e0986",
+        "/dev/disk/by-id/scsi-SATA_ST8000VN004-2M21_WSD5T2MP"
       ],
       "WWN": "0x5000c500e38e0986",
       "SysPath": "testdata/fs2/sys/devices/pci0000:00/0000:00:03.0/0000:03:00.0/host11/port-11:0/expander-11:0/port-11:0:7/end_device-11:0:7/target11:0:15/11:0:15:0/block/sdae",
@@ -172,11 +172,11 @@
       "Devices": [
         "/dev/sdaf",
         "/dev/disk/by-vdev/D22",
+        "/dev/disk/by-diskseq/40",
         "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy11-lun-0",
         "/dev/disk/by-id/scsi-35000cca23b00a598",
-        "/dev/disk/by-id/wwn-0x5000cca23b00a598",
         "/dev/disk/by-id/scsi-SHGST_HUH728080AL4200_2EG0B0WJ",
-        "/dev/disk/by-diskseq/40"
+        "/dev/disk/by-id/wwn-0x5000cca23b00a598"
       ],
       "WWN": "0x5000cca23b00a598",
       "SysPath": "testdata/fs2/sys/devices/pci0000:00/0000:00:03.0/0000:03:00.0/host11/port-11:0/expander-11:0/port-11:0:8/end_device-11:0:8/target11:0:16/11:0:16:0/block/sdaf",
@@ -198,12 +198,12 @@
       "DeviceName": "sdag",
       "Devices": [
         "/dev/sdag",
-        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy12-lun-0",
-        "/dev/disk/by-id/wwn-0x5000cca2548eecec",
-        "/dev/disk/by-id/scsi-35000cca2548eecec",
         "/dev/disk/by-vdev/D54",
+        "/dev/disk/by-id/scsi-SHGST_H7280A520SUN8.0T_001619PJLREV_VKJJLREV",
+        "/dev/disk/by-id/scsi-35000cca2548eecec",
+        "/dev/disk/by-id/wwn-0x5000cca2548eecec",
         "/dev/disk/by-diskseq/41",
-        "/dev/disk/by-id/scsi-SHGST_H7280A520SUN8.0T_001619PJLREV_VKJJLREV"
+        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy12-lun-0"
       ],
       "WWN": "0x5000cca2548eecec",
       "SysPath": "testdata/fs2/sys/devices/pci0000:00/0000:00:03.0/0000:03:00.0/host11/port-11:0/expander-11:0/port-11:0:9/end_device-11:0:9/target11:0:17/11:0:17:0/block/sdag",
@@ -225,12 +225,12 @@
       "DeviceName": "sdah",
       "Devices": [
         "/dev/sdah",
-        "/dev/disk/by-id/wwn-0x5000c500cafaac4f",
-        "/dev/disk/by-id/scsi-35000c500cafaac4f",
-        "/dev/disk/by-id/scsi-SSEAGATE_STMPSED1CLAR8000_ZA1K3KEZ",
         "/dev/disk/by-vdev/D45",
-        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy13-lun-0",
-        "/dev/disk/by-diskseq/42"
+        "/dev/disk/by-id/wwn-0x5000c500cafaac4f",
+        "/dev/disk/by-id/scsi-SSEAGATE_STMPSED1CLAR8000_ZA1K3KEZ",
+        "/dev/disk/by-id/scsi-35000c500cafaac4f",
+        "/dev/disk/by-diskseq/42",
+        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy13-lun-0"
       ],
       "WWN": "0x5000c500cafaac4f",
       "SysPath": "testdata/fs2/sys/devices/pci0000:00/0000:00:03.0/0000:03:00.0/host11/port-11:0/expander-11:0/port-11:0:10/end_device-11:0:10/target11:0:18/11:0:18:0/block/sdah",
@@ -252,12 +252,12 @@
       "DeviceName": "sdai",
       "Devices": [
         "/dev/sdai",
-        "/dev/disk/by-vdev/D10",
+        "/dev/disk/by-id/scsi-SHITACHI_HUH72808CLAR8000_VJG24UZX",
         "/dev/disk/by-id/wwn-0x5000cca26103eb9c",
         "/dev/disk/by-id/scsi-35000cca26103eb9c",
         "/dev/disk/by-diskseq/43",
-        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy14-lun-0",
-        "/dev/disk/by-id/scsi-SHITACHI_HUH72808CLAR8000_VJG24UZX"
+        "/dev/disk/by-vdev/D10",
+        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy14-lun-0"
       ],
       "WWN": "0x5000cca26103eb9c",
       "SysPath": "testdata/fs2/sys/devices/pci0000:00/0000:00:03.0/0000:03:00.0/host11/port-11:0/expander-11:0/port-11:0:11/end_device-11:0:11/target11:0:19/11:0:19:0/block/sdai",
@@ -279,12 +279,12 @@
       "DeviceName": "sdaj",
       "Devices": [
         "/dev/sdaj",
-        "/dev/disk/by-id/wwn-0x5000cca23b0b7268",
         "/dev/disk/by-diskseq/44",
-        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy16-lun-0",
+        "/dev/disk/by-id/wwn-0x5000cca23b0b7268",
+        "/dev/disk/by-vdev/D21",
         "/dev/disk/by-id/scsi-35000cca23b0b7268",
-        "/dev/disk/by-id/scsi-SHGST_HUH728080AL4200_2EG694WP",
-        "/dev/disk/by-vdev/D21"
+        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy16-lun-0",
+        "/dev/disk/by-id/scsi-SHGST_HUH728080AL4200_2EG694WP"
       ],
       "WWN": "0x5000cca23b0b7268",
       "SysPath": "testdata/fs2/sys/devices/pci0000:00/0000:00:03.0/0000:03:00.0/host11/port-11:0/expander-11:0/port-11:0:12/end_device-11:0:12/target11:0:20/11:0:20:0/block/sdaj",
@@ -304,12 +304,12 @@
       "DeviceName": "sdak",
       "Devices": [
         "/dev/sdak",
-        "/dev/disk/by-id/scsi-35000c500e8e71e56",
-        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy17-lun-0",
-        "/dev/disk/by-vdev/D9",
-        "/dev/disk/by-id/scsi-SATA_ST8000VN004-3CP1_WWZ62CA0",
         "/dev/disk/by-diskseq/45",
-        "/dev/disk/by-id/wwn-0x5000c500e8e71e56"
+        "/dev/disk/by-vdev/D9",
+        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy17-lun-0",
+        "/dev/disk/by-id/scsi-35000c500e8e71e56",
+        "/dev/disk/by-id/wwn-0x5000c500e8e71e56",
+        "/dev/disk/by-id/scsi-SATA_ST8000VN004-3CP1_WWZ62CA0"
       ],
       "WWN": "0x5000c500e8e71e56",
       "SysPath": "testdata/fs2/sys/devices/pci0000:00/0000:00:03.0/0000:03:00.0/host11/port-11:0/expander-11:0/port-11:0:13/end_device-11:0:13/target11:0:21/11:0:21:0/block/sdak",
@@ -331,12 +331,12 @@
       "DeviceName": "sdal",
       "Devices": [
         "/dev/sdal",
-        "/dev/disk/by-id/scsi-35000cca261035808",
-        "/dev/disk/by-diskseq/46",
         "/dev/disk/by-vdev/D20",
+        "/dev/disk/by-id/scsi-35000cca261035808",
+        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy19-lun-0",
         "/dev/disk/by-id/wwn-0x5000cca261035808",
-        "/dev/disk/by-id/scsi-SHITACHI_HUH72808CLAR8000_VJG1V09X",
-        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy19-lun-0"
+        "/dev/disk/by-diskseq/46",
+        "/dev/disk/by-id/scsi-SHITACHI_HUH72808CLAR8000_VJG1V09X"
       ],
       "WWN": "0x5000cca261035808",
       "SysPath": "testdata/fs2/sys/devices/pci0000:00/0000:00:03.0/0000:03:00.0/host11/port-11:0/expander-11:0/port-11:0:14/end_device-11:0:14/target11:0:22/11:0:22:0/block/sdal",
@@ -358,12 +358,12 @@
       "DeviceName": "sdam",
       "Devices": [
         "/dev/sdam",
-        "/dev/disk/by-id/scsi-SHGST_H7280A520SUN8.0T_001619PHKAHV_VKJHKAHV",
+        "/dev/disk/by-id/wwn-0x5000cca2548d06a4",
+        "/dev/disk/by-diskseq/47",
         "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy22-lun-0",
         "/dev/disk/by-vdev/D53",
         "/dev/disk/by-id/scsi-35000cca2548d06a4",
-        "/dev/disk/by-diskseq/47",
-        "/dev/disk/by-id/wwn-0x5000cca2548d06a4"
+        "/dev/disk/by-id/scsi-SHGST_H7280A520SUN8.0T_001619PHKAHV_VKJHKAHV"
       ],
       "WWN": "0x5000cca2548d06a4",
       "SysPath": "testdata/fs2/sys/devices/pci0000:00/0000:00:03.0/0000:03:00.0/host11/port-11:0/expander-11:0/port-11:0:15/end_device-11:0:15/target11:0:23/11:0:23:0/block/sdam",
@@ -385,12 +385,12 @@
       "DeviceName": "sdan",
       "Devices": [
         "/dev/sdan",
+        "/dev/disk/by-vdev/D43",
         "/dev/disk/by-diskseq/48",
-        "/dev/disk/by-id/scsi-35002538a06a030f0",
-        "/dev/disk/by-id/wwn-0x5002538a06a030f0",
-        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy23-lun-0",
         "/dev/disk/by-id/scsi-SSAMSUNG_P1633N19_EMC1920_P0NA0HA00158",
-        "/dev/disk/by-vdev/D43"
+        "/dev/disk/by-id/scsi-35002538a06a030f0",
+        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy23-lun-0",
+        "/dev/disk/by-id/wwn-0x5002538a06a030f0"
       ],
       "WWN": "0x5002538a06a030f0",
       "SysPath": "testdata/fs2/sys/devices/pci0000:00/0000:00:03.0/0000:03:00.0/host11/port-11:0/expander-11:0/port-11:0:16/end_device-11:0:16/target11:0:24/11:0:24:0/block/sdan",
@@ -412,12 +412,12 @@
       "DeviceName": "sdao",
       "Devices": [
         "/dev/sdao",
-        "/dev/disk/by-id/scsi-SATA_TOSHIBA_HDWG180_7160A2TZFBEG",
+        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy24-lun-0",
+        "/dev/disk/by-id/wwn-0x5000039b08ca908c",
         "/dev/disk/by-vdev/D42",
         "/dev/disk/by-id/scsi-35000039b08ca908c",
-        "/dev/disk/by-diskseq/49",
-        "/dev/disk/by-id/wwn-0x5000039b08ca908c",
-        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy24-lun-0"
+        "/dev/disk/by-id/scsi-SATA_TOSHIBA_HDWG180_7160A2TZFBEG",
+        "/dev/disk/by-diskseq/49"
       ],
       "WWN": "0x5000039b08ca908c",
       "SysPath": "testdata/fs2/sys/devices/pci0000:00/0000:00:03.0/0000:03:00.0/host11/port-11:0/expander-11:0/port-11:0:17/end_device-11:0:17/target11:0:25/11:0:25:0/block/sdao",
@@ -439,12 +439,12 @@
       "DeviceName": "sdap",
       "Devices": [
         "/dev/sdap",
-        "/dev/disk/by-diskseq/50",
+        "/dev/disk/by-id/scsi-35000cca23bb2bb48",
+        "/dev/disk/by-vdev/D19",
+        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy25-lun-0",
         "/dev/disk/by-id/wwn-0x5000cca23bb2bb48",
         "/dev/disk/by-id/scsi-SHITACHI_HUH72808CLAR8000_2EK595JX",
-        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy25-lun-0",
-        "/dev/disk/by-vdev/D19",
-        "/dev/disk/by-id/scsi-35000cca23bb2bb48"
+        "/dev/disk/by-diskseq/50"
       ],
       "WWN": "0x5000cca23bb2bb48",
       "SysPath": "testdata/fs2/sys/devices/pci0000:00/0000:00:03.0/0000:03:00.0/host11/port-11:0/expander-11:0/port-11:0:18/end_device-11:0:18/target11:0:26/11:0:26:0/block/sdap",
@@ -466,12 +466,12 @@
       "DeviceName": "sdaq",
       "Devices": [
         "/dev/sdaq",
-        "/dev/disk/by-id/scsi-SATA_HGST_HUS728T8TAL_VGJS0Y6K",
-        "/dev/disk/by-id/scsi-35000cca0bee6a714",
+        "/dev/disk/by-diskseq/51",
         "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy26-lun-0",
         "/dev/disk/by-vdev/D8",
+        "/dev/disk/by-id/scsi-SATA_HGST_HUS728T8TAL_VGJS0Y6K",
         "/dev/disk/by-id/wwn-0x5000cca0bee6a714",
-        "/dev/disk/by-diskseq/51"
+        "/dev/disk/by-id/scsi-35000cca0bee6a714"
       ],
       "WWN": "0x5000cca0bee6a714",
       "SysPath": "testdata/fs2/sys/devices/pci0000:00/0000:00:03.0/0000:03:00.0/host11/port-11:0/expander-11:0/port-11:0:19/end_device-11:0:19/target11:0:27/11:0:27:0/block/sdaq",
@@ -493,12 +493,12 @@
       "DeviceName": "sdar",
       "Devices": [
         "/dev/sdar",
+        "/dev/disk/by-id/wwn-0x5000cca0bbe6cf6c",
         "/dev/disk/by-id/scsi-35000cca0bbe6cf6c",
         "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy27-lun-0",
+        "/dev/disk/by-id/scsi-SATA_HGST_HUS728T8TAL_VDJSBPBK",
         "/dev/disk/by-vdev/D7",
-        "/dev/disk/by-id/wwn-0x5000cca0bbe6cf6c",
-        "/dev/disk/by-diskseq/52",
-        "/dev/disk/by-id/scsi-SATA_HGST_HUS728T8TAL_VDJSBPBK"
+        "/dev/disk/by-diskseq/52"
       ],
       "WWN": "0x5000cca0bbe6cf6c",
       "SysPath": "testdata/fs2/sys/devices/pci0000:00/0000:00:03.0/0000:03:00.0/host11/port-11:0/expander-11:0/port-11:0:20/end_device-11:0:20/target11:0:28/11:0:28:0/block/sdar",
@@ -520,12 +520,12 @@
       "DeviceName": "sdas",
       "Devices": [
         "/dev/sdas",
-        "/dev/disk/by-id/scsi-SSEAGATE_STMPSED1CLAR8000_ZA1K2VPW",
         "/dev/disk/by-id/scsi-35000c500caf880cb",
         "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy29-lun-0",
-        "/dev/disk/by-id/wwn-0x5000c500caf880cb",
+        "/dev/disk/by-id/scsi-SSEAGATE_STMPSED1CLAR8000_ZA1K2VPW",
+        "/dev/disk/by-vdev/D52",
         "/dev/disk/by-diskseq/53",
-        "/dev/disk/by-vdev/D52"
+        "/dev/disk/by-id/wwn-0x5000c500caf880cb"
       ],
       "WWN": "0x5000c500caf880cb",
       "SysPath": "testdata/fs2/sys/devices/pci0000:00/0000:00:03.0/0000:03:00.0/host11/port-11:0/expander-11:0/port-11:0:21/end_device-11:0:21/target11:0:29/11:0:29:0/block/sdas",
@@ -547,11 +547,11 @@
       "DeviceName": "sdat",
       "Devices": [
         "/dev/sdat",
+        "/dev/disk/by-diskseq/54",
         "/dev/disk/by-id/wwn-0x5000c500caf55bbb",
+        "/dev/disk/by-id/scsi-SSEAGATE_STMPSED1CLAR8000_ZA1K1X7E",
         "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy30-lun-0",
         "/dev/disk/by-vdev/D41",
-        "/dev/disk/by-id/scsi-SSEAGATE_STMPSED1CLAR8000_ZA1K1X7E",
-        "/dev/disk/by-diskseq/54",
         "/dev/disk/by-id/scsi-35000c500caf55bbb"
       ],
       "WWN": "0x5000c500caf55bbb",
@@ -574,12 +574,12 @@
       "DeviceName": "sdau",
       "Devices": [
         "/dev/sdau",
-        "/dev/disk/by-id/scsi-SHITACHI_HUH72808CLAR8000_VJGS4VDX",
-        "/dev/disk/by-id/scsi-35000cca2612a1afc",
-        "/dev/disk/by-vdev/D29",
-        "/dev/disk/by-id/wwn-0x5000cca2612a1afc",
         "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy31-lun-0",
-        "/dev/disk/by-diskseq/55"
+        "/dev/disk/by-diskseq/55",
+        "/dev/disk/by-id/scsi-SHITACHI_HUH72808CLAR8000_VJGS4VDX",
+        "/dev/disk/by-vdev/D29",
+        "/dev/disk/by-id/scsi-35000cca2612a1afc",
+        "/dev/disk/by-id/wwn-0x5000cca2612a1afc"
       ],
       "WWN": "0x5000cca2612a1afc",
       "SysPath": "testdata/fs2/sys/devices/pci0000:00/0000:00:03.0/0000:03:00.0/host11/port-11:0/expander-11:0/port-11:0:23/end_device-11:0:23/target11:0:31/11:0:31:0/block/sdau",
@@ -601,11 +601,11 @@
       "DeviceName": "sdav",
       "Devices": [
         "/dev/sdav",
-        "/dev/disk/by-id/wwn-0x5000cca261caae28",
-        "/dev/disk/by-id/scsi-35000cca261caae28",
-        "/dev/disk/by-vdev/D18",
         "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy32-lun-0",
         "/dev/disk/by-diskseq/56",
+        "/dev/disk/by-id/scsi-35000cca261caae28",
+        "/dev/disk/by-vdev/D18",
+        "/dev/disk/by-id/wwn-0x5000cca261caae28",
         "/dev/disk/by-id/scsi-SATA_HUH728080ALE601_VJGSHAVX"
       ],
       "WWN": "0x5000cca261caae28",
@@ -628,12 +628,12 @@
       "DeviceName": "sdaw",
       "Devices": [
         "/dev/sdaw",
+        "/dev/disk/by-id/scsi-35000cca23bf5465d",
+        "/dev/disk/by-id/scsi-SATA_HUH728080ALE601_2EKT63HX",
+        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy33-lun-0",
         "/dev/disk/by-id/wwn-0x5000cca23bf5465d",
         "/dev/disk/by-diskseq/57",
-        "/dev/disk/by-id/scsi-SATA_HUH728080ALE601_2EKT63HX",
-        "/dev/disk/by-vdev/D28",
-        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy33-lun-0",
-        "/dev/disk/by-id/scsi-35000cca23bf5465d"
+        "/dev/disk/by-vdev/D28"
       ],
       "WWN": "0x5000cca23bf5465d",
       "SysPath": "testdata/fs2/sys/devices/pci0000:00/0000:00:03.0/0000:03:00.0/host11/port-11:0/expander-11:0/port-11:0:25/end_device-11:0:25/target11:0:33/11:0:33:0/block/sdaw",
@@ -655,12 +655,12 @@
       "DeviceName": "sdax",
       "Devices": [
         "/dev/sdax",
-        "/dev/disk/by-id/scsi-SATA_HGST_HUS728T8TAL_VGJSKZBK",
-        "/dev/disk/by-vdev/D6",
-        "/dev/disk/by-diskseq/58",
         "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy34-lun-0",
+        "/dev/disk/by-vdev/D6",
+        "/dev/disk/by-id/wwn-0x5000cca0bee6e709",
+        "/dev/disk/by-diskseq/58",
         "/dev/disk/by-id/scsi-35000cca0bee6e709",
-        "/dev/disk/by-id/wwn-0x5000cca0bee6e709"
+        "/dev/disk/by-id/scsi-SATA_HGST_HUS728T8TAL_VGJSKZBK"
       ],
       "WWN": "0x5000cca0bee6e709",
       "SysPath": "testdata/fs2/sys/devices/pci0000:00/0000:00:03.0/0000:03:00.0/host11/port-11:0/expander-11:0/port-11:0:26/end_device-11:0:26/target11:0:34/11:0:34:0/block/sdax",
@@ -682,12 +682,12 @@
       "DeviceName": "sday",
       "Devices": [
         "/dev/sday",
-        "/dev/disk/by-id/wwn-0x5000cca2548f0108",
-        "/dev/disk/by-id/scsi-SHGST_H7280A520SUN8.0T_001619PJN1YV_VKJJN1YV",
-        "/dev/disk/by-diskseq/59",
-        "/dev/disk/by-id/scsi-35000cca2548f0108",
         "/dev/disk/by-vdev/D40",
-        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy35-lun-0"
+        "/dev/disk/by-id/scsi-35000cca2548f0108",
+        "/dev/disk/by-id/scsi-SHGST_H7280A520SUN8.0T_001619PJN1YV_VKJJN1YV",
+        "/dev/disk/by-id/wwn-0x5000cca2548f0108",
+        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy35-lun-0",
+        "/dev/disk/by-diskseq/59"
       ],
       "WWN": "0x5000cca2548f0108",
       "SysPath": "testdata/fs2/sys/devices/pci0000:00/0000:00:03.0/0000:03:00.0/host11/port-11:0/expander-11:0/port-11:0:27/end_device-11:0:27/target11:0:35/11:0:35:0/block/sday",
@@ -709,12 +709,12 @@
       "DeviceName": "sdaz",
       "Devices": [
         "/dev/sdaz",
+        "/dev/disk/by-id/wwn-0x5000c500cb019b2b",
         "/dev/disk/by-id/scsi-35000c500cb019b2b",
         "/dev/disk/by-id/scsi-SSEAGATE_STMPSED1CLAR8000_ZA1K1FZN",
+        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy36-lun-0",
         "/dev/disk/by-vdev/D17",
-        "/dev/disk/by-id/wwn-0x5000c500cb019b2b",
-        "/dev/disk/by-diskseq/60",
-        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy36-lun-0"
+        "/dev/disk/by-diskseq/60"
       ],
       "WWN": "0x5000c500cb019b2b",
       "SysPath": "testdata/fs2/sys/devices/pci0000:00/0000:00:03.0/0000:03:00.0/host11/port-11:0/expander-11:0/port-11:0:28/end_device-11:0:28/target11:0:36/11:0:36:0/block/sdaz",
@@ -736,15 +736,15 @@
       "DeviceName": "sdb",
       "Devices": [
         "/dev/sdb",
-        "/dev/disk/by-id/scsi-1ATA_SAMSUNG_MZ7WD960HMHP-00003_S1E4NYAG205230",
-        "/dev/disk/by-id/scsi-3500253850025cbf1",
-        "/dev/disk/by-id/scsi-0ATA_SAMSUNG_MZ7WD960_S1E4NYAG205230",
-        "/dev/disk/by-diskseq/10",
-        "/dev/disk/by-id/ata-SAMSUNG_MZ7WD960HMHP-00003_S1E4NYAG205230",
-        "/dev/disk/by-path/pci-0000:00:1f.2-ata-6",
         "/dev/disk/by-path/pci-0000:00:1f.2-ata-6.0",
-        "/dev/disk/by-id/wwn-0x500253850025cbf1",
-        "/dev/disk/by-id/scsi-SATA_SAMSUNG_MZ7WD960_S1E4NYAG205230"
+        "/dev/disk/by-id/ata-SAMSUNG_MZ7WD960HMHP-00003_S1E4NYAG205230",
+        "/dev/disk/by-id/scsi-0ATA_SAMSUNG_MZ7WD960_S1E4NYAG205230",
+        "/dev/disk/by-id/scsi-3500253850025cbf1",
+        "/dev/disk/by-id/scsi-1ATA_SAMSUNG_MZ7WD960HMHP-00003_S1E4NYAG205230",
+        "/dev/disk/by-id/scsi-SATA_SAMSUNG_MZ7WD960_S1E4NYAG205230",
+        "/dev/disk/by-path/pci-0000:00:1f.2-ata-6",
+        "/dev/disk/by-diskseq/10",
+        "/dev/disk/by-id/wwn-0x500253850025cbf1"
       ],
       "WWN": "0x500253850025cbf1",
       "SysPath": "testdata/fs2/sys/devices/pci0000:00/0000:00:1f.2/ata10/host9/target9:0:0/9:0:0:0/block/sdb",
@@ -767,12 +767,12 @@
       "DeviceName": "sdba",
       "Devices": [
         "/dev/sdba",
-        "/dev/disk/by-diskseq/61",
-        "/dev/disk/by-id/scsi-SHGST_H7280A520SUN8.0T_001619PM9BVV_VKJM9BVV",
-        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy38-lun-0",
         "/dev/disk/by-id/scsi-35000cca25493d51c",
         "/dev/disk/by-id/wwn-0x5000cca25493d51c",
-        "/dev/disk/by-vdev/D51"
+        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy38-lun-0",
+        "/dev/disk/by-vdev/D51",
+        "/dev/disk/by-id/scsi-SHGST_H7280A520SUN8.0T_001619PM9BVV_VKJM9BVV",
+        "/dev/disk/by-diskseq/61"
       ],
       "WWN": "0x5000cca25493d51c",
       "SysPath": "testdata/fs2/sys/devices/pci0000:00/0000:00:03.0/0000:03:00.0/host11/port-11:0/expander-11:0/port-11:0:29/end_device-11:0:29/target11:0:37/11:0:37:0/block/sdba",
@@ -794,12 +794,12 @@
       "DeviceName": "sdbb",
       "Devices": [
         "/dev/sdbb",
-        "/dev/disk/by-id/scsi-35000cca2612a20a8",
-        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy39-lun-0",
-        "/dev/disk/by-id/scsi-SHITACHI_HUH72808CLAR8000_VJGS573X",
-        "/dev/disk/by-vdev/D16",
+        "/dev/disk/by-id/wwn-0x5000cca2612a20a8",
         "/dev/disk/by-diskseq/62",
-        "/dev/disk/by-id/wwn-0x5000cca2612a20a8"
+        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy39-lun-0",
+        "/dev/disk/by-vdev/D16",
+        "/dev/disk/by-id/scsi-SHITACHI_HUH72808CLAR8000_VJGS573X",
+        "/dev/disk/by-id/scsi-35000cca2612a20a8"
       ],
       "WWN": "0x5000cca2612a20a8",
       "SysPath": "testdata/fs2/sys/devices/pci0000:00/0000:00:03.0/0000:03:00.0/host11/port-11:0/expander-11:0/port-11:0:30/end_device-11:0:30/target11:0:38/11:0:38:0/block/sdbb",
@@ -821,12 +821,12 @@
       "DeviceName": "sdbc",
       "Devices": [
         "/dev/sdbc",
-        "/dev/disk/by-id/scsi-SHITACHI_HUH72808CLAR8000_VKGVG9GX",
+        "/dev/disk/by-id/wwn-0x5000cca254301d64",
         "/dev/disk/by-diskseq/63",
         "/dev/disk/by-id/scsi-35000cca254301d64",
-        "/dev/disk/by-id/wwn-0x5000cca254301d64",
         "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy40-lun-0",
-        "/dev/disk/by-vdev/D4"
+        "/dev/disk/by-vdev/D4",
+        "/dev/disk/by-id/scsi-SHITACHI_HUH72808CLAR8000_VKGVG9GX"
       ],
       "WWN": "0x5000cca254301d64",
       "SysPath": "testdata/fs2/sys/devices/pci0000:00/0000:00:03.0/0000:03:00.0/host11/port-11:0/expander-11:0/port-11:0:31/end_device-11:0:31/target11:0:39/11:0:39:0/block/sdbc",
@@ -848,12 +848,12 @@
       "DeviceName": "sdbd",
       "Devices": [
         "/dev/sdbd",
-        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy41-lun-0",
-        "/dev/disk/by-vdev/D27",
-        "/dev/disk/by-id/wwn-0x5000cca2612879b8",
         "/dev/disk/by-id/scsi-SHITACHI_HUH72808CLAR8000_VJGR81YX",
         "/dev/disk/by-id/scsi-35000cca2612879b8",
-        "/dev/disk/by-diskseq/64"
+        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy41-lun-0",
+        "/dev/disk/by-diskseq/64",
+        "/dev/disk/by-vdev/D27",
+        "/dev/disk/by-id/wwn-0x5000cca2612879b8"
       ],
       "WWN": "0x5000cca2612879b8",
       "SysPath": "testdata/fs2/sys/devices/pci0000:00/0000:00:03.0/0000:03:00.0/host11/port-11:0/expander-11:0/port-11:0:32/end_device-11:0:32/target11:0:40/11:0:40:0/block/sdbd",
@@ -875,10 +875,10 @@
       "DeviceName": "sdbe",
       "Devices": [
         "/dev/sdbe",
+        "/dev/disk/by-id/scsi-35002538a069d70f0",
         "/dev/disk/by-id/wwn-0x5002538a069d70f0",
         "/dev/disk/by-id/scsi-SSAMSUNG_P1633N19_EMC1920_P0NA0H912672",
         "/dev/disk/by-diskseq/65",
-        "/dev/disk/by-id/scsi-35002538a069d70f0",
         "/dev/disk/by-vdev/D39",
         "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy42-lun-0"
       ],
@@ -903,11 +903,11 @@
       "Devices": [
         "/dev/sdbf",
         "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy43-lun-0",
-        "/dev/disk/by-id/scsi-35000cca261cd9a41",
-        "/dev/disk/by-vdev/D15",
-        "/dev/disk/by-id/wwn-0x5000cca261cd9a41",
         "/dev/disk/by-diskseq/66",
-        "/dev/disk/by-id/scsi-SATA_HUH728080ALE601_VJGYXMPX"
+        "/dev/disk/by-id/wwn-0x5000cca261cd9a41",
+        "/dev/disk/by-id/scsi-SATA_HUH728080ALE601_VJGYXMPX",
+        "/dev/disk/by-vdev/D15",
+        "/dev/disk/by-id/scsi-35000cca261cd9a41"
       ],
       "WWN": "0x5000cca261cd9a41",
       "SysPath": "testdata/fs2/sys/devices/pci0000:00/0000:00:03.0/0000:03:00.0/host11/port-11:0/expander-11:0/port-11:0:34/end_device-11:0:34/target11:0:42/11:0:42:0/block/sdbf",
@@ -929,12 +929,12 @@
       "DeviceName": "sdbg",
       "Devices": [
         "/dev/sdbg",
-        "/dev/disk/by-id/scsi-SSAMSUNG_P1633N19_EMC1920_P0NA0H906141",
-        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy44-lun-0",
         "/dev/disk/by-id/scsi-35002538a069524f0",
-        "/dev/disk/by-vdev/D3",
+        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy44-lun-0",
+        "/dev/disk/by-diskseq/67",
         "/dev/disk/by-id/wwn-0x5002538a069524f0",
-        "/dev/disk/by-diskseq/67"
+        "/dev/disk/by-vdev/D3",
+        "/dev/disk/by-id/scsi-SSAMSUNG_P1633N19_EMC1920_P0NA0H906141"
       ],
       "WWN": "0x5002538a069524f0",
       "SysPath": "testdata/fs2/sys/devices/pci0000:00/0000:00:03.0/0000:03:00.0/host11/port-11:0/expander-11:0/port-11:0:35/end_device-11:0:35/target11:0:43/11:0:43:0/block/sdbg",
@@ -956,11 +956,11 @@
       "DeviceName": "sdbh",
       "Devices": [
         "/dev/sdbh",
-        "/dev/disk/by-vdev/D38",
+        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy45-lun-0",
         "/dev/disk/by-id/wwn-0x5000cca254899e38",
         "/dev/disk/by-diskseq/68",
+        "/dev/disk/by-vdev/D38",
         "/dev/disk/by-id/scsi-SHGST_H7280A520SUN8.0T_001619PEP7BV_VKJEP7BV",
-        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy45-lun-0",
         "/dev/disk/by-id/scsi-35000cca254899e38"
       ],
       "WWN": "0x5000cca254899e38",
@@ -983,12 +983,12 @@
       "DeviceName": "sdbi",
       "Devices": [
         "/dev/sdbi",
-        "/dev/disk/by-id/wwn-0x5000cca2548ef9d4",
-        "/dev/disk/by-id/scsi-SHGST_H7280A520SUN8.0T_001619PJML2V_VKJJML2V",
-        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy46-lun-0",
         "/dev/disk/by-diskseq/69",
+        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy46-lun-0",
+        "/dev/disk/by-id/wwn-0x5000cca2548ef9d4",
         "/dev/disk/by-vdev/D50",
-        "/dev/disk/by-id/scsi-35000cca2548ef9d4"
+        "/dev/disk/by-id/scsi-35000cca2548ef9d4",
+        "/dev/disk/by-id/scsi-SHGST_H7280A520SUN8.0T_001619PJML2V_VKJJML2V"
       ],
       "WWN": "0x5000cca2548ef9d4",
       "SysPath": "testdata/fs2/sys/devices/pci0000:00/0000:00:03.0/0000:03:00.0/host11/port-11:0/expander-11:0/port-11:0:37/end_device-11:0:37/target11:0:45/11:0:45:0/block/sdbi",
@@ -1010,11 +1010,11 @@
       "DeviceName": "sdbj",
       "Devices": [
         "/dev/sdbj",
-        "/dev/disk/by-id/wwn-0x5000c500e3f9397c",
-        "/dev/disk/by-id/scsi-35000c500e3f9397c",
         "/dev/disk/by-vdev/D26",
         "/dev/disk/by-diskseq/70",
         "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy47-lun-0",
+        "/dev/disk/by-id/scsi-35000c500e3f9397c",
+        "/dev/disk/by-id/wwn-0x5000c500e3f9397c",
         "/dev/disk/by-id/scsi-SATA_ST8000VN004-2M21_WSD6LL44"
       ],
       "WWN": "0x5000c500e3f9397c",
@@ -1037,12 +1037,12 @@
       "DeviceName": "sdbk",
       "Devices": [
         "/dev/sdbk",
-        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy48-lun-0",
-        "/dev/disk/by-diskseq/71",
         "/dev/disk/by-vdev/D2",
+        "/dev/disk/by-id/scsi-SATA_ST8000VN004-3CP1_WWZ61ANG",
+        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy48-lun-0",
         "/dev/disk/by-id/wwn-0x5000c500e8e71bc2",
         "/dev/disk/by-id/scsi-35000c500e8e71bc2",
-        "/dev/disk/by-id/scsi-SATA_ST8000VN004-3CP1_WWZ61ANG"
+        "/dev/disk/by-diskseq/71"
       ],
       "WWN": "0x5000c500e8e71bc2",
       "SysPath": "testdata/fs2/sys/devices/pci0000:00/0000:00:03.0/0000:03:00.0/host11/port-11:0/expander-11:0/port-11:0:39/end_device-11:0:39/target11:0:47/11:0:47:0/block/sdbk",
@@ -1065,11 +1065,11 @@
       "Devices": [
         "/dev/sdbl",
         "/dev/disk/by-diskseq/72",
-        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy49-lun-0",
-        "/dev/disk/by-id/wwn-0x5000cca26128ceb8",
-        "/dev/disk/by-id/scsi-35000cca26128ceb8",
         "/dev/disk/by-vdev/D14",
-        "/dev/disk/by-id/scsi-SHITACHI_HUH72808CLAR8000_VJGREREX"
+        "/dev/disk/by-id/wwn-0x5000cca26128ceb8",
+        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy49-lun-0",
+        "/dev/disk/by-id/scsi-SHITACHI_HUH72808CLAR8000_VJGREREX",
+        "/dev/disk/by-id/scsi-35000cca26128ceb8"
       ],
       "WWN": "0x5000cca26128ceb8",
       "SysPath": "testdata/fs2/sys/devices/pci0000:00/0000:00:03.0/0000:03:00.0/host11/port-11:0/expander-11:0/port-11:0:40/end_device-11:0:40/target11:0:48/11:0:48:0/block/sdbl",
@@ -1091,12 +1091,12 @@
       "DeviceName": "sdbm",
       "Devices": [
         "/dev/sdbm",
-        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy50-lun-0",
-        "/dev/disk/by-id/scsi-SHGST_H7280A520SUN8.0T_001619PHKEBV_VKJHKEBV",
         "/dev/disk/by-diskseq/73",
-        "/dev/disk/by-vdev/D49",
         "/dev/disk/by-id/wwn-0x5000cca2548d0808",
-        "/dev/disk/by-id/scsi-35000cca2548d0808"
+        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy50-lun-0",
+        "/dev/disk/by-id/scsi-35000cca2548d0808",
+        "/dev/disk/by-vdev/D49",
+        "/dev/disk/by-id/scsi-SHGST_H7280A520SUN8.0T_001619PHKEBV_VKJHKEBV"
       ],
       "WWN": "0x5000cca2548d0808",
       "SysPath": "testdata/fs2/sys/devices/pci0000:00/0000:00:03.0/0000:03:00.0/host11/port-11:0/expander-11:0/port-11:0:41/end_device-11:0:41/target11:0:49/11:0:49:0/block/sdbm",
@@ -1118,12 +1118,12 @@
       "DeviceName": "sdbn",
       "Devices": [
         "/dev/sdbn",
-        "/dev/disk/by-id/scsi-SHGST_H7280A520SUN8.0T_001619P8KK0V_VKJ8KK0V",
-        "/dev/disk/by-vdev/D37",
         "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy51-lun-0",
+        "/dev/disk/by-vdev/D37",
         "/dev/disk/by-id/wwn-0x5000cca254804f68",
-        "/dev/disk/by-diskseq/74",
-        "/dev/disk/by-id/scsi-35000cca254804f68"
+        "/dev/disk/by-id/scsi-SHGST_H7280A520SUN8.0T_001619P8KK0V_VKJ8KK0V",
+        "/dev/disk/by-id/scsi-35000cca254804f68",
+        "/dev/disk/by-diskseq/74"
       ],
       "WWN": "0x5000cca254804f68",
       "SysPath": "testdata/fs2/sys/devices/pci0000:00/0000:00:03.0/0000:03:00.0/host11/port-11:0/expander-11:0/port-11:0:42/end_device-11:0:42/target11:0:50/11:0:50:0/block/sdbn",
@@ -1145,12 +1145,12 @@
       "DeviceName": "sdbo",
       "Devices": [
         "/dev/sdbo",
+        "/dev/disk/by-diskseq/75",
+        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy52-lun-0",
         "/dev/disk/by-id/scsi-SHITACHI_HUH72808CLAR8000_2EK0TUSX",
         "/dev/disk/by-id/wwn-0x5000cca23baa8ee4",
-        "/dev/disk/by-id/scsi-35000cca23baa8ee4",
         "/dev/disk/by-vdev/D25",
-        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy52-lun-0",
-        "/dev/disk/by-diskseq/75"
+        "/dev/disk/by-id/scsi-35000cca23baa8ee4"
       ],
       "WWN": "0x5000cca23baa8ee4",
       "SysPath": "testdata/fs2/sys/devices/pci0000:00/0000:00:03.0/0000:03:00.0/host11/port-11:0/expander-11:0/port-11:0:43/end_device-11:0:43/target11:0:51/11:0:51:0/block/sdbo",
@@ -1172,12 +1172,12 @@
       "DeviceName": "sdbp",
       "Devices": [
         "/dev/sdbp",
-        "/dev/disk/by-id/wwn-0x5000cca254286798",
-        "/dev/disk/by-id/scsi-SHITACHI_HUH72808CLAR8000_VKGR6VJX",
-        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy53-lun-0",
         "/dev/disk/by-vdev/D13",
         "/dev/disk/by-id/scsi-35000cca254286798",
-        "/dev/disk/by-diskseq/76"
+        "/dev/disk/by-diskseq/76",
+        "/dev/disk/by-id/wwn-0x5000cca254286798",
+        "/dev/disk/by-id/scsi-SHITACHI_HUH72808CLAR8000_VKGR6VJX",
+        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy53-lun-0"
       ],
       "WWN": "0x5000cca254286798",
       "SysPath": "testdata/fs2/sys/devices/pci0000:00/0000:00:03.0/0000:03:00.0/host11/port-11:0/expander-11:0/port-11:0:44/end_device-11:0:44/target11:0:52/11:0:52:0/block/sdbp",
@@ -1199,10 +1199,10 @@
       "DeviceName": "sdbq",
       "Devices": [
         "/dev/sdbq",
-        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy54-lun-0",
         "/dev/disk/by-vdev/D1",
         "/dev/disk/by-id/scsi-SSAMSUNG_P1633N19_EMC1920_P0NA0HA00483",
         "/dev/disk/by-id/wwn-0x5002538a06a04540",
+        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy54-lun-0",
         "/dev/disk/by-diskseq/77",
         "/dev/disk/by-id/scsi-35002538a06a04540"
       ],
@@ -1227,11 +1227,11 @@
       "Devices": [
         "/dev/sdbr",
         "/dev/disk/by-vdev/D0",
-        "/dev/disk/by-id/scsi-35000cca2610763dc",
+        "/dev/disk/by-id/scsi-SHITACHI_HUH72808CLAR8000_VJG41ZTX",
         "/dev/disk/by-id/wwn-0x5000cca2610763dc",
+        "/dev/disk/by-id/scsi-35000cca2610763dc",
         "/dev/disk/by-diskseq/78",
-        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy55-lun-0",
-        "/dev/disk/by-id/scsi-SHITACHI_HUH72808CLAR8000_VJG41ZTX"
+        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy55-lun-0"
       ],
       "WWN": "0x5000cca2610763dc",
       "SysPath": "testdata/fs2/sys/devices/pci0000:00/0000:00:03.0/0000:03:00.0/host11/port-11:0/expander-11:0/port-11:0:46/end_device-11:0:46/target11:0:54/11:0:54:0/block/sdbr",
@@ -1253,12 +1253,12 @@
       "DeviceName": "sdbs",
       "Devices": [
         "/dev/sdbs",
-        "/dev/disk/by-diskseq/79",
         "/dev/disk/by-id/wwn-0x5000cca26128b234",
-        "/dev/disk/by-vdev/D24",
-        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy56-lun-0",
         "/dev/disk/by-id/scsi-35000cca26128b234",
-        "/dev/disk/by-id/scsi-SHITACHI_HUH72808CLAR8000_VJGRBUKX"
+        "/dev/disk/by-vdev/D24",
+        "/dev/disk/by-diskseq/79",
+        "/dev/disk/by-id/scsi-SHITACHI_HUH72808CLAR8000_VJGRBUKX",
+        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy56-lun-0"
       ],
       "WWN": "0x5000cca26128b234",
       "SysPath": "testdata/fs2/sys/devices/pci0000:00/0000:00:03.0/0000:03:00.0/host11/port-11:0/expander-11:0/port-11:0:47/end_device-11:0:47/target11:0:55/11:0:55:0/block/sdbs",
@@ -1280,12 +1280,12 @@
       "DeviceName": "sdbt",
       "Devices": [
         "/dev/sdbt",
-        "/dev/disk/by-id/scsi-35000cca261035d88",
-        "/dev/disk/by-id/scsi-SHITACHI_HUH72808CLAR8000_VJG1VBNX",
-        "/dev/disk/by-diskseq/80",
         "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy57-lun-0",
+        "/dev/disk/by-id/scsi-SHITACHI_HUH72808CLAR8000_VJG1VBNX",
         "/dev/disk/by-vdev/D12",
-        "/dev/disk/by-id/wwn-0x5000cca261035d88"
+        "/dev/disk/by-id/wwn-0x5000cca261035d88",
+        "/dev/disk/by-id/scsi-35000cca261035d88",
+        "/dev/disk/by-diskseq/80"
       ],
       "WWN": "0x5000cca261035d88",
       "SysPath": "testdata/fs2/sys/devices/pci0000:00/0000:00:03.0/0000:03:00.0/host11/port-11:0/expander-11:0/port-11:0:48/end_device-11:0:48/target11:0:56/11:0:56:0/block/sdbt",
@@ -1307,12 +1307,12 @@
       "DeviceName": "sdbu",
       "Devices": [
         "/dev/sdbu",
-        "/dev/disk/by-id/scsi-35000cca2548ef93c",
-        "/dev/disk/by-id/scsi-SHGST_H7280A520SUN8.0T_001619PJMJVV_VKJJMJVV",
+        "/dev/disk/by-vdev/D36",
+        "/dev/disk/by-diskseq/81",
         "/dev/disk/by-id/wwn-0x5000cca2548ef93c",
         "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy58-lun-0",
-        "/dev/disk/by-diskseq/81",
-        "/dev/disk/by-vdev/D36"
+        "/dev/disk/by-id/scsi-35000cca2548ef93c",
+        "/dev/disk/by-id/scsi-SHGST_H7280A520SUN8.0T_001619PJMJVV_VKJJMJVV"
       ],
       "WWN": "0x5000cca2548ef93c",
       "SysPath": "testdata/fs2/sys/devices/pci0000:00/0000:00:03.0/0000:03:00.0/host11/port-11:0/expander-11:0/port-11:0:49/end_device-11:0:49/target11:0:57/11:0:57:0/block/sdbu",
@@ -1334,11 +1334,11 @@
       "DeviceName": "sdbv",
       "Devices": [
         "/dev/sdbv",
+        "/dev/disk/by-id/scsi-SHGST_H7280A520SUN8.0T_001851PY9YMV_VLKY9YMV",
         "/dev/disk/by-id/wwn-0x5000cca260de6a94",
         "/dev/disk/by-diskseq/82",
-        "/dev/disk/by-id/scsi-35000cca260de6a94",
-        "/dev/disk/by-id/scsi-SHGST_H7280A520SUN8.0T_001851PY9YMV_VLKY9YMV",
         "/dev/disk/by-vdev/D48",
+        "/dev/disk/by-id/scsi-35000cca260de6a94",
         "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy59-lun-0"
       ],
       "WWN": "0x5000cca260de6a94",
@@ -1360,11 +1360,11 @@
       "Devices": [
         "/dev/sdbw",
         "/dev/disk/by-id/scsi-SATA_ST8000DM004-2CX1_WCT0VA8J",
-        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5003048001e8967f-phy13-lun-0",
-        "/dev/disk/by-vdev/E1",
-        "/dev/disk/by-id/wwn-0x5000c500baa141ea",
+        "/dev/disk/by-diskseq/83",
         "/dev/disk/by-id/scsi-35000c500baa141ea",
-        "/dev/disk/by-diskseq/83"
+        "/dev/disk/by-id/wwn-0x5000c500baa141ea",
+        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5003048001e8967f-phy13-lun-0",
+        "/dev/disk/by-vdev/E1"
       ],
       "WWN": "0x5000c500baa141ea",
       "SysPath": "testdata/fs2/sys/devices/pci0000:00/0000:00:03.0/0000:03:00.0/host11/port-11:9/expander-11:1/port-11:1:0/end_device-11:1:0/target11:0:60/11:0:60:0/block/sdbw",
@@ -1386,13 +1386,13 @@
       "DeviceName": "sdbx",
       "Devices": [
         "/dev/sdbx",
-        "/dev/disk/by-id/scsi-35000cca052054ffc",
-        "/dev/disk/by-diskseq/84",
-        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5003048001e8967f-phy14-lun-0",
         "/dev/disk/by-id/lvm-pv-uuid-tN6KUk-sweV-JemN-xk83-RIkz-MZ5u-qDI2XR",
-        "/dev/disk/by-vdev/E2",
+        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5003048001e8967f-phy14-lun-0",
         "/dev/disk/by-id/wwn-0x5000cca052054ffc",
-        "/dev/disk/by-id/scsi-SHGST_HUSMR1680ASS204_07V2XKRA"
+        "/dev/disk/by-id/scsi-SHGST_HUSMR1680ASS204_07V2XKRA",
+        "/dev/disk/by-diskseq/84",
+        "/dev/disk/by-id/scsi-35000cca052054ffc",
+        "/dev/disk/by-vdev/E2"
       ],
       "WWN": "0x5000cca052054ffc",
       "SysPath": "testdata/fs2/sys/devices/pci0000:00/0000:00:03.0/0000:03:00.0/host11/port-11:9/expander-11:1/port-11:1:1/end_device-11:1:1/target11:0:61/11:0:61:0/block/sdbx",
@@ -1413,12 +1413,12 @@
       "Devices": [
         "/dev/sdby",
         "/dev/disk/by-id/lvm-pv-uuid-uZAUcl-mLKO-o0Tu-3cb6-7vdH-1iI6-27NhFr",
-        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5003048001e8967f-phy15-lun-0",
-        "/dev/disk/by-id/scsi-SHGST_HUH728080AL4200_2EG17DZJ",
         "/dev/disk/by-diskseq/85",
+        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5003048001e8967f-phy15-lun-0",
         "/dev/disk/by-id/scsi-35000cca23b0240e0",
-        "/dev/disk/by-vdev/E3",
-        "/dev/disk/by-id/wwn-0x5000cca23b0240e0"
+        "/dev/disk/by-id/scsi-SHGST_HUH728080AL4200_2EG17DZJ",
+        "/dev/disk/by-id/wwn-0x5000cca23b0240e0",
+        "/dev/disk/by-vdev/E3"
       ],
       "WWN": "0x5000cca23b0240e0",
       "SysPath": "testdata/fs2/sys/devices/pci0000:00/0000:00:03.0/0000:03:00.0/host11/port-11:9/expander-11:1/port-11:1:2/end_device-11:1:2/target11:0:62/11:0:62:0/block/sdby",
@@ -1440,13 +1440,13 @@
       "DeviceName": "sdbz",
       "Devices": [
         "/dev/sdbz",
-        "/dev/disk/by-id/lvm-pv-uuid-3sMjby-Y9MZ-P9fy-L50Z-Yhom-bcAN-b7frKh",
         "/dev/disk/by-id/scsi-SHGST_HUH721008AL4200_7HK77YXF",
         "/dev/disk/by-id/scsi-35000cca257b64c08",
-        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5003048001e8967f-phy16-lun-0",
+        "/dev/disk/by-vdev/E4",
+        "/dev/disk/by-id/lvm-pv-uuid-3sMjby-Y9MZ-P9fy-L50Z-Yhom-bcAN-b7frKh",
         "/dev/disk/by-diskseq/86",
         "/dev/disk/by-id/wwn-0x5000cca257b64c08",
-        "/dev/disk/by-vdev/E4"
+        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5003048001e8967f-phy16-lun-0"
       ],
       "WWN": "0x5000cca257b64c08",
       "SysPath": "testdata/fs2/sys/devices/pci0000:00/0000:00:03.0/0000:03:00.0/host11/port-11:9/expander-11:1/port-11:1:3/end_device-11:1:3/target11:0:63/11:0:63:0/block/sdbz",
@@ -1468,12 +1468,12 @@
       "DeviceName": "sdc",
       "Devices": [
         "/dev/sdc",
-        "/dev/disk/by-id/scsi-SHGST_HUH721008AL5204_7SG3RM2G",
-        "/dev/disk/by-id/scsi-35000cca25206c808",
-        "/dev/disk/by-vdev/Ab0",
-        "/dev/disk/by-path/pci-0000:01:00.0-sas-exp0x500304800000007f-phy8-lun-0",
         "/dev/disk/by-diskseq/11",
-        "/dev/disk/by-id/wwn-0x5000cca25206c808"
+        "/dev/disk/by-path/pci-0000:01:00.0-sas-exp0x500304800000007f-phy8-lun-0",
+        "/dev/disk/by-id/scsi-SHGST_HUH721008AL5204_7SG3RM2G",
+        "/dev/disk/by-id/wwn-0x5000cca25206c808",
+        "/dev/disk/by-id/scsi-35000cca25206c808",
+        "/dev/disk/by-vdev/Ab0"
       ],
       "WWN": "0x5000cca25206c808",
       "SysPath": "testdata/fs2/sys/devices/pci0000:00/0000:00:01.0/0000:01:00.0/host10/port-10:0/expander-10:0/port-10:0:0/end_device-10:0:0/target10:0:0/10:0:0:0/block/sdc",
@@ -1493,12 +1493,12 @@
       "DeviceName": "sdca",
       "Devices": [
         "/dev/sdca",
+        "/dev/disk/by-id/scsi-SATA_HUH728080ALE601_R6GBW8JY",
+        "/dev/disk/by-id/wwn-0x5000cca263c56678",
         "/dev/disk/by-id/scsi-35000cca263c56678",
         "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5003048001e8967f-phy17-lun-0",
-        "/dev/disk/by-id/wwn-0x5000cca263c56678",
-        "/dev/disk/by-diskseq/87",
-        "/dev/disk/by-id/scsi-SATA_HUH728080ALE601_R6GBW8JY",
-        "/dev/disk/by-vdev/E5"
+        "/dev/disk/by-vdev/E5",
+        "/dev/disk/by-diskseq/87"
       ],
       "WWN": "0x5000cca263c56678",
       "SysPath": "testdata/fs2/sys/devices/pci0000:00/0000:00:03.0/0000:03:00.0/host11/port-11:9/expander-11:1/port-11:1:4/end_device-11:1:4/target11:0:64/11:0:64:0/block/sdca",
@@ -1520,12 +1520,12 @@
       "DeviceName": "sdcb",
       "Devices": [
         "/dev/sdcb",
-        "/dev/disk/by-id/wwn-0x5000c500c74b82b9",
-        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5003048001e8967f-phy19-lun-0",
-        "/dev/disk/by-diskseq/88",
+        "/dev/disk/by-id/scsi-SATA_ST8000DM004-2CX1_ZCT3BJRW",
         "/dev/disk/by-id/scsi-35000c500c74b82b9",
+        "/dev/disk/by-diskseq/88",
         "/dev/disk/by-vdev/E7",
-        "/dev/disk/by-id/scsi-SATA_ST8000DM004-2CX1_ZCT3BJRW"
+        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5003048001e8967f-phy19-lun-0",
+        "/dev/disk/by-id/wwn-0x5000c500c74b82b9"
       ],
       "WWN": "0x5000c500c74b82b9",
       "SysPath": "testdata/fs2/sys/devices/pci0000:00/0000:00:03.0/0000:03:00.0/host11/port-11:9/expander-11:1/port-11:1:5/end_device-11:1:5/target11:0:65/11:0:65:0/block/sdcb",
@@ -1547,12 +1547,12 @@
       "DeviceName": "sdcc",
       "Devices": [
         "/dev/sdcc",
-        "/dev/disk/by-diskseq/89",
         "/dev/disk/by-id/scsi-35000cca23b2fd45c",
-        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5003048001e8967f-phy21-lun-0",
-        "/dev/disk/by-vdev/E9",
         "/dev/disk/by-id/wwn-0x5000cca23b2fd45c",
-        "/dev/disk/by-id/scsi-SHGST_HUH728080AL5200_2EGV9EPX"
+        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5003048001e8967f-phy21-lun-0",
+        "/dev/disk/by-id/scsi-SHGST_HUH728080AL5200_2EGV9EPX",
+        "/dev/disk/by-diskseq/89",
+        "/dev/disk/by-vdev/E9"
       ],
       "WWN": "0x5000cca23b2fd45c",
       "SysPath": "testdata/fs2/sys/devices/pci0000:00/0000:00:03.0/0000:03:00.0/host11/port-11:9/expander-11:1/port-11:1:6/end_device-11:1:6/target11:0:66/11:0:66:0/block/sdcc",
@@ -1574,12 +1574,12 @@
       "DeviceName": "sdcd",
       "Devices": [
         "/dev/sdcd",
-        "/dev/disk/by-id/scsi-SHGST_HUH721008AL4200_7SK2R4TW",
         "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5003048001e8967f-phy22-lun-0",
         "/dev/disk/by-id/scsi-35000cca252ae09ac",
+        "/dev/disk/by-id/scsi-SHGST_HUH721008AL4200_7SK2R4TW",
         "/dev/disk/by-diskseq/90",
-        "/dev/disk/by-id/wwn-0x5000cca252ae09ac",
         "/dev/disk/by-vdev/E10",
+        "/dev/disk/by-id/wwn-0x5000cca252ae09ac",
         "/dev/disk/by-id/lvm-pv-uuid-QSWmqn-aHCx-itdi-h7fj-T5zj-huyq-v3zKgp"
       ],
       "WWN": "0x5000cca252ae09ac",
@@ -1602,11 +1602,11 @@
       "DeviceName": "sdce",
       "Devices": [
         "/dev/sdce",
+        "/dev/disk/by-id/wwn-0x5000cca23beb21b9",
         "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5003048001e8967f-phy23-lun-0",
         "/dev/disk/by-id/scsi-35000cca23beb21b9",
-        "/dev/disk/by-vdev/E11",
-        "/dev/disk/by-id/wwn-0x5000cca23beb21b9",
         "/dev/disk/by-id/scsi-SATA_HUH728080ALE601_2EK1WD8X",
+        "/dev/disk/by-vdev/E11",
         "/dev/disk/by-diskseq/91"
       ],
       "WWN": "0x5000cca23beb21b9",
@@ -1631,10 +1631,10 @@
         "/dev/sdcf",
         "/dev/disk/by-id/wwn-0x5000c500b3a24ea0",
         "/dev/disk/by-id/scsi-SATA_ST8000DM004-2CX1_ZCT0FBMM",
-        "/dev/disk/by-id/scsi-35000c500b3a24ea0",
-        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5003048001e8967f-phy24-lun-0",
         "/dev/disk/by-diskseq/92",
-        "/dev/disk/by-vdev/E12"
+        "/dev/disk/by-vdev/E12",
+        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5003048001e8967f-phy24-lun-0",
+        "/dev/disk/by-id/scsi-35000c500b3a24ea0"
       ],
       "WWN": "0x5000c500b3a24ea0",
       "SysPath": "testdata/fs2/sys/devices/pci0000:00/0000:00:03.0/0000:03:00.0/host11/port-11:9/expander-11:1/port-11:1:9/end_device-11:1:9/target11:0:69/11:0:69:0/block/sdcf",
@@ -1654,12 +1654,12 @@
       "DeviceName": "sdcg",
       "Devices": [
         "/dev/sdcg",
+        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5003048001e8967f-phy25-lun-0",
+        "/dev/disk/by-diskseq/93",
         "/dev/disk/by-vdev/E13",
         "/dev/disk/by-id/wwn-0x5000cca2528a9da4",
-        "/dev/disk/by-id/scsi-SHGST_HUH721008AL4200_7SJG77PW",
-        "/dev/disk/by-diskseq/93",
         "/dev/disk/by-id/scsi-35000cca2528a9da4",
-        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5003048001e8967f-phy25-lun-0"
+        "/dev/disk/by-id/scsi-SHGST_HUH721008AL4200_7SJG77PW"
       ],
       "WWN": "0x5000cca2528a9da4",
       "SysPath": "testdata/fs2/sys/devices/pci0000:00/0000:00:03.0/0000:03:00.0/host11/port-11:9/expander-11:1/port-11:1:10/end_device-11:1:10/target11:0:70/11:0:70:0/block/sdcg",
@@ -1682,11 +1682,11 @@
       "Devices": [
         "/dev/sdch",
         "/dev/disk/by-diskseq/94",
-        "/dev/disk/by-id/scsi-SIBM-E051_MZILT3T8HALS_C7XBG0ZP0KA05172",
-        "/dev/disk/by-id/wwn-0x5002538b48a79980",
         "/dev/disk/by-vdev/E14",
-        "/dev/disk/by-id/scsi-35002538b48a79980",
-        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5003048001e8967f-phy26-lun-0"
+        "/dev/disk/by-id/wwn-0x5002538b48a79980",
+        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5003048001e8967f-phy26-lun-0",
+        "/dev/disk/by-id/scsi-SIBM-E051_MZILT3T8HALS_C7XBG0ZP0KA05172",
+        "/dev/disk/by-id/scsi-35002538b48a79980"
       ],
       "WWN": "0x5002538b48a79980",
       "SysPath": "testdata/fs2/sys/devices/pci0000:00/0000:00:03.0/0000:03:00.0/host11/port-11:9/expander-11:1/port-11:1:11/end_device-11:1:11/target11:0:71/11:0:71:0/block/sdch",
@@ -1708,12 +1708,12 @@
       "DeviceName": "sdci",
       "Devices": [
         "/dev/sdci",
-        "/dev/disk/by-id/scsi-35000cca23b0b5d6c",
         "/dev/disk/by-id/scsi-SHGST_HUH728080AL4200_2EG67SKP",
-        "/dev/disk/by-id/wwn-0x5000cca23b0b5d6c",
         "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5003048001e8967f-phy27-lun-0",
+        "/dev/disk/by-id/wwn-0x5000cca23b0b5d6c",
         "/dev/disk/by-diskseq/95",
-        "/dev/disk/by-vdev/E15"
+        "/dev/disk/by-vdev/E15",
+        "/dev/disk/by-id/scsi-35000cca23b0b5d6c"
       ],
       "WWN": "0x5000cca23b0b5d6c",
       "SysPath": "testdata/fs2/sys/devices/pci0000:00/0000:00:03.0/0000:03:00.0/host11/port-11:9/expander-11:1/port-11:1:12/end_device-11:1:12/target11:0:72/11:0:72:0/block/sdci",
@@ -1735,13 +1735,13 @@
       "DeviceName": "sdcj",
       "Devices": [
         "/dev/sdcj",
-        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5003048001e8967f-phy28-lun-0",
-        "/dev/disk/by-id/scsi-35000cca23b0bd454",
-        "/dev/disk/by-id/wwn-0x5000cca23b0bd454",
-        "/dev/disk/by-diskseq/96",
-        "/dev/disk/by-id/lvm-pv-uuid-I36efb-fZfZ-r2Ix-3aaJ-ccd2-MGEk-E6V5IQ",
         "/dev/disk/by-id/scsi-SHGST_HUH728080AL4200_2EG6HP1R",
-        "/dev/disk/by-vdev/E16"
+        "/dev/disk/by-id/scsi-35000cca23b0bd454",
+        "/dev/disk/by-vdev/E16",
+        "/dev/disk/by-id/lvm-pv-uuid-I36efb-fZfZ-r2Ix-3aaJ-ccd2-MGEk-E6V5IQ",
+        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5003048001e8967f-phy28-lun-0",
+        "/dev/disk/by-id/wwn-0x5000cca23b0bd454",
+        "/dev/disk/by-diskseq/96"
       ],
       "WWN": "0x5000cca23b0bd454",
       "SysPath": "testdata/fs2/sys/devices/pci0000:00/0000:00:03.0/0000:03:00.0/host11/port-11:9/expander-11:1/port-11:1:13/end_device-11:1:13/target11:0:73/11:0:73:0/block/sdcj",
@@ -1763,12 +1763,12 @@
       "DeviceName": "sdck",
       "Devices": [
         "/dev/sdck",
+        "/dev/disk/by-id/scsi-35000cca260c165e2",
+        "/dev/disk/by-vdev/E17",
         "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5003048001e8967f-phy29-lun-0",
         "/dev/disk/by-diskseq/97",
-        "/dev/disk/by-vdev/E17",
         "/dev/disk/by-id/scsi-SATA_HUH728080ALE601_VLG32AEY",
-        "/dev/disk/by-id/wwn-0x5000cca260c165e2",
-        "/dev/disk/by-id/scsi-35000cca260c165e2"
+        "/dev/disk/by-id/wwn-0x5000cca260c165e2"
       ],
       "WWN": "0x5000cca260c165e2",
       "SysPath": "testdata/fs2/sys/devices/pci0000:00/0000:00:03.0/0000:03:00.0/host11/port-11:9/expander-11:1/port-11:1:14/end_device-11:1:14/target11:0:74/11:0:74:0/block/sdck",
@@ -1790,11 +1790,11 @@
       "DeviceName": "sdcl",
       "Devices": [
         "/dev/sdcl",
-        "/dev/disk/by-id/scsi-SATA_TOSHIBA_HDWR180_71J0A191FBLG",
         "/dev/disk/by-diskseq/98",
         "/dev/disk/by-vdev/E18",
-        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5003048001e8967f-phy30-lun-0",
         "/dev/disk/by-id/scsi-35000039b08d8b993",
+        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5003048001e8967f-phy30-lun-0",
+        "/dev/disk/by-id/scsi-SATA_TOSHIBA_HDWR180_71J0A191FBLG",
         "/dev/disk/by-id/wwn-0x5000039b08d8b993"
       ],
       "WWN": "0x5000039b08d8b993",
@@ -1818,10 +1818,10 @@
       "Devices": [
         "/dev/sdcm",
         "/dev/disk/by-vdev/E19",
-        "/dev/disk/by-id/scsi-SIBM-E051_MZILT3T8HALS_C7XBG0ZK0KA05168",
-        "/dev/disk/by-diskseq/99",
         "/dev/disk/by-id/scsi-35002538b48a79940",
         "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5003048001e8967f-phy31-lun-0",
+        "/dev/disk/by-diskseq/99",
+        "/dev/disk/by-id/scsi-SIBM-E051_MZILT3T8HALS_C7XBG0ZK0KA05168",
         "/dev/disk/by-id/wwn-0x5002538b48a79940"
       ],
       "WWN": "0x5002538b48a79940",
@@ -1844,12 +1844,12 @@
       "DeviceName": "sdcn",
       "Devices": [
         "/dev/sdcn",
-        "/dev/disk/by-id/wwn-0x5002538b48a797f0",
-        "/dev/disk/by-id/scsi-35002538b48a797f0",
         "/dev/disk/by-vdev/E20",
+        "/dev/disk/by-id/scsi-SIBM-E051_MZILT3T8HALS_C7XBG0YY0KA05147",
+        "/dev/disk/by-id/scsi-35002538b48a797f0",
         "/dev/disk/by-diskseq/100",
-        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5003048001e8967f-phy32-lun-0",
-        "/dev/disk/by-id/scsi-SIBM-E051_MZILT3T8HALS_C7XBG0YY0KA05147"
+        "/dev/disk/by-id/wwn-0x5002538b48a797f0",
+        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5003048001e8967f-phy32-lun-0"
       ],
       "WWN": "0x5002538b48a797f0",
       "SysPath": "testdata/fs2/sys/devices/pci0000:00/0000:00:03.0/0000:03:00.0/host11/port-11:9/expander-11:1/port-11:1:17/end_device-11:1:17/target11:0:77/11:0:77:0/block/sdcn",
@@ -1871,12 +1871,12 @@
       "DeviceName": "sdco",
       "Devices": [
         "/dev/sdco",
-        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5003048001e8967f-phy33-lun-0",
-        "/dev/disk/by-id/scsi-SHGST_HUH728080AL4200_2EGPAEKV",
         "/dev/disk/by-diskseq/101",
         "/dev/disk/by-vdev/E21",
-        "/dev/disk/by-id/wwn-0x5000cca23b26cbe4",
-        "/dev/disk/by-id/scsi-35000cca23b26cbe4"
+        "/dev/disk/by-id/scsi-35000cca23b26cbe4",
+        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5003048001e8967f-phy33-lun-0",
+        "/dev/disk/by-id/scsi-SHGST_HUH728080AL4200_2EGPAEKV",
+        "/dev/disk/by-id/wwn-0x5000cca23b26cbe4"
       ],
       "WWN": "0x5000cca23b26cbe4",
       "SysPath": "testdata/fs2/sys/devices/pci0000:00/0000:00:03.0/0000:03:00.0/host11/port-11:9/expander-11:1/port-11:1:18/end_device-11:1:18/target11:0:78/11:0:78:0/block/sdco",
@@ -1898,12 +1898,12 @@
       "DeviceName": "sdcp",
       "Devices": [
         "/dev/sdcp",
-        "/dev/disk/by-id/scsi-35000c500c7913439",
-        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5003048001e8967f-phy34-lun-0",
-        "/dev/disk/by-vdev/E22",
         "/dev/disk/by-diskseq/102",
+        "/dev/disk/by-id/wwn-0x5000c500c7913439",
         "/dev/disk/by-id/scsi-SATA_ST8000VN004-2M21_WKD32WVK",
-        "/dev/disk/by-id/wwn-0x5000c500c7913439"
+        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5003048001e8967f-phy34-lun-0",
+        "/dev/disk/by-id/scsi-35000c500c7913439",
+        "/dev/disk/by-vdev/E22"
       ],
       "WWN": "0x5000c500c7913439",
       "SysPath": "testdata/fs2/sys/devices/pci0000:00/0000:00:03.0/0000:03:00.0/host11/port-11:9/expander-11:1/port-11:1:19/end_device-11:1:19/target11:0:79/11:0:79:0/block/sdcp",
@@ -1925,11 +1925,11 @@
       "DeviceName": "sdcq",
       "Devices": [
         "/dev/sdcq",
-        "/dev/disk/by-id/scsi-SHGST_HUH728080AL4200_2EG6AS1R",
-        "/dev/disk/by-id/scsi-35000cca23b0b8a38",
-        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5003048001e8967f-phy35-lun-0",
         "/dev/disk/by-diskseq/103",
+        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5003048001e8967f-phy35-lun-0",
         "/dev/disk/by-id/wwn-0x5000cca23b0b8a38",
+        "/dev/disk/by-id/scsi-35000cca23b0b8a38",
+        "/dev/disk/by-id/scsi-SHGST_HUH728080AL4200_2EG6AS1R",
         "/dev/disk/by-vdev/E23"
       ],
       "WWN": "0x5000cca23b0b8a38",
@@ -1952,11 +1952,11 @@
       "DeviceName": "sdd",
       "Devices": [
         "/dev/sdd",
-        "/dev/disk/by-vdev/Ab1",
-        "/dev/disk/by-path/pci-0000:01:00.0-sas-exp0x500304800000007f-phy9-lun-0",
-        "/dev/disk/by-id/scsi-35000cca25208683c",
         "/dev/disk/by-id/scsi-SHGST_HUH721008AL5204_7SG4MAAG",
+        "/dev/disk/by-vdev/Ab1",
+        "/dev/disk/by-id/scsi-35000cca25208683c",
         "/dev/disk/by-diskseq/12",
+        "/dev/disk/by-path/pci-0000:01:00.0-sas-exp0x500304800000007f-phy9-lun-0",
         "/dev/disk/by-id/wwn-0x5000cca25208683c"
       ],
       "WWN": "0x5000cca25208683c",
@@ -1977,12 +1977,12 @@
       "DeviceName": "sde",
       "Devices": [
         "/dev/sde",
-        "/dev/disk/by-id/scsi-35000cca25207ef14",
-        "/dev/disk/by-path/pci-0000:01:00.0-sas-exp0x500304800000007f-phy10-lun-0",
-        "/dev/disk/by-id/wwn-0x5000cca25207ef14",
         "/dev/disk/by-vdev/Ab2",
         "/dev/disk/by-id/scsi-SHGST_HUH721008AL5204_7SG4B86G",
-        "/dev/disk/by-diskseq/13"
+        "/dev/disk/by-id/wwn-0x5000cca25207ef14",
+        "/dev/disk/by-id/scsi-35000cca25207ef14",
+        "/dev/disk/by-diskseq/13",
+        "/dev/disk/by-path/pci-0000:01:00.0-sas-exp0x500304800000007f-phy10-lun-0"
       ],
       "WWN": "0x5000cca25207ef14",
       "SysPath": "testdata/fs2/sys/devices/pci0000:00/0000:00:01.0/0000:01:00.0/host10/port-10:0/expander-10:0/port-10:0:2/end_device-10:0:2/target10:0:2/10:0:2:0/block/sde",
@@ -2004,12 +2004,12 @@
       "DeviceName": "sdf",
       "Devices": [
         "/dev/sdf",
-        "/dev/disk/by-id/wwn-0x5000cca25207d34c",
-        "/dev/disk/by-vdev/Ab3",
-        "/dev/disk/by-id/scsi-SHGST_HUH721008AL5204_7SG49DVG",
         "/dev/disk/by-path/pci-0000:01:00.0-sas-exp0x500304800000007f-phy11-lun-0",
         "/dev/disk/by-diskseq/14",
-        "/dev/disk/by-id/scsi-35000cca25207d34c"
+        "/dev/disk/by-id/scsi-35000cca25207d34c",
+        "/dev/disk/by-id/scsi-SHGST_HUH721008AL5204_7SG49DVG",
+        "/dev/disk/by-vdev/Ab3",
+        "/dev/disk/by-id/wwn-0x5000cca25207d34c"
       ],
       "WWN": "0x5000cca25207d34c",
       "SysPath": "testdata/fs2/sys/devices/pci0000:00/0000:00:01.0/0000:01:00.0/host10/port-10:0/expander-10:0/port-10:0:3/end_device-10:0:3/target10:0:3/10:0:3:0/block/sdf",
@@ -2031,12 +2031,12 @@
       "DeviceName": "sdg",
       "Devices": [
         "/dev/sdg",
-        "/dev/disk/by-path/pci-0000:01:00.0-sas-exp0x500304800000007f-phy12-lun-0",
-        "/dev/disk/by-diskseq/15",
         "/dev/disk/by-id/scsi-SHGST_HUH721008AL5204_7SG3M07G",
+        "/dev/disk/by-path/pci-0000:01:00.0-sas-exp0x500304800000007f-phy12-lun-0",
+        "/dev/disk/by-id/wwn-0x5000cca2520691dc",
+        "/dev/disk/by-diskseq/15",
         "/dev/disk/by-vdev/Ab4",
-        "/dev/disk/by-id/scsi-35000cca2520691dc",
-        "/dev/disk/by-id/wwn-0x5000cca2520691dc"
+        "/dev/disk/by-id/scsi-35000cca2520691dc"
       ],
       "WWN": "0x5000cca2520691dc",
       "SysPath": "testdata/fs2/sys/devices/pci0000:00/0000:00:01.0/0000:01:00.0/host10/port-10:0/expander-10:0/port-10:0:4/end_device-10:0:4/target10:0:4/10:0:4:0/block/sdg",
@@ -2058,12 +2058,12 @@
       "DeviceName": "sdh",
       "Devices": [
         "/dev/sdh",
+        "/dev/disk/by-id/scsi-SHGST_H7280A520SUN8.0T_001619PJMXHV_VKJJMXHV",
+        "/dev/disk/by-path/pci-0000:01:00.0-sas-exp0x500304800000007f-phy13-lun-0",
+        "/dev/disk/by-diskseq/16",
         "/dev/disk/by-vdev/Ab5",
         "/dev/disk/by-id/scsi-35000cca2548efee0",
-        "/dev/disk/by-id/scsi-SHGST_H7280A520SUN8.0T_001619PJMXHV_VKJJMXHV",
-        "/dev/disk/by-id/wwn-0x5000cca2548efee0",
-        "/dev/disk/by-diskseq/16",
-        "/dev/disk/by-path/pci-0000:01:00.0-sas-exp0x500304800000007f-phy13-lun-0"
+        "/dev/disk/by-id/wwn-0x5000cca2548efee0"
       ],
       "WWN": "0x5000cca2548efee0",
       "SysPath": "testdata/fs2/sys/devices/pci0000:00/0000:00:01.0/0000:01:00.0/host10/port-10:0/expander-10:0/port-10:0:5/end_device-10:0:5/target10:0:5/10:0:5:0/block/sdh",
@@ -2085,12 +2085,12 @@
       "DeviceName": "sdi",
       "Devices": [
         "/dev/sdi",
-        "/dev/disk/by-diskseq/17",
-        "/dev/disk/by-vdev/Ab6",
-        "/dev/disk/by-path/pci-0000:01:00.0-sas-exp0x500304800000007f-phy14-lun-0",
         "/dev/disk/by-id/scsi-35000cca25207efc4",
+        "/dev/disk/by-path/pci-0000:01:00.0-sas-exp0x500304800000007f-phy14-lun-0",
+        "/dev/disk/by-id/wwn-0x5000cca25207efc4",
+        "/dev/disk/by-vdev/Ab6",
         "/dev/disk/by-id/scsi-SHGST_HUH721008AL5204_7SG4B9MG",
-        "/dev/disk/by-id/wwn-0x5000cca25207efc4"
+        "/dev/disk/by-diskseq/17"
       ],
       "WWN": "0x5000cca25207efc4",
       "SysPath": "testdata/fs2/sys/devices/pci0000:00/0000:00:01.0/0000:01:00.0/host10/port-10:0/expander-10:0/port-10:0:6/end_device-10:0:6/target10:0:6/10:0:6:0/block/sdi",
@@ -2112,13 +2112,13 @@
       "DeviceName": "sdj",
       "Devices": [
         "/dev/sdj",
-        "/dev/disk/by-id/wwn-0x5000cca23bbd2a88",
-        "/dev/disk/by-diskseq/18",
-        "/dev/disk/by-id/scsi-SHGST_HUH728080AL4200_2EKB12BX",
-        "/dev/disk/by-path/pci-0000:01:00.0-sas-exp0x500304800000007f-phy15-lun-0",
-        "/dev/disk/by-vdev/Ab7",
         "/dev/disk/by-id/lvm-pv-uuid-xj2dom-Q0rb-Wjhe-pTt6-lLfc-z2U3-pWV9xQ",
-        "/dev/disk/by-id/scsi-35000cca23bbd2a88"
+        "/dev/disk/by-vdev/Ab7",
+        "/dev/disk/by-path/pci-0000:01:00.0-sas-exp0x500304800000007f-phy15-lun-0",
+        "/dev/disk/by-diskseq/18",
+        "/dev/disk/by-id/scsi-35000cca23bbd2a88",
+        "/dev/disk/by-id/wwn-0x5000cca23bbd2a88",
+        "/dev/disk/by-id/scsi-SHGST_HUH728080AL4200_2EKB12BX"
       ],
       "WWN": "0x5000cca23bbd2a88",
       "SysPath": "testdata/fs2/sys/devices/pci0000:00/0000:00:01.0/0000:01:00.0/host10/port-10:0/expander-10:0/port-10:0:7/end_device-10:0:7/target10:0:7/10:0:7:0/block/sdj",
@@ -2140,12 +2140,12 @@
       "DeviceName": "sdk",
       "Devices": [
         "/dev/sdk",
+        "/dev/disk/by-path/pci-0000:01:00.0-sas-exp0x500304800000007f-phy16-lun-0",
         "/dev/disk/by-id/scsi-35000cca2548cfcec",
         "/dev/disk/by-id/scsi-SHGST_H7280A520SUN8.0T_001619PHJPEV_VKJHJPEV",
-        "/dev/disk/by-vdev/Ab8",
-        "/dev/disk/by-path/pci-0000:01:00.0-sas-exp0x500304800000007f-phy16-lun-0",
         "/dev/disk/by-id/wwn-0x5000cca2548cfcec",
-        "/dev/disk/by-diskseq/19"
+        "/dev/disk/by-diskseq/19",
+        "/dev/disk/by-vdev/Ab8"
       ],
       "WWN": "0x5000cca2548cfcec",
       "SysPath": "testdata/fs2/sys/devices/pci0000:00/0000:00:01.0/0000:01:00.0/host10/port-10:0/expander-10:0/port-10:0:8/end_device-10:0:8/target10:0:8/10:0:8:0/block/sdk",
@@ -2167,12 +2167,12 @@
       "DeviceName": "sdl",
       "Devices": [
         "/dev/sdl",
-        "/dev/disk/by-id/scsi-35000cca2548175a8",
-        "/dev/disk/by-vdev/Ab9",
         "/dev/disk/by-id/scsi-SHGST_H7280A520SUN8.0T_001619P964HV_VKJ964HV",
+        "/dev/disk/by-vdev/Ab9",
+        "/dev/disk/by-diskseq/20",
         "/dev/disk/by-path/pci-0000:01:00.0-sas-exp0x500304800000007f-phy17-lun-0",
         "/dev/disk/by-id/wwn-0x5000cca2548175a8",
-        "/dev/disk/by-diskseq/20"
+        "/dev/disk/by-id/scsi-35000cca2548175a8"
       ],
       "WWN": "0x5000cca2548175a8",
       "SysPath": "testdata/fs2/sys/devices/pci0000:00/0000:00:01.0/0000:01:00.0/host10/port-10:0/expander-10:0/port-10:0:9/end_device-10:0:9/target10:0:9/10:0:9:0/block/sdl",
@@ -2194,12 +2194,12 @@
       "DeviceName": "sdm",
       "Devices": [
         "/dev/sdm",
-        "/dev/disk/by-id/scsi-35000cca2548ef570",
-        "/dev/disk/by-diskseq/21",
         "/dev/disk/by-id/scsi-SHGST_H7280A520SUN8.0T_001619PJM90V_VKJJM90V",
-        "/dev/disk/by-vdev/Ab11",
+        "/dev/disk/by-diskseq/21",
         "/dev/disk/by-path/pci-0000:01:00.0-sas-exp0x500304800000007f-phy19-lun-0",
-        "/dev/disk/by-id/wwn-0x5000cca2548ef570"
+        "/dev/disk/by-id/wwn-0x5000cca2548ef570",
+        "/dev/disk/by-id/scsi-35000cca2548ef570",
+        "/dev/disk/by-vdev/Ab11"
       ],
       "WWN": "0x5000cca2548ef570",
       "SysPath": "testdata/fs2/sys/devices/pci0000:00/0000:00:01.0/0000:01:00.0/host10/port-10:0/expander-10:0/port-10:0:10/end_device-10:0:10/target10:0:10/10:0:10:0/block/sdm",
@@ -2221,12 +2221,12 @@
       "DeviceName": "sdn",
       "Devices": [
         "/dev/sdn",
-        "/dev/disk/by-vdev/Ab12",
-        "/dev/disk/by-diskseq/22",
-        "/dev/disk/by-id/wwn-0x5000cca254905e44",
-        "/dev/disk/by-path/pci-0000:01:00.0-sas-exp0x500304800000007f-phy20-lun-0",
         "/dev/disk/by-id/scsi-SHGST_H7280A520SUN8.0T_001619PKD9YV_VKJKD9YV",
-        "/dev/disk/by-id/scsi-35000cca254905e44"
+        "/dev/disk/by-id/wwn-0x5000cca254905e44",
+        "/dev/disk/by-id/scsi-35000cca254905e44",
+        "/dev/disk/by-vdev/Ab12",
+        "/dev/disk/by-path/pci-0000:01:00.0-sas-exp0x500304800000007f-phy20-lun-0",
+        "/dev/disk/by-diskseq/22"
       ],
       "WWN": "0x5000cca254905e44",
       "SysPath": "testdata/fs2/sys/devices/pci0000:00/0000:00:01.0/0000:01:00.0/host10/port-10:0/expander-10:0/port-10:0:11/end_device-10:0:11/target10:0:11/10:0:11:0/block/sdn",
@@ -2248,11 +2248,11 @@
       "DeviceName": "sdo",
       "Devices": [
         "/dev/sdo",
-        "/dev/disk/by-diskseq/23",
-        "/dev/disk/by-vdev/Ab13",
-        "/dev/disk/by-id/scsi-35000cca25490481c",
         "/dev/disk/by-id/wwn-0x5000cca25490481c",
+        "/dev/disk/by-id/scsi-35000cca25490481c",
+        "/dev/disk/by-vdev/Ab13",
         "/dev/disk/by-path/pci-0000:01:00.0-sas-exp0x500304800000007f-phy21-lun-0",
+        "/dev/disk/by-diskseq/23",
         "/dev/disk/by-id/scsi-SHGST_H7280A520SUN8.0T_001619PKAV6V_VKJKAV6V"
       ],
       "WWN": "0x5000cca25490481c",
@@ -2275,12 +2275,12 @@
       "DeviceName": "sdp",
       "Devices": [
         "/dev/sdp",
-        "/dev/disk/by-id/scsi-35000cca2547fac54",
-        "/dev/disk/by-vdev/Ab14",
+        "/dev/disk/by-diskseq/24",
         "/dev/disk/by-id/wwn-0x5000cca2547fac54",
-        "/dev/disk/by-id/scsi-SHGST_H7280A520SUN8.0T_001619P86PAV_VKJ86PAV",
+        "/dev/disk/by-vdev/Ab14",
+        "/dev/disk/by-id/scsi-35000cca2547fac54",
         "/dev/disk/by-path/pci-0000:01:00.0-sas-exp0x500304800000007f-phy22-lun-0",
-        "/dev/disk/by-diskseq/24"
+        "/dev/disk/by-id/scsi-SHGST_H7280A520SUN8.0T_001619P86PAV_VKJ86PAV"
       ],
       "WWN": "0x5000cca2547fac54",
       "SysPath": "testdata/fs2/sys/devices/pci0000:00/0000:00:01.0/0000:01:00.0/host10/port-10:0/expander-10:0/port-10:0:13/end_device-10:0:13/target10:0:13/10:0:13:0/block/sdp",
@@ -2302,12 +2302,12 @@
       "DeviceName": "sdq",
       "Devices": [
         "/dev/sdq",
+        "/dev/disk/by-vdev/INTERNAL0",
+        "/dev/disk/by-id/scsi-35000cca0506b5f1c",
+        "/dev/disk/by-id/scsi-SHITACHI_HUSMM111CLAR1600_0SWX1KLA",
         "/dev/disk/by-id/wwn-0x5000cca0506b5f1c",
         "/dev/disk/by-path/pci-0000:03:00.0-sas-phy7-lun-0",
-        "/dev/disk/by-id/scsi-SHITACHI_HUSMM111CLAR1600_0SWX1KLA",
-        "/dev/disk/by-diskseq/25",
-        "/dev/disk/by-id/scsi-35000cca0506b5f1c",
-        "/dev/disk/by-vdev/INTERNAL0"
+        "/dev/disk/by-diskseq/25"
       ],
       "WWN": "0x5000cca0506b5f1c",
       "SysPath": "testdata/fs2/sys/devices/pci0000:00/0000:00:03.0/0000:03:00.0/host11/port-11:1/end_device-11:1/target11:0:0/11:0:0:0/block/sdq",
@@ -2329,12 +2329,12 @@
       "DeviceName": "sdr",
       "Devices": [
         "/dev/sdr",
-        "/dev/disk/by-id/scsi-SHITACHI_HUSMM111CLAR1600_0SWWZEYA",
-        "/dev/disk/by-id/wwn-0x5000cca0506b3f50",
-        "/dev/disk/by-vdev/INTERNAL7",
         "/dev/disk/by-id/scsi-35000cca0506b3f50",
-        "/dev/disk/by-diskseq/26",
-        "/dev/disk/by-path/pci-0000:03:00.0-sas-phy0-lun-0"
+        "/dev/disk/by-vdev/INTERNAL7",
+        "/dev/disk/by-id/wwn-0x5000cca0506b3f50",
+        "/dev/disk/by-path/pci-0000:03:00.0-sas-phy0-lun-0",
+        "/dev/disk/by-id/scsi-SHITACHI_HUSMM111CLAR1600_0SWWZEYA",
+        "/dev/disk/by-diskseq/26"
       ],
       "WWN": "0x5000cca0506b3f50",
       "SysPath": "testdata/fs2/sys/devices/pci0000:00/0000:00:03.0/0000:03:00.0/host11/port-11:2/end_device-11:2/target11:0:1/11:0:1:0/block/sdr",
@@ -2354,12 +2354,12 @@
       "DeviceName": "sds",
       "Devices": [
         "/dev/sds",
+        "/dev/disk/by-diskseq/27",
         "/dev/disk/by-path/pci-0000:03:00.0-sas-phy2-lun-0",
         "/dev/disk/by-id/scsi-SHITACHI_HUSMM111CLAR1600_0SWWM72A",
-        "/dev/disk/by-id/wwn-0x5000cca0506a96d0",
-        "/dev/disk/by-diskseq/27",
+        "/dev/disk/by-vdev/INTERNAL6",
         "/dev/disk/by-id/scsi-35000cca0506a96d0",
-        "/dev/disk/by-vdev/INTERNAL6"
+        "/dev/disk/by-id/wwn-0x5000cca0506a96d0"
       ],
       "WWN": "0x5000cca0506a96d0",
       "SysPath": "testdata/fs2/sys/devices/pci0000:00/0000:00:03.0/0000:03:00.0/host11/port-11:3/end_device-11:3/target11:0:2/11:0:2:0/block/sds",
@@ -2381,12 +2381,12 @@
       "DeviceName": "sdt",
       "Devices": [
         "/dev/sdt",
-        "/dev/disk/by-id/scsi-SHGST_HUSMM1616ASS200_0SVHM7EA",
-        "/dev/disk/by-vdev/INTERNAL2",
         "/dev/disk/by-id/scsi-35000cca0501c6728",
+        "/dev/disk/by-id/scsi-SHGST_HUSMM1616ASS200_0SVHM7EA",
+        "/dev/disk/by-path/pci-0000:03:00.0-sas-phy3-lun-0",
         "/dev/disk/by-id/wwn-0x5000cca0501c6728",
-        "/dev/disk/by-diskseq/28",
-        "/dev/disk/by-path/pci-0000:03:00.0-sas-phy3-lun-0"
+        "/dev/disk/by-vdev/INTERNAL2",
+        "/dev/disk/by-diskseq/28"
       ],
       "WWN": "0x5000cca0501c6728",
       "SysPath": "testdata/fs2/sys/devices/pci0000:00/0000:00:03.0/0000:03:00.0/host11/port-11:4/end_device-11:4/target11:0:3/11:0:3:0/block/sdt",
@@ -2410,10 +2410,10 @@
         "/dev/sdu",
         "/dev/disk/by-id/scsi-35000cca04aafd554",
         "/dev/disk/by-id/wwn-0x5000cca04aafd554",
-        "/dev/disk/by-vdev/INTERNAL5",
         "/dev/disk/by-id/scsi-SHITACHI_HUSMH842_CLAR200_0LY3PSSA",
         "/dev/disk/by-diskseq/29",
-        "/dev/disk/by-path/pci-0000:03:00.0-sas-phy4-lun-0"
+        "/dev/disk/by-path/pci-0000:03:00.0-sas-phy4-lun-0",
+        "/dev/disk/by-vdev/INTERNAL5"
       ],
       "WWN": "0x5000cca04aafd554",
       "SysPath": "testdata/fs2/sys/devices/pci0000:00/0000:00:03.0/0000:03:00.0/host11/port-11:5/end_device-11:5/target11:0:4/11:0:4:0/block/sdu",
@@ -2436,10 +2436,10 @@
       "Devices": [
         "/dev/sdv",
         "/dev/disk/by-id/scsi-SHITACHI_HUSMM111CLAR1600_0SWWPRRA",
-        "/dev/disk/by-id/scsi-35000cca0506abc6c",
         "/dev/disk/by-id/wwn-0x5000cca0506abc6c",
-        "/dev/disk/by-vdev/INTERNAL1",
         "/dev/disk/by-path/pci-0000:03:00.0-sas-phy5-lun-0",
+        "/dev/disk/by-vdev/INTERNAL1",
+        "/dev/disk/by-id/scsi-35000cca0506abc6c",
         "/dev/disk/by-diskseq/30"
       ],
       "WWN": "0x5000cca0506abc6c",
@@ -2462,11 +2462,11 @@
       "DeviceName": "sdw",
       "Devices": [
         "/dev/sdw",
-        "/dev/disk/by-id/wwn-0x5000cca04aafd574",
         "/dev/disk/by-diskseq/31",
         "/dev/disk/by-path/pci-0000:03:00.0-sas-phy6-lun-0",
-        "/dev/disk/by-id/scsi-SHITACHI_HUSMH842_CLAR200_0LY3PT0A",
+        "/dev/disk/by-id/wwn-0x5000cca04aafd574",
         "/dev/disk/by-vdev/INTERNAL4",
+        "/dev/disk/by-id/scsi-SHITACHI_HUSMH842_CLAR200_0LY3PT0A",
         "/dev/disk/by-id/scsi-35000cca04aafd574"
       ],
       "WWN": "0x5000cca04aafd574",
@@ -2489,12 +2489,12 @@
       "DeviceName": "sdx",
       "Devices": [
         "/dev/sdx",
+        "/dev/disk/by-id/scsi-35000c500caf7af6f",
+        "/dev/disk/by-vdev/D47",
         "/dev/disk/by-id/wwn-0x5000c500caf7af6f",
         "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy1-lun-0",
         "/dev/disk/by-diskseq/32",
-        "/dev/disk/by-id/scsi-35000c500caf7af6f",
-        "/dev/disk/by-id/scsi-SSEAGATE_STMPSED1CLAR8000_ZA1K2KC2",
-        "/dev/disk/by-vdev/D47"
+        "/dev/disk/by-id/scsi-SSEAGATE_STMPSED1CLAR8000_ZA1K2KC2"
       ],
       "WWN": "0x5000c500caf7af6f",
       "SysPath": "testdata/fs2/sys/devices/pci0000:00/0000:00:03.0/0000:03:00.0/host11/port-11:0/expander-11:0/port-11:0:0/end_device-11:0:0/target11:0:8/11:0:8:0/block/sdx",
@@ -2517,11 +2517,11 @@
       "Devices": [
         "/dev/sdy",
         "/dev/disk/by-id/scsi-SATA_ST8000DM004-2CX1_ZCT0CQLK",
-        "/dev/disk/by-id/wwn-0x5000c500b32d1a9c",
-        "/dev/disk/by-vdev/D58",
         "/dev/disk/by-id/scsi-35000c500b32d1a9c",
+        "/dev/disk/by-id/wwn-0x5000c500b32d1a9c",
+        "/dev/disk/by-diskseq/33",
         "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy2-lun-0",
-        "/dev/disk/by-diskseq/33"
+        "/dev/disk/by-vdev/D58"
       ],
       "WWN": "0x5000c500b32d1a9c",
       "SysPath": "testdata/fs2/sys/devices/pci0000:00/0000:00:03.0/0000:03:00.0/host11/port-11:0/expander-11:0/port-11:0:1/end_device-11:0:1/target11:0:9/11:0:9:0/block/sdy",
@@ -2543,12 +2543,12 @@
       "DeviceName": "sdz",
       "Devices": [
         "/dev/sdz",
-        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy3-lun-0",
-        "/dev/disk/by-diskseq/34",
-        "/dev/disk/by-id/scsi-35000cca23b178ae4",
-        "/dev/disk/by-id/wwn-0x5000cca23b178ae4",
         "/dev/disk/by-vdev/D35",
-        "/dev/disk/by-id/scsi-SHGST_HUH728080AL4200_2EGDYBMR"
+        "/dev/disk/by-id/scsi-35000cca23b178ae4",
+        "/dev/disk/by-id/scsi-SHGST_HUH728080AL4200_2EGDYBMR",
+        "/dev/disk/by-diskseq/34",
+        "/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5000ccab0200947e-phy3-lun-0",
+        "/dev/disk/by-id/wwn-0x5000cca23b178ae4"
       ],
       "WWN": "0x5000cca23b178ae4",
       "SysPath": "testdata/fs2/sys/devices/pci0000:00/0000:00:03.0/0000:03:00.0/host11/port-11:0/expander-11:0/port-11:0:2/end_device-11:0:2/target11:0:10/11:0:10:0/block/sdz",
