@@ -333,6 +333,7 @@ message Expander {
   int32 drives = 6;                   // drives currently placed on it
   google.protobuf.Timestamp first_seen = 7;
   google.protobuf.Timestamp last_seen = 8;
+  string product = 9;                 // vendor and product from the SAS topology, "" if unknown
 }
 
 message ListExpandersRequest {}

@@ -143,7 +143,7 @@ func placementToProto(p *store.Placement) *pb.Placement {
 }
 
 func expanderToProto(e store.Expander) *pb.Expander {
-	return &pb.Expander{Expander: e.Key, Hostname: e.Hostname, ExpanderDev: e.Dev, Name: e.Name, Note: e.Note, Drives: int32(e.Drives), FirstSeen: ts(e.FirstSeen), LastSeen: ts(e.LastSeen)}
+	return &pb.Expander{Expander: e.Key, Hostname: e.Hostname, ExpanderDev: e.Dev, Product: e.Product, Name: e.Name, Note: e.Note, Drives: int32(e.Drives), FirstSeen: ts(e.FirstSeen), LastSeen: ts(e.LastSeen)}
 }
 
 // nameExpanders adds the names people gave expanders to the events that

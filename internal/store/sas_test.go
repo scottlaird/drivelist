@@ -196,3 +196,29 @@ func TestIngestSAS(t *testing.T) {
 		t.Errorf("SASPhyTotals with everything down = %+v, %v", totals, err)
 	}
 }
+
+// TestExpandersFromTopology: an expander with nothing on it is only known
+// from the SAS topology, and can still be listed and named.
+func TestExpandersFromTopology(t *testing.T) {
+	h := newHarness(t)
+	x, y := devX, devY
+	x.ExpanderID, y.ExpanderID = "0x500605b00a1b2c3d", "0x500605b00a1b2c3d"
+	r := sasReport(hostA, x, y)
+	r.ObservedAt = h.now
+	r.SASNodes = append(r.SASNodes, SASNode{Kind: "expander", Name: "expander-4:1", Address: "0x500304801ea12dff", Vendor: "LSI", Product: "SAS3x28", Revision: "0601", ParentAddress: "0x500605b00a1b2c3d", UpstreamPort: "port-4:0:9"})
+	h.submit(r)
+	es, err := h.s.ListExpanders(h.ctx)
+	if err != nil || len(es) != 2 {
+		t.Fatalf("ListExpanders = %+v, %v", es, err)
+	}
+	if es[0].Dev != "expander-4:0" || es[0].Drives != 2 || es[0].Product != "LSI SAS2X36" || es[1].Dev != "expander-4:1" || es[1].Drives != 0 || es[1].Product != "LSI SAS3x28" {
+		t.Errorf("expanders = %+v", es)
+	}
+	e, err := h.s.NameExpander(h.ctx, "expander-4:1", "storage1-back", "", "scott")
+	if err != nil || e.Name != "storage1-back" || e.Key != "0x500304801ea12dff" || e.Product != "LSI SAS3x28" {
+		t.Errorf("NameExpander = %+v, %v", e, err)
+	}
+	if e, err := h.s.NameExpander(h.ctx, "12dff", "", "", "scott"); err != nil || e.Name != "" {
+		t.Errorf("clear by partial key = %+v, %v", e, err)
+	}
+}
