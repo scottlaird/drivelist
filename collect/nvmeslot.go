@@ -12,23 +12,29 @@ import (
 )
 
 // annotateNVMeSlots gives NVMe drives a place the way SES gives SAS drives
-// one. There is no SES for PCIe-attached drives, but the firmware's
-// hotplug slot table (/sys/bus/pci/slots) says which slot each PCI address
-// is in, and a U.2 bay is a slot, so the enclosure is the chassis (keyed
-// on its DMI serial, described by vendor and product) and the bay is the
-// slot's name as the firmware gives it, "9-1" for the second lane of a
-// bifurcated slot 9. Bays are only known where a drive sits in one, plus
-// the sibling lanes of an occupied slot that have nothing behind them,
-// which is how an empty U.2 bay looks; empty add-in card slots cannot be
-// told from empty bays and are left alone.
+// one. There is no SES for PCIe-attached drives, but two firmware tables
+// say where a PCI device is: the hotplug slot table (/sys/bus/pci/slots),
+// which names the slot each address is in and is how a U.2 bay looks, and
+// SMBIOS type 9, which names every slot the board vendor cared to describe
+// ("M.2_1", "PCIE3", or a bare reference designator) by the root port it
+// hangs off. The slot table wins where it has the drive; SMBIOS is the
+// fallback, and the only source for an M.2 slot. Either way the enclosure
+// is the chassis (keyed on its DMI serial, described by vendor and
+// product) and the bay is the slot's name as the firmware gives it, "9-1"
+// for the second lane of a bifurcated slot 9. Bays are only known where a
+// drive sits in one, plus the sibling lanes of an occupied hotplug slot
+// that have nothing behind them, which is how an empty U.2 bay looks;
+// empty add-in card slots cannot be told from empty bays and are left
+// alone.
 func (c *Collector) annotateNVMeSlots(inv *drivelist.Inventory) error {
 	slots := readPCISlots(c.sys())
-	if len(slots) == 0 {
+	smbios := readSMBIOSSlots(c.sys())
+	if len(slots) == 0 && len(smbios) == 0 {
 		return nil
 	}
 	key, model := dmiChassis(c.sys())
 	if key == "" {
-		slog.Warn("nvme slots known but the chassis has no usable DMI serial; NVMe drives get no location")
+		slog.Warn("pci slots known but the chassis has no usable DMI serial; NVMe drives get no location")
 		return nil
 	}
 	occupied := map[string]bool{}
@@ -38,11 +44,22 @@ func (c *Collector) annotateNVMeSlots(inv *drivelist.Inventory) error {
 		}
 		addr := nvmeController(d)
 		slot, ok := slots[pciSlotAddress(addr)]
+		if ok {
+			occupied[slot] = true
+		} else {
+			// SMBIOS names the slot by its root port; some firmware names
+			// the device's own address instead, so try that first.
+			for _, a := range append([]string{addr}, c.pciAncestors(d.SysPath, addr)...) {
+				if s, found := smbios[a]; found {
+					slot, ok = s.Designation, true
+					break
+				}
+			}
+		}
 		if !ok {
 			continue
 		}
 		d.EnclosureBay, d.EnclosureVia, d.EnclosureID, d.EnclosureViaID, d.EnclosureModel = slot, "pci", key, key, model
-		occupied[slot] = true
 	}
 	bases := map[string]bool{}
 	for slot := range occupied {
@@ -174,5 +191,41 @@ func (c *Collector) captureNVMeSlots(dir string) error {
 			slog.Debug("capture: dmi", "attr", name, "err", err) // some need root; some boards lack some
 		}
 	}
+	// SMBIOS slot records, and the PCI tree above each NVMe controller
+	// whose namespace lives under nvme-subsystem (its own path names no
+	// PCI device), so the SMBIOS match can walk up to the root port.
+	entries, _ := filepath.Glob(filepath.Join(c.sys(), "firmware", "dmi", "entries", "9-*", "raw"))
+	for _, path := range entries {
+		if err := c.copySys(dir, strings.TrimPrefix(path, c.sys())); err != nil {
+			slog.Debug("capture: smbios slot", "path", path, "err", err) // needs root
+		}
+	}
 	return nil
+}
+
+// captureNVMeTree copies the link from /sys/bus/pci/devices to an NVMe
+// controller's device directory, with a marker file so the link
+// resolves in the fixture.
+func (c *Collector) captureNVMeTree(dir, controller string) error {
+	if controller == "" {
+		return nil
+	}
+	link := filepath.Join(c.sys(), "bus", "pci", "devices", controller)
+	target, err := os.Readlink(link)
+	if err != nil {
+		return nil
+	}
+	real, err := filepath.EvalSymlinks(link)
+	if err != nil {
+		return nil
+	}
+	if err := c.copySys(dir, strings.TrimPrefix(real, c.sys())+"/class"); err != nil {
+		return err
+	}
+	dst := filepath.Join(dir, "sys", "bus", "pci", "devices", controller)
+	if err := os.MkdirAll(filepath.Dir(dst), 0o755); err != nil {
+		return err
+	}
+	os.Remove(dst)
+	return os.Symlink(target, dst)
 }

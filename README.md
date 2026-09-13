@@ -213,8 +213,13 @@ enclosure, keyed on its DMI serial and described by vendor and product
 name, with the firmware's slot name as the bay (`9-1` is the second
 lane of a bifurcated slot 9).  The sibling lanes of an occupied slot
 with nothing behind them are reported as empty bays; empty add-in
-card slots cannot be told from empty bays and are left alone.  An
-onboard M.2 drive is in no hotplug slot and gets no location.
+card slots cannot be told from empty bays and are left alone.  A
+drive in no hotplug slot (an M.2, or a U.2 on a board without hotplug
+tables) falls back to SMBIOS type 9, which names every slot the board
+vendor cared to describe (`M.2_1`, `PCIE3`, or a bare reference
+designator like `J3502`) by the root port it hangs off; most consumer
+boards describe some slots and not others, so some drives get a bay
+and some do not.
 
 For a one-off report, or from cron, `drivelist report` does one cycle.
 

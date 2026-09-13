@@ -40,6 +40,12 @@ func wantSynthetic(sys string) []*drivelist.Device {
 			Serial:     "S5GXNX0T123456B",
 			Uses:       []string{"mount > /"},
 			Size:       1000204886016,
+
+			EnclosureBay:   "M.2_1",
+			EnclosureVia:   "pci",
+			EnclosureID:    "dmi:SYN-0001",
+			EnclosureViaID: "dmi:SYN-0001",
+			EnclosureModel: "Synthetic Systems Testbox",
 		},
 		{
 			DeviceName:     "sda",

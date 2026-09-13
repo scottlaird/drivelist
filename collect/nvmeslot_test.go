@@ -45,16 +45,6 @@ func TestNVMeSlots(t *testing.T) {
 	if len(empties) != 2 || empties[0].EnclosureBay != "9" || empties[1].EnclosureBay != "10" || empties[0].EnclosureID != key || empties[0].Uses[0] != "empty" {
 		t.Errorf("empty bays = %+v", empties)
 	}
-	// A host with no slot table (the synthetic fixture) is left alone.
-	inv, err = Fixture(filepath.Join("testdata", "synthetic")).Collect()
-	if err != nil {
-		t.Fatal(err)
-	}
-	for _, d := range inv.Devices {
-		if d.EnclosureVia == "pci" {
-			t.Errorf("synthetic got a pci location: %+v", d)
-		}
-	}
 }
 
 func TestDMIChassisPlaceholders(t *testing.T) {
