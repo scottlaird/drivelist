@@ -1,0 +1,50 @@
+{
+  "match": {
+    "model": "ASUSTeK COMPUTER INC. RS500A-E10-RS12U"
+  },
+  "title": "ASUS RS500A-E10-RS12U, 12 x 2.5\" front bays",
+  "layout": {
+    "rows": 2,
+    "columns": 6,
+    "order": "column-major"
+  },
+  "notes": "Bays are numbered 1 to 12 in the manual, in six columns of two: bay 1 top left, bay 2 below it, then rightward. Each bay can take U.2 (NVMe) or SATA; a U.2 drive shows up in a PCIe slot (9, 9-1, 10, 10-1 on the board's bifurcated x8 slots), a SATA drive on an onboard ATA port. Which slot and port feed which bay has not been probed yet, so the bays carry no identities; `drivelist hardware check HOST` lists the identities seen.",
+  "bays": [
+    {
+      "bay": "1"
+    },
+    {
+      "bay": "2"
+    },
+    {
+      "bay": "3"
+    },
+    {
+      "bay": "4"
+    },
+    {
+      "bay": "5"
+    },
+    {
+      "bay": "6"
+    },
+    {
+      "bay": "7"
+    },
+    {
+      "bay": "8"
+    },
+    {
+      "bay": "9"
+    },
+    {
+      "bay": "10"
+    },
+    {
+      "bay": "11"
+    },
+    {
+      "bay": "12"
+    }
+  ]
+}

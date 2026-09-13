@@ -80,6 +80,8 @@ const (
 	QueryGetSASProcedure = "/drivelist.v1.Query/GetSAS"
 	// QueryListSASErrorsProcedure is the fully-qualified name of the Query's ListSASErrors RPC.
 	QueryListSASErrorsProcedure = "/drivelist.v1.Query/ListSASErrors"
+	// QueryListBaysProcedure is the fully-qualified name of the Query's ListBays RPC.
+	QueryListBaysProcedure = "/drivelist.v1.Query/ListBays"
 )
 
 // CollectorClient is a client for the drivelist.v1.Collector service.
@@ -289,6 +291,9 @@ type QueryClient interface {
 	GetSAS(context.Context, *connect.Request[drivelistv1.GetSASRequest]) (*connect.Response[drivelistv1.GetSASResponse], error)
 	// ListSASErrors lists the phys whose error counters climbed in a window.
 	ListSASErrors(context.Context, *connect.Request[drivelistv1.ListSASErrorsRequest]) (*connect.Response[drivelistv1.ListSASErrorsResponse], error)
+	// ListBays shows an enclosure bay by bay, as its hardware profile lays
+	// them out, with what sits in each.
+	ListBays(context.Context, *connect.Request[drivelistv1.ListBaysRequest]) (*connect.Response[drivelistv1.ListBaysResponse], error)
 }
 
 // NewQueryClient constructs a client for the drivelist.v1.Query service. By default, it uses the
@@ -410,6 +415,12 @@ func NewQueryClient(httpClient connect.HTTPClient, baseURL string, opts ...conne
 			connect.WithSchema(queryMethods.ByName("ListSASErrors")),
 			connect.WithClientOptions(opts...),
 		),
+		listBays: connect.NewClient[drivelistv1.ListBaysRequest, drivelistv1.ListBaysResponse](
+			httpClient,
+			baseURL+QueryListBaysProcedure,
+			connect.WithSchema(queryMethods.ByName("ListBays")),
+			connect.WithClientOptions(opts...),
+		),
 	}
 }
 
@@ -433,6 +444,7 @@ type queryClient struct {
 	nameEnclosure   *connect.Client[drivelistv1.NameEnclosureRequest, drivelistv1.NameEnclosureResponse]
 	getSAS          *connect.Client[drivelistv1.GetSASRequest, drivelistv1.GetSASResponse]
 	listSASErrors   *connect.Client[drivelistv1.ListSASErrorsRequest, drivelistv1.ListSASErrorsResponse]
+	listBays        *connect.Client[drivelistv1.ListBaysRequest, drivelistv1.ListBaysResponse]
 }
 
 // ListHosts calls drivelist.v1.Query.ListHosts.
@@ -525,6 +537,11 @@ func (c *queryClient) ListSASErrors(ctx context.Context, req *connect.Request[dr
 	return c.listSASErrors.CallUnary(ctx, req)
 }
 
+// ListBays calls drivelist.v1.Query.ListBays.
+func (c *queryClient) ListBays(ctx context.Context, req *connect.Request[drivelistv1.ListBaysRequest]) (*connect.Response[drivelistv1.ListBaysResponse], error) {
+	return c.listBays.CallUnary(ctx, req)
+}
+
 // QueryHandler is an implementation of the drivelist.v1.Query service.
 type QueryHandler interface {
 	ListHosts(context.Context, *connect.Request[drivelistv1.ListHostsRequest]) (*connect.Response[drivelistv1.ListHostsResponse], error)
@@ -570,6 +587,9 @@ type QueryHandler interface {
 	GetSAS(context.Context, *connect.Request[drivelistv1.GetSASRequest]) (*connect.Response[drivelistv1.GetSASResponse], error)
 	// ListSASErrors lists the phys whose error counters climbed in a window.
 	ListSASErrors(context.Context, *connect.Request[drivelistv1.ListSASErrorsRequest]) (*connect.Response[drivelistv1.ListSASErrorsResponse], error)
+	// ListBays shows an enclosure bay by bay, as its hardware profile lays
+	// them out, with what sits in each.
+	ListBays(context.Context, *connect.Request[drivelistv1.ListBaysRequest]) (*connect.Response[drivelistv1.ListBaysResponse], error)
 }
 
 // NewQueryHandler builds an HTTP handler from the service implementation. It returns the path on
@@ -687,6 +707,12 @@ func NewQueryHandler(svc QueryHandler, opts ...connect.HandlerOption) (string, h
 		connect.WithSchema(queryMethods.ByName("ListSASErrors")),
 		connect.WithHandlerOptions(opts...),
 	)
+	queryListBaysHandler := connect.NewUnaryHandler(
+		QueryListBaysProcedure,
+		svc.ListBays,
+		connect.WithSchema(queryMethods.ByName("ListBays")),
+		connect.WithHandlerOptions(opts...),
+	)
 	return "/drivelist.v1.Query/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
 		case QueryListHostsProcedure:
@@ -725,6 +751,8 @@ func NewQueryHandler(svc QueryHandler, opts ...connect.HandlerOption) (string, h
 			queryGetSASHandler.ServeHTTP(w, r)
 		case QueryListSASErrorsProcedure:
 			queryListSASErrorsHandler.ServeHTTP(w, r)
+		case QueryListBaysProcedure:
+			queryListBaysHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -804,4 +832,8 @@ func (UnimplementedQueryHandler) GetSAS(context.Context, *connect.Request[drivel
 
 func (UnimplementedQueryHandler) ListSASErrors(context.Context, *connect.Request[drivelistv1.ListSASErrorsRequest]) (*connect.Response[drivelistv1.ListSASErrorsResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("drivelist.v1.Query.ListSASErrors is not implemented"))
+}
+
+func (UnimplementedQueryHandler) ListBays(context.Context, *connect.Request[drivelistv1.ListBaysRequest]) (*connect.Response[drivelistv1.ListBaysResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("drivelist.v1.Query.ListBays is not implemented"))
 }

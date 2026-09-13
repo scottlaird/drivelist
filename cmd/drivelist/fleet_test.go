@@ -264,3 +264,28 @@ func writeFile(path, body string) error {
 	}
 	return os.WriteFile(path, []byte(body), 0o644)
 }
+
+func TestHardwareCommands(t *testing.T) {
+	fleetEnv(t)
+	out := mustRun(t, "hardware")
+	for _, want := range []string{"RS500A-E10-RS12U", "HGST 4U60_STOR_ENCL", "2x6", "5x12"} {
+		if !strings.Contains(out, want) {
+			t.Errorf("hardware lacks %q:\n%s", want, out)
+		}
+	}
+	mustRun(t, "report")
+	// The synthetic shelf has no profile: bays are as the firmware names them.
+	out = mustRun(t, "enclosure", "expander-4:0", "bays")
+	if !strings.Contains(out, "no hardware profile") || !strings.Contains(out, "sas:0\tsda") && !strings.Contains(out, "sas:0") || !strings.Contains(out, "7SG3RM2G") {
+		t.Errorf("bays without profile:\n%s", out)
+	}
+	host := mustRun(t, "hosts")
+	hostname := strings.Fields(strings.Split(strings.TrimSpace(host), "\n")[1])[0]
+	out = mustRun(t, "hardware", "check", hostname)
+	if !strings.Contains(out, "no profile for model") || !strings.Contains(out, "sas:0 holds sda") {
+		t.Errorf("hardware check:\n%s", out)
+	}
+	if _, _, err := run(t, "hardware", "check", "nosuchhost"); err == nil {
+		t.Error("check of unknown host succeeded")
+	}
+}

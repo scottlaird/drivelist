@@ -241,7 +241,7 @@ func TestEnclosureProductFromAgent(t *testing.T) {
 		EmptyBays: []ReportBay{{EnclosureID: "dmi:KCS0GX0000TB", EnclosureVia: "pci", EnclosureViaID: "dmi:KCS0GX0000TB", EnclosureModel: "ASUSTeK COMPUTER INC. RS500A-E10-RS12U", Bay: "9"}}}
 	h.submit(r)
 	es, err := h.s.ListEnclosures(h.ctx)
-	if err != nil || len(es) != 1 || es[0].Product != "ASUSTeK COMPUTER INC. RS500A-E10-RS12U" || es[0].Via != "pci" || es[0].Drives != 1 || es[0].Bays != 2 || es[0].Key != "dmi:KCS0GX0000TB" {
+	if err != nil || len(es) != 1 || es[0].Product != "ASUSTeK COMPUTER INC. RS500A-E10-RS12U" || es[0].Via != "pci" || es[0].Drives != 1 || es[0].Bays != 12 || es[0].Key != "dmi:KCS0GX0000TB" {
 		t.Errorf("ListEnclosures = %+v, %v", es, err)
 	}
 	if e, err := h.s.NameEnclosure(h.ctx, "KCS0GX", "mgmt1-front", "", "scott"); err != nil || e.Name != "mgmt1-front" || e.Product == "" {
@@ -250,5 +250,67 @@ func TestEnclosureProductFromAgent(t *testing.T) {
 	d, _, _, err := h.s.GetDrive(h.ctx, "N1")
 	if err != nil || d.Current == nil || d.Current.EnclosureName != "mgmt1-front" || d.Current.Bay != "9-1" {
 		t.Errorf("drive = %+v, %v", d.Current, err)
+	}
+}
+
+// TestHardwareProfiles: an enclosure whose model has a profile shows the
+// profile's bays and labels; occupied bays the profile does not know are
+// listed after them; a model without a profile lists what is occupied.
+func TestHardwareProfiles(t *testing.T) {
+	h := newHarness(t)
+	const shelf, exp = "0x5000ccab020094ff", "0x5000ccab0200947e"
+	a := dev("sdbe", "A1", "0x5000000000000031", "expander-11:0", "54", "zfs > space 1 > raidz2 0 > disk 0")
+	b := dev("sdbf", "B1", "0x5000000000000032", "expander-11:0", "62", "zfs > space 1 > raidz2 0 > disk 1")
+	for _, d := range []*ReportDevice{&a, &b} {
+		d.ExpanderID, d.EnclosureID, d.EnclosureVia, d.EnclosureViaID = exp, shelf, "expander-11:0", exp
+	}
+	n := ReportDevice{DevName: "nvme0n1", Identity: DriveIdentity{WWN: "eui.1", Model: "SSDPD2KS", Serial: "N1"}, Bus: "nvme", SizeBytes: 7e12, Bay: "9-1",
+		EnclosureID: "dmi:KCS0GX0000TB", EnclosureVia: "pci", EnclosureViaID: "dmi:KCS0GX0000TB", EnclosureModel: "ASUSTeK COMPUTER INC. RS500A-E10-RS12U", Uses: []string{"zfs > fast 1 > mirror 0 > disk 0"}}
+	r := Report{Host: hostA, ObservedAt: h.now, Devices: []ReportDevice{a, b, n}, Complete: true,
+		SASNodes: []SASNode{{Kind: "expander", Name: "expander-11:0", Address: exp, Vendor: "HGST", Product: "4U60_STOR_ENCL", Revision: "0210"}}}
+	h.submit(r)
+
+	es, err := h.s.ListEnclosures(h.ctx)
+	if err != nil || len(es) != 2 {
+		t.Fatalf("ListEnclosures = %+v, %v", es, err)
+	}
+	byKey := map[string]Enclosure{}
+	for _, e := range es {
+		byKey[e.Key] = e
+	}
+	if e := byKey[shelf]; e.Profile == "" || e.Bays != 60 || e.Product != "HGST 4U60_STOR_ENCL" {
+		t.Errorf("shelf = %+v", e)
+	}
+	if e := byKey["dmi:KCS0GX0000TB"]; e.Profile == "" || e.Bays != 12 {
+		t.Errorf("chassis = %+v", e)
+	}
+	d, _, _, err := h.s.GetDrive(h.ctx, "A1")
+	if err != nil || d.Current == nil || d.Current.BayLabel != "54" || d.Current.EnclosureModel != "HGST 4U60_STOR_ENCL" {
+		t.Errorf("A1 placement = %+v, %v", d.Current, err)
+	}
+	if d, _, _, _ := h.s.GetDrive(h.ctx, "N1"); d.Current.BayLabel != "" {
+		t.Errorf("unprobed RS500A labeled bay %q", d.Current.BayLabel)
+	}
+
+	enc, bays, layout, err := h.s.ListBays(h.ctx, "94ff")
+	if err != nil || enc.Key != shelf || layout == nil || layout.Rows != 5 || len(bays) != 61 {
+		t.Fatalf("ListBays = %+v, %d bays, layout %+v, %v", enc, len(bays), layout, err)
+	}
+	if b := bays[54]; !b.Declared || !b.Present || b.Serial != "A1" || b.Label != "54" || b.IDs[0] != "sas:54" {
+		t.Errorf("bay 54 = %+v", b)
+	}
+	if b := bays[0]; !b.Declared || b.Present {
+		t.Errorf("bay 0 = %+v", b)
+	}
+	if b := bays[60]; b.Declared || !b.Present || b.Serial != "B1" || b.Label != "62" || b.IDs[0] != "sas:62" {
+		t.Errorf("undeclared bay = %+v", b)
+	}
+	_, bays, _, err = h.s.ListBays(h.ctx, "KCS0GX")
+	if err != nil || len(bays) != 13 || bays[12].Declared || bays[12].Serial != "N1" || bays[12].IDs[0] != "pci:9-1" {
+		t.Errorf("RS500A bays = %d, last %+v, %v", len(bays), bays[len(bays)-1], err)
+	}
+	models, _ := h.s.EnclosureModels(h.ctx)
+	if models[shelf] != "HGST 4U60_STOR_ENCL" || h.s.BayLabel(models[shelf], "expander-11:0", "54") != "54" || h.s.BayLabel(models[shelf], "expander-11:0", "62") != "" {
+		t.Errorf("EnclosureModels/BayLabel: %v", models)
 	}
 }

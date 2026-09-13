@@ -11,6 +11,7 @@ import (
 	"github.com/spf13/cobra"
 	"google.golang.org/protobuf/types/known/timestamppb"
 
+	"github.com/scottlaird/drivelist/hardware"
 	pb "github.com/scottlaird/drivelist/internal/pb/drivelistv1"
 	"github.com/scottlaird/drivelist/internal/report"
 )
@@ -30,6 +31,7 @@ func fleetCommands(cfg *clientConfig) []*cobra.Command {
 		newAdminCmd(cfg),
 		newEnclosuresCmd(cfg),
 		newEnclosureCmd(cfg),
+		newHardwareCmd(cfg),
 	}
 }
 
@@ -684,17 +686,23 @@ enclosure identifier).`,
 func newEnclosureCmd(cfg *clientConfig) *cobra.Command {
 	var note string
 	cmd := &cobra.Command{
-		Use:   "enclosure KEY name NAME",
-		Short: "Give an enclosure a name, shown wherever its bays are",
+		Use:   "enclosure KEY [name NAME | bays]",
+		Short: "Name an enclosure, or show it bay by bay",
 		Long: `enclosure KEY name NAME records what you call an enclosure: "front
 shelf", "JBOD 2", "fs2-front". Every listing shows the name in place of
-the kernel's expander-H:N or hostH from then on. KEY is the key
-'enclosures' prints, an unambiguous part of it, or the reaching node's
-kernel name if only one host has one so named. An empty NAME clears it.`,
+the kernel's expander-H:N or hostH from then on. An empty NAME clears
+it. enclosure KEY bays shows the enclosure bay by bay as its hardware
+profile lays them out, with what sits in each, then any occupied bay
+the profile does not know. KEY is the key 'enclosures' prints, an
+unambiguous part of it, the name, or the reaching node's kernel name
+if only one host has one so named.`,
 		Args: cobra.MinimumNArgs(2),
 		RunE: func(cmd *cobra.Command, args []string) error {
+			if args[1] == "bays" {
+				return showBays(cmd, cfg, args[0])
+			}
 			if args[1] != "name" {
-				return fmt.Errorf("usage: drivelist enclosure KEY name NAME [--note TEXT]")
+				return fmt.Errorf("usage: drivelist enclosure KEY name NAME [--note TEXT] | drivelist enclosure KEY bays")
 			}
 			client, err := cfg.queryClient()
 			if err != nil {
@@ -719,6 +727,179 @@ kernel name if only one host has one so named. An empty NAME clears it.`,
 	}
 	cmd.Flags().StringVar(&note, "note", "", "free text kept with the name: where it is, what is in it")
 	return cmd
+}
+
+func showBays(cmd *cobra.Command, cfg *clientConfig, ref string) error {
+	client, err := cfg.queryClient()
+	if err != nil {
+		return err
+	}
+	res, err := client.ListBays(cmd.Context(), connect.NewRequest(&pb.ListBaysRequest{Ref: ref}))
+	if err != nil {
+		return rpcErr(err)
+	}
+	if cfg.json {
+		return printJSON(cmd.OutOrStdout(), res.Msg)
+	}
+	w := cmd.OutOrStdout()
+	e := res.Msg.Enclosure
+	fmt.Fprintf(w, "%s  %s  %s on %s", orDash(e.Name), orDash(e.Product), orDash(e.Via), orDash(e.Hostname))
+	if e.Profile != "" {
+		fmt.Fprintf(w, "  profile: %s", e.Profile)
+	} else {
+		fmt.Fprint(w, "  no hardware profile: bays are as the firmware names them")
+	}
+	fmt.Fprintln(w)
+	if res.Msg.Rows > 0 {
+		fmt.Fprintln(w)
+		printBayGrid(w, res.Msg)
+	}
+	fmt.Fprintln(w)
+	tw := tab(w)
+	fmt.Fprintln(tw, "BAY\tIDS\tDEVICE\tSERIAL\tMODEL\tSTATUS\tUSES")
+	for _, b := range res.Msg.Bays {
+		label := b.Label
+		if !b.Declared {
+			label += " (not in profile)"
+		}
+		if !b.Present {
+			fmt.Fprintf(tw, "%s\t%s\t-\t-\t-\t-\t%s\n", label, orDash(strings.Join(b.Ids, " ")), "empty")
+			continue
+		}
+		fmt.Fprintf(tw, "%s\t%s\t%s\t%s\t%s\t%s\t%s\n", label, orDash(strings.Join(b.Ids, " ")), b.DevName, b.Serial, b.Model, b.Status, useSummary(b.Uses))
+	}
+	return tw.Flush()
+}
+
+// printBayGrid draws the profile's layout: one cell per bay, the bay's
+// name and what is in it, declared bays only.
+func printBayGrid(w io.Writer, res *pb.ListBaysResponse) {
+	rows, cols := int(res.Rows), int(res.Columns)
+	cells := make([][]string, rows)
+	for r := range cells {
+		cells[r] = make([]string, cols)
+		for c := range cells[r] {
+			cells[r][c] = ""
+		}
+	}
+	i := 0
+	for _, b := range res.Bays {
+		if !b.Declared {
+			continue
+		}
+		var r, c int
+		if res.Order == "row-major" {
+			r, c = i/cols, i%cols
+		} else {
+			r, c = i%rows, i/rows
+		}
+		i++
+		if r >= rows || c >= cols {
+			continue
+		}
+		cell := b.Label
+		if b.Present {
+			cell += ":" + b.DevName
+		} else {
+			cell += ":-"
+		}
+		cells[r][c] = cell
+	}
+	width := 0
+	for _, row := range cells {
+		for _, cell := range row {
+			width = max(width, len(cell))
+		}
+	}
+	for _, row := range cells {
+		for c, cell := range row {
+			if c > 0 {
+				fmt.Fprint(w, "  ")
+			}
+			fmt.Fprintf(w, "[%-*s]", width, cell)
+		}
+		fmt.Fprintln(w)
+	}
+}
+
+// ---------- hardware ----------
+
+func newHardwareCmd(cfg *clientConfig) *cobra.Command {
+	var dir string
+	cmd := &cobra.Command{
+		Use:   "hardware [check HOST]",
+		Short: "List the hardware profiles built in, or check a host's enclosures against them",
+		Long: `hardware lists the enclosure models drivelist has a profile for: what
+each bay is called and which firmware identities land in it. hardware
+check HOST asks the server which of HOST's enclosures matched a
+profile and which occupied bays no profile names, which is what a
+profile for a new box needs. --dir adds profiles from a directory,
+overriding built-in ones for the same model, to try one before
+contributing it (the server takes the same with serve --hardware-dir).`,
+		Args: cobra.MaximumNArgs(2),
+		RunE: func(cmd *cobra.Command, args []string) error {
+			hw, err := hardware.Load(dir)
+			if err != nil {
+				return err
+			}
+			if len(args) == 0 {
+				w := tab(cmd.OutOrStdout())
+				fmt.Fprintln(w, "MODEL\tBAYS\tLAYOUT\tTITLE\tFILE")
+				for _, p := range hw.All() {
+					layout := "-"
+					if p.Layout != nil {
+						layout = fmt.Sprintf("%dx%d", p.Layout.Rows, p.Layout.Columns)
+					}
+					fmt.Fprintf(w, "%s\t%d\t%s\t%s\t%s\n", p.Match.Model, len(p.Bays), layout, p.Title, p.File)
+				}
+				return w.Flush()
+			}
+			if args[0] != "check" || len(args) != 2 {
+				return fmt.Errorf("usage: drivelist hardware [check HOST]")
+			}
+			return hardwareCheck(cmd, cfg, args[1])
+		},
+	}
+	cmd.Flags().StringVar(&dir, "dir", "", "directory of extra hardware profiles")
+	return cmd
+}
+
+func hardwareCheck(cmd *cobra.Command, cfg *clientConfig, host string) error {
+	client, err := cfg.queryClient()
+	if err != nil {
+		return err
+	}
+	res, err := client.ListEnclosures(cmd.Context(), connect.NewRequest(&pb.ListEnclosuresRequest{}))
+	if err != nil {
+		return rpcErr(err)
+	}
+	w := cmd.OutOrStdout()
+	found := false
+	for _, e := range res.Msg.Enclosures {
+		if e.Hostname != host {
+			continue
+		}
+		found = true
+		fmt.Fprintf(w, "%s  %s  %s  %s\n", e.Enclosure, orDash(e.Name), orDash(e.Via), orDash(e.Product))
+		if e.Profile == "" {
+			fmt.Fprintf(w, "  no profile for model %q\n", e.Product)
+		} else {
+			fmt.Fprintf(w, "  profile: %s\n", e.Profile)
+		}
+		bays, err := client.ListBays(cmd.Context(), connect.NewRequest(&pb.ListBaysRequest{Ref: e.Enclosure}))
+		if err != nil {
+			return rpcErr(err)
+		}
+		for _, b := range bays.Msg.Bays {
+			if !b.Declared {
+				fmt.Fprintf(w, "  %s holds %s %s: no bay in the profile\n", strings.Join(b.Ids, " "), b.DevName, b.Serial)
+			}
+		}
+	}
+	if !found {
+		return fmt.Errorf("host %q has no enclosures", host)
+	}
+	return nil
 }
 
 // ---------- missing ----------

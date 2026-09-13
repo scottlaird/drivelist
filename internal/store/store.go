@@ -9,6 +9,7 @@ import (
 	"database/sql"
 	"embed"
 	"fmt"
+	"github.com/scottlaird/drivelist/hardware"
 	"io/fs"
 	"sort"
 	"strings"
@@ -25,6 +26,19 @@ type Store struct {
 	db *sql.DB
 	// now is the clock; tests replace it.
 	now func() time.Time
+	// hw is what is known about enclosure models; Open uses the embedded
+	// profiles, SetHardware replaces them.
+	hw *hardware.Set
+}
+
+// SetHardware replaces the hardware profiles queries apply.
+func (s *Store) SetHardware(hw *hardware.Set) { s.hw = hw }
+
+func (s *Store) profiles() *hardware.Set {
+	if s.hw == nil {
+		s.hw = hardware.Embedded()
+	}
+	return s.hw
 }
 
 // Open opens or creates the database at path and brings its schema up to

@@ -139,6 +139,7 @@ func placementToProto(p *store.Placement) *pb.Placement {
 		Enclosure:     p.Enclosure,
 		EnclosureVia:  p.EnclosureVia,
 		EnclosureName: p.EnclosureName,
+		BayLabel:      p.BayLabel,
 		Bay:           p.Bay,
 		DevName:       p.DevName,
 		Uses:          p.Uses,
@@ -150,7 +151,36 @@ func placementToProto(p *store.Placement) *pb.Placement {
 }
 
 func enclosureToProto(e store.Enclosure) *pb.Enclosure {
-	return &pb.Enclosure{Enclosure: e.Key, Hostname: e.Hostname, Via: e.Via, Product: e.Product, Name: e.Name, Note: e.Note, Drives: int32(e.Drives), Bays: int32(e.Bays), FirstSeen: ts(e.FirstSeen), LastSeen: ts(e.LastSeen)}
+	return &pb.Enclosure{Enclosure: e.Key, Hostname: e.Hostname, Via: e.Via, Product: e.Product, Name: e.Name, Note: e.Note, Drives: int32(e.Drives), Bays: int32(e.Bays), Profile: e.Profile, FirstSeen: ts(e.FirstSeen), LastSeen: ts(e.LastSeen)}
+}
+
+// bayLabels adds the profile's bay name beside each firmware bay in an
+// event's detail, as bay_label (and from_bay_label, to_bay_label).
+func bayLabels(models map[string]string, label func(model, via, bay string) string, evs []*pb.Event) {
+	for _, e := range evs {
+		var d map[string]any
+		if json.Unmarshal([]byte(e.GetDetail()), &d) != nil {
+			continue
+		}
+		changed := false
+		for _, prefix := range []string{"", "from_", "to_"} {
+			key, _ := d[prefix+"enclosure"].(string)
+			via, _ := d[prefix+"enclosure_via"].(string)
+			bay, _ := d[prefix+"bay"].(string)
+			if key == "" || bay == "" {
+				continue
+			}
+			if l := label(models[key], via, bay); l != "" {
+				d[prefix+"bay_label"] = l
+				changed = true
+			}
+		}
+		if changed {
+			if b, err := json.Marshal(d); err == nil {
+				e.Detail = string(b)
+			}
+		}
+	}
 }
 
 // nameEnclosures adds the names people gave enclosures to the events that
