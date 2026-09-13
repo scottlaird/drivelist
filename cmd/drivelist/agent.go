@@ -26,7 +26,7 @@ func newAgentCmd(cfg *clientConfig) *cobra.Command {
 	var (
 		interval, settle, smartInterval time.Duration
 		stateDir                        string
-		kmsg, smart                     bool
+		kmsg, smart, ioStats            bool
 	)
 	cmd := &cobra.Command{
 		Use:   "agent",
@@ -56,6 +56,13 @@ can show it. Needs the agent token.`,
 			if smart {
 				a.EnableSmart(agent.SmartConfig{Interval: smartInterval})
 			}
+			if ioStats {
+				if _, err := os.Stat("/proc/diskstats"); err != nil {
+					slog.Warn("no /proc/diskstats; running without I/O statistics", "err", err)
+				} else {
+					a.EnableIO(agent.IOConfig{})
+				}
+			}
 			if kmsg {
 				startKernelWatcher(ctx, a, settle)
 			}
@@ -71,6 +78,7 @@ can show it. Needs the agent token.`,
 	f.DurationVar(&settle, "kmsg-settle", 5*time.Second, "how long after a kernel disk change to wait for udev before reporting")
 	f.BoolVar(&smart, "smart", true, "sample SMART through smartctl (needs root and smartmontools)")
 	f.DurationVar(&smartInterval, "smart-interval", 6*time.Hour, "how often to run a full SMART pass until the server says otherwise")
+	f.BoolVar(&ioStats, "io", true, "sample /proc/diskstats every minute and report hourly I/O buckets")
 	return cmd
 }
 
@@ -118,6 +126,14 @@ func (c connectSender) Kernel(ctx context.Context, req *pb.ReportKernelRequest) 
 
 func (c connectSender) Smart(ctx context.Context, req *pb.ReportSmartRequest) (*pb.ReportAck, error) {
 	res, err := c.client.ReportSmart(ctx, connect.NewRequest(req))
+	if err != nil {
+		return nil, err
+	}
+	return res.Msg, nil
+}
+
+func (c connectSender) IO(ctx context.Context, req *pb.ReportIORequest) (*pb.ReportAck, error) {
+	res, err := c.client.ReportIO(ctx, connect.NewRequest(req))
 	if err != nil {
 		return nil, err
 	}

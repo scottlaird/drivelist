@@ -18,6 +18,9 @@ service Collector {
   // ReportSmart posts SMART summaries, with the raw smartctl JSON at most
   // daily per drive or when the summary changed.
   rpc ReportSmart(ReportSmartRequest) returns (ReportAck);
+  // ReportIO posts hourly I/O buckets per drive, as deltas of the kernel's
+  // counters. A bucket already stored is replaced.
+  rpc ReportIO(ReportIORequest) returns (ReportAck);
 }
 
 // Query is the operator-facing service behind the CLI.
@@ -40,6 +43,12 @@ service Query {
   // GetSmart returns a drive's SMART samples, newest first, optionally with
   // the latest raw smartctl output.
   rpc GetSmart(GetSmartRequest) returns (GetSmartResponse);
+  // GetIO returns a drive's I/O buckets, newest first.
+  rpc GetIO(GetIORequest) returns (GetIOResponse);
+  // CompareIO returns every currently placed drive's latency and
+  // utilisation over a window next to the median of its vdev, so an
+  // outlier among identical drives stands out.
+  rpc CompareIO(CompareIORequest) returns (CompareIOResponse);
 }
 
 // ---------- shared ----------
@@ -180,6 +189,32 @@ message SmartSample {
 message ReportSmartRequest {
   HostIdentity host = 1;
   repeated SmartSample samples = 2;
+}
+
+// IOSample is one hour of one drive's I/O, as deltas of /proc/diskstats
+// counters plus the worst 60 s sub-sample inside the hour.
+message IOSample {
+  DriveIdentity identity = 1;
+  string dev_name = 2;
+  google.protobuf.Timestamp bucket_start = 3;
+  uint32 bucket_secs = 4;
+  uint64 reads = 5;
+  uint64 writes = 6;
+  uint64 read_bytes = 7;
+  uint64 write_bytes = 8;
+  uint64 read_ms = 9;                 // r_await = read_ms / reads
+  uint64 write_ms = 10;
+  uint64 io_ms = 11;                  // util = io_ms / (bucket_secs * 1000)
+  uint64 weighted_ms = 12;            // aqu-sz = weighted_ms / (bucket_secs * 1000)
+  double r_await_max_ms = 13;
+  double w_await_max_ms = 14;
+  double util_max = 15;
+  string hostname = 16;               // set in query responses
+}
+
+message ReportIORequest {
+  HostIdentity host = 1;
+  repeated IOSample samples = 2;
 }
 
 message ReportKernelRequest {
@@ -349,4 +384,43 @@ message GetSmartResponse {
   repeated SmartSample samples = 2;
   bytes raw_json = 3;                 // uncompressed, newest stored, when include_raw
   google.protobuf.Timestamp raw_ts = 4;
+}
+
+message GetIORequest {
+  string ref = 1;
+  google.protobuf.Timestamp since = 2;
+}
+
+message GetIOResponse {
+  Drive drive = 1;
+  repeated IOSample samples = 2;
+}
+
+message CompareIORequest {
+  string host = 1;                    // "" = every host
+  google.protobuf.Timestamp since = 2;
+}
+
+// IOComparison is one drive's averages over the window beside its group's
+// median. The group is the vdev the drive belongs to, from its use string
+// with the leaf removed; drives in no pool share the group "".
+message IOComparison {
+  string group = 1;
+  string hostname = 2;
+  string serial = 3;
+  string model = 4;
+  string dev_name = 5;
+  uint64 reads = 6;
+  uint64 writes = 7;
+  double r_await_ms = 8;
+  double w_await_ms = 9;
+  double util = 10;
+  double group_r_await_ms = 11;
+  double group_w_await_ms = 12;
+  double group_util = 13;
+  int32 group_size = 14;
+}
+
+message CompareIOResponse {
+  repeated IOComparison rows = 1;
 }

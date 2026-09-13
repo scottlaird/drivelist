@@ -21,6 +21,7 @@ type fakeSender struct {
 	reports  []*pb.ReportInventoryRequest
 	kernel   []*pb.ReportKernelRequest
 	smart    []*pb.ReportSmartRequest
+	io       []*pb.ReportIORequest
 	fail     bool
 	interval time.Duration
 	reject   string
@@ -59,6 +60,22 @@ func (f *fakeSender) Smart(_ context.Context, req *pb.ReportSmartRequest) (*pb.R
 	}
 	f.smart = append(f.smart, req)
 	return &pb.ReportAck{Accepted: true, Stored: uint32(len(req.Samples))}, nil
+}
+
+func (f *fakeSender) IO(_ context.Context, req *pb.ReportIORequest) (*pb.ReportAck, error) {
+	f.mu.Lock()
+	defer f.mu.Unlock()
+	if f.fail {
+		return nil, errors.New("connection refused")
+	}
+	f.io = append(f.io, req)
+	return &pb.ReportAck{Accepted: true, Stored: uint32(len(req.Samples))}, nil
+}
+
+func (f *fakeSender) ioReports() []*pb.ReportIORequest {
+	f.mu.Lock()
+	defer f.mu.Unlock()
+	return append([]*pb.ReportIORequest(nil), f.io...)
 }
 
 func (f *fakeSender) smartReports() []*pb.ReportSmartRequest {

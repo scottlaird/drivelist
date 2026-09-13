@@ -170,6 +170,16 @@ smartctl JSON at most daily per drive, or when the summary changed.
 `drivelist drive REF smart` shows the samples and `--raw` the newest
 JSON.  `--smart=false` turns sampling off.
 
+I/O statistics come from `/proc/diskstats`, read every minute and
+folded into one bucket per drive per hour (counts, bytes, time, and
+the worst minute's latency and utilisation), sent when the hour ends.
+`drivelist drive REF io` shows a drive's buckets and `drivelist io
+compare [--host H] [--since 24h]` lists every drive's read and write
+latency and utilisation next to the median of its vdev, worst first,
+which is how a drive that is three times slower than its otherwise
+identical siblings shows up.  Hourly buckets are kept for 180 days and
+then rolled into daily ones.  `--io=false` turns sampling off.
+
 For a one-off report, or from cron, `drivelist report` does one cycle.
 
 On Debian and Ubuntu hosts, install the package instead.  Every

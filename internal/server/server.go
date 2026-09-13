@@ -29,6 +29,9 @@ type Config struct {
 	// Interval is how often agents are expected to report; it is sent to
 	// them and drives the stale-host sweeper.
 	Interval time.Duration
+	// RetainIO is how long hourly I/O buckets are kept before being rolled
+	// into daily rows. 0 means 180 days.
+	RetainIO time.Duration
 }
 
 // Server implements both services.
@@ -46,6 +49,9 @@ func New(st *store.Store, cfg Config, log *slog.Logger) (*Server, error) {
 	}
 	if cfg.Interval <= 0 {
 		cfg.Interval = 5 * time.Minute
+	}
+	if cfg.RetainIO <= 0 {
+		cfg.RetainIO = 180 * 24 * time.Hour
 	}
 	if log == nil {
 		log = slog.Default()
@@ -65,10 +71,13 @@ func (s *Server) Handler() http.Handler {
 	return mux
 }
 
-// RunSweeper marks stale hosts once per interval until ctx ends.
+// RunSweeper marks stale hosts once per interval, and once a day rolls
+// hourly I/O older than RetainIO into daily rows, until ctx ends.
 func (s *Server) RunSweeper(ctx context.Context) {
 	t := time.NewTicker(s.cfg.Interval)
 	defer t.Stop()
+	retain := time.NewTicker(24 * time.Hour)
+	defer retain.Stop()
 	for {
 		select {
 		case <-ctx.Done():
@@ -79,6 +88,13 @@ func (s *Server) RunSweeper(ctx context.Context) {
 				s.log.Error("sweep", "err", err)
 			} else if n > 0 {
 				s.log.Warn("hosts went stale", "count", n)
+			}
+		case <-retain.C:
+			n, err := s.store.RetainIO(ctx, s.cfg.RetainIO)
+			if err != nil {
+				s.log.Error("io retention", "err", err)
+			} else if n > 0 {
+				s.log.Info("io retention", "hourly_rows_rolled_up", n)
 			}
 		}
 	}
@@ -152,6 +168,17 @@ func (s *Server) ReportSmart(ctx context.Context, req *connect.Request[pb.Report
 		return nil, connect.NewError(connect.CodeInternal, err)
 	}
 	s.log.Info("smart samples stored", "host", host.Hostname, "stored", n, "received", len(req.Msg.GetSamples()))
+	return connect.NewResponse(&pb.ReportAck{Accepted: true, Stored: uint32(n)}), nil
+}
+
+func (s *Server) ReportIO(ctx context.Context, req *connect.Request[pb.ReportIORequest]) (*connect.Response[pb.ReportAck], error) {
+	host := hostIdentityFromProto(req.Msg.GetHost())
+	n, err := s.store.IngestIO(ctx, host, ioSamplesFromProto(req.Msg.GetSamples()))
+	if err != nil {
+		s.log.Error("ingest io", "host", host.Hostname, "err", err)
+		return nil, connect.NewError(connect.CodeInternal, err)
+	}
+	s.log.Debug("io buckets stored", "host", host.Hostname, "stored", n, "received", len(req.Msg.GetSamples()))
 	return connect.NewResponse(&pb.ReportAck{Accepted: true, Stored: uint32(n)}), nil
 }
 
@@ -286,6 +313,38 @@ func (s *Server) GetSmart(ctx context.Context, req *connect.Request[pb.GetSmartR
 	out := &pb.GetSmartResponse{Drive: driveToProto(d), RawJson: raw, RawTs: ts(rawTS)}
 	for _, k := range samples {
 		out.Samples = append(out.Samples, smartSampleToProto(k))
+	}
+	return connect.NewResponse(out), nil
+}
+
+func (s *Server) GetIO(ctx context.Context, req *connect.Request[pb.GetIORequest]) (*connect.Response[pb.GetIOResponse], error) {
+	var since time.Time
+	if t := req.Msg.GetSince(); t != nil {
+		since = t.AsTime()
+	}
+	d, samples, err := s.store.IOSamples(ctx, req.Msg.GetRef(), since)
+	if err != nil {
+		return nil, storeErr(err)
+	}
+	out := &pb.GetIOResponse{Drive: driveToProto(d)}
+	for _, k := range samples {
+		out.Samples = append(out.Samples, ioSampleToProto(k))
+	}
+	return connect.NewResponse(out), nil
+}
+
+func (s *Server) CompareIO(ctx context.Context, req *connect.Request[pb.CompareIORequest]) (*connect.Response[pb.CompareIOResponse], error) {
+	since := time.Now().Add(-24 * time.Hour)
+	if t := req.Msg.GetSince(); t != nil {
+		since = t.AsTime()
+	}
+	rows, err := s.store.CompareIO(ctx, req.Msg.GetHost(), since)
+	if err != nil {
+		return nil, storeErr(err)
+	}
+	out := &pb.CompareIOResponse{}
+	for _, c := range rows {
+		out.Rows = append(out.Rows, ioComparisonToProto(c))
 	}
 	return connect.NewResponse(out), nil
 }
