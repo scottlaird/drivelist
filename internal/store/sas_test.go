@@ -266,12 +266,14 @@ func TestHardwareProfiles(t *testing.T) {
 	}
 	n := ReportDevice{DevName: "nvme0n1", Identity: DriveIdentity{WWN: "eui.1", Model: "SSDPD2KS", Serial: "N1"}, Bus: "nvme", SizeBytes: 7e12, Bay: "9-1",
 		EnclosureID: "dmi:KCS0GX0000TB", EnclosureVia: "pci", EnclosureViaID: "dmi:KCS0GX0000TB", EnclosureModel: "ASUSTeK COMPUTER INC. RS500A-E10-RS12U", Uses: []string{"zfs > fast 1 > mirror 0 > disk 0"}}
-	r := Report{Host: hostA, ObservedAt: h.now, Devices: []ReportDevice{a, b, n}, Complete: true,
+	m := ReportDevice{DevName: "nvme1n1", Identity: DriveIdentity{WWN: "eui.2", Model: "980PRO", Serial: "M1"}, Bus: "nvme", SizeBytes: 1e12, Bay: "0000:00:06.0",
+		EnclosureID: "dmi:MD296VS139QQMQA00078", EnclosureVia: "pci", EnclosureViaID: "dmi:MD296VS139QQMQA00078", EnclosureModel: "Micro Computer (HK) Tech Limited Venus Series", EnclosureBoard: "AHWSA", Uses: []string{"mount > /"}}
+	r := Report{Host: hostA, ObservedAt: h.now, Devices: []ReportDevice{a, b, n, m}, Complete: true,
 		SASNodes: []SASNode{{Kind: "expander", Name: "expander-11:0", Address: exp, Vendor: "HGST", Product: "4U60_STOR_ENCL", Revision: "0210"}}}
 	h.submit(r)
 
 	es, err := h.s.ListEnclosures(h.ctx)
-	if err != nil || len(es) != 2 {
+	if err != nil || len(es) != 3 {
 		t.Fatalf("ListEnclosures = %+v, %v", es, err)
 	}
 	byKey := map[string]Enclosure{}
@@ -280,6 +282,13 @@ func TestHardwareProfiles(t *testing.T) {
 	}
 	if e := byKey[shelf]; e.Profile == "" || e.Bays != 60 || e.Product != "HGST 4U60_STOR_ENCL" {
 		t.Errorf("shelf = %+v", e)
+	}
+	// The MS-01 is matched by board, since its product name is a family name.
+	if e := byKey["dmi:MD296VS139QQMQA00078"]; e.Board != "AHWSA" || e.Profile == "" || e.Bays != 4 {
+		t.Errorf("MS-01 = %+v", e)
+	}
+	if d, _, _, _ := h.s.GetDrive(h.ctx, "M1"); d.Current.BayLabel != "M.2 PCIe 4.0 x4" {
+		t.Errorf("MS-01 drive labeled %q", d.Current.BayLabel)
 	}
 	if e := byKey["dmi:KCS0GX0000TB"]; e.Profile == "" || e.Bays != 12 {
 		t.Errorf("chassis = %+v", e)
@@ -310,7 +319,7 @@ func TestHardwareProfiles(t *testing.T) {
 		t.Errorf("RS500A bays = %d, last %+v, %v", len(bays), bays[len(bays)-1], err)
 	}
 	models, _ := h.s.EnclosureModels(h.ctx)
-	if models[shelf] != "HGST 4U60_STOR_ENCL" || h.s.BayLabel(models[shelf], "expander-11:0", "54") != "54" || h.s.BayLabel(models[shelf], "expander-11:0", "62") != "" {
+	if models[shelf].Model != "HGST 4U60_STOR_ENCL" || h.s.BayLabel(models[shelf], "expander-11:0", "54") != "54" || h.s.BayLabel(models[shelf], "expander-11:0", "62") != "" {
 		t.Errorf("EnclosureModels/BayLabel: %v", models)
 	}
 }

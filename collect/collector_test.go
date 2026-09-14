@@ -46,6 +46,7 @@ func wantSynthetic(sys string) []*drivelist.Device {
 			EnclosureID:    "dmi:SYN-0001",
 			EnclosureViaID: "dmi:SYN-0001",
 			EnclosureModel: "Synthetic Systems Testbox",
+			EnclosureBoard: "TB-1",
 		},
 		{
 			DeviceName:     "sda",
@@ -98,6 +99,7 @@ func wantSynthetic(sys string) []*drivelist.Device {
 			EnclosureID:    "dmi:SYN-0001",
 			EnclosureViaID: "dmi:SYN-0001",
 			EnclosureModel: "Synthetic Systems Testbox",
+			EnclosureBoard: "TB-1",
 		},
 		{
 			DeviceName: "sdd",

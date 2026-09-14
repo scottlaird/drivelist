@@ -115,9 +115,12 @@ func TestMSA2Profile(t *testing.T) {
 }
 
 func TestMS01Profile(t *testing.T) {
-	p := Embedded().Lookup("Micro Computer (HK) Tech Limited MS-01", "")
+	p := Embedded().Lookup("Micro Computer (HK) Tech Limited Venus Series", "AHWSA")
 	if p == nil {
 		t.Fatal("no MS-01 profile")
+	}
+	if Embedded().Lookup("Micro Computer (HK) Tech Limited Venus Series", "") != nil {
+		t.Error("the family name alone matched the MS-01")
 	}
 	for id, want := range map[string]string{"0000:00:06.0": "M.2 PCIe 4.0 x4", "0000:00:1c.4": "M.2 PCIe 3.0 x4 / U.2", "0000:00:01.0": "PCIe slot"} {
 		if got, ok := p.Label("pci", id); !ok || got != want {

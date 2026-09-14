@@ -882,7 +882,11 @@ func hardwareCheck(cmd *cobra.Command, cfg *clientConfig, host string) error {
 		found = true
 		fmt.Fprintf(w, "%s  %s  %s  %s\n", e.Enclosure, orDash(e.Name), orDash(e.Via), orDash(e.Product))
 		if e.Profile == "" {
-			fmt.Fprintf(w, "  no profile for model %q\n", e.Product)
+			fmt.Fprintf(w, "  no profile for model %q", e.Product)
+			if e.Board != "" {
+				fmt.Fprintf(w, " (board %q)", e.Board)
+			}
+			fmt.Fprintln(w)
 		} else {
 			fmt.Fprintf(w, "  profile: %s\n", e.Profile)
 		}

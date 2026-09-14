@@ -16,7 +16,7 @@ import (
 // expander already has an SES place and is left alone; a drive on a USB
 // bridge has no port.
 func (c *Collector) annotateATAPorts(inv *drivelist.Inventory) error {
-	key, model := dmiChassis(c.sys())
+	key, model, board := dmiChassis(c.sys())
 	if key == "" {
 		return nil
 	}
@@ -28,7 +28,7 @@ func (c *Collector) annotateATAPorts(inv *drivelist.Inventory) error {
 		if port == "" {
 			continue
 		}
-		d.EnclosureBay, d.EnclosureVia, d.EnclosureID, d.EnclosureViaID, d.EnclosureModel = port, "ata", key, key, model
+		d.EnclosureBay, d.EnclosureVia, d.EnclosureID, d.EnclosureViaID, d.EnclosureModel, d.EnclosureBoard = port, "ata", key, key, model, board
 	}
 	return nil
 }

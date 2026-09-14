@@ -125,6 +125,7 @@ message Device {
   string enclosure_via = 15;          // "expander-11:0", "host11"
   string enclosure_via_id = 16;       // that node's SAS address
   string enclosure_model = 17;        // what the enclosure is, when the host knows: the chassis from DMI for NVMe bays
+  string enclosure_board = 18;        // the DMI board name with it: vendors reuse a product name across boards
 }
 
 message EmptyBay {
@@ -136,6 +137,7 @@ message EmptyBay {
   string enclosure_via = 6;
   string enclosure_via_id = 7;
   string enclosure_model = 8;
+  string enclosure_board = 9;
 }
 
 // UnmappedMember is a pool member the collector could not map to a Device.
@@ -353,6 +355,7 @@ message Enclosure {
   string product = 9;                 // vendor and product of the reaching node, from the SAS topology
   int32 bays = 10;                    // bays seen, empty ones included, or declared by the hardware profile if more
   string profile = 11;                // title of the hardware profile that matched the model, "" if none
+  string board = 12;                  // the DMI board name, when the enclosure is a chassis
 }
 
 message ListBaysRequest {

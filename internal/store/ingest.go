@@ -455,11 +455,11 @@ func (t *tx) renameEnclosures(host *hostRow, rows []devRow, byDrive map[int64]*p
 // shelf can be listed and named before anything sits in it.
 func (t *tx) noteEnclosures(host *hostRow, r Report, rows []devRow) error {
 	type enc struct {
-		via, viaID, product string
-		bays                map[string]bool
+		via, viaID, product, board string
+		bays                       map[string]bool
 	}
 	seen := map[string]*enc{}
-	note := func(key, via, viaID, product, bay string) {
+	note := func(key, via, viaID, product, board, bay string) {
 		if key == "" {
 			return
 		}
@@ -470,6 +470,9 @@ func (t *tx) noteEnclosures(host *hostRow, r Report, rows []devRow) error {
 		}
 		if product != "" {
 			e.product = product
+		}
+		if board != "" {
+			e.board = board
 		}
 		if bay != "" {
 			e.bays[bay] = true
@@ -484,17 +487,18 @@ func (t *tx) noteEnclosures(host *hostRow, r Report, rows []devRow) error {
 		if viaID == "" {
 			viaID = d.ExpanderID
 		}
-		note(enclosureKey(d), enclosureVia(d), viaID, d.EnclosureModel, d.Bay)
+		note(enclosureKey(d), enclosureVia(d), viaID, d.EnclosureModel, d.EnclosureBoard, d.Bay)
 	}
 	for _, b := range r.EmptyBays {
-		note(enclosureKey(ReportDevice{EnclosureID: b.EnclosureID, EnclosureVia: b.EnclosureVia, EnclosureViaID: b.EnclosureViaID}), b.EnclosureVia, b.EnclosureViaID, b.EnclosureModel, b.Bay)
+		note(enclosureKey(ReportDevice{EnclosureID: b.EnclosureID, EnclosureVia: b.EnclosureVia, EnclosureViaID: b.EnclosureViaID}), b.EnclosureVia, b.EnclosureViaID, b.EnclosureModel, b.EnclosureBoard, b.Bay)
 	}
 	for key, e := range seen {
 		if _, err := t.ExecContext(t.ctx, `
-			INSERT INTO enclosure (host_id, enclosure, via, via_address, product, bays, first_seen, last_seen) VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+			INSERT INTO enclosure (host_id, enclosure, via, via_address, product, board, bays, first_seen, last_seen) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
 			ON CONFLICT (host_id, enclosure) DO UPDATE SET via = excluded.via, via_address = CASE WHEN excluded.via_address != '' THEN excluded.via_address ELSE via_address END,
-				product = CASE WHEN excluded.product != '' THEN excluded.product ELSE product END, bays = MAX(bays, excluded.bays), last_seen = excluded.last_seen`,
-			host.id, key, e.via, e.viaID, e.product, len(e.bays), t.obs, t.obs); err != nil {
+				product = CASE WHEN excluded.product != '' THEN excluded.product ELSE product END, board = CASE WHEN excluded.board != '' THEN excluded.board ELSE board END,
+				bays = MAX(bays, excluded.bays), last_seen = excluded.last_seen`,
+			host.id, key, e.via, e.viaID, e.product, e.board, len(e.bays), t.obs, t.obs); err != nil {
 			return err
 		}
 	}

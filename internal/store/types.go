@@ -49,6 +49,7 @@ type ReportDevice struct {
 	EnclosureVia   string // the node whose port reaches it: "expander-11:0", "host11"
 	EnclosureViaID string // that node's SAS address
 	EnclosureModel string // what the enclosure is, when the agent knows; "" leaves it to the SAS topology
+	EnclosureBoard string // the DMI board name with it
 	Uses           []string
 	DevLinks       []string
 	Error          string // non-empty: identity unreadable
@@ -62,6 +63,7 @@ type ReportBay struct {
 	EnclosureVia   string
 	EnclosureViaID string
 	EnclosureModel string
+	EnclosureBoard string
 	Bay            string
 }
 

@@ -52,6 +52,7 @@ func reportFromProto(req *pb.ReportInventoryRequest) store.Report {
 			EnclosureVia:   d.GetEnclosureVia(),
 			EnclosureViaID: d.GetEnclosureViaId(),
 			EnclosureModel: d.GetEnclosureModel(),
+			EnclosureBoard: d.GetEnclosureBoard(),
 			EnclosurePath:  d.GetEnclosurePath(),
 			Uses:           d.GetUses(),
 			DevLinks:       d.GetDevLinks(),
@@ -64,7 +65,7 @@ func reportFromProto(req *pb.ReportInventoryRequest) store.Report {
 		r.Unmapped = append(r.Unmapped, store.PoolMember{Pool: m.GetPool(), Path: m.GetPath(), GUID: m.GetGuid(), State: m.GetState()})
 	}
 	for _, b := range req.GetEmptyBays() {
-		r.EmptyBays = append(r.EmptyBays, store.ReportBay{EnclosureID: b.GetEnclosureId(), EnclosureVia: b.GetEnclosureVia(), EnclosureViaID: b.GetEnclosureViaId(), EnclosureModel: b.GetEnclosureModel(), Bay: b.GetBay()})
+		r.EmptyBays = append(r.EmptyBays, store.ReportBay{EnclosureID: b.GetEnclosureId(), EnclosureVia: b.GetEnclosureVia(), EnclosureViaID: b.GetEnclosureViaId(), EnclosureModel: b.GetEnclosureModel(), EnclosureBoard: b.GetEnclosureBoard(), Bay: b.GetBay()})
 	}
 	for _, n := range req.GetSasNodes() {
 		r.SASNodes = append(r.SASNodes, sasNodeFromProto(n))
@@ -151,12 +152,12 @@ func placementToProto(p *store.Placement) *pb.Placement {
 }
 
 func enclosureToProto(e store.Enclosure) *pb.Enclosure {
-	return &pb.Enclosure{Enclosure: e.Key, Hostname: e.Hostname, Via: e.Via, Product: e.Product, Name: e.Name, Note: e.Note, Drives: int32(e.Drives), Bays: int32(e.Bays), Profile: e.Profile, FirstSeen: ts(e.FirstSeen), LastSeen: ts(e.LastSeen)}
+	return &pb.Enclosure{Enclosure: e.Key, Hostname: e.Hostname, Via: e.Via, Product: e.Product, Name: e.Name, Note: e.Note, Drives: int32(e.Drives), Bays: int32(e.Bays), Profile: e.Profile, Board: e.Board, FirstSeen: ts(e.FirstSeen), LastSeen: ts(e.LastSeen)}
 }
 
 // bayLabels adds the profile's bay name beside each firmware bay in an
 // event's detail, as bay_label (and from_bay_label, to_bay_label).
-func bayLabels(models map[string]string, label func(model, via, bay string) string, evs []*pb.Event) {
+func bayLabels(models map[string]store.EnclosureModel, label func(m store.EnclosureModel, via, bay string) string, evs []*pb.Event) {
 	for _, e := range evs {
 		var d map[string]any
 		if json.Unmarshal([]byte(e.GetDetail()), &d) != nil {

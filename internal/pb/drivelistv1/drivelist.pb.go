@@ -243,6 +243,7 @@ type Device struct {
 	EnclosureVia   string `protobuf:"bytes,15,opt,name=enclosure_via,json=enclosureVia,proto3" json:"enclosure_via,omitempty"`         // "expander-11:0", "host11"
 	EnclosureViaId string `protobuf:"bytes,16,opt,name=enclosure_via_id,json=enclosureViaId,proto3" json:"enclosure_via_id,omitempty"` // that node's SAS address
 	EnclosureModel string `protobuf:"bytes,17,opt,name=enclosure_model,json=enclosureModel,proto3" json:"enclosure_model,omitempty"`   // what the enclosure is, when the host knows: the chassis from DMI for NVMe bays
+	EnclosureBoard string `protobuf:"bytes,18,opt,name=enclosure_board,json=enclosureBoard,proto3" json:"enclosure_board,omitempty"`   // the DMI board name with it: vendors reuse a product name across boards
 	unknownFields  protoimpl.UnknownFields
 	sizeCache      protoimpl.SizeCache
 }
@@ -396,6 +397,13 @@ func (x *Device) GetEnclosureModel() string {
 	return ""
 }
 
+func (x *Device) GetEnclosureBoard() string {
+	if x != nil {
+		return x.EnclosureBoard
+	}
+	return ""
+}
+
 type EmptyBay struct {
 	state          protoimpl.MessageState `protogen:"open.v1"`
 	Expander       string                 `protobuf:"bytes,1,opt,name=expander,proto3" json:"expander,omitempty"`
@@ -406,6 +414,7 @@ type EmptyBay struct {
 	EnclosureVia   string                 `protobuf:"bytes,6,opt,name=enclosure_via,json=enclosureVia,proto3" json:"enclosure_via,omitempty"`
 	EnclosureViaId string                 `protobuf:"bytes,7,opt,name=enclosure_via_id,json=enclosureViaId,proto3" json:"enclosure_via_id,omitempty"`
 	EnclosureModel string                 `protobuf:"bytes,8,opt,name=enclosure_model,json=enclosureModel,proto3" json:"enclosure_model,omitempty"`
+	EnclosureBoard string                 `protobuf:"bytes,9,opt,name=enclosure_board,json=enclosureBoard,proto3" json:"enclosure_board,omitempty"`
 	unknownFields  protoimpl.UnknownFields
 	sizeCache      protoimpl.SizeCache
 }
@@ -492,6 +501,13 @@ func (x *EmptyBay) GetEnclosureViaId() string {
 func (x *EmptyBay) GetEnclosureModel() string {
 	if x != nil {
 		return x.EnclosureModel
+	}
+	return ""
+}
+
+func (x *EmptyBay) GetEnclosureBoard() string {
+	if x != nil {
+		return x.EnclosureBoard
 	}
 	return ""
 }
@@ -2181,6 +2197,7 @@ type Enclosure struct {
 	Product       string                 `protobuf:"bytes,9,opt,name=product,proto3" json:"product,omitempty"`  // vendor and product of the reaching node, from the SAS topology
 	Bays          int32                  `protobuf:"varint,10,opt,name=bays,proto3" json:"bays,omitempty"`      // bays seen, empty ones included, or declared by the hardware profile if more
 	Profile       string                 `protobuf:"bytes,11,opt,name=profile,proto3" json:"profile,omitempty"` // title of the hardware profile that matched the model, "" if none
+	Board         string                 `protobuf:"bytes,12,opt,name=board,proto3" json:"board,omitempty"`     // the DMI board name, when the enclosure is a chassis
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -2288,6 +2305,13 @@ func (x *Enclosure) GetBays() int32 {
 func (x *Enclosure) GetProfile() string {
 	if x != nil {
 		return x.Profile
+	}
+	return ""
+}
+
+func (x *Enclosure) GetBoard() string {
+	if x != nil {
+		return x.Board
 	}
 	return ""
 }
@@ -5219,7 +5243,7 @@ const file_drivelist_v1_drivelist_proto_rawDesc = "" +
 	"\x03wwn\x18\x01 \x01(\tR\x03wwn\x12\x16\n" +
 	"\x06vendor\x18\x02 \x01(\tR\x06vendor\x12\x14\n" +
 	"\x05model\x18\x03 \x01(\tR\x05model\x12\x16\n" +
-	"\x06serial\x18\x04 \x01(\tR\x06serial\"\xb8\x04\n" +
+	"\x06serial\x18\x04 \x01(\tR\x06serial\"\xe1\x04\n" +
 	"\x06Device\x12\x19\n" +
 	"\bdev_name\x18\x01 \x01(\tR\adevName\x127\n" +
 	"\bidentity\x18\x02 \x01(\v2\x1b.drivelist.v1.DriveIdentityR\bidentity\x12#\n" +
@@ -5240,7 +5264,8 @@ const file_drivelist_v1_drivelist_proto_rawDesc = "" +
 	"\fenclosure_id\x18\x0e \x01(\tR\venclosureId\x12#\n" +
 	"\renclosure_via\x18\x0f \x01(\tR\fenclosureVia\x12(\n" +
 	"\x10enclosure_via_id\x18\x10 \x01(\tR\x0eenclosureViaId\x12'\n" +
-	"\x0fenclosure_model\x18\x11 \x01(\tR\x0eenclosureModel\"\x9b\x02\n" +
+	"\x0fenclosure_model\x18\x11 \x01(\tR\x0eenclosureModel\x12'\n" +
+	"\x0fenclosure_board\x18\x12 \x01(\tR\x0eenclosureBoard\"\xc4\x02\n" +
 	"\bEmptyBay\x12\x1a\n" +
 	"\bexpander\x18\x01 \x01(\tR\bexpander\x12\x10\n" +
 	"\x03bay\x18\x02 \x01(\tR\x03bay\x12%\n" +
@@ -5250,7 +5275,8 @@ const file_drivelist_v1_drivelist_proto_rawDesc = "" +
 	"\fenclosure_id\x18\x05 \x01(\tR\venclosureId\x12#\n" +
 	"\renclosure_via\x18\x06 \x01(\tR\fenclosureVia\x12(\n" +
 	"\x10enclosure_via_id\x18\a \x01(\tR\x0eenclosureViaId\x12'\n" +
-	"\x0fenclosure_model\x18\b \x01(\tR\x0eenclosureModel\"b\n" +
+	"\x0fenclosure_model\x18\b \x01(\tR\x0eenclosureModel\x12'\n" +
+	"\x0fenclosure_board\x18\t \x01(\tR\x0eenclosureBoard\"b\n" +
 	"\x0eUnmappedMember\x12\x12\n" +
 	"\x04pool\x18\x01 \x01(\tR\x04pool\x12\x12\n" +
 	"\x04path\x18\x02 \x01(\tR\x04path\x12\x12\n" +
@@ -5435,7 +5461,7 @@ const file_drivelist_v1_drivelist_proto_rawDesc = "" +
 	"\renclosure_via\x18\n" +
 	" \x01(\tR\fenclosureVia\x12%\n" +
 	"\x0eenclosure_name\x18\v \x01(\tR\renclosureName\x12\x1b\n" +
-	"\tbay_label\x18\f \x01(\tR\bbayLabel\"\xd3\x02\n" +
+	"\tbay_label\x18\f \x01(\tR\bbayLabel\"\xe9\x02\n" +
 	"\tEnclosure\x12\x1c\n" +
 	"\tenclosure\x18\x01 \x01(\tR\tenclosure\x12\x1a\n" +
 	"\bhostname\x18\x02 \x01(\tR\bhostname\x12\x10\n" +
@@ -5449,7 +5475,8 @@ const file_drivelist_v1_drivelist_proto_rawDesc = "" +
 	"\aproduct\x18\t \x01(\tR\aproduct\x12\x12\n" +
 	"\x04bays\x18\n" +
 	" \x01(\x05R\x04bays\x12\x18\n" +
-	"\aprofile\x18\v \x01(\tR\aprofile\"#\n" +
+	"\aprofile\x18\v \x01(\tR\aprofile\x12\x14\n" +
+	"\x05board\x18\f \x01(\tR\x05board\"#\n" +
 	"\x0fListBaysRequest\x12\x10\n" +
 	"\x03ref\x18\x01 \x01(\tR\x03ref\"\xdc\x01\n" +
 	"\aBayView\x12\x14\n" +

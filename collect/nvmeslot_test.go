@@ -62,12 +62,13 @@ func TestDMIChassisPlaceholders(t *testing.T) {
 	writeAttr("chassis_serial", "0123456789")
 	writeAttr("sys_vendor", "Acme")
 	writeAttr("product_name", "Box")
-	if key, model := dmiChassis(dir); key != "" || model != "Acme Box" {
-		t.Errorf("all placeholders: key %q model %q", key, model)
+	if key, model, board := dmiChassis(dir); key != "" || model != "Acme Box" || board != "" {
+		t.Errorf("all placeholders: key %q model %q board %q", key, model, board)
 	}
 	writeAttr("board_serial", "BRD-42")
-	if key, _ := dmiChassis(dir); key != "dmi:BRD-42" {
-		t.Errorf("board serial fallback: %q", key)
+	writeAttr("board_name", "AHWSA")
+	if key, _, board := dmiChassis(dir); key != "dmi:BRD-42" || board != "AHWSA" {
+		t.Errorf("board serial fallback: %q board %q", key, board)
 	}
 	if nvmeController(&drivelist.Device{Attribs: map[string]string{"ID_PATH": "pci-0000:85:00.0-nvme-1"}}) != "0000:85:00.0" {
 		t.Error("ID_PATH not parsed")

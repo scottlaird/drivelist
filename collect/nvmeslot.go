@@ -32,7 +32,7 @@ import (
 func (c *Collector) annotateNVMeSlots(inv *drivelist.Inventory) error {
 	slots := readPCISlots(c.sys())
 	smbios := readSMBIOSSlots(c.sys())
-	key, model := dmiChassis(c.sys())
+	key, model, board := dmiChassis(c.sys())
 	if key == "" {
 		if len(slots) > 0 || len(smbios) > 0 {
 			slog.Warn("pci slots known but the chassis has no usable DMI serial; NVMe drives get no location")
@@ -65,7 +65,7 @@ func (c *Collector) annotateNVMeSlots(inv *drivelist.Inventory) error {
 		if !ok {
 			continue
 		}
-		d.EnclosureBay, d.EnclosureVia, d.EnclosureID, d.EnclosureViaID, d.EnclosureModel = slot, "pci", key, key, model
+		d.EnclosureBay, d.EnclosureVia, d.EnclosureID, d.EnclosureViaID, d.EnclosureModel, d.EnclosureBoard = slot, "pci", key, key, model, board
 	}
 	bases := map[string]bool{}
 	for slot := range occupied {
@@ -91,7 +91,7 @@ func (c *Collector) annotateNVMeSlots(inv *drivelist.Inventory) error {
 		if _, err := os.Stat(filepath.Join(c.sys(), "bus", "pci", "devices", addr+".0")); err == nil {
 			continue // something else is in it
 		}
-		inv.Add(&drivelist.Device{EnclosureBay: name, EnclosureVia: "pci", EnclosureID: key, EnclosureViaID: key, EnclosureModel: model, Uses: []string{"empty"}})
+		inv.Add(&drivelist.Device{EnclosureBay: name, EnclosureVia: "pci", EnclosureID: key, EnclosureViaID: key, EnclosureModel: model, EnclosureBoard: board, Uses: []string{"empty"}})
 	}
 	return nil
 }
@@ -157,9 +157,10 @@ var dmiPlaceholders = map[string]bool{
 }
 
 // dmiChassis identifies the chassis from DMI: a key from the first real
-// serial among product, chassis and board, and the vendor and product
-// name as the model.
-func dmiChassis(sys string) (key, model string) {
+// serial among product, chassis and board, the vendor and product name as
+// the model, and the board name, which tells models apart when a vendor
+// reuses a product name ("Venus Series") across boards.
+func dmiChassis(sys string) (key, model, board string) {
 	id := filepath.Join(sys, "class", "dmi", "id")
 	for _, name := range []string{"product_serial", "chassis_serial", "board_serial"} {
 		s := sysAttr(id, name)
@@ -169,7 +170,11 @@ func dmiChassis(sys string) (key, model string) {
 		}
 	}
 	model = strings.TrimSpace(sysAttr(id, "sys_vendor") + " " + sysAttr(id, "product_name"))
-	return key, model
+	board = sysAttr(id, "board_name")
+	if dmiPlaceholders[strings.ToLower(board)] {
+		board = ""
+	}
+	return key, model, board
 }
 
 // captureNVMeSlots copies what annotateNVMeSlots reads: the slot table,
