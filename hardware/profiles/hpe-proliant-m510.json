@@ -8,7 +8,7 @@
     "columns": 5,
     "order": "row-major"
   },
-  "notes": "The two on-board NVMe M.2 slots are PCIe hotplug slots 1 and 2. The SATA M.2 is on port 5 of the chipset's AHCI controller. The carrier card sits in the slot the firmware calls PCI-E Slot 6 and carries a PCIe switch whose ports 00.0 and 08.0 each hold an M.2; which port is which physical position on the card has not been checked, so the two are named by port.",
+  "notes": "The two on-board NVMe M.2 slots are PCIe hotplug slots 1 and 2. The SATA M.2 is on port 5 of the chipset's AHCI controller. The carrier card sits in the slot the firmware calls PCI-E Slot 6 and carries a PCIe switch; HPE's SMBIOS record names the slot by the card's upstream port rather than the root port, so the switch's downstream ports appear as PCI-E Slot 6/00.0 and PCI-E Slot 6/08.0. Which port is which physical position on the card has not been checked, so the two are named by port.",
   "bays": [
     {
       "bay": "M.2 1",
@@ -24,12 +24,12 @@
     },
     {
       "bay": "card port 0",
-      "pci": "PCI-E Slot 6/00.0/00.0",
+      "pci": "PCI-E Slot 6/00.0",
       "note": "carrier card M.2 behind switch port 00.0; physical position unverified"
     },
     {
       "bay": "card port 8",
-      "pci": "PCI-E Slot 6/00.0/08.0",
+      "pci": "PCI-E Slot 6/08.0",
       "note": "carrier card M.2 behind switch port 08.0; physical position unverified"
     }
   ]

@@ -14,7 +14,7 @@ func TestEmbeddedProfiles(t *testing.T) {
 		t.Fatalf("only %d embedded profiles", len(s.All()))
 	}
 	rs := s.Lookup("ASUSTeK COMPUTER INC. RS500A-E10-RS12U", "")
-	if rs == nil || len(rs.Bays) != 12 || rs.Layout == nil || rs.Layout.Rows != 2 || rs.Layout.Columns != 6 {
+	if rs == nil || len(rs.Bays) != 13 || rs.Layout == nil || rs.Layout.Rows != 2 || rs.Layout.Columns != 7 {
 		t.Fatalf("RS500A profile = %+v", rs)
 	}
 	if r, c := rs.Layout.Position(1); r != 1 || c != 0 {
@@ -25,6 +25,9 @@ func TestEmbeddedProfiles(t *testing.T) {
 	}
 	if _, ok := rs.Label("pci", "9-1"); ok {
 		t.Error("unprobed RS500A maps slot 9-1")
+	}
+	if l, ok := rs.Label("pci", "0000:40:01.2"); !ok || l != "M.2 onboard" {
+		t.Errorf("onboard M.2 -> %q %v", l, ok)
 	}
 	hg := s.Lookup("HGST 4U60_STOR_ENCL", "")
 	if hg == nil || len(hg.Bays) != 60 {
@@ -137,7 +140,7 @@ func TestM510Profile(t *testing.T) {
 	if p == nil {
 		t.Fatal("no m510 profile")
 	}
-	for kind, id := range map[string]string{"pci": "PCI-E Slot 6/00.0/08.0", "ata": "pci-0000:00:1f.2-ata-5"} {
+	for kind, id := range map[string]string{"pci": "PCI-E Slot 6/08.0", "ata": "pci-0000:00:1f.2-ata-5"} {
 		if _, ok := p.Label(kind, id); !ok {
 			t.Errorf("%s %s unmapped", kind, id)
 		}

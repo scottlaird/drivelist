@@ -241,7 +241,7 @@ func TestEnclosureProductFromAgent(t *testing.T) {
 		EmptyBays: []ReportBay{{EnclosureID: "dmi:KCS0GX0000TB", EnclosureVia: "pci", EnclosureViaID: "dmi:KCS0GX0000TB", EnclosureModel: "ASUSTeK COMPUTER INC. RS500A-E10-RS12U", Bay: "9"}}}
 	h.submit(r)
 	es, err := h.s.ListEnclosures(h.ctx)
-	if err != nil || len(es) != 1 || es[0].Product != "ASUSTeK COMPUTER INC. RS500A-E10-RS12U" || es[0].Via != "pci" || es[0].Drives != 1 || es[0].Bays != 12 || es[0].Key != "dmi:KCS0GX0000TB" {
+	if err != nil || len(es) != 1 || es[0].Product != "ASUSTeK COMPUTER INC. RS500A-E10-RS12U" || es[0].Via != "pci" || es[0].Drives != 1 || es[0].Bays != 13 || es[0].Key != "dmi:KCS0GX0000TB" {
 		t.Errorf("ListEnclosures = %+v, %v", es, err)
 	}
 	if e, err := h.s.NameEnclosure(h.ctx, "KCS0GX", "mgmt1-front", "", "scott"); err != nil || e.Name != "mgmt1-front" || e.Product == "" {
@@ -290,7 +290,7 @@ func TestHardwareProfiles(t *testing.T) {
 	if d, _, _, _ := h.s.GetDrive(h.ctx, "M1"); d.Current.BayLabel != "M.2 PCIe 4.0 x4" {
 		t.Errorf("MS-01 drive labeled %q", d.Current.BayLabel)
 	}
-	if e := byKey["dmi:KCS0GX0000TB"]; e.Profile == "" || e.Bays != 12 {
+	if e := byKey["dmi:KCS0GX0000TB"]; e.Profile == "" || e.Bays != 13 {
 		t.Errorf("chassis = %+v", e)
 	}
 	d, _, _, err := h.s.GetDrive(h.ctx, "A1")
@@ -315,7 +315,7 @@ func TestHardwareProfiles(t *testing.T) {
 		t.Errorf("undeclared bay = %+v", b)
 	}
 	_, bays, _, err = h.s.ListBays(h.ctx, "KCS0GX")
-	if err != nil || len(bays) != 13 || bays[12].Declared || bays[12].Serial != "N1" || bays[12].IDs[0] != "pci:9-1" {
+	if err != nil || len(bays) != 14 || bays[13].Declared || bays[13].Serial != "N1" || bays[13].IDs[0] != "pci:9-1" {
 		t.Errorf("RS500A bays = %d, last %+v, %v", len(bays), bays[len(bays)-1], err)
 	}
 	models, _ := h.s.EnclosureModels(h.ctx)
