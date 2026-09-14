@@ -49,18 +49,7 @@ func (c *Collector) annotateNVMeSlots(inv *drivelist.Inventory) error {
 		if ok {
 			occupied[slot] = true
 		} else {
-			// SMBIOS names the slot by its root port; some firmware names
-			// the device's own address instead, so try that first.
-			ancestors := c.pciAncestors(d.SysPath, addr)
-			for _, a := range append([]string{addr}, ancestors...) {
-				if s, found := smbios[a]; found {
-					slot, ok = s.Designation, true
-					break
-				}
-			}
-			if !ok && len(ancestors) > 0 {
-				slot, ok = ancestors[0], true
-			}
+			slot, ok = pciIdentity(smbios, addr, c.pciAncestors(d.SysPath, addr))
 		}
 		if !ok {
 			continue
@@ -94,6 +83,57 @@ func (c *Collector) annotateNVMeSlots(inv *drivelist.Inventory) error {
 		inv.Add(&drivelist.Device{EnclosureBay: name, EnclosureVia: "pci", EnclosureID: key, EnclosureViaID: key, EnclosureModel: model, EnclosureBoard: board, Uses: []string{"empty"}})
 	}
 	return nil
+}
+
+// pciIdentity names a drive's place from SMBIOS and the bridges above it
+// when no hotplug slot has it. SMBIOS names a slot by its root port; some
+// firmware names the device's own address instead, so that is tried
+// first. Bridges between the named one and the drive (a carrier card's
+// PCIe switch, whose ports each hold an M.2) are appended as their
+// device.function, "PCI-E Slot 6/00.0/08.0", so two drives on one card
+// come out apart; bus numbers are left out because enumeration can move
+// them. A designation the firmware gave to more than one root port (a
+// bifurcated slot) is qualified by the port's address. With no SMBIOS
+// record at all, the root port's address stands in for the designation.
+func pciIdentity(smbios map[string]smbiosSlot, addr string, ancestors []string) (string, bool) {
+	chain := append([]string{addr}, ancestors...) // nearest first
+	named := -1
+	var designation string
+	for i, a := range chain {
+		if s, found := smbios[a]; found {
+			named, designation = i, s.Designation
+			break
+		}
+	}
+	if named < 0 {
+		if len(ancestors) == 0 {
+			return "", false
+		}
+		named, designation = len(chain)-1, chain[len(chain)-1]
+	} else {
+		n := 0
+		for _, s := range smbios {
+			if s.Designation == designation {
+				n++
+			}
+		}
+		if n > 1 {
+			designation += " @" + chain[named]
+		}
+	}
+	// The bridges below the named one, top down.
+	for i := named - 1; i >= 1; i-- {
+		designation += "/" + pciDevFn(chain[i])
+	}
+	return designation, true
+}
+
+// pciDevFn is the device.function part of a PCI address.
+func pciDevFn(addr string) string {
+	if i := strings.LastIndex(addr, ":"); i >= 0 {
+		return addr[i+1:]
+	}
+	return addr
 }
 
 // readPCISlots maps each hotplug slot's PCI address (domain:bus:device,

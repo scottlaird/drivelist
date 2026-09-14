@@ -221,7 +221,10 @@ designator like `J3502`) by the root port it hangs off; most consumer
 boards describe some slots and not others, so a drive in a slot the
 vendor left out is placed by its root port's address instead
 (`0000:00:01.3`), which is as fixed per board as a designation and
-lets a profile name the slot anyway.  A SATA drive on one of the board's own ports is
+lets a profile name the slot anyway.  A carrier card with a PCIe
+switch puts several drives behind one slot; the switch ports between
+the slot and each drive are appended as `PCI-E Slot 6/00.0/08.0`, so
+a profile can name each M.2 on the card.  A SATA drive on one of the board's own ports is
 placed by the port, named as udev names it (`pci-0000:00:1f.2-ata-5`,
 the controller and the port number on it), so a profile can say which
 bay the port feeds.
