@@ -252,7 +252,7 @@ prefix of either; an ambiguous prefix lists the candidates.
   drivelist drive REF merge OTHER  fold OTHER's record into REF: one drive that got two records
   drivelist drive REF mark STATUS  set the status: ok, suspect, bad, shelved, retired
   drivelist drive REF note TEXT    record a note without changing the status`,
-		Args: cobra.MinimumNArgs(1),
+		Args: usageArgs(1, -1, "drivelist drive REF [history | kernel | smart | io | mark STATUS | note TEXT | merge OTHER]"),
 		RunE: func(cmd *cobra.Command, args []string) error {
 			ref, rest := args[0], args[1:]
 			if len(rest) == 0 {
@@ -336,7 +336,7 @@ snapshots, events, samples) to host INTO and keeps FROM's machine id
 resolving to INTO, so an agent still reporting under the old id lands
 on the merged host. INTO and FROM are hostnames or, when two hosts
 share a name, machine ids as 'hosts --ids' shows them.`,
-		Args: cobra.ExactArgs(3),
+		Args: usageArgs(3, 3, "drivelist host merge INTO FROM"),
 		RunE: func(cmd *cobra.Command, args []string) error {
 			if args[0] != "merge" {
 				return fmt.Errorf("usage: drivelist host merge INTO FROM")
@@ -396,16 +396,16 @@ func showIO(cmd *cobra.Command, cfg *clientConfig, ref, since string) error {
 func newIOCmd(cfg *clientConfig) *cobra.Command {
 	var host, since string
 	cmd := &cobra.Command{
-		Use:   "io compare",
+		Use:   "io [compare]",
 		Short: "Compare each drive's latency and utilisation with its vdev's median",
 		Long: `io compare lists every currently placed drive with its average read and
 write latency and utilisation over the window, next to the median of
 the vdev it belongs to, worst first within each vdev. A drive whose
 latency is several times its siblings' is the one to look at.`,
-		Args: cobra.ExactArgs(1),
+		Args: usageArgs(0, 1, "drivelist io [compare] [--host H] [--since 24h]"),
 		RunE: func(cmd *cobra.Command, args []string) error {
-			if args[0] != "compare" {
-				return fmt.Errorf("usage: drivelist io compare [--host H] [--since 24h]")
+			if len(args) == 1 && args[0] != "compare" {
+				return fmt.Errorf("unknown action %q: compare is the only one; usage: drivelist io [compare] [--host H] [--since 24h]", args[0])
 			}
 			d, err := time.ParseDuration(since)
 			if err != nil {
@@ -763,7 +763,7 @@ profile lays them out, with what sits in each, then any occupied bay
 the profile does not know. KEY is the key 'enclosures' prints, an
 unambiguous part of it, the name, or the reaching node's kernel name
 if only one host has one so named.`,
-		Args: cobra.MinimumNArgs(2),
+		Args: usageArgs(2, -1, "drivelist enclosure KEY name NAME [--note TEXT] | drivelist enclosure KEY bays"),
 		RunE: func(cmd *cobra.Command, args []string) error {
 			if args[1] == "bays" {
 				return showBays(cmd, cfg, args[0])
@@ -903,7 +903,7 @@ profile and which occupied bays no profile names, which is what a
 profile for a new box needs. --dir adds profiles from a directory,
 overriding built-in ones for the same model, to try one before
 contributing it (the server takes the same with serve --hardware-dir).`,
-		Args: cobra.MaximumNArgs(2),
+		Args: usageArgs(0, 2, "drivelist hardware [check HOST]"),
 		RunE: func(cmd *cobra.Command, args []string) error {
 			hw, err := hardware.Load(dir)
 			if err != nil {

@@ -149,7 +149,7 @@ DIR: the relevant parts of sysfs, the mount table, udevadm output for
 every disk, and the output of several zpool commands. The tree can be
 loaded with collect.Fixture and is what collect/testdata/ holds. It
 includes the serial number and WWN of every drive.`,
-		Args: cobra.ExactArgs(1),
+		Args: usageArgs(1, 1, "drivelist capture DIR"),
 		RunE: func(_ *cobra.Command, args []string) error {
 			return runCapture(args[0])
 		},

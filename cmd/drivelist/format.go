@@ -8,6 +8,7 @@ import (
 	"strings"
 	"time"
 
+	"github.com/spf13/cobra"
 	"google.golang.org/protobuf/types/known/timestamppb"
 
 	"github.com/scottlaird/drivelist"
@@ -373,4 +374,16 @@ func describe(e *pb.Event) string {
 		parts = append(parts, fmt.Sprintf("%s=%v", k, d[k]))
 	}
 	return fmt.Sprintf("%-13s %s  %s", e.GetKind(), host, strings.Join(parts, " "))
+}
+
+// usageArgs validates a command's positional argument count and, when it
+// is wrong, says how the command is used rather than how many arguments
+// cobra counted. max is -1 for no upper bound.
+func usageArgs(min, max int, usage string) cobra.PositionalArgs {
+	return func(cmd *cobra.Command, args []string) error {
+		if len(args) < min || (max >= 0 && len(args) > max) {
+			return fmt.Errorf("usage: %s", usage)
+		}
+		return nil
+	}
 }
