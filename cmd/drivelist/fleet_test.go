@@ -301,3 +301,28 @@ func TestSmartList(t *testing.T) {
 		t.Errorf("smart --problems: %q", out)
 	}
 }
+
+// TestUsageErrors: a wrong argument count says how the command is used,
+// and `io` alone means `io compare`.
+func TestUsageErrors(t *testing.T) {
+	fleetEnv(t)
+	for _, c := range []struct {
+		args []string
+		want string
+	}{
+		{[]string{"drive"}, "usage: drivelist drive REF"},
+		{[]string{"host", "merge", "a"}, "usage: drivelist host merge INTO FROM"},
+		{[]string{"enclosure", "x"}, "usage: drivelist enclosure KEY name NAME"},
+		{[]string{"io", "compare", "extra"}, "usage: drivelist io [compare]"},
+		{[]string{"io", "frob"}, `unknown action "frob"`},
+		{[]string{"capture"}, "usage: drivelist capture DIR"},
+	} {
+		_, _, err := run(t, c.args...)
+		if err == nil || !strings.Contains(err.Error(), c.want) {
+			t.Errorf("%v: error %v, want it to contain %q", c.args, err, c.want)
+		}
+	}
+	if out, _, err := run(t, "io"); err != nil || !strings.Contains(out, "no I/O samples") {
+		t.Errorf("io alone: %v %q", err, out)
+	}
+}

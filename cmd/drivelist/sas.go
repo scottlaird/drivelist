@@ -31,7 +31,7 @@ as several phys sharing a port.
   drivelist sas             this host, straight from sysfs; no server or privileges needed
   drivelist sas HOST        HOST as the server last saw it, with the drive serial behind each phy
   drivelist sas errors      every phy in the fleet whose counters grew (--since 7d, --host H)`,
-		Args: cobra.MaximumNArgs(1),
+		Args: usageArgs(0, 1, "drivelist sas [HOST | errors] [--errors] [--fixture DIR]"),
 		RunE: func(cmd *cobra.Command, args []string) error {
 			if len(args) == 1 && args[0] == "errors" {
 				return sasErrors(cmd, cfg, host, since)
