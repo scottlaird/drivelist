@@ -73,7 +73,9 @@ func New(st *store.Store, cfg Config, log *slog.Logger) (*Server, error) {
 // scrapers expect.
 func (s *Server) Handler() http.Handler {
 	mux := http.NewServeMux()
-	mux.Handle(drivelistv1connect.NewCollectorHandler(s, connect.WithInterceptors(bearerAuth(s.cfg.AgentToken))))
+	// The operator token is good for the collector too, so an operator can
+	// submit a report collected elsewhere (`admin ingest`).
+	mux.Handle(drivelistv1connect.NewCollectorHandler(s, connect.WithInterceptors(bearerAuth(s.cfg.AgentToken, s.cfg.OperatorToken))))
 	mux.Handle(drivelistv1connect.NewQueryHandler(s, connect.WithInterceptors(bearerAuth(s.cfg.OperatorToken))))
 	mux.HandleFunc("/healthz", func(w http.ResponseWriter, _ *http.Request) { fmt.Fprintf(w, "ok drivelist %s\n", dlversion.Version) })
 	mux.Handle("/metrics", s.metrics.handler())
@@ -110,15 +112,17 @@ func (s *Server) RunSweeper(ctx context.Context) {
 }
 
 // bearerAuth rejects requests whose Authorization header is not
-// "Bearer <token>". Comparison is constant-time.
-func bearerAuth(token string) connect.UnaryInterceptorFunc {
+// "Bearer <token>" for one of the tokens. Comparison is constant-time.
+func bearerAuth(tokens ...string) connect.UnaryInterceptorFunc {
 	return func(next connect.UnaryFunc) connect.UnaryFunc {
 		return func(ctx context.Context, req connect.AnyRequest) (connect.AnyResponse, error) {
 			got := strings.TrimPrefix(req.Header().Get("Authorization"), "Bearer ")
-			if subtle.ConstantTimeCompare([]byte(got), []byte(token)) != 1 {
-				return nil, connect.NewError(connect.CodeUnauthenticated, errors.New("missing or wrong bearer token"))
+			for _, token := range tokens {
+				if token != "" && subtle.ConstantTimeCompare([]byte(got), []byte(token)) == 1 {
+					return next(ctx, req)
+				}
 			}
-			return next(ctx, req)
+			return nil, connect.NewError(connect.CodeUnauthenticated, errors.New("missing or wrong bearer token"))
 		}
 	}
 }

@@ -268,6 +268,15 @@ message ReportSmartRequest {
   repeated SmartSample samples = 2;
 }
 
+// ReportBundle is what `drivelist report --output` writes and
+// `drivelist admin ingest` submits: one host's inventory report and,
+// optionally, a SMART pass, so a host that holds no token can be
+// collected over ssh from one that does.
+message ReportBundle {
+  ReportInventoryRequest inventory = 1;
+  ReportSmartRequest smart = 2;
+}
+
 // IOSample is one hour of one drive's I/O, as deltas of /proc/diskstats
 // counters plus the worst 60 s sub-sample inside the hour.
 message IOSample {

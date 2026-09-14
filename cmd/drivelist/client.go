@@ -145,6 +145,24 @@ func (c *clientConfig) collectorClient() (drivelistv1connect.CollectorClient, er
 	return drivelistv1connect.NewCollectorClient(httpClient(), url, withToken(c.agentToken)), nil
 }
 
+// ingestClient is the collector client for submitting a report collected
+// elsewhere: the operator token, which the server accepts for the
+// collector too, else the agent token.
+func (c *clientConfig) ingestClient() (drivelistv1connect.CollectorClient, error) {
+	url, err := c.baseURL()
+	if err != nil {
+		return nil, err
+	}
+	token := c.operatorToken
+	if token == "" {
+		token = c.agentToken
+	}
+	if token == "" {
+		return nil, errors.New("no token: set DRIVELIST_OPERATOR_TOKEN (or the agent token) or the config file")
+	}
+	return drivelistv1connect.NewCollectorClient(httpClient(), url, withToken(token)), nil
+}
+
 func httpClient() *http.Client { return &http.Client{Timeout: 60 * time.Second} }
 
 // printJSON writes a response message as JSON, for --json.

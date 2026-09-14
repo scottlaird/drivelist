@@ -254,6 +254,15 @@ columns, a leading `-` for descending; sizes, counters and times sort
 as what they are, not as text, and unknown values sort last.
 
 For a one-off report, or from cron, `drivelist report` does one cycle.
+A host you would rather not give a token to can still be tracked: run
+`drivelist report --output - [--smart]` on it (no server, no token)
+and pipe the result to `drivelist admin ingest -` on a host that
+holds the operator token, which the server accepts for reports too:
+
+    ssh web1 drivelist report --output - --smart | drivelist admin ingest -
+
+The report lands as web1, with a SMART pass when asked for; what such
+a host loses is the agent's kernel log watch and I/O sampling.
 
 `drivelist sas` prints the host's SAS topology from sysfs: each HBA and
 expander with its phys, the port each phy is bundled into (a wide port
