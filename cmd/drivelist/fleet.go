@@ -661,7 +661,7 @@ func newSmartCmd(cfg *clientConfig) *cobra.Command {
 		Long: `smart lists every placed drive with its newest SMART reading: health,
 hours, temperature, the error counters, wear, and the last self-test,
 with how old the reading is. Drives whose reading says something is
-wrong (health failed, any error counter nonzero, 90% of rated life
+wrong (health failed, any error counter nonzero, 80% of rated life
 used) come first; --problems shows only those. A drive whose newest
 sample was skipped (standby, unsupported) shows why beside its last
 real reading. For one drive's history, use 'drive REF smart'.`,

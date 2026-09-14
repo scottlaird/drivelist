@@ -335,7 +335,7 @@ type SmartRow struct {
 }
 
 // Problem reports whether the reading says something is wrong: health
-// failed, or any of the error counters is nonzero, or the drive is at 90%
+// failed, or any of the error counters is nonzero, or the drive is at 80%
 // of its rated life. A drive without a reading is not a problem, just
 // unknown.
 func (r SmartRow) Problem() bool {
@@ -345,7 +345,7 @@ func (r SmartRow) Problem() bool {
 	m := r.Sample.Summary
 	nz := func(p *uint64) bool { return p != nil && *p > 0 }
 	return (m.Healthy != nil && !*m.Healthy) || nz(m.Reallocated) || nz(m.Pending) || nz(m.Uncorrectable) || nz(m.CRCErrors) ||
-		(m.PercentUsed != nil && *m.PercentUsed >= 90)
+		(m.PercentUsed != nil && *m.PercentUsed >= 80)
 }
 
 // ListSmart returns every placed drive (on one host, or all) with its

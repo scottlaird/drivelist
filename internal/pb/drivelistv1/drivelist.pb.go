@@ -2528,7 +2528,7 @@ type SmartRow struct {
 	Drive         *Drive                 `protobuf:"bytes,1,opt,name=drive,proto3" json:"drive,omitempty"`
 	Sample        *SmartSample           `protobuf:"bytes,2,opt,name=sample,proto3" json:"sample,omitempty"`                              // the newest with a summary; unset when none
 	LastSkipped   string                 `protobuf:"bytes,3,opt,name=last_skipped,json=lastSkipped,proto3" json:"last_skipped,omitempty"` // why the newest sample of all was skipped, when newer than sample
-	Problem       bool                   `protobuf:"varint,4,opt,name=problem,proto3" json:"problem,omitempty"`                           // health failed, an error counter nonzero, or 90% of rated life used
+	Problem       bool                   `protobuf:"varint,4,opt,name=problem,proto3" json:"problem,omitempty"`                           // health failed, an error counter nonzero, or 80% of rated life used
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
