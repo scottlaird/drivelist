@@ -23,6 +23,7 @@ func fleetCommands(cfg *clientConfig) []*cobra.Command {
 		newReportCmd(cfg),
 		newHostsCmd(cfg),
 		newDrivesCmd(cfg),
+		newSmartCmd(cfg),
 		newDriveCmd(cfg),
 		newEventsCmd(cfg),
 		newMissingCmd(cfg),
@@ -646,6 +647,72 @@ func newEventsCmd(cfg *clientConfig) *cobra.Command {
 	f.StringSliceVar(&kinds, "kind", nil, "only these kinds, e.g. vanished,moved_host")
 	f.StringVar(&host, "host", "", "only events on this host")
 	f.Int32Var(&limit, "limit", 0, "at most this many (server default 200)")
+	return cmd
+}
+
+// ---------- smart ----------
+
+func newSmartCmd(cfg *clientConfig) *cobra.Command {
+	var host string
+	var problems bool
+	cmd := &cobra.Command{
+		Use:   "smart",
+		Short: "Every drive's newest SMART reading, problems first",
+		Long: `smart lists every placed drive with its newest SMART reading: health,
+hours, temperature, the error counters, wear, and the last self-test,
+with how old the reading is. Drives whose reading says something is
+wrong (health failed, any error counter nonzero, 90% of rated life
+used) come first; --problems shows only those. A drive whose newest
+sample was skipped (standby, unsupported) shows why beside its last
+real reading. For one drive's history, use 'drive REF smart'.`,
+		Args: cobra.NoArgs,
+		RunE: func(cmd *cobra.Command, _ []string) error {
+			client, err := cfg.queryClient()
+			if err != nil {
+				return err
+			}
+			res, err := client.ListSmart(cmd.Context(), connect.NewRequest(&pb.ListSmartRequest{Host: host, Problems: problems}))
+			if err != nil {
+				return rpcErr(err)
+			}
+			if cfg.json {
+				return printJSON(cmd.OutOrStdout(), res.Msg)
+			}
+			if len(res.Msg.Rows) == 0 {
+				if problems {
+					fmt.Fprintln(cmd.OutOrStdout(), "no drive's SMART reading reports a problem")
+				} else {
+					fmt.Fprintln(cmd.OutOrStdout(), "no placed drives")
+				}
+				return nil
+			}
+			now := time.Now()
+			tw := tab(cmd.OutOrStdout())
+			fmt.Fprintln(tw, "HOST\tSLOT\tDEVICE\tSERIAL\tMODEL\tHEALTH\tHOURS\tTEMP\tREALLOC\tPENDING\tUNCORR\tCRC\tWEAR\tSELF-TEST\tSAMPLED")
+			for _, r := range res.Msg.Rows {
+				d, p := r.Drive, r.Drive.Current
+				if r.Sample == nil {
+					reason := "no reading"
+					if r.LastSkipped != "" {
+						reason = "skipped: " + r.LastSkipped
+					}
+					fmt.Fprintf(tw, "%s\t%s\t%s\t%s\t%s\t%s\t\t\t\t\t\t\t\t\t\n", p.Hostname, slotOf(p), orDash(p.DevName), d.Serial, d.Model, reason)
+					continue
+				}
+				m := r.Sample.Summary
+				sampled := ago(r.Sample.Ts, now)
+				if r.LastSkipped != "" {
+					sampled += " (now " + r.LastSkipped + ")"
+				}
+				fmt.Fprintf(tw, "%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\n", p.Hostname, slotOf(p), orDash(p.DevName), d.Serial, d.Model,
+					health(m), optU(m.PowerOnHours), optTemp(m.TempC), optU(m.Reallocated), optU(m.Pending), optU(m.Uncorrectable), optU(m.CrcErrors),
+					optPct(m.PercentUsed), orDash(m.SelftestLast), sampled)
+			}
+			return tw.Flush()
+		},
+	}
+	cmd.Flags().StringVar(&host, "host", "", "only drives on this host")
+	cmd.Flags().BoolVar(&problems, "problems", false, "only drives whose reading says something is wrong")
 	return cmd
 }
 

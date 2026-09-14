@@ -269,6 +269,22 @@ func (s *Server) nameEvents(ctx context.Context, evs []*pb.Event) error {
 	return nil
 }
 
+func (s *Server) ListSmart(ctx context.Context, req *connect.Request[pb.ListSmartRequest]) (*connect.Response[pb.ListSmartResponse], error) {
+	rows, err := s.store.ListSmart(ctx, req.Msg.GetHost(), req.Msg.GetProblems())
+	if err != nil {
+		return nil, storeErr(err)
+	}
+	out := &pb.ListSmartResponse{}
+	for _, r := range rows {
+		row := &pb.SmartRow{Drive: driveToProto(r.Drive), LastSkipped: r.LastSkipped, Problem: r.Problem()}
+		if r.Sample != nil {
+			row.Sample = smartSampleToProto(*r.Sample)
+		}
+		out.Rows = append(out.Rows, row)
+	}
+	return connect.NewResponse(out), nil
+}
+
 func (s *Server) ListBays(ctx context.Context, req *connect.Request[pb.ListBaysRequest]) (*connect.Response[pb.ListBaysResponse], error) {
 	enc, bays, layout, err := s.store.ListBays(ctx, req.Msg.GetRef())
 	if err != nil {
