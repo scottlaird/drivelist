@@ -246,6 +246,13 @@ matched one and which occupied bays no profile names, which is what
 a profile for a new box needs.  Try a profile with `--dir` (and
 `serve --hardware-dir`) before adding it to `hardware/profiles/`.
 
+Every listing (`hosts`, `drives`, `smart`, `enclosures`, `missing`,
+`io compare`, `sas errors`, `hardware`) takes `--fields a,b,c` to
+choose and order its columns, `--allfields` for every column the
+listing has (the help text names them), and `--sort a,-b` to sort by
+columns, a leading `-` for descending; sizes, counters and times sort
+as what they are, not as text, and unknown values sort last.
+
 For a one-off report, or from cron, `drivelist report` does one cycle.
 
 `drivelist sas` prints the host's SAS topology from sysfs: each HBA and

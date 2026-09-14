@@ -18,6 +18,7 @@ import (
 func newSASCmd(cfg *clientConfig) *cobra.Command {
 	var errorsOnly bool
 	var fixture, host, since string
+	var to tableOpts
 	cmd := &cobra.Command{
 		Use:   "sas [HOST | errors]",
 		Short: "Show a host's SAS topology: HBAs, expanders, phys, link rates and error counters",
@@ -34,7 +35,7 @@ as several phys sharing a port.
 		Args: cobra.MaximumNArgs(1),
 		RunE: func(cmd *cobra.Command, args []string) error {
 			if len(args) == 1 && args[0] == "errors" {
-				return sasErrors(cmd, cfg, host, since)
+				return sasErrors(cmd, cfg, host, since, to)
 			}
 			if len(args) == 1 {
 				return sasFromServer(cmd, cfg, args[0], errorsOnly)
@@ -59,6 +60,7 @@ as several phys sharing a port.
 	cmd.Flags().StringVar(&fixture, "fixture", "", "read a captured tree (from drivelist capture) instead of this host")
 	cmd.Flags().StringVar(&host, "host", "", "with errors: only this host")
 	cmd.Flags().StringVar(&since, "since", "168h", "with errors: how far back, as a duration")
+	addTableFlags(cmd, &to, sasErrorCols)
 	return cmd
 }
 
@@ -121,7 +123,7 @@ func sasFromServer(cmd *cobra.Command, cfg *clientConfig, host string, errorsOnl
 	return printSAS(cmd.OutOrStdout(), topo, errorsOnly)
 }
 
-func sasErrors(cmd *cobra.Command, cfg *clientConfig, host, since string) error {
+func sasErrors(cmd *cobra.Command, cfg *clientConfig, host, since string, to tableOpts) error {
 	d, err := time.ParseDuration(since)
 	if err != nil {
 		return fmt.Errorf("--since: %w", err)
@@ -141,23 +143,7 @@ func sasErrors(cmd *cobra.Command, cfg *clientConfig, host, since string) error 
 		fmt.Fprintf(cmd.OutOrStdout(), "no SAS error counter growth in the last %s\n", since)
 		return nil
 	}
-	tw := tab(cmd.OutOrStdout())
-	fmt.Fprintln(tw, "HOST\tNODE\tPHY\tPORT\tATTACHED\tINVALID\tDISPARITY\tDWSYNC\tRESET\tREPORTS\tLAST")
-	for _, r := range res.Msg.Rows {
-		attached := r.Attached
-		switch {
-		case r.DevName != "":
-			attached = r.DevName + " " + r.Serial
-			if r.Bay != "" {
-				attached += " bay " + r.Bay
-			}
-		case r.AttachedKind == "upstream":
-			attached = "upstream"
-		}
-		fmt.Fprintf(tw, "%s\t%s\t%d\t%s\t%s\t%d\t%d\t%d\t%d\t%d\t%s\n", r.Hostname, orDash(r.OwnerName), r.PhyId, orDash(r.Port), orDash(attached),
-			r.InvalidDword, r.DisparityError, r.LossDwordSync, r.PhyResetProblem, r.Samples, when(r.LastAt))
-	}
-	return tw.Flush()
+	return printTable(cmd.OutOrStdout(), to, sasErrorCols, res.Msg.Rows)
 }
 
 // printSAS prints one block per node: a header naming it and where it
