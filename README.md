@@ -313,6 +313,32 @@ server address in `/etc/default/drivelist`, the agent token in
 `/etc/drivelist/agent-token`, and `systemctl start drivelist-agent`;
 the service is enabled but stays inert until the token file exists.
 
+On macOS, `make` builds the binary for the machine it runs on, and
+`packaging/net.scottstuff.drivelist-agent.plist` runs the agent as a
+launchd daemon.  The agent reports the inventory and, with Homebrew's
+smartmontools installed, SMART; macOS has no kernel log to follow and
+no `/proc/diskstats`, so those two stay off.  It runs as root because
+smartctl needs that to reach the drives.  Install the binary, the token
+and a state directory, then the daemon:
+
+```
+  $ make
+  $ sudo install -m 755 drivelist /usr/local/bin/drivelist
+  $ sudo mkdir -p /usr/local/etc/drivelist /usr/local/var/drivelist
+  $ sudo sh -c 'umask 077; echo agent-secret > /usr/local/etc/drivelist/agent-token'
+  $ brew install smartmontools
+  $ sudo install -o root -g wheel -m 644 packaging/net.scottstuff.drivelist-agent.plist /Library/LaunchDaemons/
+  $ sudo sed -i '' 's/fleet:9450/mgmt1:9450/' /Library/LaunchDaemons/net.scottstuff.drivelist-agent.plist
+  $ sudo launchctl bootstrap system /Library/LaunchDaemons/net.scottstuff.drivelist-agent.plist
+  $ tail -f /usr/local/var/drivelist/agent.log
+```
+
+`sudo launchctl bootout system/net.scottstuff.drivelist-agent` stops
+it; edit the plist and bootstrap it again to change a setting.  The
+plain `drivelist` listing on that Mac finds the server's statuses at
+`/var/lib/drivelist/status.json` by default, so point it at the
+daemon's copy with `DRIVELIST_STATUS_CACHE=/usr/local/var/drivelist/status.json`.
+
 Then, from anywhere, with `DRIVELIST_SERVER` and
 `DRIVELIST_OPERATOR_TOKEN` set or written as `server = …` and
 `operator_token = …` in `~/.config/drivelist/config`:

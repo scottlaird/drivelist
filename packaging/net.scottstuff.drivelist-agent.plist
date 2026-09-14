@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+  The drivelist agent as a launchd daemon. Install as
+  /Library/LaunchDaemons/net.scottstuff.drivelist-agent.plist, owned by
+  root:wheel and mode 644, or launchd refuses it. See README, "On macOS".
+
+  Edit DRIVELIST_SERVER. PATH includes the Homebrew prefixes so that the
+  agent finds smartctl; the agent reports without SMART when it is missing.
+  The two =false flags only silence warnings about inputs macOS lacks
+  (the kernel log, /proc/diskstats).
+-->
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>net.scottstuff.drivelist-agent</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>/usr/local/bin/drivelist</string>
+    <string>agent</string>
+    <string>--state-dir</string>
+    <string>/usr/local/var/drivelist</string>
+    <string>--kmsg=false</string>
+    <string>--io=false</string>
+  </array>
+  <key>EnvironmentVariables</key>
+  <dict>
+    <key>PATH</key>
+    <string>/opt/homebrew/sbin:/opt/homebrew/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
+    <key>DRIVELIST_SERVER</key>
+    <string>fleet:9450</string>
+    <key>DRIVELIST_AGENT_TOKEN_FILE</key>
+    <string>/usr/local/etc/drivelist/agent-token</string>
+  </dict>
+  <key>RunAtLoad</key>
+  <true/>
+  <key>KeepAlive</key>
+  <true/>
+  <key>StandardOutPath</key>
+  <string>/usr/local/var/drivelist/agent.log</string>
+  <key>StandardErrorPath</key>
+  <string>/usr/local/var/drivelist/agent.log</string>
+</dict>
+</plist>
