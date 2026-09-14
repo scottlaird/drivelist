@@ -167,7 +167,10 @@
       for (const c of cols) {
         const active = sortBy === c.name || sortBy === '-' + c.name;
         const arrow = el('span', { class: 'arrow', text: active ? (sortBy.startsWith('-') ? '▼' : '▲') : '' });
-        const th = el('th', { class: active ? 'sorted' : '' }, c.header, ' ', arrow);
+        // Numeric columns are right-aligned, heading included, with the
+        // sort arrow on the outside so the label lines up with the digits.
+        const th = el('th', { class: [active ? 'sorted' : '', c.num ? 'num' : ''].join(' ').trim() },
+          ...(c.num ? [arrow, ' ', c.header] : [c.header, ' ', arrow]));
         th.addEventListener('click', () => {
           sortBy = sortBy === c.name ? '-' + c.name : c.name;
           savePrefs(spec.key, { columns: spec.columns.filter(x => chosen.has(x.name)).map(x => x.name), sort: sortBy });
