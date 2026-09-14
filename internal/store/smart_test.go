@@ -138,6 +138,16 @@ func TestListSmart(t *testing.T) {
 	if err != nil || len(only) != 1 || only[0].Drive.Serial != "Y1" {
 		t.Errorf("problems only = %+v, %v", only, err)
 	}
+	// Wear at 80% of rated life is a problem; 79% is not.
+	pct := func(v uint32) *uint32 { return &v }
+	h.s.IngestSmart(h.ctx, hostA, []SmartSample{{Identity: x, DevName: "sda", TS: t0.Add(2 * time.Hour), Summary: &SmartSummary{Protocol: "SCSI", Healthy: b(true), PercentUsed: pct(79)}}})
+	if rows, _ := h.s.ListSmart(h.ctx, "storage1", true); len(rows) != 0 {
+		t.Errorf("79%% wear flagged: %+v", rows)
+	}
+	h.s.IngestSmart(h.ctx, hostA, []SmartSample{{Identity: x, DevName: "sda", TS: t0.Add(3 * time.Hour), Summary: &SmartSummary{Protocol: "SCSI", Healthy: b(true), PercentUsed: pct(80)}}})
+	if rows, _ := h.s.ListSmart(h.ctx, "storage1", true); len(rows) != 1 {
+		t.Errorf("80%% wear not flagged: %+v", rows)
+	}
 	if byHost, _ := h.s.ListSmart(h.ctx, "storage1", false); len(byHost) != 1 || byHost[0].Drive.Serial != "X1" {
 		t.Errorf("by host = %+v", byHost)
 	}

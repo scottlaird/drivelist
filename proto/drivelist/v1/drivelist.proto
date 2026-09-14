@@ -388,7 +388,7 @@ message SmartRow {
   Drive drive = 1;
   SmartSample sample = 2;             // the newest with a summary; unset when none
   string last_skipped = 3;            // why the newest sample of all was skipped, when newer than sample
-  bool problem = 4;                   // health failed, an error counter nonzero, or 90% of rated life used
+  bool problem = 4;                   // health failed, an error counter nonzero, or 80% of rated life used
 }
 
 message ListSmartResponse {
