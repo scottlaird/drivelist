@@ -69,6 +69,11 @@ func TestHost(t *testing.T) {
 	if h.Hostname == "" || h.MachineId == "" || h.Os == "" {
 		t.Errorf("Host() = %v", h)
 	}
+	for name, want := range map[string]string{"fs2": "fs2", "scottstudio.internal.sigkill.org": "scottstudio", ".": ".", "": ""} {
+		if got := shortHostname(name); got != want {
+			t.Errorf("shortHostname(%q) = %q, want %q", name, got, want)
+		}
+	}
 }
 
 func TestSASFlatten(t *testing.T) {
