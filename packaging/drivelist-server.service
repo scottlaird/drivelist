@@ -10,6 +10,8 @@ ConditionPathExists=/etc/drivelist/operator-token
 [Service]
 Type=simple
 EnvironmentFile=-/etc/default/drivelist
+# Optional read-only token for the web interface at /ui/; ignored if missing.
+Environment=DRIVELIST_VIEWER_TOKEN_FILE=/etc/drivelist/viewer-token
 StateDirectory=drivelist
 ExecStart=/usr/bin/drivelist serve --db /var/lib/drivelist/server.db \
     --agent-token-file /etc/drivelist/agent-token \
