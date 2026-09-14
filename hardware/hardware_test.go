@@ -131,3 +131,18 @@ func TestMS01Profile(t *testing.T) {
 		t.Errorf("the x2 slot should be declared without an identity: %+v", p.Bays)
 	}
 }
+
+func TestM510Profile(t *testing.T) {
+	p := Embedded().Lookup("HP ProLiant m510 Server Cartridge", "ProLiant m510 Server Cartridge")
+	if p == nil {
+		t.Fatal("no m510 profile")
+	}
+	for kind, id := range map[string]string{"pci": "PCI-E Slot 6/00.0/08.0", "ata": "pci-0000:00:1f.2-ata-5"} {
+		if _, ok := p.Label(kind, id); !ok {
+			t.Errorf("%s %s unmapped", kind, id)
+		}
+	}
+	if _, ok := p.Label("pci", "PCI-E Slot 6"); ok {
+		t.Error("the bare slot designation maps to a bay")
+	}
+}

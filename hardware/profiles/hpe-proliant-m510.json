@@ -1,0 +1,36 @@
+{
+  "match": {
+    "model": "HP ProLiant m510 Server Cartridge"
+  },
+  "title": "HPE ProLiant m510 Moonshot cartridge: 2 x M.2 NVMe and 1 x M.2 SATA on board, plus a 2 x M.2 carrier card",
+  "layout": {
+    "rows": 1,
+    "columns": 5,
+    "order": "row-major"
+  },
+  "notes": "The two on-board NVMe M.2 slots are PCIe hotplug slots 1 and 2. The SATA M.2 is on port 5 of the chipset's AHCI controller. The carrier card sits in the slot the firmware calls PCI-E Slot 6 and carries a PCIe switch whose ports 00.0 and 08.0 each hold an M.2; which port is which physical position on the card has not been checked, so the two are named by port.",
+  "bays": [
+    {
+      "bay": "M.2 1",
+      "pci": "1"
+    },
+    {
+      "bay": "M.2 2",
+      "pci": "2"
+    },
+    {
+      "bay": "M.2 SATA",
+      "ata": "pci-0000:00:1f.2-ata-5"
+    },
+    {
+      "bay": "card port 0",
+      "pci": "PCI-E Slot 6/00.0/00.0",
+      "note": "carrier card M.2 behind switch port 00.0; physical position unverified"
+    },
+    {
+      "bay": "card port 8",
+      "pci": "PCI-E Slot 6/00.0/08.0",
+      "note": "carrier card M.2 behind switch port 08.0; physical position unverified"
+    }
+  ]
+}

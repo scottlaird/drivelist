@@ -86,3 +86,37 @@ func TestBridgeFallback(t *testing.T) {
 	}
 	t.Error("nvme2n1 not in inventory")
 }
+
+// TestPCIIdentity: the cases the fleet has met. d1's carrier card puts
+// two drives behind a switch under one named slot; the MS-A2 names one
+// slot and not the others; a bifurcated slot names two root ports alike.
+func TestPCIIdentity(t *testing.T) {
+	smbios := map[string]smbiosSlot{
+		"0000:00:03.0": {Designation: "PCI-E Slot 6", Address: "0000:00:03.0"},
+		"0000:00:01.2": {Designation: "J3502", Address: "0000:00:01.2"},
+		"0000:00:09.0": {Designation: "PCIE9", Address: "0000:00:09.0"},
+		"0000:00:09.1": {Designation: "PCIE9", Address: "0000:00:09.1"},
+	}
+	cases := []struct {
+		addr      string
+		ancestors []string // nearest first
+		want      string
+		ok        bool
+	}{
+		{"0000:0d:00.0", []string{"0000:0c:00.0", "0000:0b:00.0", "0000:00:03.0"}, "PCI-E Slot 6/00.0/00.0", true},
+		{"0000:0e:00.0", []string{"0000:0c:08.0", "0000:0b:00.0", "0000:00:03.0"}, "PCI-E Slot 6/00.0/08.0", true},
+		{"0000:08:00.0", []string{"0000:00:01.2"}, "J3502", true},
+		{"0000:09:00.0", []string{"0000:00:01.3"}, "0000:00:01.3", true},
+		{"0000:12:00.0", []string{"0000:11:04.0", "0000:10:00.0", "0000:00:01.3"}, "0000:00:01.3/00.0/04.0", true},
+		{"0000:83:00.0", []string{"0000:00:09.0"}, "PCIE9 @0000:00:09.0", true},
+		{"0000:85:00.0", []string{"0000:00:09.1"}, "PCIE9 @0000:00:09.1", true},
+		{"0000:00:03.0", nil, "PCI-E Slot 6", true},
+		{"0000:41:00.0", nil, "", false},
+	}
+	for _, c := range cases {
+		got, ok := pciIdentity(smbios, c.addr, c.ancestors)
+		if got != c.want || ok != c.ok {
+			t.Errorf("pciIdentity(%s, %v) = %q %v, want %q %v", c.addr, c.ancestors, got, ok, c.want, c.ok)
+		}
+	}
+}
