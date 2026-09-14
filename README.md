@@ -263,7 +263,12 @@ package), which can read everything and change nothing, so the
 operator token never has to leave your shell.  The page builds every
 element from text, never from markup, and is served under a
 Content-Security-Policy that admits no inline script, so nothing that
-reaches the database can run in the browser.
+reaches the database can run in the browser.  A host's SAS page draws
+the topology, host to HBAs to expanders to the bays of each enclosure,
+wide ports as heavy lines labelled with rate and width, every bay a
+link to its drive with the detail in a tooltip; the drawing needs
+[Mermaid](https://mermaid.js.org/), which the page loads from the one
+CDN path the policy names.
 
 For a one-off report, or from cron, `drivelist report` does one cycle.
 A host you would rather not give a token to can still be tracked: run

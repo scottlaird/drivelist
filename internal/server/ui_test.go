@@ -54,7 +54,7 @@ func TestUIServed(t *testing.T) {
 			t.Errorf("%s: %d, %d bytes", path, res.StatusCode, len(body))
 		}
 		csp := res.Header.Get("Content-Security-Policy")
-		if !strings.Contains(csp, "default-src 'none'") || !strings.Contains(csp, "script-src 'self'") || strings.Contains(csp, "unsafe-inline") {
+		if !strings.Contains(csp, "default-src 'none'") || !strings.Contains(csp, "script-src 'self' "+mermaidSource+";") || strings.Contains(csp, "unsafe-eval") {
 			t.Errorf("%s: policy %q", path, csp)
 		}
 		if res.Header.Get("X-Content-Type-Options") != "nosniff" {
@@ -88,6 +88,17 @@ func TestUINeverBuildsHTMLFromData(t *testing.T) {
 	// Links are only ever built from hash routes with encoded parameters.
 	if m := regexp.MustCompile(`href[^\n]*javascript:`).Find(src); m != nil {
 		t.Errorf("app.js builds a javascript: URL: %s", m)
+	}
+	// The one script it loads from elsewhere is the Mermaid file the policy
+	// names, so the pin and the policy cannot drift apart.
+	urls := regexp.MustCompile(`https://[^'"\s]+`).FindAll(src, -1)
+	if len(urls) == 0 {
+		t.Errorf("app.js names no Mermaid URL")
+	}
+	for _, u := range urls {
+		if !strings.HasPrefix(string(u), mermaidSource) || !strings.HasSuffix(string(u), ".js") {
+			t.Errorf("app.js loads %s, outside the policy's %s", u, mermaidSource)
+		}
 	}
 }
 
