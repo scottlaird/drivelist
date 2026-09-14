@@ -362,6 +362,58 @@
   }
   const sinceDays = d => new Date(Date.now() - d * 86400000).toISOString();
 
+  // ---------- summary ----------
+  function tile(label, value, opts) {
+    const o = opts || {};
+    const v = el('div', { class: 'value' });
+    v.append(o.href ? link(String(value), o.href) : document.createTextNode(String(value)));
+    const t = el('div', { class: 'tile' + (o.cls ? ' ' + o.cls : '') }, el('div', { class: 'label', text: label }), v);
+    if (o.sub) t.append(el('div', { class: 'sub', text: o.sub }));
+    return t;
+  }
+  async function pageSummary() {
+    const [hosts, drives, missing, events, smart, sas] = await Promise.all([
+      rpc('ListHosts'), rpc('ListDrives'), rpc('ListMissing'), rpc('ListEvents', { limit: 15 }),
+      rpc('ListSmart', { problems: true }), rpc('ListSASErrors', { since: sinceDays(7) }),
+    ]);
+    const hs = hosts.hosts || [];
+    const ds = drives.drives || [];
+    const placed = ds.filter(d => d.current);
+    const stale = hs.filter(h => h.staleSince).length;
+    let total = 0;
+    for (const d of placed) total += num(d.sizeBytes) || 0;
+    const byStatus = {};
+    for (const d of placed) byStatus[d.status] = (byStatus[d.status] || 0) + 1;
+    const unused = placed.filter(d => !(d.current.uses || []).length).length;
+    const byBus = {};
+    for (const d of placed) { const b = busName(d.bus); byBus[b] = (byBus[b] || 0) + 1; }
+    const gone = (missing.drives || []).filter(d => d.last).length;
+    const ghosts = (missing.ghosts || []).length;
+    const problems = (smart.rows || []).length;
+    const sasRows = (sas.rows || []).length;
+    const notOK = ds.length - placed.length;
+    main.append(heading('Fleet', hs.length + ' hosts, ' + placed.length + ' drives present, ' + bytes(total) + ' of storage'));
+    const tiles = el('div', { class: 'tiles' });
+    tiles.append(
+      tile('hosts', hs.length, { href: '#/hosts', sub: stale ? stale + ' stale' : 'all reporting', cls: stale ? 'bad' : '' }),
+      tile('drives present', placed.length, { href: '#/drives', sub: Object.entries(byBus).sort().map(([k, v]) => v + ' ' + k).join(', ') }),
+      tile('storage', bytes(total), { sub: 'on drives present now' }),
+      tile('ok', byStatus.ok || 0, { href: '#/drives' }),
+      tile('suspect', byStatus.suspect || 0, { href: '#/drives', cls: byStatus.suspect ? 'warn' : '' }),
+      tile('bad', byStatus.bad || 0, { href: '#/drives', cls: byStatus.bad ? 'bad' : '' }),
+      tile('unused', unused, { href: '#/drives', sub: 'present, in no pool or mount' }),
+      tile('missing', gone, { href: '#/missing', sub: ghosts ? ghosts + ' pool ghosts' : 'no pool ghosts', cls: gone || ghosts ? 'warn' : '' }),
+      tile('smart problems', problems, { href: '#/smart?problems=1', cls: problems ? 'warn' : '' }),
+      tile('sas errors, 7d', sasRows, { href: '#/sas-errors', sub: sasRows ? 'phys with counter growth' : 'no counter growth', cls: sasRows ? 'warn' : '' }),
+    );
+    if (byStatus.shelved || byStatus.retired || notOK) {
+      tiles.append(tile('not present', notOK, { href: '#/drives', sub: [byStatus.shelved ? byStatus.shelved + ' shelved' : '', byStatus.retired ? byStatus.retired + ' retired' : ''].filter(Boolean).join(', ') || 'known but absent' }));
+    }
+    main.append(tiles);
+    main.append(el('h2', { text: 'Recent events' }), table({ key: 'summary.events', columns: eventCols, rows: events.events || [] }));
+    main.append(el('p', { class: 'note' }, link('all events', '#/events')));
+  }
+
   async function pageHosts() {
     const res = await rpc('ListHosts');
     main.append(heading('Hosts'), table({ key: 'hosts', columns: hostCols, rows: res.hosts || [] }));
@@ -559,7 +611,7 @@
 
   // ---------- router ----------
   const routes = [
-    [/^\/?$/, () => pageHosts()],
+    [/^\/?$/, () => pageSummary()],
     [/^\/hosts$/, () => pageHosts()],
     [/^\/host\/([^/]+)$/, m => pageHost(decodeURIComponent(m[1]))],
     [/^\/drives$/, () => pageDrives()],
@@ -574,10 +626,11 @@
     [/^\/missing$/, () => pageMissing()],
   ];
   async function route() {
-    const hash = location.hash.replace(/^#/, '') || '/hosts';
+    const hash = location.hash.replace(/^#/, '') || '/';
     const [path, query] = hash.split('?');
     const q = new URLSearchParams(query || '');
-    for (const a of document.querySelectorAll('nav a')) a.className = (a.getAttribute('href') === '#' + path.split('/').slice(0, 2).join('/')) ? 'active' : '';
+    const section = path === '/' ? '#/' : '#' + path.split('/').slice(0, 2).join('/');
+    for (const a of document.querySelectorAll('nav a')) a.className = (a.getAttribute('href') === section) ? 'active' : '';
     clear(main);
     if (!getToken()) { askToken(); return; }
     main.append(el('p', { class: 'note', text: 'loading…' }));
