@@ -565,9 +565,16 @@
   }
   async function pageSAS(host) {
     const res = await rpc('GetSAS', { host });
-    main.append(heading('SAS topology: ' + host));
+    main.append(heading('SAS topology: ' + host, 'wide ports are heavy lines; a bay links to its drive, hover for detail'));
     const nodes = (res.nodes || []).filter(n => !n.goneAt);
     if (!nodes.length) main.append(el('p', { class: 'note', text: 'no SAS topology reported' }));
+    else {
+      try {
+        await sasDiagram(main, host, res);
+      } catch (e) {
+        main.append(el('p', { class: 'note', text: 'no diagram: ' + e.message }));
+      }
+    }
     for (const n of nodes) {
       const node = n.node;
       const phys = (res.phys || []).filter(p => !p.goneAt && p.phy.ownerAddress === node.address);
@@ -609,6 +616,149 @@
         { name: 'drive', header: 'DRIVE', value: g => g.serial ? link(g.serial, '#/drive/' + enc(g.serial)) : '-', mono: true },
         { name: 'since', header: 'SINCE', value: g => when(g.firstSeen) },
       ] }));
+    }
+  }
+
+
+  // ---------- SAS topology diagram ----------
+  // Mermaid, loaded from the CDN the policy admits the first time a
+  // topology page opens. The diagram source is built from data, so every
+  // label goes through mlabel(), which keeps only characters that cannot
+  // open a Mermaid construct, and Mermaid runs at securityLevel strict
+  // with SVG text labels, no HTML. The page never touches the SVG's
+  // markup afterwards, only adds <title> tooltips and click handlers.
+  const MERMAID_URL = 'https://cdn.jsdelivr.net/npm/mermaid@11.17.2/dist/mermaid.min.js';
+  let mermaidLoading = null;
+  function loadMermaid() {
+    if (mermaidLoading) return mermaidLoading;
+    mermaidLoading = new Promise((resolve, reject) => {
+      const s = el('script', { src: MERMAID_URL });
+      s.addEventListener('load', () => {
+        const dark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        window.mermaid.initialize({ startOnLoad: false, securityLevel: 'strict', theme: dark ? 'dark' : 'neutral', flowchart: { htmlLabels: false, curve: 'basis', padding: 6, nodeSpacing: 10, rankSpacing: 22 }, maxTextSize: 400000, maxEdges: 4000 });
+        resolve(window.mermaid);
+      });
+      s.addEventListener('error', () => { mermaidLoading = null; reject(new Error('could not load Mermaid from ' + MERMAID_URL)); });
+      document.head.append(s);
+    });
+    return mermaidLoading;
+  }
+  const mlabel = v => String(v === undefined || v === null ? '' : v).replace(/[^A-Za-z0-9 ._:/#×·+-]/g, '?').slice(0, 60) || '?';
+  const gbit = r => { r = num(r); if (!r) return ''; return (Number.isInteger(r) ? r : r.toFixed(1)) + 'G'; };
+
+  // sasDiagram draws host -> HBAs -> expanders -> the enclosures each one
+  // reaches, with a tiny node per bay laid out as the hardware profile
+  // says (else twelve across). Wide ports are heavy lines labelled with
+  // their rate and width; a bay's node links to the drive in it.
+  async function sasDiagram(into, host, sas) {
+    const nodes = (sas.nodes || []).filter(n => !n.goneAt).map(n => n.node);
+    if (!nodes.length) return;
+    const phys = (sas.phys || []).filter(p => !p.goneAt);
+    const byName = {};
+    for (const n of nodes) byName[n.name] = n;
+    const encl = await rpc('ListEnclosures');
+    const enclosures = (encl.enclosures || []).filter(e => e.hostname === host && byName[e.via]);
+    const bays = {};
+    for (const e of enclosures) bays[e.enclosure] = await rpc('ListBays', { ref: e.enclosure });
+
+    const lines = ['flowchart TD'];
+    const ids = new Map();      // node id -> { hash, tip }
+    let seq = 0;
+    const id = () => 'n' + (seq++);
+    const label = v => '["' + mlabel(v) + '"]';
+    const rateOf = {};          // drive serial -> rate label
+    for (const p of phys) if (p.phy.attachedKind === 'drive' && p.serial) rateOf[p.serial] = gbit(p.phy.rateGbit);
+
+    const hostId = id();
+    lines.push(hostId + label(host) + ':::host');
+    ids.set(hostId, { hash: '#/host/' + enc(host), tip: host });
+    const nodeId = {};
+    for (const n of nodes) {
+      const nid = id();
+      nodeId[n.address] = nid;
+      const what = [n.vendor, n.product].filter(Boolean).join(' ');
+      lines.push(nid + label(n.name.toUpperCase() + (what ? ' · ' + what : '')) + ':::' + (n.kind === 'hba' ? 'hba' : 'expander'));
+      ids.set(nid, { hash: '#/sas/' + enc(host) + '#' + n.name, tip: [n.name, what, n.revision ? 'fw ' + n.revision : '', n.address].filter(Boolean).join('\n') });
+    }
+    // Upstream links: an HBA hangs off the host; an expander off its parent
+    // through the parent's port, one edge per port, heavy when wide.
+    for (const n of nodes) {
+      if (!n.parentAddress || !nodeId[n.parentAddress]) { lines.push(hostId + ' --> ' + nodeId[n.address]); continue; }
+      const ports = {};
+      for (const p of phys) {
+        if (p.phy.ownerAddress !== n.parentAddress || p.phy.attachedAddress !== n.address) continue;
+        const key = p.phy.port || p.phy.name;
+        (ports[key] = ports[key] || []).push(p.phy);
+      }
+      const keys = Object.keys(ports);
+      if (!keys.length) { lines.push(nodeId[n.parentAddress] + ' --> ' + nodeId[n.address]); continue; }
+      for (const key of keys) {
+        const group = ports[key];
+        const width = Math.max(group.length, group[0].portWidth || 0);
+        const text = [gbit(group[0].rateGbit), width > 1 ? 'x' + width : ''].filter(Boolean).join(' ');
+        lines.push(nodeId[n.parentAddress] + (width > 1 ? ' ==>' : ' -->') + (text ? '|"' + mlabel(text) + '"|' : '') + ' ' + nodeId[n.address]);
+      }
+    }
+    // Enclosures: a subgraph of bay nodes under the node that reaches it.
+    for (const e of enclosures) {
+      const view = bays[e.enclosure] || {};
+      const list = view.bays || [];
+      if (!list.length) continue;
+      const sid = id();
+      const title = [e.name || e.product || e.enclosure, e.name && e.product ? e.product : ''].filter(Boolean).join(' · ');
+      lines.push('subgraph ' + sid + label(title));
+      lines.push('direction TB');
+      ids.set(sid, { hash: '#/enclosure/' + enc(e.enclosure), tip: title });
+      let columns = view.columns > 0 ? view.columns : Math.min(list.length, 12);
+      let rows = Math.ceil(list.length / columns);
+      const cell = [];
+      list.forEach((b, i) => {
+        const bid = id();
+        const text = /^\d+$/.test(b.label || '') ? '#' + b.label : (b.label || '?');
+        lines.push(bid + label(text) + ':::' + (b.present ? 'drive' : 'empty'));
+        const tip = b.present ? [text, b.serial, b.model, b.devName, rateOf[b.serial] || '', b.status, useSummary(b.uses)].filter(v => v && v !== '-').join('\n') : text + '\nempty';
+        ids.set(bid, { hash: b.present && b.serial ? '#/drive/' + enc(b.serial) : '', tip });
+        const r = view.order === 'column-major' ? i % rows : Math.floor(i / columns);
+        const c = view.order === 'column-major' ? Math.floor(i / rows) : i % columns;
+        (cell[r] = cell[r] || [])[c] = bid;
+      });
+      // Invisible edges down each column keep the bays in a grid.
+      for (let r = 1; r < cell.length; r++) for (let c = 0; c < columns; c++) {
+        if (cell[r] && cell[r][c] && cell[r - 1] && cell[r - 1][c]) lines.push(cell[r - 1][c] + ' ~~~ ' + cell[r][c]);
+      }
+      lines.push('end');
+      const rates = new Set();
+      for (const b of list) if (b.present && rateOf[b.serial]) rates.add(rateOf[b.serial]);
+      const rate = [...rates].sort((a, b) => parseFloat(b) - parseFloat(a)).join('/');
+      lines.push(nodeId[byName[e.via].address] + ' -->' + (rate ? '|"' + mlabel(rate) + '"|' : '') + ' ' + sid);
+    }
+    lines.push('classDef host font-weight:bold');
+    lines.push('classDef hba stroke-width:2px');
+    lines.push('classDef expander stroke-width:2px');
+    lines.push('classDef drive font-size:11px');
+    lines.push('classDef empty font-size:11px,stroke-dasharray:3 2,opacity:0.45');
+
+    const pre = el('pre', { class: 'mermaid', text: lines.join('\n') });
+    const box = el('div', { class: 'diagram' }, pre);
+    into.append(box);   // Mermaid measures text, so the element must be in the document
+    const mermaid = await loadMermaid();
+    try {
+      await mermaid.run({ nodes: [pre], suppressErrors: false });
+    } catch (e) {
+      box.remove();
+      throw e;
+    }
+    // Drawn at its natural size; the container scrolls sideways.
+    const svg = box.querySelector('svg');
+    if (svg && svg.viewBox && svg.viewBox.baseVal.width) svg.setAttribute('width', Math.ceil(svg.viewBox.baseVal.width));
+    // Tooltips and links go on the rendered nodes by their Mermaid ids,
+    // which end in the id given in the source.
+    for (const g of box.querySelectorAll('g.node, g.cluster')) {
+      const m = (g.id || '').match(/flowchart-(n\d+)-\d+$/) || (g.id || '').match(/(?:^|-)(n\d+)$/);
+      const info = m ? ids.get(m[1]) : null;
+      if (!info) continue;
+      if (info.tip) { const t = document.createElementNS('http://www.w3.org/2000/svg', 'title'); t.textContent = info.tip; g.prepend(t); }
+      if (info.hash) { g.classList.add('clickable'); g.addEventListener('click', () => { location.hash = info.hash; }); }
     }
   }
 
