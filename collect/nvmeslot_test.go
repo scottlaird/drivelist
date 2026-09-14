@@ -39,8 +39,10 @@ func TestNVMeSlots(t *testing.T) {
 			t.Errorf("%s = %+v, want bay %s in %s", name, d, bay, key)
 		}
 	}
-	if d := byName["nvme2n1"]; d == nil || d.EnclosureBay != "" || d.EnclosureID != "" {
-		t.Errorf("onboard nvme2n1 got a slot: %+v", d)
+	// The onboard M.2 is in no hotplug slot and no SMBIOS record names its
+	// bridge, so the bridge's address stands in.
+	if d := byName["nvme2n1"]; d == nil || d.EnclosureBay != "0000:40:01.2" || d.EnclosureID != key {
+		t.Errorf("onboard nvme2n1 = %+v, want bay 0000:40:01.2", d)
 	}
 	if len(empties) != 2 || empties[0].EnclosureBay != "9" || empties[1].EnclosureBay != "10" || empties[0].EnclosureID != key || empties[0].Uses[0] != "empty" {
 		t.Errorf("empty bays = %+v", empties)

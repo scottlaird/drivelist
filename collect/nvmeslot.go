@@ -18,7 +18,10 @@ import (
 // SMBIOS type 9, which names every slot the board vendor cared to describe
 // ("M.2_1", "PCIE3", or a bare reference designator) by the root port it
 // hangs off. The slot table wins where it has the drive; SMBIOS is the
-// fallback, and the only source for an M.2 slot. Either way the enclosure
+// fallback, and the usual source for an M.2 slot; failing both, the bay is
+// the root port's own address ("0000:00:01.3"), which is as fixed per
+// board as a designation and lets a profile name a slot the vendor did
+// not describe. Either way the enclosure
 // is the chassis (keyed on its DMI serial, described by vendor and
 // product) and the bay is the slot's name as the firmware gives it, "9-1"
 // for the second lane of a bifurcated slot 9. Bays are only known where a
@@ -29,12 +32,11 @@ import (
 func (c *Collector) annotateNVMeSlots(inv *drivelist.Inventory) error {
 	slots := readPCISlots(c.sys())
 	smbios := readSMBIOSSlots(c.sys())
-	if len(slots) == 0 && len(smbios) == 0 {
-		return nil
-	}
 	key, model := dmiChassis(c.sys())
 	if key == "" {
-		slog.Warn("pci slots known but the chassis has no usable DMI serial; NVMe drives get no location")
+		if len(slots) > 0 || len(smbios) > 0 {
+			slog.Warn("pci slots known but the chassis has no usable DMI serial; NVMe drives get no location")
+		}
 		return nil
 	}
 	occupied := map[string]bool{}
@@ -49,11 +51,15 @@ func (c *Collector) annotateNVMeSlots(inv *drivelist.Inventory) error {
 		} else {
 			// SMBIOS names the slot by its root port; some firmware names
 			// the device's own address instead, so try that first.
-			for _, a := range append([]string{addr}, c.pciAncestors(d.SysPath, addr)...) {
+			ancestors := c.pciAncestors(d.SysPath, addr)
+			for _, a := range append([]string{addr}, ancestors...) {
 				if s, found := smbios[a]; found {
 					slot, ok = s.Designation, true
 					break
 				}
+			}
+			if !ok && len(ancestors) > 0 {
+				slot, ok = ancestors[0], true
 			}
 		}
 		if !ok {
