@@ -30,10 +30,20 @@ func Host() *pb.HostIdentity {
 	hostname, _ := os.Hostname()
 	return &pb.HostIdentity{
 		MachineId:    machineID(hostname),
-		Hostname:     hostname,
+		Hostname:     shortHostname(hostname),
 		Os:           runtime.GOOS,
 		AgentVersion: Version,
 	}
+}
+
+// shortHostname is the first label of name: a Mac whose HostName is set
+// to an FQDN joins the fleet under the same kind of label as everything
+// else. The machine id, not the label, identifies the host.
+func shortHostname(name string) string {
+	if short, _, ok := strings.Cut(name, "."); ok && short != "" {
+		return short
+	}
+	return name
 }
 
 func machineID(fallback string) string {
