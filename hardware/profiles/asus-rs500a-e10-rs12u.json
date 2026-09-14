@@ -5,10 +5,10 @@
   "title": "ASUS RS500A-E10-RS12U, 12 x 2.5\" front bays",
   "layout": {
     "rows": 2,
-    "columns": 6,
+    "columns": 7,
     "order": "column-major"
   },
-  "notes": "Bays are numbered 1 to 12 in the manual, in six columns of two: bay 1 top left, bay 2 below it, then rightward. Each bay can take U.2 (NVMe) or SATA; a U.2 drive shows up in a PCIe slot (9, 9-1, 10, 10-1 on the board's bifurcated x8 slots), a SATA drive on an onboard ATA port. Which slot and port feed which bay has not been probed yet, so the bays carry no identities; `drivelist hardware check HOST` lists the identities seen.",
+  "notes": "Bays are numbered 1 to 12 in the manual, in six columns of two: bay 1 top left, bay 2 below it, then rightward. Each bay can take U.2 (NVMe) or SATA; a U.2 drive shows up in a PCIe slot (9, 9-1, 10, 10-1 on the board's bifurcated x8 slots), a SATA drive on an onboard ATA port. Which slot and port feed which bay has not been probed yet, so the bays carry no identities; `drivelist hardware check HOST` lists the identities seen. The board also has an M.2 slot of its own on root port 0000:40:01.2, listed last.",
   "bays": [
     {
       "bay": "1"
@@ -45,6 +45,11 @@
     },
     {
       "bay": "12"
+    },
+    {
+      "bay": "M.2 onboard",
+      "pci": "0000:40:01.2",
+      "note": "the board's own M.2 slot, on the second root complex; not a front bay"
     }
   ]
 }

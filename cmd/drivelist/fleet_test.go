@@ -268,7 +268,7 @@ func writeFile(path, body string) error {
 func TestHardwareCommands(t *testing.T) {
 	fleetEnv(t)
 	out := mustRun(t, "hardware")
-	for _, want := range []string{"RS500A-E10-RS12U", "HGST 4U60_STOR_ENCL", "2x6", "5x12"} {
+	for _, want := range []string{"RS500A-E10-RS12U", "HGST 4U60_STOR_ENCL", "2x7", "5x12"} {
 		if !strings.Contains(out, want) {
 			t.Errorf("hardware lacks %q:\n%s", want, out)
 		}
