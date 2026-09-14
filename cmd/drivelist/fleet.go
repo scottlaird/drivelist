@@ -126,6 +126,7 @@ try the server without the agent. Needs the agent token.`,
 
 func newHostsCmd(cfg *clientConfig) *cobra.Command {
 	var ids bool
+	var to tableOpts
 	cmd := &cobra.Command{
 		Use:   "hosts",
 		Short: "List the hosts that report to the server",
@@ -142,28 +143,14 @@ func newHostsCmd(cfg *clientConfig) *cobra.Command {
 			if cfg.json {
 				return printJSON(cmd.OutOrStdout(), res.Msg)
 			}
-			now := time.Now()
-			w := tab(cmd.OutOrStdout())
-			fmt.Fprint(w, "HOST\tDRIVES\tMISSING\tGHOSTS\tLAST REPORT\tSTATE\tAGENT")
-			if ids {
-				fmt.Fprint(w, "\tMACHINE ID")
+			if ids && !to.all && to.fields == "" {
+				to.fields = "host,drives,missing,ghosts,last,state,agent,machineid"
 			}
-			fmt.Fprintln(w)
-			for _, h := range res.Msg.Hosts {
-				state := "ok"
-				if h.StaleSince != nil {
-					state = "stale since " + when(h.StaleSince)
-				}
-				fmt.Fprintf(w, "%s\t%d\t%d\t%d\t%s\t%s\t%s", h.Hostname, h.DriveCount, h.MissingCount, h.GhostCount, ago(h.LastReport, now), state, orDash(h.AgentVersion))
-				if ids {
-					fmt.Fprintf(w, "\t%s", h.MachineId)
-				}
-				fmt.Fprintln(w)
-			}
-			return w.Flush()
+			return printTable(cmd.OutOrStdout(), to, hostCols, res.Msg.Hosts)
 		},
 	}
 	cmd.Flags().BoolVar(&ids, "ids", false, "also show each host's machine id")
+	addTableFlags(cmd, &to, hostCols)
 	return cmd
 }
 
@@ -174,6 +161,7 @@ func newDrivesCmd(cfg *clientConfig) *cobra.Command {
 		host, model    string
 		status         []string
 		unused, missng bool
+		to             tableOpts
 	)
 	cmd := &cobra.Command{
 		Use:   "drives",
@@ -193,30 +181,10 @@ func newDrivesCmd(cfg *clientConfig) *cobra.Command {
 			if cfg.json {
 				return printJSON(cmd.OutOrStdout(), res.Msg)
 			}
-			w := tab(cmd.OutOrStdout())
-			fmt.Fprintln(w, "HOST\tSLOT\tDEVICE\tMODEL\tSERIAL\tSIZE\tBUS\tSTATUS\tZFS\tUSES")
-			for _, d := range res.Msg.Drives {
-				p := d.Current
-				hostName, dev := "-", "-"
-				if p == nil {
-					if d.Last != nil {
-						p = d.Last
-						hostName = "(" + p.Hostname + ")"
-					}
-				} else {
-					hostName, dev = p.Hostname, p.DevName
-				}
-				sl, uses := "-", "-"
-				if p != nil {
-					sl = slotOf(p)
-					uses = useSummary(p.Uses)
-				}
-				fmt.Fprintf(w, "%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\n",
-					hostName, sl, dev, d.Model, d.Serial, size(d.SizeBytes), busShort[d.Bus], d.Status, orDash(d.MemberState), uses)
-			}
-			return w.Flush()
+			return printTable(cmd.OutOrStdout(), to, driveCols, res.Msg.Drives)
 		},
 	}
+	addTableFlags(cmd, &to, driveCols)
 	f := cmd.Flags()
 	f.StringVar(&host, "host", "", "only drives currently on this host")
 	f.StringSliceVar(&status, "status", nil, "only these statuses (ok, suspect, bad, shelved, retired)")
@@ -395,6 +363,7 @@ func showIO(cmd *cobra.Command, cfg *clientConfig, ref, since string) error {
 
 func newIOCmd(cfg *clientConfig) *cobra.Command {
 	var host, since string
+	var to tableOpts
 	cmd := &cobra.Command{
 		Use:   "io [compare]",
 		Short: "Compare each drive's latency and utilisation with its vdev's median",
@@ -426,17 +395,12 @@ latency is several times its siblings' is the one to look at.`,
 				fmt.Fprintf(cmd.OutOrStdout(), "no I/O samples in the last %s\n", since)
 				return nil
 			}
-			tw := tab(cmd.OutOrStdout())
-			fmt.Fprintln(tw, "VDEV\tHOST\tDEVICE\tSERIAL\tMODEL\tR_AWAIT\tvs MED\tW_AWAIT\tvs MED\tUTIL\tvs MED\tREADS\tWRITES")
-			for _, r := range res.Msg.Rows {
-				fmt.Fprintf(tw, "%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%d\t%d\n", groupLabel(r.Group, int(r.GroupSize)), r.Hostname, r.DevName, r.Serial, r.Model,
-					ms(r.RAwaitMs), times(r.RAwaitMs, r.GroupRAwaitMs), ms(r.WAwaitMs), times(r.WAwaitMs, r.GroupWAwaitMs), pct(r.Util), times(r.Util, r.GroupUtil), r.Reads, r.Writes)
-			}
-			return tw.Flush()
+			return printTable(cmd.OutOrStdout(), to, ioCols, res.Msg.Rows)
 		},
 	}
 	cmd.Flags().StringVar(&host, "host", "", "only drives on this host")
 	cmd.Flags().StringVar(&since, "since", "24h", "window, as a duration")
+	addTableFlags(cmd, &to, ioCols)
 	return cmd
 }
 
@@ -655,6 +619,7 @@ func newEventsCmd(cfg *clientConfig) *cobra.Command {
 func newSmartCmd(cfg *clientConfig) *cobra.Command {
 	var host string
 	var problems bool
+	var to tableOpts
 	cmd := &cobra.Command{
 		Use:   "smart",
 		Short: "Every drive's newest SMART reading, problems first",
@@ -686,40 +651,20 @@ real reading. For one drive's history, use 'drive REF smart'.`,
 				}
 				return nil
 			}
-			now := time.Now()
-			tw := tab(cmd.OutOrStdout())
-			fmt.Fprintln(tw, "HOST\tSLOT\tDEVICE\tSERIAL\tMODEL\tHEALTH\tHOURS\tTEMP\tREALLOC\tPENDING\tUNCORR\tCRC\tWEAR\tSELF-TEST\tSAMPLED")
-			for _, r := range res.Msg.Rows {
-				d, p := r.Drive, r.Drive.Current
-				if r.Sample == nil {
-					reason := "no reading"
-					if r.LastSkipped != "" {
-						reason = "skipped: " + r.LastSkipped
-					}
-					fmt.Fprintf(tw, "%s\t%s\t%s\t%s\t%s\t%s\t\t\t\t\t\t\t\t\t\n", p.Hostname, slotOf(p), orDash(p.DevName), d.Serial, d.Model, reason)
-					continue
-				}
-				m := r.Sample.Summary
-				sampled := ago(r.Sample.Ts, now)
-				if r.LastSkipped != "" {
-					sampled += " (now " + r.LastSkipped + ")"
-				}
-				fmt.Fprintf(tw, "%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\n", p.Hostname, slotOf(p), orDash(p.DevName), d.Serial, d.Model,
-					health(m), optU(m.PowerOnHours), optTemp(m.TempC), optU(m.Reallocated), optU(m.Pending), optU(m.Uncorrectable), optU(m.CrcErrors),
-					optPct(m.PercentUsed), orDash(m.SelftestLast), sampled)
-			}
-			return tw.Flush()
+			return printTable(cmd.OutOrStdout(), to, smartCols, res.Msg.Rows)
 		},
 	}
 	cmd.Flags().StringVar(&host, "host", "", "only drives on this host")
 	cmd.Flags().BoolVar(&problems, "problems", false, "only drives whose reading says something is wrong")
+	addTableFlags(cmd, &to, smartCols)
 	return cmd
 }
 
 // ---------- enclosures ----------
 
 func newEnclosuresCmd(cfg *clientConfig) *cobra.Command {
-	return &cobra.Command{
+	var to tableOpts
+	cmd := &cobra.Command{
 		Use:   "enclosures",
 		Short: "List the enclosures (shelves, backplanes, front panels) drives sit in",
 		Long: `enclosures lists every enclosure a host has reported: the host, the
@@ -740,14 +685,11 @@ enclosure identifier).`,
 			if cfg.json {
 				return printJSON(cmd.OutOrStdout(), res.Msg)
 			}
-			w := tab(cmd.OutOrStdout())
-			fmt.Fprintln(w, "HOST\tVIA\tMODEL\tNAME\tDRIVES\tBAYS\tKEY\tNOTE")
-			for _, e := range res.Msg.Enclosures {
-				fmt.Fprintf(w, "%s\t%s\t%s\t%s\t%d\t%s\t%s\t%s\n", e.Hostname, orDash(e.Via), orDash(e.Product), orDash(e.Name), e.Drives, count(uint32(e.Bays)), e.Enclosure, e.Note)
-			}
-			return w.Flush()
+			return printTable(cmd.OutOrStdout(), to, enclosureCols, res.Msg.Enclosures)
 		},
 	}
+	addTableFlags(cmd, &to, enclosureCols)
+	return cmd
 }
 
 func newEnclosureCmd(cfg *clientConfig) *cobra.Command {
@@ -893,6 +835,7 @@ func printBayGrid(w io.Writer, res *pb.ListBaysResponse) {
 
 func newHardwareCmd(cfg *clientConfig) *cobra.Command {
 	var dir string
+	var to tableOpts
 	cmd := &cobra.Command{
 		Use:   "hardware [check HOST]",
 		Short: "List the hardware profiles built in, or check a host's enclosures against them",
@@ -910,16 +853,7 @@ contributing it (the server takes the same with serve --hardware-dir).`,
 				return err
 			}
 			if len(args) == 0 {
-				w := tab(cmd.OutOrStdout())
-				fmt.Fprintln(w, "MODEL\tBAYS\tLAYOUT\tTITLE\tFILE")
-				for _, p := range hw.All() {
-					layout := "-"
-					if p.Layout != nil {
-						layout = fmt.Sprintf("%dx%d", p.Layout.Rows, p.Layout.Columns)
-					}
-					fmt.Fprintf(w, "%s\t%d\t%s\t%s\t%s\n", p.Match.Model, len(p.Bays), layout, p.Title, p.File)
-				}
-				return w.Flush()
+				return printTable(cmd.OutOrStdout(), to, profileCols, hw.All())
 			}
 			if args[0] != "check" || len(args) != 2 {
 				return fmt.Errorf("usage: drivelist hardware [check HOST]")
@@ -928,6 +862,7 @@ contributing it (the server takes the same with serve --hardware-dir).`,
 		},
 	}
 	cmd.Flags().StringVar(&dir, "dir", "", "directory of extra hardware profiles")
+	addTableFlags(cmd, &to, profileCols)
 	return cmd
 }
 
@@ -976,7 +911,8 @@ func hardwareCheck(cmd *cobra.Command, cfg *clientConfig, host string) error {
 // ---------- missing ----------
 
 func newMissingCmd(cfg *clientConfig) *cobra.Command {
-	return &cobra.Command{
+	var to tableOpts
+	cmd := &cobra.Command{
 		Use:   "missing",
 		Short: "Drives that vanished and are not marked bad, shelved or retired, plus pool ghosts",
 		Args:  cobra.NoArgs,
@@ -993,20 +929,19 @@ func newMissingCmd(cfg *clientConfig) *cobra.Command {
 				return printJSON(cmd.OutOrStdout(), res.Msg)
 			}
 			out := cmd.OutOrStdout()
-			w := tab(out)
-			fmt.Fprintln(w, "SERIAL\tMODEL\tSTATUS\tLAST HOST\tLAST SLOT\tLAST USES\tLAST CONFIRMED\tNOTICED GONE")
+			var gone []*pb.Drive
 			for _, d := range res.Msg.Drives {
-				p := d.Last
-				if p == nil {
-					continue
+				if d.Last != nil {
+					gone = append(gone, d)
 				}
-				fmt.Fprintf(w, "%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\n", d.Serial, d.Model, d.Status, p.Hostname, slotOf(p), useSummary(p.Uses), when(p.LastSeen), when(p.EndedAt))
 			}
-			w.Flush()
+			if err := printTable(out, to, missingCols, gone); err != nil {
+				return err
+			}
 			if len(res.Msg.Ghosts) > 0 {
 				fmt.Fprintln(out)
 				fmt.Fprintln(out, "Pool members with no present device:")
-				w = tab(out)
+				w := tab(out)
 				fmt.Fprintln(w, "HOST\tPOOL\tMEMBER\tSTATE\tDRIVE\tSINCE")
 				for _, g := range res.Msg.Ghosts {
 					fmt.Fprintf(w, "%s\t%s\t%s\t%s\t%s\t%s\n", g.Hostname, g.Pool, g.Path, g.State, orDash(g.Serial), when(g.FirstSeen))
@@ -1016,4 +951,6 @@ func newMissingCmd(cfg *clientConfig) *cobra.Command {
 			return nil
 		},
 	}
+	addTableFlags(cmd, &to, missingCols)
+	return cmd
 }
