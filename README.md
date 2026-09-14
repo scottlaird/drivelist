@@ -253,6 +253,18 @@ listing has (the help text names them), and `--sort a,-b` to sort by
 columns, a leading `-` for descending; sizes, counters and times sort
 as what they are, not as text, and unknown values sort last.
 
+The server also serves a read-only web interface at `/ui/` (`/`
+redirects there): the same listings as the command line with sortable
+columns and a column picker, and every host, drive, enclosure and bay
+a link to its own page.  It asks for a token once and keeps it in the
+browser; give it the optional viewer token (`serve --viewer-token-file`
+or `DRIVELIST_VIEWER_TOKEN`, `/etc/drivelist/viewer-token` for the
+package), which can read everything and change nothing, so the
+operator token never has to leave your shell.  The page builds every
+element from text, never from markup, and is served under a
+Content-Security-Policy that admits no inline script, so nothing that
+reaches the database can run in the browser.
+
 For a one-off report, or from cron, `drivelist report` does one cycle.
 A host you would rather not give a token to can still be tracked: run
 `drivelist report --output - [--smart]` on it (no server, no token)

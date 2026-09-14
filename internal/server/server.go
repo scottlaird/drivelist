@@ -30,6 +30,10 @@ type Config struct {
 	// services. Both are required.
 	AgentToken    string
 	OperatorToken string
+	// ViewerToken, when set, may call every Query procedure that only
+	// reads; it is what the web interface holds. Empty means the web
+	// interface needs the operator token.
+	ViewerToken string
 	// Interval is how often agents are expected to report; it is sent to
 	// them and drives the stale-host sweeper.
 	Interval time.Duration
@@ -76,10 +80,41 @@ func (s *Server) Handler() http.Handler {
 	// The operator token is good for the collector too, so an operator can
 	// submit a report collected elsewhere (`admin ingest`).
 	mux.Handle(drivelistv1connect.NewCollectorHandler(s, connect.WithInterceptors(bearerAuth(s.cfg.AgentToken, s.cfg.OperatorToken))))
-	mux.Handle(drivelistv1connect.NewQueryHandler(s, connect.WithInterceptors(bearerAuth(s.cfg.OperatorToken))))
+	mux.Handle(drivelistv1connect.NewQueryHandler(s, connect.WithInterceptors(queryAuth(s.cfg.OperatorToken, s.cfg.ViewerToken))))
 	mux.HandleFunc("/healthz", func(w http.ResponseWriter, _ *http.Request) { fmt.Fprintf(w, "ok drivelist %s\n", dlversion.Version) })
 	mux.Handle("/metrics", s.metrics.handler())
+	mux.Handle("/ui/", uiHandler())
+	mux.HandleFunc("/{$}", func(w http.ResponseWriter, r *http.Request) { http.Redirect(w, r, "/ui/", http.StatusFound) })
 	return mux
+}
+
+// mutatingProcedures are the Query procedures a viewer may not call.
+var mutatingProcedures = map[string]bool{
+	"/drivelist.v1.Query/Annotate":      true,
+	"/drivelist.v1.Query/MergeDrives":   true,
+	"/drivelist.v1.Query/MergeHosts":    true,
+	"/drivelist.v1.Query/Rebuild":       true,
+	"/drivelist.v1.Query/NameEnclosure": true,
+}
+
+// queryAuth admits the operator token to every Query procedure and the
+// viewer token, when there is one, to those that only read.
+func queryAuth(operator, viewer string) connect.UnaryInterceptorFunc {
+	return func(next connect.UnaryFunc) connect.UnaryFunc {
+		return func(ctx context.Context, req connect.AnyRequest) (connect.AnyResponse, error) {
+			got := strings.TrimPrefix(req.Header().Get("Authorization"), "Bearer ")
+			if subtle.ConstantTimeCompare([]byte(got), []byte(operator)) == 1 {
+				return next(ctx, req)
+			}
+			if viewer != "" && subtle.ConstantTimeCompare([]byte(got), []byte(viewer)) == 1 {
+				if mutatingProcedures[req.Spec().Procedure] {
+					return nil, connect.NewError(connect.CodePermissionDenied, errors.New("the viewer token cannot change anything; use the operator token"))
+				}
+				return next(ctx, req)
+			}
+			return nil, connect.NewError(connect.CodeUnauthenticated, errors.New("missing or wrong bearer token"))
+		}
+	}
 }
 
 // RunSweeper marks stale hosts once per interval, and once a day rolls

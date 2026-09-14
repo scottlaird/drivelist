@@ -10,5 +10,7 @@
 #   systemctl start drivelist-agent
 
 # Extra flags for the server, when this host runs drivelist-server.service.
-# It also needs /etc/drivelist/operator-token.
+# It also needs /etc/drivelist/operator-token. A read-only token for the
+# web interface at /ui/ is optional:
+#   openssl rand -hex 32 > /etc/drivelist/viewer-token && chmod 600 /etc/drivelist/viewer-token
 #DRIVELIST_SERVE_OPTS=--listen :9450
