@@ -8,9 +8,33 @@
 (() => {
   const main = document.getElementById('main');
 
+  // ---------- demo ----------
+  // A static copy of the page (drivelist demo export) carries a meta tag
+  // naming its manifest. Then every call reads a file under data/ that
+  // the export wrote, named exactly as demoKey() says; there is no token;
+  // and the clock stops at the export, so "3h ago" stays true.
+  const demoMeta = document.querySelector('meta[name="drivelist-demo"]');
+  let demo = null;
+  function demoKey(body) {
+    const parts = [];
+    for (const k of Object.keys(body || {}).sort()) {
+      const v = body[k];
+      if (k === 'since' || v === undefined || v === null || v === false || v === '' || (Array.isArray(v) && !v.length)) continue;
+      parts.push(k + '=' + encodeURIComponent(Array.isArray(v) ? v.join('+') : String(v)));
+    }
+    return parts.length ? parts.join(',') : 'index';
+  }
+  async function demoRPC(name, body) {
+    const key = demoKey(body);
+    const res = await fetch('data/' + name + '/' + encodeURIComponent(key) + '.json');
+    if (!res.ok) throw new Error('the demo has no ' + name + ' for ' + key);
+    return res.json();
+  }
+  const now = () => demo ? demo.asOf : Date.now();
+
   // ---------- token ----------
   const tokenKey = 'drivelist.token';
-  function getToken() { try { return localStorage.getItem(tokenKey) || ''; } catch (e) { return ''; } }
+  function getToken() { if (demo) return 'demo'; try { return localStorage.getItem(tokenKey) || ''; } catch (e) { return ''; } }
   function setToken(t) { try { localStorage.setItem(tokenKey, t); } catch (e) { /* private mode */ } }
   // askToken shows a form in the page rather than a browser dialog, which
   // some browsers suppress and no test harness can drive.
@@ -29,6 +53,7 @@
   // ---------- RPC ----------
   class AuthError extends Error {}
   async function rpc(name, body) {
+    if (demo) return demoRPC(name, body);
     const res = await fetch('/drivelist.v1.Query/' + name, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + getToken() },
@@ -81,7 +106,7 @@
   }
   function ago(ts) {
     if (!ts) return 'never';
-    const s = (Date.now() - new Date(ts).getTime()) / 1000;
+    const s = (now() - new Date(ts).getTime()) / 1000;
     if (s < 90) return 'just now';
     if (s < 3600) return Math.round(s / 60) + 'm ago';
     if (s < 172800) return Math.round(s / 3600) + 'h ago';
@@ -363,7 +388,7 @@
     for (const [k, v] of pairs) { dl.append(el('dt', { text: k }), el('dd', null, v instanceof Node ? v : dash(v))); }
     return dl;
   }
-  const sinceDays = d => new Date(Date.now() - d * 86400000).toISOString();
+  const sinceDays = d => new Date(now() - d * 86400000).toISOString();
 
   // ---------- summary ----------
   function tile(label, value, opts) {
@@ -801,5 +826,19 @@
     }
   }
   window.addEventListener('hashchange', route);
-  route();
+  async function start() {
+    if (demoMeta) {
+      try {
+        const m = await (await fetch(demoMeta.getAttribute('content'))).json();
+        demo = { asOf: new Date(m.asOf).getTime() };
+        document.getElementById('token').hidden = true;
+        document.querySelector('header').append(el('span', { class: 'demo', text: 'demo: a snapshot of a real fleet as of ' + when(m.asOf) + ', names changed' }));
+      } catch (e) {
+        main.append(el('p', { class: 'error', text: 'demo data unreadable: ' + e.message }));
+        return;
+      }
+    }
+    route();
+  }
+  start();
 })();

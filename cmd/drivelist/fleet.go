@@ -34,6 +34,7 @@ func fleetCommands(cfg *clientConfig) []*cobra.Command {
 		newIOCmd(cfg),
 		newHostCmd(cfg),
 		newAdminCmd(cfg),
+		newDemoCmd(cfg),
 		newEnclosuresCmd(cfg),
 		newEnclosureCmd(cfg),
 		newHardwareCmd(cfg),

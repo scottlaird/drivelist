@@ -21,6 +21,7 @@ header { display: flex; align-items: center; gap: 1.5rem; padding: 0.6rem 1.2rem
 nav { display: flex; gap: 1rem; flex: 1; flex-wrap: wrap; }
 nav a { color: var(--muted); text-decoration: none; }
 nav a.active, nav a:hover { color: var(--ink); }
+.demo { color: var(--warn); font-size: 0.85rem; }
 #token { font: inherit; color: var(--muted); background: none; border: 1px solid var(--line); border-radius: 4px; padding: 0.15rem 0.6rem; cursor: pointer; }
 main { padding: 1rem 1.2rem 3rem; max-width: 1600px; }
 h1 { font-size: 1.3rem; margin: 0.2rem 0 0.6rem; }

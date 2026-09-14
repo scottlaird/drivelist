@@ -1,0 +1,15 @@
+{
+ "hosts": {
+  "fs2": "nas",
+  "pbs1": "backups",
+  "scottstudio": "mac1",
+  "scottstudio.internal.sigkill.org": "mac1"
+ },
+ "others": "server%d",
+ "replace": {
+  ".internal.sigkill.org": ""
+ },
+ "clear": [
+  "machine_id"
+ ]
+}
