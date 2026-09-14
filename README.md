@@ -170,7 +170,9 @@ reallocated, pending and uncorrectable sectors, CRC errors, bytes read
 and written, wear, last self-test) is sent every time; the full
 smartctl JSON at most daily per drive, or when the summary changed.
 `drivelist drive REF smart` shows the samples and `--raw` the newest
-JSON.  `--smart=false` turns sampling off.
+JSON; `drivelist smart [--host H] [--problems]` lists every drive's
+newest reading, problems first (health failed, an error counter
+nonzero, 90% of rated life used).  `--smart=false` turns sampling off.
 
 I/O statistics come from `/proc/diskstats`, read every minute and
 folded into one bucket per drive per hour (counts, bytes, time, and

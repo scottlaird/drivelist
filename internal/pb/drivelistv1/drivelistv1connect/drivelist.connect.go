@@ -82,6 +82,8 @@ const (
 	QueryListSASErrorsProcedure = "/drivelist.v1.Query/ListSASErrors"
 	// QueryListBaysProcedure is the fully-qualified name of the Query's ListBays RPC.
 	QueryListBaysProcedure = "/drivelist.v1.Query/ListBays"
+	// QueryListSmartProcedure is the fully-qualified name of the Query's ListSmart RPC.
+	QueryListSmartProcedure = "/drivelist.v1.Query/ListSmart"
 )
 
 // CollectorClient is a client for the drivelist.v1.Collector service.
@@ -294,6 +296,8 @@ type QueryClient interface {
 	// ListBays shows an enclosure bay by bay, as its hardware profile lays
 	// them out, with what sits in each.
 	ListBays(context.Context, *connect.Request[drivelistv1.ListBaysRequest]) (*connect.Response[drivelistv1.ListBaysResponse], error)
+	// ListSmart returns every placed drive with its newest SMART reading.
+	ListSmart(context.Context, *connect.Request[drivelistv1.ListSmartRequest]) (*connect.Response[drivelistv1.ListSmartResponse], error)
 }
 
 // NewQueryClient constructs a client for the drivelist.v1.Query service. By default, it uses the
@@ -421,6 +425,12 @@ func NewQueryClient(httpClient connect.HTTPClient, baseURL string, opts ...conne
 			connect.WithSchema(queryMethods.ByName("ListBays")),
 			connect.WithClientOptions(opts...),
 		),
+		listSmart: connect.NewClient[drivelistv1.ListSmartRequest, drivelistv1.ListSmartResponse](
+			httpClient,
+			baseURL+QueryListSmartProcedure,
+			connect.WithSchema(queryMethods.ByName("ListSmart")),
+			connect.WithClientOptions(opts...),
+		),
 	}
 }
 
@@ -445,6 +455,7 @@ type queryClient struct {
 	getSAS          *connect.Client[drivelistv1.GetSASRequest, drivelistv1.GetSASResponse]
 	listSASErrors   *connect.Client[drivelistv1.ListSASErrorsRequest, drivelistv1.ListSASErrorsResponse]
 	listBays        *connect.Client[drivelistv1.ListBaysRequest, drivelistv1.ListBaysResponse]
+	listSmart       *connect.Client[drivelistv1.ListSmartRequest, drivelistv1.ListSmartResponse]
 }
 
 // ListHosts calls drivelist.v1.Query.ListHosts.
@@ -542,6 +553,11 @@ func (c *queryClient) ListBays(ctx context.Context, req *connect.Request[driveli
 	return c.listBays.CallUnary(ctx, req)
 }
 
+// ListSmart calls drivelist.v1.Query.ListSmart.
+func (c *queryClient) ListSmart(ctx context.Context, req *connect.Request[drivelistv1.ListSmartRequest]) (*connect.Response[drivelistv1.ListSmartResponse], error) {
+	return c.listSmart.CallUnary(ctx, req)
+}
+
 // QueryHandler is an implementation of the drivelist.v1.Query service.
 type QueryHandler interface {
 	ListHosts(context.Context, *connect.Request[drivelistv1.ListHostsRequest]) (*connect.Response[drivelistv1.ListHostsResponse], error)
@@ -590,6 +606,8 @@ type QueryHandler interface {
 	// ListBays shows an enclosure bay by bay, as its hardware profile lays
 	// them out, with what sits in each.
 	ListBays(context.Context, *connect.Request[drivelistv1.ListBaysRequest]) (*connect.Response[drivelistv1.ListBaysResponse], error)
+	// ListSmart returns every placed drive with its newest SMART reading.
+	ListSmart(context.Context, *connect.Request[drivelistv1.ListSmartRequest]) (*connect.Response[drivelistv1.ListSmartResponse], error)
 }
 
 // NewQueryHandler builds an HTTP handler from the service implementation. It returns the path on
@@ -713,6 +731,12 @@ func NewQueryHandler(svc QueryHandler, opts ...connect.HandlerOption) (string, h
 		connect.WithSchema(queryMethods.ByName("ListBays")),
 		connect.WithHandlerOptions(opts...),
 	)
+	queryListSmartHandler := connect.NewUnaryHandler(
+		QueryListSmartProcedure,
+		svc.ListSmart,
+		connect.WithSchema(queryMethods.ByName("ListSmart")),
+		connect.WithHandlerOptions(opts...),
+	)
 	return "/drivelist.v1.Query/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
 		case QueryListHostsProcedure:
@@ -753,6 +777,8 @@ func NewQueryHandler(svc QueryHandler, opts ...connect.HandlerOption) (string, h
 			queryListSASErrorsHandler.ServeHTTP(w, r)
 		case QueryListBaysProcedure:
 			queryListBaysHandler.ServeHTTP(w, r)
+		case QueryListSmartProcedure:
+			queryListSmartHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -836,4 +862,8 @@ func (UnimplementedQueryHandler) ListSASErrors(context.Context, *connect.Request
 
 func (UnimplementedQueryHandler) ListBays(context.Context, *connect.Request[drivelistv1.ListBaysRequest]) (*connect.Response[drivelistv1.ListBaysResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("drivelist.v1.Query.ListBays is not implemented"))
+}
+
+func (UnimplementedQueryHandler) ListSmart(context.Context, *connect.Request[drivelistv1.ListSmartRequest]) (*connect.Response[drivelistv1.ListSmartResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("drivelist.v1.Query.ListSmart is not implemented"))
 }

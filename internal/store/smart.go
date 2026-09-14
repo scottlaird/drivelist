@@ -5,8 +5,10 @@ import (
 	"compress/gzip"
 	"context"
 	"database/sql"
+	"errors"
 	"fmt"
 	"io"
+	"sort"
 	"time"
 )
 
@@ -323,4 +325,81 @@ func u64p(n sql.NullInt64) *uint64 {
 	}
 	v := uint64(n.Int64)
 	return &v
+}
+
+// SmartRow is one placed drive with its newest SMART reading.
+type SmartRow struct {
+	Drive       Drive
+	Sample      *SmartSample // the newest sample with a summary; nil when none
+	LastSkipped string       // why the newest sample of all was skipped, when it is newer than Sample
+}
+
+// Problem reports whether the reading says something is wrong: health
+// failed, or any of the error counters is nonzero, or the drive is at 90%
+// of its rated life. A drive without a reading is not a problem, just
+// unknown.
+func (r SmartRow) Problem() bool {
+	if r.Sample == nil || r.Sample.Summary == nil {
+		return false
+	}
+	m := r.Sample.Summary
+	nz := func(p *uint64) bool { return p != nil && *p > 0 }
+	return (m.Healthy != nil && !*m.Healthy) || nz(m.Reallocated) || nz(m.Pending) || nz(m.Uncorrectable) || nz(m.CRCErrors) ||
+		(m.PercentUsed != nil && *m.PercentUsed >= 90)
+}
+
+// ListSmart returns every placed drive (on one host, or all) with its
+// newest SMART reading, problems first, then by host and slot. With
+// problems set, only drives whose reading says something is wrong.
+func (s *Store) ListSmart(ctx context.Context, host string, problems bool) ([]SmartRow, error) {
+	drives, err := s.ListDrives(ctx, DriveFilter{Host: host})
+	if err != nil {
+		return nil, err
+	}
+	var out []SmartRow
+	for _, d := range drives {
+		if d.Current == nil {
+			continue
+		}
+		row := SmartRow{Drive: d}
+		latest, err := s.db.QueryContext(ctx, `SELECT h.hostname, s.dev_name, `+smartColumns+` FROM smart_sample s JOIN host h USING (host_id) WHERE s.drive_id = ? AND s.skipped = '' ORDER BY s.ts DESC LIMIT 1`, d.ID)
+		if err != nil {
+			return nil, err
+		}
+		if latest.Next() {
+			var hostname, dev string
+			k, err := scanSmart(prefixScanner{latest, &hostname, &dev})
+			if err != nil {
+				latest.Close()
+				return nil, err
+			}
+			k.Hostname, k.DevName = hostname, dev
+			k.Identity = DriveIdentity{WWN: d.WWN, Model: d.Model, Serial: d.Serial}
+			row.Sample = &k
+		}
+		if err := latest.Close(); err != nil {
+			return nil, err
+		}
+		var skipped string
+		var ts int64
+		err = s.db.QueryRowContext(ctx, `SELECT skipped, ts FROM smart_sample WHERE drive_id = ? ORDER BY ts DESC LIMIT 1`, d.ID).Scan(&skipped, &ts)
+		if err != nil && !errors.Is(err, sql.ErrNoRows) {
+			return nil, err
+		}
+		if err == nil && skipped != "" && (row.Sample == nil || time.Unix(ts, 0).After(row.Sample.TS)) {
+			row.LastSkipped = skipped
+		}
+		if problems && !row.Problem() {
+			continue
+		}
+		out = append(out, row)
+	}
+	sort.SliceStable(out, func(i, j int) bool {
+		pi, pj := out[i].Problem(), out[j].Problem()
+		if pi != pj {
+			return pi
+		}
+		return false // ListDrives already ordered by host and slot
+	})
+	return out, nil
 }

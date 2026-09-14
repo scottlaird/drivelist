@@ -112,3 +112,36 @@ func TestSmartRawRetention(t *testing.T) {
 		t.Errorf("samples still pointing at raw = %d, want %d", n, RawKeep+1)
 	}
 }
+
+// TestListSmart: every placed drive with its newest real reading, problems
+// first; a newer skip shows beside the reading; --problems keeps only the
+// bad ones.
+func TestListSmart(t *testing.T) {
+	h := fleet(t)
+	x, y := DriveIdentity{WWN: "0x5000000000000001"}, DriveIdentity{WWN: "0x5000000000000002"}
+	t0 := h.now.Add(-2 * time.Hour)
+	h.s.IngestSmart(h.ctx, hostA, []SmartSample{{Identity: x, DevName: "sda", TS: t0, Summary: &SmartSummary{Protocol: "SCSI", Healthy: b(true), PowerOnHours: u(41000), Reallocated: u(0)}}})
+	h.s.IngestSmart(h.ctx, hostB, []SmartSample{{Identity: y, DevName: "sdq", TS: t0, Summary: &SmartSummary{Protocol: "ATA", Healthy: b(true), Pending: u(3)}}})
+	h.s.IngestSmart(h.ctx, hostA, []SmartSample{{Identity: x, DevName: "sda", TS: t0.Add(time.Hour), Skipped: "standby"}})
+	rows, err := h.s.ListSmart(h.ctx, "", false)
+	if err != nil || len(rows) != 2 {
+		t.Fatalf("ListSmart = %+v, %v", rows, err)
+	}
+	// Y's pending sectors make it a problem, so it leads.
+	if rows[0].Drive.Serial != "Y1" || !rows[0].Problem() || rows[1].Drive.Serial != "X1" || rows[1].Problem() {
+		t.Errorf("order = %s (problem %v), %s (problem %v)", rows[0].Drive.Serial, rows[0].Problem(), rows[1].Drive.Serial, rows[1].Problem())
+	}
+	if rows[1].Sample == nil || rows[1].Sample.TS != t0 || rows[1].LastSkipped != "standby" {
+		t.Errorf("X = sample %+v skipped %q", rows[1].Sample, rows[1].LastSkipped)
+	}
+	only, err := h.s.ListSmart(h.ctx, "", true)
+	if err != nil || len(only) != 1 || only[0].Drive.Serial != "Y1" {
+		t.Errorf("problems only = %+v, %v", only, err)
+	}
+	if byHost, _ := h.s.ListSmart(h.ctx, "storage1", false); len(byHost) != 1 || byHost[0].Drive.Serial != "X1" {
+		t.Errorf("by host = %+v", byHost)
+	}
+	if _, err := h.s.ListSmart(h.ctx, "nosuch", false); err == nil {
+		t.Error("unknown host accepted")
+	}
+}

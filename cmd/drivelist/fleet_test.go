@@ -289,3 +289,15 @@ func TestHardwareCommands(t *testing.T) {
 		t.Error("check of unknown host succeeded")
 	}
 }
+
+func TestSmartList(t *testing.T) {
+	fleetEnv(t)
+	mustRun(t, "report")
+	out := mustRun(t, "smart")
+	if !strings.Contains(out, "HEALTH") || !strings.Contains(out, "no reading") || !strings.Contains(out, "VLG32AEY") {
+		t.Errorf("smart:\n%s", out)
+	}
+	if out := mustRun(t, "smart", "--problems"); !strings.Contains(out, "no drive's SMART reading reports a problem") {
+		t.Errorf("smart --problems: %q", out)
+	}
+}

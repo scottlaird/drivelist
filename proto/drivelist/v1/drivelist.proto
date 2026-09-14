@@ -71,6 +71,8 @@ service Query {
   // ListBays shows an enclosure bay by bay, as its hardware profile lays
   // them out, with what sits in each.
   rpc ListBays(ListBaysRequest) returns (ListBaysResponse);
+  // ListSmart returns every placed drive with its newest SMART reading.
+  rpc ListSmart(ListSmartRequest) returns (ListSmartResponse);
 }
 
 // ---------- shared ----------
@@ -374,6 +376,23 @@ message BayView {
   string model = 7;
   string status = 8;
   repeated string uses = 9;
+}
+
+message ListSmartRequest {
+  string host = 1;                    // "" for every host
+  bool problems = 2;                  // only drives whose reading says something is wrong
+}
+
+// SmartRow is one placed drive with its newest SMART reading.
+message SmartRow {
+  Drive drive = 1;
+  SmartSample sample = 2;             // the newest with a summary; unset when none
+  string last_skipped = 3;            // why the newest sample of all was skipped, when newer than sample
+  bool problem = 4;                   // health failed, an error counter nonzero, or 90% of rated life used
+}
+
+message ListSmartResponse {
+  repeated SmartRow rows = 1;         // problems first, then by host and slot
 }
 
 message ListBaysResponse {
