@@ -326,3 +326,48 @@ func TestUsageErrors(t *testing.T) {
 		t.Errorf("io alone: %v %q", err, out)
 	}
 }
+
+// TestReportOutputAndIngest: a report written to a file on a host with no
+// token is submitted by an operator elsewhere and lands as that host.
+func TestReportOutputAndIngest(t *testing.T) {
+	fleetEnv(t)
+	t.Setenv("DRIVELIST_AGENT_TOKEN", "") // the collecting side holds no token
+	file := filepath.Join(t.TempDir(), "web1.json")
+	out, errOut, err := run(t, "report", "--output", file)
+	if err != nil || !strings.Contains(errOut, "wrote 5 devices") || out != "" {
+		t.Fatalf("report --output: %v\nstdout %q\nstderr %q", err, out, errOut)
+	}
+	data, _ := os.ReadFile(file)
+	if !strings.Contains(string(data), `"inventory"`) || !strings.Contains(string(data), "VLG32AEY") || strings.Contains(string(data), `"smart"`) {
+		t.Errorf("bundle:\n%.300s", data)
+	}
+	if _, _, err := run(t, "hosts"); err == nil {
+		// nothing was sent yet
+		if out := mustRun(t, "hosts"); strings.Count(out, "\n") != 1 {
+			t.Errorf("hosts before ingest:\n%s", out)
+		}
+	}
+	// The operator token alone submits it.
+	out = mustRun(t, "admin", "ingest", file)
+	if !strings.Contains(out, "ingested 5 devices") || !strings.Contains(out, "inventory changed") {
+		t.Errorf("admin ingest: %q", out)
+	}
+	if out := mustRun(t, "drives"); !strings.Contains(out, "VLG32AEY") {
+		t.Errorf("drives after ingest:\n%s", out)
+	}
+	// With --smart the bundle carries samples (skipped ones here: the
+	// fixture has no smartctl), and ingest submits them too.
+	if _, _, err := run(t, "report", "--output", file, "--smart"); err != nil {
+		t.Fatal(err)
+	}
+	data, _ = os.ReadFile(file)
+	if !strings.Contains(string(data), `"smart"`) || !strings.Contains(string(data), `"skipped"`) {
+		t.Errorf("bundle with --smart lacks samples:\n%.400s", data)
+	}
+	if out := mustRun(t, "admin", "ingest", file); !strings.Contains(out, "SMART samples") {
+		t.Errorf("admin ingest with smart: %q", out)
+	}
+	if _, _, err := run(t, "admin", "ingest", filepath.Join(t.TempDir(), "missing.json")); err == nil {
+		t.Error("ingest of a missing file succeeded")
+	}
+}

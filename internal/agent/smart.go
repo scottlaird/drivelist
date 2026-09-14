@@ -16,6 +16,7 @@ import (
 
 	"github.com/scottlaird/drivelist/collect"
 	pb "github.com/scottlaird/drivelist/internal/pb/drivelistv1"
+	"github.com/scottlaird/drivelist/internal/report"
 )
 
 // SmartConfig turns on SMART sampling.
@@ -148,7 +149,7 @@ func (a *Agent) smartToProto(name string, id *pb.DriveIdentity, s collect.SmartS
 	if s.Summary == nil {
 		return out
 	}
-	out.Summary = summaryToProto(s.Summary)
+	out.Summary = report.SmartSummary(s.Summary)
 	st := a.smart
 	st.mu.Lock()
 	defer st.mu.Unlock()
@@ -183,15 +184,4 @@ func summaryHash(s *collect.SmartSummary) string {
 	}
 	sum := sha256.Sum256([]byte(strings.Join(parts, "|")))
 	return hex.EncodeToString(sum[:8])
-}
-
-func summaryToProto(s *collect.SmartSummary) *pb.SmartSummary {
-	m := &pb.SmartSummary{Protocol: s.Protocol, SelftestLast: s.SelftestLast, Healthy: s.Healthy,
-		PowerOnHours: s.PowerOnHours, Reallocated: s.Reallocated, Pending: s.Pending, Uncorrectable: s.Uncorrectable,
-		CrcErrors: s.CRCErrors, ReadBytes: s.ReadBytes, WriteBytes: s.WriteBytes, PercentUsed: s.PercentUsed}
-	if s.TempC != nil {
-		v := int32(*s.TempC)
-		m.TempC = &v
-	}
-	return m
 }

@@ -1,14 +1,18 @@
 package main
 
 import (
+	"errors"
 	"fmt"
 	"io"
+	"os"
 	"strings"
 	"text/tabwriter"
 	"time"
 
 	"connectrpc.com/connect"
+	"github.com/scottlaird/drivelist/collect"
 	"github.com/spf13/cobra"
+	"google.golang.org/protobuf/encoding/protojson"
 	"google.golang.org/protobuf/types/known/timestamppb"
 
 	"github.com/scottlaird/drivelist/hardware"
@@ -41,6 +45,57 @@ func newAdminCmd(cfg *clientConfig) *cobra.Command {
 		Use:   "admin",
 		Short: "Server maintenance",
 	}
+	cmd.AddCommand(&cobra.Command{
+		Use:   "ingest FILE",
+		Short: "Submit a report written by 'report --output' on another host",
+		Long: `ingest submits a report bundle (an inventory report and, if it has one,
+a SMART pass) as the host that wrote it. FILE is - for standard input.
+Uses the operator token, which the server accepts for reports too, so
+the host that was collected needs no token of its own.`,
+		Args: usageArgs(1, 1, "drivelist admin ingest FILE"),
+		RunE: func(cmd *cobra.Command, args []string) error {
+			var data []byte
+			var err error
+			if args[0] == "-" {
+				data, err = io.ReadAll(cmd.InOrStdin())
+			} else {
+				data, err = os.ReadFile(args[0])
+			}
+			if err != nil {
+				return err
+			}
+			var bundle pb.ReportBundle
+			if err := protojson.Unmarshal(data, &bundle); err != nil {
+				return fmt.Errorf("not a report bundle: %w", err)
+			}
+			if bundle.Inventory == nil || bundle.Inventory.Host == nil {
+				return errors.New("the bundle has no inventory report")
+			}
+			client, err := cfg.ingestClient()
+			if err != nil {
+				return err
+			}
+			res, err := client.ReportInventory(cmd.Context(), connect.NewRequest(bundle.Inventory))
+			if err != nil {
+				return rpcErr(err)
+			}
+			if !res.Msg.Accepted {
+				return fmt.Errorf("server rejected the report from %s: %s", bundle.Inventory.Host.Hostname, res.Msg.RejectReason)
+			}
+			state := "no change"
+			if res.Msg.Changed {
+				state = "inventory changed"
+			}
+			fmt.Fprintf(cmd.OutOrStdout(), "ingested %d devices from %s: %s\n", len(bundle.Inventory.Devices), bundle.Inventory.Host.Hostname, state)
+			if bundle.Smart != nil && len(bundle.Smart.Samples) > 0 {
+				if _, err := client.ReportSmart(cmd.Context(), connect.NewRequest(bundle.Smart)); err != nil {
+					return rpcErr(err)
+				}
+				fmt.Fprintf(cmd.OutOrStdout(), "ingested %d SMART samples\n", len(bundle.Smart.Samples))
+			}
+			return nil
+		},
+	})
 	cmd.AddCommand(&cobra.Command{
 		Use:   "rebuild",
 		Short: "Recompute every placement and derived event from the stored snapshots",
@@ -75,24 +130,55 @@ func tab(w io.Writer) *tabwriter.Writer { return tabwriter.NewWriter(w, 0, 8, 2,
 // ---------- report ----------
 
 func newReportCmd(cfg *clientConfig) *cobra.Command {
-	return &cobra.Command{
+	var output string
+	var withSmart bool
+	cmd := &cobra.Command{
 		Use:   "report",
-		Short: "Collect this host's inventory once and send it to the server",
+		Short: "Collect this host's inventory once and send it to the server, or write it to a file",
 		Long: `report runs the collector and posts the result as one inventory report.
 It is what the agent does on a timer; run it by hand or from cron to
-try the server without the agent. Needs the agent token.`,
+try the server without the agent. Needs the agent token.
+
+With --output, nothing is sent: the report is written as JSON (with a
+SMART pass when --smart is given) for 'drivelist admin ingest' to
+submit from a host that holds a token. That is how a host you would
+rather not give a token to is still tracked:
+
+  ssh web1 drivelist report --output - --smart | drivelist admin ingest -`,
 		Args: cobra.NoArgs,
 		RunE: func(cmd *cobra.Command, _ []string) error {
-			client, err := cfg.collectorClient()
-			if err != nil {
-				return err
-			}
 			inv, collectErr := collectAll()
 			topo, err := collectSAS()
 			if err != nil {
 				fmt.Fprintf(cmd.ErrOrStderr(), "drivelist: sas topology unreadable, reporting without it: %v\n", err)
 			}
 			req := report.FromInventory(report.Host(), inv, topo, time.Now(), collectErr)
+			if output != "" {
+				bundle := &pb.ReportBundle{Inventory: req}
+				if withSmart {
+					bundle.Smart = report.SmartPass(cmd.Context(), collect.DefaultSmartRunner, req.Host, inv, time.Now())
+				}
+				data, err := protojson.MarshalOptions{Multiline: true}.Marshal(bundle)
+				if err != nil {
+					return err
+				}
+				if output == "-" {
+					_, err = cmd.OutOrStdout().Write(append(data, '\n'))
+					return err
+				}
+				if err := os.WriteFile(output, append(data, '\n'), 0o644); err != nil {
+					return err
+				}
+				fmt.Fprintf(cmd.ErrOrStderr(), "drivelist: wrote %d devices from %s to %s\n", len(req.Devices), req.Host.Hostname, output)
+				if collectErr != nil {
+					fmt.Fprintf(cmd.ErrOrStderr(), "drivelist: report is incomplete: %v\n", collectErr)
+				}
+				return nil
+			}
+			client, err := cfg.collectorClient()
+			if err != nil {
+				return err
+			}
 			res, err := client.ReportInventory(cmd.Context(), connect.NewRequest(req))
 			if err != nil {
 				return rpcErr(err)
@@ -120,6 +206,9 @@ try the server without the agent. Needs the agent token.`,
 			return nil
 		},
 	}
+	cmd.Flags().StringVar(&output, "output", "", "write the report here (- for stdout) instead of sending it")
+	cmd.Flags().BoolVar(&withSmart, "smart", false, "with --output: include a SMART pass (needs root and smartctl)")
+	return cmd
 }
 
 // ---------- hosts ----------

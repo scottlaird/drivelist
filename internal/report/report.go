@@ -4,6 +4,9 @@
 package report
 
 import (
+	"bytes"
+	"compress/gzip"
+	"context"
 	"os"
 	"os/exec"
 	"runtime"
@@ -196,4 +199,49 @@ func scsiAddr(sysPath string) string {
 		}
 	}
 	return ""
+}
+
+// SmartSummary converts a collected SMART summary for the wire.
+func SmartSummary(s *collect.SmartSummary) *pb.SmartSummary {
+	if s == nil {
+		return nil
+	}
+	m := &pb.SmartSummary{Protocol: s.Protocol, SelftestLast: s.SelftestLast, Healthy: s.Healthy,
+		PowerOnHours: s.PowerOnHours, Reallocated: s.Reallocated, Pending: s.Pending, Uncorrectable: s.Uncorrectable,
+		CrcErrors: s.CRCErrors, ReadBytes: s.ReadBytes, WriteBytes: s.WriteBytes, PercentUsed: s.PercentUsed}
+	if s.TempC != nil {
+		v := int32(*s.TempC)
+		m.TempC = &v
+	}
+	return m
+}
+
+// SmartPass samples every identified drive in the inventory once, with
+// the raw smartctl document attached, for a one-off report. The agent's
+// own pass is more careful about what it resends; this is for a host
+// collected now and then.
+func SmartPass(ctx context.Context, run collect.SmartRunner, host *pb.HostIdentity, inv *drivelist.Inventory, now time.Time) *pb.ReportSmartRequest {
+	req := &pb.ReportSmartRequest{Host: host}
+	if inv == nil {
+		return req
+	}
+	for _, d := range inv.Devices {
+		if d.IsEmptyBay() || d.Error != "" || (d.Serial == "" && d.WWN == "") {
+			continue
+		}
+		s, _ := collect.SampleSmart(ctx, run, d.DeviceName, "", now)
+		out := &pb.SmartSample{Identity: &pb.DriveIdentity{Wwn: d.WWN, Vendor: d.Attribs["ID_VENDOR"], Model: d.Model, Serial: d.Serial}, DevName: d.DeviceName, Ts: timestamppb.New(s.At), Skipped: s.Skipped}
+		if s.Summary != nil {
+			out.Summary = SmartSummary(s.Summary)
+			if s.Raw != nil {
+				var buf bytes.Buffer
+				w := gzip.NewWriter(&buf)
+				w.Write(s.Raw)
+				w.Close()
+				out.RawJsonGz = buf.Bytes()
+			}
+		}
+		req.Samples = append(req.Samples, out)
+	}
+	return req
 }
