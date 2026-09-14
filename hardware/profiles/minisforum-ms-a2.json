@@ -1,0 +1,33 @@
+{
+  "match": {
+    "model": "Micro Computer (HK) Tech Limited MS-A2"
+  },
+  "title": "Minisforum MS-A2, 3 x M.2 2280 (PCIe 4.0 x4) plus one PCIe 5.0 x16 slot (x4 electrical)",
+  "layout": {
+    "rows": 1,
+    "columns": 4,
+    "order": "row-major"
+  },
+  "notes": "The three M.2 slots hang off the CPU's GPP bridges 0000:00:01.2, 01.3 and 01.4 (PCIe 4.0 x4 each). SMBIOS describes only the first, by its reference designator J3502; the other two are identified by their root ports. Which of 01.3 and 01.4 is physically M.2 2 versus M.2 3 is assumed from bridge order and has not been checked with a drive swap. The x16 slot is bridge 0000:00:02.1 (PCIe 5.0 x4), which SMBIOS calls PCIE4; a drive on an adapter card in it lands there. Bridge 02.2 (PCIE3) is the Wi-Fi E-key slot and 03.1/03.2 are the onboard NICs; none of them is a drive bay.",
+  "bays": [
+    {
+      "bay": "M.2 1",
+      "pci": "J3502"
+    },
+    {
+      "bay": "M.2 2",
+      "pci": "0000:00:01.3",
+      "note": "order versus M.2 3 unverified"
+    },
+    {
+      "bay": "M.2 3",
+      "pci": "0000:00:01.4",
+      "note": "order versus M.2 2 unverified"
+    },
+    {
+      "bay": "PCIe slot",
+      "pci": "PCIE4",
+      "note": "a drive on an adapter in the x16 slot"
+    }
+  ]
+}

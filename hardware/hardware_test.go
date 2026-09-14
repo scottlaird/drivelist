@@ -96,3 +96,20 @@ func TestLoadDirOverrides(t *testing.T) {
 		t.Error("unknown field accepted")
 	}
 }
+
+// TestMSA2Profile: the three M.2 slots resolve by SMBIOS designation for
+// the first and root port for the others, as mon1 reports them.
+func TestMSA2Profile(t *testing.T) {
+	p := Embedded().Lookup("Micro Computer (HK) Tech Limited MS-A2", "")
+	if p == nil {
+		t.Fatal("no MS-A2 profile")
+	}
+	for id, want := range map[string]string{"J3502": "M.2 1", "0000:00:01.3": "M.2 2", "0000:00:01.4": "M.2 3", "PCIE4": "PCIe slot"} {
+		if got, ok := p.Label("pci", id); !ok || got != want {
+			t.Errorf("pci %s -> %q %v, want %q", id, got, ok, want)
+		}
+	}
+	if _, ok := p.Label("pci", "PCIE3"); ok {
+		t.Error("the Wi-Fi slot maps to a bay")
+	}
+}
