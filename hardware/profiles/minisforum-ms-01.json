@@ -1,0 +1,31 @@
+{
+  "match": {
+    "model": "Micro Computer (HK) Tech Limited MS-01"
+  },
+  "title": "Minisforum MS-01, 3 x M.2 (PCIe 4.0 x4, 3.0 x4 with U.2 support, 3.0 x2) plus one PCIe x16 slot (x8 electrical)",
+  "layout": {
+    "rows": 1,
+    "columns": 4,
+    "order": "row-major"
+  },
+  "notes": "SMBIOS describes slots this machine does not have, so every bay is identified by its root port. The PCIe 4.0 x4 slot is the CPU's 0000:00:06.0 and the PCIe 3.0 x4 slot (which also takes a U.2 drive on an adapter) is the PCH's 0000:00:1c.4. The PCIe 3.0 x2 slot's root port is hidden by firmware while the slot is empty and has not been seen yet, so that bay carries no identity; `drivelist hardware check HOST` names the port once a drive is in it. The x16 slot is 0000:00:01.0. 00:06.2 is the dual X710, 1c.0 and 1d.0 the i226 NICs, 1d.3 the Wi-Fi card, and 07.x the Thunderbolt ports; none is a drive bay. The model string is the DMI product name; confirm it reads MS-01 on the host.",
+  "bays": [
+    {
+      "bay": "M.2 PCIe 4.0 x4",
+      "pci": "0000:00:06.0"
+    },
+    {
+      "bay": "M.2 PCIe 3.0 x4 / U.2",
+      "pci": "0000:00:1c.4"
+    },
+    {
+      "bay": "M.2 PCIe 3.0 x2",
+      "note": "root port hidden while empty; identity to be filled in once a drive has been seen"
+    },
+    {
+      "bay": "PCIe slot",
+      "pci": "0000:00:01.0",
+      "note": "a drive on an adapter in the x16 slot"
+    }
+  ]
+}

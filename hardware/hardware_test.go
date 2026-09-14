@@ -113,3 +113,18 @@ func TestMSA2Profile(t *testing.T) {
 		t.Error("the Wi-Fi slot maps to a bay")
 	}
 }
+
+func TestMS01Profile(t *testing.T) {
+	p := Embedded().Lookup("Micro Computer (HK) Tech Limited MS-01", "")
+	if p == nil {
+		t.Fatal("no MS-01 profile")
+	}
+	for id, want := range map[string]string{"0000:00:06.0": "M.2 PCIe 4.0 x4", "0000:00:1c.4": "M.2 PCIe 3.0 x4 / U.2", "0000:00:01.0": "PCIe slot"} {
+		if got, ok := p.Label("pci", id); !ok || got != want {
+			t.Errorf("pci %s -> %q %v, want %q", id, got, ok, want)
+		}
+	}
+	if len(p.Bays) != 4 || p.Bays[2].ID("pci") != "" {
+		t.Errorf("the x2 slot should be declared without an identity: %+v", p.Bays)
+	}
+}
