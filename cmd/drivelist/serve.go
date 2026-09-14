@@ -20,6 +20,7 @@ import (
 
 func newServeCmd() *cobra.Command {
 	var (
+		hardwareDir                                                        string
 		dbPath, listen, agentTokenFile, operatorTokenFile, tlsCert, tlsKey string
 		interval                                                           time.Duration
 	)
@@ -48,7 +49,7 @@ clients need TLS.`,
 			if (tlsCert == "") != (tlsKey == "") {
 				return errors.New("--tls-cert and --tls-key go together")
 			}
-			return runServe(cmd.Context(), dbPath, listen, server.Config{AgentToken: agentToken, OperatorToken: operatorToken, Interval: interval}, tlsCert, tlsKey)
+			return runServe(cmd.Context(), dbPath, listen, server.Config{AgentToken: agentToken, OperatorToken: operatorToken, Interval: interval, HardwareDir: hardwareDir}, tlsCert, tlsKey)
 		},
 	}
 	f := cmd.Flags()
@@ -57,6 +58,7 @@ clients need TLS.`,
 	f.StringVar(&agentTokenFile, "agent-token-file", "", "file holding the token agents present")
 	f.StringVar(&operatorTokenFile, "operator-token-file", "", "file holding the token the query commands present")
 	f.DurationVar(&interval, "interval", 5*time.Minute, "how often agents report; hosts are stale after three intervals")
+	f.StringVar(&hardwareDir, "hardware-dir", "", "directory of extra hardware profiles (JSON), overriding embedded ones for the same model")
 	f.StringVar(&tlsCert, "tls-cert", "", "TLS certificate file; with --tls-key, serve HTTPS")
 	f.StringVar(&tlsKey, "tls-key", "", "TLS private key file")
 	return cmd

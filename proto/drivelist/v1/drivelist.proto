@@ -68,6 +68,9 @@ service Query {
   rpc GetSAS(GetSASRequest) returns (GetSASResponse);
   // ListSASErrors lists the phys whose error counters climbed in a window.
   rpc ListSASErrors(ListSASErrorsRequest) returns (ListSASErrorsResponse);
+  // ListBays shows an enclosure bay by bay, as its hardware profile lays
+  // them out, with what sits in each.
+  rpc ListBays(ListBaysRequest) returns (ListBaysResponse);
 }
 
 // ---------- shared ----------
@@ -122,6 +125,7 @@ message Device {
   string enclosure_via = 15;          // "expander-11:0", "host11"
   string enclosure_via_id = 16;       // that node's SAS address
   string enclosure_model = 17;        // what the enclosure is, when the host knows: the chassis from DMI for NVMe bays
+  string enclosure_board = 18;        // the DMI board name with it: vendors reuse a product name across boards
 }
 
 message EmptyBay {
@@ -133,6 +137,7 @@ message EmptyBay {
   string enclosure_via = 6;
   string enclosure_via_id = 7;
   string enclosure_model = 8;
+  string enclosure_board = 9;
 }
 
 // UnmappedMember is a pool member the collector could not map to a Device.
@@ -333,6 +338,7 @@ message Placement {
   string end_reason = 9;              // vanished | moved | use_changed | merged
   string enclosure_via = 10;          // the kernel's current name for the node that reaches the enclosure, "expander-11:0" or "host11"
   string enclosure_name = 11;         // the name a person gave the enclosure, "" if none
+  string bay_label = 12;              // the bay as the hardware profile names it, "" when no profile maps this bay
 }
 
 // Enclosure is one physical place drives sit in (a shelf, a backplane,
@@ -347,7 +353,35 @@ message Enclosure {
   google.protobuf.Timestamp first_seen = 7;
   google.protobuf.Timestamp last_seen = 8;
   string product = 9;                 // vendor and product of the reaching node, from the SAS topology
-  int32 bays = 10;                    // bays seen, empty ones included; 0 if the host has not reported them
+  int32 bays = 10;                    // bays seen, empty ones included, or declared by the hardware profile if more
+  string profile = 11;                // title of the hardware profile that matched the model, "" if none
+  string board = 12;                  // the DMI board name, when the enclosure is a chassis
+}
+
+message ListBaysRequest {
+  string ref = 1;                     // as NameEnclosure
+}
+
+// BayView is one bay of an enclosure: declared by the profile, or seen
+// with a drive in it, or both.
+message BayView {
+  string label = 1;                   // the profile's name for it, else the firmware identity
+  repeated string ids = 2;            // "sas:54", "pci:9-1", "ata:ata3"
+  bool declared = 3;                  // the profile lists it
+  bool present = 4;                   // a drive is in it
+  string dev_name = 5;
+  string serial = 6;
+  string model = 7;
+  string status = 8;
+  repeated string uses = 9;
+}
+
+message ListBaysResponse {
+  Enclosure enclosure = 1;
+  repeated BayView bays = 2;
+  int32 rows = 3;                     // layout, 0 when the profile gives none
+  int32 columns = 4;
+  string order = 5;
 }
 
 message ListEnclosuresRequest {}

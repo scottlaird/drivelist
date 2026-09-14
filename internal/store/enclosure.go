@@ -3,11 +3,14 @@ package store
 import (
 	"context"
 	"database/sql"
+	"encoding/json"
 	"errors"
 	"fmt"
 	"sort"
 	"strings"
 	"time"
+
+	"github.com/scottlaird/drivelist/hardware"
 )
 
 // Enclosure is one physical place drives sit in on one host: a shelf, a
@@ -17,10 +20,12 @@ type Enclosure struct {
 	Hostname  string
 	Via       string // the kernel's current name for the node that reaches it: "expander-11:0", "host11"
 	Product   string // vendor and product of that node, from the SAS topology; "" if unknown
+	Board     string // the DMI board name, when the enclosure is a chassis
 	Name      string // what a person called it
 	Note      string
-	Drives    int // drives currently placed in it
-	Bays      int // bays seen in it, empty ones included; 0 before a 0.7 agent reported it
+	Drives    int    // drives currently placed in it
+	Bays      int    // bays seen in it, empty ones included, or declared by the profile if more
+	Profile   string // title of the hardware profile that matched, "" if none
 	FirstSeen time.Time
 	LastSeen  time.Time
 }
@@ -36,7 +41,7 @@ func (s *Store) ListEnclosures(ctx context.Context) ([]Enclosure, error) {
 		), known AS (
 			SELECT host_id, enclosure FROM enclosure UNION SELECT host_id, enclosure FROM placed
 		)
-		SELECT k.enclosure, h.hostname, COALESCE(e.via, pl.via, ''), COALESCE(e.via_address, ''), COALESCE(e.product, ''), COALESCE(x.name, ''), COALESCE(x.note, ''),
+		SELECT k.enclosure, h.hostname, COALESCE(e.via, pl.via, ''), COALESCE(e.via_address, ''), COALESCE(e.product, ''), COALESCE(e.board, ''), COALESCE(x.name, ''), COALESCE(x.note, ''),
 		       COALESCE(pl.drives, 0), COALESCE(e.bays, 0), COALESCE(MIN(e.first_seen, pl.first_seen), e.first_seen, pl.first_seen), COALESCE(MAX(e.last_seen, pl.last_seen), e.last_seen, pl.last_seen)
 		FROM known k JOIN host h USING (host_id)
 		LEFT JOIN enclosure e ON e.host_id = k.host_id AND e.enclosure = k.enclosure
@@ -53,7 +58,7 @@ func (s *Store) ListEnclosures(ctx context.Context) ([]Enclosure, error) {
 		var e Enclosure
 		var viaAddr string
 		var first, last int64
-		if err := rows.Scan(&e.Key, &e.Hostname, &e.Via, &viaAddr, &e.Product, &e.Name, &e.Note, &e.Drives, &e.Bays, &first, &last); err != nil {
+		if err := rows.Scan(&e.Key, &e.Hostname, &e.Via, &viaAddr, &e.Product, &e.Board, &e.Name, &e.Note, &e.Drives, &e.Bays, &first, &last); err != nil {
 			return nil, err
 		}
 		e.FirstSeen, e.LastSeen = time.Unix(first, 0).UTC(), time.Unix(last, 0).UTC()
@@ -70,16 +75,143 @@ func (s *Store) ListEnclosures(ctx context.Context) ([]Enclosure, error) {
 		return nil, err
 	}
 	for i := range out {
-		if out[i].Product != "" {
-			continue // the agent said what it is
+		if out[i].Product == "" {
+			if p, ok := products[hostKey{out[i].Hostname, viaAddrs[i]}]; ok {
+				out[i].Product = p
+			} else if p, ok := products[hostKey{out[i].Hostname, out[i].Key}]; ok {
+				out[i].Product = p
+			}
 		}
-		if p, ok := products[hostKey{out[i].Hostname, viaAddrs[i]}]; ok {
-			out[i].Product = p
-		} else if p, ok := products[hostKey{out[i].Hostname, out[i].Key}]; ok {
-			out[i].Product = p
+		if p := s.profiles().Lookup(out[i].Product, out[i].Board); p != nil {
+			out[i].Profile = p.Title
+			out[i].Bays = max(out[i].Bays, len(p.Bays))
 		}
 	}
 	return out, nil
+}
+
+// BayView is one bay of an enclosure, as ListBays shows it.
+type BayView struct {
+	Label    string   // the profile's name, else the firmware identity
+	IDs      []string // "sas:54", "pci:9-1", "ata:ata3"
+	Declared bool     // the profile lists it
+	Present  bool     // a drive is in it
+	DevName  string
+	Serial   string
+	Model    string
+	Status   string
+	Uses     []string
+}
+
+// ListBays shows an enclosure bay by bay: the profile's bays in its order
+// with what sits in each, then any occupied bay the profile does not
+// know, which is the list a profile author needs.
+func (s *Store) ListBays(ctx context.Context, ref string) (Enclosure, []BayView, *hardware.Layout, error) {
+	key, err := s.ResolveEnclosure(ctx, ref)
+	if err != nil {
+		return Enclosure{}, nil, nil, err
+	}
+	all, err := s.ListEnclosures(ctx)
+	if err != nil {
+		return Enclosure{}, nil, nil, err
+	}
+	var enc Enclosure
+	for _, e := range all {
+		if e.Key == key {
+			enc = e
+		}
+	}
+	if enc.Key == "" {
+		enc = Enclosure{Key: key}
+	}
+	rows, err := s.db.QueryContext(ctx, `
+		SELECT p.bay, p.enclosure_via, p.dev_name, d.serial, d.model, d.status, p.uses
+		FROM placement p JOIN drive d USING (drive_id) WHERE p.enclosure = ? AND p.ended_at IS NULL ORDER BY p.bay`, key)
+	if err != nil {
+		return Enclosure{}, nil, nil, err
+	}
+	defer rows.Close()
+	type occupant struct {
+		bay, kind string
+		view      BayView
+	}
+	var occupants []occupant
+	for rows.Next() {
+		var o occupant
+		var uses string
+		if err := rows.Scan(&o.bay, &o.kind, &o.view.DevName, &o.view.Serial, &o.view.Model, &o.view.Status, &uses); err != nil {
+			return Enclosure{}, nil, nil, err
+		}
+		o.kind = hardware.Kind(o.kind)
+		o.view.Present = true
+		json.Unmarshal([]byte(uses), &o.view.Uses)
+		occupants = append(occupants, o)
+	}
+	if err := rows.Err(); err != nil {
+		return Enclosure{}, nil, nil, err
+	}
+	profile := s.profiles().Lookup(enc.Product, enc.Board)
+	var out []BayView
+	used := make([]bool, len(occupants))
+	if profile != nil {
+		for _, b := range profile.Bays {
+			v := BayView{Label: b.Bay, Declared: true}
+			for _, k := range hardware.Kinds {
+				if id := b.ID(k); id != "" {
+					v.IDs = append(v.IDs, k+":"+id)
+				}
+			}
+			for i, o := range occupants {
+				if !used[i] && b.ID(o.kind) == o.bay {
+					used[i] = true
+					view := o.view
+					view.Label, view.IDs, view.Declared = v.Label, v.IDs, true
+					v = view
+				}
+			}
+			out = append(out, v)
+		}
+	}
+	for i, o := range occupants {
+		if used[i] {
+			continue
+		}
+		v := o.view
+		v.Label = o.bay
+		if o.kind != "" {
+			v.IDs = []string{o.kind + ":" + o.bay}
+		}
+		out = append(out, v)
+	}
+	var layout *hardware.Layout
+	if profile != nil {
+		layout = profile.Layout
+	}
+	return enc, out, layout, nil
+}
+
+// EnclosureModel is what an enclosure is, for profile lookup.
+type EnclosureModel struct{ Model, Board string }
+
+// EnclosureModels returns each known enclosure key's model, for
+// decorating events with bay labels.
+func (s *Store) EnclosureModels(ctx context.Context) (map[string]EnclosureModel, error) {
+	all, err := s.ListEnclosures(ctx)
+	if err != nil {
+		return nil, err
+	}
+	out := map[string]EnclosureModel{}
+	for _, e := range all {
+		out[e.Key] = EnclosureModel{e.Product, e.Board}
+	}
+	return out, nil
+}
+
+// BayLabel is the profile's name for a firmware bay in an enclosure of
+// the given model, or "".
+func (s *Store) BayLabel(m EnclosureModel, via, bay string) string {
+	label, _ := s.profiles().Lookup(m.Model, m.Board).Label(hardware.Kind(via), bay)
+	return label
 }
 
 type hostKey struct{ host, key string }

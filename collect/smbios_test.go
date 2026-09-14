@@ -65,3 +65,24 @@ func TestSMBIOSSlotFallback(t *testing.T) {
 		t.Errorf("pciAncestors = %v", anc)
 	}
 }
+
+// TestBridgeFallback: a drive in no hotplug slot whose bridge SMBIOS does
+// not describe is placed by the bridge's address, so a profile can still
+// name the slot. mgmt1's onboard M.2 is the case: no slot, no record.
+func TestBridgeFallback(t *testing.T) {
+	inv, err := Fixture(filepath.Join("testdata", "mgmt1")).Collect()
+	if err != nil {
+		t.Fatal(err)
+	}
+	for _, d := range inv.Devices {
+		if d.DeviceName != "nvme2n1" {
+			continue
+		}
+		if d.EnclosureVia != "pci" || d.EnclosureBay == "" || d.EnclosureBay == "9-1" {
+			t.Errorf("nvme2n1 = %+v", d)
+		}
+		t.Logf("nvme2n1 placed by bridge %s", d.EnclosureBay)
+		return
+	}
+	t.Error("nvme2n1 not in inventory")
+}

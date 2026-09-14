@@ -105,7 +105,7 @@ func slotOf(p *pb.Placement) string {
 	if p == nil {
 		return "-"
 	}
-	return slot(firstOf(p.EnclosureName, p.EnclosureVia, p.Enclosure), p.Bay)
+	return slot(firstOf(p.EnclosureName, p.EnclosureVia, p.Enclosure), firstOf(p.BayLabel, p.Bay))
 }
 
 // slotD renders the slot an event's detail describes under a key prefix
@@ -113,7 +113,7 @@ func slotOf(p *pb.Placement) string {
 // Events from before 0.7 carry expander keys instead.
 func slotD(d map[string]any, prefix string) string {
 	return slot(firstOf(str(d, prefix+"enclosure_name"), str(d, prefix+"enclosure_via"), str(d, prefix+"enclosure"),
-		str(d, prefix+"expander_name"), str(d, prefix+"expander_dev"), str(d, prefix+"expander")), str(d, prefix+"bay"))
+		str(d, prefix+"expander_name"), str(d, prefix+"expander_dev"), str(d, prefix+"expander")), firstOf(str(d, prefix+"bay_label"), str(d, prefix+"bay")))
 }
 
 func firstOf(s ...string) string {

@@ -16,6 +16,7 @@ import (
 	"connectrpc.com/connect"
 	"google.golang.org/protobuf/types/known/durationpb"
 
+	"github.com/scottlaird/drivelist/hardware"
 	pb "github.com/scottlaird/drivelist/internal/pb/drivelistv1"
 	"github.com/scottlaird/drivelist/internal/pb/drivelistv1/drivelistv1connect"
 	dlversion "github.com/scottlaird/drivelist/internal/report"
@@ -24,6 +25,7 @@ import (
 
 // Config is what a Server needs beyond its store.
 type Config struct {
+	HardwareDir string // extra hardware profiles, overriding embedded ones for the same model; "" for embedded only
 	// AgentToken and OperatorToken are the bearer tokens for the two
 	// services. Both are required.
 	AgentToken    string
@@ -52,6 +54,11 @@ func New(st *store.Store, cfg Config, log *slog.Logger) (*Server, error) {
 	if cfg.Interval <= 0 {
 		cfg.Interval = 5 * time.Minute
 	}
+	hw, err := hardware.Load(cfg.HardwareDir)
+	if err != nil {
+		return nil, err
+	}
+	st.SetHardware(hw)
 	if cfg.RetainIO <= 0 {
 		cfg.RetainIO = 180 * 24 * time.Hour
 	}
@@ -246,14 +253,35 @@ func (s *Server) GetDriveHistory(ctx context.Context, req *connect.Request[pb.Ge
 	return connect.NewResponse(out), nil
 }
 
-// nameEvents decorates events with enclosure names.
+// nameEvents decorates events with enclosure names and profile bay
+// labels.
 func (s *Server) nameEvents(ctx context.Context, evs []*pb.Event) error {
 	names, err := s.store.EnclosureNames(ctx)
 	if err != nil {
 		return err
 	}
 	nameEnclosures(names, evs)
+	models, err := s.store.EnclosureModels(ctx)
+	if err != nil {
+		return err
+	}
+	bayLabels(models, s.store.BayLabel, evs)
 	return nil
+}
+
+func (s *Server) ListBays(ctx context.Context, req *connect.Request[pb.ListBaysRequest]) (*connect.Response[pb.ListBaysResponse], error) {
+	enc, bays, layout, err := s.store.ListBays(ctx, req.Msg.GetRef())
+	if err != nil {
+		return nil, storeErr(err)
+	}
+	out := &pb.ListBaysResponse{Enclosure: enclosureToProto(enc)}
+	for _, b := range bays {
+		out.Bays = append(out.Bays, &pb.BayView{Label: b.Label, Ids: b.IDs, Declared: b.Declared, Present: b.Present, DevName: b.DevName, Serial: b.Serial, Model: b.Model, Status: b.Status, Uses: b.Uses})
+	}
+	if layout != nil {
+		out.Rows, out.Columns, out.Order = int32(layout.Rows), int32(layout.Columns), layout.Order
+	}
+	return connect.NewResponse(out), nil
 }
 
 func (s *Server) ListEvents(ctx context.Context, req *connect.Request[pb.ListEventsRequest]) (*connect.Response[pb.ListEventsResponse], error) {

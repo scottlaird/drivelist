@@ -218,8 +218,28 @@ drive in no hotplug slot (an M.2, or a U.2 on a board without hotplug
 tables) falls back to SMBIOS type 9, which names every slot the board
 vendor cared to describe (`M.2_1`, `PCIE3`, or a bare reference
 designator like `J3502`) by the root port it hangs off; most consumer
-boards describe some slots and not others, so some drives get a bay
-and some do not.
+boards describe some slots and not others, so a drive in a slot the
+vendor left out is placed by its root port's address instead
+(`0000:00:01.3`), which is as fixed per board as a designation and
+lets a profile name the slot anyway.  A SATA drive on one of the board's own ports is
+placed by the port, named as udev names it (`pci-0000:00:1f.2-ata-5`,
+the controller and the port number on it), so a profile can say which
+bay the port feeds.
+
+Firmware identities are not what a person calls a bay.  `hardware/`
+holds a profile per enclosure model, embedded in the binary: what the
+manual calls each bay, which firmware identities land in it (a bay
+wired for both U.2 and SATA lists a PCIe slot and an ATA port), how
+the bays are arranged, and which bays exist even when nothing has
+been seen in them.  The server applies profiles as a view: placements
+keep the firmware bay, and every listing shows the profile's name for
+it.  `drivelist enclosure KEY bays` shows an enclosure bay by bay in
+the profile's layout, then any occupied bay the profile does not
+know; `drivelist hardware` lists the profiles built in and
+`drivelist hardware check HOST` says which of a host's enclosures
+matched one and which occupied bays no profile names, which is what
+a profile for a new box needs.  Try a profile with `--dir` (and
+`serve --hardware-dir`) before adding it to `hardware/profiles/`.
 
 For a one-off report, or from cron, `drivelist report` does one cycle.
 

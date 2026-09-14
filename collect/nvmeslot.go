@@ -18,7 +18,10 @@ import (
 // SMBIOS type 9, which names every slot the board vendor cared to describe
 // ("M.2_1", "PCIE3", or a bare reference designator) by the root port it
 // hangs off. The slot table wins where it has the drive; SMBIOS is the
-// fallback, and the only source for an M.2 slot. Either way the enclosure
+// fallback, and the usual source for an M.2 slot; failing both, the bay is
+// the root port's own address ("0000:00:01.3"), which is as fixed per
+// board as a designation and lets a profile name a slot the vendor did
+// not describe. Either way the enclosure
 // is the chassis (keyed on its DMI serial, described by vendor and
 // product) and the bay is the slot's name as the firmware gives it, "9-1"
 // for the second lane of a bifurcated slot 9. Bays are only known where a
@@ -29,12 +32,11 @@ import (
 func (c *Collector) annotateNVMeSlots(inv *drivelist.Inventory) error {
 	slots := readPCISlots(c.sys())
 	smbios := readSMBIOSSlots(c.sys())
-	if len(slots) == 0 && len(smbios) == 0 {
-		return nil
-	}
-	key, model := dmiChassis(c.sys())
+	key, model, board := dmiChassis(c.sys())
 	if key == "" {
-		slog.Warn("pci slots known but the chassis has no usable DMI serial; NVMe drives get no location")
+		if len(slots) > 0 || len(smbios) > 0 {
+			slog.Warn("pci slots known but the chassis has no usable DMI serial; NVMe drives get no location")
+		}
 		return nil
 	}
 	occupied := map[string]bool{}
@@ -49,17 +51,21 @@ func (c *Collector) annotateNVMeSlots(inv *drivelist.Inventory) error {
 		} else {
 			// SMBIOS names the slot by its root port; some firmware names
 			// the device's own address instead, so try that first.
-			for _, a := range append([]string{addr}, c.pciAncestors(d.SysPath, addr)...) {
+			ancestors := c.pciAncestors(d.SysPath, addr)
+			for _, a := range append([]string{addr}, ancestors...) {
 				if s, found := smbios[a]; found {
 					slot, ok = s.Designation, true
 					break
 				}
 			}
+			if !ok && len(ancestors) > 0 {
+				slot, ok = ancestors[0], true
+			}
 		}
 		if !ok {
 			continue
 		}
-		d.EnclosureBay, d.EnclosureVia, d.EnclosureID, d.EnclosureViaID, d.EnclosureModel = slot, "pci", key, key, model
+		d.EnclosureBay, d.EnclosureVia, d.EnclosureID, d.EnclosureViaID, d.EnclosureModel, d.EnclosureBoard = slot, "pci", key, key, model, board
 	}
 	bases := map[string]bool{}
 	for slot := range occupied {
@@ -85,7 +91,7 @@ func (c *Collector) annotateNVMeSlots(inv *drivelist.Inventory) error {
 		if _, err := os.Stat(filepath.Join(c.sys(), "bus", "pci", "devices", addr+".0")); err == nil {
 			continue // something else is in it
 		}
-		inv.Add(&drivelist.Device{EnclosureBay: name, EnclosureVia: "pci", EnclosureID: key, EnclosureViaID: key, EnclosureModel: model, Uses: []string{"empty"}})
+		inv.Add(&drivelist.Device{EnclosureBay: name, EnclosureVia: "pci", EnclosureID: key, EnclosureViaID: key, EnclosureModel: model, EnclosureBoard: board, Uses: []string{"empty"}})
 	}
 	return nil
 }
@@ -151,9 +157,10 @@ var dmiPlaceholders = map[string]bool{
 }
 
 // dmiChassis identifies the chassis from DMI: a key from the first real
-// serial among product, chassis and board, and the vendor and product
-// name as the model.
-func dmiChassis(sys string) (key, model string) {
+// serial among product, chassis and board, the vendor and product name as
+// the model, and the board name, which tells models apart when a vendor
+// reuses a product name ("Venus Series") across boards.
+func dmiChassis(sys string) (key, model, board string) {
 	id := filepath.Join(sys, "class", "dmi", "id")
 	for _, name := range []string{"product_serial", "chassis_serial", "board_serial"} {
 		s := sysAttr(id, name)
@@ -163,7 +170,11 @@ func dmiChassis(sys string) (key, model string) {
 		}
 	}
 	model = strings.TrimSpace(sysAttr(id, "sys_vendor") + " " + sysAttr(id, "product_name"))
-	return key, model
+	board = sysAttr(id, "board_name")
+	if dmiPlaceholders[strings.ToLower(board)] {
+		board = ""
+	}
+	return key, model, board
 }
 
 // captureNVMeSlots copies what annotateNVMeSlots reads: the slot table,

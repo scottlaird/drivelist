@@ -89,6 +89,7 @@ func (c *Collector) collectLinux() (*drivelist.Inventory, error) {
 		annotateLVM,
 		c.annotateEmptyBays,
 		c.annotateNVMeSlots,
+		c.annotateATAPorts,
 	} {
 		if err := annotate(inv); err != nil {
 			return inv, err
