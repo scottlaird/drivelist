@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"path"
 	"strings"
+	"time"
 )
 
 // tx wraps a transaction with the two timestamps every write needs: the
@@ -45,15 +46,17 @@ func (t *tx) upsertHost(h HostIdentity) (*hostRow, error) {
 	if into.Valid {
 		lookup, arg = `h.host_id = ?`, into.Int64
 	}
+	var prevBoot string
+	var prevBooted, lastReport sql.NullInt64
 	err = t.QueryRowContext(t.ctx, `
-		SELECT h.host_id, h.last_observed, h.stale_since, h.degraded, h.current_snapshot_id, COALESCE(s.content_hash, '')
+		SELECT h.host_id, h.last_observed, h.stale_since, h.degraded, h.current_snapshot_id, COALESCE(s.content_hash, ''), h.boot_id, h.booted_at, h.last_report
 		FROM host h LEFT JOIN snapshot s ON s.snapshot_id = h.current_snapshot_id
 		WHERE `+lookup, arg).
-		Scan(&row.id, &row.lastObserved, &row.staleSince, &row.degraded, &row.currentSnapshotID, &row.currentHash)
+		Scan(&row.id, &row.lastObserved, &row.staleSince, &row.degraded, &row.currentSnapshotID, &row.currentHash, &prevBoot, &prevBooted, &lastReport)
 	switch {
 	case err == sql.ErrNoRows:
-		res, err := t.ExecContext(t.ctx, `INSERT INTO host (machine_id, hostname, os, agent_version, first_seen) VALUES (?, ?, ?, ?, ?)`,
-			h.MachineID, h.Hostname, h.OS, h.AgentVersion, t.obs)
+		res, err := t.ExecContext(t.ctx, `INSERT INTO host (machine_id, hostname, os, agent_version, first_seen, boot_id, booted_at) VALUES (?, ?, ?, ?, ?, ?, ?)`,
+			h.MachineID, h.Hostname, h.OS, h.AgentVersion, t.obs, h.BootID, unixOrNull(h.BootedAt))
 		if err != nil {
 			return nil, err
 		}
@@ -69,8 +72,53 @@ func (t *tx) upsertHost(h HostIdentity) (*hostRow, error) {
 		_, err = t.ExecContext(t.ctx, `UPDATE host SET os = ?, agent_version = ? WHERE host_id = ?`, h.OS, h.AgentVersion, row.id)
 		return row, err
 	}
-	_, err = t.ExecContext(t.ctx, `UPDATE host SET hostname = ?, os = ?, agent_version = ? WHERE host_id = ?`, h.Hostname, h.OS, h.AgentVersion, row.id)
-	return row, err
+	if _, err = t.ExecContext(t.ctx, `UPDATE host SET hostname = ?, os = ?, agent_version = ? WHERE host_id = ?`, h.Hostname, h.OS, h.AgentVersion, row.id); err != nil {
+		return nil, err
+	}
+	return row, t.noteBoot(row, h, prevBoot, prevBooted, lastReport)
+}
+
+// noteBoot records the boot the report comes from. A boot id different
+// from the last one is a reboot: one host_rebooted event, timestamped at
+// the boot when the agent says when that was, carrying how long the
+// previous boot had been reporting and how long the host was silent.
+// The first boot id ever seen (an upgraded agent) is only recorded.
+func (t *tx) noteBoot(row *hostRow, h HostIdentity, prevBoot string, prevBooted, lastReport sql.NullInt64) error {
+	if h.BootID == "" || h.BootID == prevBoot {
+		return nil
+	}
+	if _, err := t.ExecContext(t.ctx, `UPDATE host SET boot_id = ?, booted_at = ? WHERE host_id = ?`, h.BootID, unixOrNull(h.BootedAt), row.id); err != nil {
+		return err
+	}
+	if prevBoot == "" {
+		return nil
+	}
+	detail := map[string]any{"boot_id": h.BootID, "previous_boot_id": prevBoot}
+	at := t.obs
+	if !h.BootedAt.IsZero() {
+		at = h.BootedAt.Unix()
+		detail["booted_at"] = at
+	}
+	if lastReport.Valid {
+		detail["last_report"] = lastReport.Int64
+		if gap := at - lastReport.Int64; gap > 0 {
+			detail["silent_secs"] = gap
+		}
+		if prevBooted.Valid && lastReport.Int64 > prevBooted.Int64 {
+			detail["up_secs"] = lastReport.Int64 - prevBooted.Int64
+		}
+	}
+	saved := t.obs
+	t.obs = at
+	defer func() { t.obs = saved }()
+	return t.event(EventHostRebooted, 0, row.id, detail, "report", 0)
+}
+
+func unixOrNull(at time.Time) any {
+	if at.IsZero() {
+		return nil
+	}
+	return at.Unix()
 }
 
 // resolveDrive finds the drive an identity belongs to, creating it if no

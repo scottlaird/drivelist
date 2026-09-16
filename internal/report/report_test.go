@@ -74,6 +74,18 @@ func TestHost(t *testing.T) {
 			t.Errorf("shortHostname(%q) = %q, want %q", name, got, want)
 		}
 	}
+	if got := btime("cpu  1 2 3\nbtime 1757975138\nprocesses 5\n"); got.Unix() != 1757975138 {
+		t.Errorf("btime = %v", got)
+	}
+	if got := btime("cpu 1\n"); !got.IsZero() {
+		t.Errorf("btime without a line = %v", got)
+	}
+	if got := darwinBoottime("{ sec = 1757975138, usec = 412 } Mon Sep 15 14:45:38 2026\n"); got.Unix() != 1757975138 {
+		t.Errorf("darwinBoottime = %v", got)
+	}
+	if got := darwinBoottime("garbage"); !got.IsZero() {
+		t.Errorf("darwinBoottime garbage = %v", got)
+	}
 }
 
 func TestSASFlatten(t *testing.T) {

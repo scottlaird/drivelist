@@ -82,6 +82,8 @@ message HostIdentity {
   string hostname = 2;
   string os = 3;            // "linux", "darwin"
   string agent_version = 4;
+  string boot_id = 5;       // the kernel's boot id; a new one means the host rebooted. "" from agents before 0.9
+  google.protobuf.Timestamp booted_at = 6;
 }
 
 // DriveIdentity is how an agent names a drive. The server resolves it to a
@@ -228,8 +230,11 @@ message KernelSample {
   string dev_name = 2;
   google.protobuf.Timestamp bucket_start = 3;
   uint32 bucket_secs = 4;
-  string class = 5;                   // attach detach predictive_failure medium_error hardware_error io_error timeout link_reset recovered other
-  string scsi_code = 6;               // "key:asc:ascq" in hex, e.g. "1:5d:90"; "" for non-SCSI
+  string class = 5;                   // attach detach predictive_failure medium_error hardware_error io_error timeout link_reset recovered other; hw_corrected hw_uncorrected for the host itself
+  // identity is unset and dev_name "" for a line about the host itself (a
+  // memory or machine-check error); the server records those as
+  // hardware_error events on the host.
+  string scsi_code = 6;               // "key:asc:ascq" in hex, e.g. "1:5d:90"; the location ("mc0/csrow3/ch1") for a hardware error; "" otherwise
   uint32 count = 7;
   string sample = 8;                  // the first line in the bucket
   string hostname = 9;                // set in query responses
@@ -335,6 +340,7 @@ message Host {
   int32 drive_count = 8;              // open placements
   int32 missing_count = 9;            // drives that vanished from this host and are not back
   int32 ghost_count = 10;             // open pool ghosts
+  google.protobuf.Timestamp booted_at = 11;   // when the host last booted, if its agent says
 }
 
 message Placement {

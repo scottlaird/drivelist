@@ -158,7 +158,20 @@ within seconds rather than at the next tick.  Drive errors in the log
 are classified (a SCSI additional sense code of 0x5D is a predictive
 failure whatever the sense key says; medium, hardware and I/O errors,
 timeouts, link resets, and plain recovered errors are told apart) and
-counted per hour.  `--kmsg=false` turns the follower off.
+counted per hour.  Errors about the host itself, memory and
+machine-check errors as EDAC, the MCE decoder and APEI report them,
+are counted too and become `hardware_error` events on the host, once
+per class, location and day: a DIMM throwing corrected errors is
+usually the warning before an uncorrected one takes the machine down.
+`--kmsg=false` turns the follower off.
+
+Every report carries the kernel's boot id and boot time.  A report
+with a new boot id is a `host_rebooted` event, timestamped at the
+boot, saying how long the previous boot had been reporting and how
+long the host was silent, so a crash shows up even when the host was
+back before it went stale.  `drivelist hosts` shows each host's
+uptime.  A new boot also restarts the SAS error counters, which count
+since boot, so boot-time link training is not read as counter growth.
 
 SMART is sampled through `smartctl -j` (smartmontools 7 or later): a
 baseline pass for every drive when the agent starts, a full pass every

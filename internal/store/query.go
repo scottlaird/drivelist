@@ -21,6 +21,7 @@ type Host struct {
 	FirstSeen    time.Time
 	LastReport   time.Time
 	StaleSince   time.Time // zero while reporting
+	BootedAt     time.Time // when the host last booted; zero when its agent does not say
 	DriveCount   int       // open placements
 	MissingCount int       // drives last seen here that vanished and are not expected to be absent
 	GhostCount   int       // open pool ghosts
@@ -119,7 +120,7 @@ func (e *AmbiguousError) Error() string {
 // ListHosts returns every host, by name.
 func (s *Store) ListHosts(ctx context.Context) ([]Host, error) {
 	rows, err := s.db.QueryContext(ctx, `
-		SELECT h.host_id, h.hostname, h.machine_id, h.os, h.agent_version, h.first_seen, h.last_report, h.stale_since,
+		SELECT h.host_id, h.hostname, h.machine_id, h.os, h.agent_version, h.first_seen, h.last_report, h.stale_since, h.booted_at,
 		  (SELECT COUNT(*) FROM placement p WHERE p.host_id = h.host_id AND p.ended_at IS NULL),
 		  (SELECT COUNT(*) FROM ghost g WHERE g.host_id = h.host_id AND g.ended_at IS NULL)
 		FROM host h WHERE h.merged_into IS NULL ORDER BY h.hostname`)
@@ -131,11 +132,11 @@ func (s *Store) ListHosts(ctx context.Context) ([]Host, error) {
 	for rows.Next() {
 		var h Host
 		var first int64
-		var last, stale sql.NullInt64
-		if err := rows.Scan(&h.ID, &h.Hostname, &h.MachineID, &h.OS, &h.AgentVersion, &first, &last, &stale, &h.DriveCount, &h.GhostCount); err != nil {
+		var last, stale, booted sql.NullInt64
+		if err := rows.Scan(&h.ID, &h.Hostname, &h.MachineID, &h.OS, &h.AgentVersion, &first, &last, &stale, &booted, &h.DriveCount, &h.GhostCount); err != nil {
 			return nil, err
 		}
-		h.FirstSeen, h.LastReport, h.StaleSince = time.Unix(first, 0).UTC(), unix(last), unix(stale)
+		h.FirstSeen, h.LastReport, h.StaleSince, h.BootedAt = time.Unix(first, 0).UTC(), unix(last), unix(stale), unix(booted)
 		hosts = append(hosts, h)
 	}
 	if err := rows.Err(); err != nil {

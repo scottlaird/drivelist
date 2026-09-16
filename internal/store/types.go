@@ -8,6 +8,8 @@ type HostIdentity struct {
 	Hostname     string
 	OS           string
 	AgentVersion string
+	BootID       string    // the kernel's boot id; "" from agents before 0.9
+	BootedAt     time.Time // zero when unknown
 }
 
 // DriveIdentity is how an agent names a drive. See Keys for how it is
@@ -189,6 +191,8 @@ const (
 	EventSASErrors          = "sas_errors"           // a phy's error counters grew; once per phy per day
 	EventSASNodeChanged     = "sas_node_changed"     // an HBA or expander appeared, vanished, or changed firmware
 	EventHostMerged         = "host_merged"
+	EventHostRebooted       = "host_rebooted"  // host-level: the agent reports a new boot id
+	EventHardwareError      = "hardware_error" // host-level: the kernel logged a memory or machine-check error; once per class, location and day
 )
 
 // Placement end reasons.

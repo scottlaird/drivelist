@@ -43,6 +43,13 @@ func (s *Store) IngestKernel(ctx context.Context, host HostIdentity, samples []K
 	}
 	stored := 0
 	for _, k := range samples {
+		if HostKernelClasses[k.Class] {
+			if err := t.hardwareError(h.id, k); err != nil {
+				return 0, err
+			}
+			stored++
+			continue
+		}
 		ids, err := t.drivesForKeys(k.Identity.Keys())
 		if err != nil {
 			return 0, err
@@ -67,6 +74,29 @@ func (s *Store) IngestKernel(ctx context.Context, host HostIdentity, samples []K
 		}
 	}
 	return stored, sqlTx.Commit()
+}
+
+// HostKernelClasses are about the host itself, not a drive: memory and
+// machine-check errors. Each becomes a hardware_error event, once per
+// class, location and UTC day; there is no drive to keep samples under.
+var HostKernelClasses = map[string]bool{"hw_corrected": true, "hw_uncorrected": true}
+
+// hardwareError records one hardware_error event per host, class,
+// location and UTC day, timestamped at the bucket.
+func (t *tx) hardwareError(hostID int64, k KernelSample) error {
+	day := k.BucketStart.UTC().Truncate(24 * time.Hour)
+	var n int
+	if err := t.QueryRowContext(t.ctx, `SELECT COUNT(*) FROM event WHERE kind = ? AND host_id = ? AND ts >= ? AND ts < ? AND detail LIKE ?`,
+		EventHardwareError, hostID, day.Unix(), day.Add(24*time.Hour).Unix(), fmt.Sprintf(`%%"class":"%s"%%"code":"%s"%%`, k.Class, k.Code)).Scan(&n); err != nil {
+		return err
+	}
+	if n > 0 {
+		return nil
+	}
+	saved := t.obs
+	t.obs = k.BucketStart.Unix()
+	defer func() { t.obs = saved }()
+	return t.event(EventHardwareError, 0, hostID, map[string]any{"class": k.Class, "code": k.Code, "count": k.Count, "sample": k.Sample}, "kernel", 0)
 }
 
 // kernelWarning records one kernel_warning event per drive, class and UTC

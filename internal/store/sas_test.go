@@ -323,3 +323,92 @@ func TestHardwareProfiles(t *testing.T) {
 		t.Errorf("EnclosureModels/BayLabel: %v", models)
 	}
 }
+
+// TestRebootRestartsSASCounters: the counters count since boot. A report
+// from a new boot id must not read a low new total as a reset nor a high
+// one as growth; it is a fresh baseline. The reboot itself is an event.
+func TestRebootRestartsSASCounters(t *testing.T) {
+	h := newHarness(t)
+	boot1 := hostA
+	boot1.BootID, boot1.BootedAt = "boot-1", h.now.Add(-2*time.Hour)
+	r := sasReport(boot1, devX, devY)
+	r.ObservedAt = h.now
+	h.submit(r)
+	if got := h.sasEvents(EventHostRebooted); len(got) != 0 {
+		t.Fatalf("host_rebooted on the first report = %v", got)
+	}
+
+	// Two hours in, an upstream phy has counted errors: growth, once.
+	h.advance(2 * time.Hour)
+	r2 := sasReport(boot1, devX, devY)
+	r2.ObservedAt = h.now
+	for i := range r2.SASPhys {
+		if r2.SASPhys[i].AttachedKind == "upstream" {
+			r2.SASPhys[i].InvalidDword = 40
+		}
+	}
+	h.submit(r2)
+	upstream := h.count(`SELECT COUNT(*) FROM sas_phy_sample`)
+	if upstream == 0 {
+		t.Fatal("no samples from growth within a boot")
+	}
+
+	// The host reboots: the first report of the new boot carries boot-time
+	// link training on the same phy, higher than before on one phy and
+	// lower on another. Neither is growth.
+	h.advance(30 * time.Minute)
+	boot2 := boot1
+	boot2.BootID, boot2.BootedAt = "boot-2", h.now.Add(-10*time.Minute)
+	r3 := sasReport(boot2, devX, devY)
+	r3.ObservedAt = h.now
+	for i := range r3.SASPhys {
+		if r3.SASPhys[i].AttachedKind == "upstream" {
+			r3.SASPhys[i].InvalidDword, r3.SASPhys[i].LossDwordSync = 55, 1
+		}
+	}
+	h.submit(r3)
+	if n := h.count(`SELECT COUNT(*) FROM sas_phy_sample`); n != upstream {
+		t.Errorf("samples after the reboot = %d, want still %d", n, upstream)
+	}
+	if errs := h.sasEvents(EventSASErrors); len(errs) != upstream {
+		t.Errorf("sas_errors after the reboot = %d, want the %d from before", len(errs), upstream)
+	}
+	reboots := h.sasEvents(EventHostRebooted)
+	if len(reboots) != 1 {
+		t.Fatalf("host_rebooted = %v", reboots)
+	}
+	for _, want := range []string{`"boot_id":"boot-2"`, `"previous_boot_id":"boot-1"`, `"up_secs":`, `"silent_secs":1200`} {
+		if !strings.Contains(reboots[0], want) {
+			t.Errorf("reboot detail %s lacks %s", reboots[0], want)
+		}
+	}
+	var ts int64
+	if err := h.s.db.QueryRow(`SELECT ts FROM event WHERE kind = ?`, EventHostRebooted).Scan(&ts); err != nil || ts != boot2.BootedAt.Unix() {
+		t.Errorf("reboot event ts = %d, want the boot time %d (%v)", ts, boot2.BootedAt.Unix(), err)
+	}
+
+	// Growth within the new boot counts again.
+	h.advance(time.Hour)
+	r4 := sasReport(boot2, devX, devY)
+	r4.ObservedAt = h.now
+	for i := range r4.SASPhys {
+		if r4.SASPhys[i].AttachedKind == "upstream" {
+			r4.SASPhys[i].InvalidDword, r4.SASPhys[i].LossDwordSync = 60, 1
+		}
+	}
+	h.submit(r4)
+	if n := h.count(`SELECT COUNT(*) FROM sas_phy_sample`); n != 2*upstream {
+		t.Errorf("samples after growth in the new boot = %d, want %d", n, 2*upstream)
+	}
+	// One boot, one event: a heartbeat with the same boot id is silent.
+	h.advance(5 * time.Minute)
+	r4.ObservedAt = h.now
+	h.submit(r4)
+	if got := h.sasEvents(EventHostRebooted); len(got) != 1 {
+		t.Errorf("host_rebooted after a heartbeat = %d, want 1", len(got))
+	}
+	hosts, err := h.s.ListHosts(h.ctx)
+	if err != nil || len(hosts) != 1 || !hosts[0].BootedAt.Equal(boot2.BootedAt) {
+		t.Errorf("ListHosts booted_at = %v, %v", hosts, err)
+	}
+}

@@ -50,6 +50,23 @@ func TestClassify(t *testing.T) {
 			{Class: ClassDetach, SenseKey: -1, ASC: -1, ASCQ: -1},
 			{Class: ClassDetach, DevName: "sdag", SCSIAddr: "11:0:17:0", SenseKey: -1, ASC: -1, ASCQ: -1},
 		}},
+		{"memory and machine-check errors about the host", []string{
+			"[Hardware Error]: Unified Memory Controller Ext. Error Code: 0",
+			"EDAC MC0: 1 CE on mc#0csrow#3channel#1 (csrow:3 channel:1 page:0x117fcc offset:0xb40 grain:64 syndrome:0xc00)",
+			"[Hardware Error]: cache level: L3/GEN, tx: GEN, mem-tx: RD",
+			"mce: [Hardware Error]: Machine check events logged",
+			"[Hardware Error]: Corrected error, no action required.",
+			"[Hardware Error]: CPU:0 (1a:44:0) MC22_STATUS[Over|CE|MiscV|AddrV|-|-|SyndV|CECC|-|-|-]: 0xdc2040000400011b",
+			"EDAC MC1: 2 UE on DIMM_B2 (csrow:1 channel:0 page:0x0 offset:0x0 grain:64)",
+			"{1}[Hardware Error]: event severity: fatal",
+			"mce: [Hardware Error]: CPU 3: Machine Check Exception: 5 Bank 7: be00000000800400",
+		}, []KernelEvent{
+			{Class: ClassHWCorrected, Location: "mc0/csrow3/ch1", SenseKey: -1, ASC: -1, ASCQ: -1},
+			{Class: ClassHWCorrected, SenseKey: -1, ASC: -1, ASCQ: -1},
+			{Class: ClassHWUncorrected, Location: "mc1/DIMM_B2", SenseKey: -1, ASC: -1, ASCQ: -1},
+			{Class: ClassHWUncorrected, SenseKey: -1, ASC: -1, ASCQ: -1},
+			{Class: ClassHWUncorrected, SenseKey: -1, ASC: -1, ASCQ: -1},
+		}},
 		{"block layer", []string{
 			"blk_update_request: I/O error, dev sdc, sector 123456 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 0",
 			"critical medium error, dev sdc, sector 8 op 0x0:(READ) flags 0x80700 phys_seg 1 prio class 2",

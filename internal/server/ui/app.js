@@ -112,6 +112,7 @@
     if (s < 172800) return Math.round(s / 3600) + 'h ago';
     return Math.round(s / 86400) + 'd ago';
   }
+  const gap = secs => { const s = Number(secs) || 0; if (s < 3600) return Math.round(s / 60) + 'm'; if (s < 172800) return Math.floor(s / 3600) + 'h' + String(Math.round(s / 60) % 60).padStart(2, '0') + 'm'; return Math.floor(s / 86400) + 'd'; };
   const busName = b => ({ BUS_SAS: 'SAS', BUS_SATA: 'SATA', BUS_NVME: 'NVMe', BUS_USB: 'USB', BUS_VIRTIO: 'virtio' })[b] || '-';
   function slotText(p) {
     if (!p) return '-';
@@ -255,6 +256,8 @@
       case 'host_first_seen': return 'host seen';
       case 'host_stale': return 'host stale';
       case 'host_resumed': return 'host resumed  silent ' + Math.round((d.silent_secs || 0) / 60) + 'm';
+      case 'host_rebooted': return 'host rebooted' + (d.up_secs ? '  up ' + gap(d.up_secs) + ' before' : '') + (d.silent_secs ? '  silent ' + gap(d.silent_secs) : '');
+      case 'hardware_error': return 'hardware  ' + d.class + ' ' + (d.code || '') + ' ×' + d.count + '  ' + (d.sample || '');
       case 'report_degraded': return 'report degraded  unidentified ' + JSON.stringify(d.unidentified || []);
       case 'pool_missing_member': return 'pool member missing  ' + (d.pool || '') + ' ' + (d.path || '');
       case 'identity_conflict': return 'identity conflict  ' + JSON.stringify(d.keys || []);
@@ -279,6 +282,7 @@
     { name: 'last', header: 'LAST REPORT', value: h => ago(h.lastReport), sort: h => h.lastReport ? new Date(h.lastReport).getTime() : null },
     { name: 'state', header: 'STATE', value: h => h.staleSince ? 'stale since ' + when(h.staleSince) : 'ok', cls: h => h.staleSince ? 'bad' : 'ok' },
     { name: 'agent', header: 'AGENT', value: h => dash(h.agentVersion) },
+    { name: 'up', header: 'UP', value: h => h.bootedAt ? gap((now() - new Date(h.bootedAt).getTime()) / 1000) : '-', sort: h => h.bootedAt ? new Date(h.bootedAt).getTime() : null },
     { name: 'machineid', header: 'MACHINE ID', value: h => h.machineId || '', mono: true, extra: true },
     { name: 'os', header: 'OS', value: h => dash(h.os), extra: true },
     { name: 'first', header: 'FIRST SEEN', value: h => when(h.firstSeen), sort: h => h.firstSeen ? new Date(h.firstSeen).getTime() : null, extra: true },
@@ -400,10 +404,12 @@
     return t;
   }
   async function pageSummary() {
-    const [hosts, drives, missing, events, smart, sas] = await Promise.all([
+    const [hosts, drives, missing, events, smart, sas, hw] = await Promise.all([
       rpc('ListHosts'), rpc('ListDrives'), rpc('ListMissing'), rpc('ListEvents', { limit: 15 }),
-      rpc('ListSmart', { problems: true }), rpc('ListSASErrors', { since: sinceDays(7) }),
+      rpc('ListSmart', { problems: true }), rpc('ListSASErrors', { since: sinceDays(7) }), rpc('ListEvents', { limit: 500, kinds: ['hardware_error'] }),
     ]);
+    const weekAgo = now() - 7 * 86400000;
+    const hwHosts = new Set((hw.events || []).filter(e => new Date(e.ts).getTime() >= weekAgo).map(e => e.hostname));
     const hs = hosts.hosts || [];
     const ds = drives.drives || [];
     const placed = ds.filter(d => d.current);
@@ -433,6 +439,7 @@
       tile('missing', gone, { href: '#/missing', sub: ghosts ? ghosts + ' pool ghosts' : 'no pool ghosts', cls: gone || ghosts ? 'warn' : '' }),
       tile('smart problems', problems, { href: '#/smart?problems=1', cls: problems ? 'warn' : '' }),
       tile('sas errors, 7d', sasRows, { href: '#/sas-errors', sub: sasRows ? 'phys with counter growth' : 'no counter growth', cls: sasRows ? 'warn' : '' }),
+      tile('hardware errors, 7d', hwHosts.size, { href: '#/events?kind=hardware_error', sub: hwHosts.size ? [...hwHosts].sort().join(', ') : 'no memory or machine-check errors', cls: hwHosts.size ? 'bad' : '' }),
     );
     if (byStatus.shelved || byStatus.retired || notOK) {
       tiles.append(tile('not present', notOK, { href: '#/drives', sub: [byStatus.shelved ? byStatus.shelved + ' shelved' : '', byStatus.retired ? byStatus.retired + ' retired' : ''].filter(Boolean).join(', ') || 'known but absent' }));
@@ -453,6 +460,7 @@
     main.append(heading(h.hostname), kv([
       ['agent', h.agentVersion], ['os', h.os], ['machine id', el('span', { class: 'mono', text: h.machineId || '' })],
       ['last report', ago(h.lastReport) + (h.staleSince ? ', stale since ' + when(h.staleSince) : '')], ['first seen', when(h.firstSeen)],
+      ['booted', h.bootedAt ? when(h.bootedAt) + ', up ' + gap((now() - new Date(h.bootedAt).getTime()) / 1000) : 'unknown'],
       ['drives', String(h.driveCount || 0) + (h.missingCount ? ', ' + h.missingCount + ' missing' : '') + (h.ghostCount ? ', ' + h.ghostCount + ' ghosts' : '')],
       ['sas', link('topology', '#/sas/' + enc(name))],
     ]));
@@ -610,7 +618,7 @@
   async function pageEvents(q) {
     const kind = q.get('kind') || '';
     const res = await rpc('ListEvents', { limit: 500, kinds: kind ? [kind] : [] });
-    const kinds = ['', 'first_seen', 'appeared', 'vanished', 'reappeared', 'moved_host', 'moved_bay', 'use_changed', 'enclosure_renamed', 'member_state_changed', 'status_changed', 'note', 'merged', 'host_merged', 'smart_warning', 'kernel_warning', 'sas_link_changed', 'sas_attached_changed', 'sas_port_changed', 'sas_errors', 'sas_node_changed', 'host_first_seen', 'host_stale', 'host_resumed', 'report_degraded', 'pool_missing_member', 'identity_conflict'];
+    const kinds = ['', 'first_seen', 'appeared', 'vanished', 'reappeared', 'moved_host', 'moved_bay', 'use_changed', 'enclosure_renamed', 'member_state_changed', 'status_changed', 'note', 'merged', 'host_merged', 'smart_warning', 'kernel_warning', 'sas_link_changed', 'sas_attached_changed', 'sas_port_changed', 'sas_errors', 'sas_node_changed', 'host_first_seen', 'host_stale', 'host_resumed', 'host_rebooted', 'hardware_error', 'report_degraded', 'pool_missing_member', 'identity_conflict'];
     const sel = el('select');
     for (const k of kinds) { const o = el('option', { value: k, text: k || 'every kind' }); if (k === kind) o.selected = true; sel.append(o); }
     sel.addEventListener('change', () => { location.hash = '#/events' + (sel.value ? '?kind=' + enc(sel.value) : ''); });
