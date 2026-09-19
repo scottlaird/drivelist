@@ -157,13 +157,17 @@ settled), so a drive's appearance or disappearance is timestamped
 within seconds rather than at the next tick.  Drive errors in the log
 are classified (a SCSI additional sense code of 0x5D is a predictive
 failure whatever the sense key says; medium, hardware and I/O errors,
-timeouts, link resets, and plain recovered errors are told apart) and
-counted per hour.  Errors about the host itself, memory and
-machine-check errors as EDAC, the MCE decoder and APEI report them,
-are counted too and become `hardware_error` events on the host, once
-per class, location and day: a DIMM throwing corrected errors is
-usually the warning before an uncorrected one takes the machine down.
-`--kmsg=false` turns the follower off.
+timeouts, link resets, and plain recovered errors are told apart; a
+sense code of 0x0B is the drive's own warning, a vendor notice or a
+background scan result, counted as a warning and answered with a SMART
+sample rather than treated as an error) and counted per hour.  The
+kernel prints the text rather than the hex for codes it knows, and
+those lines are read the same way.  Errors about the host itself,
+memory and machine-check errors as EDAC, the MCE decoder and APEI
+report them, are counted too and become `hardware_error` events on
+the host, once per class, location and day: a DIMM throwing corrected
+errors is usually the warning before an uncorrected one takes the
+machine down.  `--kmsg=false` turns the follower off.
 
 Every report carries the kernel's boot id and boot time.  A report
 with a new boot id is a `host_rebooted` event, timestamped at the

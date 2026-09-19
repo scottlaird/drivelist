@@ -22,17 +22,42 @@ func TestClassify(t *testing.T) {
 			"sd 11:0:17:0: [sdag] tag#784 Sense Key : Recovered Error [current] [descriptor] ",
 			"sd 11:0:17:0: [sdag] tag#784 ASC=0x5d <<vendor>>ASCQ=0x90 ",
 		}, []KernelEvent{{Class: ClassPredictiveFailure, DevName: "sdag", SCSIAddr: "11:0:17:0", SenseKey: 1, ASC: 0x5d, ASCQ: 0x90}}},
-		{"vendor warning is just recovered", []string{
+		{"a vendor warning is the drive's own warning, not a recovered error", []string{
 			"sd 11:0:45:0: [sdbi] tag#2209 Sense Key : Recovered Error [current] [descriptor] ",
 			"sd 11:0:45:0: [sdbi] tag#2209 ASC=0xb <<vendor>>ASCQ=0x97 ",
-		}, []KernelEvent{{Class: ClassRecovered, DevName: "sdbi", SCSIAddr: "11:0:45:0", SenseKey: 1, ASC: 0xb, ASCQ: 0x97}}},
+			"sd 11:0:45:0: [sdbi] tag#2210 Sense Key : Recovered Error [current] [descriptor] ",
+			"sd 11:0:45:0: [sdbi] tag#2210 ASC=0xb ASCQ=0x5 ",
+			"sd 11:0:45:0: [sdbi] tag#2211 Sense Key : Recovered Error [current] [descriptor] ",
+			"sd 11:0:45:0: [sdbi] tag#2211 ASC=0xb ASCQ=0x3 ",
+		}, []KernelEvent{
+			{Class: ClassWarning, DevName: "sdbi", SCSIAddr: "11:0:45:0", SenseKey: 1, ASC: 0xb, ASCQ: 0x97},
+			{Class: ClassMediumError, DevName: "sdbi", SCSIAddr: "11:0:45:0", SenseKey: 1, ASC: 0xb, ASCQ: 0x5},
+			{Class: ClassPredictiveFailure, DevName: "sdbi", SCSIAddr: "11:0:45:0", SenseKey: 1, ASC: 0xb, ASCQ: 0x3},
+		}},
+		{"decoded sense text is the second line of the pair", []string{
+			"sd 11:0:39:0: [sdbc] tag#6885 Sense Key : Recovered Error [current] [descriptor] ",
+			"sd 11:0:39:0: [sdbc] tag#6885 Add. Sense: Firmware impending failure seek error rate too high",
+			"sd 11:0:45:0: [sdbi] tag#5494 Sense Key : Recovered Error [current] [descriptor] ",
+			"sd 11:0:45:0: [sdbi] tag#5494 Add. Sense: Recovered data without ECC - data auto-reallocated",
+			"sd 11:0:45:0: [sdbi] tag#5495 Sense Key : Medium Error [current] [descriptor] ",
+			"sd 11:0:45:0: [sdbi] tag#5495 Add. Sense: Unrecovered read error",
+			"sd 11:0:45:0: [sdbi] tag#5496 Sense Key : Not Ready [current] ",
+			"sd 11:0:45:0: [sdbi] tag#5496 Add. Sense: Logical unit not ready, initializing command required",
+			"sd 11:0:45:0: [sdbi] tag#5497 Add. Sense: Unrecovered read error",
+		}, []KernelEvent{
+			{Class: ClassPredictiveFailure, DevName: "sdbc", SCSIAddr: "11:0:39:0", SenseKey: 1, ASC: 0x5d, ASCQ: -1},
+			{Class: ClassRecovered, DevName: "sdbi", SCSIAddr: "11:0:45:0", SenseKey: 1, ASC: 0x17, ASCQ: -1},
+			{Class: ClassMediumError, DevName: "sdbi", SCSIAddr: "11:0:45:0", SenseKey: 3, ASC: 0x11, ASCQ: -1},
+			{Class: ClassOther, DevName: "sdbi", SCSIAddr: "11:0:45:0", SenseKey: 2, ASC: -1, ASCQ: -1},
+			{Class: ClassMediumError, DevName: "sdbi", SCSIAddr: "11:0:45:0", SenseKey: -1, ASC: 0x11, ASCQ: -1},
+		}},
 		{"interleaved tags pair correctly", []string{
 			"sd 11:0:45:0: [sdbi] tag#1 Sense Key : Medium Error [current] ",
 			"sd 11:0:45:0: [sdbi] tag#2 Sense Key : Recovered Error [current] ",
 			"sd 11:0:45:0: [sdbi] tag#2 ASC=0x0b ASCQ=0x00 ",
 			"sd 11:0:45:0: [sdbi] tag#1 ASC=0x11 ASCQ=0x00 ",
 		}, []KernelEvent{
-			{Class: ClassRecovered, DevName: "sdbi", SCSIAddr: "11:0:45:0", SenseKey: 1, ASC: 0xb, ASCQ: 0},
+			{Class: ClassWarning, DevName: "sdbi", SCSIAddr: "11:0:45:0", SenseKey: 1, ASC: 0xb, ASCQ: 0},
 			{Class: ClassMediumError, DevName: "sdbi", SCSIAddr: "11:0:45:0", SenseKey: 3, ASC: 0x11, ASCQ: 0},
 		}},
 		{"hardware error", []string{
@@ -130,6 +155,9 @@ func TestCode(t *testing.T) {
 	if got := (KernelEvent{SenseKey: -1, ASC: -1, ASCQ: -1}).Code(); got != "" {
 		t.Errorf("Code() without sense = %q", got)
 	}
+	if got := (KernelEvent{SenseKey: 1, ASC: 0x5d, ASCQ: -1}).Code(); got != "1:5d" {
+		t.Errorf("Code() from decoded text = %q", got)
+	}
 }
 
 func TestFollowKernelLog(t *testing.T) {
@@ -152,7 +180,7 @@ func TestFollowKernelLog(t *testing.T) {
 	if got[0].Class != ClassAttach || got[0].DevName != "sdg" {
 		t.Errorf("first = %+v", got[0])
 	}
-	if got[1].Class != ClassRecovered || got[1].Code() != "1:b:97" || !strings.Contains(got[1].Text, " | ") {
+	if got[1].Class != ClassWarning || got[1].Code() != "1:b:97" || !strings.Contains(got[1].Text, " | ") {
 		t.Errorf("second = %+v", got[1])
 	}
 	cancel()

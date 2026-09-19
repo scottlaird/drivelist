@@ -75,7 +75,9 @@ func (w *KernelWatcher) handle(ctx context.Context, ev collect.KernelEvent) {
 	case collect.ClassAttach, collect.ClassDetach:
 		w.log.Info("kernel reports a disk change; re-inventory scheduled", "class", ev.Class, "device", ev.DevName, "settle", w.settle)
 		w.scheduleTrigger(ctx, ev.Class+" "+ev.DevName)
-	case collect.ClassPredictiveFailure, collect.ClassMediumError, collect.ClassHardwareError:
+	case collect.ClassPredictiveFailure, collect.ClassMediumError, collect.ClassHardwareError, collect.ClassWarning:
+		// A warning is the drive announcing something SMART will show: a
+		// reallocation, a temperature. Sample it while it is fresh.
 		if ev.DevName != "" {
 			w.agent.RequestSmart(ev.DevName)
 		}
