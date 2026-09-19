@@ -38,17 +38,19 @@ func (e KernelEvent) Code() string {
 	if e.SenseKey < 0 && e.ASC < 0 {
 		return ""
 	}
-	k, a, q := "", "", ""
+	k, a := "", ""
 	if e.SenseKey >= 0 {
 		k = strconv.FormatInt(int64(e.SenseKey), 16)
 	}
 	if e.ASC >= 0 {
 		a = strconv.FormatInt(int64(e.ASC), 16)
 	}
-	if e.ASCQ >= 0 {
-		q = strconv.FormatInt(int64(e.ASCQ), 16)
+	if e.ASCQ < 0 {
+		// The kernel decoded the code into text and the text gave only the
+		// ASC; see addSense.
+		return k + ":" + a
 	}
-	return k + ":" + a + ":" + q
+	return k + ":" + a + ":" + strconv.FormatInt(int64(e.ASCQ), 16)
 }
 
 // Classes. Attach and detach are signals to re-inventory; the rest are
@@ -63,6 +65,7 @@ const (
 	ClassTimeout           = "timeout"
 	ClassLinkReset         = "link_reset"
 	ClassRecovered         = "recovered"
+	ClassWarning           = "warning" // the drive's own warning (ASC 0x0B): a vendor notice, a temperature, a background scan; not an I/O failure
 	ClassOther             = "other"
 	// About the host, not a drive: memory and machine-check errors, as
 	// EDAC, the MCE decoder and APEI/GHES report them. Corrected ones are
@@ -87,6 +90,7 @@ var (
 	reSD       = regexp.MustCompile(`^sd (\d+:\d+:\d+:\d+): \[(\w+)\] (.*)$`)
 	reSense    = regexp.MustCompile(`^tag#(\d+) Sense Key : ([A-Za-z ]+?) \[`)
 	reASC      = regexp.MustCompile(`^tag#(\d+) ASC=0x([0-9a-fA-F]+) .*ASCQ=0x([0-9a-fA-F]+)`)
+	reAddSense = regexp.MustCompile(`^tag#(\d+) Add\. Sense: (.*?)\s*$`)
 	reBlk      = regexp.MustCompile(`(?:blk_update_request: )?(I/O error|critical medium error|critical target error), dev (\w+), sector`)
 	reBuffer   = regexp.MustCompile(`^Buffer I/O error on dev (\w+)`)
 	reATA      = regexp.MustCompile(`^(ata\d+(?:\.\d+)?): (.*)$`)
@@ -171,10 +175,24 @@ func (c *classifier) classify(at time.Time, text string) (KernelEvent, bool) {
 				delete(c.pending, key)
 			}
 			ev.ASC, ev.ASCQ = hexInt(a[2]), hexInt(a[3])
-			ev.Class = senseClass(ev.SenseKey, ev.ASC)
+			ev.Class = senseClass(ev.SenseKey, ev.ASC, ev.ASCQ)
 			return ev, true
 		}
-		if strings.Contains(body, "Add. Sense:") || strings.Contains(body, "Unrecovered read error") {
+		// For a code it knows, the kernel prints the text instead of the
+		// hex: "Add. Sense: Firmware impending failure seek error rate too
+		// high". It is the second line of the pair all the same.
+		if a := reAddSense.FindStringSubmatch(body); a != nil {
+			key := ev.SCSIAddr + "/" + a[1]
+			if first, ok := c.pending[key]; ok {
+				ev.SenseKey = first.SenseKey
+				ev.Text = first.Text + " | " + text
+				delete(c.pending, key)
+			}
+			ev.ASC = addSense(a[2])
+			ev.Class = senseClass(ev.SenseKey, ev.ASC, -1)
+			return ev, true
+		}
+		if strings.Contains(body, "Unrecovered read error") {
 			ev.Class = ClassMediumError
 			return ev, true
 		}
@@ -264,9 +282,26 @@ func edacLocation(mc, loc string) string {
 
 // senseClass keys on the additional sense code first: 0x5D is "failure
 // prediction threshold exceeded" whatever the sense key says.
-func senseClass(key, asc int) string {
+func senseClass(key, asc, ascq int) string {
 	if asc == 0x5d {
 		return ClassPredictiveFailure
+	}
+	if asc == 0x11 { // unrecovered read error, whatever the key says
+		return ClassMediumError
+	}
+	// ASC 0x0B is WARNING: the drive telling on itself, not a failed
+	// command. The standard qualifiers that mean the medium or the drive
+	// is going are classed as such; the rest, vendor ones included (HGST
+	// and Oracle firmware sends 0x96 and 0x97 around reallocations), are
+	// warnings, worth a SMART sample and a count, not an error.
+	if asc == 0x0b {
+		switch ascq {
+		case 0x03: // background self-test failed
+			return ClassPredictiveFailure
+		case 0x04, 0x05: // background pre-scan / medium scan found a medium error
+			return ClassMediumError
+		}
+		return ClassWarning
 	}
 	switch key {
 	case 1:
@@ -281,6 +316,30 @@ func senseClass(key, asc int) string {
 		return ClassOther
 	}
 	return ClassOther
+}
+
+// addSense is the ASC behind the text the kernel prints for a code it
+// knows, for the families that matter here; -1 for the rest, which are
+// then classed by the sense key alone.
+func addSense(text string) int {
+	t := strings.ToLower(text)
+	switch {
+	case strings.Contains(t, "impending failure"), strings.Contains(t, "prediction threshold"):
+		return 0x5d
+	case strings.HasPrefix(t, "recovered data with error correction"):
+		return 0x18
+	case strings.HasPrefix(t, "recovered data without ecc"), strings.HasPrefix(t, "recovered data"):
+		return 0x17
+	case strings.HasPrefix(t, "unrecovered read error"):
+		return 0x11
+	case strings.HasPrefix(t, "write error"):
+		return 0x0c
+	case strings.HasPrefix(t, "warning"):
+		return 0x0b
+	case strings.HasPrefix(t, "defect list"), strings.HasPrefix(t, "medium format corrupted"):
+		return 0x31
+	}
+	return -1
 }
 
 // diskName strips a partition suffix: sdc1 -> sdc, nvme0n1p2 -> nvme0n1.
