@@ -10,6 +10,7 @@ import (
 	"os"
 	"os/exec"
 	"runtime"
+	"strconv"
 	"strings"
 	"time"
 
@@ -28,12 +29,77 @@ var Version = "dev"
 // read, the hostname stands in, which means a rename forks the history.
 func Host() *pb.HostIdentity {
 	hostname, _ := os.Hostname()
-	return &pb.HostIdentity{
+	h := &pb.HostIdentity{
 		MachineId:    machineID(hostname),
 		Hostname:     shortHostname(hostname),
 		Os:           runtime.GOOS,
 		AgentVersion: Version,
 	}
+	id, at := boot()
+	h.BootId = id
+	if !at.IsZero() {
+		h.BootedAt = timestamppb.New(at)
+	}
+	return h
+}
+
+// boot is the kernel's id for this boot and when it happened: on Linux
+// /proc/sys/kernel/random/boot_id and btime from /proc/stat, on macOS
+// kern.bootsessionuuid and kern.boottime. Either is empty when unreadable;
+// the server then cannot tell reboots apart, as before.
+func boot() (string, time.Time) {
+	switch runtime.GOOS {
+	case "linux":
+		var id string
+		if b, err := os.ReadFile("/proc/sys/kernel/random/boot_id"); err == nil {
+			id = strings.TrimSpace(string(b))
+		}
+		var at time.Time
+		if b, err := os.ReadFile("/proc/stat"); err == nil {
+			at = btime(string(b))
+		}
+		return id, at
+	case "darwin":
+		var id string
+		if out, err := exec.Command("sysctl", "-n", "kern.bootsessionuuid").Output(); err == nil {
+			id = strings.TrimSpace(string(out))
+		}
+		var at time.Time
+		if out, err := exec.Command("sysctl", "-n", "kern.boottime").Output(); err == nil {
+			at = darwinBoottime(string(out))
+		}
+		return id, at
+	}
+	return "", time.Time{}
+}
+
+// btime finds the "btime N" line of /proc/stat.
+func btime(stat string) time.Time {
+	for _, line := range strings.Split(stat, "\n") {
+		if f := strings.Fields(line); len(f) == 2 && f[0] == "btime" {
+			if n, err := strconv.ParseInt(f[1], 10, 64); err == nil && n > 0 {
+				return time.Unix(n, 0)
+			}
+		}
+	}
+	return time.Time{}
+}
+
+// darwinBoottime parses sysctl's "{ sec = 1757975138, usec = 0 } Mon Sep 15 ...".
+func darwinBoottime(out string) time.Time {
+	_, rest, ok := strings.Cut(out, "sec = ")
+	if !ok {
+		return time.Time{}
+	}
+	digits := strings.TrimLeft(rest, " ")
+	end := strings.IndexFunc(digits, func(r rune) bool { return r < '0' || r > '9' })
+	if end > 0 {
+		digits = digits[:end]
+	}
+	if n, err := strconv.ParseInt(digits, 10, 64); err == nil && n > 0 {
+		return time.Unix(n, 0)
+	}
+	return time.Time{}
 }
 
 // shortHostname is the first label of name: a Mac whose HostName is set

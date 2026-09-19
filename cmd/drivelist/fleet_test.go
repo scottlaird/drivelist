@@ -63,7 +63,7 @@ func TestFleetEndToEnd(t *testing.T) {
 		t.Errorf("hosts: %q", out)
 	}
 	// The agent's version travels with every report; a test build is "dev".
-	if !strings.Contains(lines[0], "AGENT") || !strings.HasSuffix(strings.TrimSpace(lines[1]), "dev") {
+	if !strings.Contains(lines[0], "AGENT") || !strings.Contains(lines[1], "  dev  ") {
 		t.Errorf("hosts lacks the agent version:\n%s", out)
 	}
 	if !strings.Contains(mustRun(t, "hosts", "--ids"), "MACHINE ID") {

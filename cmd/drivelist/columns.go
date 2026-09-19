@@ -26,6 +26,12 @@ var hostCols = []col[*pb.Host]{
 		return "ok"
 	}},
 	{name: "agent", header: "AGENT", value: func(h *pb.Host) string { return orDash(h.AgentVersion) }},
+	{name: "up", header: "UP", value: func(h *pb.Host) string {
+		if h.BootedAt == nil {
+			return "-"
+		}
+		return gap(time.Since(h.BootedAt.AsTime()).Seconds())
+	}, key: func(h *pb.Host) any { return tsKey(h.BootedAt) }},
 	{name: "machineid", header: "MACHINE ID", value: func(h *pb.Host) string { return h.MachineId }, extra: true},
 	{name: "os", header: "OS", value: func(h *pb.Host) string { return orDash(h.Os) }, extra: true},
 	{name: "first", header: "FIRST SEEN", value: func(h *pb.Host) string { return when(h.FirstSeen) }, key: func(h *pb.Host) any { return tsKey(h.FirstSeen) }, extra: true},

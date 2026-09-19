@@ -193,10 +193,15 @@ func (a *Agent) sendKernel(ctx context.Context) {
 	}
 	req := &pb.ReportKernelRequest{Host: a.cfg.Host}
 	for _, c := range counts {
-		id, ok := a.ids.lookup(c.DevName, c.Addr)
-		if !ok {
-			a.log.Debug("kernel bucket for an unknown device dropped", "device", c.DevName, "addr", c.Addr, "class", c.Class, "count", c.Count)
-			continue
+		// A line about the host itself (a memory error) has no device; it
+		// goes with no identity and the server files it under the host.
+		var id *pb.DriveIdentity
+		if !(dlcollect.KernelEvent{Class: c.Class}).Host() {
+			var ok bool
+			if id, ok = a.ids.lookup(c.DevName, c.Addr); !ok {
+				a.log.Debug("kernel bucket for an unknown device dropped", "device", c.DevName, "addr", c.Addr, "class", c.Class, "count", c.Count)
+				continue
+			}
 		}
 		req.Samples = append(req.Samples, &pb.KernelSample{
 			Identity:    id,

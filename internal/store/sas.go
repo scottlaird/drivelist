@@ -45,6 +45,23 @@ func (t *tx) ingestSAS(host *hostRow, r Report, rows []devRow) error {
 	for _, n := range r.SASNodes {
 		nodeName[n.Address] = n.Name
 	}
+	// The counters count since boot. The first report from a new boot
+	// restarts them: no growth is derived from it, whatever the previous
+	// boot's totals were. Agents that send no boot id get the old test,
+	// counters below the last report.
+	fresh := false
+	if r.Host.BootID != "" {
+		var sasBoot string
+		if err := t.QueryRowContext(t.ctx, `SELECT sas_boot_id FROM host WHERE host_id = ?`, host.id).Scan(&sasBoot); err != nil {
+			return err
+		}
+		if sasBoot != r.Host.BootID {
+			fresh = sasBoot != ""
+			if _, err := t.ExecContext(t.ctx, `UPDATE host SET sas_boot_id = ? WHERE host_id = ?`, r.Host.BootID, host.id); err != nil {
+				return err
+			}
+		}
+	}
 
 	// Nodes.
 	prevNodes, err := t.sasNodes(host.id)
@@ -148,7 +165,7 @@ func (t *tx) ingestSAS(host *hostRow, r Report, rows []devRow) error {
 					return err
 				}
 			}
-			if p.InvalidDword >= prev.InvalidDword && p.DisparityError >= prev.DisparityError && p.LossDwordSync >= prev.LossDwordSync && p.PhyResetProblem >= prev.PhyResetProblem {
+			if !fresh && p.InvalidDword >= prev.InvalidDword && p.DisparityError >= prev.DisparityError && p.LossDwordSync >= prev.LossDwordSync && p.PhyResetProblem >= prev.PhyResetProblem {
 				grew := SASPhy{InvalidDword: p.InvalidDword - prev.InvalidDword, DisparityError: p.DisparityError - prev.DisparityError,
 					LossDwordSync: p.LossDwordSync - prev.LossDwordSync, PhyResetProblem: p.PhyResetProblem - prev.PhyResetProblem}
 				if grew.InvalidDword+grew.DisparityError+grew.LossDwordSync+grew.PhyResetProblem > 0 {

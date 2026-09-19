@@ -361,6 +361,17 @@ func describe(e *pb.Event) string {
 		return fmt.Sprintf("host stale    %s  silent %s", host, gap(num(d, "silent_secs")))
 	case "host_resumed":
 		return fmt.Sprintf("host resumed  %s  after %s", host, gap(num(d, "silent_secs")))
+	case "host_rebooted":
+		s := "host rebooted " + host
+		if _, ok := d["up_secs"]; ok {
+			s += "  up " + gap(num(d, "up_secs")) + " before"
+		}
+		if _, ok := d["silent_secs"]; ok {
+			s += "  silent " + gap(num(d, "silent_secs"))
+		}
+		return s
+	case "hardware_error":
+		return fmt.Sprintf("hardware      %s  %s %s ×%v  %s", host, str(d, "class"), str(d, "code"), num(d, "count"), str(d, "sample"))
 	case "report_degraded":
 		return fmt.Sprintf("degraded      %s  unidentified %v", host, d["unidentified"])
 	}

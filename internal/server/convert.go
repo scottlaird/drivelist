@@ -105,7 +105,11 @@ func sasErrorRowToProto(r store.SASErrorRow) *pb.SasErrorRow {
 }
 
 func hostIdentityFromProto(h *pb.HostIdentity) store.HostIdentity {
-	return store.HostIdentity{MachineID: h.GetMachineId(), Hostname: h.GetHostname(), OS: h.GetOs(), AgentVersion: h.GetAgentVersion()}
+	id := store.HostIdentity{MachineID: h.GetMachineId(), Hostname: h.GetHostname(), OS: h.GetOs(), AgentVersion: h.GetAgentVersion(), BootID: h.GetBootId()}
+	if b := h.GetBootedAt(); b != nil {
+		id.BootedAt = b.AsTime()
+	}
+	return id
 }
 
 func identityFromProto(id *pb.DriveIdentity) store.DriveIdentity {
@@ -123,6 +127,7 @@ func hostToProto(h store.Host) *pb.Host {
 		Os:           h.OS,
 		AgentVersion: h.AgentVersion,
 		FirstSeen:    ts(h.FirstSeen),
+		BootedAt:     ts(h.BootedAt),
 		LastReport:   ts(h.LastReport),
 		StaleSince:   ts(h.StaleSince),
 		DriveCount:   int32(h.DriveCount),

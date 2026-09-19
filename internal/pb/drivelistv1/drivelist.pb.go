@@ -87,6 +87,8 @@ type HostIdentity struct {
 	Hostname      string                 `protobuf:"bytes,2,opt,name=hostname,proto3" json:"hostname,omitempty"`
 	Os            string                 `protobuf:"bytes,3,opt,name=os,proto3" json:"os,omitempty"` // "linux", "darwin"
 	AgentVersion  string                 `protobuf:"bytes,4,opt,name=agent_version,json=agentVersion,proto3" json:"agent_version,omitempty"`
+	BootId        string                 `protobuf:"bytes,5,opt,name=boot_id,json=bootId,proto3" json:"boot_id,omitempty"` // the kernel's boot id; a new one means the host rebooted. "" from agents before 0.9
+	BootedAt      *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=booted_at,json=bootedAt,proto3" json:"booted_at,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -147,6 +149,20 @@ func (x *HostIdentity) GetAgentVersion() string {
 		return x.AgentVersion
 	}
 	return ""
+}
+
+func (x *HostIdentity) GetBootId() string {
+	if x != nil {
+		return x.BootId
+	}
+	return ""
+}
+
+func (x *HostIdentity) GetBootedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.BootedAt
+	}
+	return nil
 }
 
 // DriveIdentity is how an agent names a drive. The server resolves it to a
@@ -1182,16 +1198,19 @@ func (x *ReportInventoryResponse) GetConfig() *AgentConfig {
 
 // KernelSample is one hour of one class of kernel log line about one drive.
 type KernelSample struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Identity      *DriveIdentity         `protobuf:"bytes,1,opt,name=identity,proto3" json:"identity,omitempty"`
-	DevName       string                 `protobuf:"bytes,2,opt,name=dev_name,json=devName,proto3" json:"dev_name,omitempty"`
-	BucketStart   *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=bucket_start,json=bucketStart,proto3" json:"bucket_start,omitempty"`
-	BucketSecs    uint32                 `protobuf:"varint,4,opt,name=bucket_secs,json=bucketSecs,proto3" json:"bucket_secs,omitempty"`
-	Class         string                 `protobuf:"bytes,5,opt,name=class,proto3" json:"class,omitempty"`                       // attach detach predictive_failure medium_error hardware_error io_error timeout link_reset recovered other
-	ScsiCode      string                 `protobuf:"bytes,6,opt,name=scsi_code,json=scsiCode,proto3" json:"scsi_code,omitempty"` // "key:asc:ascq" in hex, e.g. "1:5d:90"; "" for non-SCSI
-	Count         uint32                 `protobuf:"varint,7,opt,name=count,proto3" json:"count,omitempty"`
-	Sample        string                 `protobuf:"bytes,8,opt,name=sample,proto3" json:"sample,omitempty"`     // the first line in the bucket
-	Hostname      string                 `protobuf:"bytes,9,opt,name=hostname,proto3" json:"hostname,omitempty"` // set in query responses
+	state       protoimpl.MessageState `protogen:"open.v1"`
+	Identity    *DriveIdentity         `protobuf:"bytes,1,opt,name=identity,proto3" json:"identity,omitempty"`
+	DevName     string                 `protobuf:"bytes,2,opt,name=dev_name,json=devName,proto3" json:"dev_name,omitempty"`
+	BucketStart *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=bucket_start,json=bucketStart,proto3" json:"bucket_start,omitempty"`
+	BucketSecs  uint32                 `protobuf:"varint,4,opt,name=bucket_secs,json=bucketSecs,proto3" json:"bucket_secs,omitempty"`
+	Class       string                 `protobuf:"bytes,5,opt,name=class,proto3" json:"class,omitempty"` // attach detach predictive_failure medium_error hardware_error io_error timeout link_reset recovered other; hw_corrected hw_uncorrected for the host itself
+	// identity is unset and dev_name "" for a line about the host itself (a
+	// memory or machine-check error); the server records those as
+	// hardware_error events on the host.
+	ScsiCode      string `protobuf:"bytes,6,opt,name=scsi_code,json=scsiCode,proto3" json:"scsi_code,omitempty"` // "key:asc:ascq" in hex, e.g. "1:5d:90"; the location ("mc0/csrow3/ch1") for a hardware error; "" otherwise
+	Count         uint32 `protobuf:"varint,7,opt,name=count,proto3" json:"count,omitempty"`
+	Sample        string `protobuf:"bytes,8,opt,name=sample,proto3" json:"sample,omitempty"`     // the first line in the bucket
+	Hostname      string `protobuf:"bytes,9,opt,name=hostname,proto3" json:"hostname,omitempty"` // set in query responses
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -2002,6 +2021,7 @@ type Host struct {
 	DriveCount    int32                  `protobuf:"varint,8,opt,name=drive_count,json=driveCount,proto3" json:"drive_count,omitempty"`       // open placements
 	MissingCount  int32                  `protobuf:"varint,9,opt,name=missing_count,json=missingCount,proto3" json:"missing_count,omitempty"` // drives that vanished from this host and are not back
 	GhostCount    int32                  `protobuf:"varint,10,opt,name=ghost_count,json=ghostCount,proto3" json:"ghost_count,omitempty"`      // open pool ghosts
+	BootedAt      *timestamppb.Timestamp `protobuf:"bytes,11,opt,name=booted_at,json=bootedAt,proto3" json:"booted_at,omitempty"`             // when the host last booted, if its agent says
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -2104,6 +2124,13 @@ func (x *Host) GetGhostCount() int32 {
 		return x.GhostCount
 	}
 	return 0
+}
+
+func (x *Host) GetBootedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.BootedAt
+	}
+	return nil
 }
 
 type Placement struct {
@@ -5453,13 +5480,15 @@ var File_drivelist_v1_drivelist_proto protoreflect.FileDescriptor
 
 const file_drivelist_v1_drivelist_proto_rawDesc = "" +
 	"\n" +
-	"\x1cdrivelist/v1/drivelist.proto\x12\fdrivelist.v1\x1a\x1egoogle/protobuf/duration.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"~\n" +
+	"\x1cdrivelist/v1/drivelist.proto\x12\fdrivelist.v1\x1a\x1egoogle/protobuf/duration.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xd0\x01\n" +
 	"\fHostIdentity\x12\x1d\n" +
 	"\n" +
 	"machine_id\x18\x01 \x01(\tR\tmachineId\x12\x1a\n" +
 	"\bhostname\x18\x02 \x01(\tR\bhostname\x12\x0e\n" +
 	"\x02os\x18\x03 \x01(\tR\x02os\x12#\n" +
-	"\ragent_version\x18\x04 \x01(\tR\fagentVersion\"g\n" +
+	"\ragent_version\x18\x04 \x01(\tR\fagentVersion\x12\x17\n" +
+	"\aboot_id\x18\x05 \x01(\tR\x06bootId\x127\n" +
+	"\tbooted_at\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\bbootedAt\"g\n" +
 	"\rDriveIdentity\x12\x10\n" +
 	"\x03wwn\x18\x01 \x01(\tR\x03wwn\x12\x16\n" +
 	"\x06vendor\x18\x02 \x01(\tR\x06vendor\x12\x14\n" +
@@ -5651,7 +5680,7 @@ const file_drivelist_v1_drivelist_proto_rawDesc = "" +
 	"\tReportAck\x12\x1a\n" +
 	"\baccepted\x18\x01 \x01(\bR\baccepted\x12#\n" +
 	"\rreject_reason\x18\x02 \x01(\tR\frejectReason\x12\x16\n" +
-	"\x06stored\x18\x03 \x01(\rR\x06stored\"\x92\x03\n" +
+	"\x06stored\x18\x03 \x01(\rR\x06stored\"\xcb\x03\n" +
 	"\x04Host\x12\x1a\n" +
 	"\bhostname\x18\x01 \x01(\tR\bhostname\x12\x1d\n" +
 	"\n" +
@@ -5669,7 +5698,8 @@ const file_drivelist_v1_drivelist_proto_rawDesc = "" +
 	"\rmissing_count\x18\t \x01(\x05R\fmissingCount\x12\x1f\n" +
 	"\vghost_count\x18\n" +
 	" \x01(\x05R\n" +
-	"ghostCount\"\xb9\x03\n" +
+	"ghostCount\x127\n" +
+	"\tbooted_at\x18\v \x01(\v2\x1a.google.protobuf.TimestampR\bbootedAt\"\xb9\x03\n" +
 	"\tPlacement\x12\x1a\n" +
 	"\bhostname\x18\x01 \x01(\tR\bhostname\x12\x1c\n" +
 	"\tenclosure\x18\x02 \x01(\tR\tenclosure\x12\x10\n" +
@@ -6066,151 +6096,153 @@ var file_drivelist_v1_drivelist_proto_goTypes = []any{
 	(*durationpb.Duration)(nil),     // 74: google.protobuf.Duration
 }
 var file_drivelist_v1_drivelist_proto_depIdxs = []int32{
-	2,   // 0: drivelist.v1.Device.identity:type_name -> drivelist.v1.DriveIdentity
-	0,   // 1: drivelist.v1.Device.bus:type_name -> drivelist.v1.Bus
-	1,   // 2: drivelist.v1.ReportInventoryRequest.host:type_name -> drivelist.v1.HostIdentity
-	73,  // 3: drivelist.v1.ReportInventoryRequest.observed_at:type_name -> google.protobuf.Timestamp
-	3,   // 4: drivelist.v1.ReportInventoryRequest.devices:type_name -> drivelist.v1.Device
-	4,   // 5: drivelist.v1.ReportInventoryRequest.empty_bays:type_name -> drivelist.v1.EmptyBay
-	5,   // 6: drivelist.v1.ReportInventoryRequest.unmapped_members:type_name -> drivelist.v1.UnmappedMember
-	7,   // 7: drivelist.v1.ReportInventoryRequest.sas_nodes:type_name -> drivelist.v1.SasNode
-	8,   // 8: drivelist.v1.ReportInventoryRequest.sas_phys:type_name -> drivelist.v1.SasPhy
-	2,   // 9: drivelist.v1.DriveStatus.identity:type_name -> drivelist.v1.DriveIdentity
-	74,  // 10: drivelist.v1.AgentConfig.inventory_interval:type_name -> google.protobuf.Duration
-	74,  // 11: drivelist.v1.AgentConfig.smart_interval:type_name -> google.protobuf.Duration
-	74,  // 12: drivelist.v1.AgentConfig.io_bucket:type_name -> google.protobuf.Duration
-	9,   // 13: drivelist.v1.ReportInventoryResponse.statuses:type_name -> drivelist.v1.DriveStatus
-	10,  // 14: drivelist.v1.ReportInventoryResponse.config:type_name -> drivelist.v1.AgentConfig
-	2,   // 15: drivelist.v1.KernelSample.identity:type_name -> drivelist.v1.DriveIdentity
-	73,  // 16: drivelist.v1.KernelSample.bucket_start:type_name -> google.protobuf.Timestamp
-	2,   // 17: drivelist.v1.SmartSample.identity:type_name -> drivelist.v1.DriveIdentity
-	73,  // 18: drivelist.v1.SmartSample.ts:type_name -> google.protobuf.Timestamp
-	13,  // 19: drivelist.v1.SmartSample.summary:type_name -> drivelist.v1.SmartSummary
-	1,   // 20: drivelist.v1.ReportSmartRequest.host:type_name -> drivelist.v1.HostIdentity
-	14,  // 21: drivelist.v1.ReportSmartRequest.samples:type_name -> drivelist.v1.SmartSample
-	6,   // 22: drivelist.v1.ReportBundle.inventory:type_name -> drivelist.v1.ReportInventoryRequest
-	15,  // 23: drivelist.v1.ReportBundle.smart:type_name -> drivelist.v1.ReportSmartRequest
-	2,   // 24: drivelist.v1.IOSample.identity:type_name -> drivelist.v1.DriveIdentity
-	73,  // 25: drivelist.v1.IOSample.bucket_start:type_name -> google.protobuf.Timestamp
-	1,   // 26: drivelist.v1.ReportIORequest.host:type_name -> drivelist.v1.HostIdentity
-	17,  // 27: drivelist.v1.ReportIORequest.samples:type_name -> drivelist.v1.IOSample
-	1,   // 28: drivelist.v1.ReportKernelRequest.host:type_name -> drivelist.v1.HostIdentity
-	12,  // 29: drivelist.v1.ReportKernelRequest.samples:type_name -> drivelist.v1.KernelSample
-	73,  // 30: drivelist.v1.Host.first_seen:type_name -> google.protobuf.Timestamp
-	73,  // 31: drivelist.v1.Host.last_report:type_name -> google.protobuf.Timestamp
-	73,  // 32: drivelist.v1.Host.stale_since:type_name -> google.protobuf.Timestamp
-	73,  // 33: drivelist.v1.Placement.first_seen:type_name -> google.protobuf.Timestamp
-	73,  // 34: drivelist.v1.Placement.last_seen:type_name -> google.protobuf.Timestamp
-	73,  // 35: drivelist.v1.Placement.ended_at:type_name -> google.protobuf.Timestamp
-	73,  // 36: drivelist.v1.Enclosure.first_seen:type_name -> google.protobuf.Timestamp
-	73,  // 37: drivelist.v1.Enclosure.last_seen:type_name -> google.protobuf.Timestamp
-	41,  // 38: drivelist.v1.SmartRow.drive:type_name -> drivelist.v1.Drive
-	14,  // 39: drivelist.v1.SmartRow.sample:type_name -> drivelist.v1.SmartSample
-	27,  // 40: drivelist.v1.ListSmartResponse.rows:type_name -> drivelist.v1.SmartRow
-	23,  // 41: drivelist.v1.ListBaysResponse.enclosure:type_name -> drivelist.v1.Enclosure
-	25,  // 42: drivelist.v1.ListBaysResponse.bays:type_name -> drivelist.v1.BayView
-	23,  // 43: drivelist.v1.ListEnclosuresResponse.enclosures:type_name -> drivelist.v1.Enclosure
-	23,  // 44: drivelist.v1.NameEnclosureResponse.enclosure:type_name -> drivelist.v1.Enclosure
-	7,   // 45: drivelist.v1.SasNodeState.node:type_name -> drivelist.v1.SasNode
-	73,  // 46: drivelist.v1.SasNodeState.first_seen:type_name -> google.protobuf.Timestamp
-	73,  // 47: drivelist.v1.SasNodeState.last_seen:type_name -> google.protobuf.Timestamp
-	73,  // 48: drivelist.v1.SasNodeState.gone_at:type_name -> google.protobuf.Timestamp
-	8,   // 49: drivelist.v1.SasPhyState.phy:type_name -> drivelist.v1.SasPhy
-	73,  // 50: drivelist.v1.SasPhyState.first_seen:type_name -> google.protobuf.Timestamp
-	73,  // 51: drivelist.v1.SasPhyState.last_seen:type_name -> google.protobuf.Timestamp
-	73,  // 52: drivelist.v1.SasPhyState.gone_at:type_name -> google.protobuf.Timestamp
-	35,  // 53: drivelist.v1.GetSASResponse.nodes:type_name -> drivelist.v1.SasNodeState
-	36,  // 54: drivelist.v1.GetSASResponse.phys:type_name -> drivelist.v1.SasPhyState
-	73,  // 55: drivelist.v1.ListSASErrorsRequest.since:type_name -> google.protobuf.Timestamp
-	73,  // 56: drivelist.v1.SasErrorRow.last_at:type_name -> google.protobuf.Timestamp
-	39,  // 57: drivelist.v1.ListSASErrorsResponse.rows:type_name -> drivelist.v1.SasErrorRow
-	0,   // 58: drivelist.v1.Drive.bus:type_name -> drivelist.v1.Bus
-	73,  // 59: drivelist.v1.Drive.first_seen:type_name -> google.protobuf.Timestamp
-	73,  // 60: drivelist.v1.Drive.last_seen:type_name -> google.protobuf.Timestamp
-	22,  // 61: drivelist.v1.Drive.current:type_name -> drivelist.v1.Placement
-	22,  // 62: drivelist.v1.Drive.last:type_name -> drivelist.v1.Placement
-	73,  // 63: drivelist.v1.Event.ts:type_name -> google.protobuf.Timestamp
-	21,  // 64: drivelist.v1.ListHostsResponse.hosts:type_name -> drivelist.v1.Host
-	41,  // 65: drivelist.v1.ListDrivesResponse.drives:type_name -> drivelist.v1.Drive
-	41,  // 66: drivelist.v1.GetDriveResponse.drive:type_name -> drivelist.v1.Drive
-	42,  // 67: drivelist.v1.GetDriveResponse.last_status:type_name -> drivelist.v1.Event
-	41,  // 68: drivelist.v1.GetDriveHistoryResponse.drive:type_name -> drivelist.v1.Drive
-	22,  // 69: drivelist.v1.GetDriveHistoryResponse.placements:type_name -> drivelist.v1.Placement
-	42,  // 70: drivelist.v1.GetDriveHistoryResponse.events:type_name -> drivelist.v1.Event
-	73,  // 71: drivelist.v1.ListEventsRequest.since:type_name -> google.protobuf.Timestamp
-	42,  // 72: drivelist.v1.ListEventsResponse.events:type_name -> drivelist.v1.Event
-	73,  // 73: drivelist.v1.Ghost.first_seen:type_name -> google.protobuf.Timestamp
-	73,  // 74: drivelist.v1.Ghost.last_seen:type_name -> google.protobuf.Timestamp
-	41,  // 75: drivelist.v1.ListMissingResponse.drives:type_name -> drivelist.v1.Drive
-	54,  // 76: drivelist.v1.ListMissingResponse.ghosts:type_name -> drivelist.v1.Ghost
-	42,  // 77: drivelist.v1.AnnotateResponse.event:type_name -> drivelist.v1.Event
-	73,  // 78: drivelist.v1.GetKernelRequest.since:type_name -> google.protobuf.Timestamp
-	41,  // 79: drivelist.v1.GetKernelResponse.drive:type_name -> drivelist.v1.Drive
-	12,  // 80: drivelist.v1.GetKernelResponse.samples:type_name -> drivelist.v1.KernelSample
-	73,  // 81: drivelist.v1.GetSmartRequest.since:type_name -> google.protobuf.Timestamp
-	41,  // 82: drivelist.v1.GetSmartResponse.drive:type_name -> drivelist.v1.Drive
-	14,  // 83: drivelist.v1.GetSmartResponse.samples:type_name -> drivelist.v1.SmartSample
-	73,  // 84: drivelist.v1.GetSmartResponse.raw_ts:type_name -> google.protobuf.Timestamp
-	73,  // 85: drivelist.v1.GetIORequest.since:type_name -> google.protobuf.Timestamp
-	41,  // 86: drivelist.v1.GetIOResponse.drive:type_name -> drivelist.v1.Drive
-	17,  // 87: drivelist.v1.GetIOResponse.samples:type_name -> drivelist.v1.IOSample
-	73,  // 88: drivelist.v1.CompareIORequest.since:type_name -> google.protobuf.Timestamp
-	65,  // 89: drivelist.v1.CompareIOResponse.rows:type_name -> drivelist.v1.IOComparison
-	42,  // 90: drivelist.v1.MergeDrivesResponse.event:type_name -> drivelist.v1.Event
-	42,  // 91: drivelist.v1.MergeHostsResponse.event:type_name -> drivelist.v1.Event
-	6,   // 92: drivelist.v1.Collector.ReportInventory:input_type -> drivelist.v1.ReportInventoryRequest
-	19,  // 93: drivelist.v1.Collector.ReportKernel:input_type -> drivelist.v1.ReportKernelRequest
-	15,  // 94: drivelist.v1.Collector.ReportSmart:input_type -> drivelist.v1.ReportSmartRequest
-	18,  // 95: drivelist.v1.Collector.ReportIO:input_type -> drivelist.v1.ReportIORequest
-	43,  // 96: drivelist.v1.Query.ListHosts:input_type -> drivelist.v1.ListHostsRequest
-	45,  // 97: drivelist.v1.Query.ListDrives:input_type -> drivelist.v1.ListDrivesRequest
-	47,  // 98: drivelist.v1.Query.GetDrive:input_type -> drivelist.v1.GetDriveRequest
-	49,  // 99: drivelist.v1.Query.GetDriveHistory:input_type -> drivelist.v1.GetDriveHistoryRequest
-	51,  // 100: drivelist.v1.Query.ListEvents:input_type -> drivelist.v1.ListEventsRequest
-	53,  // 101: drivelist.v1.Query.ListMissing:input_type -> drivelist.v1.ListMissingRequest
-	56,  // 102: drivelist.v1.Query.Annotate:input_type -> drivelist.v1.AnnotateRequest
-	58,  // 103: drivelist.v1.Query.GetKernel:input_type -> drivelist.v1.GetKernelRequest
-	60,  // 104: drivelist.v1.Query.GetSmart:input_type -> drivelist.v1.GetSmartRequest
-	62,  // 105: drivelist.v1.Query.GetIO:input_type -> drivelist.v1.GetIORequest
-	64,  // 106: drivelist.v1.Query.CompareIO:input_type -> drivelist.v1.CompareIORequest
-	67,  // 107: drivelist.v1.Query.MergeDrives:input_type -> drivelist.v1.MergeDrivesRequest
-	69,  // 108: drivelist.v1.Query.MergeHosts:input_type -> drivelist.v1.MergeHostsRequest
-	71,  // 109: drivelist.v1.Query.Rebuild:input_type -> drivelist.v1.RebuildRequest
-	30,  // 110: drivelist.v1.Query.ListEnclosures:input_type -> drivelist.v1.ListEnclosuresRequest
-	32,  // 111: drivelist.v1.Query.NameEnclosure:input_type -> drivelist.v1.NameEnclosureRequest
-	34,  // 112: drivelist.v1.Query.GetSAS:input_type -> drivelist.v1.GetSASRequest
-	38,  // 113: drivelist.v1.Query.ListSASErrors:input_type -> drivelist.v1.ListSASErrorsRequest
-	24,  // 114: drivelist.v1.Query.ListBays:input_type -> drivelist.v1.ListBaysRequest
-	26,  // 115: drivelist.v1.Query.ListSmart:input_type -> drivelist.v1.ListSmartRequest
-	11,  // 116: drivelist.v1.Collector.ReportInventory:output_type -> drivelist.v1.ReportInventoryResponse
-	20,  // 117: drivelist.v1.Collector.ReportKernel:output_type -> drivelist.v1.ReportAck
-	20,  // 118: drivelist.v1.Collector.ReportSmart:output_type -> drivelist.v1.ReportAck
-	20,  // 119: drivelist.v1.Collector.ReportIO:output_type -> drivelist.v1.ReportAck
-	44,  // 120: drivelist.v1.Query.ListHosts:output_type -> drivelist.v1.ListHostsResponse
-	46,  // 121: drivelist.v1.Query.ListDrives:output_type -> drivelist.v1.ListDrivesResponse
-	48,  // 122: drivelist.v1.Query.GetDrive:output_type -> drivelist.v1.GetDriveResponse
-	50,  // 123: drivelist.v1.Query.GetDriveHistory:output_type -> drivelist.v1.GetDriveHistoryResponse
-	52,  // 124: drivelist.v1.Query.ListEvents:output_type -> drivelist.v1.ListEventsResponse
-	55,  // 125: drivelist.v1.Query.ListMissing:output_type -> drivelist.v1.ListMissingResponse
-	57,  // 126: drivelist.v1.Query.Annotate:output_type -> drivelist.v1.AnnotateResponse
-	59,  // 127: drivelist.v1.Query.GetKernel:output_type -> drivelist.v1.GetKernelResponse
-	61,  // 128: drivelist.v1.Query.GetSmart:output_type -> drivelist.v1.GetSmartResponse
-	63,  // 129: drivelist.v1.Query.GetIO:output_type -> drivelist.v1.GetIOResponse
-	66,  // 130: drivelist.v1.Query.CompareIO:output_type -> drivelist.v1.CompareIOResponse
-	68,  // 131: drivelist.v1.Query.MergeDrives:output_type -> drivelist.v1.MergeDrivesResponse
-	70,  // 132: drivelist.v1.Query.MergeHosts:output_type -> drivelist.v1.MergeHostsResponse
-	72,  // 133: drivelist.v1.Query.Rebuild:output_type -> drivelist.v1.RebuildResponse
-	31,  // 134: drivelist.v1.Query.ListEnclosures:output_type -> drivelist.v1.ListEnclosuresResponse
-	33,  // 135: drivelist.v1.Query.NameEnclosure:output_type -> drivelist.v1.NameEnclosureResponse
-	37,  // 136: drivelist.v1.Query.GetSAS:output_type -> drivelist.v1.GetSASResponse
-	40,  // 137: drivelist.v1.Query.ListSASErrors:output_type -> drivelist.v1.ListSASErrorsResponse
-	29,  // 138: drivelist.v1.Query.ListBays:output_type -> drivelist.v1.ListBaysResponse
-	28,  // 139: drivelist.v1.Query.ListSmart:output_type -> drivelist.v1.ListSmartResponse
-	116, // [116:140] is the sub-list for method output_type
-	92,  // [92:116] is the sub-list for method input_type
-	92,  // [92:92] is the sub-list for extension type_name
-	92,  // [92:92] is the sub-list for extension extendee
-	0,   // [0:92] is the sub-list for field type_name
+	73,  // 0: drivelist.v1.HostIdentity.booted_at:type_name -> google.protobuf.Timestamp
+	2,   // 1: drivelist.v1.Device.identity:type_name -> drivelist.v1.DriveIdentity
+	0,   // 2: drivelist.v1.Device.bus:type_name -> drivelist.v1.Bus
+	1,   // 3: drivelist.v1.ReportInventoryRequest.host:type_name -> drivelist.v1.HostIdentity
+	73,  // 4: drivelist.v1.ReportInventoryRequest.observed_at:type_name -> google.protobuf.Timestamp
+	3,   // 5: drivelist.v1.ReportInventoryRequest.devices:type_name -> drivelist.v1.Device
+	4,   // 6: drivelist.v1.ReportInventoryRequest.empty_bays:type_name -> drivelist.v1.EmptyBay
+	5,   // 7: drivelist.v1.ReportInventoryRequest.unmapped_members:type_name -> drivelist.v1.UnmappedMember
+	7,   // 8: drivelist.v1.ReportInventoryRequest.sas_nodes:type_name -> drivelist.v1.SasNode
+	8,   // 9: drivelist.v1.ReportInventoryRequest.sas_phys:type_name -> drivelist.v1.SasPhy
+	2,   // 10: drivelist.v1.DriveStatus.identity:type_name -> drivelist.v1.DriveIdentity
+	74,  // 11: drivelist.v1.AgentConfig.inventory_interval:type_name -> google.protobuf.Duration
+	74,  // 12: drivelist.v1.AgentConfig.smart_interval:type_name -> google.protobuf.Duration
+	74,  // 13: drivelist.v1.AgentConfig.io_bucket:type_name -> google.protobuf.Duration
+	9,   // 14: drivelist.v1.ReportInventoryResponse.statuses:type_name -> drivelist.v1.DriveStatus
+	10,  // 15: drivelist.v1.ReportInventoryResponse.config:type_name -> drivelist.v1.AgentConfig
+	2,   // 16: drivelist.v1.KernelSample.identity:type_name -> drivelist.v1.DriveIdentity
+	73,  // 17: drivelist.v1.KernelSample.bucket_start:type_name -> google.protobuf.Timestamp
+	2,   // 18: drivelist.v1.SmartSample.identity:type_name -> drivelist.v1.DriveIdentity
+	73,  // 19: drivelist.v1.SmartSample.ts:type_name -> google.protobuf.Timestamp
+	13,  // 20: drivelist.v1.SmartSample.summary:type_name -> drivelist.v1.SmartSummary
+	1,   // 21: drivelist.v1.ReportSmartRequest.host:type_name -> drivelist.v1.HostIdentity
+	14,  // 22: drivelist.v1.ReportSmartRequest.samples:type_name -> drivelist.v1.SmartSample
+	6,   // 23: drivelist.v1.ReportBundle.inventory:type_name -> drivelist.v1.ReportInventoryRequest
+	15,  // 24: drivelist.v1.ReportBundle.smart:type_name -> drivelist.v1.ReportSmartRequest
+	2,   // 25: drivelist.v1.IOSample.identity:type_name -> drivelist.v1.DriveIdentity
+	73,  // 26: drivelist.v1.IOSample.bucket_start:type_name -> google.protobuf.Timestamp
+	1,   // 27: drivelist.v1.ReportIORequest.host:type_name -> drivelist.v1.HostIdentity
+	17,  // 28: drivelist.v1.ReportIORequest.samples:type_name -> drivelist.v1.IOSample
+	1,   // 29: drivelist.v1.ReportKernelRequest.host:type_name -> drivelist.v1.HostIdentity
+	12,  // 30: drivelist.v1.ReportKernelRequest.samples:type_name -> drivelist.v1.KernelSample
+	73,  // 31: drivelist.v1.Host.first_seen:type_name -> google.protobuf.Timestamp
+	73,  // 32: drivelist.v1.Host.last_report:type_name -> google.protobuf.Timestamp
+	73,  // 33: drivelist.v1.Host.stale_since:type_name -> google.protobuf.Timestamp
+	73,  // 34: drivelist.v1.Host.booted_at:type_name -> google.protobuf.Timestamp
+	73,  // 35: drivelist.v1.Placement.first_seen:type_name -> google.protobuf.Timestamp
+	73,  // 36: drivelist.v1.Placement.last_seen:type_name -> google.protobuf.Timestamp
+	73,  // 37: drivelist.v1.Placement.ended_at:type_name -> google.protobuf.Timestamp
+	73,  // 38: drivelist.v1.Enclosure.first_seen:type_name -> google.protobuf.Timestamp
+	73,  // 39: drivelist.v1.Enclosure.last_seen:type_name -> google.protobuf.Timestamp
+	41,  // 40: drivelist.v1.SmartRow.drive:type_name -> drivelist.v1.Drive
+	14,  // 41: drivelist.v1.SmartRow.sample:type_name -> drivelist.v1.SmartSample
+	27,  // 42: drivelist.v1.ListSmartResponse.rows:type_name -> drivelist.v1.SmartRow
+	23,  // 43: drivelist.v1.ListBaysResponse.enclosure:type_name -> drivelist.v1.Enclosure
+	25,  // 44: drivelist.v1.ListBaysResponse.bays:type_name -> drivelist.v1.BayView
+	23,  // 45: drivelist.v1.ListEnclosuresResponse.enclosures:type_name -> drivelist.v1.Enclosure
+	23,  // 46: drivelist.v1.NameEnclosureResponse.enclosure:type_name -> drivelist.v1.Enclosure
+	7,   // 47: drivelist.v1.SasNodeState.node:type_name -> drivelist.v1.SasNode
+	73,  // 48: drivelist.v1.SasNodeState.first_seen:type_name -> google.protobuf.Timestamp
+	73,  // 49: drivelist.v1.SasNodeState.last_seen:type_name -> google.protobuf.Timestamp
+	73,  // 50: drivelist.v1.SasNodeState.gone_at:type_name -> google.protobuf.Timestamp
+	8,   // 51: drivelist.v1.SasPhyState.phy:type_name -> drivelist.v1.SasPhy
+	73,  // 52: drivelist.v1.SasPhyState.first_seen:type_name -> google.protobuf.Timestamp
+	73,  // 53: drivelist.v1.SasPhyState.last_seen:type_name -> google.protobuf.Timestamp
+	73,  // 54: drivelist.v1.SasPhyState.gone_at:type_name -> google.protobuf.Timestamp
+	35,  // 55: drivelist.v1.GetSASResponse.nodes:type_name -> drivelist.v1.SasNodeState
+	36,  // 56: drivelist.v1.GetSASResponse.phys:type_name -> drivelist.v1.SasPhyState
+	73,  // 57: drivelist.v1.ListSASErrorsRequest.since:type_name -> google.protobuf.Timestamp
+	73,  // 58: drivelist.v1.SasErrorRow.last_at:type_name -> google.protobuf.Timestamp
+	39,  // 59: drivelist.v1.ListSASErrorsResponse.rows:type_name -> drivelist.v1.SasErrorRow
+	0,   // 60: drivelist.v1.Drive.bus:type_name -> drivelist.v1.Bus
+	73,  // 61: drivelist.v1.Drive.first_seen:type_name -> google.protobuf.Timestamp
+	73,  // 62: drivelist.v1.Drive.last_seen:type_name -> google.protobuf.Timestamp
+	22,  // 63: drivelist.v1.Drive.current:type_name -> drivelist.v1.Placement
+	22,  // 64: drivelist.v1.Drive.last:type_name -> drivelist.v1.Placement
+	73,  // 65: drivelist.v1.Event.ts:type_name -> google.protobuf.Timestamp
+	21,  // 66: drivelist.v1.ListHostsResponse.hosts:type_name -> drivelist.v1.Host
+	41,  // 67: drivelist.v1.ListDrivesResponse.drives:type_name -> drivelist.v1.Drive
+	41,  // 68: drivelist.v1.GetDriveResponse.drive:type_name -> drivelist.v1.Drive
+	42,  // 69: drivelist.v1.GetDriveResponse.last_status:type_name -> drivelist.v1.Event
+	41,  // 70: drivelist.v1.GetDriveHistoryResponse.drive:type_name -> drivelist.v1.Drive
+	22,  // 71: drivelist.v1.GetDriveHistoryResponse.placements:type_name -> drivelist.v1.Placement
+	42,  // 72: drivelist.v1.GetDriveHistoryResponse.events:type_name -> drivelist.v1.Event
+	73,  // 73: drivelist.v1.ListEventsRequest.since:type_name -> google.protobuf.Timestamp
+	42,  // 74: drivelist.v1.ListEventsResponse.events:type_name -> drivelist.v1.Event
+	73,  // 75: drivelist.v1.Ghost.first_seen:type_name -> google.protobuf.Timestamp
+	73,  // 76: drivelist.v1.Ghost.last_seen:type_name -> google.protobuf.Timestamp
+	41,  // 77: drivelist.v1.ListMissingResponse.drives:type_name -> drivelist.v1.Drive
+	54,  // 78: drivelist.v1.ListMissingResponse.ghosts:type_name -> drivelist.v1.Ghost
+	42,  // 79: drivelist.v1.AnnotateResponse.event:type_name -> drivelist.v1.Event
+	73,  // 80: drivelist.v1.GetKernelRequest.since:type_name -> google.protobuf.Timestamp
+	41,  // 81: drivelist.v1.GetKernelResponse.drive:type_name -> drivelist.v1.Drive
+	12,  // 82: drivelist.v1.GetKernelResponse.samples:type_name -> drivelist.v1.KernelSample
+	73,  // 83: drivelist.v1.GetSmartRequest.since:type_name -> google.protobuf.Timestamp
+	41,  // 84: drivelist.v1.GetSmartResponse.drive:type_name -> drivelist.v1.Drive
+	14,  // 85: drivelist.v1.GetSmartResponse.samples:type_name -> drivelist.v1.SmartSample
+	73,  // 86: drivelist.v1.GetSmartResponse.raw_ts:type_name -> google.protobuf.Timestamp
+	73,  // 87: drivelist.v1.GetIORequest.since:type_name -> google.protobuf.Timestamp
+	41,  // 88: drivelist.v1.GetIOResponse.drive:type_name -> drivelist.v1.Drive
+	17,  // 89: drivelist.v1.GetIOResponse.samples:type_name -> drivelist.v1.IOSample
+	73,  // 90: drivelist.v1.CompareIORequest.since:type_name -> google.protobuf.Timestamp
+	65,  // 91: drivelist.v1.CompareIOResponse.rows:type_name -> drivelist.v1.IOComparison
+	42,  // 92: drivelist.v1.MergeDrivesResponse.event:type_name -> drivelist.v1.Event
+	42,  // 93: drivelist.v1.MergeHostsResponse.event:type_name -> drivelist.v1.Event
+	6,   // 94: drivelist.v1.Collector.ReportInventory:input_type -> drivelist.v1.ReportInventoryRequest
+	19,  // 95: drivelist.v1.Collector.ReportKernel:input_type -> drivelist.v1.ReportKernelRequest
+	15,  // 96: drivelist.v1.Collector.ReportSmart:input_type -> drivelist.v1.ReportSmartRequest
+	18,  // 97: drivelist.v1.Collector.ReportIO:input_type -> drivelist.v1.ReportIORequest
+	43,  // 98: drivelist.v1.Query.ListHosts:input_type -> drivelist.v1.ListHostsRequest
+	45,  // 99: drivelist.v1.Query.ListDrives:input_type -> drivelist.v1.ListDrivesRequest
+	47,  // 100: drivelist.v1.Query.GetDrive:input_type -> drivelist.v1.GetDriveRequest
+	49,  // 101: drivelist.v1.Query.GetDriveHistory:input_type -> drivelist.v1.GetDriveHistoryRequest
+	51,  // 102: drivelist.v1.Query.ListEvents:input_type -> drivelist.v1.ListEventsRequest
+	53,  // 103: drivelist.v1.Query.ListMissing:input_type -> drivelist.v1.ListMissingRequest
+	56,  // 104: drivelist.v1.Query.Annotate:input_type -> drivelist.v1.AnnotateRequest
+	58,  // 105: drivelist.v1.Query.GetKernel:input_type -> drivelist.v1.GetKernelRequest
+	60,  // 106: drivelist.v1.Query.GetSmart:input_type -> drivelist.v1.GetSmartRequest
+	62,  // 107: drivelist.v1.Query.GetIO:input_type -> drivelist.v1.GetIORequest
+	64,  // 108: drivelist.v1.Query.CompareIO:input_type -> drivelist.v1.CompareIORequest
+	67,  // 109: drivelist.v1.Query.MergeDrives:input_type -> drivelist.v1.MergeDrivesRequest
+	69,  // 110: drivelist.v1.Query.MergeHosts:input_type -> drivelist.v1.MergeHostsRequest
+	71,  // 111: drivelist.v1.Query.Rebuild:input_type -> drivelist.v1.RebuildRequest
+	30,  // 112: drivelist.v1.Query.ListEnclosures:input_type -> drivelist.v1.ListEnclosuresRequest
+	32,  // 113: drivelist.v1.Query.NameEnclosure:input_type -> drivelist.v1.NameEnclosureRequest
+	34,  // 114: drivelist.v1.Query.GetSAS:input_type -> drivelist.v1.GetSASRequest
+	38,  // 115: drivelist.v1.Query.ListSASErrors:input_type -> drivelist.v1.ListSASErrorsRequest
+	24,  // 116: drivelist.v1.Query.ListBays:input_type -> drivelist.v1.ListBaysRequest
+	26,  // 117: drivelist.v1.Query.ListSmart:input_type -> drivelist.v1.ListSmartRequest
+	11,  // 118: drivelist.v1.Collector.ReportInventory:output_type -> drivelist.v1.ReportInventoryResponse
+	20,  // 119: drivelist.v1.Collector.ReportKernel:output_type -> drivelist.v1.ReportAck
+	20,  // 120: drivelist.v1.Collector.ReportSmart:output_type -> drivelist.v1.ReportAck
+	20,  // 121: drivelist.v1.Collector.ReportIO:output_type -> drivelist.v1.ReportAck
+	44,  // 122: drivelist.v1.Query.ListHosts:output_type -> drivelist.v1.ListHostsResponse
+	46,  // 123: drivelist.v1.Query.ListDrives:output_type -> drivelist.v1.ListDrivesResponse
+	48,  // 124: drivelist.v1.Query.GetDrive:output_type -> drivelist.v1.GetDriveResponse
+	50,  // 125: drivelist.v1.Query.GetDriveHistory:output_type -> drivelist.v1.GetDriveHistoryResponse
+	52,  // 126: drivelist.v1.Query.ListEvents:output_type -> drivelist.v1.ListEventsResponse
+	55,  // 127: drivelist.v1.Query.ListMissing:output_type -> drivelist.v1.ListMissingResponse
+	57,  // 128: drivelist.v1.Query.Annotate:output_type -> drivelist.v1.AnnotateResponse
+	59,  // 129: drivelist.v1.Query.GetKernel:output_type -> drivelist.v1.GetKernelResponse
+	61,  // 130: drivelist.v1.Query.GetSmart:output_type -> drivelist.v1.GetSmartResponse
+	63,  // 131: drivelist.v1.Query.GetIO:output_type -> drivelist.v1.GetIOResponse
+	66,  // 132: drivelist.v1.Query.CompareIO:output_type -> drivelist.v1.CompareIOResponse
+	68,  // 133: drivelist.v1.Query.MergeDrives:output_type -> drivelist.v1.MergeDrivesResponse
+	70,  // 134: drivelist.v1.Query.MergeHosts:output_type -> drivelist.v1.MergeHostsResponse
+	72,  // 135: drivelist.v1.Query.Rebuild:output_type -> drivelist.v1.RebuildResponse
+	31,  // 136: drivelist.v1.Query.ListEnclosures:output_type -> drivelist.v1.ListEnclosuresResponse
+	33,  // 137: drivelist.v1.Query.NameEnclosure:output_type -> drivelist.v1.NameEnclosureResponse
+	37,  // 138: drivelist.v1.Query.GetSAS:output_type -> drivelist.v1.GetSASResponse
+	40,  // 139: drivelist.v1.Query.ListSASErrors:output_type -> drivelist.v1.ListSASErrorsResponse
+	29,  // 140: drivelist.v1.Query.ListBays:output_type -> drivelist.v1.ListBaysResponse
+	28,  // 141: drivelist.v1.Query.ListSmart:output_type -> drivelist.v1.ListSmartResponse
+	118, // [118:142] is the sub-list for method output_type
+	94,  // [94:118] is the sub-list for method input_type
+	94,  // [94:94] is the sub-list for extension type_name
+	94,  // [94:94] is the sub-list for extension extendee
+	0,   // [0:94] is the sub-list for field type_name
 }
 
 func init() { file_drivelist_v1_drivelist_proto_init() }

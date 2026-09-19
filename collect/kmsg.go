@@ -21,11 +21,20 @@ type KernelEvent struct {
 	ATAPort  string // "ata3.00"; "" otherwise
 	// SCSI sense: key, additional sense code and qualifier; -1 when absent.
 	SenseKey, ASC, ASCQ int
+	Location            string // for a hardware error, where: "mc0/csrow3/ch1"; "" otherwise
 	Text                string // the message, without the kmsg header
 }
 
-// Code is the SCSI sense triple as "key:asc:ascq" in hex, or "".
+// Host reports whether the event is about the host itself rather than a
+// drive: a memory or machine-check error.
+func (e KernelEvent) Host() bool { return e.Class == ClassHWCorrected || e.Class == ClassHWUncorrected }
+
+// Code is the SCSI sense triple as "key:asc:ascq" in hex, the location of
+// a hardware error, or "".
 func (e KernelEvent) Code() string {
+	if e.Location != "" {
+		return e.Location
+	}
 	if e.SenseKey < 0 && e.ASC < 0 {
 		return ""
 	}
@@ -55,6 +64,12 @@ const (
 	ClassLinkReset         = "link_reset"
 	ClassRecovered         = "recovered"
 	ClassOther             = "other"
+	// About the host, not a drive: memory and machine-check errors, as
+	// EDAC, the MCE decoder and APEI/GHES report them. Corrected ones are
+	// the warning that a DIMM is failing; an uncorrected one usually
+	// takes the machine down.
+	ClassHWCorrected   = "hw_corrected"
+	ClassHWUncorrected = "hw_uncorrected"
 )
 
 // Warning classes are the ones worth an event on first sight.
@@ -79,6 +94,15 @@ var (
 	reNVMeNS   = regexp.MustCompile(`^(nvme\d+n\d+): (.*)$`)
 	reDevName  = regexp.MustCompile(`\b(sd[a-z]+|nvme\d+n\d+)(?:p?\d+)?\b`)
 	reRemoving = regexp.MustCompile(`removing handle\(0x[0-9a-f]+\)`)
+	// Hardware errors. EDAC: "EDAC MC0: 1 CE on mc#0csrow#3channel#1 (...)".
+	// MCE decoder: "[Hardware Error]: Corrected error, no action required."
+	// / "Uncorrected, software containable error." / "Deferred error, no
+	// action required." APEI/GHES: "{1}[Hardware Error]: event severity:
+	// corrected|recoverable|fatal". "mce: [Hardware Error]: CPU 3: Machine
+	// Check Exception: ..." is the fatal Intel form.
+	reEDAC    = regexp.MustCompile(`^EDAC MC(\d+): (\d+) (CE|UE) (?:.+ )?on ([^ (]+)`)
+	reEDACLoc = regexp.MustCompile(`mc#(\d+)(?:csrow#(\d+))?(?:channel#(\d+))?`)
+	reHWErr   = regexp.MustCompile(`\[Hardware Error\]: (.*)$`)
 )
 
 // classifier correlates the two lines a SCSI sense error is logged as, keyed
@@ -94,6 +118,31 @@ func newClassifier() *classifier { return &classifier{pending: map[string]Kernel
 // about a drive or is the first half of a pair.
 func (c *classifier) classify(at time.Time, text string) (KernelEvent, bool) {
 	ev := KernelEvent{At: at, Text: text, SenseKey: -1, ASC: -1, ASCQ: -1}
+
+	if m := reEDAC.FindStringSubmatch(text); m != nil {
+		ev.Class = ClassHWCorrected
+		if m[3] == "UE" {
+			ev.Class = ClassHWUncorrected
+		}
+		ev.Location = edacLocation(m[1], m[4])
+		return ev, true
+	}
+	if m := reHWErr.FindStringSubmatch(text); m != nil {
+		// One physical error is several lines; only the line that states
+		// the severity counts, so the rest are dropped rather than
+		// counted as "other".
+		body := strings.ToLower(m[1])
+		switch {
+		case strings.HasPrefix(body, "corrected error"), strings.Contains(body, "event severity: corrected"):
+			ev.Class = ClassHWCorrected
+		case strings.HasPrefix(body, "uncorrected"), strings.HasPrefix(body, "deferred error"), strings.Contains(body, "machine check exception"),
+			strings.Contains(body, "event severity: fatal"), strings.Contains(body, "event severity: recoverable"):
+			ev.Class = ClassHWUncorrected
+		default:
+			return KernelEvent{}, false
+		}
+		return ev, true
+	}
 
 	if m := reSD.FindStringSubmatch(text); m != nil {
 		ev.SCSIAddr, ev.DevName = m[1], m[2]
@@ -194,6 +243,23 @@ func (c *classifier) classify(at time.Time, text string) (KernelEvent, bool) {
 		return ev, true
 	}
 	return KernelEvent{}, false
+}
+
+// edacLocation renders EDAC's "mc#0csrow#3channel#1" as "mc0/csrow3/ch1";
+// a location in another form (a DIMM label) is kept as it is.
+func edacLocation(mc, loc string) string {
+	m := reEDACLoc.FindStringSubmatch(loc)
+	if m == nil {
+		return "mc" + mc + "/" + loc
+	}
+	out := "mc" + m[1]
+	if m[2] != "" {
+		out += "/csrow" + m[2]
+	}
+	if m[3] != "" {
+		out += "/ch" + m[3]
+	}
+	return out
 }
 
 // senseClass keys on the additional sense code first: 0x5D is "failure
