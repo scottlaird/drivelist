@@ -46,15 +46,24 @@ func newAdminCmd(cfg *clientConfig) *cobra.Command {
 		Use:   "admin",
 		Short: "Server maintenance",
 	}
-	cmd.AddCommand(&cobra.Command{
+	var quiet bool
+	ingest := &cobra.Command{
 		Use:   "ingest FILE",
 		Short: "Submit a report written by 'report --output' on another host",
-		Long: `ingest submits a report bundle (an inventory report and, if it has one,
-a SMART pass) as the host that wrote it. FILE is - for standard input.
-Uses the operator token, which the server accepts for reports too, so
-the host that was collected needs no token of its own.`,
+		Long: `ingest submits a report bundle (an inventory report, a SMART pass if it
+has one, and the host's I/O counters) as the host that wrote it. FILE
+is - for standard input. Uses the operator token, which the server
+accepts for reports too, so the host that was collected needs no token
+of its own. The I/O counters are diffed on the server against the
+previous pull's, so pulling on a schedule gives the host I/O buckets
+like an agent's, one per interval. --quiet says nothing on success,
+for cron.`,
 		Args: usageArgs(1, 1, "drivelist admin ingest FILE"),
 		RunE: func(cmd *cobra.Command, args []string) error {
+			out := cmd.OutOrStdout()
+			if quiet {
+				out = io.Discard
+			}
 			var data []byte
 			var err error
 			if args[0] == "-" {
@@ -87,16 +96,25 @@ the host that was collected needs no token of its own.`,
 			if res.Msg.Changed {
 				state = "inventory changed"
 			}
-			fmt.Fprintf(cmd.OutOrStdout(), "ingested %d devices from %s: %s\n", len(bundle.Inventory.Devices), bundle.Inventory.Host.Hostname, state)
+			fmt.Fprintf(out, "ingested %d devices from %s: %s\n", len(bundle.Inventory.Devices), bundle.Inventory.Host.Hostname, state)
 			if bundle.Smart != nil && len(bundle.Smart.Samples) > 0 {
 				if _, err := client.ReportSmart(cmd.Context(), connect.NewRequest(bundle.Smart)); err != nil {
 					return rpcErr(err)
 				}
-				fmt.Fprintf(cmd.OutOrStdout(), "ingested %d SMART samples\n", len(bundle.Smart.Samples))
+				fmt.Fprintf(out, "ingested %d SMART samples\n", len(bundle.Smart.Samples))
+			}
+			if bundle.Diskstats != nil && len(bundle.Diskstats.Stats) > 0 {
+				ack, err := client.ReportDiskStats(cmd.Context(), connect.NewRequest(bundle.Diskstats))
+				if err != nil {
+					return rpcErr(err)
+				}
+				fmt.Fprintf(out, "ingested I/O counters for %d devices: %d buckets since the last pull\n", len(bundle.Diskstats.Stats), ack.Msg.Stored)
 			}
 			return nil
 		},
-	})
+	}
+	ingest.Flags().BoolVarP(&quiet, "quiet", "q", false, "print nothing on success")
+	cmd.AddCommand(ingest)
 	cmd.AddCommand(&cobra.Command{
 		Use:   "rebuild",
 		Short: "Recompute every placement and derived event from the stored snapshots",
@@ -145,7 +163,10 @@ SMART pass when --smart is given) for 'drivelist admin ingest' to
 submit from a host that holds a token. That is how a host you would
 rather not give a token to is still tracked:
 
-  ssh web1 drivelist report --output - --smart | drivelist admin ingest -`,
+  ssh web1 drivelist report --output - --smart | drivelist admin ingest -
+
+The bundle also carries the host's /proc/diskstats counters; pulled on
+a schedule, the server turns them into I/O buckets.`,
 		Args: cobra.NoArgs,
 		RunE: func(cmd *cobra.Command, _ []string) error {
 			inv, collectErr := collectAll()
@@ -159,6 +180,7 @@ rather not give a token to is still tracked:
 				if withSmart {
 					bundle.Smart = report.SmartPass(cmd.Context(), collect.DefaultSmartRunner, req.Host, inv, time.Now())
 				}
+				bundle.Diskstats = report.DiskStats(req.Host, time.Now())
 				data, err := protojson.MarshalOptions{Multiline: true}.Marshal(bundle)
 				if err != nil {
 					return err

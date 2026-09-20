@@ -305,10 +305,18 @@ A host you would rather not give a token to can still be tracked: run
 and pipe the result to `drivelist admin ingest -` on a host that
 holds the operator token, which the server accepts for reports too:
 
-    ssh web1 drivelist report --output - --smart | drivelist admin ingest -
+    ssh web1 sudo drivelist report --output - --smart | drivelist admin ingest -q -
 
-The report lands as web1, with a SMART pass when asked for; what such
-a host loses is the agent's kernel log watch and I/O sampling.
+The report lands as web1, with a SMART pass when asked for.  The
+bundle also carries the host's `/proc/diskstats` counters, which the
+server diffs against the previous pull's, so pulling on a schedule
+gives the host I/O buckets like an agent's, one per interval (the
+first pull, and the first after a reboot, only set the baseline; a
+gap over two days is not bucketed).  What such a host still lacks is
+the agent's kernel log watch.  `-q` keeps cron quiet; from cron, one
+line pulls several hosts:
+
+    17 * * * * scott for h in web1 web2; do ssh -o BatchMode=yes $h sudo drivelist report --output - --smart | drivelist admin ingest -q -; done
 
 `drivelist sas` prints the host's SAS topology from sysfs: each HBA and
 expander with its phys, the port each phy is bundled into (a wide port

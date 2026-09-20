@@ -6,6 +6,7 @@ import (
 
 	"google.golang.org/protobuf/types/known/timestamppb"
 
+	"github.com/scottlaird/drivelist/collect"
 	pb "github.com/scottlaird/drivelist/internal/pb/drivelistv1"
 	"github.com/scottlaird/drivelist/internal/store"
 )
@@ -346,6 +347,15 @@ func ioSamplesFromProto(samples []*pb.IOSample) []store.IOSample {
 			s.BucketStart = b.AsTime()
 		}
 		out = append(out, s)
+	}
+	return out
+}
+
+func diskStatsFromProto(stats []*pb.DiskStat) []collect.DiskStat {
+	out := make([]collect.DiskStat, 0, len(stats))
+	for _, d := range stats {
+		out = append(out, collect.DiskStat{Name: d.GetName(), Reads: d.GetReads(), Writes: d.GetWrites(), SectorsRead: d.GetSectorsRead(), SectorsWrite: d.GetSectorsWritten(),
+			ReadMs: d.GetReadMs(), WriteMs: d.GetWriteMs(), IOMs: d.GetIoMs(), WeightedIOMs: d.GetWeightedMs()})
 	}
 	return out
 }

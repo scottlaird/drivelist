@@ -321,3 +321,22 @@ func SmartPass(ctx context.Context, run collect.SmartRunner, host *pb.HostIdenti
 	}
 	return req
 }
+
+// DiskStats reads /proc/diskstats and /proc/uptime for a one-off report,
+// for the server to diff against the previous pull. Nil where there is
+// no /proc/diskstats (macOS), and the bundle simply lacks it.
+func DiskStats(host *pb.HostIdentity, now time.Time) *pb.ReportDiskStatsRequest {
+	stats, err := collect.ReadDiskStats("/proc/diskstats")
+	if err != nil || len(stats) == 0 {
+		return nil
+	}
+	req := &pb.ReportDiskStatsRequest{Host: host, At: timestamppb.New(now)}
+	if up, err := collect.ReadUptime("/proc/uptime"); err == nil {
+		req.UptimeSecs = up.Seconds()
+	}
+	for _, d := range stats {
+		req.Stats = append(req.Stats, &pb.DiskStat{Name: d.Name, Reads: d.Reads, Writes: d.Writes, SectorsRead: d.SectorsRead, SectorsWritten: d.SectorsWrite,
+			ReadMs: d.ReadMs, WriteMs: d.WriteMs, IoMs: d.IOMs, WeightedMs: d.WeightedIOMs})
+	}
+	return req
+}

@@ -230,6 +230,21 @@ func (s *Server) ReportIO(ctx context.Context, req *connect.Request[pb.ReportIOR
 	return connect.NewResponse(&pb.ReportAck{Accepted: true, Stored: uint32(n)}), nil
 }
 
+func (s *Server) ReportDiskStats(ctx context.Context, req *connect.Request[pb.ReportDiskStatsRequest]) (*connect.Response[pb.ReportAck], error) {
+	host := hostIdentityFromProto(req.Msg.GetHost())
+	at := time.Now()
+	if t := req.Msg.GetAt(); t != nil {
+		at = t.AsTime()
+	}
+	n, err := s.store.IngestDiskStats(ctx, host, at, time.Duration(req.Msg.GetUptimeSecs()*float64(time.Second)), diskStatsFromProto(req.Msg.GetStats()))
+	if err != nil {
+		s.log.Error("ingest diskstats", "host", host.Hostname, "err", err)
+		return nil, connect.NewError(connect.CodeInternal, err)
+	}
+	s.log.Info("diskstats diffed", "host", host.Hostname, "buckets", n, "devices", len(req.Msg.GetStats()))
+	return connect.NewResponse(&pb.ReportAck{Accepted: true, Stored: uint32(n)}), nil
+}
+
 // ---------- Query ----------
 
 func (s *Server) ListHosts(ctx context.Context, _ *connect.Request[pb.ListHostsRequest]) (*connect.Response[pb.ListHostsResponse], error) {

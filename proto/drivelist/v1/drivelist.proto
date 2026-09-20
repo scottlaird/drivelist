@@ -21,6 +21,10 @@ service Collector {
   // ReportIO posts hourly I/O buckets per drive, as deltas of the kernel's
   // counters. A bucket already stored is replaced.
   rpc ReportIO(ReportIORequest) returns (ReportAck);
+  // ReportDiskStats carries raw /proc/diskstats counters from a host with
+  // no agent (a pulled report); the server diffs them against the last
+  // ones it holds and stores the interval as one I/O bucket.
+  rpc ReportDiskStats(ReportDiskStatsRequest) returns (ReportAck);
 }
 
 // Query is the operator-facing service behind the CLI.
@@ -280,6 +284,28 @@ message ReportSmartRequest {
 message ReportBundle {
   ReportInventoryRequest inventory = 1;
   ReportSmartRequest smart = 2;
+  ReportDiskStatsRequest diskstats = 3;   // unset when the host has no /proc/diskstats
+}
+
+// DiskStat is one whole-disk line of /proc/diskstats, cumulative since
+// boot, as the kernel counts it.
+message DiskStat {
+  string name = 1;
+  uint64 reads = 2;
+  uint64 writes = 3;
+  uint64 sectors_read = 4;
+  uint64 sectors_written = 5;
+  uint64 read_ms = 6;
+  uint64 write_ms = 7;
+  uint64 io_ms = 8;
+  uint64 weighted_ms = 9;
+}
+
+message ReportDiskStatsRequest {
+  HostIdentity host = 1;
+  google.protobuf.Timestamp at = 2;   // when the counters were read
+  double uptime_secs = 3;             // the host's uptime then; 0 when unknown
+  repeated DiskStat stats = 4;
 }
 
 // IOSample is one hour of one drive's I/O, as deltas of /proc/diskstats
