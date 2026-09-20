@@ -76,15 +76,22 @@ func (s *Store) IngestIO(ctx context.Context, host HostIdentity, samples []IOSam
 		if k.AwaitReads == 0 && k.AwaitWrites == 0 && k.Glitches == 0 {
 			k.AwaitReads, k.AwaitWrites = k.Reads, k.Writes
 		}
-		if _, err := t.ExecContext(ctx, `
-			INSERT OR REPLACE INTO io_sample (drive_id, host_id, dev_name, bucket_start, bucket_secs, reads, writes, read_bytes, write_bytes, read_ms, write_ms, io_ms, weighted_ms, r_await_max, w_await_max, util_max, await_reads, await_writes, glitches)
-			VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
-			ids[0], h.id, k.DevName, k.BucketStart.Unix(), k.BucketSecs, k.Reads, k.Writes, k.ReadBytes, k.WriteBytes, k.ReadMs, k.WriteMs, k.IOMs, k.WeightedMs, k.RAwaitMax, k.WAwaitMax, k.UtilMax, k.AwaitReads, k.AwaitWrites, k.Glitches); err != nil {
+		if err := t.insertIOSample(ids[0], h.id, k); err != nil {
 			return 0, err
 		}
 		stored++
 	}
 	return stored, sqlTx.Commit()
+}
+
+// insertIOSample stores one bucket, replacing any for the same drive and
+// start.
+func (t *tx) insertIOSample(driveID, hostID int64, k IOSample) error {
+	_, err := t.ExecContext(t.ctx, `
+		INSERT OR REPLACE INTO io_sample (drive_id, host_id, dev_name, bucket_start, bucket_secs, reads, writes, read_bytes, write_bytes, read_ms, write_ms, io_ms, weighted_ms, r_await_max, w_await_max, util_max, await_reads, await_writes, glitches)
+		VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+		driveID, hostID, k.DevName, k.BucketStart.Unix(), k.BucketSecs, k.Reads, k.Writes, k.ReadBytes, k.WriteBytes, k.ReadMs, k.WriteMs, k.IOMs, k.WeightedMs, k.RAwaitMax, k.WAwaitMax, k.UtilMax, k.AwaitReads, k.AwaitWrites, k.Glitches)
+	return err
 }
 
 const ioColumns = `h.hostname, i.dev_name, i.bucket_start, i.bucket_secs, i.reads, i.writes, i.read_bytes, i.write_bytes, i.read_ms, i.write_ms, i.io_ms, i.weighted_ms, i.r_await_max, i.w_await_max, i.util_max, i.await_reads, i.await_writes, i.glitches`

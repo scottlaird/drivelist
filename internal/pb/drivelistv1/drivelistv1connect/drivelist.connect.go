@@ -44,6 +44,9 @@ const (
 	CollectorReportSmartProcedure = "/drivelist.v1.Collector/ReportSmart"
 	// CollectorReportIOProcedure is the fully-qualified name of the Collector's ReportIO RPC.
 	CollectorReportIOProcedure = "/drivelist.v1.Collector/ReportIO"
+	// CollectorReportDiskStatsProcedure is the fully-qualified name of the Collector's ReportDiskStats
+	// RPC.
+	CollectorReportDiskStatsProcedure = "/drivelist.v1.Collector/ReportDiskStats"
 	// QueryListHostsProcedure is the fully-qualified name of the Query's ListHosts RPC.
 	QueryListHostsProcedure = "/drivelist.v1.Query/ListHosts"
 	// QueryListDrivesProcedure is the fully-qualified name of the Query's ListDrives RPC.
@@ -99,6 +102,10 @@ type CollectorClient interface {
 	// ReportIO posts hourly I/O buckets per drive, as deltas of the kernel's
 	// counters. A bucket already stored is replaced.
 	ReportIO(context.Context, *connect.Request[drivelistv1.ReportIORequest]) (*connect.Response[drivelistv1.ReportAck], error)
+	// ReportDiskStats carries raw /proc/diskstats counters from a host with
+	// no agent (a pulled report); the server diffs them against the last
+	// ones it holds and stores the interval as one I/O bucket.
+	ReportDiskStats(context.Context, *connect.Request[drivelistv1.ReportDiskStatsRequest]) (*connect.Response[drivelistv1.ReportAck], error)
 }
 
 // NewCollectorClient constructs a client for the drivelist.v1.Collector service. By default, it
@@ -136,6 +143,12 @@ func NewCollectorClient(httpClient connect.HTTPClient, baseURL string, opts ...c
 			connect.WithSchema(collectorMethods.ByName("ReportIO")),
 			connect.WithClientOptions(opts...),
 		),
+		reportDiskStats: connect.NewClient[drivelistv1.ReportDiskStatsRequest, drivelistv1.ReportAck](
+			httpClient,
+			baseURL+CollectorReportDiskStatsProcedure,
+			connect.WithSchema(collectorMethods.ByName("ReportDiskStats")),
+			connect.WithClientOptions(opts...),
+		),
 	}
 }
 
@@ -145,6 +158,7 @@ type collectorClient struct {
 	reportKernel    *connect.Client[drivelistv1.ReportKernelRequest, drivelistv1.ReportAck]
 	reportSmart     *connect.Client[drivelistv1.ReportSmartRequest, drivelistv1.ReportAck]
 	reportIO        *connect.Client[drivelistv1.ReportIORequest, drivelistv1.ReportAck]
+	reportDiskStats *connect.Client[drivelistv1.ReportDiskStatsRequest, drivelistv1.ReportAck]
 }
 
 // ReportInventory calls drivelist.v1.Collector.ReportInventory.
@@ -167,6 +181,11 @@ func (c *collectorClient) ReportIO(ctx context.Context, req *connect.Request[dri
 	return c.reportIO.CallUnary(ctx, req)
 }
 
+// ReportDiskStats calls drivelist.v1.Collector.ReportDiskStats.
+func (c *collectorClient) ReportDiskStats(ctx context.Context, req *connect.Request[drivelistv1.ReportDiskStatsRequest]) (*connect.Response[drivelistv1.ReportAck], error) {
+	return c.reportDiskStats.CallUnary(ctx, req)
+}
+
 // CollectorHandler is an implementation of the drivelist.v1.Collector service.
 type CollectorHandler interface {
 	// ReportInventory posts the complete current inventory of one host.
@@ -180,6 +199,10 @@ type CollectorHandler interface {
 	// ReportIO posts hourly I/O buckets per drive, as deltas of the kernel's
 	// counters. A bucket already stored is replaced.
 	ReportIO(context.Context, *connect.Request[drivelistv1.ReportIORequest]) (*connect.Response[drivelistv1.ReportAck], error)
+	// ReportDiskStats carries raw /proc/diskstats counters from a host with
+	// no agent (a pulled report); the server diffs them against the last
+	// ones it holds and stores the interval as one I/O bucket.
+	ReportDiskStats(context.Context, *connect.Request[drivelistv1.ReportDiskStatsRequest]) (*connect.Response[drivelistv1.ReportAck], error)
 }
 
 // NewCollectorHandler builds an HTTP handler from the service implementation. It returns the path
@@ -213,6 +236,12 @@ func NewCollectorHandler(svc CollectorHandler, opts ...connect.HandlerOption) (s
 		connect.WithSchema(collectorMethods.ByName("ReportIO")),
 		connect.WithHandlerOptions(opts...),
 	)
+	collectorReportDiskStatsHandler := connect.NewUnaryHandler(
+		CollectorReportDiskStatsProcedure,
+		svc.ReportDiskStats,
+		connect.WithSchema(collectorMethods.ByName("ReportDiskStats")),
+		connect.WithHandlerOptions(opts...),
+	)
 	return "/drivelist.v1.Collector/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
 		case CollectorReportInventoryProcedure:
@@ -223,6 +252,8 @@ func NewCollectorHandler(svc CollectorHandler, opts ...connect.HandlerOption) (s
 			collectorReportSmartHandler.ServeHTTP(w, r)
 		case CollectorReportIOProcedure:
 			collectorReportIOHandler.ServeHTTP(w, r)
+		case CollectorReportDiskStatsProcedure:
+			collectorReportDiskStatsHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -246,6 +277,10 @@ func (UnimplementedCollectorHandler) ReportSmart(context.Context, *connect.Reque
 
 func (UnimplementedCollectorHandler) ReportIO(context.Context, *connect.Request[drivelistv1.ReportIORequest]) (*connect.Response[drivelistv1.ReportAck], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("drivelist.v1.Collector.ReportIO is not implemented"))
+}
+
+func (UnimplementedCollectorHandler) ReportDiskStats(context.Context, *connect.Request[drivelistv1.ReportDiskStatsRequest]) (*connect.Response[drivelistv1.ReportAck], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("drivelist.v1.Collector.ReportDiskStats is not implemented"))
 }
 
 // QueryClient is a client for the drivelist.v1.Query service.
