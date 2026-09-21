@@ -147,13 +147,18 @@ func size(b uint64) string {
 // "72/64" for ECC DDR4, "80/64" for ECC DDR5, "none" for 64/64, "-"
 // when the firmware did not say.
 func eccText(d *pb.Dimm) string {
-	switch {
-	case d.DataWidth == 0:
+	if d.DataWidth == 0 && d.TotalWidth == 0 {
 		return "-"
-	case d.TotalWidth > d.DataWidth:
+	}
+	extra := int(d.TotalWidth) - int(d.DataWidth)
+	sane := d.DataWidth == 32 || d.DataWidth == 64
+	switch {
+	case sane && extra == 0:
+		return "none"
+	case sane && (extra == 8 || extra == 16):
 		return fmt.Sprintf("%d/%d", d.TotalWidth, d.DataWidth)
 	}
-	return "none"
+	return fmt.Sprintf("%d/%d?", d.TotalWidth, d.DataWidth) // not a geometry that exists; the firmware is guessing
 }
 
 // memSize formats a memory module's size in binary units, which is how

@@ -304,24 +304,34 @@ module; inferred by slot order when a channel holds several).`,
 // eccSummary is one host's ECC in a few words: what the modules carry,
 // what the firmware enabled, what EDAC runs.
 func eccSummary(m *pb.MemorySummary) string {
-	var parts []string
-	switch {
-	case m.Modules == 0:
+	if m.Modules == 0 {
 		return "-"
-	case m.EccModules == m.Modules:
-		parts = append(parts, "modules")
-	case m.EccModules == 0:
-		parts = append(parts, "no modules")
-	default:
-		parts = append(parts, fmt.Sprintf("%d of %d modules", m.EccModules, m.Modules))
 	}
-	if m.Correction != "" {
+	var parts []string
+	// Strongest evidence first: the kernel correcting, then the firmware's
+	// array setting, then what the modules' widths claim.
+	switch {
+	case m.EdacMode != "":
+		parts = append(parts, "on, EDAC "+m.EdacMode)
+	case strings.Contains(m.Correction, "ECC"):
+		parts = append(parts, "per firmware "+m.Correction+", no EDAC driver")
+	case m.Correction != "":
 		parts = append(parts, "firmware "+m.Correction)
+	default:
+		parts = append(parts, "unknown")
 	}
-	if m.EdacMode != "" {
-		parts = append(parts, "EDAC "+m.EdacMode)
+	unknown := m.Modules - m.EccModules - m.PlainModules
+	switch {
+	case m.EccModules == m.Modules:
+		parts = append(parts, "modules 72/64")
+	case m.PlainModules == m.Modules:
+		parts = append(parts, "modules 64/64")
+	case unknown == m.Modules:
+		parts = append(parts, "module widths not believable")
+	default:
+		parts = append(parts, fmt.Sprintf("%d of %d modules with check bits", m.EccModules, m.Modules))
 	}
-	return strings.Join(parts, ", ")
+	return strings.Join(parts, "; ")
 }
 
 // ---------- hosts ----------

@@ -248,7 +248,8 @@ type MemorySummary struct {
 	Modules                                          int
 	Correction                                       string // the firmware's, for the array
 	EDACMode                                         string // what EDAC reports on the modules
-	ECCModules                                       int    // modules with check bits
+	ECCModules                                       int    // modules whose widths say check bits (72/64, 80/64)
+	PlainModules                                     int    // modules whose widths say none (64/64); the rest are unknown
 	Note                                             string
 }
 
@@ -272,7 +273,8 @@ func (s *Store) MemorySummaries(ctx context.Context, host string) ([]MemorySumma
 		  COALESCE(SUM(CASE WHEN d.slot != '' THEN d.edac_size_bytes END), 0),
 		  COALESCE(SUM(CASE WHEN d.slot = '' THEN d.edac_size_bytes END), 0),
 		  COUNT(CASE WHEN d.slot != '' THEN 1 END),
-		  COUNT(CASE WHEN d.slot != '' AND d.total_width > d.data_width AND d.data_width > 0 THEN 1 END),
+		  COUNT(CASE WHEN d.slot != '' AND d.data_width IN (32, 64) AND d.total_width - d.data_width IN (8, 16) THEN 1 END),
+		  COUNT(CASE WHEN d.slot != '' AND d.data_width IN (32, 64) AND d.total_width = d.data_width THEN 1 END),
 		  COALESCE(MAX(d.edac_mode), '')
 		FROM host h JOIN dimm d ON d.host_id = h.host_id AND d.gone_at IS NULL `+where+` GROUP BY h.host_id ORDER BY h.hostname`, args...)
 	if err != nil {
@@ -284,7 +286,7 @@ func (s *Store) MemorySummaries(ctx context.Context, host string) ([]MemorySumma
 	for rows.Next() {
 		var m MemorySummary
 		var id int64
-		if err := rows.Scan(&id, &m.Hostname, &m.KernelBytes, &m.Correction, &m.FirmwareBytes, &m.EDACBytes, &m.Unmatched, &m.Modules, &m.ECCModules, &m.EDACMode); err != nil {
+		if err := rows.Scan(&id, &m.Hostname, &m.KernelBytes, &m.Correction, &m.FirmwareBytes, &m.EDACBytes, &m.Unmatched, &m.Modules, &m.ECCModules, &m.PlainModules, &m.EDACMode); err != nil {
 			return nil, err
 		}
 		out = append(out, m)
@@ -358,13 +360,21 @@ func memoryNote(m MemorySummary, odd []oddDIMM) string {
 			notes = append(notes, "the kernel sees less than 90% of what the firmware lists: a module may be disabled or mapped out")
 		}
 	}
-	switch {
-	case m.ECCModules > 0 && m.Correction == "none":
-		notes = append(notes, "the modules carry ECC bits but the firmware reports no error correction: ECC is fitted but not on")
-	case m.ECCModules > 0 && m.ECCModules < m.Modules:
-		notes = append(notes, "ECC and non-ECC modules are mixed, so the array runs without ECC")
-	case m.ECCModules == 0 && m.Modules > 0 && strings.Contains(m.Correction, "ECC"):
-		notes = append(notes, "the firmware reports ECC on modules that show no check bits")
+	// ECC. A correction mode from EDAC settles it: the kernel is
+	// correcting, whatever the firmware's tables say about widths (a
+	// switch's firmware reports 64/64 on modules it corrects in chipkill
+	// mode). Without EDAC, modules with check bits on an array the
+	// firmware says has no correction is ECC fitted but not on, and a mix
+	// of ECC and plain modules runs without. The firmware claiming ECC on
+	// modules whose widths say none is two of its tables disagreeing,
+	// which the listing shows and nothing here can settle.
+	if m.EDACMode == "" {
+		switch {
+		case m.ECCModules > 0 && m.Correction == "none":
+			notes = append(notes, "the modules carry ECC bits but the firmware reports no error correction: ECC is fitted but not on")
+		case m.ECCModules > 0 && m.PlainModules > 0:
+			notes = append(notes, "ECC and non-ECC modules are mixed, so the array runs without ECC")
+		}
 	}
 	return strings.Join(notes, "; ")
 }
