@@ -89,6 +89,8 @@ type Report struct {
 	SASNodes        []SASNode // empty from agents before 0.6 or hosts without SAS
 	SASPhys         []SASPhy
 	DIMMs           []DIMM // empty from agents before 0.9 or hosts that describe none
+	MemTotalBytes   uint64 // the kernel's MemTotal; 0 when the agent did not say
+	MemCorrection   string // the firmware's error correction for the array; "" when unknown
 }
 
 // DIMM is one memory module as an agent reports it: the firmware's
@@ -101,11 +103,18 @@ type DIMM struct {
 	SpeedMTs     int
 	Manufacturer string
 	Part, Serial string
+	TotalWidth   int // bits; check bits beyond DataWidth mean an ECC module
+	DataWidth    int
 	EDAC         string // "mc0/csrow2/ch2+mc0/csrow3/ch2"
 	EDACType     string
+	EDACMode     string // "SECDED", "S4ECD4ED"; "" when EDAC does not say
+	EDACBytes    uint64 // what the matched EDAC entries add up to
 	Mapping      string // "exact" | "inferred" | ""
 	CE, UE       uint64 // since boot
 }
+
+// ECC reports whether the module carries check bits, by its widths.
+func (d DIMM) ECC() bool { return d.TotalWidth > d.DataWidth && d.DataWidth > 0 }
 
 // Key is what a module is tracked by: its slot, else its EDAC location.
 func (d DIMM) Key() string {

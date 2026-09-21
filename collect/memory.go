@@ -26,18 +26,28 @@ type DIMM struct {
 	Manufacturer string
 	Part         string
 	Serial       string
+	TotalWidth   int // bits: 72 or 80 for a module with check bits, 64 without; 0 unknown
+	DataWidth    int // bits: 64
 
-	EDAC     string // the kernel's location, as the log prints it: "mc0/csrow2/ch2"; "" when EDAC has no entry for it
-	EDACType string // EDAC's own idea of the module: "Registered-DDR4"
-	Mapping  string // how Slot and EDAC were joined: "exact", "inferred", or "" when one side is missing
-	CE, UE   uint64 // errors EDAC counted since boot
+	EDAC      string // the kernel's location, as the log prints it: "mc0/csrow2/ch2"; "" when EDAC has no entry for it
+	EDACType  string // EDAC's own idea of the module: "Registered-DDR4"
+	EDACMode  string // EDAC's correction mode: "SECDED", "S4ECD4ED"; "" when it has no entry or does not say
+	EDACBytes uint64 // what the EDAC entries matched to it add up to; a mismatch with SizeBytes means a wrong match
+	Mapping   string // how Slot and EDAC were joined: "exact", "inferred", or "" when one side is missing
+	CE, UE    uint64 // errors EDAC counted since boot
 }
 
 // MemoryInventory is every DIMM on the host, slots first in slot order,
-// then EDAC entries that matched no slot.
+// then EDAC entries that matched no slot, and the kernel's own total to
+// check them against.
 type MemoryInventory struct {
-	DIMMs []DIMM
+	DIMMs       []DIMM
+	KernelBytes uint64 // MemTotal from /proc/meminfo; 0 when unreadable
+	Correction  string // the firmware's error correction for the array (SMBIOS type 16): "none", "single-bit ECC", ...; "" unknown
 }
+
+// ECC reports whether the module carries check bits, by its widths.
+func (d DIMM) ECC() bool { return d.TotalWidth > d.DataWidth && d.DataWidth > 0 }
 
 // Memory reads the memory modules from SMBIOS and their error counts
 // from EDAC, and joins the two. Either source may be absent (no root, a
@@ -50,7 +60,58 @@ func (c *Collector) Memory() (*MemoryInventory, error) {
 	}
 	slots := readSMBIOSMemory(c.sys())
 	edac := readEDAC(c.sys())
-	return &MemoryInventory{DIMMs: joinDIMMs(slots, edac)}, nil
+	return &MemoryInventory{DIMMs: joinDIMMs(slots, edac), KernelBytes: readMemTotal(c.proc()), Correction: readSMBIOSCorrection(c.sys())}, nil
+}
+
+var smbiosCorrection = map[byte]string{3: "none", 4: "parity", 5: "single-bit ECC", 6: "multi-bit ECC", 7: "CRC"}
+
+// readSMBIOSCorrection is the error correction type of the system memory
+// array (SMBIOS type 16, byte 6): what the firmware actually enabled,
+// as opposed to what the modules could do. The first array that says
+// wins; "" when none does.
+func readSMBIOSCorrection(sys string) string {
+	for _, raw := range smbiosRawRecords(sys, 16) {
+		if len(raw) > 6 && raw[0] == 16 && int(raw[1]) > 6 {
+			if s, ok := smbiosCorrection[raw[6]]; ok {
+				return s
+			}
+		}
+	}
+	return ""
+}
+
+// smbiosRawRecords is every record of a type, from dmi-sysfs entries when
+// present, else from the raw table.
+func smbiosRawRecords(sys string, typ byte) [][]byte {
+	var records [][]byte
+	entries, _ := filepath.Glob(filepath.Join(sys, "firmware", "dmi", "entries", strconv.Itoa(int(typ))+"-*", "raw"))
+	sort.Strings(entries)
+	for _, path := range entries {
+		if raw, err := os.ReadFile(path); err == nil {
+			records = append(records, raw)
+		}
+	}
+	if len(records) == 0 {
+		if table, err := os.ReadFile(filepath.Join(sys, "firmware", "dmi", "tables", "DMI")); err == nil {
+			records = smbiosRecords(table, typ)
+		}
+	}
+	return records
+}
+
+// readMemTotal is MemTotal from /proc/meminfo, in bytes; 0 when unreadable.
+func readMemTotal(proc string) uint64 {
+	b, err := os.ReadFile(filepath.Join(proc, "meminfo"))
+	if err != nil {
+		return 0
+	}
+	for _, line := range strings.Split(string(b), "\n") {
+		if f := strings.Fields(line); len(f) >= 2 && f[0] == "MemTotal:" {
+			kb, _ := strconv.ParseUint(f[1], 10, 64)
+			return kb << 10
+		}
+	}
+	return 0
 }
 
 // smbiosMemory is one type 17 record with a module in it.
@@ -86,21 +147,8 @@ var (
 // /sys/firmware/dmi/tables/DMI, which every DMI-capable kernel exposes
 // to root.
 func readSMBIOSMemory(sys string) []smbiosMemory {
-	var records [][]byte
-	entries, _ := filepath.Glob(filepath.Join(sys, "firmware", "dmi", "entries", "17-*", "raw"))
-	sort.Strings(entries)
-	for _, path := range entries {
-		if raw, err := os.ReadFile(path); err == nil {
-			records = append(records, raw)
-		}
-	}
-	if len(records) == 0 {
-		if table, err := os.ReadFile(filepath.Join(sys, "firmware", "dmi", "tables", "DMI")); err == nil {
-			records = smbiosRecords(table, 17)
-		}
-	}
 	var out []smbiosMemory
-	for _, raw := range records {
+	for _, raw := range smbiosRawRecords(sys, 17) {
 		if m, ok := parseSMBIOSMemory(raw); ok {
 			out = append(out, m)
 		}
@@ -228,6 +276,12 @@ func parseSMBIOSMemory(raw []byte) (smbiosMemory, bool) {
 	default:
 		m.SizeBytes = uint64(size) << 20
 	}
+	if w := binary.LittleEndian.Uint16(raw[0x08:0x0a]); w != 0xffff {
+		m.TotalWidth = int(w)
+	}
+	if w := binary.LittleEndian.Uint16(raw[0x0a:0x0c]); w != 0xffff {
+		m.DataWidth = int(w)
+	}
 	strs := smbiosStrings(raw, length)
 	str := func(off int) string {
 		if off >= length {
@@ -290,6 +344,7 @@ type edacDIMM struct {
 	Location string // as the kernel log prints it: "mc0/csrow2/ch2"
 	Label    string
 	MemType  string
+	Mode     string // dimm_edac_mode: "SECDED", "S4ECD4ED", "Unknown"
 	SizeMB   uint64
 	CE, UE   uint64
 	mc       int
@@ -325,7 +380,10 @@ func readEDAC(sys string) []edacDIMM {
 			n, _ := strconv.ParseUint(read(name), 10, 64)
 			return n
 		}
-		d := edacDIMM{Label: read("dimm_label"), MemType: read("dimm_mem_type"), SizeMB: num("size"), CE: num("dimm_ce_count"), UE: num("dimm_ue_count"), channel: -1, index: -1}
+		d := edacDIMM{Label: read("dimm_label"), MemType: read("dimm_mem_type"), Mode: read("dimm_edac_mode"), SizeMB: num("size"), CE: num("dimm_ce_count"), UE: num("dimm_ue_count"), channel: -1, index: -1}
+		if strings.EqualFold(d.Mode, "Unknown") {
+			d.Mode = ""
+		}
 		if d.SizeMB == 0 {
 			continue
 		}
@@ -570,7 +628,11 @@ func joinDIMMs(slots []smbiosMemory, edac []edacDIMM) []DIMM {
 			locs = append(locs, edac[e].Location)
 			d.CE += edac[e].CE
 			d.UE += edac[e].UE
+			d.EDACBytes += edac[e].SizeMB << 20
 			d.EDACType = edac[e].MemType
+			if edac[e].Mode != "" {
+				d.EDACMode = edac[e].Mode
+			}
 		}
 		d.EDAC, d.Mapping = strings.Join(locs, "+"), how[i]
 		out = append(out, d)
@@ -579,7 +641,7 @@ func joinDIMMs(slots []smbiosMemory, edac []edacDIMM) []DIMM {
 		if used[e] {
 			continue
 		}
-		out = append(out, DIMM{EDAC: d.Location, EDACType: d.MemType, SizeBytes: d.SizeMB << 20, CE: d.CE, UE: d.UE})
+		out = append(out, DIMM{EDAC: d.Location, EDACType: d.MemType, EDACMode: d.Mode, EDACBytes: d.SizeMB << 20, CE: d.CE, UE: d.UE})
 	}
 	return out
 }
@@ -587,10 +649,12 @@ func joinDIMMs(slots []smbiosMemory, edac []edacDIMM) []DIMM {
 // captureMemory copies the type 17 records and the EDAC tree into a
 // fixture.
 func (c *Collector) captureMemory(dir string) error {
-	entries, _ := filepath.Glob(filepath.Join(c.sys(), "firmware", "dmi", "entries", "17-*", "raw"))
-	for _, path := range entries {
-		if err := c.copySys(dir, strings.TrimPrefix(path, c.sys())); err != nil {
-			slog.Debug("capture: dmi type 17", "path", path, "err", err) // needs root
+	for _, typ := range []string{"16", "17"} {
+		entries, _ := filepath.Glob(filepath.Join(c.sys(), "firmware", "dmi", "entries", typ+"-*", "raw"))
+		for _, path := range entries {
+			if err := c.copySys(dir, strings.TrimPrefix(path, c.sys())); err != nil {
+				slog.Debug("capture: dmi", "type", typ, "path", path, "err", err) // needs root
+			}
 		}
 	}
 	dirs, _ := filepath.Glob(filepath.Join(c.sys(), "devices", "system", "edac", "mc", "mc*"))
@@ -601,7 +665,7 @@ func (c *Collector) captureMemory(dir string) error {
 		dimms, _ := filepath.Glob(filepath.Join(mc, "dimm*"))
 		ranks, _ := filepath.Glob(filepath.Join(mc, "rank*"))
 		for _, d := range append(dimms, ranks...) {
-			for _, name := range []string{"dimm_label", "dimm_location", "dimm_mem_type", "size", "dimm_ce_count", "dimm_ue_count"} {
+			for _, name := range []string{"dimm_label", "dimm_location", "dimm_mem_type", "dimm_edac_mode", "size", "dimm_ce_count", "dimm_ue_count"} {
 				if err := c.copySys(dir, strings.TrimPrefix(filepath.Join(d, name), c.sys())); err != nil {
 					slog.Debug("capture: edac", "path", d, "attr", name, "err", err)
 				}

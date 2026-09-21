@@ -169,6 +169,8 @@ message ReportInventoryRequest {
   repeated SasNode sas_nodes = 8;     // the SAS topology, empty from agents before 0.6 or hosts without SAS
   repeated SasPhy sas_phys = 9;
   repeated Dimm dimms = 10;           // memory modules, empty from agents before 0.9 or hosts that describe none
+  uint64 mem_total_bytes = 11;        // the kernel's MemTotal, to check the modules against; 0 when unknown
+  string mem_correction = 12;         // the firmware's error correction for the memory array (SMBIOS type 16): "none", "parity", "single-bit ECC", "multi-bit ECC", "CRC"; "" when unknown
 }
 
 // SasNode is an HBA or expander: something with phys of its own.
@@ -223,6 +225,10 @@ message Dimm {
   string mapping = 12;                // "exact" | "inferred" | "" when slot or edac is missing
   uint64 ce = 13;                     // corrected errors since boot
   uint64 ue = 14;                     // uncorrected errors since boot
+  uint64 edac_size_bytes = 15;        // what the EDAC entries matched to it add up to; differs from size_bytes when the match is wrong
+  uint32 total_width = 16;            // bits, from the firmware: 72 or 80 for an ECC module, 64 without; 0 unknown
+  uint32 data_width = 17;             // bits: 64; total_width beyond it is the check bits
+  string edac_mode = 18;              // EDAC's correction mode for it: "SECDED", "S4ECD4ED"; "" when EDAC has no entry or does not say
 }
 
 // DriveStatus is the server's status for a drive, returned to the agent so
@@ -476,8 +482,27 @@ message DimmRow {
   bool problem = 8;
 }
 
+// MemorySummary is one host's memory three ways, for checking the module
+// list against what the kernel sees: the kernel's total is normally a
+// few percent under the firmware's (reserved memory); the EDAC total
+// should equal the firmware's, and a difference means modules EDAC
+// counts and the firmware's slots were not matched one to one.
+message MemorySummary {
+  string hostname = 1;
+  uint64 kernel_bytes = 2;            // MemTotal
+  uint64 firmware_bytes = 3;          // sum of the modules' sizes
+  uint64 edac_bytes = 4;              // sum of the EDAC entries matched to modules
+  uint64 unmatched_edac_bytes = 5;    // EDAC entries matched to no module
+  int32 modules = 6;
+  string note = 7;                    // "" when the three agree; else what does not
+  string correction = 8;              // the firmware's error correction for the array; "" unknown
+  string edac_mode = 9;               // the correction mode EDAC reports on the modules; "" when none does
+  int32 ecc_modules = 10;             // modules whose total width exceeds their data width
+}
+
 message ListDimmsResponse {
   repeated DimmRow rows = 1;          // problems first, then by host and slot
+  repeated MemorySummary hosts = 2;   // one per host listed, by hostname
 }
 
 message ListBaysResponse {

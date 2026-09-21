@@ -277,13 +277,51 @@ module; inferred by slot order when a channel holds several).`,
 				}
 				return nil
 			}
-			return printTable(cmd.OutOrStdout(), to, dimmCols, res.Msg.Rows)
+			if err := printTable(cmd.OutOrStdout(), to, dimmCols, res.Msg.Rows); err != nil {
+				return err
+			}
+			// The totals, and what disagrees: the check that the module
+			// list is whole and the EDAC match is right.
+			if !problems {
+				fmt.Fprintln(cmd.OutOrStdout())
+				for _, m := range res.Msg.Hosts {
+					line := fmt.Sprintf("%s: %d modules, %s by firmware, %s by EDAC, kernel sees %s; ECC %s", m.Hostname, m.Modules, memSize(m.FirmwareBytes), memSize(m.EdacBytes), memSize(m.KernelBytes), eccSummary(m))
+					if m.Note != "" {
+						line += "  ⚠ " + m.Note
+					}
+					fmt.Fprintln(cmd.OutOrStdout(), line)
+				}
+			}
+			return nil
 		},
 	}
 	cmd.Flags().StringVar(&host, "host", "", "only modules on this host")
 	cmd.Flags().BoolVar(&problems, "problems", false, "only modules with errors")
 	addTableFlags(cmd, &to, dimmCols)
 	return cmd
+}
+
+// eccSummary is one host's ECC in a few words: what the modules carry,
+// what the firmware enabled, what EDAC runs.
+func eccSummary(m *pb.MemorySummary) string {
+	var parts []string
+	switch {
+	case m.Modules == 0:
+		return "-"
+	case m.EccModules == m.Modules:
+		parts = append(parts, "modules")
+	case m.EccModules == 0:
+		parts = append(parts, "no modules")
+	default:
+		parts = append(parts, fmt.Sprintf("%d of %d modules", m.EccModules, m.Modules))
+	}
+	if m.Correction != "" {
+		parts = append(parts, "firmware "+m.Correction)
+	}
+	if m.EdacMode != "" {
+		parts = append(parts, "EDAC "+m.EdacMode)
+	}
+	return strings.Join(parts, ", ")
 }
 
 // ---------- hosts ----------

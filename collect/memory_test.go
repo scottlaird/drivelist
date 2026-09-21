@@ -4,6 +4,8 @@ import (
 	"encoding/binary"
 	"os"
 	"path/filepath"
+	"strconv"
+	"strings"
 	"testing"
 	"time"
 )
@@ -22,6 +24,19 @@ func type17(locator, bank string, sizeMB uint32, memType byte, speed uint16, man
 		binary.LittleEndian.PutUint16(raw[0x0c:], 0x7fff)
 		binary.LittleEndian.PutUint32(raw[0x1c:], sizeMB)
 	}
+	// ECC widths for every module with a part number that says so; the
+	// tests' non-ECC parts (Crucial CT..., Corsair CMSX...) get 64/64.
+	total := uint16(72)
+	if memType == 0x22 {
+		total = 80
+	}
+	if strings.HasPrefix(part, "CT") || strings.HasPrefix(part, "CMSX") || part == "KSM32" {
+		total = 64
+	}
+	if sizeMB > 0 {
+		binary.LittleEndian.PutUint16(raw[0x08:], total)
+		binary.LittleEndian.PutUint16(raw[0x0a:], 64)
+	}
 	raw[0x10], raw[0x11] = 1, 2
 	raw[0x12] = memType
 	binary.LittleEndian.PutUint16(raw[0x15:], speed)
@@ -35,10 +50,20 @@ func type17(locator, bank string, sizeMB uint32, memType byte, speed uint16, man
 	return append(raw, 0)
 }
 
+// type16 builds a type 16 record with the given error correction byte.
+func type16(correction byte) []byte {
+	raw := make([]byte, 0x0f)
+	raw[0], raw[1], raw[4], raw[5], raw[6] = 16, 0x0f, 3, 3, correction
+	return append(raw, 0, 0)
+}
+
 func writeMemoryFixture(t *testing.T, sys string, records [][]byte, edac map[string]map[string]string) {
 	t.Helper()
 	for i, r := range records {
-		dir := filepath.Join(sys, "firmware", "dmi", "entries", "17-"+itoa(i))
+		dir := filepath.Join(sys, "firmware", "dmi", "entries", itoa(int(r[0]))+"-"+itoa(i))
+		if r[0] == 16 {
+			dir = filepath.Join(sys, "firmware", "dmi", "entries", "16-0")
+		}
 		if err := os.MkdirAll(dir, 0o755); err != nil {
 			t.Fatal(err)
 		}
@@ -59,7 +84,7 @@ func writeMemoryFixture(t *testing.T, sys string, records [][]byte, edac map[str
 	}
 }
 
-func itoa(i int) string { return string(rune('0' + i)) }
+func itoa(i int) string { return strconv.Itoa(i) }
 
 // TestMemoryPBS1: a Supermicro H13SAE-MF, two DDR5 modules in DIMMA1 and
 // DIMMB1, which the bank locator calls Channel0_Dimm1 and Channel1_Dimm1:
@@ -68,6 +93,7 @@ func itoa(i int) string { return string(rune('0' + i)) }
 func TestMemoryPBS1(t *testing.T) {
 	sys := t.TempDir()
 	writeMemoryFixture(t, sys, [][]byte{
+		type16(5),
 		type17("DIMMA2", "P0_Node0_Channel0_Dimm0", 0, 0x22, 0, "", "", "", 0),
 		type17("DIMMA1", "P0_Node0_Channel0_Dimm1", 32768, 0x22, 5600, "Micron Technology", "802C042537BB080000", "MB32G56U80M2R8.RtR", 2),
 		type17("DIMMB2", "P0_Node0_Channel1_Dimm0", 0, 0x22, 0, "", "", "", 0),
@@ -76,7 +102,7 @@ func TestMemoryPBS1(t *testing.T) {
 		"mc0/rank2": {"dimm_label": "mc#0csrow#2channel#0", "dimm_location": "csrow 2 channel 0 ", "dimm_mem_type": "Unbuffered-DDR5", "size": "16384", "dimm_ce_count": "0", "dimm_ue_count": "0"},
 		"mc0/rank3": {"dimm_label": "mc#0csrow#3channel#0", "dimm_location": "csrow 3 channel 0 ", "dimm_mem_type": "Unbuffered-DDR5", "size": "16384", "dimm_ce_count": "0", "dimm_ue_count": "0"},
 		"mc0/rank6": {"dimm_label": "mc#0csrow#2channel#1", "dimm_location": "csrow 2 channel 1 ", "dimm_mem_type": "Unbuffered-DDR5", "size": "16384", "dimm_ce_count": "4", "dimm_ue_count": "0"},
-		"mc0/rank7": {"dimm_label": "mc#0csrow#3channel#1", "dimm_location": "csrow 3 channel 1 ", "dimm_mem_type": "Unbuffered-DDR5", "size": "16384", "dimm_ce_count": "9083", "dimm_ue_count": "0"},
+		"mc0/rank7": {"dimm_label": "mc#0csrow#3channel#1", "dimm_location": "csrow 3 channel 1 ", "dimm_mem_type": "Unbuffered-DDR5", "dimm_edac_mode": "SECDED", "size": "16384", "dimm_ce_count": "9083", "dimm_ue_count": "0"},
 	})
 	inv, err := (&Collector{Platform: "linux", Sys: sys}).Memory()
 	if err != nil {
@@ -94,8 +120,21 @@ func TestMemoryPBS1(t *testing.T) {
 	if a.EDAC != "mc0/csrow2/ch0+mc0/csrow3/ch0" || a.Mapping != "exact" || a.CE != 0 {
 		t.Errorf("A1 EDAC = %q %q ce=%d", a.EDAC, a.Mapping, a.CE)
 	}
-	if b.Slot != "DIMMB1" || b.EDAC != "mc0/csrow2/ch1+mc0/csrow3/ch1" || b.Mapping != "exact" || b.CE != 9087 || b.UE != 0 || b.EDACType != "Unbuffered-DDR5" {
+	if b.Slot != "DIMMB1" || b.EDAC != "mc0/csrow2/ch1+mc0/csrow3/ch1" || b.Mapping != "exact" || b.CE != 9087 || b.UE != 0 || b.EDACType != "Unbuffered-DDR5" || b.EDACBytes != 32<<30 {
 		t.Errorf("B1 = %+v", b)
+	}
+	if !b.ECC() || b.TotalWidth != 80 || b.DataWidth != 64 || b.EDACMode != "SECDED" || inv.Correction != "single-bit ECC" {
+		t.Errorf("ECC: widths %d/%d mode %q correction %q", b.TotalWidth, b.DataWidth, b.EDACMode, inv.Correction)
+	}
+	// The kernel's total rides along.
+	if err := os.MkdirAll(filepath.Join(sys, "..", "proc"), 0o755); err != nil {
+		t.Fatal(err)
+	}
+	proc := filepath.Join(sys, "..", "proc")
+	os.WriteFile(filepath.Join(proc, "meminfo"), []byte("MemTotal:       65437512 kB\nMemFree:        1234 kB\n"), 0o644)
+	inv, _ = (&Collector{Platform: "linux", Sys: sys, Proc: proc}).Memory()
+	if inv.KernelBytes != 65437512<<10 {
+		t.Errorf("KernelBytes = %d", inv.KernelBytes)
 	}
 }
 
@@ -166,7 +205,7 @@ func TestMemoryTwoPerChannel(t *testing.T) {
 	if b1 := inv.DIMMs[2]; b1.Slot != "DIMM_B1" || b1.EDAC != "" || b1.Mapping != "" {
 		t.Errorf("B1 = %+v", b1)
 	}
-	if e := inv.DIMMs[3]; e.Slot != "" || e.EDAC != "mc0/csrow1/ch4" || e.UE != 1 || e.SizeBytes != 16<<30 {
+	if e := inv.DIMMs[3]; e.Slot != "" || e.EDAC != "mc0/csrow1/ch4" || e.UE != 1 || e.SizeBytes != 0 || e.EDACBytes != 16<<30 {
 		t.Errorf("orphan EDAC entry = %+v", e)
 	}
 }
@@ -233,6 +272,7 @@ func TestMemoryFS2(t *testing.T) {
 func TestMemoryDesk1(t *testing.T) {
 	sys := t.TempDir()
 	writeMemoryFixture(t, sys, [][]byte{
+		type16(3),
 		type17("Controller0-ChannelA-DIMM0", "BANK 0", 16384, 0x22, 5200, "Crucial Technology", "E8F495F7", "CT16G56C46S5.M8G1", 1),
 		type17("Controller1-ChannelA-DIMM0", "BANK 0", 16384, 0x22, 5200, "Crucial Technology", "E9626CFC", "CT16G56C46S5.M8D1", 1),
 	}, map[string]map[string]string{
@@ -250,6 +290,9 @@ func TestMemoryDesk1(t *testing.T) {
 	}
 	if b := inv.DIMMs[1]; b.Slot != "Controller1-ChannelA-DIMM0" || b.EDAC != "mc1/ch0/slot0+mc1/ch1/slot0" || b.Mapping != "exact" || b.CE != 3 {
 		t.Errorf("controller 1 = %+v", b)
+	}
+	if inv.DIMMs[0].ECC() || inv.DIMMs[0].TotalWidth != 64 || inv.Correction != "none" {
+		t.Errorf("a non-ECC SODIMM reads as ECC: %+v, correction %q", inv.DIMMs[0], inv.Correction)
 	}
 }
 

@@ -185,7 +185,17 @@ small boards) are told apart by their bank locator.  EDAC channels are
 counted the firmware's way, across a
 socket's controllers in order, so a Xeon's two controllers line up
 with channels 0 to 3.  `drivelist dimms --allfields` shows the EDAC
-location and how sure the match is.  `drivelist dimms
+location and how sure the match is.  Under the listing, each host's
+memory is totalled three ways, by the firmware's modules, by the EDAC
+entries matched to them, and as the kernel's MemTotal, and any
+disagreement is named: EDAC and firmware differing means a wrong
+match, the kernel seeing more than the firmware lists means a missing
+module.  ECC is shown three ways too: each module's widths (`72/64`
+or `80/64` is a module with check bits, `none` is 64/64), the
+firmware's error correction for the array (SMBIOS type 16, what it
+actually enabled), and the mode EDAC reports; modules with check bits
+on an array reporting none is ECC fitted but not on, which the check
+column says.  `drivelist dimms
 [--host H] [--problems]` lists the fleet's memory, modules with errors
 first; the web interface has the same under Memory and on each host's
 page.  Counts that grew since the last report leave a sample and a

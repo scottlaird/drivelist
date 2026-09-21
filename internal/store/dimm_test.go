@@ -105,12 +105,58 @@ func TestIngestDIMMs(t *testing.T) {
 	if rows, _ := h.s.ListDIMMs(h.ctx, "", false); len(rows) != 1 {
 		t.Errorf("present after removal = %+v", rows)
 	}
-	// A report with no modules changes nothing.
+	// The totals: firmware and EDAC agree, the kernel a little under.
+	r.DIMMs = dimms(0)
+	r.DIMMs[0].EDACBytes, r.DIMMs[1].EDACBytes = 32<<30, 32<<30
+	r.MemTotalBytes = 63 << 30
+	h.advance(time.Hour)
+	r.ObservedAt = h.now
+	h.submit(r)
+	sums, err := h.s.MemorySummaries(h.ctx, "")
+	if err != nil || len(sums) != 1 || sums[0].Modules != 2 || sums[0].FirmwareBytes != 64<<30 || sums[0].EDACBytes != 64<<30 || sums[0].KernelBytes != 63<<30 || sums[0].Note != "" {
+		t.Errorf("summaries = %+v, %v", sums, err)
+	}
+	// ECC: modules with check bits, the firmware saying none, is fitted
+	// but not on.
+	for i := range r.DIMMs {
+		r.DIMMs[i].TotalWidth, r.DIMMs[i].DataWidth, r.DIMMs[i].EDACMode = 80, 64, "SECDED"
+	}
+	r.MemCorrection = "single-bit ECC"
+	h.advance(time.Hour)
+	r.ObservedAt = h.now
+	h.submit(r)
+	sums, _ = h.s.MemorySummaries(h.ctx, "")
+	if len(sums) != 1 || sums[0].ECCModules != 2 || sums[0].Correction != "single-bit ECC" || sums[0].EDACMode != "SECDED" || sums[0].Note != "" {
+		t.Errorf("ECC summary = %+v", sums)
+	}
+	r.MemCorrection = "none"
+	h.advance(time.Hour)
+	r.ObservedAt = h.now
+	h.submit(r)
+	if sums, _ = h.s.MemorySummaries(h.ctx, ""); len(sums) != 1 || !strings.Contains(sums[0].Note, "fitted but not on") {
+		t.Errorf("ECC off summary = %+v", sums)
+	}
+	r.MemCorrection = "single-bit ECC"
+
+	// A wrong match doubles B1's EDAC share; the kernel seeing more than
+	// listed means a module is missing.
+	r.DIMMs[1].EDACBytes = 64 << 30
+	r.MemTotalBytes = 127 << 30
+	h.advance(time.Hour)
+	r.ObservedAt = h.now
+	h.submit(r)
+	sums, _ = h.s.MemorySummaries(h.ctx, "storage1")
+	if len(sums) != 1 || !strings.Contains(sums[0].Note, "wrong entries") || !strings.Contains(sums[0].Note, "missing from the list") {
+		t.Errorf("summaries with mismatches = %+v", sums)
+	}
+
+	// A report with no modules changes nothing: both modules, back since
+	// the totals check, stay.
 	h.advance(time.Hour)
 	r.ObservedAt = h.now
 	r.DIMMs = nil
 	h.submit(r)
-	if rows, _ := h.s.ListDIMMs(h.ctx, "", false); len(rows) != 1 {
+	if rows, _ := h.s.ListDIMMs(h.ctx, "", false); len(rows) != 2 {
 		t.Errorf("after an empty report = %+v", rows)
 	}
 }

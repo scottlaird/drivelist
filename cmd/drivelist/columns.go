@@ -321,6 +321,7 @@ var dimmCols = []col[*pb.DimmRow]{
 	{name: "type", header: "TYPE", value: func(r *pb.DimmRow) string { return orDash(r.Dimm.Type) }},
 	{name: "speed", header: "MT/S", value: func(r *pb.DimmRow) string { return orDash(fmt.Sprint(r.Dimm.SpeedMts)) }, key: func(r *pb.DimmRow) any { return r.Dimm.SpeedMts }},
 	{name: "ranks", header: "RANKS", value: func(r *pb.DimmRow) string { return fmt.Sprint(r.Dimm.Ranks) }, key: func(r *pb.DimmRow) any { return r.Dimm.Ranks }},
+	{name: "ecc", header: "ECC", value: func(r *pb.DimmRow) string { return eccText(r.Dimm) }, key: func(r *pb.DimmRow) any { return r.Dimm.TotalWidth > r.Dimm.DataWidth }},
 	{name: "part", header: "PART", value: func(r *pb.DimmRow) string { return orDash(r.Dimm.Part) }},
 	{name: "serial", header: "SERIAL", value: func(r *pb.DimmRow) string { return orDash(r.Dimm.Serial) }},
 	{name: "ce", header: "CE", value: func(r *pb.DimmRow) string { return fmt.Sprint(r.Dimm.Ce) }, key: func(r *pb.DimmRow) any { return r.Dimm.Ce }},
@@ -333,6 +334,8 @@ var dimmCols = []col[*pb.DimmRow]{
 		return ago(r.LastError, time.Now())
 	}, key: func(r *pb.DimmRow) any { return tsKey(r.LastError) }},
 	{name: "edac", header: "EDAC", value: func(r *pb.DimmRow) string { return orDash(r.Dimm.Edac) }, extra: true},
+	{name: "edacmode", header: "EDAC MODE", value: func(r *pb.DimmRow) string { return orDash(r.Dimm.EdacMode) }, extra: true},
+	{name: "edacsize", header: "EDAC SIZE", value: func(r *pb.DimmRow) string { return memSize(r.Dimm.EdacSizeBytes) }, key: func(r *pb.DimmRow) any { return r.Dimm.EdacSizeBytes }, extra: true},
 	{name: "mapping", header: "MAPPING", value: func(r *pb.DimmRow) string { return orDash(r.Dimm.Mapping) }, extra: true},
 	{name: "bank", header: "BANK", value: func(r *pb.DimmRow) string { return orDash(r.Dimm.Bank) }, extra: true},
 	{name: "manufacturer", header: "MANUFACTURER", value: func(r *pb.DimmRow) string { return orDash(r.Dimm.Manufacturer) }, extra: true},

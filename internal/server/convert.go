@@ -77,6 +77,7 @@ func reportFromProto(req *pb.ReportInventoryRequest) store.Report {
 	for _, d := range req.GetDimms() {
 		r.DIMMs = append(r.DIMMs, dimmFromProto(d))
 	}
+	r.MemTotalBytes, r.MemCorrection = req.GetMemTotalBytes(), req.GetMemCorrection()
 	return r
 }
 
@@ -356,12 +357,14 @@ func ioSamplesFromProto(samples []*pb.IOSample) []store.IOSample {
 
 func dimmFromProto(d *pb.Dimm) store.DIMM {
 	return store.DIMM{Slot: d.GetSlot(), Bank: d.GetBank(), SizeBytes: d.GetSizeBytes(), Ranks: int(d.GetRanks()), Type: d.GetType(), SpeedMTs: int(d.GetSpeedMts()),
-		Manufacturer: d.GetManufacturer(), Part: d.GetPart(), Serial: d.GetSerial(), EDAC: d.GetEdac(), EDACType: d.GetEdacType(), Mapping: d.GetMapping(), CE: d.GetCe(), UE: d.GetUe()}
+		Manufacturer: d.GetManufacturer(), Part: d.GetPart(), Serial: d.GetSerial(), EDAC: d.GetEdac(), EDACType: d.GetEdacType(), EDACBytes: d.GetEdacSizeBytes(), Mapping: d.GetMapping(), CE: d.GetCe(), UE: d.GetUe(),
+		TotalWidth: int(d.GetTotalWidth()), DataWidth: int(d.GetDataWidth()), EDACMode: d.GetEdacMode()}
 }
 
 func dimmToProto(d store.DIMM) *pb.Dimm {
 	return &pb.Dimm{Slot: d.Slot, Bank: d.Bank, SizeBytes: d.SizeBytes, Ranks: uint32(d.Ranks), Type: d.Type, SpeedMts: uint32(d.SpeedMTs),
-		Manufacturer: d.Manufacturer, Part: d.Part, Serial: d.Serial, Edac: d.EDAC, EdacType: d.EDACType, Mapping: d.Mapping, Ce: d.CE, Ue: d.UE}
+		Manufacturer: d.Manufacturer, Part: d.Part, Serial: d.Serial, Edac: d.EDAC, EdacType: d.EDACType, EdacSizeBytes: d.EDACBytes, Mapping: d.Mapping, Ce: d.CE, Ue: d.UE,
+		TotalWidth: uint32(d.TotalWidth), DataWidth: uint32(d.DataWidth), EdacMode: d.EDACMode}
 }
 
 func dimmRowToProto(r store.DIMMRow) *pb.DimmRow {

@@ -332,6 +332,14 @@ func (s *Server) ListDimms(ctx context.Context, req *connect.Request[pb.ListDimm
 	for _, r := range rows {
 		out.Rows = append(out.Rows, dimmRowToProto(r))
 	}
+	sums, err := s.store.MemorySummaries(ctx, req.Msg.GetHost())
+	if err != nil {
+		return nil, storeErr(err)
+	}
+	for _, m := range sums {
+		out.Hosts = append(out.Hosts, &pb.MemorySummary{Hostname: m.Hostname, KernelBytes: m.KernelBytes, FirmwareBytes: m.FirmwareBytes, EdacBytes: m.EDACBytes, UnmatchedEdacBytes: m.Unmatched, Modules: int32(m.Modules), Note: m.Note,
+			Correction: m.Correction, EdacMode: m.EDACMode, EccModules: int32(m.ECCModules)})
+	}
 	return connect.NewResponse(out), nil
 }
 

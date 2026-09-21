@@ -143,6 +143,19 @@ func size(b uint64) string {
 	return drivelist.FormatDiskSize(b)
 }
 
+// eccText says whether a module carries check bits, by its widths:
+// "72/64" for ECC DDR4, "80/64" for ECC DDR5, "none" for 64/64, "-"
+// when the firmware did not say.
+func eccText(d *pb.Dimm) string {
+	switch {
+	case d.DataWidth == 0:
+		return "-"
+	case d.TotalWidth > d.DataWidth:
+		return fmt.Sprintf("%d/%d", d.TotalWidth, d.DataWidth)
+	}
+	return "none"
+}
+
 // memSize formats a memory module's size in binary units, which is how
 // modules are sold: 34359738368 is "32 GB", not "34.4 GB".
 func memSize(b uint64) string {
