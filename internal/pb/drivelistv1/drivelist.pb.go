@@ -3277,10 +3277,11 @@ type MemorySummary struct {
 	EdacBytes          uint64                 `protobuf:"varint,4,opt,name=edac_bytes,json=edacBytes,proto3" json:"edac_bytes,omitempty"`                              // sum of the EDAC entries matched to modules
 	UnmatchedEdacBytes uint64                 `protobuf:"varint,5,opt,name=unmatched_edac_bytes,json=unmatchedEdacBytes,proto3" json:"unmatched_edac_bytes,omitempty"` // EDAC entries matched to no module
 	Modules            int32                  `protobuf:"varint,6,opt,name=modules,proto3" json:"modules,omitempty"`
-	Note               string                 `protobuf:"bytes,7,opt,name=note,proto3" json:"note,omitempty"`                                 // "" when the three agree; else what does not
-	Correction         string                 `protobuf:"bytes,8,opt,name=correction,proto3" json:"correction,omitempty"`                     // the firmware's error correction for the array; "" unknown
-	EdacMode           string                 `protobuf:"bytes,9,opt,name=edac_mode,json=edacMode,proto3" json:"edac_mode,omitempty"`         // the correction mode EDAC reports on the modules; "" when none does
-	EccModules         int32                  `protobuf:"varint,10,opt,name=ecc_modules,json=eccModules,proto3" json:"ecc_modules,omitempty"` // modules whose total width exceeds their data width
+	Note               string                 `protobuf:"bytes,7,opt,name=note,proto3" json:"note,omitempty"`                                       // "" when the three agree; else what does not
+	Correction         string                 `protobuf:"bytes,8,opt,name=correction,proto3" json:"correction,omitempty"`                           // the firmware's error correction for the array; "" unknown
+	EdacMode           string                 `protobuf:"bytes,9,opt,name=edac_mode,json=edacMode,proto3" json:"edac_mode,omitempty"`               // the correction mode EDAC reports on the modules; "" when none does
+	EccModules         int32                  `protobuf:"varint,10,opt,name=ecc_modules,json=eccModules,proto3" json:"ecc_modules,omitempty"`       // modules whose widths say check bits (72/64, 80/64)
+	PlainModules       int32                  `protobuf:"varint,11,opt,name=plain_modules,json=plainModules,proto3" json:"plain_modules,omitempty"` // modules whose widths say none (64/64); the rest report widths that mean nothing
 	unknownFields      protoimpl.UnknownFields
 	sizeCache          protoimpl.SizeCache
 }
@@ -3381,6 +3382,13 @@ func (x *MemorySummary) GetEdacMode() string {
 func (x *MemorySummary) GetEccModules() int32 {
 	if x != nil {
 		return x.EccModules
+	}
+	return 0
+}
+
+func (x *MemorySummary) GetPlainModules() int32 {
+	if x != nil {
+		return x.PlainModules
 	}
 	return 0
 }
@@ -6530,7 +6538,7 @@ const file_drivelist_v1_drivelist_proto_rawDesc = "" +
 	"\x06ue_day\x18\x06 \x01(\x04R\x05ueDay\x129\n" +
 	"\n" +
 	"last_error\x18\a \x01(\v2\x1a.google.protobuf.TimestampR\tlastError\x12\x18\n" +
-	"\aproblem\x18\b \x01(\bR\aproblem\"\xd2\x02\n" +
+	"\aproblem\x18\b \x01(\bR\aproblem\"\xf7\x02\n" +
 	"\rMemorySummary\x12\x1a\n" +
 	"\bhostname\x18\x01 \x01(\tR\bhostname\x12!\n" +
 	"\fkernel_bytes\x18\x02 \x01(\x04R\vkernelBytes\x12%\n" +
@@ -6546,7 +6554,8 @@ const file_drivelist_v1_drivelist_proto_rawDesc = "" +
 	"\tedac_mode\x18\t \x01(\tR\bedacMode\x12\x1f\n" +
 	"\vecc_modules\x18\n" +
 	" \x01(\x05R\n" +
-	"eccModules\"q\n" +
+	"eccModules\x12#\n" +
+	"\rplain_modules\x18\v \x01(\x05R\fplainModules\"q\n" +
 	"\x11ListDimmsResponse\x12)\n" +
 	"\x04rows\x18\x01 \x03(\v2\x15.drivelist.v1.DimmRowR\x04rows\x121\n" +
 	"\x05hosts\x18\x02 \x03(\v2\x1b.drivelist.v1.MemorySummaryR\x05hosts\"\xb8\x01\n" +

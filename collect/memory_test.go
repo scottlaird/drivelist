@@ -123,7 +123,7 @@ func TestMemoryPBS1(t *testing.T) {
 	if b.Slot != "DIMMB1" || b.EDAC != "mc0/csrow2/ch1+mc0/csrow3/ch1" || b.Mapping != "exact" || b.CE != 9087 || b.UE != 0 || b.EDACType != "Unbuffered-DDR5" || b.EDACBytes != 32<<30 {
 		t.Errorf("B1 = %+v", b)
 	}
-	if !b.ECC() || b.TotalWidth != 80 || b.DataWidth != 64 || b.EDACMode != "SECDED" || inv.Correction != "single-bit ECC" {
+	if ecc, known := b.ECC(); !ecc || !known || b.TotalWidth != 80 || b.DataWidth != 64 || b.EDACMode != "SECDED" || inv.Correction != "single-bit ECC" {
 		t.Errorf("ECC: widths %d/%d mode %q correction %q", b.TotalWidth, b.DataWidth, b.EDACMode, inv.Correction)
 	}
 	// The kernel's total rides along.
@@ -291,7 +291,7 @@ func TestMemoryDesk1(t *testing.T) {
 	if b := inv.DIMMs[1]; b.Slot != "Controller1-ChannelA-DIMM0" || b.EDAC != "mc1/ch0/slot0+mc1/ch1/slot0" || b.Mapping != "exact" || b.CE != 3 {
 		t.Errorf("controller 1 = %+v", b)
 	}
-	if inv.DIMMs[0].ECC() || inv.DIMMs[0].TotalWidth != 64 || inv.Correction != "none" {
+	if ecc, known := inv.DIMMs[0].ECC(); ecc || !known || inv.DIMMs[0].TotalWidth != 64 || inv.Correction != "none" {
 		t.Errorf("a non-ECC SODIMM reads as ECC: %+v, correction %q", inv.DIMMs[0], inv.Correction)
 	}
 }
@@ -383,5 +383,19 @@ func TestMemoryMon1(t *testing.T) {
 	inv, _ = (&Collector{Platform: "linux", Sys: sys2}).Memory()
 	if len(inv.DIMMs) != 2 || inv.DIMMs[0].Slot != "DIMM 0 #1" || inv.DIMMs[1].Slot != "DIMM 0 #2" {
 		t.Errorf("nameless twins = %+v", inv.DIMMs)
+	}
+}
+
+func TestECCWidths(t *testing.T) {
+	for _, tc := range []struct {
+		total, data int
+		ecc, known  bool
+	}{
+		{72, 64, true, true}, {80, 64, true, true}, {64, 64, false, true}, {40, 32, true, true},
+		{128, 64, false, false}, {0, 0, false, false}, {64, 0, false, false}, {96, 64, false, false},
+	} {
+		if ecc, known := eccWidths(tc.total, tc.data); ecc != tc.ecc || known != tc.known {
+			t.Errorf("eccWidths(%d, %d) = %v, %v; want %v, %v", tc.total, tc.data, ecc, known, tc.ecc, tc.known)
+		}
 	}
 }

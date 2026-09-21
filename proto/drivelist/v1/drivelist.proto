@@ -497,7 +497,8 @@ message MemorySummary {
   string note = 7;                    // "" when the three agree; else what does not
   string correction = 8;              // the firmware's error correction for the array; "" unknown
   string edac_mode = 9;               // the correction mode EDAC reports on the modules; "" when none does
-  int32 ecc_modules = 10;             // modules whose total width exceeds their data width
+  int32 ecc_modules = 10;             // modules whose widths say check bits (72/64, 80/64)
+  int32 plain_modules = 11;           // modules whose widths say none (64/64); the rest report widths that mean nothing
 }
 
 message ListDimmsResponse {

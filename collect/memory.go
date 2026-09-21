@@ -46,8 +46,24 @@ type MemoryInventory struct {
 	Correction  string // the firmware's error correction for the array (SMBIOS type 16): "none", "single-bit ECC", ...; "" unknown
 }
 
-// ECC reports whether the module carries check bits, by its widths.
-func (d DIMM) ECC() bool { return d.TotalWidth > d.DataWidth && d.DataWidth > 0 }
+// ECC reports whether the module carries check bits, by its widths, and
+// whether the widths are believable at all: 8 or 16 check bits on a 32
+// or 64 bit data path is ECC, equal widths is none, and anything else
+// (a switch's firmware reporting 128/64) says nothing.
+func (d DIMM) ECC() (ecc, known bool) { return eccWidths(d.TotalWidth, d.DataWidth) }
+
+func eccWidths(total, data int) (ecc, known bool) {
+	if data != 32 && data != 64 {
+		return false, false
+	}
+	switch total - data {
+	case 0:
+		return false, true
+	case 8, 16:
+		return true, true
+	}
+	return false, false
+}
 
 // Memory reads the memory modules from SMBIOS and their error counts
 // from EDAC, and joins the two. Either source may be absent (no root, a

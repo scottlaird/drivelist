@@ -129,14 +129,36 @@ func TestIngestDIMMs(t *testing.T) {
 	if len(sums) != 1 || sums[0].ECCModules != 2 || sums[0].Correction != "single-bit ECC" || sums[0].EDACMode != "SECDED" || sums[0].Note != "" {
 		t.Errorf("ECC summary = %+v", sums)
 	}
+	// The firmware saying none while EDAC corrects: EDAC settles it.
 	r.MemCorrection = "none"
+	h.advance(time.Hour)
+	r.ObservedAt = h.now
+	h.submit(r)
+	if sums, _ = h.s.MemorySummaries(h.ctx, ""); len(sums) != 1 || sums[0].Note != "" {
+		t.Errorf("ECC settled by EDAC = %+v", sums)
+	}
+	// Without EDAC, that is fitted but not on.
+	for i := range r.DIMMs {
+		r.DIMMs[i].EDACMode = ""
+	}
 	h.advance(time.Hour)
 	r.ObservedAt = h.now
 	h.submit(r)
 	if sums, _ = h.s.MemorySummaries(h.ctx, ""); len(sums) != 1 || !strings.Contains(sums[0].Note, "fitted but not on") {
 		t.Errorf("ECC off summary = %+v", sums)
 	}
+	// A switch's 128/64 is not a geometry: neither ECC nor plain, no note.
+	r.DIMMs[0].TotalWidth, r.DIMMs[1].TotalWidth = 128, 128
 	r.MemCorrection = "single-bit ECC"
+	h.advance(time.Hour)
+	r.ObservedAt = h.now
+	h.submit(r)
+	if sums, _ = h.s.MemorySummaries(h.ctx, ""); len(sums) != 1 || sums[0].ECCModules != 0 || sums[0].PlainModules != 0 || sums[0].Note != "" {
+		t.Errorf("unbelievable widths = %+v", sums)
+	}
+	for i := range r.DIMMs {
+		r.DIMMs[i].TotalWidth, r.DIMMs[i].EDACMode = 80, "SECDED"
+	}
 
 	// B1 matched to twice its size is a matching error, named by slot; the
 	// kernel seeing more than listed means a module is missing.

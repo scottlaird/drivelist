@@ -96,6 +96,14 @@
     return (i >= 3 && x < 10 ? x.toFixed(1) : Math.round(x)) + ' ' + units[i];
   }
   const ms = v => (v === undefined || v === null) ? '-' : Number(v).toFixed(1) + 'ms';
+  const eccText = d => {
+    const t = num(d.totalWidth) || 0, w = num(d.dataWidth) || 0;
+    if (!t && !w) return '-';
+    const sane = w === 32 || w === 64;
+    if (sane && t === w) return 'none';
+    if (sane && (t - w === 8 || t - w === 16)) return t + '/' + w;
+    return t + '/' + w + '?';
+  };
   const gib = v => { v = num(v); if (!v) return '-'; const g = v / 1073741824; return (Number.isInteger(g) ? g : g.toFixed(1)) + ' GB'; };
   const pct = v => (v === undefined || v === null) ? '-' : Math.round(Number(v) * 100) + '%';
   const dash = v => (v === undefined || v === null || v === '') ? '-' : String(v);
@@ -379,7 +387,7 @@
     { name: 'type', header: 'TYPE', value: r => dash(r.dimm.type) },
     { name: 'speed', header: 'MT/S', value: r => r.dimm.speedMts || '-', sort: r => r.dimm.speedMts || null, num: true },
     { name: 'ranks', header: 'RANKS', value: r => r.dimm.ranks || 0, sort: r => r.dimm.ranks || 0, num: true },
-    { name: 'ecc', header: 'ECC', value: r => !r.dimm.dataWidth ? '-' : (r.dimm.totalWidth > r.dimm.dataWidth ? r.dimm.totalWidth + '/' + r.dimm.dataWidth : 'none'), sort: r => r.dimm.totalWidth > r.dimm.dataWidth ? 1 : 0 },
+    { name: 'ecc', header: 'ECC', value: r => eccText(r.dimm), sort: r => eccText(r.dimm) },
     { name: 'part', header: 'PART', value: r => dash(r.dimm.part), mono: true },
     { name: 'serial', header: 'SERIAL', value: r => dash(r.dimm.serial), mono: true },
     { name: 'ce', header: 'CE', value: r => num(r.dimm.ce) || 0, sort: r => num(r.dimm.ce) || 0, num: true, cls: r => num(r.dimm.ce) > 0 ? 'warn' : '' },
@@ -400,7 +408,7 @@
     { name: 'firmware', header: 'FIRMWARE', value: m => gib(m.firmwareBytes), sort: m => num(m.firmwareBytes), num: true },
     { name: 'edac', header: 'EDAC', value: m => gib(m.edacBytes), sort: m => num(m.edacBytes), num: true },
     { name: 'kernel', header: 'KERNEL SEES', value: m => gib(m.kernelBytes), sort: m => num(m.kernelBytes), num: true },
-    { name: 'ecc', header: 'ECC MODULES', value: m => (m.eccModules || 0) + ' of ' + (m.modules || 0), sort: m => m.eccModules || 0 },
+    { name: 'ecc', header: 'ECC MODULES', value: m => (m.eccModules || 0) + ' of ' + (m.modules || 0) + ((m.modules || 0) - (m.eccModules || 0) - (m.plainModules || 0) > 0 ? ' (widths not believable on ' + ((m.modules || 0) - (m.eccModules || 0) - (m.plainModules || 0)) + ')' : ''), sort: m => m.eccModules || 0 },
     { name: 'correction', header: 'FIRMWARE', value: m => dash(m.correction) },
     { name: 'edacmode', header: 'EDAC', value: m => dash(m.edacMode) },
     { name: 'note', header: 'CHECK', value: m => m.note || 'agree', cls: m => m.note ? 'warn' : 'ok' },

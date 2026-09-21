@@ -113,8 +113,20 @@ type DIMM struct {
 	CE, UE       uint64 // since boot
 }
 
-// ECC reports whether the module carries check bits, by its widths.
-func (d DIMM) ECC() bool { return d.TotalWidth > d.DataWidth && d.DataWidth > 0 }
+// ECC reports whether the module carries check bits, by its widths, and
+// whether the widths are believable; see collect.DIMM.ECC.
+func (d DIMM) ECC() (ecc, known bool) {
+	if d.DataWidth != 32 && d.DataWidth != 64 {
+		return false, false
+	}
+	switch d.TotalWidth - d.DataWidth {
+	case 0:
+		return false, true
+	case 8, 16:
+		return true, true
+	}
+	return false, false
+}
 
 // Key is what a module is tracked by: its slot, else its EDAC location.
 func (d DIMM) Key() string {
