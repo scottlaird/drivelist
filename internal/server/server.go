@@ -323,6 +323,18 @@ func (s *Server) nameEvents(ctx context.Context, evs []*pb.Event) error {
 	return nil
 }
 
+func (s *Server) ListDimms(ctx context.Context, req *connect.Request[pb.ListDimmsRequest]) (*connect.Response[pb.ListDimmsResponse], error) {
+	rows, err := s.store.ListDIMMs(ctx, req.Msg.GetHost(), req.Msg.GetProblems())
+	if err != nil {
+		return nil, storeErr(err)
+	}
+	out := &pb.ListDimmsResponse{}
+	for _, r := range rows {
+		out.Rows = append(out.Rows, dimmRowToProto(r))
+	}
+	return connect.NewResponse(out), nil
+}
+
 func (s *Server) ListSmart(ctx context.Context, req *connect.Request[pb.ListSmartRequest]) (*connect.Response[pb.ListSmartResponse], error) {
 	rows, err := s.store.ListSmart(ctx, req.Msg.GetHost(), req.Msg.GetProblems())
 	if err != nil {

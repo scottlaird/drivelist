@@ -28,11 +28,12 @@ type Sender interface {
 // Config is what the loop needs.
 type Config struct {
 	Host       *pb.HostIdentity
-	Interval   time.Duration                          // between inventory reports; the server may change it
-	SpoolDir   string                                 // where undeliverable reports wait; "" disables spooling
-	MaxSpool   int                                    // spool entries kept before the oldest is dropped; 0 means 2000
-	StatusPath string                                 // the status cache; "" disables it
-	SAS        func() (*dlcollect.SASTopology, error) // the SAS topology; nil reads sysfs
+	Interval   time.Duration                              // between inventory reports; the server may change it
+	SpoolDir   string                                     // where undeliverable reports wait; "" disables spooling
+	MaxSpool   int                                        // spool entries kept before the oldest is dropped; 0 means 2000
+	StatusPath string                                     // the status cache; "" disables it
+	SAS        func() (*dlcollect.SASTopology, error)     // the SAS topology; nil reads sysfs
+	Memory     func() (*dlcollect.MemoryInventory, error) // the memory modules; nil reads SMBIOS and EDAC
 }
 
 // Agent runs the loop.
@@ -57,6 +58,9 @@ type Agent struct {
 func New(cfg Config, send Sender, collect func() (*drivelist.Inventory, error), log *slog.Logger) (*Agent, error) {
 	if cfg.SAS == nil {
 		cfg.SAS = func() (*dlcollect.SASTopology, error) { return (&dlcollect.Collector{}).SAS() }
+	}
+	if cfg.Memory == nil {
+		cfg.Memory = func() (*dlcollect.MemoryInventory, error) { return (&dlcollect.Collector{}).Memory() }
 	}
 	if cfg.Host == nil {
 		return nil, errors.New("agent: no host identity")
@@ -161,6 +165,11 @@ func (a *Agent) cycle(ctx context.Context, reason string, interval *time.Duratio
 		topo = nil
 	}
 	req := report.FromInventory(a.cfg.Host, inv, topo, a.now(), collectErr)
+	if mem, err := a.cfg.Memory(); err != nil {
+		a.log.Warn("memory modules unreadable; reporting without them", "err", err)
+	} else {
+		report.Memory(req, mem)
+	}
 
 	if a.spool != nil {
 		if err := a.replay(ctx); err != nil {

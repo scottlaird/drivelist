@@ -32,7 +32,7 @@ const (
 )
 
 // The event kinds the page's filter offers; see pageEvents in ui/app.js.
-var eventKinds = []string{"first_seen", "appeared", "vanished", "reappeared", "moved_host", "moved_bay", "use_changed", "enclosure_renamed", "member_state_changed", "status_changed", "note", "merged", "host_merged", "smart_warning", "kernel_warning", "sas_link_changed", "sas_attached_changed", "sas_port_changed", "sas_errors", "sas_node_changed", "host_first_seen", "host_stale", "host_resumed", "host_rebooted", "hardware_error", "report_degraded", "pool_missing_member", "identity_conflict"}
+var eventKinds = []string{"first_seen", "appeared", "vanished", "reappeared", "moved_host", "moved_bay", "use_changed", "enclosure_renamed", "member_state_changed", "status_changed", "note", "merged", "host_merged", "smart_warning", "kernel_warning", "sas_link_changed", "sas_attached_changed", "sas_port_changed", "sas_errors", "sas_node_changed", "host_first_seen", "host_stale", "host_resumed", "host_rebooted", "hardware_error", "memory_errors", "dimm_changed", "report_degraded", "pool_missing_member", "identity_conflict"}
 
 // Manifest is demo.json: what the page reads to know it is a demo.
 type Manifest struct {
@@ -99,6 +99,12 @@ func Export(ctx context.Context, q drivelistv1connect.QueryClient, dir string, n
 	w.call("ListSmart", map[string]any{"problems": true}, func() (proto.Message, error) {
 		return unwrap(q.ListSmart(ctx, connect.NewRequest(&pb.ListSmartRequest{Problems: true})))
 	})
+	w.call("ListDimms", nil, func() (proto.Message, error) {
+		return unwrap(q.ListDimms(ctx, connect.NewRequest(&pb.ListDimmsRequest{})))
+	})
+	w.call("ListDimms", map[string]any{"problems": true}, func() (proto.Message, error) {
+		return unwrap(q.ListDimms(ctx, connect.NewRequest(&pb.ListDimmsRequest{Problems: true})))
+	})
 	w.call("ListSASErrors", map[string]any{"since": true}, func() (proto.Message, error) {
 		return unwrap(q.ListSASErrors(ctx, connect.NewRequest(&pb.ListSASErrorsRequest{Since: since(sasWindow)})))
 	})
@@ -132,6 +138,9 @@ func Export(ctx context.Context, q drivelistv1connect.QueryClient, dir string, n
 		})
 		w.call("GetSAS", map[string]any{"host": shown}, func() (proto.Message, error) {
 			return unwrap(q.GetSAS(ctx, connect.NewRequest(&pb.GetSASRequest{Host: real})))
+		})
+		w.call("ListDimms", map[string]any{"host": shown}, func() (proto.Message, error) {
+			return unwrap(q.ListDimms(ctx, connect.NewRequest(&pb.ListDimmsRequest{Host: real})))
 		})
 	}
 	log("hosts written", "hosts", len(hosts.Msg.Hosts), "files", w.count())

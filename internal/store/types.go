@@ -88,6 +88,31 @@ type Report struct {
 	EmptyBays       []ReportBay
 	SASNodes        []SASNode // empty from agents before 0.6 or hosts without SAS
 	SASPhys         []SASPhy
+	DIMMs           []DIMM // empty from agents before 0.9 or hosts that describe none
+}
+
+// DIMM is one memory module as an agent reports it: the firmware's
+// description joined to EDAC's counts. See collect.DIMM.
+type DIMM struct {
+	Slot, Bank   string
+	SizeBytes    uint64
+	Ranks        int
+	Type         string
+	SpeedMTs     int
+	Manufacturer string
+	Part, Serial string
+	EDAC         string // "mc0/csrow2/ch2+mc0/csrow3/ch2"
+	EDACType     string
+	Mapping      string // "exact" | "inferred" | ""
+	CE, UE       uint64 // since boot
+}
+
+// Key is what a module is tracked by: its slot, else its EDAC location.
+func (d DIMM) Key() string {
+	if d.Slot != "" {
+		return d.Slot
+	}
+	return d.EDAC
 }
 
 // SASNode is an HBA or expander as an agent reports it.
@@ -193,6 +218,8 @@ const (
 	EventHostMerged         = "host_merged"
 	EventHostRebooted       = "host_rebooted"  // host-level: the agent reports a new boot id
 	EventHardwareError      = "hardware_error" // host-level: the kernel logged a memory or machine-check error; once per class, location and day
+	EventMemoryErrors       = "memory_errors"  // host-level: a module's EDAC counts grew; once per module per day
+	EventDimmChanged        = "dimm_changed"   // host-level: a module appeared, vanished, or was replaced (its serial changed)
 )
 
 // Placement end reasons.

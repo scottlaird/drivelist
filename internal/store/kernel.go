@@ -96,7 +96,13 @@ func (t *tx) hardwareError(hostID int64, k KernelSample) error {
 	saved := t.obs
 	t.obs = k.BucketStart.Unix()
 	defer func() { t.obs = saved }()
-	return t.event(EventHardwareError, 0, hostID, map[string]any{"class": k.Class, "code": k.Code, "count": k.Count, "sample": k.Sample}, "kernel", 0)
+	detail := map[string]any{"class": k.Class, "code": k.Code, "count": k.Count, "sample": k.Sample}
+	// The module behind an EDAC location, when the host has reported its
+	// memory: the event then names the slot to pull.
+	if d, ok := t.dimmForEDAC(hostID, k.Code); ok {
+		detail["slot"], detail["serial"], detail["part"] = d.Slot, d.Serial, d.Part
+	}
+	return t.event(EventHardwareError, 0, hostID, detail, "kernel", 0)
 }
 
 // kernelWarning records one kernel_warning event per drive, class and UTC

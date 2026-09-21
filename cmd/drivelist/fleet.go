@@ -28,6 +28,7 @@ func fleetCommands(cfg *clientConfig) []*cobra.Command {
 		newHostsCmd(cfg),
 		newDrivesCmd(cfg),
 		newSmartCmd(cfg),
+		newDimmsCmd(cfg),
 		newDriveCmd(cfg),
 		newEventsCmd(cfg),
 		newMissingCmd(cfg),
@@ -175,6 +176,9 @@ a schedule, the server turns them into I/O buckets.`,
 				fmt.Fprintf(cmd.ErrOrStderr(), "drivelist: sas topology unreadable, reporting without it: %v\n", err)
 			}
 			req := report.FromInventory(report.Host(), inv, topo, time.Now(), collectErr)
+			if mem, err := collectMemory(); err == nil {
+				report.Memory(req, mem)
+			}
 			if output != "" {
 				bundle := &pb.ReportBundle{Inventory: req}
 				if withSmart {
@@ -231,6 +235,54 @@ a schedule, the server turns them into I/O buckets.`,
 	}
 	cmd.Flags().StringVar(&output, "output", "", "write the report here (- for stdout) instead of sending it")
 	cmd.Flags().BoolVar(&withSmart, "smart", false, "with --output: include a SMART pass (needs root and smartctl)")
+	return cmd
+}
+
+// ---------- dimms ----------
+
+func newDimmsCmd(cfg *clientConfig) *cobra.Command {
+	var host string
+	var problems bool
+	var to tableOpts
+	cmd := &cobra.Command{
+		Use:   "dimms",
+		Short: "Every host's memory modules with their error counts, problems first",
+		Long: `dimms lists every memory module the agents report: the slot the board
+prints, size, type, speed, ranks, part and serial number from the
+firmware, and the corrected and uncorrected error counts the kernel's
+EDAC driver has kept since boot, matched to the slot. Modules with an
+uncorrected error, or corrected errors in the last day, come first;
+--problems shows only those. --allfields adds the EDAC location the
+kernel log names the module by and how surely it was matched to the
+slot (exact from the firmware's bank locator or a channel with one
+module; inferred by slot order when a channel holds several).`,
+		Args: cobra.NoArgs,
+		RunE: func(cmd *cobra.Command, _ []string) error {
+			client, err := cfg.queryClient()
+			if err != nil {
+				return err
+			}
+			res, err := client.ListDimms(cmd.Context(), connect.NewRequest(&pb.ListDimmsRequest{Host: host, Problems: problems}))
+			if err != nil {
+				return rpcErr(err)
+			}
+			if cfg.json {
+				return printJSON(cmd.OutOrStdout(), res.Msg)
+			}
+			if len(res.Msg.Rows) == 0 {
+				if problems {
+					fmt.Fprintln(cmd.OutOrStdout(), "no memory module reports errors")
+				} else {
+					fmt.Fprintln(cmd.OutOrStdout(), "no memory modules reported")
+				}
+				return nil
+			}
+			return printTable(cmd.OutOrStdout(), to, dimmCols, res.Msg.Rows)
+		},
+	}
+	cmd.Flags().StringVar(&host, "host", "", "only modules on this host")
+	cmd.Flags().BoolVar(&problems, "problems", false, "only modules with errors")
+	addTableFlags(cmd, &to, dimmCols)
 	return cmd
 }
 

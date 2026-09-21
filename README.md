@@ -169,6 +169,25 @@ the host, once per class, location and day: a DIMM throwing corrected
 errors is usually the warning before an uncorrected one takes the
 machine down.  `--kmsg=false` turns the follower off.
 
+Every report also carries the host's memory modules: what the firmware
+says of each slot (SMBIOS type 17: the printed slot name, size, type,
+speed, ranks, part and serial number) joined to what the kernel's EDAC
+driver counts for it (corrected and uncorrected errors since boot).
+The join uses the firmware's bank locator when it names the channel and
+DIMM index (`P0_Node0_Channel1_Dimm1`), else the channel letter of the
+slot name, which is exact when the channel holds one module and a guess
+by slot order when it holds two; `drivelist dimms --allfields` shows
+the EDAC location and how sure the match is.  `drivelist dimms
+[--host H] [--problems]` lists the fleet's memory, modules with errors
+first; the web interface has the same under Memory and on each host's
+page.  Counts that grew since the last report leave a sample and a
+`memory_errors` event, once per module per day; a module appearing,
+vanishing or changing serial number in its slot is a `dimm_changed`
+event; and a `hardware_error` event on a host that has reported its
+memory names the slot.  A corrected error a second on one module, as
+a failing DDR5 module produces, is the warning before the uncorrected
+one that takes the machine down.
+
 Every report carries the kernel's boot id and boot time.  A report
 with a new boot id is a `host_rebooted` event, timestamped at the
 boot, saying how long the previous boot had been reporting and how

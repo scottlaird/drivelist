@@ -87,6 +87,8 @@ const (
 	QueryListBaysProcedure = "/drivelist.v1.Query/ListBays"
 	// QueryListSmartProcedure is the fully-qualified name of the Query's ListSmart RPC.
 	QueryListSmartProcedure = "/drivelist.v1.Query/ListSmart"
+	// QueryListDimmsProcedure is the fully-qualified name of the Query's ListDimms RPC.
+	QueryListDimmsProcedure = "/drivelist.v1.Query/ListDimms"
 )
 
 // CollectorClient is a client for the drivelist.v1.Collector service.
@@ -333,6 +335,8 @@ type QueryClient interface {
 	ListBays(context.Context, *connect.Request[drivelistv1.ListBaysRequest]) (*connect.Response[drivelistv1.ListBaysResponse], error)
 	// ListSmart returns every placed drive with its newest SMART reading.
 	ListSmart(context.Context, *connect.Request[drivelistv1.ListSmartRequest]) (*connect.Response[drivelistv1.ListSmartResponse], error)
+	// ListDimms lists every host's memory modules with their error counts.
+	ListDimms(context.Context, *connect.Request[drivelistv1.ListDimmsRequest]) (*connect.Response[drivelistv1.ListDimmsResponse], error)
 }
 
 // NewQueryClient constructs a client for the drivelist.v1.Query service. By default, it uses the
@@ -466,6 +470,12 @@ func NewQueryClient(httpClient connect.HTTPClient, baseURL string, opts ...conne
 			connect.WithSchema(queryMethods.ByName("ListSmart")),
 			connect.WithClientOptions(opts...),
 		),
+		listDimms: connect.NewClient[drivelistv1.ListDimmsRequest, drivelistv1.ListDimmsResponse](
+			httpClient,
+			baseURL+QueryListDimmsProcedure,
+			connect.WithSchema(queryMethods.ByName("ListDimms")),
+			connect.WithClientOptions(opts...),
+		),
 	}
 }
 
@@ -491,6 +501,7 @@ type queryClient struct {
 	listSASErrors   *connect.Client[drivelistv1.ListSASErrorsRequest, drivelistv1.ListSASErrorsResponse]
 	listBays        *connect.Client[drivelistv1.ListBaysRequest, drivelistv1.ListBaysResponse]
 	listSmart       *connect.Client[drivelistv1.ListSmartRequest, drivelistv1.ListSmartResponse]
+	listDimms       *connect.Client[drivelistv1.ListDimmsRequest, drivelistv1.ListDimmsResponse]
 }
 
 // ListHosts calls drivelist.v1.Query.ListHosts.
@@ -593,6 +604,11 @@ func (c *queryClient) ListSmart(ctx context.Context, req *connect.Request[drivel
 	return c.listSmart.CallUnary(ctx, req)
 }
 
+// ListDimms calls drivelist.v1.Query.ListDimms.
+func (c *queryClient) ListDimms(ctx context.Context, req *connect.Request[drivelistv1.ListDimmsRequest]) (*connect.Response[drivelistv1.ListDimmsResponse], error) {
+	return c.listDimms.CallUnary(ctx, req)
+}
+
 // QueryHandler is an implementation of the drivelist.v1.Query service.
 type QueryHandler interface {
 	ListHosts(context.Context, *connect.Request[drivelistv1.ListHostsRequest]) (*connect.Response[drivelistv1.ListHostsResponse], error)
@@ -643,6 +659,8 @@ type QueryHandler interface {
 	ListBays(context.Context, *connect.Request[drivelistv1.ListBaysRequest]) (*connect.Response[drivelistv1.ListBaysResponse], error)
 	// ListSmart returns every placed drive with its newest SMART reading.
 	ListSmart(context.Context, *connect.Request[drivelistv1.ListSmartRequest]) (*connect.Response[drivelistv1.ListSmartResponse], error)
+	// ListDimms lists every host's memory modules with their error counts.
+	ListDimms(context.Context, *connect.Request[drivelistv1.ListDimmsRequest]) (*connect.Response[drivelistv1.ListDimmsResponse], error)
 }
 
 // NewQueryHandler builds an HTTP handler from the service implementation. It returns the path on
@@ -772,6 +790,12 @@ func NewQueryHandler(svc QueryHandler, opts ...connect.HandlerOption) (string, h
 		connect.WithSchema(queryMethods.ByName("ListSmart")),
 		connect.WithHandlerOptions(opts...),
 	)
+	queryListDimmsHandler := connect.NewUnaryHandler(
+		QueryListDimmsProcedure,
+		svc.ListDimms,
+		connect.WithSchema(queryMethods.ByName("ListDimms")),
+		connect.WithHandlerOptions(opts...),
+	)
 	return "/drivelist.v1.Query/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
 		case QueryListHostsProcedure:
@@ -814,6 +838,8 @@ func NewQueryHandler(svc QueryHandler, opts ...connect.HandlerOption) (string, h
 			queryListBaysHandler.ServeHTTP(w, r)
 		case QueryListSmartProcedure:
 			queryListSmartHandler.ServeHTTP(w, r)
+		case QueryListDimmsProcedure:
+			queryListDimmsHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -901,4 +927,8 @@ func (UnimplementedQueryHandler) ListBays(context.Context, *connect.Request[driv
 
 func (UnimplementedQueryHandler) ListSmart(context.Context, *connect.Request[drivelistv1.ListSmartRequest]) (*connect.Response[drivelistv1.ListSmartResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("drivelist.v1.Query.ListSmart is not implemented"))
+}
+
+func (UnimplementedQueryHandler) ListDimms(context.Context, *connect.Request[drivelistv1.ListDimmsRequest]) (*connect.Response[drivelistv1.ListDimmsResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("drivelist.v1.Query.ListDimms is not implemented"))
 }
