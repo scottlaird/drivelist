@@ -180,7 +180,9 @@ driver splits a DDR5 module into two subchannels); else the channel
 letter of the slot name, which is exact when the channel holds one
 module and a guess by slot order when it holds two; else, for slots
 that say nothing (`PROC 1 DIMM 3`), slot order to module order, a
-guess.  EDAC channels are counted the firmware's way, across a
+guess.  Slots the firmware gives one name (`DIMM 0` twice, on some
+small boards) are told apart by their bank locator.  EDAC channels are
+counted the firmware's way, across a
 socket's controllers in order, so a Xeon's two controllers line up
 with channels 0 to 3.  `drivelist dimms --allfields` shows the EDAC
 location and how sure the match is.  `drivelist dimms

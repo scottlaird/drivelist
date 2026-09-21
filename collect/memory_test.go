@@ -305,3 +305,40 @@ func TestMemoryRawTable(t *testing.T) {
 		t.Errorf("DIMMs from the raw table = %+v", inv.DIMMs)
 	}
 }
+
+// TestMemoryMon1: an MS-A2 whose firmware calls both SODIMM slots "DIMM 0"
+// and separates them only by bank ("P0 CHANNEL A" / "P0 CHANNEL B"), with
+// no serial numbers. Both modules survive, named by their bank, and the
+// bank's letter joins them to EDAC's channels.
+func TestMemoryMon1(t *testing.T) {
+	sys := t.TempDir()
+	writeMemoryFixture(t, sys, [][]byte{
+		type17("DIMM 0", "P0 CHANNEL A", 49152, 0x22, 5200, "Unknown", "00000000", "CMSX96GX5M2A5600C48", 2),
+		type17("DIMM 0", "P0 CHANNEL B", 49152, 0x22, 5200, "Unknown", "00000000", "CMSX96GX5M2A5600C48", 2),
+	}, map[string]map[string]string{
+		"mc0/rank0": {"dimm_label": "mc#0csrow#0channel#0", "dimm_location": "csrow 0 channel 0 ", "dimm_mem_type": "Unbuffered-DDR5", "size": "24576", "dimm_ce_count": "0", "dimm_ue_count": "0"},
+		"mc0/rank1": {"dimm_label": "mc#0csrow#1channel#0", "dimm_location": "csrow 1 channel 0 ", "dimm_mem_type": "Unbuffered-DDR5", "size": "24576", "dimm_ce_count": "0", "dimm_ue_count": "0"},
+		"mc0/rank4": {"dimm_label": "mc#0csrow#0channel#1", "dimm_location": "csrow 0 channel 1 ", "dimm_mem_type": "Unbuffered-DDR5", "size": "24576", "dimm_ce_count": "2", "dimm_ue_count": "0"},
+		"mc0/rank5": {"dimm_label": "mc#0csrow#1channel#1", "dimm_location": "csrow 1 channel 1 ", "dimm_mem_type": "Unbuffered-DDR5", "size": "24576", "dimm_ce_count": "0", "dimm_ue_count": "0"},
+	})
+	inv, _ := (&Collector{Platform: "linux", Sys: sys}).Memory()
+	if len(inv.DIMMs) != 2 {
+		t.Fatalf("DIMMs = %+v", inv.DIMMs)
+	}
+	if a := inv.DIMMs[0]; a.Slot != "DIMM 0 (P0 CHANNEL A)" || a.EDAC != "mc0/csrow0/ch0+mc0/csrow1/ch0" || a.Mapping != "exact" || a.SizeBytes != 48<<30 {
+		t.Errorf("A = %+v", a)
+	}
+	if b := inv.DIMMs[1]; b.Slot != "DIMM 0 (P0 CHANNEL B)" || b.EDAC != "mc0/csrow0/ch1+mc0/csrow1/ch1" || b.Mapping != "exact" || b.CE != 2 {
+		t.Errorf("B = %+v", b)
+	}
+	// Without banks either, the ordinal keeps them apart.
+	sys2 := t.TempDir()
+	writeMemoryFixture(t, sys2, [][]byte{
+		type17("DIMM 0", "", 8192, 0x1a, 3200, "", "", "", 1),
+		type17("DIMM 0", "", 8192, 0x1a, 3200, "", "", "", 1),
+	}, nil)
+	inv, _ = (&Collector{Platform: "linux", Sys: sys2}).Memory()
+	if len(inv.DIMMs) != 2 || inv.DIMMs[0].Slot != "DIMM 0 #1" || inv.DIMMs[1].Slot != "DIMM 0 #2" {
+		t.Errorf("nameless twins = %+v", inv.DIMMs)
+	}
+}

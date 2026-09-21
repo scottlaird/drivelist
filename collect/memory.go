@@ -71,6 +71,9 @@ var (
 	reController = regexp.MustCompile(`(?i)controller\s*(\d+).*channel\s*([A-Z]).*dimm\s*(\d+)`)
 	// "P0_Node0_Channel1_Dimm1"
 	reBank = regexp.MustCompile(`(?i)channel\s*(\d+)[_ ]*dimm\s*(\d+)`)
+	// "P0 CHANNEL A": a bank locator that names the channel by letter,
+	// for boards whose locators say only "DIMM 0" for every slot
+	reBankLetter = regexp.MustCompile(`(?i)channel\s*([A-Z])\b`)
 	// The socket: "P1_Node1_..." in a bank locator (0-based), "P2-DIMMA1"
 	// or "CPU1_DIMM_A1" in a locator (Supermicro counts from 1 there).
 	reBankSocket    = regexp.MustCompile(`^P(\d+)_`)
@@ -100,6 +103,26 @@ func readSMBIOSMemory(sys string) []smbiosMemory {
 	for _, raw := range records {
 		if m, ok := parseSMBIOSMemory(raw); ok {
 			out = append(out, m)
+		}
+	}
+	// Some firmware calls every slot "DIMM 0" and tells them apart only
+	// in the bank locator. The slot name is what modules are tracked by,
+	// so a shared one gets the bank appended; failing that, its ordinal.
+	names := map[string]int{}
+	for _, m := range out {
+		names[m.Slot]++
+	}
+	nth := map[string]int{}
+	for i, m := range out {
+		if names[m.Slot] < 2 {
+			continue
+		}
+		nth[m.Slot]++
+		switch {
+		case m.Bank != "" && m.Bank != m.Slot:
+			out[i].Slot = m.Slot + " (" + m.Bank + ")"
+		default:
+			out[i].Slot = fmt.Sprintf("%s #%d", m.Slot, nth[m.Slot])
 		}
 	}
 	// Slot order, so listings read like the board.
@@ -246,6 +269,10 @@ func parseSMBIOSMemory(raw []byte) (smbiosMemory, bool) {
 	if bm := reBank.FindStringSubmatch(m.Bank); bm != nil {
 		m.channel, _ = strconv.Atoi(bm[1])
 		m.index, _ = strconv.Atoi(bm[2])
+	} else if m.letter == "" {
+		if bm := reBankLetter.FindStringSubmatch(m.Bank); bm != nil {
+			m.letter = strings.ToUpper(bm[1])
+		}
 	}
 	if sm := reBankSocket.FindStringSubmatch(m.Bank); sm != nil {
 		m.socket, _ = strconv.Atoi(sm[1])
