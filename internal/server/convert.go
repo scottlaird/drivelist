@@ -74,6 +74,9 @@ func reportFromProto(req *pb.ReportInventoryRequest) store.Report {
 	for _, p := range req.GetSasPhys() {
 		r.SASPhys = append(r.SASPhys, sasPhyFromProto(p))
 	}
+	for _, d := range req.GetDimms() {
+		r.DIMMs = append(r.DIMMs, dimmFromProto(d))
+	}
 	return r
 }
 
@@ -349,6 +352,20 @@ func ioSamplesFromProto(samples []*pb.IOSample) []store.IOSample {
 		out = append(out, s)
 	}
 	return out
+}
+
+func dimmFromProto(d *pb.Dimm) store.DIMM {
+	return store.DIMM{Slot: d.GetSlot(), Bank: d.GetBank(), SizeBytes: d.GetSizeBytes(), Ranks: int(d.GetRanks()), Type: d.GetType(), SpeedMTs: int(d.GetSpeedMts()),
+		Manufacturer: d.GetManufacturer(), Part: d.GetPart(), Serial: d.GetSerial(), EDAC: d.GetEdac(), EDACType: d.GetEdacType(), Mapping: d.GetMapping(), CE: d.GetCe(), UE: d.GetUe()}
+}
+
+func dimmToProto(d store.DIMM) *pb.Dimm {
+	return &pb.Dimm{Slot: d.Slot, Bank: d.Bank, SizeBytes: d.SizeBytes, Ranks: uint32(d.Ranks), Type: d.Type, SpeedMts: uint32(d.SpeedMTs),
+		Manufacturer: d.Manufacturer, Part: d.Part, Serial: d.Serial, Edac: d.EDAC, EdacType: d.EDACType, Mapping: d.Mapping, Ce: d.CE, Ue: d.UE}
+}
+
+func dimmRowToProto(r store.DIMMRow) *pb.DimmRow {
+	return &pb.DimmRow{Hostname: r.Hostname, Dimm: dimmToProto(r.DIMM), FirstSeen: ts(r.FirstSeen), LastSeen: ts(r.LastSeen), CeDay: r.CEDay, UeDay: r.UEDay, LastError: ts(r.LastError), Problem: r.Problem()}
 }
 
 func diskStatsFromProto(stats []*pb.DiskStat) []collect.DiskStat {

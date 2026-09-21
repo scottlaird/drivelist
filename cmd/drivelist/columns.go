@@ -313,3 +313,28 @@ var profileCols = []col[*hardware.Profile]{
 	{name: "file", header: "FILE", value: func(p *hardware.Profile) string { return p.File }},
 	{name: "notes", header: "NOTES", value: func(p *hardware.Profile) string { return strings.ReplaceAll(p.Notes, "\n", " ") }, extra: true},
 }
+
+var dimmCols = []col[*pb.DimmRow]{
+	{name: "host", header: "HOST", value: func(r *pb.DimmRow) string { return r.Hostname }},
+	{name: "slot", header: "SLOT", value: func(r *pb.DimmRow) string { return orDash(r.Dimm.Slot) }},
+	{name: "size", header: "SIZE", value: func(r *pb.DimmRow) string { return memSize(r.Dimm.SizeBytes) }, key: func(r *pb.DimmRow) any { return r.Dimm.SizeBytes }},
+	{name: "type", header: "TYPE", value: func(r *pb.DimmRow) string { return orDash(r.Dimm.Type) }},
+	{name: "speed", header: "MT/S", value: func(r *pb.DimmRow) string { return orDash(fmt.Sprint(r.Dimm.SpeedMts)) }, key: func(r *pb.DimmRow) any { return r.Dimm.SpeedMts }},
+	{name: "ranks", header: "RANKS", value: func(r *pb.DimmRow) string { return fmt.Sprint(r.Dimm.Ranks) }, key: func(r *pb.DimmRow) any { return r.Dimm.Ranks }},
+	{name: "part", header: "PART", value: func(r *pb.DimmRow) string { return orDash(r.Dimm.Part) }},
+	{name: "serial", header: "SERIAL", value: func(r *pb.DimmRow) string { return orDash(r.Dimm.Serial) }},
+	{name: "ce", header: "CE", value: func(r *pb.DimmRow) string { return fmt.Sprint(r.Dimm.Ce) }, key: func(r *pb.DimmRow) any { return r.Dimm.Ce }},
+	{name: "ue", header: "UE", value: func(r *pb.DimmRow) string { return fmt.Sprint(r.Dimm.Ue) }, key: func(r *pb.DimmRow) any { return r.Dimm.Ue }},
+	{name: "ce24h", header: "CE 24H", value: func(r *pb.DimmRow) string { return fmt.Sprint(r.CeDay) }, key: func(r *pb.DimmRow) any { return r.CeDay }},
+	{name: "lasterror", header: "LAST ERROR", value: func(r *pb.DimmRow) string {
+		if r.LastError == nil {
+			return "-"
+		}
+		return ago(r.LastError, time.Now())
+	}, key: func(r *pb.DimmRow) any { return tsKey(r.LastError) }},
+	{name: "edac", header: "EDAC", value: func(r *pb.DimmRow) string { return orDash(r.Dimm.Edac) }, extra: true},
+	{name: "mapping", header: "MAPPING", value: func(r *pb.DimmRow) string { return orDash(r.Dimm.Mapping) }, extra: true},
+	{name: "bank", header: "BANK", value: func(r *pb.DimmRow) string { return orDash(r.Dimm.Bank) }, extra: true},
+	{name: "manufacturer", header: "MANUFACTURER", value: func(r *pb.DimmRow) string { return orDash(r.Dimm.Manufacturer) }, extra: true},
+	{name: "since", header: "SINCE", value: func(r *pb.DimmRow) string { return when(r.FirstSeen) }, key: func(r *pb.DimmRow) any { return tsKey(r.FirstSeen) }, extra: true},
+}

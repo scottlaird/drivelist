@@ -77,6 +77,8 @@ service Query {
   rpc ListBays(ListBaysRequest) returns (ListBaysResponse);
   // ListSmart returns every placed drive with its newest SMART reading.
   rpc ListSmart(ListSmartRequest) returns (ListSmartResponse);
+  // ListDimms lists every host's memory modules with their error counts.
+  rpc ListDimms(ListDimmsRequest) returns (ListDimmsResponse);
 }
 
 // ---------- shared ----------
@@ -166,6 +168,7 @@ message ReportInventoryRequest {
   repeated string collector_errors = 7;
   repeated SasNode sas_nodes = 8;     // the SAS topology, empty from agents before 0.6 or hosts without SAS
   repeated SasPhy sas_phys = 9;
+  repeated Dimm dimms = 10;           // memory modules, empty from agents before 0.9 or hosts that describe none
 }
 
 // SasNode is an HBA or expander: something with phys of its own.
@@ -200,6 +203,26 @@ message SasPhy {
   uint64 disparity_error = 15;
   uint64 loss_dword_sync = 16;
   uint64 phy_reset_problem = 17;
+}
+
+// Dimm is one memory module: what the firmware says of it (SMBIOS type
+// 17) joined to the kernel's EDAC error counts for it. A module EDAC does
+// not know has no edac; an EDAC entry no slot matched has no slot.
+message Dimm {
+  string slot = 1;                    // the firmware's device locator: "DIMM_C2", "DIMMB1"
+  string bank = 2;                    // the firmware's bank locator
+  uint64 size_bytes = 3;
+  uint32 ranks = 4;
+  string type = 5;                    // "DDR4", "DDR5"
+  uint32 speed_mts = 6;
+  string manufacturer = 7;
+  string part = 8;
+  string serial = 9;
+  string edac = 10;                   // the kernel's location(s), "mc0/csrow2/ch2", ranks joined by "+"; as the log prints them
+  string edac_type = 11;              // EDAC's own idea: "Registered-DDR4"
+  string mapping = 12;                // "exact" | "inferred" | "" when slot or edac is missing
+  uint64 ce = 13;                     // corrected errors since boot
+  uint64 ue = 14;                     // uncorrected errors since boot
 }
 
 // DriveStatus is the server's status for a drive, returned to the agent so
@@ -434,6 +457,27 @@ message SmartRow {
 
 message ListSmartResponse {
   repeated SmartRow rows = 1;         // problems first, then by host and slot
+}
+
+message ListDimmsRequest {
+  string host = 1;                    // "" for every host
+  bool problems = 2;                  // only modules with errors: any uncorrected, or corrected in the last day
+}
+
+// DimmRow is one module on one host with what the server has counted.
+message DimmRow {
+  string hostname = 1;
+  Dimm dimm = 2;
+  google.protobuf.Timestamp first_seen = 3;
+  google.protobuf.Timestamp last_seen = 4;
+  uint64 ce_day = 5;                  // corrected errors counted in the last 24 h
+  uint64 ue_day = 6;
+  google.protobuf.Timestamp last_error = 7;   // when a count last grew; unset if never
+  bool problem = 8;
+}
+
+message ListDimmsResponse {
+  repeated DimmRow rows = 1;          // problems first, then by host and slot
 }
 
 message ListBaysResponse {

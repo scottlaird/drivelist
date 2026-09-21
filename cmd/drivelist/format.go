@@ -143,6 +143,20 @@ func size(b uint64) string {
 	return drivelist.FormatDiskSize(b)
 }
 
+// memSize formats a memory module's size in binary units, which is how
+// modules are sold: 34359738368 is "32 GB", not "34.4 GB".
+func memSize(b uint64) string {
+	switch {
+	case b == 0:
+		return "-"
+	case b%(1<<30) == 0:
+		return fmt.Sprintf("%d GB", b>>30)
+	case b >= 1<<30:
+		return fmt.Sprintf("%.1f GB", float64(b)/float64(1<<30))
+	}
+	return fmt.Sprintf("%d MB", b>>20)
+}
+
 var busShort = map[pb.Bus]string{
 	pb.Bus_BUS_SAS: "SAS", pb.Bus_BUS_SATA: "SATA", pb.Bus_BUS_NVME: "NVMe", pb.Bus_BUS_USB: "USB", pb.Bus_BUS_VIRTIO: "virtio",
 }
@@ -371,7 +385,26 @@ func describe(e *pb.Event) string {
 		}
 		return s
 	case "hardware_error":
-		return fmt.Sprintf("hardware      %s  %s %s ×%v  %s", host, str(d, "class"), str(d, "code"), num(d, "count"), str(d, "sample"))
+		where := str(d, "code")
+		if slot := str(d, "slot"); slot != "" {
+			where = slot + " (" + str(d, "code") + ")"
+		}
+		return fmt.Sprintf("hardware      %s  %s %s ×%v  %s", host, str(d, "class"), where, num(d, "count"), str(d, "sample"))
+	case "memory_errors":
+		grew, _ := d["grew"].(map[string]any)
+		total, _ := d["total"].(map[string]any)
+		return fmt.Sprintf("memory errors %s  %s %s  +%v corrected, +%v uncorrected (%v/%v since boot)", host, str(d, "label"), str(d, "serial"), num(grew, "ce"), num(grew, "ue"), num(total, "ce"), num(total, "ue"))
+	case "dimm_changed":
+		label := str(d, "slot")
+		if label == "" {
+			label = str(d, "edac")
+		}
+		switch str(d, "change") {
+		case "replaced":
+			return fmt.Sprintf("dimm replaced %s  %s  %s %s (was %s %s)", host, label, str(d, "part"), str(d, "serial"), str(d, "from_part"), str(d, "from_serial"))
+		default:
+			return fmt.Sprintf("dimm %-8s %s  %s  %s %s", str(d, "change"), host, label, str(d, "part"), str(d, "serial"))
+		}
 	case "report_degraded":
 		return fmt.Sprintf("degraded      %s  unidentified %v", host, d["unidentified"])
 	}

@@ -96,6 +96,7 @@
     return (i >= 3 && x < 10 ? x.toFixed(1) : Math.round(x)) + ' ' + units[i];
   }
   const ms = v => (v === undefined || v === null) ? '-' : Number(v).toFixed(1) + 'ms';
+  const gib = v => { v = num(v); if (!v) return '-'; const g = v / 1073741824; return (Number.isInteger(g) ? g : g.toFixed(1)) + ' GB'; };
   const pct = v => (v === undefined || v === null) ? '-' : Math.round(Number(v) * 100) + '%';
   const dash = v => (v === undefined || v === null || v === '') ? '-' : String(v);
   function when(ts) {
@@ -257,7 +258,9 @@
       case 'host_stale': return 'host stale';
       case 'host_resumed': return 'host resumed  silent ' + Math.round((d.silent_secs || 0) / 60) + 'm';
       case 'host_rebooted': return 'host rebooted' + (d.up_secs ? '  up ' + gap(d.up_secs) + ' before' : '') + (d.silent_secs ? '  silent ' + gap(d.silent_secs) : '');
-      case 'hardware_error': return 'hardware  ' + d.class + ' ' + (d.code || '') + ' ×' + d.count + '  ' + (d.sample || '');
+      case 'hardware_error': return 'hardware  ' + d.class + ' ' + (d.slot ? d.slot + ' (' + (d.code || '') + ')' : (d.code || '')) + ' ×' + d.count + '  ' + (d.sample || '');
+      case 'memory_errors': return 'memory errors  ' + (d.label || d.slot || d.edac || '') + ' ' + (d.serial || '') + '  +' + ((d.grew || {}).ce || 0) + ' corrected, +' + ((d.grew || {}).ue || 0) + ' uncorrected (' + ((d.total || {}).ce || 0) + '/' + ((d.total || {}).ue || 0) + ' since boot)';
+      case 'dimm_changed': return 'dimm ' + d.change + '  ' + (d.slot || d.edac || '') + '  ' + (d.part || '') + ' ' + (d.serial || '') + (d.change === 'replaced' ? ' (was ' + (d.from_part || '') + ' ' + (d.from_serial || '') + ')' : '');
       case 'report_degraded': return 'report degraded  unidentified ' + JSON.stringify(d.unidentified || []);
       case 'pool_missing_member': return 'pool member missing  ' + (d.pool || '') + ' ' + (d.path || '');
       case 'identity_conflict': return 'identity conflict  ' + JSON.stringify(d.keys || []);
@@ -369,6 +372,25 @@
     { name: 'reports', header: 'REPORTS', value: r => r.samples || 0, sort: r => r.samples || 0, num: true },
     { name: 'last', header: 'LAST', value: r => when(r.lastAt), sort: r => r.lastAt ? new Date(r.lastAt).getTime() : null },
   ];
+  const dimmCols = [
+    { name: 'host', header: 'HOST', value: r => link(r.hostname, '#/host/' + enc(r.hostname)), sort: r => r.hostname },
+    { name: 'slot', header: 'SLOT', value: r => dash(r.dimm.slot), sort: r => r.dimm.slot || null, cls: r => r.problem ? 'warn' : '' },
+    { name: 'size', header: 'SIZE', value: r => gib(r.dimm.sizeBytes), sort: r => num(r.dimm.sizeBytes), num: true },
+    { name: 'type', header: 'TYPE', value: r => dash(r.dimm.type) },
+    { name: 'speed', header: 'MT/S', value: r => r.dimm.speedMts || '-', sort: r => r.dimm.speedMts || null, num: true },
+    { name: 'ranks', header: 'RANKS', value: r => r.dimm.ranks || 0, sort: r => r.dimm.ranks || 0, num: true },
+    { name: 'part', header: 'PART', value: r => dash(r.dimm.part), mono: true },
+    { name: 'serial', header: 'SERIAL', value: r => dash(r.dimm.serial), mono: true },
+    { name: 'ce', header: 'CE', value: r => num(r.dimm.ce) || 0, sort: r => num(r.dimm.ce) || 0, num: true, cls: r => num(r.dimm.ce) > 0 ? 'warn' : '' },
+    { name: 'ue', header: 'UE', value: r => num(r.dimm.ue) || 0, sort: r => num(r.dimm.ue) || 0, num: true, cls: r => num(r.dimm.ue) > 0 ? 'bad' : '' },
+    { name: 'ce24h', header: 'CE 24H', value: r => num(r.ceDay) || 0, sort: r => num(r.ceDay) || 0, num: true, cls: r => num(r.ceDay) > 0 ? 'warn' : '' },
+    { name: 'last', header: 'LAST ERROR', value: r => r.lastError ? ago(r.lastError) : '-', sort: r => r.lastError ? new Date(r.lastError).getTime() : null },
+    { name: 'edac', header: 'EDAC', value: r => dash(r.dimm.edac), mono: true, extra: true },
+    { name: 'mapping', header: 'MAPPING', value: r => dash(r.dimm.mapping), extra: true },
+    { name: 'bank', header: 'BANK', value: r => dash(r.dimm.bank), extra: true },
+    { name: 'manufacturer', header: 'MANUFACTURER', value: r => dash(r.dimm.manufacturer), extra: true },
+    { name: 'since', header: 'SINCE', value: r => when(r.firstSeen), sort: r => r.firstSeen ? new Date(r.firstSeen).getTime() : null, extra: true },
+  ];
   const phyCols = [
     { name: 'node', header: 'NODE', value: p => p.ownerName || p.phy.ownerAddress, mono: true },
     { name: 'phy', header: 'PHY', value: p => p.phy.phyId || 0, sort: p => p.phy.phyId || 0, num: true },
@@ -404,10 +426,13 @@
     return t;
   }
   async function pageSummary() {
-    const [hosts, drives, missing, events, smart, sas, hw] = await Promise.all([
+    const [hosts, drives, missing, events, smart, sas, hw, memory] = await Promise.all([
       rpc('ListHosts'), rpc('ListDrives'), rpc('ListMissing'), rpc('ListEvents', { limit: 15 }),
       rpc('ListSmart', { problems: true }), rpc('ListSASErrors', { since: sinceDays(7) }), rpc('ListEvents', { limit: 500, kinds: ['hardware_error'] }),
+      rpc('ListDimms', { problems: true }),
     ]);
+    const badDimms = (memory.rows || []);
+    const badDimmHosts = [...new Set(badDimms.map(r => r.hostname))].sort();
     const weekAgo = now() - 7 * 86400000;
     const hwHosts = new Set((hw.events || []).filter(e => new Date(e.ts).getTime() >= weekAgo).map(e => e.hostname));
     const hs = hosts.hosts || [];
@@ -440,6 +465,7 @@
       tile('smart problems', problems, { href: '#/smart?problems=1', cls: problems ? 'warn' : '' }),
       tile('sas errors, 7d', sasRows, { href: '#/sas-errors', sub: sasRows ? 'phys with counter growth' : 'no counter growth', cls: sasRows ? 'warn' : '' }),
       tile('hardware errors, 7d', hwHosts.size, { href: '#/events?kind=hardware_error', sub: hwHosts.size ? [...hwHosts].sort().join(', ') : 'no memory or machine-check errors', cls: hwHosts.size ? 'bad' : '' }),
+      tile('memory problems', badDimms.length, { href: '#/memory?problems=1', sub: badDimms.length ? badDimms.map(r => r.hostname + ' ' + (r.dimm.slot || r.dimm.edac)).join(', ') : 'no module with errors', cls: badDimms.length ? 'bad' : '' }),
     );
     if (byStatus.shelved || byStatus.retired || notOK) {
       tiles.append(tile('not present', notOK, { href: '#/drives', sub: [byStatus.shelved ? byStatus.shelved + ' shelved' : '', byStatus.retired ? byStatus.retired + ' retired' : ''].filter(Boolean).join(', ') || 'known but absent' }));
@@ -454,7 +480,7 @@
     main.append(heading('Hosts'), table({ key: 'hosts', columns: hostCols, rows: res.hosts || [] }));
   }
   async function pageHost(name) {
-    const [hosts, drives, encls, events] = await Promise.all([rpc('ListHosts'), rpc('ListDrives', { host: name }), rpc('ListEnclosures'), rpc('ListEvents', { host: name, limit: 100 })]);
+    const [hosts, drives, encls, events, dimms] = await Promise.all([rpc('ListHosts'), rpc('ListDrives', { host: name }), rpc('ListEnclosures'), rpc('ListEvents', { host: name, limit: 100 }), rpc('ListDimms', { host: name })]);
     const h = (hosts.hosts || []).find(x => x.hostname === name);
     if (!h) throw new Error('no host ' + name);
     main.append(heading(h.hostname), kv([
@@ -466,6 +492,7 @@
     ]));
     const mine = (encls.enclosures || []).filter(e => e.hostname === name);
     if (mine.length) { main.append(el('h2', { text: 'Enclosures' }), table({ key: 'host.enclosures', columns: enclosureCols.filter(c => c.name !== 'host'), rows: mine })); }
+    if ((dimms.rows || []).length) { main.append(el('h2', { text: 'Memory' }), table({ key: 'host.dimms', columns: dimmCols.filter(c => c.name !== 'host'), rows: dimms.rows })); }
     main.append(el('h2', { text: 'Drives' }), table({ key: 'host.drives', columns: driveCols.filter(c => c.name !== 'host'), rows: drives.drives || [] }));
     main.append(el('h2', { text: 'Recent events' }), table({ key: 'host.events', columns: eventCols.filter(c => c.name !== 'host'), rows: events.events || [] }));
   }
@@ -584,6 +611,16 @@
     main.append(heading('SMART', 'the newest reading per drive, problems first'), el('div', { class: 'toolbar' }, el('label', null, toggle, ' problems only')));
     main.append(table({ key: 'smart', columns: smartCols, rows: res.rows || [] }));
   }
+  async function pageMemory(q) {
+    const problems = q.get('problems') === '1';
+    const res = await rpc('ListDimms', { problems });
+    const toggle = el('input', { type: 'checkbox' });
+    toggle.checked = problems;
+    toggle.addEventListener('change', () => { location.hash = '#/memory' + (toggle.checked ? '?problems=1' : ''); });
+    main.append(heading('Memory', 'every module the agents report, with EDAC counts since boot; problems first'), el('div', { class: 'toolbar' }, el('label', null, toggle, ' problems only')));
+    if (!(res.rows || []).length) main.append(el('p', { class: 'note', text: problems ? 'no module reports errors' : 'no memory modules reported' }));
+    else main.append(table({ key: 'memory', columns: dimmCols, rows: res.rows }));
+  }
   async function pageIO(q) {
     const host = q.get('host') || '';
     const res = await rpc('CompareIO', { host, since: sinceDays(1) });
@@ -618,7 +655,7 @@
   async function pageEvents(q) {
     const kind = q.get('kind') || '';
     const res = await rpc('ListEvents', { limit: 500, kinds: kind ? [kind] : [] });
-    const kinds = ['', 'first_seen', 'appeared', 'vanished', 'reappeared', 'moved_host', 'moved_bay', 'use_changed', 'enclosure_renamed', 'member_state_changed', 'status_changed', 'note', 'merged', 'host_merged', 'smart_warning', 'kernel_warning', 'sas_link_changed', 'sas_attached_changed', 'sas_port_changed', 'sas_errors', 'sas_node_changed', 'host_first_seen', 'host_stale', 'host_resumed', 'host_rebooted', 'hardware_error', 'report_degraded', 'pool_missing_member', 'identity_conflict'];
+    const kinds = ['', 'first_seen', 'appeared', 'vanished', 'reappeared', 'moved_host', 'moved_bay', 'use_changed', 'enclosure_renamed', 'member_state_changed', 'status_changed', 'note', 'merged', 'host_merged', 'smart_warning', 'kernel_warning', 'sas_link_changed', 'sas_attached_changed', 'sas_port_changed', 'sas_errors', 'sas_node_changed', 'host_first_seen', 'host_stale', 'host_resumed', 'host_rebooted', 'hardware_error', 'memory_errors', 'dimm_changed', 'report_degraded', 'pool_missing_member', 'identity_conflict'];
     const sel = el('select');
     for (const k of kinds) { const o = el('option', { value: k, text: k || 'every kind' }); if (k === kind) o.selected = true; sel.append(o); }
     sel.addEventListener('change', () => { location.hash = '#/events' + (sel.value ? '?kind=' + enc(sel.value) : ''); });
@@ -805,6 +842,7 @@
     [/^\/enclosures$/, () => pageEnclosures()],
     [/^\/enclosure\/([^/]+)$/, m => pageEnclosure(decodeURIComponent(m[1]))],
     [/^\/smart$/, (m, q) => pageSmart(q)],
+    [/^\/memory$/, (m, q) => pageMemory(q)],
     [/^\/io$/, (m, q) => pageIO(q)],
     [/^\/sas-errors$/, () => pageSASErrors()],
     [/^\/sas\/([^/]+)$/, m => pageSAS(decodeURIComponent(m[1]))],

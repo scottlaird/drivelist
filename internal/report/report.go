@@ -166,6 +166,17 @@ func FromInventory(host *pb.HostIdentity, inv *drivelist.Inventory, topo *collec
 	return req
 }
 
+// Memory attaches the host's memory modules to a report.
+func Memory(req *pb.ReportInventoryRequest, mem *collect.MemoryInventory) {
+	if mem == nil {
+		return
+	}
+	for _, d := range mem.DIMMs {
+		req.Dimms = append(req.Dimms, &pb.Dimm{Slot: d.Slot, Bank: d.Bank, SizeBytes: d.SizeBytes, Ranks: uint32(d.Ranks), Type: d.Type, SpeedMts: uint32(d.SpeedMTs),
+			Manufacturer: d.Manufacturer, Part: d.Part, Serial: d.Serial, Edac: d.EDAC, EdacType: d.EDACType, Mapping: d.Mapping, Ce: d.CE, Ue: d.UE})
+	}
+}
+
 // SAS flattens a topology for the wire: one node per HBA or expander, and
 // every phy with what its port leads to, so the server can diff phys
 // without walking a tree.
