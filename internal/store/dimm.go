@@ -16,12 +16,12 @@ type dimmRow struct {
 	gone                sql.NullInt64
 }
 
-const dimmColumns = `d.key, d.slot, d.bank, d.size_bytes, d.ranks, d.type, d.speed_mts, d.manufacturer, d.part, d.serial, d.edac, d.edac_type, d.edac_size_bytes, d.mapping, d.ce, d.ue, d.first_seen, d.last_seen, d.gone_at`
+const dimmColumns = `d.key, d.slot, d.bank, d.size_bytes, d.ranks, d.type, d.speed_mts, d.manufacturer, d.part, d.serial, d.edac, d.edac_type, d.edac_size_bytes, d.mapping, d.ce, d.ue, d.total_width, d.data_width, d.edac_mode, d.first_seen, d.last_seen, d.gone_at`
 
 func scanDIMM(rows interface{ Scan(...any) error }) (dimmRow, error) {
 	var d dimmRow
 	var key string
-	err := rows.Scan(&key, &d.Slot, &d.Bank, &d.SizeBytes, &d.Ranks, &d.Type, &d.SpeedMTs, &d.Manufacturer, &d.Part, &d.Serial, &d.EDAC, &d.EDACType, &d.EDACBytes, &d.Mapping, &d.CE, &d.UE, &d.firstSeen, &d.lastSeen, &d.gone)
+	err := rows.Scan(&key, &d.Slot, &d.Bank, &d.SizeBytes, &d.Ranks, &d.Type, &d.SpeedMTs, &d.Manufacturer, &d.Part, &d.Serial, &d.EDAC, &d.EDACType, &d.EDACBytes, &d.Mapping, &d.CE, &d.UE, &d.TotalWidth, &d.DataWidth, &d.EDACMode, &d.firstSeen, &d.lastSeen, &d.gone)
 	return d, err
 }
 
@@ -71,6 +71,11 @@ func (t *tx) ingestDIMMs(host *hostRow, r Report) error {
 			return err
 		}
 	}
+	if r.MemCorrection != "" {
+		if _, err := t.ExecContext(t.ctx, `UPDATE host SET mem_correction = ? WHERE host_id = ?`, r.MemCorrection, host.id); err != nil {
+			return err
+		}
+	}
 	prev, err := t.dimms(host.id)
 	if err != nil {
 		return err
@@ -112,12 +117,13 @@ func (t *tx) ingestDIMMs(host *hostRow, r Report) error {
 			}
 		}
 		if _, err := t.ExecContext(t.ctx, `
-			INSERT INTO dimm (host_id, key, slot, bank, size_bytes, ranks, type, speed_mts, manufacturer, part, serial, edac, edac_type, edac_size_bytes, mapping, ce, ue, first_seen, last_seen, gone_at)
-			VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NULL)
+			INSERT INTO dimm (host_id, key, slot, bank, size_bytes, ranks, type, speed_mts, manufacturer, part, serial, edac, edac_type, edac_size_bytes, mapping, ce, ue, total_width, data_width, edac_mode, first_seen, last_seen, gone_at)
+			VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NULL)
 			ON CONFLICT (host_id, key) DO UPDATE SET slot = excluded.slot, bank = excluded.bank, size_bytes = excluded.size_bytes, ranks = excluded.ranks, type = excluded.type,
 				speed_mts = excluded.speed_mts, manufacturer = excluded.manufacturer, part = excluded.part, serial = excluded.serial, edac = excluded.edac, edac_type = excluded.edac_type,
-				edac_size_bytes = excluded.edac_size_bytes, mapping = excluded.mapping, ce = excluded.ce, ue = excluded.ue, first_seen = excluded.first_seen, last_seen = excluded.last_seen, gone_at = NULL`,
-			host.id, key, d.Slot, d.Bank, d.SizeBytes, d.Ranks, d.Type, d.SpeedMTs, d.Manufacturer, d.Part, d.Serial, d.EDAC, d.EDACType, d.EDACBytes, d.Mapping, d.CE, d.UE, first, t.obs); err != nil {
+				edac_size_bytes = excluded.edac_size_bytes, mapping = excluded.mapping, ce = excluded.ce, ue = excluded.ue, total_width = excluded.total_width, data_width = excluded.data_width,
+				edac_mode = excluded.edac_mode, first_seen = excluded.first_seen, last_seen = excluded.last_seen, gone_at = NULL`,
+			host.id, key, d.Slot, d.Bank, d.SizeBytes, d.Ranks, d.Type, d.SpeedMTs, d.Manufacturer, d.Part, d.Serial, d.EDAC, d.EDACType, d.EDACBytes, d.Mapping, d.CE, d.UE, d.TotalWidth, d.DataWidth, d.EDACMode, first, t.obs); err != nil {
 			return err
 		}
 	}
@@ -212,7 +218,7 @@ func (s *Store) ListDIMMs(ctx context.Context, host string, problems bool) ([]DI
 		var d dimmRow
 		var key string
 		var last sql.NullInt64
-		if err := rows.Scan(&r.Hostname, &key, &d.Slot, &d.Bank, &d.SizeBytes, &d.Ranks, &d.Type, &d.SpeedMTs, &d.Manufacturer, &d.Part, &d.Serial, &d.EDAC, &d.EDACType, &d.EDACBytes, &d.Mapping, &d.CE, &d.UE, &d.firstSeen, &d.lastSeen, &d.gone,
+		if err := rows.Scan(&r.Hostname, &key, &d.Slot, &d.Bank, &d.SizeBytes, &d.Ranks, &d.Type, &d.SpeedMTs, &d.Manufacturer, &d.Part, &d.Serial, &d.EDAC, &d.EDACType, &d.EDACBytes, &d.Mapping, &d.CE, &d.UE, &d.TotalWidth, &d.DataWidth, &d.EDACMode, &d.firstSeen, &d.lastSeen, &d.gone,
 			&r.CEDay, &r.UEDay, &last); err != nil {
 			return nil, err
 		}
@@ -240,6 +246,9 @@ type MemorySummary struct {
 	Hostname                                         string
 	KernelBytes, FirmwareBytes, EDACBytes, Unmatched uint64
 	Modules                                          int
+	Correction                                       string // the firmware's, for the array
+	EDACMode                                         string // what EDAC reports on the modules
+	ECCModules                                       int    // modules with check bits
 	Note                                             string
 }
 
@@ -258,11 +267,13 @@ func (s *Store) MemorySummaries(ctx context.Context, host string) ([]MemorySumma
 		args = append(args, h.ID)
 	}
 	rows, err := s.db.QueryContext(ctx, `
-		SELECT h.hostname, h.mem_total_bytes,
+		SELECT h.hostname, h.mem_total_bytes, h.mem_correction,
 		  COALESCE(SUM(CASE WHEN d.slot != '' THEN d.size_bytes END), 0),
 		  COALESCE(SUM(CASE WHEN d.slot != '' THEN d.edac_size_bytes END), 0),
 		  COALESCE(SUM(CASE WHEN d.slot = '' THEN d.edac_size_bytes END), 0),
-		  COUNT(CASE WHEN d.slot != '' THEN 1 END)
+		  COUNT(CASE WHEN d.slot != '' THEN 1 END),
+		  COUNT(CASE WHEN d.slot != '' AND d.total_width > d.data_width AND d.data_width > 0 THEN 1 END),
+		  COALESCE(MAX(d.edac_mode), '')
 		FROM host h JOIN dimm d ON d.host_id = h.host_id AND d.gone_at IS NULL `+where+` GROUP BY h.host_id ORDER BY h.hostname`, args...)
 	if err != nil {
 		return nil, err
@@ -271,7 +282,7 @@ func (s *Store) MemorySummaries(ctx context.Context, host string) ([]MemorySumma
 	var out []MemorySummary
 	for rows.Next() {
 		var m MemorySummary
-		if err := rows.Scan(&m.Hostname, &m.KernelBytes, &m.FirmwareBytes, &m.EDACBytes, &m.Unmatched, &m.Modules); err != nil {
+		if err := rows.Scan(&m.Hostname, &m.KernelBytes, &m.Correction, &m.FirmwareBytes, &m.EDACBytes, &m.Unmatched, &m.Modules, &m.ECCModules, &m.EDACMode); err != nil {
 			return nil, err
 		}
 		m.Note = memoryNote(m)
@@ -296,6 +307,14 @@ func memoryNote(m MemorySummary) string {
 		case m.KernelBytes*100 < m.FirmwareBytes*90:
 			notes = append(notes, "the kernel sees less than 90% of what the firmware lists: a module may be disabled or mapped out")
 		}
+	}
+	switch {
+	case m.ECCModules > 0 && m.Correction == "none":
+		notes = append(notes, "the modules carry ECC bits but the firmware reports no error correction: ECC is fitted but not on")
+	case m.ECCModules > 0 && m.ECCModules < m.Modules:
+		notes = append(notes, "ECC and non-ECC modules are mixed, so the array runs without ECC")
+	case m.ECCModules == 0 && m.Modules > 0 && strings.Contains(m.Correction, "ECC"):
+		notes = append(notes, "the firmware reports ECC on modules that show no check bits")
 	}
 	return strings.Join(notes, "; ")
 }

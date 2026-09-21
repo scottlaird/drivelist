@@ -379,6 +379,7 @@
     { name: 'type', header: 'TYPE', value: r => dash(r.dimm.type) },
     { name: 'speed', header: 'MT/S', value: r => r.dimm.speedMts || '-', sort: r => r.dimm.speedMts || null, num: true },
     { name: 'ranks', header: 'RANKS', value: r => r.dimm.ranks || 0, sort: r => r.dimm.ranks || 0, num: true },
+    { name: 'ecc', header: 'ECC', value: r => !r.dimm.dataWidth ? '-' : (r.dimm.totalWidth > r.dimm.dataWidth ? r.dimm.totalWidth + '/' + r.dimm.dataWidth : 'none'), sort: r => r.dimm.totalWidth > r.dimm.dataWidth ? 1 : 0 },
     { name: 'part', header: 'PART', value: r => dash(r.dimm.part), mono: true },
     { name: 'serial', header: 'SERIAL', value: r => dash(r.dimm.serial), mono: true },
     { name: 'ce', header: 'CE', value: r => num(r.dimm.ce) || 0, sort: r => num(r.dimm.ce) || 0, num: true, cls: r => num(r.dimm.ce) > 0 ? 'warn' : '' },
@@ -386,6 +387,7 @@
     { name: 'ce24h', header: 'CE 24H', value: r => num(r.ceDay) || 0, sort: r => num(r.ceDay) || 0, num: true, cls: r => num(r.ceDay) > 0 ? 'warn' : '' },
     { name: 'last', header: 'LAST ERROR', value: r => r.lastError ? ago(r.lastError) : '-', sort: r => r.lastError ? new Date(r.lastError).getTime() : null },
     { name: 'edac', header: 'EDAC', value: r => dash(r.dimm.edac), mono: true, extra: true },
+    { name: 'edacmode', header: 'EDAC MODE', value: r => dash(r.dimm.edacMode), extra: true },
     { name: 'edacsize', header: 'EDAC SIZE', value: r => gib(r.dimm.edacSizeBytes), sort: r => num(r.dimm.edacSizeBytes), num: true, extra: true, cls: r => num(r.dimm.edacSizeBytes) && num(r.dimm.edacSizeBytes) !== num(r.dimm.sizeBytes) ? 'warn' : '' },
     { name: 'mapping', header: 'MAPPING', value: r => dash(r.dimm.mapping), extra: true },
     { name: 'bank', header: 'BANK', value: r => dash(r.dimm.bank), extra: true },
@@ -398,6 +400,9 @@
     { name: 'firmware', header: 'FIRMWARE', value: m => gib(m.firmwareBytes), sort: m => num(m.firmwareBytes), num: true },
     { name: 'edac', header: 'EDAC', value: m => gib(m.edacBytes), sort: m => num(m.edacBytes), num: true },
     { name: 'kernel', header: 'KERNEL SEES', value: m => gib(m.kernelBytes), sort: m => num(m.kernelBytes), num: true },
+    { name: 'ecc', header: 'ECC MODULES', value: m => (m.eccModules || 0) + ' of ' + (m.modules || 0), sort: m => m.eccModules || 0 },
+    { name: 'correction', header: 'FIRMWARE', value: m => dash(m.correction) },
+    { name: 'edacmode', header: 'EDAC', value: m => dash(m.edacMode) },
     { name: 'note', header: 'CHECK', value: m => m.note || 'agree', cls: m => m.note ? 'warn' : 'ok' },
   ];
   const phyCols = [
@@ -504,7 +509,7 @@
     if ((dimms.rows || []).length) {
       const m = (dimms.hosts || [])[0];
       main.append(el('h2', { text: 'Memory' }));
-      if (m) main.append(el('p', { class: m.note ? 'error' : 'note', text: m.modules + ' modules, ' + gib(m.firmwareBytes) + ' by firmware, ' + gib(m.edacBytes) + ' by EDAC, kernel sees ' + gib(m.kernelBytes) + (m.note ? '. ' + m.note : '') }));
+      if (m) main.append(el('p', { class: m.note ? 'error' : 'note', text: m.modules + ' modules, ' + gib(m.firmwareBytes) + ' by firmware, ' + gib(m.edacBytes) + ' by EDAC, kernel sees ' + gib(m.kernelBytes) + '; ECC ' + (m.eccModules || 0) + ' of ' + m.modules + ' modules' + (m.correction ? ', firmware ' + m.correction : '') + (m.edacMode ? ', EDAC ' + m.edacMode : '') + (m.note ? '. ' + m.note : '') }));
       main.append(table({ key: 'host.dimms', columns: dimmCols.filter(c => c.name !== 'host'), rows: dimms.rows }));
     }
     main.append(el('h2', { text: 'Drives' }), table({ key: 'host.drives', columns: driveCols.filter(c => c.name !== 'host'), rows: drives.drives || [] }));

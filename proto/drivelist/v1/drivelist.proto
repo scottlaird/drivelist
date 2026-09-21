@@ -170,6 +170,7 @@ message ReportInventoryRequest {
   repeated SasPhy sas_phys = 9;
   repeated Dimm dimms = 10;           // memory modules, empty from agents before 0.9 or hosts that describe none
   uint64 mem_total_bytes = 11;        // the kernel's MemTotal, to check the modules against; 0 when unknown
+  string mem_correction = 12;         // the firmware's error correction for the memory array (SMBIOS type 16): "none", "parity", "single-bit ECC", "multi-bit ECC", "CRC"; "" when unknown
 }
 
 // SasNode is an HBA or expander: something with phys of its own.
@@ -225,6 +226,9 @@ message Dimm {
   uint64 ce = 13;                     // corrected errors since boot
   uint64 ue = 14;                     // uncorrected errors since boot
   uint64 edac_size_bytes = 15;        // what the EDAC entries matched to it add up to; differs from size_bytes when the match is wrong
+  uint32 total_width = 16;            // bits, from the firmware: 72 or 80 for an ECC module, 64 without; 0 unknown
+  uint32 data_width = 17;             // bits: 64; total_width beyond it is the check bits
+  string edac_mode = 18;              // EDAC's correction mode for it: "SECDED", "S4ECD4ED"; "" when EDAC has no entry or does not say
 }
 
 // DriveStatus is the server's status for a drive, returned to the agent so
@@ -491,6 +495,9 @@ message MemorySummary {
   uint64 unmatched_edac_bytes = 5;    // EDAC entries matched to no module
   int32 modules = 6;
   string note = 7;                    // "" when the three agree; else what does not
+  string correction = 8;              // the firmware's error correction for the array; "" unknown
+  string edac_mode = 9;               // the correction mode EDAC reports on the modules; "" when none does
+  int32 ecc_modules = 10;             // modules whose total width exceeds their data width
 }
 
 message ListDimmsResponse {

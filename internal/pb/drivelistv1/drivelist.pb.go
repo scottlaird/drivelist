@@ -610,6 +610,7 @@ type ReportInventoryRequest struct {
 	SasPhys         []*SasPhy              `protobuf:"bytes,9,rep,name=sas_phys,json=sasPhys,proto3" json:"sas_phys,omitempty"`
 	Dimms           []*Dimm                `protobuf:"bytes,10,rep,name=dimms,proto3" json:"dimms,omitempty"`                                         // memory modules, empty from agents before 0.9 or hosts that describe none
 	MemTotalBytes   uint64                 `protobuf:"varint,11,opt,name=mem_total_bytes,json=memTotalBytes,proto3" json:"mem_total_bytes,omitempty"` // the kernel's MemTotal, to check the modules against; 0 when unknown
+	MemCorrection   string                 `protobuf:"bytes,12,opt,name=mem_correction,json=memCorrection,proto3" json:"mem_correction,omitempty"`    // the firmware's error correction for the memory array (SMBIOS type 16): "none", "parity", "single-bit ECC", "multi-bit ECC", "CRC"; "" when unknown
 	unknownFields   protoimpl.UnknownFields
 	sizeCache       protoimpl.SizeCache
 }
@@ -719,6 +720,13 @@ func (x *ReportInventoryRequest) GetMemTotalBytes() uint64 {
 		return x.MemTotalBytes
 	}
 	return 0
+}
+
+func (x *ReportInventoryRequest) GetMemCorrection() string {
+	if x != nil {
+		return x.MemCorrection
+	}
+	return ""
 }
 
 // SasNode is an HBA or expander: something with phys of its own.
@@ -1016,6 +1024,9 @@ type Dimm struct {
 	Ce            uint64                 `protobuf:"varint,13,opt,name=ce,proto3" json:"ce,omitempty"`                                              // corrected errors since boot
 	Ue            uint64                 `protobuf:"varint,14,opt,name=ue,proto3" json:"ue,omitempty"`                                              // uncorrected errors since boot
 	EdacSizeBytes uint64                 `protobuf:"varint,15,opt,name=edac_size_bytes,json=edacSizeBytes,proto3" json:"edac_size_bytes,omitempty"` // what the EDAC entries matched to it add up to; differs from size_bytes when the match is wrong
+	TotalWidth    uint32                 `protobuf:"varint,16,opt,name=total_width,json=totalWidth,proto3" json:"total_width,omitempty"`            // bits, from the firmware: 72 or 80 for an ECC module, 64 without; 0 unknown
+	DataWidth     uint32                 `protobuf:"varint,17,opt,name=data_width,json=dataWidth,proto3" json:"data_width,omitempty"`               // bits: 64; total_width beyond it is the check bits
+	EdacMode      string                 `protobuf:"bytes,18,opt,name=edac_mode,json=edacMode,proto3" json:"edac_mode,omitempty"`                   // EDAC's correction mode for it: "SECDED", "S4ECD4ED"; "" when EDAC has no entry or does not say
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1153,6 +1164,27 @@ func (x *Dimm) GetEdacSizeBytes() uint64 {
 		return x.EdacSizeBytes
 	}
 	return 0
+}
+
+func (x *Dimm) GetTotalWidth() uint32 {
+	if x != nil {
+		return x.TotalWidth
+	}
+	return 0
+}
+
+func (x *Dimm) GetDataWidth() uint32 {
+	if x != nil {
+		return x.DataWidth
+	}
+	return 0
+}
+
+func (x *Dimm) GetEdacMode() string {
+	if x != nil {
+		return x.EdacMode
+	}
+	return ""
 }
 
 // DriveStatus is the server's status for a drive, returned to the agent so
@@ -3245,7 +3277,10 @@ type MemorySummary struct {
 	EdacBytes          uint64                 `protobuf:"varint,4,opt,name=edac_bytes,json=edacBytes,proto3" json:"edac_bytes,omitempty"`                              // sum of the EDAC entries matched to modules
 	UnmatchedEdacBytes uint64                 `protobuf:"varint,5,opt,name=unmatched_edac_bytes,json=unmatchedEdacBytes,proto3" json:"unmatched_edac_bytes,omitempty"` // EDAC entries matched to no module
 	Modules            int32                  `protobuf:"varint,6,opt,name=modules,proto3" json:"modules,omitempty"`
-	Note               string                 `protobuf:"bytes,7,opt,name=note,proto3" json:"note,omitempty"` // "" when the three agree; else what does not
+	Note               string                 `protobuf:"bytes,7,opt,name=note,proto3" json:"note,omitempty"`                                 // "" when the three agree; else what does not
+	Correction         string                 `protobuf:"bytes,8,opt,name=correction,proto3" json:"correction,omitempty"`                     // the firmware's error correction for the array; "" unknown
+	EdacMode           string                 `protobuf:"bytes,9,opt,name=edac_mode,json=edacMode,proto3" json:"edac_mode,omitempty"`         // the correction mode EDAC reports on the modules; "" when none does
+	EccModules         int32                  `protobuf:"varint,10,opt,name=ecc_modules,json=eccModules,proto3" json:"ecc_modules,omitempty"` // modules whose total width exceeds their data width
 	unknownFields      protoimpl.UnknownFields
 	sizeCache          protoimpl.SizeCache
 }
@@ -3327,6 +3362,27 @@ func (x *MemorySummary) GetNote() string {
 		return x.Note
 	}
 	return ""
+}
+
+func (x *MemorySummary) GetCorrection() string {
+	if x != nil {
+		return x.Correction
+	}
+	return ""
+}
+
+func (x *MemorySummary) GetEdacMode() string {
+	if x != nil {
+		return x.EdacMode
+	}
+	return ""
+}
+
+func (x *MemorySummary) GetEccModules() int32 {
+	if x != nil {
+		return x.EccModules
+	}
+	return 0
 }
 
 type ListDimmsResponse struct {
@@ -6194,7 +6250,7 @@ const file_drivelist_v1_drivelist_proto_rawDesc = "" +
 	"\x04pool\x18\x01 \x01(\tR\x04pool\x12\x12\n" +
 	"\x04path\x18\x02 \x01(\tR\x04path\x12\x12\n" +
 	"\x04guid\x18\x03 \x01(\tR\x04guid\x12\x14\n" +
-	"\x05state\x18\x04 \x01(\tR\x05state\"\xb3\x04\n" +
+	"\x05state\x18\x04 \x01(\tR\x05state\"\xda\x04\n" +
 	"\x16ReportInventoryRequest\x12.\n" +
 	"\x04host\x18\x01 \x01(\v2\x1a.drivelist.v1.HostIdentityR\x04host\x12;\n" +
 	"\vobserved_at\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\n" +
@@ -6209,7 +6265,8 @@ const file_drivelist_v1_drivelist_proto_rawDesc = "" +
 	"\bsas_phys\x18\t \x03(\v2\x14.drivelist.v1.SasPhyR\asasPhys\x12(\n" +
 	"\x05dimms\x18\n" +
 	" \x03(\v2\x12.drivelist.v1.DimmR\x05dimms\x12&\n" +
-	"\x0fmem_total_bytes\x18\v \x01(\x04R\rmemTotalBytes\"\xe5\x01\n" +
+	"\x0fmem_total_bytes\x18\v \x01(\x04R\rmemTotalBytes\x12%\n" +
+	"\x0emem_correction\x18\f \x01(\tR\rmemCorrection\"\xe5\x01\n" +
 	"\aSasNode\x12\x12\n" +
 	"\x04kind\x18\x01 \x01(\tR\x04kind\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x18\n" +
@@ -6238,7 +6295,7 @@ const file_drivelist_v1_drivelist_proto_rawDesc = "" +
 	"\rinvalid_dword\x18\x0e \x01(\x04R\finvalidDword\x12'\n" +
 	"\x0fdisparity_error\x18\x0f \x01(\x04R\x0edisparityError\x12&\n" +
 	"\x0floss_dword_sync\x18\x10 \x01(\x04R\rlossDwordSync\x12*\n" +
-	"\x11phy_reset_problem\x18\x11 \x01(\x04R\x0fphyResetProblem\"\xf7\x02\n" +
+	"\x11phy_reset_problem\x18\x11 \x01(\x04R\x0fphyResetProblem\"\xd4\x03\n" +
 	"\x04Dimm\x12\x12\n" +
 	"\x04slot\x18\x01 \x01(\tR\x04slot\x12\x12\n" +
 	"\x04bank\x18\x02 \x01(\tR\x04bank\x12\x1d\n" +
@@ -6256,7 +6313,12 @@ const file_drivelist_v1_drivelist_proto_rawDesc = "" +
 	"\amapping\x18\f \x01(\tR\amapping\x12\x0e\n" +
 	"\x02ce\x18\r \x01(\x04R\x02ce\x12\x0e\n" +
 	"\x02ue\x18\x0e \x01(\x04R\x02ue\x12&\n" +
-	"\x0fedac_size_bytes\x18\x0f \x01(\x04R\redacSizeBytes\"r\n" +
+	"\x0fedac_size_bytes\x18\x0f \x01(\x04R\redacSizeBytes\x12\x1f\n" +
+	"\vtotal_width\x18\x10 \x01(\rR\n" +
+	"totalWidth\x12\x1d\n" +
+	"\n" +
+	"data_width\x18\x11 \x01(\rR\tdataWidth\x12\x1b\n" +
+	"\tedac_mode\x18\x12 \x01(\tR\bedacMode\"r\n" +
 	"\vDriveStatus\x127\n" +
 	"\bidentity\x18\x01 \x01(\v2\x1b.drivelist.v1.DriveIdentityR\bidentity\x12\x16\n" +
 	"\x06status\x18\x02 \x01(\tR\x06status\x12\x12\n" +
@@ -6468,7 +6530,7 @@ const file_drivelist_v1_drivelist_proto_rawDesc = "" +
 	"\x06ue_day\x18\x06 \x01(\x04R\x05ueDay\x129\n" +
 	"\n" +
 	"last_error\x18\a \x01(\v2\x1a.google.protobuf.TimestampR\tlastError\x12\x18\n" +
-	"\aproblem\x18\b \x01(\bR\aproblem\"\xf4\x01\n" +
+	"\aproblem\x18\b \x01(\bR\aproblem\"\xd2\x02\n" +
 	"\rMemorySummary\x12\x1a\n" +
 	"\bhostname\x18\x01 \x01(\tR\bhostname\x12!\n" +
 	"\fkernel_bytes\x18\x02 \x01(\x04R\vkernelBytes\x12%\n" +
@@ -6477,7 +6539,14 @@ const file_drivelist_v1_drivelist_proto_rawDesc = "" +
 	"edac_bytes\x18\x04 \x01(\x04R\tedacBytes\x120\n" +
 	"\x14unmatched_edac_bytes\x18\x05 \x01(\x04R\x12unmatchedEdacBytes\x12\x18\n" +
 	"\amodules\x18\x06 \x01(\x05R\amodules\x12\x12\n" +
-	"\x04note\x18\a \x01(\tR\x04note\"q\n" +
+	"\x04note\x18\a \x01(\tR\x04note\x12\x1e\n" +
+	"\n" +
+	"correction\x18\b \x01(\tR\n" +
+	"correction\x12\x1b\n" +
+	"\tedac_mode\x18\t \x01(\tR\bedacMode\x12\x1f\n" +
+	"\vecc_modules\x18\n" +
+	" \x01(\x05R\n" +
+	"eccModules\"q\n" +
 	"\x11ListDimmsResponse\x12)\n" +
 	"\x04rows\x18\x01 \x03(\v2\x15.drivelist.v1.DimmRowR\x04rows\x121\n" +
 	"\x05hosts\x18\x02 \x03(\v2\x1b.drivelist.v1.MemorySummaryR\x05hosts\"\xb8\x01\n" +
