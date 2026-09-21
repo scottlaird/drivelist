@@ -138,17 +138,31 @@ func TestIngestDIMMs(t *testing.T) {
 	}
 	r.MemCorrection = "single-bit ECC"
 
-	// A wrong match doubles B1's EDAC share; the kernel seeing more than
-	// listed means a module is missing.
+	// B1 matched to twice its size is a matching error, named by slot; the
+	// kernel seeing more than listed means a module is missing.
 	r.DIMMs[1].EDACBytes = 64 << 30
 	r.MemTotalBytes = 127 << 30
 	h.advance(time.Hour)
 	r.ObservedAt = h.now
 	h.submit(r)
 	sums, _ = h.s.MemorySummaries(h.ctx, "storage1")
-	if len(sums) != 1 || !strings.Contains(sums[0].Note, "wrong entries") || !strings.Contains(sums[0].Note, "missing from the list") {
+	if len(sums) != 1 || !strings.Contains(sums[0].Note, "DIMMB1 shows 32 GB to the firmware but 64 GB to EDAC") || !strings.Contains(sums[0].Note, "missing from the list") {
 		t.Errorf("summaries with mismatches = %+v", sums)
 	}
+	// fs2's case: the firmware sizes A1 at half while EDAC sees it whole,
+	// and the kernel agrees with the firmware. A disabled rank.
+	r.DIMMs[1].EDACBytes = 32 << 30
+	r.DIMMs[0].SizeBytes = 16 << 30
+	r.MemTotalBytes = 47 << 30
+	h.advance(time.Hour)
+	r.ObservedAt = h.now
+	h.submit(r)
+	sums, _ = h.s.MemorySummaries(h.ctx, "storage1")
+	if len(sums) != 1 || !strings.Contains(sums[0].Note, "DIMMA1 shows 16 GB to the firmware but 32 GB to EDAC: a rank is disabled") || strings.Contains(sums[0].Note, "wrong entries") {
+		t.Errorf("disabled rank summary = %+v", sums)
+	}
+	r.DIMMs[0].SizeBytes = 32 << 30
+	r.MemTotalBytes = 63 << 30
 
 	// A report with no modules changes nothing: both modules, back since
 	// the totals check, stay.

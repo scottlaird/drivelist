@@ -267,7 +267,7 @@ func (s *Store) MemorySummaries(ctx context.Context, host string) ([]MemorySumma
 		args = append(args, h.ID)
 	}
 	rows, err := s.db.QueryContext(ctx, `
-		SELECT h.hostname, h.mem_total_bytes, h.mem_correction,
+		SELECT h.host_id, h.hostname, h.mem_total_bytes, h.mem_correction,
 		  COALESCE(SUM(CASE WHEN d.slot != '' THEN d.size_bytes END), 0),
 		  COALESCE(SUM(CASE WHEN d.slot != '' THEN d.edac_size_bytes END), 0),
 		  COALESCE(SUM(CASE WHEN d.slot = '' THEN d.edac_size_bytes END), 0),
@@ -280,21 +280,71 @@ func (s *Store) MemorySummaries(ctx context.Context, host string) ([]MemorySumma
 	}
 	defer rows.Close()
 	var out []MemorySummary
+	var ids []int64
 	for rows.Next() {
 		var m MemorySummary
-		if err := rows.Scan(&m.Hostname, &m.KernelBytes, &m.Correction, &m.FirmwareBytes, &m.EDACBytes, &m.Unmatched, &m.Modules, &m.ECCModules, &m.EDACMode); err != nil {
+		var id int64
+		if err := rows.Scan(&id, &m.Hostname, &m.KernelBytes, &m.Correction, &m.FirmwareBytes, &m.EDACBytes, &m.Unmatched, &m.Modules, &m.ECCModules, &m.EDACMode); err != nil {
 			return nil, err
 		}
-		m.Note = memoryNote(m)
 		out = append(out, m)
+		ids = append(ids, id)
+	}
+	if err := rows.Err(); err != nil {
+		return nil, err
+	}
+	for i := range out {
+		odd, err := s.oddSizedDIMMs(ctx, ids[i])
+		if err != nil {
+			return nil, err
+		}
+		out[i].Note = memoryNote(out[i], odd)
+	}
+	return out, nil
+}
+
+// oddDIMM is a module whose firmware size and matched EDAC size differ.
+type oddDIMM struct {
+	Slot                 string
+	SizeBytes, EDACBytes uint64
+}
+
+func (s *Store) oddSizedDIMMs(ctx context.Context, hostID int64) ([]oddDIMM, error) {
+	rows, err := s.db.QueryContext(ctx, `SELECT slot, size_bytes, edac_size_bytes FROM dimm WHERE host_id = ? AND gone_at IS NULL AND slot != '' AND edac != '' AND edac_size_bytes != size_bytes ORDER BY slot`, hostID)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	var out []oddDIMM
+	for rows.Next() {
+		var d oddDIMM
+		if err := rows.Scan(&d.Slot, &d.SizeBytes, &d.EDACBytes); err != nil {
+			return nil, err
+		}
+		out = append(out, d)
 	}
 	return out, rows.Err()
 }
 
-// memoryNote says what disagrees, or nothing.
-func memoryNote(m MemorySummary) string {
+// memoryNote says what disagrees, or nothing. A module the firmware
+// sizes below what EDAC sees is the telling case: the memory controller
+// still decodes every rank, but the firmware mapped one out, at boot
+// (training failed on it) or by design (rank sparing). Matching errors
+// show as a module sized above EDAC (too few entries) or as a total
+// difference no single module explains.
+func memoryNote(m MemorySummary, odd []oddDIMM) string {
 	var notes []string
-	if m.EDACBytes > 0 && m.EDACBytes != m.FirmwareBytes {
+	explained := false
+	for _, d := range odd {
+		explained = true
+		switch {
+		case d.EDACBytes > d.SizeBytes:
+			notes = append(notes, fmt.Sprintf("%s shows %s to the firmware but %s to EDAC: a rank is disabled or mapped out", d.Slot, gib(d.SizeBytes), gib(d.EDACBytes)))
+		default:
+			notes = append(notes, fmt.Sprintf("%s shows %s to the firmware but %s to EDAC: matched to too few entries", d.Slot, gib(d.SizeBytes), gib(d.EDACBytes)))
+		}
+	}
+	if m.EDACBytes > 0 && m.EDACBytes != m.FirmwareBytes && !explained {
 		notes = append(notes, "EDAC's total differs from the firmware's: some module is matched to the wrong entries")
 	}
 	if m.Unmatched > 0 {
@@ -317,6 +367,14 @@ func memoryNote(m MemorySummary) string {
 		notes = append(notes, "the firmware reports ECC on modules that show no check bits")
 	}
 	return strings.Join(notes, "; ")
+}
+
+// gib formats bytes in binary gigabytes for notes.
+func gib(b uint64) string {
+	if b%(1<<30) == 0 {
+		return fmt.Sprintf("%d GB", b>>30)
+	}
+	return fmt.Sprintf("%.1f GB", float64(b)/float64(1<<30))
 }
 
 // dimmLabel is a short name for a module in messages: its slot, else
