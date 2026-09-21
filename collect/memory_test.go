@@ -94,8 +94,18 @@ func TestMemoryPBS1(t *testing.T) {
 	if a.EDAC != "mc0/csrow2/ch0+mc0/csrow3/ch0" || a.Mapping != "exact" || a.CE != 0 {
 		t.Errorf("A1 EDAC = %q %q ce=%d", a.EDAC, a.Mapping, a.CE)
 	}
-	if b.Slot != "DIMMB1" || b.EDAC != "mc0/csrow2/ch1+mc0/csrow3/ch1" || b.Mapping != "exact" || b.CE != 9087 || b.UE != 0 || b.EDACType != "Unbuffered-DDR5" {
+	if b.Slot != "DIMMB1" || b.EDAC != "mc0/csrow2/ch1+mc0/csrow3/ch1" || b.Mapping != "exact" || b.CE != 9087 || b.UE != 0 || b.EDACType != "Unbuffered-DDR5" || b.EDACBytes != 32<<30 {
 		t.Errorf("B1 = %+v", b)
+	}
+	// The kernel's total rides along.
+	if err := os.MkdirAll(filepath.Join(sys, "..", "proc"), 0o755); err != nil {
+		t.Fatal(err)
+	}
+	proc := filepath.Join(sys, "..", "proc")
+	os.WriteFile(filepath.Join(proc, "meminfo"), []byte("MemTotal:       65437512 kB\nMemFree:        1234 kB\n"), 0o644)
+	inv, _ = (&Collector{Platform: "linux", Sys: sys, Proc: proc}).Memory()
+	if inv.KernelBytes != 65437512<<10 {
+		t.Errorf("KernelBytes = %d", inv.KernelBytes)
 	}
 }
 
@@ -166,7 +176,7 @@ func TestMemoryTwoPerChannel(t *testing.T) {
 	if b1 := inv.DIMMs[2]; b1.Slot != "DIMM_B1" || b1.EDAC != "" || b1.Mapping != "" {
 		t.Errorf("B1 = %+v", b1)
 	}
-	if e := inv.DIMMs[3]; e.Slot != "" || e.EDAC != "mc0/csrow1/ch4" || e.UE != 1 || e.SizeBytes != 16<<30 {
+	if e := inv.DIMMs[3]; e.Slot != "" || e.EDAC != "mc0/csrow1/ch4" || e.UE != 1 || e.SizeBytes != 0 || e.EDACBytes != 16<<30 {
 		t.Errorf("orphan EDAC entry = %+v", e)
 	}
 }

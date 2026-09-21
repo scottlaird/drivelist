@@ -333,6 +333,7 @@ var dimmCols = []col[*pb.DimmRow]{
 		return ago(r.LastError, time.Now())
 	}, key: func(r *pb.DimmRow) any { return tsKey(r.LastError) }},
 	{name: "edac", header: "EDAC", value: func(r *pb.DimmRow) string { return orDash(r.Dimm.Edac) }, extra: true},
+	{name: "edacsize", header: "EDAC SIZE", value: func(r *pb.DimmRow) string { return memSize(r.Dimm.EdacSizeBytes) }, key: func(r *pb.DimmRow) any { return r.Dimm.EdacSizeBytes }, extra: true},
 	{name: "mapping", header: "MAPPING", value: func(r *pb.DimmRow) string { return orDash(r.Dimm.Mapping) }, extra: true},
 	{name: "bank", header: "BANK", value: func(r *pb.DimmRow) string { return orDash(r.Dimm.Bank) }, extra: true},
 	{name: "manufacturer", header: "MANUFACTURER", value: func(r *pb.DimmRow) string { return orDash(r.Dimm.Manufacturer) }, extra: true},

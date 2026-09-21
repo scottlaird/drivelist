@@ -27,16 +27,19 @@ type DIMM struct {
 	Part         string
 	Serial       string
 
-	EDAC     string // the kernel's location, as the log prints it: "mc0/csrow2/ch2"; "" when EDAC has no entry for it
-	EDACType string // EDAC's own idea of the module: "Registered-DDR4"
-	Mapping  string // how Slot and EDAC were joined: "exact", "inferred", or "" when one side is missing
-	CE, UE   uint64 // errors EDAC counted since boot
+	EDAC      string // the kernel's location, as the log prints it: "mc0/csrow2/ch2"; "" when EDAC has no entry for it
+	EDACType  string // EDAC's own idea of the module: "Registered-DDR4"
+	EDACBytes uint64 // what the EDAC entries matched to it add up to; a mismatch with SizeBytes means a wrong match
+	Mapping   string // how Slot and EDAC were joined: "exact", "inferred", or "" when one side is missing
+	CE, UE    uint64 // errors EDAC counted since boot
 }
 
 // MemoryInventory is every DIMM on the host, slots first in slot order,
-// then EDAC entries that matched no slot.
+// then EDAC entries that matched no slot, and the kernel's own total to
+// check them against.
 type MemoryInventory struct {
-	DIMMs []DIMM
+	DIMMs       []DIMM
+	KernelBytes uint64 // MemTotal from /proc/meminfo; 0 when unreadable
 }
 
 // Memory reads the memory modules from SMBIOS and their error counts
@@ -50,7 +53,22 @@ func (c *Collector) Memory() (*MemoryInventory, error) {
 	}
 	slots := readSMBIOSMemory(c.sys())
 	edac := readEDAC(c.sys())
-	return &MemoryInventory{DIMMs: joinDIMMs(slots, edac)}, nil
+	return &MemoryInventory{DIMMs: joinDIMMs(slots, edac), KernelBytes: readMemTotal(c.proc())}, nil
+}
+
+// readMemTotal is MemTotal from /proc/meminfo, in bytes; 0 when unreadable.
+func readMemTotal(proc string) uint64 {
+	b, err := os.ReadFile(filepath.Join(proc, "meminfo"))
+	if err != nil {
+		return 0
+	}
+	for _, line := range strings.Split(string(b), "\n") {
+		if f := strings.Fields(line); len(f) >= 2 && f[0] == "MemTotal:" {
+			kb, _ := strconv.ParseUint(f[1], 10, 64)
+			return kb << 10
+		}
+	}
+	return 0
 }
 
 // smbiosMemory is one type 17 record with a module in it.
@@ -570,6 +588,7 @@ func joinDIMMs(slots []smbiosMemory, edac []edacDIMM) []DIMM {
 			locs = append(locs, edac[e].Location)
 			d.CE += edac[e].CE
 			d.UE += edac[e].UE
+			d.EDACBytes += edac[e].SizeMB << 20
 			d.EDACType = edac[e].MemType
 		}
 		d.EDAC, d.Mapping = strings.Join(locs, "+"), how[i]
@@ -579,7 +598,7 @@ func joinDIMMs(slots []smbiosMemory, edac []edacDIMM) []DIMM {
 		if used[e] {
 			continue
 		}
-		out = append(out, DIMM{EDAC: d.Location, EDACType: d.MemType, SizeBytes: d.SizeMB << 20, CE: d.CE, UE: d.UE})
+		out = append(out, DIMM{EDAC: d.Location, EDACType: d.MemType, EDACBytes: d.SizeMB << 20, CE: d.CE, UE: d.UE})
 	}
 	return out
 }

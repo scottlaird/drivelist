@@ -89,6 +89,7 @@ type Report struct {
 	SASNodes        []SASNode // empty from agents before 0.6 or hosts without SAS
 	SASPhys         []SASPhy
 	DIMMs           []DIMM // empty from agents before 0.9 or hosts that describe none
+	MemTotalBytes   uint64 // the kernel's MemTotal; 0 when the agent did not say
 }
 
 // DIMM is one memory module as an agent reports it: the firmware's
@@ -103,6 +104,7 @@ type DIMM struct {
 	Part, Serial string
 	EDAC         string // "mc0/csrow2/ch2+mc0/csrow3/ch2"
 	EDACType     string
+	EDACBytes    uint64 // what the matched EDAC entries add up to
 	Mapping      string // "exact" | "inferred" | ""
 	CE, UE       uint64 // since boot
 }

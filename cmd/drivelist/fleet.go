@@ -277,7 +277,22 @@ module; inferred by slot order when a channel holds several).`,
 				}
 				return nil
 			}
-			return printTable(cmd.OutOrStdout(), to, dimmCols, res.Msg.Rows)
+			if err := printTable(cmd.OutOrStdout(), to, dimmCols, res.Msg.Rows); err != nil {
+				return err
+			}
+			// The totals, and what disagrees: the check that the module
+			// list is whole and the EDAC match is right.
+			if !problems {
+				fmt.Fprintln(cmd.OutOrStdout())
+				for _, m := range res.Msg.Hosts {
+					line := fmt.Sprintf("%s: %d modules, %s by firmware, %s by EDAC, kernel sees %s", m.Hostname, m.Modules, memSize(m.FirmwareBytes), memSize(m.EdacBytes), memSize(m.KernelBytes))
+					if m.Note != "" {
+						line += "  ⚠ " + m.Note
+					}
+					fmt.Fprintln(cmd.OutOrStdout(), line)
+				}
+			}
+			return nil
 		},
 	}
 	cmd.Flags().StringVar(&host, "host", "", "only modules on this host")

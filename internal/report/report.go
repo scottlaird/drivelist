@@ -171,9 +171,10 @@ func Memory(req *pb.ReportInventoryRequest, mem *collect.MemoryInventory) {
 	if mem == nil {
 		return
 	}
+	req.MemTotalBytes = mem.KernelBytes
 	for _, d := range mem.DIMMs {
 		req.Dimms = append(req.Dimms, &pb.Dimm{Slot: d.Slot, Bank: d.Bank, SizeBytes: d.SizeBytes, Ranks: uint32(d.Ranks), Type: d.Type, SpeedMts: uint32(d.SpeedMTs),
-			Manufacturer: d.Manufacturer, Part: d.Part, Serial: d.Serial, Edac: d.EDAC, EdacType: d.EDACType, Mapping: d.Mapping, Ce: d.CE, Ue: d.UE})
+			Manufacturer: d.Manufacturer, Part: d.Part, Serial: d.Serial, Edac: d.EDAC, EdacType: d.EDACType, EdacSizeBytes: d.EDACBytes, Mapping: d.Mapping, Ce: d.CE, Ue: d.UE})
 	}
 }
 

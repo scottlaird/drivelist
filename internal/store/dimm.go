@@ -16,12 +16,12 @@ type dimmRow struct {
 	gone                sql.NullInt64
 }
 
-const dimmColumns = `d.key, d.slot, d.bank, d.size_bytes, d.ranks, d.type, d.speed_mts, d.manufacturer, d.part, d.serial, d.edac, d.edac_type, d.mapping, d.ce, d.ue, d.first_seen, d.last_seen, d.gone_at`
+const dimmColumns = `d.key, d.slot, d.bank, d.size_bytes, d.ranks, d.type, d.speed_mts, d.manufacturer, d.part, d.serial, d.edac, d.edac_type, d.edac_size_bytes, d.mapping, d.ce, d.ue, d.first_seen, d.last_seen, d.gone_at`
 
 func scanDIMM(rows interface{ Scan(...any) error }) (dimmRow, error) {
 	var d dimmRow
 	var key string
-	err := rows.Scan(&key, &d.Slot, &d.Bank, &d.SizeBytes, &d.Ranks, &d.Type, &d.SpeedMTs, &d.Manufacturer, &d.Part, &d.Serial, &d.EDAC, &d.EDACType, &d.Mapping, &d.CE, &d.UE, &d.firstSeen, &d.lastSeen, &d.gone)
+	err := rows.Scan(&key, &d.Slot, &d.Bank, &d.SizeBytes, &d.Ranks, &d.Type, &d.SpeedMTs, &d.Manufacturer, &d.Part, &d.Serial, &d.EDAC, &d.EDACType, &d.EDACBytes, &d.Mapping, &d.CE, &d.UE, &d.firstSeen, &d.lastSeen, &d.gone)
 	return d, err
 }
 
@@ -66,6 +66,11 @@ func (t *tx) ingestDIMMs(host *hostRow, r Report) error {
 			}
 		}
 	}
+	if r.MemTotalBytes > 0 {
+		if _, err := t.ExecContext(t.ctx, `UPDATE host SET mem_total_bytes = ? WHERE host_id = ?`, r.MemTotalBytes, host.id); err != nil {
+			return err
+		}
+	}
 	prev, err := t.dimms(host.id)
 	if err != nil {
 		return err
@@ -107,12 +112,12 @@ func (t *tx) ingestDIMMs(host *hostRow, r Report) error {
 			}
 		}
 		if _, err := t.ExecContext(t.ctx, `
-			INSERT INTO dimm (host_id, key, slot, bank, size_bytes, ranks, type, speed_mts, manufacturer, part, serial, edac, edac_type, mapping, ce, ue, first_seen, last_seen, gone_at)
-			VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NULL)
+			INSERT INTO dimm (host_id, key, slot, bank, size_bytes, ranks, type, speed_mts, manufacturer, part, serial, edac, edac_type, edac_size_bytes, mapping, ce, ue, first_seen, last_seen, gone_at)
+			VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NULL)
 			ON CONFLICT (host_id, key) DO UPDATE SET slot = excluded.slot, bank = excluded.bank, size_bytes = excluded.size_bytes, ranks = excluded.ranks, type = excluded.type,
 				speed_mts = excluded.speed_mts, manufacturer = excluded.manufacturer, part = excluded.part, serial = excluded.serial, edac = excluded.edac, edac_type = excluded.edac_type,
-				mapping = excluded.mapping, ce = excluded.ce, ue = excluded.ue, first_seen = excluded.first_seen, last_seen = excluded.last_seen, gone_at = NULL`,
-			host.id, key, d.Slot, d.Bank, d.SizeBytes, d.Ranks, d.Type, d.SpeedMTs, d.Manufacturer, d.Part, d.Serial, d.EDAC, d.EDACType, d.Mapping, d.CE, d.UE, first, t.obs); err != nil {
+				edac_size_bytes = excluded.edac_size_bytes, mapping = excluded.mapping, ce = excluded.ce, ue = excluded.ue, first_seen = excluded.first_seen, last_seen = excluded.last_seen, gone_at = NULL`,
+			host.id, key, d.Slot, d.Bank, d.SizeBytes, d.Ranks, d.Type, d.SpeedMTs, d.Manufacturer, d.Part, d.Serial, d.EDAC, d.EDACType, d.EDACBytes, d.Mapping, d.CE, d.UE, first, t.obs); err != nil {
 			return err
 		}
 	}
@@ -207,7 +212,7 @@ func (s *Store) ListDIMMs(ctx context.Context, host string, problems bool) ([]DI
 		var d dimmRow
 		var key string
 		var last sql.NullInt64
-		if err := rows.Scan(&r.Hostname, &key, &d.Slot, &d.Bank, &d.SizeBytes, &d.Ranks, &d.Type, &d.SpeedMTs, &d.Manufacturer, &d.Part, &d.Serial, &d.EDAC, &d.EDACType, &d.Mapping, &d.CE, &d.UE, &d.firstSeen, &d.lastSeen, &d.gone,
+		if err := rows.Scan(&r.Hostname, &key, &d.Slot, &d.Bank, &d.SizeBytes, &d.Ranks, &d.Type, &d.SpeedMTs, &d.Manufacturer, &d.Part, &d.Serial, &d.EDAC, &d.EDACType, &d.EDACBytes, &d.Mapping, &d.CE, &d.UE, &d.firstSeen, &d.lastSeen, &d.gone,
 			&r.CEDay, &r.UEDay, &last); err != nil {
 			return nil, err
 		}
@@ -228,6 +233,71 @@ func (s *Store) ListDIMMs(ctx context.Context, host string, problems bool) ([]DI
 		return false
 	})
 	return out, nil
+}
+
+// MemorySummary is one host's memory three ways; see the proto.
+type MemorySummary struct {
+	Hostname                                         string
+	KernelBytes, FirmwareBytes, EDACBytes, Unmatched uint64
+	Modules                                          int
+	Note                                             string
+}
+
+// MemorySummaries checks each host's module list against the kernel's
+// total: the EDAC total should equal the firmware's, and the kernel's
+// should be a little under it (reserved memory), but not far under and
+// never over. host narrows to one.
+func (s *Store) MemorySummaries(ctx context.Context, host string) ([]MemorySummary, error) {
+	where, args := `WHERE h.merged_into IS NULL`, []any{}
+	if host != "" {
+		h, err := s.ResolveHost(ctx, host)
+		if err != nil {
+			return nil, err
+		}
+		where += ` AND h.host_id = ?`
+		args = append(args, h.ID)
+	}
+	rows, err := s.db.QueryContext(ctx, `
+		SELECT h.hostname, h.mem_total_bytes,
+		  COALESCE(SUM(CASE WHEN d.slot != '' THEN d.size_bytes END), 0),
+		  COALESCE(SUM(CASE WHEN d.slot != '' THEN d.edac_size_bytes END), 0),
+		  COALESCE(SUM(CASE WHEN d.slot = '' THEN d.edac_size_bytes END), 0),
+		  COUNT(CASE WHEN d.slot != '' THEN 1 END)
+		FROM host h JOIN dimm d ON d.host_id = h.host_id AND d.gone_at IS NULL `+where+` GROUP BY h.host_id ORDER BY h.hostname`, args...)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	var out []MemorySummary
+	for rows.Next() {
+		var m MemorySummary
+		if err := rows.Scan(&m.Hostname, &m.KernelBytes, &m.FirmwareBytes, &m.EDACBytes, &m.Unmatched, &m.Modules); err != nil {
+			return nil, err
+		}
+		m.Note = memoryNote(m)
+		out = append(out, m)
+	}
+	return out, rows.Err()
+}
+
+// memoryNote says what disagrees, or nothing.
+func memoryNote(m MemorySummary) string {
+	var notes []string
+	if m.EDACBytes > 0 && m.EDACBytes != m.FirmwareBytes {
+		notes = append(notes, "EDAC's total differs from the firmware's: some module is matched to the wrong entries")
+	}
+	if m.Unmatched > 0 {
+		notes = append(notes, "EDAC lists memory no slot was matched to")
+	}
+	if m.KernelBytes > 0 && m.FirmwareBytes > 0 {
+		switch {
+		case m.KernelBytes > m.FirmwareBytes:
+			notes = append(notes, "the kernel sees more than the firmware lists: a module is missing from the list")
+		case m.KernelBytes*100 < m.FirmwareBytes*90:
+			notes = append(notes, "the kernel sees less than 90% of what the firmware lists: a module may be disabled or mapped out")
+		}
+	}
+	return strings.Join(notes, "; ")
 }
 
 // dimmLabel is a short name for a module in messages: its slot, else
