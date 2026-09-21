@@ -56,39 +56,60 @@ func (c *Collector) Memory() (*MemoryInventory, error) {
 // smbiosMemory is one type 17 record with a module in it.
 type smbiosMemory struct {
 	DIMM
-	letter  string // the channel letter the locator ends in: "C" of "DIMM_C2"
-	number  int    // and its slot number: 2
-	channel int    // from the bank locator when it names one; -1 otherwise
-	index   int    // the DIMM index on that channel from the bank locator; -1 otherwise
+	socket     int    // from the bank locator ("P1_...", 0-based) or the locator ("P2-DIMMA1", "CPU1_DIMM_A1"); 0 when unsaid
+	controller int    // from a locator that names one: "Controller1-ChannelA-DIMM0"; -1 otherwise
+	letter     string // the channel letter the locator ends in or names: "C" of "DIMM_C2", "A" of "Controller0-ChannelA-DIMM0"
+	number     int    // the slot number after the letter: 2 of "DIMM_C2"; the DIMM index of the Controller form
+	channel    int    // from the bank locator when it names one; -1 otherwise
+	index      int    // the DIMM index on that channel from the bank locator; -1 otherwise
 }
 
 var (
 	// "DIMM_C2", "DIMMB1", "P1-DIMMC2", "CPU0_DIMM_A1", "DIMM C2"
 	reLocator = regexp.MustCompile(`([A-Z])(\d+)\s*$`)
+	// "Controller0-ChannelA-DIMM0" (Intel client boards)
+	reController = regexp.MustCompile(`(?i)controller\s*(\d+).*channel\s*([A-Z]).*dimm\s*(\d+)`)
 	// "P0_Node0_Channel1_Dimm1"
 	reBank = regexp.MustCompile(`(?i)channel\s*(\d+)[_ ]*dimm\s*(\d+)`)
+	// The socket: "P1_Node1_..." in a bank locator (0-based), "P2-DIMMA1"
+	// or "CPU1_DIMM_A1" in a locator (Supermicro counts from 1 there).
+	reBankSocket    = regexp.MustCompile(`^P(\d+)_`)
+	reLocatorSocket = regexp.MustCompile(`^(?:P|CPU)(\d+)[_-]`)
 )
 
-// readSMBIOSMemory parses the type 17 records under
-// /sys/firmware/dmi/entries, keeping the ones with a module installed.
+// readSMBIOSMemory parses the type 17 records, keeping the ones with a
+// module installed. They come from /sys/firmware/dmi/entries when the
+// dmi-sysfs module is loaded, else from walking the raw table at
+// /sys/firmware/dmi/tables/DMI, which every DMI-capable kernel exposes
+// to root.
 func readSMBIOSMemory(sys string) []smbiosMemory {
-	entries, err := filepath.Glob(filepath.Join(sys, "firmware", "dmi", "entries", "17-*", "raw"))
-	if err != nil || len(entries) == 0 {
-		return nil
-	}
+	var records [][]byte
+	entries, _ := filepath.Glob(filepath.Join(sys, "firmware", "dmi", "entries", "17-*", "raw"))
 	sort.Strings(entries)
-	var out []smbiosMemory
 	for _, path := range entries {
-		raw, err := os.ReadFile(path)
-		if err != nil {
-			continue
+		if raw, err := os.ReadFile(path); err == nil {
+			records = append(records, raw)
 		}
+	}
+	if len(records) == 0 {
+		if table, err := os.ReadFile(filepath.Join(sys, "firmware", "dmi", "tables", "DMI")); err == nil {
+			records = smbiosRecords(table, 17)
+		}
+	}
+	var out []smbiosMemory
+	for _, raw := range records {
 		if m, ok := parseSMBIOSMemory(raw); ok {
 			out = append(out, m)
 		}
 	}
 	// Slot order, so listings read like the board.
 	sort.SliceStable(out, func(i, j int) bool {
+		if out[i].socket != out[j].socket {
+			return out[i].socket < out[j].socket
+		}
+		if out[i].controller != out[j].controller {
+			return out[i].controller < out[j].controller
+		}
 		if out[i].letter != out[j].letter {
 			return out[i].letter < out[j].letter
 		}
@@ -97,6 +118,37 @@ func readSMBIOSMemory(sys string) []smbiosMemory {
 		}
 		return out[i].Slot < out[j].Slot
 	})
+	return out
+}
+
+// smbiosRecords walks a raw SMBIOS table and returns every structure of
+// the wanted type, formatted area and string table together, which is
+// what a dmi-sysfs raw file holds. A structure is a 4-byte header (type,
+// length, handle), the rest of the formatted area, then strings ended
+// by a double NUL.
+func smbiosRecords(table []byte, want byte) [][]byte {
+	var out [][]byte
+	for off := 0; off+4 <= len(table); {
+		typ, length := table[off], int(table[off+1])
+		if length < 4 || off+length > len(table) {
+			break
+		}
+		end := off + length
+		for end+1 < len(table) && !(table[end] == 0 && table[end+1] == 0) {
+			end++
+		}
+		end += 2
+		if end > len(table) {
+			end = len(table)
+		}
+		if typ == want {
+			out = append(out, table[off:end])
+		}
+		if typ == 127 { // end of table
+			break
+		}
+		off = end
+	}
 	return out
 }
 
@@ -144,7 +196,7 @@ func parseSMBIOSMemory(raw []byte) (smbiosMemory, bool) {
 	if size == 0 || size == 0xffff {
 		return smbiosMemory{}, false
 	}
-	m := smbiosMemory{channel: -1, index: -1}
+	m := smbiosMemory{channel: -1, index: -1, controller: -1}
 	switch {
 	case size == 0x7fff && length >= 0x20:
 		m.SizeBytes = uint64(binary.LittleEndian.Uint32(raw[0x1c:0x20])) << 20
@@ -182,7 +234,12 @@ func parseSMBIOSMemory(raw []byte) (smbiosMemory, bool) {
 			m.SpeedMTs = v
 		}
 	}
-	if lm := reLocator.FindStringSubmatch(strings.ToUpper(m.Slot)); lm != nil {
+	m.controller = -1
+	if cm := reController.FindStringSubmatch(m.Slot); cm != nil {
+		m.controller, _ = strconv.Atoi(cm[1])
+		m.letter = strings.ToUpper(cm[2])
+		m.number, _ = strconv.Atoi(cm[3])
+	} else if lm := reLocator.FindStringSubmatch(strings.ToUpper(m.Slot)); lm != nil {
 		m.letter = lm[1]
 		m.number, _ = strconv.Atoi(lm[2])
 	}
@@ -190,10 +247,18 @@ func parseSMBIOSMemory(raw []byte) (smbiosMemory, bool) {
 		m.channel, _ = strconv.Atoi(bm[1])
 		m.index, _ = strconv.Atoi(bm[2])
 	}
+	if sm := reBankSocket.FindStringSubmatch(m.Bank); sm != nil {
+		m.socket, _ = strconv.Atoi(sm[1])
+	} else if sm := reLocatorSocket.FindStringSubmatch(strings.ToUpper(m.Slot)); sm != nil {
+		m.socket, _ = strconv.Atoi(sm[1])
+		if strings.HasPrefix(strings.ToUpper(m.Slot), "P") && m.socket > 0 {
+			m.socket-- // "P1-DIMMA1" is the first socket
+		}
+	}
 	return m, true
 }
 
-// edacDIMM is one dimm directory of an EDAC memory controller.
+// edacDIMM is one dimm (or rank) directory of an EDAC memory controller.
 type edacDIMM struct {
 	Location string // as the kernel log prints it: "mc0/csrow2/ch2"
 	Label    string
@@ -201,17 +266,22 @@ type edacDIMM struct {
 	SizeMB   uint64
 	CE, UE   uint64
 	mc       int
-	channel  int // -1 when the layout does not say
+	socket   int // derived from the controller's place among the controllers; see globalChannels
+	channel  int // -1 when the layout does not say; renumbered per socket by globalChannels
+	rawChan  int // the channel as the driver numbers it within its controller
 	index    int // the DIMM index on the channel: chip select / 2, or the slot; -1 when unknown
 }
 
 var reEDACLocation = regexp.MustCompile(`(csrow|channel|slot|memory|branch)\s+(\d+)`)
 
-// readEDAC walks /sys/devices/system/edac/mc/mc*/dimm*, keeping entries
+// readEDAC walks /sys/devices/system/edac/mc/mc*, keeping the dimm* and
+// rank* entries (a chip-select based driver, AMD's, names them by rank)
 // that have a size, which is how the driver marks a populated location.
 func readEDAC(sys string) []edacDIMM {
-	dirs, err := filepath.Glob(filepath.Join(sys, "devices", "system", "edac", "mc", "mc*", "dimm*"))
-	if err != nil || len(dirs) == 0 {
+	dirs, _ := filepath.Glob(filepath.Join(sys, "devices", "system", "edac", "mc", "mc*", "dimm*"))
+	ranks, _ := filepath.Glob(filepath.Join(sys, "devices", "system", "edac", "mc", "mc*", "rank*"))
+	dirs = append(dirs, ranks...)
+	if len(dirs) == 0 {
 		return nil
 	}
 	sort.Strings(dirs)
@@ -235,8 +305,24 @@ func readEDAC(sys string) []edacDIMM {
 		mc := filepath.Base(filepath.Dir(dir))
 		d.mc, _ = strconv.Atoi(strings.TrimPrefix(mc, "mc"))
 		d.Location = edacLocationOf(d.mc, read("dimm_location"), &d)
+		d.rawChan = d.channel
+		// The kernel log names the entry by its label ("on <label>"), so
+		// the label, rendered as the log follower renders it, is the key
+		// the two meet on; the layout string only says where it sits.
+		if d.Label != "" {
+			d.Location = edacLocation(strconv.Itoa(d.mc), d.Label)
+		}
 		out = append(out, d)
 	}
+	sort.SliceStable(out, func(i, j int) bool {
+		if out[i].mc != out[j].mc {
+			return out[i].mc < out[j].mc
+		}
+		if out[i].channel != out[j].channel {
+			return out[i].channel < out[j].channel
+		}
+		return out[i].index < out[j].index
+	})
 	return out
 }
 
@@ -270,20 +356,91 @@ func edacLocationOf(mc int, location string, d *edacDIMM) string {
 	return strings.Join(parts, "/")
 }
 
-// joinDIMMs matches EDAC entries to firmware slots. A bank locator that
-// names the channel and DIMM index is exact. Failing that, the channel
-// letter of the locator is taken to be the EDAC channel in order (A is
-// 0), which is exact when that channel holds one module and a guess by
-// slot number when it holds several. On a chip-select layout a module's
-// ranks are separate EDAC entries, so a slot gathers every entry that
-// points at it and sums their counts. Slots with no match keep their
-// firmware description; EDAC entries with no match are listed by
-// location alone.
+// globalChannels renumbers EDAC channels the way the firmware counts
+// them: per socket, across the socket's memory controllers in order. A
+// Xeon with two controllers of two channels each has EDAC channels 0 and
+// 1 on mc0 and mc1 but firmware channels 0 to 3; AMD has one controller
+// per socket and the numbers already agree. The controllers per socket
+// is the controller count over the socket count, and the channels per
+// controller is what the firmware's channel count (from bank locators,
+// else slot letters) divides into. A layout that does not divide evenly
+// is left as it is.
+func globalChannels(slots []smbiosMemory, edac []edacDIMM) {
+	mcs := map[int]bool{}
+	for _, d := range edac {
+		mcs[d.mc] = true
+	}
+	sockets := map[int]bool{}
+	channels := map[int]bool{}
+	letters := map[string]bool{}
+	for _, s := range slots {
+		sockets[s.socket] = true
+		if s.channel >= 0 {
+			channels[s.channel] = true
+		}
+		if s.letter != "" && s.controller < 0 {
+			letters[s.letter] = true
+		}
+	}
+	nSockets := max(len(sockets), 1)
+	if len(mcs) == 0 || len(mcs)%nSockets != 0 {
+		return
+	}
+	perSocket := len(mcs) / nSockets
+	sorted := make([]int, 0, len(mcs))
+	for mc := range mcs {
+		sorted = append(sorted, mc)
+	}
+	sort.Ints(sorted)
+	ordinal := map[int]int{}
+	for i, mc := range sorted {
+		ordinal[mc] = i
+	}
+	fwChannels := max(len(channels), len(letters))
+	perMC := 0
+	if perSocket > 1 && fwChannels > 0 && fwChannels%perSocket == 0 {
+		perMC = fwChannels / perSocket
+	}
+	for i := range edac {
+		o := ordinal[edac[i].mc]
+		edac[i].socket = o / perSocket
+		if perMC > 0 && edac[i].channel >= 0 {
+			edac[i].channel = (o%perSocket)*perMC + edac[i].channel
+		}
+	}
+}
+
+// joinDIMMs matches EDAC entries to firmware slots, by the first rule
+// that applies to a slot:
+//
+//   - a bank locator naming channel and DIMM index ("P0_Node0_Channel1_Dimm1")
+//     is exact;
+//   - a locator naming the controller ("Controller0-ChannelA-DIMM0", Intel
+//     client boards, where the driver splits a DDR5 module into its two
+//     subchannels on one controller) takes every entry of that controller
+//     when it holds one module, else the entry whose channel letter and
+//     DIMM index match, exactly;
+//   - the channel letter of the locator ("DIMM_C2") as the channel in
+//     order, exact when that channel holds one module and a guess by slot
+//     number when it holds several;
+//   - failing all of those, when the unmatched slots and the unmatched
+//     modules EDAC lists are equal in number, slot order to module order,
+//     a guess.
+//
+// On a chip-select layout a module's ranks are separate EDAC entries, so
+// a slot gathers every entry that points at it and sums their counts.
+// Slots with no match keep their firmware description; EDAC entries with
+// no match are listed by location alone.
 func joinDIMMs(slots []smbiosMemory, edac []edacDIMM) []DIMM {
-	byLetter := map[string][]int{}
+	globalChannels(slots, edac)
+	byLetter := map[[2]any][]int{} // socket, letter -> slots
+	byController := map[int][]int{}
 	for i, s := range slots {
-		if s.letter != "" {
-			byLetter[s.letter] = append(byLetter[s.letter], i)
+		if s.controller >= 0 {
+			byController[s.controller] = append(byController[s.controller], i)
+		} else if s.letter != "" {
+			k := [2]any{s.socket, s.letter}
+			byLetter[k] = append(byLetter[k], i)
 		}
 	}
 	matches := make([][]int, len(slots)) // slot -> EDAC indexes
@@ -297,21 +454,36 @@ func joinDIMMs(slots []smbiosMemory, edac []edacDIMM) []DIMM {
 		used[e] = true
 	}
 	for e, d := range edac {
-		if d.channel < 0 {
-			continue
-		}
-		exact := -1
+		// Exact: the bank locator names this socket, channel and index.
 		for i, s := range slots {
-			if s.channel == d.channel && s.index == d.index {
-				exact = i
+			if s.channel >= 0 && s.socket == d.socket && s.channel == d.channel && s.index == d.index {
+				take(i, e, "exact")
 				break
 			}
 		}
-		if exact >= 0 {
-			take(exact, e, "exact")
+		if used[e] {
 			continue
 		}
-		candidates := byLetter[string(rune('A'+d.channel))]
+		// A controller-naming locator: mc N is controller N.
+		if slotsOn := byController[d.mc]; len(slotsOn) > 0 {
+			if len(slotsOn) == 1 {
+				take(slotsOn[0], e, "exact")
+				continue
+			}
+			for _, i := range slotsOn {
+				if d.rawChan >= 0 && slots[i].letter == string(rune('A'+d.rawChan)) && slots[i].number == d.index {
+					take(i, e, "exact")
+					break
+				}
+			}
+			if used[e] {
+				continue
+			}
+		}
+		if d.channel < 0 {
+			continue
+		}
+		candidates := byLetter[[2]any{d.socket, string(rune('A' + d.channel))}]
 		var free []int
 		for _, i := range candidates {
 			if slots[i].channel < 0 {
@@ -325,6 +497,42 @@ func joinDIMMs(slots []smbiosMemory, edac []edacDIMM) []DIMM {
 			// Several modules on the channel: the index counts slots in
 			// number order. A hardware profile is the place to correct it.
 			take(candidates[d.index], e, "inferred")
+		}
+	}
+	// Positional fallback, only for slots that say nothing about where
+	// they are ("PROC 1 DIMM 3"): group what is left by module and pair
+	// in order. A slot that names a channel and still matched nothing
+	// stays unmatched, since a wrong answer is worse than none.
+	var freeSlots []int
+	blind := true
+	for i, s := range slots {
+		if len(matches[i]) == 0 {
+			freeSlots = append(freeSlots, i)
+			if s.letter != "" || s.channel >= 0 || s.controller >= 0 {
+				blind = false
+			}
+		}
+	}
+	if len(freeSlots) > 0 && blind {
+		type moduleKey struct{ mc, channel, index int }
+		var order []moduleKey
+		groups := map[moduleKey][]int{}
+		for e, d := range edac {
+			if used[e] {
+				continue
+			}
+			k := moduleKey{d.mc, d.channel, d.index}
+			if _, ok := groups[k]; !ok {
+				order = append(order, k)
+			}
+			groups[k] = append(groups[k], e)
+		}
+		if len(order) == len(freeSlots) {
+			for n, k := range order {
+				for _, e := range groups[k] {
+					take(freeSlots[n], e, "inferred")
+				}
+			}
 		}
 	}
 	out := make([]DIMM, 0, len(slots)+len(edac))
@@ -364,7 +572,8 @@ func (c *Collector) captureMemory(dir string) error {
 			_ = c.copySys(dir, strings.TrimPrefix(filepath.Join(mc, name), c.sys()))
 		}
 		dimms, _ := filepath.Glob(filepath.Join(mc, "dimm*"))
-		for _, d := range dimms {
+		ranks, _ := filepath.Glob(filepath.Join(mc, "rank*"))
+		for _, d := range append(dimms, ranks...) {
 			for _, name := range []string{"dimm_label", "dimm_location", "dimm_mem_type", "size", "dimm_ce_count", "dimm_ue_count"} {
 				if err := c.copySys(dir, strings.TrimPrefix(filepath.Join(d, name), c.sys())); err != nil {
 					slog.Debug("capture: edac", "path", d, "attr", name, "err", err)

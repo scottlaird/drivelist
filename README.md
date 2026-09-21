@@ -174,10 +174,16 @@ says of each slot (SMBIOS type 17: the printed slot name, size, type,
 speed, ranks, part and serial number) joined to what the kernel's EDAC
 driver counts for it (corrected and uncorrected errors since boot).
 The join uses the firmware's bank locator when it names the channel and
-DIMM index (`P0_Node0_Channel1_Dimm1`), else the channel letter of the
-slot name, which is exact when the channel holds one module and a guess
-by slot order when it holds two; `drivelist dimms --allfields` shows
-the EDAC location and how sure the match is.  `drivelist dimms
+DIMM index (`P0_Node0_Channel1_Dimm1`); else a slot name that names the
+controller (`Controller0-ChannelA-DIMM0`, Intel client boards, whose
+driver splits a DDR5 module into two subchannels); else the channel
+letter of the slot name, which is exact when the channel holds one
+module and a guess by slot order when it holds two; else, for slots
+that say nothing (`PROC 1 DIMM 3`), slot order to module order, a
+guess.  EDAC channels are counted the firmware's way, across a
+socket's controllers in order, so a Xeon's two controllers line up
+with channels 0 to 3.  `drivelist dimms --allfields` shows the EDAC
+location and how sure the match is.  `drivelist dimms
 [--host H] [--problems]` lists the fleet's memory, modules with errors
 first; the web interface has the same under Memory and on each host's
 page.  Counts that grew since the last report leave a sample and a

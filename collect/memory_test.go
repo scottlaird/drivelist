@@ -5,6 +5,7 @@ import (
 	"os"
 	"path/filepath"
 	"testing"
+	"time"
 )
 
 // type17 builds a type 17 record: a 0x28-byte formatted area (SMBIOS 3.2)
@@ -63,7 +64,7 @@ func itoa(i int) string { return string(rune('0' + i)) }
 // TestMemoryPBS1: a Supermicro H13SAE-MF, two DDR5 modules in DIMMA1 and
 // DIMMB1, which the bank locator calls Channel0_Dimm1 and Channel1_Dimm1:
 // the chip selects 2 and 3 of channel 1 are DIMMB1, exactly, however the
-// slot is numbered.
+// slot is numbered. AMD's driver names its entries rank*, not dimm*.
 func TestMemoryPBS1(t *testing.T) {
 	sys := t.TempDir()
 	writeMemoryFixture(t, sys, [][]byte{
@@ -72,10 +73,10 @@ func TestMemoryPBS1(t *testing.T) {
 		type17("DIMMB2", "P0_Node0_Channel1_Dimm0", 0, 0x22, 0, "", "", "", 0),
 		type17("DIMMB1", "P0_Node0_Channel1_Dimm1", 32768, 0x22, 5600, "Micron Technology", "80CE042542F50C0000", "MB32G56U80S2R8.RtR", 2),
 	}, map[string]map[string]string{
-		"mc0/dimm2": {"dimm_label": "mc#0csrow#2channel#0", "dimm_location": "csrow 2 channel 0 ", "dimm_mem_type": "Unbuffered-DDR5", "size": "16384", "dimm_ce_count": "0", "dimm_ue_count": "0"},
-		"mc0/dimm3": {"dimm_label": "mc#0csrow#3channel#0", "dimm_location": "csrow 3 channel 0 ", "dimm_mem_type": "Unbuffered-DDR5", "size": "16384", "dimm_ce_count": "0", "dimm_ue_count": "0"},
-		"mc0/dimm6": {"dimm_label": "mc#0csrow#2channel#1", "dimm_location": "csrow 2 channel 1 ", "dimm_mem_type": "Unbuffered-DDR5", "size": "16384", "dimm_ce_count": "4", "dimm_ue_count": "0"},
-		"mc0/dimm7": {"dimm_label": "mc#0csrow#3channel#1", "dimm_location": "csrow 3 channel 1 ", "dimm_mem_type": "Unbuffered-DDR5", "size": "16384", "dimm_ce_count": "9083", "dimm_ue_count": "0"},
+		"mc0/rank2": {"dimm_label": "mc#0csrow#2channel#0", "dimm_location": "csrow 2 channel 0 ", "dimm_mem_type": "Unbuffered-DDR5", "size": "16384", "dimm_ce_count": "0", "dimm_ue_count": "0"},
+		"mc0/rank3": {"dimm_label": "mc#0csrow#3channel#0", "dimm_location": "csrow 3 channel 0 ", "dimm_mem_type": "Unbuffered-DDR5", "size": "16384", "dimm_ce_count": "0", "dimm_ue_count": "0"},
+		"mc0/rank6": {"dimm_label": "mc#0csrow#2channel#1", "dimm_location": "csrow 2 channel 1 ", "dimm_mem_type": "Unbuffered-DDR5", "size": "16384", "dimm_ce_count": "4", "dimm_ue_count": "0"},
+		"mc0/rank7": {"dimm_label": "mc#0csrow#3channel#1", "dimm_location": "csrow 3 channel 1 ", "dimm_mem_type": "Unbuffered-DDR5", "size": "16384", "dimm_ce_count": "9083", "dimm_ue_count": "0"},
 	})
 	inv, err := (&Collector{Platform: "linux", Sys: sys}).Memory()
 	if err != nil {
@@ -177,5 +178,130 @@ func TestMemoryNone(t *testing.T) {
 	}
 	if inv, _ := (&Collector{Platform: "darwin"}).Memory(); len(inv.DIMMs) != 0 {
 		t.Errorf("Memory() on darwin = %+v", inv)
+	}
+}
+
+// TestMemoryFS2: a Xeon with two memory controllers of two channels each.
+// EDAC has channels 0 and 1 on mc0 and on mc1; the firmware counts 0 to 3
+// across the socket. Channel order across controllers lines them up, and
+// the location is the label the kernel log names the entry by.
+func TestMemoryFS2(t *testing.T) {
+	sys := t.TempDir()
+	var records [][]byte
+	edac := map[string]map[string]string{}
+	for ch := 0; ch < 4; ch++ {
+		letter := string(rune('A' + ch))
+		for slot := 0; slot < 2; slot++ {
+			records = append(records, type17("DIMM"+letter+itoa(slot+1), "P0_Node0_Channel"+itoa(ch)+"_Dimm"+itoa(slot), 32768, 0x1a, 2133, "Samsung", "18BE"+letter+itoa(slot), "M393A4K40BB1-CRC", 2))
+			mc, mcCh := ch/2, ch%2
+			label := "CPU_SrcID#0_Ha#" + itoa(mc) + "_Chan#" + itoa(mcCh) + "_DIMM#" + itoa(slot)
+			ce := "0"
+			if ch == 3 && slot == 1 {
+				ce = "5"
+			}
+			edac["mc"+itoa(mc)+"/dimm"+itoa(mcCh*2+slot)] = map[string]string{"dimm_label": label, "dimm_location": "channel " + itoa(mcCh) + " slot " + itoa(slot) + " ", "dimm_mem_type": "Registered-DDR4", "size": "32768", "dimm_ce_count": ce, "dimm_ue_count": "0"}
+		}
+	}
+	writeMemoryFixture(t, sys, records, edac)
+	inv, _ := (&Collector{Platform: "linux", Sys: sys}).Memory()
+	if len(inv.DIMMs) != 8 {
+		t.Fatalf("DIMMs = %d: %+v", len(inv.DIMMs), inv.DIMMs)
+	}
+	for _, d := range inv.DIMMs {
+		if d.Mapping != "exact" || d.EDAC == "" {
+			t.Errorf("%s = %+v, want an exact match", d.Slot, d)
+		}
+	}
+	if c1 := inv.DIMMs[4]; c1.Slot != "DIMMC1" || c1.EDAC != "mc1/CPU_SrcID#0_Ha#1_Chan#0_DIMM#0" {
+		t.Errorf("C1 = %+v", c1)
+	}
+	if d2 := inv.DIMMs[7]; d2.Slot != "DIMMD2" || d2.EDAC != "mc1/CPU_SrcID#0_Ha#1_Chan#1_DIMM#1" || d2.CE != 5 {
+		t.Errorf("D2 = %+v", d2)
+	}
+	// The log follower renders the same line the same way.
+	c := newClassifier()
+	ev, ok := c.classify(time.Time{}, "EDAC MC1: 1 CE memory read error on CPU_SrcID#0_Ha#1_Chan#1_DIMM#1 (channel:1 slot:1 page:0x1a2b3c offset:0x0 grain:32 syndrome:0x0)")
+	if !ok || ev.Code() != "mc1/CPU_SrcID#0_Ha#1_Chan#1_DIMM#1" {
+		t.Errorf("log line code = %q, %v", ev.Code(), ok)
+	}
+}
+
+// TestMemoryDesk1: an MS-01, where the Intel client driver splits each
+// DDR5 module into two 8 GB subchannels on its own controller and the
+// firmware names the slots by controller. All of a controller's entries
+// are its one module.
+func TestMemoryDesk1(t *testing.T) {
+	sys := t.TempDir()
+	writeMemoryFixture(t, sys, [][]byte{
+		type17("Controller0-ChannelA-DIMM0", "BANK 0", 16384, 0x22, 5200, "Crucial Technology", "E8F495F7", "CT16G56C46S5.M8G1", 1),
+		type17("Controller1-ChannelA-DIMM0", "BANK 0", 16384, 0x22, 5200, "Crucial Technology", "E9626CFC", "CT16G56C46S5.M8D1", 1),
+	}, map[string]map[string]string{
+		"mc0/dimm0": {"dimm_location": "channel 0 slot 0 ", "dimm_mem_type": "Unbuffered-DDR5", "size": "8192", "dimm_ce_count": "0", "dimm_ue_count": "0"},
+		"mc0/dimm1": {"dimm_location": "channel 1 slot 0 ", "dimm_mem_type": "Unbuffered-DDR5", "size": "8192", "dimm_ce_count": "0", "dimm_ue_count": "0"},
+		"mc1/dimm0": {"dimm_location": "channel 0 slot 0 ", "dimm_mem_type": "Unbuffered-DDR5", "size": "8192", "dimm_ce_count": "3", "dimm_ue_count": "0"},
+		"mc1/dimm1": {"dimm_location": "channel 1 slot 0 ", "dimm_mem_type": "Unbuffered-DDR5", "size": "8192", "dimm_ce_count": "0", "dimm_ue_count": "0"},
+	})
+	inv, _ := (&Collector{Platform: "linux", Sys: sys}).Memory()
+	if len(inv.DIMMs) != 2 {
+		t.Fatalf("DIMMs = %+v", inv.DIMMs)
+	}
+	if a := inv.DIMMs[0]; a.Slot != "Controller0-ChannelA-DIMM0" || a.EDAC != "mc0/ch0/slot0+mc0/ch1/slot0" || a.Mapping != "exact" || a.CE != 0 {
+		t.Errorf("controller 0 = %+v", a)
+	}
+	if b := inv.DIMMs[1]; b.Slot != "Controller1-ChannelA-DIMM0" || b.EDAC != "mc1/ch0/slot0+mc1/ch1/slot0" || b.Mapping != "exact" || b.CE != 3 {
+		t.Errorf("controller 1 = %+v", b)
+	}
+}
+
+// TestMemoryD1: an HPE cartridge naming slots "PROC 1 DIMM 1" to "4" with
+// nothing else to go on: four slots, four modules, paired in order and
+// marked inferred.
+func TestMemoryD1(t *testing.T) {
+	sys := t.TempDir()
+	var records [][]byte
+	for i := 1; i <= 4; i++ {
+		records = append(records, type17("PROC 1 DIMM "+itoa(i), "", 32768, 0x1a, 2133, "UNKNOWN", "", "NOT AVAILABLE", 2))
+	}
+	writeMemoryFixture(t, sys, records, map[string]map[string]string{
+		"mc0/dimm0": {"dimm_location": "channel 0 slot 0 ", "dimm_mem_type": "Registered-DDR4", "size": "32768", "dimm_ce_count": "0", "dimm_ue_count": "0"},
+		"mc0/dimm1": {"dimm_location": "channel 0 slot 1 ", "dimm_mem_type": "Registered-DDR4", "size": "32768", "dimm_ce_count": "0", "dimm_ue_count": "0"},
+		"mc0/dimm2": {"dimm_location": "channel 1 slot 0 ", "dimm_mem_type": "Registered-DDR4", "size": "32768", "dimm_ce_count": "7", "dimm_ue_count": "0"},
+		"mc0/dimm3": {"dimm_location": "channel 1 slot 1 ", "dimm_mem_type": "Registered-DDR4", "size": "32768", "dimm_ce_count": "0", "dimm_ue_count": "0"},
+	})
+	inv, _ := (&Collector{Platform: "linux", Sys: sys}).Memory()
+	if len(inv.DIMMs) != 4 {
+		t.Fatalf("DIMMs = %+v", inv.DIMMs)
+	}
+	for i, d := range inv.DIMMs {
+		if d.Slot != "PROC 1 DIMM "+itoa(i+1) || d.Mapping != "inferred" || d.EDAC == "" {
+			t.Errorf("DIMM %d = %+v", i, d)
+		}
+	}
+	if d3 := inv.DIMMs[2]; d3.EDAC != "mc0/ch1/slot0" || d3.CE != 7 {
+		t.Errorf("DIMM 3 = %+v", d3)
+	}
+}
+
+// TestMemoryRawTable: no dmi-sysfs entries, so the records come from the
+// raw table, walked structure by structure.
+func TestMemoryRawTable(t *testing.T) {
+	sys := t.TempDir()
+	dir := filepath.Join(sys, "firmware", "dmi", "tables")
+	if err := os.MkdirAll(dir, 0o755); err != nil {
+		t.Fatal(err)
+	}
+	var table []byte
+	// A type 16 structure ahead of it, with two strings, to walk past.
+	table = append(table, 16, 0x0f, 0x10, 0x00, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11)
+	table = append(table, []byte("one\x00two\x00\x00")...)
+	table = append(table, type17("DIMM_C2", "NODE 1", 32768, 0x1a, 2400, "Samsung", "32F52599", "M393A4K40BB1-CRC", 2)...)
+	table = append(table, type17("DIMM_D1", "NODE 1", 0, 0x1a, 0, "", "", "", 0)...)
+	table = append(table, 127, 4, 0, 0, 0, 0)
+	if err := os.WriteFile(filepath.Join(dir, "DMI"), table, 0o600); err != nil {
+		t.Fatal(err)
+	}
+	inv, _ := (&Collector{Platform: "linux", Sys: sys}).Memory()
+	if len(inv.DIMMs) != 1 || inv.DIMMs[0].Slot != "DIMM_C2" || inv.DIMMs[0].Serial != "32F52599" || inv.DIMMs[0].SizeBytes != 32<<30 {
+		t.Errorf("DIMMs from the raw table = %+v", inv.DIMMs)
 	}
 }
