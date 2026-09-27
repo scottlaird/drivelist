@@ -218,9 +218,13 @@ module's own alarm and warning thresholds and the flags it has raised.
 A QSFP split into breakouts is one optic under its first port.
 Optics are tracked by vendor, part and serial like drives: `drivelist
 optics [--host H] [--problems] [--all]` lists them with the lowest
-lane's levels in dBm, problems first (a flag the module raised, a
-reading past its own threshold, or a suspect or bad mark; on a port
-whose link is down, low light is expected and not counted); `drivelist
+lane's levels in dBm and how often the port's link changed in the
+last day (from the kernel's `carrier_changes` count), problems first
+(a flag the module raised that its reading bears out, a reading past
+its own threshold, four or more link changes in any hour of the last
+day, since a failing optic often runs clean for hours between bouts,
+or a suspect or bad mark; on a port whose link is down, low light is expected and not
+counted); `drivelist
 optic REF` shows one, every lane, its thresholds and where it has been
 (REF is a serial, a prefix, or `HOST:PORT`), `optic REF history` its
 hourly readings, and `optic REF mark STATUS` and `optic REF note TEXT`

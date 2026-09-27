@@ -187,3 +187,64 @@ func TestIngestOptics(t *testing.T) {
 		t.Errorf("ListEvents = %+v", evs)
 	}
 }
+
+// TestOpticFlaps: growth of the port's carrier_changes between reports is
+// counted into the hour; four or more is a problem and, once a day, an
+// optic_flapping event; a counter that restarts lower is not growth.
+func TestOpticFlaps(t *testing.T) {
+	h := newHarness(t)
+	report := func(carriers uint64) {
+		o := sr4("enp21", 0.75)
+		o.CarrierChanges = u(carriers)
+		h.submit(Report{Host: hostA, ObservedAt: h.now, Devices: []ReportDevice{devX}, Complete: true, Optics: []Optic{o}, OpticsCollected: true})
+	}
+	flapEvents := func() int { return h.count(`SELECT COUNT(*) FROM event WHERE kind = 'optic_flapping'`) }
+	row := func() OpticRow {
+		rows, err := h.s.ListOptics(h.ctx, "", false, false)
+		if err != nil || len(rows) != 1 {
+			t.Fatalf("ListOptics = %v, %v", rows, err)
+		}
+		return rows[0]
+	}
+
+	h.now = h.now.Truncate(time.Hour).Add(5 * time.Minute)
+	report(10)
+	if r := row(); r.Optic.Flaps != 0 || len(r.Problems) != 0 || *r.Optic.CarrierChanges != 10 {
+		t.Errorf("first report = flaps %d problems %v", r.Optic.Flaps, r.Problems)
+	}
+	h.advance(5 * time.Minute)
+	report(12) // one drop and recovery: not yet flapping
+	if r := row(); r.Optic.Flaps != 2 || len(r.Problems) != 0 || flapEvents() != 0 {
+		t.Errorf("two changes = flaps %d problems %v events %d", r.Optic.Flaps, r.Problems, flapEvents())
+	}
+	h.advance(5 * time.Minute)
+	report(30) // every minute or two
+	r := row()
+	if r.Optic.Flaps != 20 || len(r.Problems) != 1 || r.Problems[0] != "link flapped 20 times this hour" || flapEvents() != 1 {
+		t.Errorf("flapping = flaps %d problems %v events %d", r.Optic.Flaps, r.Problems, flapEvents())
+	}
+	h.advance(5 * time.Minute)
+	report(40) // more the same day: counted, no second event
+	if r := row(); r.Optic.Flaps != 30 || flapEvents() != 1 {
+		t.Errorf("still flapping = flaps %d events %d", r.Optic.Flaps, flapEvents())
+	}
+	// The next hours are quiet, and the counter restarts lower (a
+	// reboot): no new flaps, but the bout stays a problem for the day.
+	h.advance(time.Hour)
+	report(40)
+	h.advance(5 * time.Minute)
+	report(3)
+	if r := row(); r.Optic.Flaps != 0 || r.Optic.FlapsDay != 30 || r.Optic.FlapHours != 1 || len(r.Problems) != 1 || r.Problems[0] != "link flapped 30 times in the last day" {
+		t.Errorf("quiet hours after a bout = flaps %d day %d hours %d problems %v", r.Optic.Flaps, r.Optic.FlapsDay, r.Optic.FlapHours, r.Problems)
+	}
+	// A day later it is history.
+	h.advance(25 * time.Hour)
+	report(3)
+	if r := row(); r.Optic.FlapsDay != 0 || len(r.Problems) != 0 {
+		t.Errorf("a day after the bout = day %d problems %v", r.Optic.FlapsDay, r.Problems)
+	}
+	d, _ := h.s.GetOptic(h.ctx, "MT1918FT01234", h.now.Add(-48*time.Hour))
+	if len(d.Samples) != 3 || d.Samples[0].Flaps != 0 || d.Samples[2].Flaps != 30 {
+		t.Errorf("hourly flaps = %+v", d.Samples)
+	}
+}

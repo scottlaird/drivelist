@@ -73,11 +73,12 @@ var (
 	descOpticRx        = prometheus.NewDesc("drivelist_optic_rx_power_dbm", "Received optical power of one lane of an optic in dBm; absent when the module reports none or zero.", []string{"host", "port", "serial", "part", "lane"}, nil)
 	descOpticTx        = prometheus.NewDesc("drivelist_optic_tx_power_dbm", "Transmitted optical power of one lane of an optic in dBm.", []string{"host", "port", "serial", "part", "lane"}, nil)
 	descOpticBias      = prometheus.NewDesc("drivelist_optic_tx_bias_milliamps", "Laser bias current of one lane of an optic.", []string{"host", "port", "serial", "part", "lane"}, nil)
+	descOpticCarrier   = prometheus.NewDesc("drivelist_optic_carrier_changes_total", "The kernel's count of link up and down changes on an optic's port, as last reported.", []string{"host", "port", "serial", "part"}, nil)
 	descOpticProblem   = prometheus.NewDesc("drivelist_optic_problem", "1 when an optic in a port has a problem: a flag it raised, a reading past its own threshold, or a suspect or bad mark.", []string{"host", "port", "serial", "part"}, nil)
 )
 
 func (c *fleetCollector) Describe(ch chan<- *prometheus.Desc) {
-	for _, d := range []*prometheus.Desc{descHostDrives, descHostMissing, descHostGhosts, descHostStale, descHostLastReport, descDrives, descKernelWarn, descEvents24, descScrapeError, descSASErrors, descSASRate, descOpticTemp, descOpticRx, descOpticTx, descOpticBias, descOpticProblem} {
+	for _, d := range []*prometheus.Desc{descHostDrives, descHostMissing, descHostGhosts, descHostStale, descHostLastReport, descDrives, descKernelWarn, descEvents24, descScrapeError, descSASErrors, descSASRate, descOpticTemp, descOpticRx, descOpticTx, descOpticBias, descOpticProblem, descOpticCarrier} {
 		ch <- d
 	}
 }
@@ -123,6 +124,9 @@ func (c *fleetCollector) Collect(ch chan<- prometheus.Metric) {
 			ch <- prometheus.MustNewConstMetric(descOpticProblem, prometheus.GaugeValue, problem, labels...)
 			if o.TempC != nil {
 				ch <- prometheus.MustNewConstMetric(descOpticTemp, prometheus.GaugeValue, *o.TempC, labels...)
+			}
+			if o.CarrierChanges != nil {
+				ch <- prometheus.MustNewConstMetric(descOpticCarrier, prometheus.CounterValue, float64(*o.CarrierChanges), labels...)
 			}
 			for _, l := range o.Lanes {
 				ll := append(append([]string(nil), labels...), strconv.Itoa(l.Lane))

@@ -248,6 +248,7 @@ const (
 	EventOpticVanished      = "optic_vanished"       // an optic gone from its port
 	EventOpticMoved         = "optic_moved"          // an optic in another port or on another host
 	EventOpticAlarm         = "optic_alarm"          // the module raised an alarm or warning flag; once per optic, flag and day
+	EventOpticFlapping      = "optic_flapping"       // the port's link went up and down FlapLimit times in an hour; once per optic and day
 	EventOpticStatusChanged = "optic_status_changed" // a person changed the optic's status
 	EventOpticNote          = "optic_note"           // a person noted something about the optic
 )

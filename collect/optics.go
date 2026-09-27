@@ -35,11 +35,16 @@ type Optic struct {
 	Connector  string // "LC", "MPO 1x12", "No separable connector"
 	Wavelength float64
 
-	Link        string   // the interface's operstate: "up" | "down" | ...
-	Diagnostics bool     // the module reports any measurement at all
-	TempC       *float64 // module temperature
-	VoltageV    *float64 // supply voltage
-	Lanes       []OpticLane
+	Link string // the interface's operstate: "up" | "down" | ...
+	// CarrierChanges is the kernel's count of link up and down
+	// transitions on the port since the interface was created, summed
+	// over breakouts; nil when unreadable. Its growth between readings
+	// is how often the link flapped.
+	CarrierChanges *uint64
+	Diagnostics    bool     // the module reports any measurement at all
+	TempC          *float64 // module temperature
+	VoltageV       *float64 // supply voltage
+	Lanes          []OpticLane
 	// Thresholds are the module's own, from its EEPROM: "rx_low_warning",
 	// "temp_high_alarm", ... in the units of the measurement (mW for
 	// power, mA for bias, °C, V).
@@ -106,11 +111,16 @@ func (c *Collector) Optics() ([]Optic, error) {
 		if b, err := os.ReadFile(filepath.Join(c.sys(), "class", "net", name, "operstate")); err == nil {
 			o.Link = strings.TrimSpace(string(b))
 		}
+		o.CarrierChanges = c.carrierChanges(name)
 		if k := o.Key(); k != "" {
 			if i, seen := byKey[k]; seen {
 				out[i].Ports = append(out[i].Ports, name)
 				if o.Link == "up" {
 					out[i].Link = "up"
+				}
+				if o.CarrierChanges != nil && out[i].CarrierChanges != nil {
+					sum := *out[i].CarrierChanges + *o.CarrierChanges
+					out[i].CarrierChanges = &sum
 				}
 				continue
 			}
@@ -119,6 +129,20 @@ func (c *Collector) Optics() ([]Optic, error) {
 		out = append(out, o)
 	}
 	return out, nil
+}
+
+// carrierChanges reads /sys/class/net/PORT/carrier_changes; nil when
+// the kernel does not have it (before 3.15) or it is unreadable.
+func (c *Collector) carrierChanges(port string) *uint64 {
+	b, err := os.ReadFile(filepath.Join(c.sys(), "class", "net", port, "carrier_changes"))
+	if err != nil {
+		return nil
+	}
+	n, err := strconv.ParseUint(strings.TrimSpace(string(b)), 10, 64)
+	if err != nil {
+		return nil
+	}
+	return &n
 }
 
 // netPorts lists the physical network interfaces, the ones with a
@@ -413,8 +437,10 @@ func (c *Collector) captureOptics(dir string) error {
 		if err := os.MkdirAll(filepath.Join(dir, "sys", "class", "net", name, "device"), 0o755); err != nil {
 			return err
 		}
-		if err := c.copySys(dir, "/class/net/"+name+"/operstate"); err != nil {
-			slog.Debug("capture: operstate", "port", name, "err", err)
+		for _, attr := range []string{"operstate", "carrier_changes"} {
+			if err := c.copySys(dir, "/class/net/"+name+"/"+attr); err != nil {
+				slog.Debug("capture: net attribute", "port", name, "attr", attr, "err", err)
+			}
 		}
 		out, err := c.run("ethtool", "-m", name)
 		if err != nil || len(out) == 0 {

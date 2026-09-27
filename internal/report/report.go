@@ -179,7 +179,7 @@ func Optics(req *pb.ReportInventoryRequest, optics []collect.Optic, collected bo
 func Optic(o collect.Optic) *pb.Optic {
 	out := &pb.Optic{Port: o.Port, Ports: o.Ports, Form: o.Form, Identifier: o.Identifier, Kind: o.Kind, Vendor: o.Vendor, Oui: o.OUI, Part: o.Part,
 		Rev: o.Rev, Serial: o.Serial, DateCode: o.DateCode, Compliance: o.Compliance, Connector: o.Connector, WavelengthNm: o.Wavelength,
-		Link: o.Link, Diagnostics: o.Diagnostics, TempC: o.TempC, VoltageV: o.VoltageV, Thresholds: o.Thresholds, Flags: o.Flags}
+		Link: o.Link, Diagnostics: o.Diagnostics, TempC: o.TempC, VoltageV: o.VoltageV, Thresholds: o.Thresholds, Flags: o.Flags, CarrierChanges: o.CarrierChanges}
 	for _, l := range o.Lanes {
 		out.Lanes = append(out.Lanes, &pb.OpticLane{Lane: uint32(l.Lane), BiasMa: l.BiasMA, TxMw: l.TxMW, RxMw: l.RxMW})
 	}

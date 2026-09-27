@@ -1027,30 +1027,34 @@ func (x *SasPhy) GetPhyResetProblem() uint64 {
 // OSFP; optical or copper) as ethtool -m decodes its EEPROM. Unset
 // measurements are ones the module does not report, never zero.
 type Optic struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Port          string                 `protobuf:"bytes,1,opt,name=port,proto3" json:"port,omitempty"`             // the interface it was read through: "enp1s0f0", "swp7"
-	Ports         []string               `protobuf:"bytes,2,rep,name=ports,proto3" json:"ports,omitempty"`           // every interface reading the same module, for a port split into breakouts
-	Form          string                 `protobuf:"bytes,3,opt,name=form,proto3" json:"form,omitempty"`             // "SFP", "QSFP28", "QSFP-DD", "OSFP"
-	Identifier    string                 `protobuf:"bytes,4,opt,name=identifier,proto3" json:"identifier,omitempty"` // as ethtool prints it: "0x11 (QSFP28)"
-	Kind          string                 `protobuf:"bytes,5,opt,name=kind,proto3" json:"kind,omitempty"`             // "optical" | "aoc" | "dac" | ""
-	Vendor        string                 `protobuf:"bytes,6,opt,name=vendor,proto3" json:"vendor,omitempty"`
-	Oui           string                 `protobuf:"bytes,7,opt,name=oui,proto3" json:"oui,omitempty"`
-	Part          string                 `protobuf:"bytes,8,opt,name=part,proto3" json:"part,omitempty"`
-	Rev           string                 `protobuf:"bytes,9,opt,name=rev,proto3" json:"rev,omitempty"`
-	Serial        string                 `protobuf:"bytes,10,opt,name=serial,proto3" json:"serial,omitempty"`
-	DateCode      string                 `protobuf:"bytes,11,opt,name=date_code,json=dateCode,proto3" json:"date_code,omitempty"`
-	Compliance    string                 `protobuf:"bytes,12,opt,name=compliance,proto3" json:"compliance,omitempty"` // "10G Ethernet: 10G Base-SR"
-	Connector     string                 `protobuf:"bytes,13,opt,name=connector,proto3" json:"connector,omitempty"`   // "LC", "MPO 1x12", "No separable connector"
-	WavelengthNm  float64                `protobuf:"fixed64,14,opt,name=wavelength_nm,json=wavelengthNm,proto3" json:"wavelength_nm,omitempty"`
-	Link          string                 `protobuf:"bytes,15,opt,name=link,proto3" json:"link,omitempty"`                // the interface's operstate
-	Diagnostics   bool                   `protobuf:"varint,16,opt,name=diagnostics,proto3" json:"diagnostics,omitempty"` // it reports any measurement at all
-	TempC         *float64               `protobuf:"fixed64,17,opt,name=temp_c,json=tempC,proto3,oneof" json:"temp_c,omitempty"`
-	VoltageV      *float64               `protobuf:"fixed64,18,opt,name=voltage_v,json=voltageV,proto3,oneof" json:"voltage_v,omitempty"`
-	Lanes         []*OpticLane           `protobuf:"bytes,19,rep,name=lanes,proto3" json:"lanes,omitempty"`
-	Thresholds    map[string]float64     `protobuf:"bytes,20,rep,name=thresholds,proto3" json:"thresholds,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"fixed64,2,opt,name=value"` // the module's own: "rx_low_warning" -> mW, "temp_high_alarm" -> °C, ...
-	Flags         []string               `protobuf:"bytes,21,rep,name=flags,proto3" json:"flags,omitempty"`                                                                                       // alarm and warning flags raised now: "rx low warning lane 2"
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	state          protoimpl.MessageState `protogen:"open.v1"`
+	Port           string                 `protobuf:"bytes,1,opt,name=port,proto3" json:"port,omitempty"`             // the interface it was read through: "enp1s0f0", "swp7"
+	Ports          []string               `protobuf:"bytes,2,rep,name=ports,proto3" json:"ports,omitempty"`           // every interface reading the same module, for a port split into breakouts
+	Form           string                 `protobuf:"bytes,3,opt,name=form,proto3" json:"form,omitempty"`             // "SFP", "QSFP28", "QSFP-DD", "OSFP"
+	Identifier     string                 `protobuf:"bytes,4,opt,name=identifier,proto3" json:"identifier,omitempty"` // as ethtool prints it: "0x11 (QSFP28)"
+	Kind           string                 `protobuf:"bytes,5,opt,name=kind,proto3" json:"kind,omitempty"`             // "optical" | "aoc" | "dac" | ""
+	Vendor         string                 `protobuf:"bytes,6,opt,name=vendor,proto3" json:"vendor,omitempty"`
+	Oui            string                 `protobuf:"bytes,7,opt,name=oui,proto3" json:"oui,omitempty"`
+	Part           string                 `protobuf:"bytes,8,opt,name=part,proto3" json:"part,omitempty"`
+	Rev            string                 `protobuf:"bytes,9,opt,name=rev,proto3" json:"rev,omitempty"`
+	Serial         string                 `protobuf:"bytes,10,opt,name=serial,proto3" json:"serial,omitempty"`
+	DateCode       string                 `protobuf:"bytes,11,opt,name=date_code,json=dateCode,proto3" json:"date_code,omitempty"`
+	Compliance     string                 `protobuf:"bytes,12,opt,name=compliance,proto3" json:"compliance,omitempty"` // "10G Ethernet: 10G Base-SR"
+	Connector      string                 `protobuf:"bytes,13,opt,name=connector,proto3" json:"connector,omitempty"`   // "LC", "MPO 1x12", "No separable connector"
+	WavelengthNm   float64                `protobuf:"fixed64,14,opt,name=wavelength_nm,json=wavelengthNm,proto3" json:"wavelength_nm,omitempty"`
+	Link           string                 `protobuf:"bytes,15,opt,name=link,proto3" json:"link,omitempty"`                // the interface's operstate
+	Diagnostics    bool                   `protobuf:"varint,16,opt,name=diagnostics,proto3" json:"diagnostics,omitempty"` // it reports any measurement at all
+	TempC          *float64               `protobuf:"fixed64,17,opt,name=temp_c,json=tempC,proto3,oneof" json:"temp_c,omitempty"`
+	VoltageV       *float64               `protobuf:"fixed64,18,opt,name=voltage_v,json=voltageV,proto3,oneof" json:"voltage_v,omitempty"`
+	Lanes          []*OpticLane           `protobuf:"bytes,19,rep,name=lanes,proto3" json:"lanes,omitempty"`
+	Thresholds     map[string]float64     `protobuf:"bytes,20,rep,name=thresholds,proto3" json:"thresholds,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"fixed64,2,opt,name=value"` // the module's own: "rx_low_warning" -> mW, "temp_high_alarm" -> °C, ...
+	Flags          []string               `protobuf:"bytes,21,rep,name=flags,proto3" json:"flags,omitempty"`                                                                                       // alarm and warning flags raised now: "rx low warning lane 2"
+	CarrierChanges *uint64                `protobuf:"varint,22,opt,name=carrier_changes,json=carrierChanges,proto3,oneof" json:"carrier_changes,omitempty"`                                        // the kernel's link up/down count for the port (summed over breakouts); unset when unknown
+	Flaps          int32                  `protobuf:"varint,23,opt,name=flaps,proto3" json:"flaps,omitempty"`                                                                                      // set in query responses: link changes counted in the latest reading's hour
+	FlapsDay       int32                  `protobuf:"varint,24,opt,name=flaps_day,json=flapsDay,proto3" json:"flaps_day,omitempty"`                                                                // set in query responses: link changes in the last 24 hours
+	FlapHours      int32                  `protobuf:"varint,25,opt,name=flap_hours,json=flapHours,proto3" json:"flap_hours,omitempty"`                                                             // set in query responses: hours of the last 24 with four or more link changes
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
 }
 
 func (x *Optic) Reset() {
@@ -1228,6 +1232,34 @@ func (x *Optic) GetFlags() []string {
 		return x.Flags
 	}
 	return nil
+}
+
+func (x *Optic) GetCarrierChanges() uint64 {
+	if x != nil && x.CarrierChanges != nil {
+		return *x.CarrierChanges
+	}
+	return 0
+}
+
+func (x *Optic) GetFlaps() int32 {
+	if x != nil {
+		return x.Flaps
+	}
+	return 0
+}
+
+func (x *Optic) GetFlapsDay() int32 {
+	if x != nil {
+		return x.FlapsDay
+	}
+	return 0
+}
+
+func (x *Optic) GetFlapHours() int32 {
+	if x != nil {
+		return x.FlapHours
+	}
+	return 0
 }
 
 // OpticLane is one lane's measurements: 1 for an SFP, up to 4 for a QSFP,
@@ -3772,6 +3804,7 @@ type OpticSample struct {
 	Lanes         []*OpticLane           `protobuf:"bytes,6,rep,name=lanes,proto3" json:"lanes,omitempty"`
 	Flags         []string               `protobuf:"bytes,7,rep,name=flags,proto3" json:"flags,omitempty"`
 	Link          string                 `protobuf:"bytes,8,opt,name=link,proto3" json:"link,omitempty"`
+	Flaps         int32                  `protobuf:"varint,9,opt,name=flaps,proto3" json:"flaps,omitempty"` // link up and down changes counted in the hour
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -3860,6 +3893,13 @@ func (x *OpticSample) GetLink() string {
 		return x.Link
 	}
 	return ""
+}
+
+func (x *OpticSample) GetFlaps() int32 {
+	if x != nil {
+		return x.Flaps
+	}
+	return 0
 }
 
 type GetOpticResponse struct {
@@ -7132,7 +7172,7 @@ const file_drivelist_v1_drivelist_proto_rawDesc = "" +
 	"\rinvalid_dword\x18\x0e \x01(\x04R\finvalidDword\x12'\n" +
 	"\x0fdisparity_error\x18\x0f \x01(\x04R\x0edisparityError\x12&\n" +
 	"\x0floss_dword_sync\x18\x10 \x01(\x04R\rlossDwordSync\x12*\n" +
-	"\x11phy_reset_problem\x18\x11 \x01(\x04R\x0fphyResetProblem\"\xb7\x05\n" +
+	"\x11phy_reset_problem\x18\x11 \x01(\x04R\x0fphyResetProblem\"\xcb\x06\n" +
 	"\x05Optic\x12\x12\n" +
 	"\x04port\x18\x01 \x01(\tR\x04port\x12\x14\n" +
 	"\x05ports\x18\x02 \x03(\tR\x05ports\x12\x12\n" +
@@ -7161,13 +7201,19 @@ const file_drivelist_v1_drivelist_proto_rawDesc = "" +
 	"\n" +
 	"thresholds\x18\x14 \x03(\v2#.drivelist.v1.Optic.ThresholdsEntryR\n" +
 	"thresholds\x12\x14\n" +
-	"\x05flags\x18\x15 \x03(\tR\x05flags\x1a=\n" +
+	"\x05flags\x18\x15 \x03(\tR\x05flags\x12,\n" +
+	"\x0fcarrier_changes\x18\x16 \x01(\x04H\x02R\x0ecarrierChanges\x88\x01\x01\x12\x14\n" +
+	"\x05flaps\x18\x17 \x01(\x05R\x05flaps\x12\x1b\n" +
+	"\tflaps_day\x18\x18 \x01(\x05R\bflapsDay\x12\x1d\n" +
+	"\n" +
+	"flap_hours\x18\x19 \x01(\x05R\tflapHours\x1a=\n" +
 	"\x0fThresholdsEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
 	"\x05value\x18\x02 \x01(\x01R\x05value:\x028\x01B\t\n" +
 	"\a_temp_cB\f\n" +
 	"\n" +
-	"_voltage_v\"\x91\x01\n" +
+	"_voltage_vB\x12\n" +
+	"\x10_carrier_changes\"\x91\x01\n" +
 	"\tOpticLane\x12\x12\n" +
 	"\x04lane\x18\x01 \x01(\rR\x04lane\x12\x1c\n" +
 	"\abias_ma\x18\x02 \x01(\x01H\x00R\x06biasMa\x88\x01\x01\x12\x18\n" +
@@ -7428,7 +7474,7 @@ const file_drivelist_v1_drivelist_proto_rawDesc = "" +
 	"\tlast_seen\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\blastSeen\x125\n" +
 	"\bended_at\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\aendedAt\x12\x1d\n" +
 	"\n" +
-	"end_reason\x18\a \x01(\tR\tendReason\"\x99\x02\n" +
+	"end_reason\x18\a \x01(\tR\tendReason\"\xaf\x02\n" +
 	"\vOpticSample\x12*\n" +
 	"\x02ts\x18\x01 \x01(\v2\x1a.google.protobuf.TimestampR\x02ts\x12\x1a\n" +
 	"\bhostname\x18\x02 \x01(\tR\bhostname\x12\x12\n" +
@@ -7437,7 +7483,8 @@ const file_drivelist_v1_drivelist_proto_rawDesc = "" +
 	"\tvoltage_v\x18\x05 \x01(\x01H\x01R\bvoltageV\x88\x01\x01\x12-\n" +
 	"\x05lanes\x18\x06 \x03(\v2\x17.drivelist.v1.OpticLaneR\x05lanes\x12\x14\n" +
 	"\x05flags\x18\a \x03(\tR\x05flags\x12\x12\n" +
-	"\x04link\x18\b \x01(\tR\x04linkB\t\n" +
+	"\x04link\x18\b \x01(\tR\x04link\x12\x14\n" +
+	"\x05flaps\x18\t \x01(\x05R\x05flapsB\t\n" +
 	"\a_temp_cB\f\n" +
 	"\n" +
 	"_voltage_v\"\xdc\x01\n" +
