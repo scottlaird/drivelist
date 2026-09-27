@@ -79,6 +79,14 @@ service Query {
   rpc ListSmart(ListSmartRequest) returns (ListSmartResponse);
   // ListDimms lists every host's memory modules with their error counts.
   rpc ListDimms(ListDimmsRequest) returns (ListDimmsResponse);
+  // ListOptics lists the modules in the fleet's network ports with their
+  // latest readings, problems first.
+  rpc ListOptics(ListOpticsRequest) returns (ListOpticsResponse);
+  // GetOptic returns one optic: where it has been, its hourly readings,
+  // and its events.
+  rpc GetOptic(GetOpticRequest) returns (GetOpticResponse);
+  // AnnotateOptic records a manual status change or note on an optic.
+  rpc AnnotateOptic(AnnotateRequest) returns (AnnotateResponse);
 }
 
 // ---------- shared ----------
@@ -503,6 +511,63 @@ message ListSmartResponse {
   repeated SmartRow rows = 1;         // problems first, then by host and slot
 }
 
+message ListOpticsRequest {
+  string host = 1;                    // "" for every host
+  bool problems = 2;                  // only optics with a problem
+  bool all = 3;                       // include optics not in any port now, at their last place
+}
+
+// OpticRow is one optic with its latest reading and where it is.
+message OpticRow {
+  Optic optic = 1;                    // identity, the port it is in (or was last), and the latest reading
+  string status = 2;                  // ok | suspect | bad | shelved | retired
+  string hostname = 3;
+  bool present = 4;                   // in a port now
+  google.protobuf.Timestamp first_seen = 5;
+  google.protobuf.Timestamp last_seen = 6;
+  google.protobuf.Timestamp sampled_at = 7;   // the latest reading
+  repeated string problems = 8;       // "rx low warning lane 3", "marked bad"; empty when fine
+  bool dark = 9;                      // the port's link is down, so low levels are expected and not counted
+}
+
+message ListOpticsResponse {
+  repeated OpticRow rows = 1;         // problems first, then by host and port
+}
+
+message GetOpticRequest {
+  string ref = 1;                     // serial, an unambiguous prefix of one, or HOST:PORT for the module in that port now
+  google.protobuf.Timestamp since = 2; // readings since; unset for a week
+}
+
+message OpticPlacement {
+  string hostname = 1;
+  string port = 2;
+  repeated string ports = 3;
+  google.protobuf.Timestamp first_seen = 4;
+  google.protobuf.Timestamp last_seen = 5;
+  google.protobuf.Timestamp ended_at = 6;     // unset while it is there
+  string end_reason = 7;              // "vanished" | "moved" | "port"
+}
+
+// OpticSample is one hour's reading: the last one taken in the hour.
+message OpticSample {
+  google.protobuf.Timestamp ts = 1;
+  string hostname = 2;
+  string port = 3;
+  optional double temp_c = 4;
+  optional double voltage_v = 5;
+  repeated OpticLane lanes = 6;
+  repeated string flags = 7;
+  string link = 8;
+}
+
+message GetOpticResponse {
+  OpticRow row = 1;
+  repeated OpticPlacement placements = 2;     // newest first
+  repeated OpticSample samples = 3;           // newest first
+  repeated Event events = 4;                  // newest first
+}
+
 message ListDimmsRequest {
   string host = 1;                    // "" for every host
   bool problems = 2;                  // only modules with errors: any uncorrected, or corrected in the last day
@@ -650,6 +715,7 @@ message Event {
   string hostname = 6;                // when the event is about, or happened on, a host
   string detail = 7;                  // JSON object; keys depend on kind
   string source = 8;                  // "snapshot:123" | "user:scott@laptop" | "sweeper"
+  string optic_serial = 9;            // of the optic, when the event is about one
 }
 
 message ListHostsRequest {}

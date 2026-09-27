@@ -78,6 +78,10 @@ func reportFromProto(req *pb.ReportInventoryRequest) store.Report {
 		r.DIMMs = append(r.DIMMs, dimmFromProto(d))
 	}
 	r.MemTotalBytes, r.MemCorrection = req.GetMemTotalBytes(), req.GetMemCorrection()
+	r.OpticsCollected = req.GetOpticsCollected()
+	for _, o := range req.GetOptics() {
+		r.Optics = append(r.Optics, opticFromProto(o))
+	}
 	return r
 }
 
@@ -247,14 +251,15 @@ func eventToProto(e store.Event) *pb.Event {
 		detail = "{}"
 	}
 	return &pb.Event{
-		EventId:  e.ID,
-		Ts:       ts(e.TS),
-		Kind:     e.Kind,
-		Serial:   e.Serial,
-		Wwn:      e.WWN,
-		Hostname: e.Hostname,
-		Detail:   detail,
-		Source:   e.Source,
+		EventId:     e.ID,
+		Ts:          ts(e.TS),
+		Kind:        e.Kind,
+		Serial:      e.Serial,
+		Wwn:         e.WWN,
+		Hostname:    e.Hostname,
+		Detail:      detail,
+		Source:      e.Source,
+		OpticSerial: e.Optic,
 	}
 }
 
@@ -353,6 +358,37 @@ func ioSamplesFromProto(samples []*pb.IOSample) []store.IOSample {
 		out = append(out, s)
 	}
 	return out
+}
+
+func opticFromProto(o *pb.Optic) store.Optic {
+	out := store.Optic{Port: o.GetPort(), Ports: o.GetPorts(), Form: o.GetForm(), Identifier: o.GetIdentifier(), Kind: o.GetKind(), Vendor: o.GetVendor(), OUI: o.GetOui(),
+		Part: o.GetPart(), Rev: o.GetRev(), Serial: o.GetSerial(), DateCode: o.GetDateCode(), Compliance: o.GetCompliance(), Connector: o.GetConnector(),
+		Wavelength: o.GetWavelengthNm(), Link: o.GetLink(), Diagnostics: o.GetDiagnostics(), TempC: o.TempC, VoltageV: o.VoltageV, Thresholds: o.GetThresholds(), Flags: o.GetFlags()}
+	for _, l := range o.GetLanes() {
+		out.Lanes = append(out.Lanes, store.OpticLane{Lane: int(l.GetLane()), BiasMA: l.BiasMa, TxMW: l.TxMw, RxMW: l.RxMw})
+	}
+	return out
+}
+
+func opticToProto(o store.Optic) *pb.Optic {
+	out := &pb.Optic{Port: o.Port, Ports: o.Ports, Form: o.Form, Identifier: o.Identifier, Kind: o.Kind, Vendor: o.Vendor, Oui: o.OUI, Part: o.Part, Rev: o.Rev,
+		Serial: o.Serial, DateCode: o.DateCode, Compliance: o.Compliance, Connector: o.Connector, WavelengthNm: o.Wavelength, Link: o.Link,
+		Diagnostics: o.Diagnostics, TempC: o.TempC, VoltageV: o.VoltageV, Thresholds: o.Thresholds, Flags: o.Flags}
+	out.Lanes = opticLanesToProto(o.Lanes)
+	return out
+}
+
+func opticLanesToProto(lanes []store.OpticLane) []*pb.OpticLane {
+	var out []*pb.OpticLane
+	for _, l := range lanes {
+		out = append(out, &pb.OpticLane{Lane: uint32(l.Lane), BiasMa: l.BiasMA, TxMw: l.TxMW, RxMw: l.RxMW})
+	}
+	return out
+}
+
+func opticRowToProto(r store.OpticRow) *pb.OpticRow {
+	return &pb.OpticRow{Optic: opticToProto(r.Optic), Status: r.Status, Hostname: r.Hostname, Present: r.Present, FirstSeen: ts(r.FirstSeen), LastSeen: ts(r.LastSeen),
+		SampledAt: ts(r.SampledAt), Problems: r.Problems, Dark: r.Dark}
 }
 
 func dimmFromProto(d *pb.Dimm) store.DIMM {

@@ -208,6 +208,27 @@ memory names the slot.  A corrected error a second on one module, as
 a failing DDR5 module produces, is the warning before the uncorrected
 one that takes the machine down.
 
+Every report also carries the pluggable modules in the host's network
+ports, read with `ethtool -m` (SFF-8472 for SFP, SFF-8636 for QSFP,
+CMIS for QSFP-DD and OSFP): identity (form, vendor, part, serial,
+compliance, wavelength), whether it is an optical transceiver, an
+active optical cable or a copper DAC, temperature and voltage, and per
+lane the laser bias and transmitted and received power, with the
+module's own alarm and warning thresholds and the flags it has raised.
+A QSFP split into breakouts is one optic under its first port.
+Optics are tracked by vendor, part and serial like drives: `drivelist
+optics [--host H] [--problems] [--all]` lists them with the lowest
+lane's levels in dBm, problems first (a flag the module raised, a
+reading past its own threshold, or a suspect or bad mark; on a port
+whose link is down, low light is expected and not counted); `drivelist
+optic REF` shows one, every lane, its thresholds and where it has been
+(REF is a serial, a prefix, or `HOST:PORT`), `optic REF history` its
+hourly readings, and `optic REF mark STATUS` and `optic REF note TEXT`
+work as they do for drives.  Being seen, moving to another port or
+host, leaving, and raising a new flag are events; `/metrics` exports
+each optic's temperature, per-lane power and bias, and a problem gauge.
+`drivelist optics --local` reads this host's ports without the server.
+
 Every report carries the kernel's boot id and boot time.  A report
 with a new boot id is a `host_rebooted` event, timestamped at the
 boot, saying how long the previous boot had been reporting and how

@@ -145,6 +145,10 @@ func (c *Collector) netPorts() []string {
 
 var reDigits = regexp.MustCompile(`\d+|\D+`)
 
+// NaturalLess orders strings with their digit runs compared as numbers:
+// port names in the order a person would list them.
+func NaturalLess(a, b string) bool { return naturalLess(a, b) }
+
 // naturalLess orders strings with their digit runs compared as numbers.
 func naturalLess(a, b string) bool {
 	pa, pb := reDigits.FindAllString(a, -1), reDigits.FindAllString(b, -1)
