@@ -245,6 +245,10 @@ message Optic {
   repeated OpticLane lanes = 19;
   map<string, double> thresholds = 20; // the module's own: "rx_low_warning" -> mW, "temp_high_alarm" -> °C, ...
   repeated string flags = 21;         // alarm and warning flags raised now: "rx low warning lane 2"
+  optional uint64 carrier_changes = 22; // the kernel's link up/down count for the port (summed over breakouts); unset when unknown
+  int32 flaps = 23;                   // set in query responses: link changes counted in the latest reading's hour
+  int32 flaps_day = 24;               // set in query responses: link changes in the last 24 hours
+  int32 flap_hours = 25;              // set in query responses: hours of the last 24 with four or more link changes
 }
 
 // OpticLane is one lane's measurements: 1 for an SFP, up to 4 for a QSFP,
@@ -559,6 +563,7 @@ message OpticSample {
   repeated OpticLane lanes = 6;
   repeated string flags = 7;
   string link = 8;
+  int32 flaps = 9;                    // link up and down changes counted in the hour
 }
 
 message GetOpticResponse {

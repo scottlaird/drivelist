@@ -350,7 +350,7 @@ func (s *Server) GetOptic(ctx context.Context, req *connect.Request[pb.GetOpticR
 		out.Placements = append(out.Placements, &pb.OpticPlacement{Hostname: p.Hostname, Port: p.Port, Ports: p.Ports, FirstSeen: ts(p.FirstSeen), LastSeen: ts(p.LastSeen), EndedAt: ts(p.EndedAt), EndReason: p.EndReason})
 	}
 	for _, sm := range d.Samples {
-		out.Samples = append(out.Samples, &pb.OpticSample{Ts: ts(sm.TS), Hostname: sm.Hostname, Port: sm.Port, TempC: sm.TempC, VoltageV: sm.VoltageV, Lanes: opticLanesToProto(sm.Lanes), Flags: sm.Flags, Link: sm.Link})
+		out.Samples = append(out.Samples, &pb.OpticSample{Ts: ts(sm.TS), Hostname: sm.Hostname, Port: sm.Port, TempC: sm.TempC, VoltageV: sm.VoltageV, Lanes: opticLanesToProto(sm.Lanes), Flags: sm.Flags, Link: sm.Link, Flaps: int32(sm.Flaps)})
 	}
 	for _, e := range d.Events {
 		out.Events = append(out.Events, eventToProto(e))

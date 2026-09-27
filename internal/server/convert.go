@@ -363,7 +363,8 @@ func ioSamplesFromProto(samples []*pb.IOSample) []store.IOSample {
 func opticFromProto(o *pb.Optic) store.Optic {
 	out := store.Optic{Port: o.GetPort(), Ports: o.GetPorts(), Form: o.GetForm(), Identifier: o.GetIdentifier(), Kind: o.GetKind(), Vendor: o.GetVendor(), OUI: o.GetOui(),
 		Part: o.GetPart(), Rev: o.GetRev(), Serial: o.GetSerial(), DateCode: o.GetDateCode(), Compliance: o.GetCompliance(), Connector: o.GetConnector(),
-		Wavelength: o.GetWavelengthNm(), Link: o.GetLink(), Diagnostics: o.GetDiagnostics(), TempC: o.TempC, VoltageV: o.VoltageV, Thresholds: o.GetThresholds(), Flags: o.GetFlags()}
+		Wavelength: o.GetWavelengthNm(), Link: o.GetLink(), Diagnostics: o.GetDiagnostics(), TempC: o.TempC, VoltageV: o.VoltageV, Thresholds: o.GetThresholds(), Flags: o.GetFlags(),
+		CarrierChanges: o.CarrierChanges}
 	for _, l := range o.GetLanes() {
 		out.Lanes = append(out.Lanes, store.OpticLane{Lane: int(l.GetLane()), BiasMA: l.BiasMa, TxMW: l.TxMw, RxMW: l.RxMw})
 	}
@@ -373,7 +374,8 @@ func opticFromProto(o *pb.Optic) store.Optic {
 func opticToProto(o store.Optic) *pb.Optic {
 	out := &pb.Optic{Port: o.Port, Ports: o.Ports, Form: o.Form, Identifier: o.Identifier, Kind: o.Kind, Vendor: o.Vendor, Oui: o.OUI, Part: o.Part, Rev: o.Rev,
 		Serial: o.Serial, DateCode: o.DateCode, Compliance: o.Compliance, Connector: o.Connector, WavelengthNm: o.Wavelength, Link: o.Link,
-		Diagnostics: o.Diagnostics, TempC: o.TempC, VoltageV: o.VoltageV, Thresholds: o.Thresholds, Flags: o.Flags}
+		Diagnostics: o.Diagnostics, TempC: o.TempC, VoltageV: o.VoltageV, Thresholds: o.Thresholds, Flags: o.Flags, CarrierChanges: o.CarrierChanges, Flaps: int32(o.Flaps),
+		FlapsDay: int32(o.FlapsDay), FlapHours: int32(o.FlapHours)}
 	out.Lanes = opticLanesToProto(o.Lanes)
 	return out
 }

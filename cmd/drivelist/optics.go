@@ -127,6 +127,12 @@ var opticCols = []col[*pb.OpticRow]{
 		return nil
 	}},
 	{name: "link", header: "LINK", value: func(r *pb.OpticRow) string { return orDash(r.Optic.Link) }},
+	{name: "flaps", header: "FLAPS 24H", value: func(r *pb.OpticRow) string {
+		if !r.Present {
+			return "-"
+		}
+		return strconv.Itoa(int(r.Optic.FlapsDay))
+	}, key: func(r *pb.OpticRow) any { return r.Optic.FlapsDay }},
 	{name: "status", header: "STATUS", value: func(r *pb.OpticRow) string { return r.Status }},
 	{name: "problems", header: "PROBLEMS", value: func(r *pb.OpticRow) string {
 		if len(r.Problems) == 0 {
@@ -194,10 +200,14 @@ func newOpticsCmd(cfg *clientConfig) *cobra.Command {
 report (SFP, QSFP, QSFP-DD, OSFP; optical transceivers, active optical
 cables and copper DACs), with the latest reading: temperature, and the
 lowest lane's received and transmitted power in dBm (with its lane on
-multi-lane modules). An optic has a problem when the module raised an
-alarm or warning flag, when a reading is past one of the module's own
-thresholds, or when it is marked suspect or bad; on a port whose link
-is down, low light is expected and not counted. --all adds optics that
+multi-lane modules), and how often the port's link went down or up in
+the last day (FLAPS 24H, from the kernel's carrier_changes count). An
+optic has a problem when the module raised an alarm or warning flag
+its reading bears out, when a reading is past one of the module's own
+thresholds, when its link changed four or more times in any hour of
+the last day (a failing optic often runs clean for hours between
+bouts), or when it is marked suspect or bad; on a port whose link is
+down, low light is expected and not counted. --all adds optics that
 are in no port now, at their last. --local reads this host's ports
 directly, without the server.`,
 		Args: cobra.NoArgs,
@@ -271,7 +281,7 @@ func newOpticCmd(cfg *clientConfig) *cobra.Command {
 one, or HOST:PORT for the module in that port now.
 
   drivelist optic REF              identity, where it is, every lane, its thresholds, where it has been
-  drivelist optic REF history      hourly readings, newest first (--since 7d)
+  drivelist optic REF history      hourly readings and link flaps, newest first (--since 7d)
   drivelist optic REF mark STATUS  set the status: ok, suspect, bad, shelved, retired
   drivelist optic REF note TEXT    record a note without changing the status`,
 		Args: usageArgs(1, -1, "drivelist optic REF [history | mark STATUS | note TEXT]"),
@@ -460,7 +470,7 @@ func printOpticSamples(w io.Writer, samples []*pb.OpticSample) error {
 		return nil
 	}
 	tw := tab(w)
-	fmt.Fprintln(tw, "HOUR\tHOST\tPORT\tLINK\tTEMP\tRX dBm\tTX dBm\tFLAGS")
+	fmt.Fprintln(tw, "HOUR\tHOST\tPORT\tLINK\tFLAPS\tTEMP\tRX dBm\tTX dBm\tFLAGS")
 	for _, s := range samples {
 		o := &pb.Optic{Lanes: s.Lanes}
 		flags := "-"
@@ -469,7 +479,7 @@ func printOpticSamples(w io.Writer, samples []*pb.OpticSample) error {
 			sort.Strings(sorted)
 			flags = strings.Join(sorted, "; ")
 		}
-		fmt.Fprintf(tw, "%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\n", when(s.Ts), s.Hostname, s.Port, orDash(s.Link), tempText(s.TempC),
+		fmt.Fprintf(tw, "%s\t%s\t%s\t%s\t%d\t%s\t%s\t%s\t%s\n", when(s.Ts), s.Hostname, s.Port, orDash(s.Link), s.Flaps, tempText(s.TempC),
 			laneList(o, func(l *pb.OpticLane) *float64 { return l.RxMw }, dbm), laneList(o, func(l *pb.OpticLane) *float64 { return l.TxMw }, dbm), flags)
 	}
 	return tw.Flush()

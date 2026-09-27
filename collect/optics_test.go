@@ -7,6 +7,7 @@ import (
 	"os/exec"
 	"path/filepath"
 	"reflect"
+	"strings"
 	"testing"
 )
 
@@ -136,6 +137,9 @@ func TestOptics(t *testing.T) {
 			up = "up"
 		}
 		os.WriteFile(filepath.Join(sys, "class", "net", name, "operstate"), []byte(up+"\n"), 0o644)
+		if strings.HasPrefix(name, "swp1s") {
+			os.WriteFile(filepath.Join(sys, "class", "net", name, "carrier_changes"), []byte("3\n"), 0o644)
+		}
 	}
 	os.MkdirAll(filepath.Join(sys, "class", "net", "bond0"), 0o755) // no device: virtual
 	var asked []string
@@ -160,10 +164,10 @@ func TestOptics(t *testing.T) {
 	if got[0].Port != "enp1s0f0" || got[0].Link != "up" || got[0].Form != "SFP" {
 		t.Errorf("SFP = %+v", got[0])
 	}
-	if got[1].Port != "swp1s0" || !reflect.DeepEqual(got[1].Ports, []string{"swp1s0", "swp1s1", "swp1s2", "swp1s3"}) || got[1].Link != "up" {
+	if got[1].Port != "swp1s0" || !reflect.DeepEqual(got[1].Ports, []string{"swp1s0", "swp1s1", "swp1s2", "swp1s3"}) || got[1].Link != "up" || got[1].CarrierChanges == nil || *got[1].CarrierChanges != 12 {
 		t.Errorf("breakout = %+v", got[1])
 	}
-	if got[2].Port != "swp10" || got[2].Kind != "dac" {
+	if got[2].Port != "swp10" || got[2].Kind != "dac" || got[2].CarrierChanges != nil {
 		t.Errorf("DAC = %+v", got[2])
 	}
 

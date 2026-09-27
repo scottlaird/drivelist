@@ -38,7 +38,22 @@ type Optic struct {
 	Lanes       []OpticLane
 	Thresholds  map[string]float64
 	Flags       []string
+	// CarrierChanges is the kernel's link up/down count for the port, as
+	// the agent read it; nil when unknown. Flaps is set on read: the
+	// changes counted in the latest reading's hour.
+	CarrierChanges *uint64
+	Flaps          int
+	// FlapsDay and FlapHours are set on read too: link changes in the
+	// last 24 hours, and how many of those hours reached FlapLimit. A
+	// failing optic often runs clean for hours between bouts, so a bout
+	// stays a problem for a day.
+	FlapsDay  int
+	FlapHours int
 }
+
+// FlapLimit is how many link changes in an hour make a port flapping:
+// two drops and recoveries.
+const FlapLimit = 4
 
 // OpticLane is one lane's measurements.
 type OpticLane struct {
@@ -93,6 +108,7 @@ type OpticSample struct {
 	Lanes    []OpticLane
 	Flags    []string
 	Link     string
+	Flaps    int // link changes counted in the hour
 }
 
 // opticDark is whether low light is expected: the port's link is known
@@ -182,6 +198,14 @@ func OpticProblems(o Optic, status string, current bool) (problems []string, dar
 	if !current {
 		return problems, false
 	}
+	// A flapping link is a problem whatever the light says, dark or not,
+	// for a day after the bout: these optics run clean for hours between.
+	switch {
+	case o.Flaps >= FlapLimit:
+		add(fmt.Sprintf("link flapped %d times this hour", o.Flaps))
+	case o.FlapHours > 0:
+		add(fmt.Sprintf("link flapped %d times in the last day", o.FlapsDay))
+	}
 	dark = opticDark(o.Link)
 	for _, f := range CurrentFlags(o) {
 		if dark && darkFlag(f) {
@@ -258,18 +282,19 @@ func (t *tx) ingestOptics(host *hostRow, r Report) error {
 		return nil
 	}
 	type openRow struct {
-		id   int64
-		port string
+		id       int64
+		port     string
+		carriers sql.NullInt64
 	}
 	open := map[int64]openRow{}
-	rows, err := t.QueryContext(t.ctx, `SELECT placement_id, optic_id, port FROM optic_placement WHERE host_id = ? AND ended_at IS NULL`, host.id)
+	rows, err := t.QueryContext(t.ctx, `SELECT placement_id, optic_id, port, carrier_changes FROM optic_placement WHERE host_id = ? AND ended_at IS NULL`, host.id)
 	if err != nil {
 		return err
 	}
 	for rows.Next() {
 		var p openRow
 		var opticID int64
-		if err := rows.Scan(&p.id, &opticID, &p.port); err != nil {
+		if err := rows.Scan(&p.id, &opticID, &p.port, &p.carriers); err != nil {
 			rows.Close()
 			return err
 		}
@@ -299,8 +324,20 @@ func (t *tx) ingestOptics(host *hostRow, r Report) error {
 			}
 		}
 		ports := strings.Join(o.Ports, " ")
+		var carriers any
+		if o.CarrierChanges != nil {
+			carriers = int64(*o.CarrierChanges)
+		}
+		flaps := 0
 		if p, ok := open[id]; ok && p.port == o.Port {
-			if _, err := t.ExecContext(t.ctx, `UPDATE optic_placement SET last_seen = ?, ports = ?, link = ? WHERE placement_id = ?`, t.obs, ports, o.Link, p.id); err != nil {
+			// Growth of the counter since the last report in this port is
+			// how often the link changed. A lower count is a counter that
+			// restarted (reboot, driver reload): no growth to take.
+			if o.CarrierChanges != nil && p.carriers.Valid && int64(*o.CarrierChanges) >= p.carriers.Int64 {
+				flaps = int(int64(*o.CarrierChanges) - p.carriers.Int64)
+			}
+			if _, err := t.ExecContext(t.ctx, `UPDATE optic_placement SET last_seen = ?, ports = ?, link = ?, carrier_changes = COALESCE(?, carrier_changes) WHERE placement_id = ?`,
+				t.obs, ports, o.Link, carriers, p.id); err != nil {
 				return err
 			}
 		} else {
@@ -339,15 +376,30 @@ func (t *tx) ingestOptics(host *hostRow, r Report) error {
 					return err
 				}
 			}
-			if _, err := t.ExecContext(t.ctx, `INSERT INTO optic_placement (optic_id, host_id, port, ports, link, first_seen, last_seen) VALUES (?, ?, ?, ?, ?, ?, ?)`,
-				id, host.id, o.Port, ports, o.Link, t.obs, t.obs); err != nil {
+			if _, err := t.ExecContext(t.ctx, `INSERT INTO optic_placement (optic_id, host_id, port, ports, link, first_seen, last_seen, carrier_changes) VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
+				id, host.id, o.Port, ports, o.Link, t.obs, t.obs, carriers); err != nil {
 				return err
 			}
 		}
 
-		if _, err := t.ExecContext(t.ctx, `INSERT OR REPLACE INTO optic_sample (optic_id, host_id, hour, ts, port, temp_c, voltage_v, lanes, flags, link) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
-			id, host.id, hour, t.obs, o.Port, o.TempC, o.VoltageV, jsonText(o.Lanes, "[]"), jsonText(o.Flags, "[]"), o.Link); err != nil {
+		// The hour's latest reading, with its flaps added to the hour's.
+		if _, err := t.ExecContext(t.ctx, `
+			INSERT INTO optic_sample (optic_id, host_id, hour, ts, port, temp_c, voltage_v, lanes, flags, link, flaps) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+			ON CONFLICT (optic_id, hour) DO UPDATE SET host_id = excluded.host_id, ts = excluded.ts, port = excluded.port, temp_c = excluded.temp_c, voltage_v = excluded.voltage_v,
+				lanes = excluded.lanes, flags = excluded.flags, link = excluded.link, flaps = optic_sample.flaps + excluded.flaps`,
+			id, host.id, hour, t.obs, o.Port, o.TempC, o.VoltageV, jsonText(o.Lanes, "[]"), jsonText(o.Flags, "[]"), o.Link, flaps); err != nil {
 			return err
+		}
+		if flaps > 0 {
+			var hourFlaps int
+			if err := t.QueryRowContext(t.ctx, `SELECT flaps FROM optic_sample WHERE optic_id = ? AND hour = ?`, id, hour).Scan(&hourFlaps); err != nil {
+				return err
+			}
+			if hourFlaps >= FlapLimit {
+				if err := t.opticFlapping(id, host.id, ident, hourFlaps); err != nil {
+					return err
+				}
+			}
 		}
 
 		// Events only for flags the reading bears out; a latched flag
@@ -450,8 +502,25 @@ func (t *tx) opticAlarm(opticID, hostID int64, ident map[string]any, flag string
 	return t.opticEvent(EventOpticAlarm, opticID, hostID, d)
 }
 
+// opticFlapping records one optic_flapping event per optic and UTC day,
+// the first time an hour's link changes reach FlapLimit.
+func (t *tx) opticFlapping(opticID, hostID int64, ident map[string]any, flaps int) error {
+	day := time.Unix(t.obs, 0).UTC().Truncate(24 * time.Hour)
+	var n int
+	if err := t.QueryRowContext(t.ctx, `SELECT COUNT(*) FROM event WHERE kind = ? AND optic_id = ? AND ts >= ? AND ts < ?`,
+		EventOpticFlapping, opticID, day.Unix(), day.Add(24*time.Hour).Unix()).Scan(&n); err != nil {
+		return err
+	}
+	if n > 0 {
+		return nil
+	}
+	d := clone(ident)
+	d["flaps"] = flaps
+	return t.opticEvent(EventOpticFlapping, opticID, hostID, d)
+}
+
 const opticRowColumns = `o.optic_id, o.form, o.identifier, o.kind, o.vendor, o.oui, o.part, o.rev, o.serial, o.date_code, o.compliance, o.connector, o.wavelength_nm, o.diagnostics,
-	o.thresholds, o.status, o.first_seen, o.last_seen, COALESCE(h.hostname, ''), COALESCE(p.port, ''), COALESCE(p.ports, ''), COALESCE(p.link, ''), p.ended_at IS NULL AND p.placement_id IS NOT NULL`
+	o.thresholds, o.status, o.first_seen, o.last_seen, COALESCE(h.hostname, ''), COALESCE(p.port, ''), COALESCE(p.ports, ''), COALESCE(p.link, ''), p.ended_at IS NULL AND p.placement_id IS NOT NULL, p.carrier_changes`
 
 // opticRows lists optics at their current placement, or at their last one
 // with all. where narrows by optic or placement columns.
@@ -477,11 +546,16 @@ func (s *Store) opticRows(ctx context.Context, all bool, where string, args ...a
 		var r OpticRow
 		var first, last int64
 		var thresholds, ports string
+		var carriers sql.NullInt64
 		o := &r.Optic
 		if err := rows.Scan(&r.ID, &o.Form, &o.Identifier, &o.Kind, &o.Vendor, &o.OUI, &o.Part, &o.Rev, &o.Serial, &o.DateCode, &o.Compliance, &o.Connector, &o.Wavelength, &o.Diagnostics,
-			&thresholds, &r.Status, &first, &last, &r.Hostname, &o.Port, &ports, &o.Link, &r.Present); err != nil {
+			&thresholds, &r.Status, &first, &last, &r.Hostname, &o.Port, &ports, &o.Link, &r.Present, &carriers); err != nil {
 			rows.Close()
 			return nil, err
+		}
+		if carriers.Valid && r.Present {
+			n := uint64(carriers.Int64)
+			o.CarrierChanges = &n
 		}
 		_ = json.Unmarshal([]byte(thresholds), &o.Thresholds)
 		o.Ports = strings.Fields(ports)
@@ -499,11 +573,16 @@ func (s *Store) opticRows(ctx context.Context, all bool, where string, args ...a
 		}
 		if len(sm) == 1 && out[i].Present {
 			o := &out[i].Optic
-			o.TempC, o.VoltageV, o.Lanes, o.Flags = sm[0].TempC, sm[0].VoltageV, sm[0].Lanes, sm[0].Flags
+			o.TempC, o.VoltageV, o.Lanes, o.Flags, o.Flaps = sm[0].TempC, sm[0].VoltageV, sm[0].Lanes, sm[0].Flags, sm[0].Flaps
 			if sm[0].Link != "" {
 				o.Link = sm[0].Link
 			}
 			out[i].SampledAt = sm[0].TS
+			day := sm[0].TS.Add(-24 * time.Hour).Unix()
+			if err := s.db.QueryRowContext(ctx, `SELECT COALESCE(SUM(flaps), 0), COUNT(CASE WHEN flaps >= ? THEN 1 END) FROM optic_sample WHERE optic_id = ? AND ts > ?`,
+				FlapLimit, out[i].ID, day).Scan(&o.FlapsDay, &o.FlapHours); err != nil {
+				return nil, err
+			}
 		}
 		out[i].Problems, out[i].Dark = OpticProblems(out[i].Optic, out[i].Status, out[i].Present && len(sm) == 1)
 	}
@@ -551,7 +630,7 @@ func (s *Store) ListOptics(ctx context.Context, host string, problems, all bool)
 // opticSamples returns an optic's hourly readings since a time, newest
 // first, at most limit (0: all).
 func (s *Store) opticSamples(ctx context.Context, id int64, since time.Time, limit int) ([]OpticSample, error) {
-	q := `SELECT x.ts, COALESCE(h.hostname, ''), x.port, x.temp_c, x.voltage_v, x.lanes, x.flags, x.link FROM optic_sample x LEFT JOIN host h ON h.host_id = x.host_id
+	q := `SELECT x.ts, COALESCE(h.hostname, ''), x.port, x.temp_c, x.voltage_v, x.lanes, x.flags, x.link, x.flaps FROM optic_sample x LEFT JOIN host h ON h.host_id = x.host_id
 		WHERE x.optic_id = ? AND x.hour >= ? ORDER BY x.hour DESC`
 	args := []any{id, since.Unix()}
 	if limit > 0 {
@@ -569,7 +648,7 @@ func (s *Store) opticSamples(ctx context.Context, id int64, since time.Time, lim
 		var ts int64
 		var temp, volt sql.NullFloat64
 		var lanes, flags string
-		if err := rows.Scan(&ts, &sm.Hostname, &sm.Port, &temp, &volt, &lanes, &flags, &sm.Link); err != nil {
+		if err := rows.Scan(&ts, &sm.Hostname, &sm.Port, &temp, &volt, &lanes, &flags, &sm.Link, &sm.Flaps); err != nil {
 			return nil, err
 		}
 		sm.TS = time.Unix(ts, 0).UTC()

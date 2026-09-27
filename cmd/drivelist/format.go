@@ -408,7 +408,7 @@ func describe(e *pb.Event) string {
 			where = slot + " (" + str(d, "code") + ")"
 		}
 		return fmt.Sprintf("hardware      %s  %s %s ×%v  %s", host, str(d, "class"), where, num(d, "count"), str(d, "sample"))
-	case "optic_first_seen", "optic_appeared", "optic_vanished", "optic_moved", "optic_alarm", "optic_status_changed", "optic_note":
+	case "optic_first_seen", "optic_appeared", "optic_vanished", "optic_moved", "optic_alarm", "optic_flapping", "optic_status_changed", "optic_note":
 		return opticEventText(e.GetKind(), host, d, strings.TrimPrefix(e.GetSource(), "user:"))
 	case "memory_errors":
 		grew, _ := d["grew"].(map[string]any)
@@ -470,6 +470,8 @@ func opticEventText(kind, host string, d map[string]any, actor string) string {
 		return fmt.Sprintf("optic moved   %s %s  %s  (from %s)", host, str(d, "port"), what, from)
 	case "optic_alarm":
 		return fmt.Sprintf("optic alarm   %s %s  %s  %s", host, str(d, "port"), what, str(d, "flag"))
+	case "optic_flapping":
+		return fmt.Sprintf("optic flaps   %s %s  %s  link changed %v times in an hour", host, str(d, "port"), what, num(d, "flaps"))
 	case "optic_status_changed":
 		return fmt.Sprintf("optic status  %s  %s -> %s by %s: %q", what, str(d, "previous"), str(d, "status"), actor, str(d, "note"))
 	case "optic_note":
