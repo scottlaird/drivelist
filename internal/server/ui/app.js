@@ -584,12 +584,12 @@
     const tiles = el('div', { class: 'tiles' });
     tiles.append(
       tile('hosts', hs.length, { href: '#/hosts', sub: stale ? stale + ' stale' : 'all reporting', cls: stale ? 'bad' : '' }),
-      tile('drives present', placed.length, { href: '#/drives', sub: Object.entries(byBus).sort().map(([k, v]) => v + ' ' + k).join(', ') }),
+      tile('drives present', placed.length, { href: '#/drives?present=1', sub: Object.entries(byBus).sort().map(([k, v]) => v + ' ' + k).join(', ') }),
       tile('storage', bytes(total), { sub: 'on drives present now' }),
-      tile('ok', byStatus.ok || 0, { href: '#/drives' }),
-      tile('suspect', byStatus.suspect || 0, { href: '#/drives', cls: byStatus.suspect ? 'warn' : '' }),
-      tile('bad', byStatus.bad || 0, { href: '#/drives', cls: byStatus.bad ? 'bad' : '' }),
-      tile('unused', unused, { href: '#/drives', sub: 'present, in no pool or mount' }),
+      tile('ok', byStatus.ok || 0, { href: '#/drives?status=ok' }),
+      tile('suspect', byStatus.suspect || 0, { href: '#/drives?status=suspect', cls: byStatus.suspect ? 'warn' : '' }),
+      tile('bad', byStatus.bad || 0, { href: '#/drives?status=bad', cls: byStatus.bad ? 'bad' : '' }),
+      tile('unused', unused, { href: '#/drives?unused=1', sub: 'present, in no pool or mount' }),
       tile('missing', gone, { href: '#/missing', sub: ghosts ? ghosts + ' pool ghosts' : 'no pool ghosts', cls: gone || ghosts ? 'warn' : '' }),
       tile('smart problems', problems, { href: '#/smart?problems=1', cls: problems ? 'warn' : '' }),
       tile('sas errors, 7d', sasRows, { href: '#/sas-errors', sub: sasRows ? 'phys with counter growth' : 'no counter growth', cls: sasRows ? 'warn' : '' }),
@@ -598,7 +598,7 @@
       tile('memory problems', badDimms.length, { href: '#/memory?problems=1', sub: badDimms.length ? badDimms.map(r => r.hostname + ' ' + (r.dimm.slot || r.dimm.edac)).join(', ') : 'no module with errors', cls: badDimms.length ? 'bad' : '' }),
     );
     if (byStatus.shelved || byStatus.retired || notOK) {
-      tiles.append(tile('not present', notOK, { href: '#/drives', sub: [byStatus.shelved ? byStatus.shelved + ' shelved' : '', byStatus.retired ? byStatus.retired + ' retired' : ''].filter(Boolean).join(', ') || 'known but absent' }));
+      tiles.append(tile('not present', notOK, { href: '#/drives?absent=1', sub: [byStatus.shelved ? byStatus.shelved + ' shelved' : '', byStatus.retired ? byStatus.retired + ' retired' : ''].filter(Boolean).join(', ') || 'known but absent' }));
     }
     main.append(tiles);
     main.append(el('h2', { text: 'Recent events' }), table({ key: 'summary.events', columns: eventCols, rows: events.events || [] }));
@@ -632,9 +632,29 @@
     main.append(el('h2', { text: 'Drives' }), table({ key: 'host.drives', columns: driveCols.filter(c => c.name !== 'host'), rows: drives.drives || [] }));
     main.append(el('h2', { text: 'Recent events' }), table({ key: 'host.events', columns: eventCols.filter(c => c.name !== 'host'), rows: events.events || [] }));
   }
-  async function pageDrives() {
+  // pageDrives lists every drive, or the ones a summary tile counted:
+  // ?present=1 (in a host now), ?absent=1 (known but not in one),
+  // ?status=suspect (present with that status; a comma list works),
+  // ?unused=1 (present, in no pool or mount). Filtering is here rather
+  // than on the server so that it matches the tiles' own counting and
+  // the static demo needs no extra files.
+  async function pageDrives(q) {
     const res = await rpc('ListDrives');
-    main.append(heading('Drives'), table({ key: 'drives', columns: driveCols, rows: res.drives || [] }));
+    let rows = res.drives || [];
+    const statuses = (q.get('status') || '').split(',').filter(Boolean);
+    const filters = [];
+    if (q.get('present') === '1') { rows = rows.filter(d => d.current); filters.push('present'); }
+    if (q.get('absent') === '1') { rows = rows.filter(d => !d.current); filters.push('not present'); }
+    if (statuses.length) { rows = rows.filter(d => d.current && statuses.includes(d.status)); filters.push(statuses.join(' or ')); }
+    if (q.get('unused') === '1') { rows = rows.filter(d => d.current && !(d.current.uses || []).length); filters.push('unused'); }
+    if (!filters.length) {
+      main.append(heading('Drives'), table({ key: 'drives', columns: driveCols, rows }));
+      return;
+    }
+    const h = heading('Drives: ' + filters.join(', '));
+    main.append(h, el('p', { class: 'note' }, rows.length + ' of ' + (res.drives || []).length + ' drives; ', link('show all', '#/drives')));
+    if (!rows.length) main.append(el('p', { class: 'note', text: 'none' }));
+    else main.append(table({ key: 'drives', columns: driveCols, rows }));
   }
   async function pageDrive(ref) {
     const [g, hist, smart, io, kernel] = await Promise.all([
@@ -974,7 +994,7 @@
     [/^\/?$/, () => pageSummary()],
     [/^\/hosts$/, () => pageHosts()],
     [/^\/host\/([^/]+)$/, m => pageHost(decodeURIComponent(m[1]))],
-    [/^\/drives$/, () => pageDrives()],
+    [/^\/drives$/, (m, q) => pageDrives(q)],
     [/^\/drive\/([^/]+)$/, m => pageDrive(decodeURIComponent(m[1]))],
     [/^\/enclosures$/, () => pageEnclosures()],
     [/^\/enclosure\/([^/]+)$/, m => pageEnclosure(decodeURIComponent(m[1]))],
