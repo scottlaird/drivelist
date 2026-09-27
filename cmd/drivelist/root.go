@@ -24,6 +24,9 @@ var collectSAS = func() (*collect.SASTopology, error) { return (&collect.Collect
 // collectMemory reads the memory modules; tests point it at a fixture.
 var collectMemory = func() (*collect.MemoryInventory, error) { return (&collect.Collector{}).Memory() }
 
+// collectOptics reads the modules in the network ports; tests point it at a fixture.
+var collectOptics = func() ([]collect.Optic, error) { return (&collect.Collector{}).Optics() }
+
 // listOptions are the flags of the bare drivelist command.
 type listOptions struct {
 	unused    bool

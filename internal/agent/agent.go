@@ -34,6 +34,7 @@ type Config struct {
 	StatusPath string                                     // the status cache; "" disables it
 	SAS        func() (*dlcollect.SASTopology, error)     // the SAS topology; nil reads sysfs
 	Memory     func() (*dlcollect.MemoryInventory, error) // the memory modules; nil reads SMBIOS and EDAC
+	Optics     func() ([]dlcollect.Optic, error)          // the modules in the network ports; nil reads them with ethtool -m
 }
 
 // Agent runs the loop.
@@ -41,10 +42,12 @@ type Agent struct {
 	cfg     Config
 	send    Sender
 	collect func() (*drivelist.Inventory, error)
-	now     func() time.Time
-	log     *slog.Logger
-	spool   *spool
-	trigger chan string
+
+	opticsWarned bool // the optics collector's failure has been logged
+	now          func() time.Time
+	log          *slog.Logger
+	spool        *spool
+	trigger      chan string
 
 	kernel *KernelWatcher
 	ids    identityMap
@@ -61,6 +64,9 @@ func New(cfg Config, send Sender, collect func() (*drivelist.Inventory, error), 
 	}
 	if cfg.Memory == nil {
 		cfg.Memory = func() (*dlcollect.MemoryInventory, error) { return (&dlcollect.Collector{}).Memory() }
+	}
+	if cfg.Optics == nil {
+		cfg.Optics = func() ([]dlcollect.Optic, error) { return (&dlcollect.Collector{}).Optics() }
 	}
 	if cfg.Host == nil {
 		return nil, errors.New("agent: no host identity")
@@ -169,6 +175,15 @@ func (a *Agent) cycle(ctx context.Context, reason string, interval *time.Duratio
 		a.log.Warn("memory modules unreadable; reporting without them", "err", err)
 	} else {
 		report.Memory(req, mem)
+	}
+	if optics, err := a.cfg.Optics(); err != nil {
+		// Almost always ethtool missing: say so once, not every report.
+		if !a.opticsWarned {
+			a.log.Warn("optics unreadable; reporting without them", "err", err)
+			a.opticsWarned = true
+		}
+	} else {
+		report.Optics(req, optics, true)
 	}
 
 	if a.spool != nil {

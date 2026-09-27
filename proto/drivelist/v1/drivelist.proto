@@ -171,6 +171,8 @@ message ReportInventoryRequest {
   repeated Dimm dimms = 10;           // memory modules, empty from agents before 0.9 or hosts that describe none
   uint64 mem_total_bytes = 11;        // the kernel's MemTotal, to check the modules against; 0 when unknown
   string mem_correction = 12;         // the firmware's error correction for the memory array (SMBIOS type 16): "none", "parity", "single-bit ECC", "multi-bit ECC", "CRC"; "" when unknown
+  repeated Optic optics = 13;         // the modules in the host's network ports
+  bool optics_collected = 14;         // the agent looked for optics; false from agents before 0.9, or when ethtool is missing, so an empty list then is not every optic leaving
 }
 
 // SasNode is an HBA or expander: something with phys of its own.
@@ -210,6 +212,42 @@ message SasPhy {
 // Dimm is one memory module: what the firmware says of it (SMBIOS type
 // 17) joined to the kernel's EDAC error counts for it. A module EDAC does
 // not know has no edac; an EDAC entry no slot matched has no slot.
+// Optic is one pluggable module in a network port (SFP, QSFP, QSFP-DD,
+// OSFP; optical or copper) as ethtool -m decodes its EEPROM. Unset
+// measurements are ones the module does not report, never zero.
+message Optic {
+  string port = 1;                    // the interface it was read through: "enp1s0f0", "swp7"
+  repeated string ports = 2;          // every interface reading the same module, for a port split into breakouts
+  string form = 3;                    // "SFP", "QSFP28", "QSFP-DD", "OSFP"
+  string identifier = 4;              // as ethtool prints it: "0x11 (QSFP28)"
+  string kind = 5;                    // "optical" | "aoc" | "dac" | ""
+  string vendor = 6;
+  string oui = 7;
+  string part = 8;
+  string rev = 9;
+  string serial = 10;
+  string date_code = 11;
+  string compliance = 12;             // "10G Ethernet: 10G Base-SR"
+  string connector = 13;              // "LC", "MPO 1x12", "No separable connector"
+  double wavelength_nm = 14;
+  string link = 15;                   // the interface's operstate
+  bool diagnostics = 16;              // it reports any measurement at all
+  optional double temp_c = 17;
+  optional double voltage_v = 18;
+  repeated OpticLane lanes = 19;
+  map<string, double> thresholds = 20; // the module's own: "rx_low_warning" -> mW, "temp_high_alarm" -> °C, ...
+  repeated string flags = 21;         // alarm and warning flags raised now: "rx low warning lane 2"
+}
+
+// OpticLane is one lane's measurements: 1 for an SFP, up to 4 for a QSFP,
+// up to 8 per bank for CMIS (QSFP-DD, OSFP) and 16 for OSFP-XD.
+message OpticLane {
+  uint32 lane = 1;
+  optional double bias_ma = 2;
+  optional double tx_mw = 3;
+  optional double rx_mw = 4;
+}
+
 message Dimm {
   string slot = 1;                    // the firmware's device locator: "DIMM_C2", "DIMMB1"
   string bank = 2;                    // the firmware's bank locator
