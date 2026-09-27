@@ -354,9 +354,10 @@ CDN path the policy names.
 `drivelist demo export DIR --names demo/names.json` writes a copy of
 the web interface that needs no server: the page, marked as a demo,
 and one file per question it can ask, with every answer sanitized as
-the names file says (hosts renamed, other hosts numbered, literal
-replacements, fields emptied; the numbering is kept in
-`DIR/mapping.json` between exports).  The page's clock stops at the
+the names file says (hosts renamed, hosts matching a pattern numbered
+in their own group, such as `sw-*` as `switch1`, `switch2`, other
+hosts numbered, literal replacements, fields emptied; the numbering is
+kept in `DIR/mapping.json` between exports).  The page's clock stops at the
 export, so relative times stay true.  `demo/publish.sh DIR` pushes it
 as the `gh-pages` branch, one fresh commit each time; anything that
 serves files will do as well.  Review `DIR/data` before publishing:

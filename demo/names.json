@@ -5,6 +5,9 @@
   "scottstudio": "mac1",
   "scottstudio.internal.sigkill.org": "mac1"
  },
+ "groups": [
+  {"match": "sw-*", "names": "switch%d"}
+ ],
  "others": "server%d",
  "replace": {
   ".internal.sigkill.org": ""
