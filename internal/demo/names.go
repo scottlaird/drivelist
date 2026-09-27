@@ -8,6 +8,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"os"
+	"path"
 	"regexp"
 	"sort"
 	"strings"
@@ -17,16 +18,26 @@ import (
 )
 
 // Names says how the export renames things. Hosts maps real hostnames to
-// the names shown; every other host is named by Others in turn, and the
-// assignment is kept from one export to the next so a host keeps its
-// number. Replace is applied to every string in every response, longest
-// key first. Clear names proto fields (by their proto name, "machine_id")
-// that are emptied wherever they appear.
+// the names shown. Groups name the hosts matching a pattern ("sw-*") in
+// turn by their own format ("switch%d"), the first matching group
+// winning; every other host is named by Others in turn. Numbering is
+// kept from one export to the next, so a host keeps its number, unless
+// the rules now put it in another group. Replace is applied to every
+// string in every response, longest key first. Clear names proto fields
+// (by their proto name, "machine_id") that are emptied wherever they
+// appear.
 type Names struct {
 	Hosts   map[string]string `json:"hosts"`
+	Groups  []Group           `json:"groups"`
 	Others  string            `json:"others"`
 	Replace map[string]string `json:"replace"`
 	Clear   []string          `json:"clear"`
+}
+
+// Group names the hosts whose names match a shell pattern.
+type Group struct {
+	Match string `json:"match"` // "sw-*", as path.Match reads it
+	Names string `json:"names"` // "switch%d"
 }
 
 // ReadNames loads a names file.
@@ -53,8 +64,9 @@ type Sanitizer struct {
 type pair struct{ from, to string }
 
 // NewSanitizer resolves names for hosts: the ones Names lists, then the
-// ones prior already named (the mapping a previous export wrote), then
-// new ones numbered after the highest number taken.
+// ones prior already named (the mapping a previous export wrote) when
+// that name still fits the host's group, then new ones numbered in
+// their group after the numbers taken.
 func NewSanitizer(names Names, hosts []string, prior map[string]string) *Sanitizer {
 	s := &Sanitizer{mapping: map[string]string{}, clear: map[string]bool{}}
 	for real, shown := range names.Hosts {
@@ -64,19 +76,28 @@ func NewSanitizer(names Names, hosts []string, prior map[string]string) *Sanitiz
 	if others == "" {
 		others = "server%d"
 	}
+	// format is the naming a host falls under: its group's, else Others.
+	format := func(real string) string {
+		for _, g := range names.Groups {
+			if ok, _ := path.Match(g.Match, real); ok && g.Names != "" {
+				return g.Names
+			}
+		}
+		return others
+	}
 	taken := map[string]bool{}
 	for _, shown := range s.mapping {
 		taken[shown] = true
 	}
 	for real, shown := range prior {
-		if _, ok := s.mapping[real]; !ok && shown != "" {
+		if _, ok := s.mapping[real]; !ok && shown != "" && fits(format(real), shown) && !taken[shown] {
 			s.mapping[real] = shown
 			taken[shown] = true
 		}
 	}
 	sorted := append([]string(nil), hosts...)
 	sort.Strings(sorted)
-	next := 1
+	next := map[string]int{}
 	for _, real := range sorted {
 		if real == "" {
 			continue
@@ -84,10 +105,14 @@ func NewSanitizer(names Names, hosts []string, prior map[string]string) *Sanitiz
 		if _, ok := s.mapping[real]; ok {
 			continue
 		}
-		for taken[fmt.Sprintf(others, next)] {
-			next++
+		f := format(real)
+		if next[f] == 0 {
+			next[f] = 1
 		}
-		s.mapping[real] = fmt.Sprintf(others, next)
+		for taken[fmt.Sprintf(f, next[f])] {
+			next[f]++
+		}
+		s.mapping[real] = fmt.Sprintf(f, next[f])
 		taken[s.mapping[real]] = true
 	}
 	// Longest first, so a host that is a prefix of another (or its FQDN)
@@ -118,6 +143,15 @@ func NewSanitizer(names Names, hosts []string, prior map[string]string) *Sanitiz
 		s.clear[f] = true
 	}
 	return s
+}
+
+// fits says whether name is one the numbered format produces.
+func fits(format, name string) bool {
+	var n int
+	if _, err := fmt.Sscanf(name, format, &n); err != nil {
+		return false
+	}
+	return fmt.Sprintf(format, n) == name
 }
 
 // Mapping is every real hostname and what it is shown as.

@@ -55,6 +55,21 @@ func TestSanitizer(t *testing.T) {
 		}
 	}
 
+	// Groups: switches are numbered on their own. A switch the last export
+	// numbered as a server is renumbered; everything else keeps its name.
+	grouped := names
+	grouped.Groups = []Group{{Match: "sw-*", Names: "switch%d"}}
+	g := NewSanitizer(grouped, append(hosts, "sw-garage-sn3800", "sw-desk100", "sw-garage-sn2410"),
+		map[string]string{"d2": "server7", "d1": "server1", "sw-desk100": "server15", "sw-garage-sn3800": "switch2"})
+	for real, want := range map[string]string{"d1": "server1", "d2": "server7", "mgmt1": "server2", "sw-garage-sn3800": "switch2", "sw-desk100": "switch1", "sw-garage-sn2410": "switch3", "fs2": "nas"} {
+		if got := g.Mapping()[real]; got != want {
+			t.Errorf("grouped mapping[%q] = %q, want %q", real, got, want)
+		}
+	}
+	if got := g.Text("sw-desk100 enp22"); got != "switch1 enp22" {
+		t.Errorf("grouped Text = %q", got)
+	}
+
 	msg := &pb.ListHostsResponse{Hosts: []*pb.Host{{Hostname: "fs2", MachineId: "abc"}, {Hostname: "d1", MachineId: "def"}}}
 	s.Message(msg)
 	if msg.Hosts[0].Hostname != "nas" || msg.Hosts[0].MachineId != "" || msg.Hosts[1].Hostname != "server1" {
