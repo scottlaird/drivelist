@@ -1,0 +1,75 @@
+{
+ "drive": {
+  "driveId": "130",
+  "wwn": "eui.0025385c01404d27",
+  "model": "Samsung SSD 970 EVO 500GB",
+  "serial": "S5H7NS0NC15217L",
+  "sizeBytes": "500107862016",
+  "bus": "BUS_NVME",
+  "status": "ok",
+  "firstSeen": "2026-09-13T02:42:07Z",
+  "lastSeen": "2026-09-27T19:43:13Z",
+  "current": {
+   "hostname": "server4",
+   "enclosure": "dmi:CN7831V0PR",
+   "bay": "PCI-E Slot 6/08.0",
+   "devName": "nvme1n1",
+   "uses": [
+    "zfs > data4 3508075802515951370 > disk 17312631305430522147"
+   ],
+   "firstSeen": "2026-09-14T06:17:22Z",
+   "lastSeen": "2026-09-27T19:43:13Z",
+   "enclosureVia": "pci",
+   "bayLabel": "card port 8"
+  },
+  "memberState": "ONLINE"
+ },
+ "placements": [
+  {
+   "hostname": "server4",
+   "devName": "nvme1n1",
+   "uses": [
+    "zfs > data4 3508075802515951370 > disk 17312631305430522147"
+   ],
+   "firstSeen": "2026-09-13T02:42:07Z",
+   "lastSeen": "2026-09-14T06:12:55Z",
+   "endedAt": "2026-09-14T06:17:22Z",
+   "endReason": "moved"
+  },
+  {
+   "hostname": "server4",
+   "enclosure": "dmi:CN7831V0PR",
+   "bay": "PCI-E Slot 6/08.0",
+   "devName": "nvme1n1",
+   "uses": [
+    "zfs > data4 3508075802515951370 > disk 17312631305430522147"
+   ],
+   "firstSeen": "2026-09-14T06:17:22Z",
+   "lastSeen": "2026-09-27T19:43:13Z",
+   "enclosureVia": "pci",
+   "bayLabel": "card port 8"
+  }
+ ],
+ "events": [
+  {
+   "eventId": "480",
+   "ts": "2026-09-13T02:42:07Z",
+   "kind": "first_seen",
+   "serial": "S5H7NS0NC15217L",
+   "wwn": "eui.0025385c01404d27",
+   "hostname": "server4",
+   "detail": "{\"bay\":\"\",\"dev_name\":\"nvme1n1\",\"expander\":\"\",\"expander_dev\":\"\",\"uses\":[\"zfs \\u003e data4 3508075802515951370 \\u003e disk 17312631305430522147\"]}",
+   "source": "snapshot:11"
+  },
+  {
+   "eventId": "550",
+   "ts": "2026-09-14T06:17:22Z",
+   "kind": "moved_bay",
+   "serial": "S5H7NS0NC15217L",
+   "wwn": "eui.0025385c01404d27",
+   "hostname": "server4",
+   "detail": "{\"from_bay\":\"\",\"from_enclosure\":\"\",\"from_enclosure_via\":\"\",\"from_host\":\"server4\",\"from_uses\":[\"zfs \\u003e data4 3508075802515951370 \\u003e disk 17312631305430522147\"],\"to_bay\":\"PCI-E Slot 6/08.0\",\"to_bay_label\":\"card port 8\",\"to_dev_name\":\"nvme1n1\",\"to_enclosure\":\"dmi:CN7831V0PR\",\"to_enclosure_via\":\"pci\",\"to_uses\":[\"zfs \\u003e data4 3508075802515951370 \\u003e disk 17312631305430522147\"]}",
+   "source": "snapshot:45"
+  }
+ ]
+}

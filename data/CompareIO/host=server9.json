@@ -1,0 +1,45 @@
+{
+ "rows": [
+  {
+   "hostname": "server9",
+   "serial": "S7KHNU0Y717729D",
+   "model": "Samsung SSD 990 PRO 2TB",
+   "devName": "nvme2n1",
+   "reads": "105",
+   "writes": "336786",
+   "rAwaitMs": 0.47619047619047616,
+   "wAwaitMs": 1.4616017292880346,
+   "util": 0.0028622249941910945,
+   "groupRAwaitMs": 0.47619047619047616,
+   "groupWAwaitMs": 1.4616017292880346,
+   "groupUtil": 0.0028622249941910945,
+   "groupSize": 1
+  },
+  {
+   "group": "zfs > data 10648486609276903990 > mirror 12388082022523346833",
+   "hostname": "server9",
+   "serial": "S7KGNJ0Y518120V",
+   "model": "Samsung SSD 990 PRO 4TB",
+   "devName": "nvme1n1",
+   "writes": "1911834",
+   "wAwaitMs": 0.2619191833600616,
+   "util": 0.0034027222364897093,
+   "groupWAwaitMs": 0.2644045247465364,
+   "groupUtil": 0.0034312286752027003,
+   "groupSize": 2
+  },
+  {
+   "group": "zfs > data 10648486609276903990 > mirror 12388082022523346833",
+   "hostname": "server9",
+   "serial": "S7KGNU0Y603825W",
+   "model": "Samsung SSD 990 PRO 4TB",
+   "devName": "nvme0n1",
+   "writes": "1897854",
+   "wAwaitMs": 0.2668898661330113,
+   "util": 0.0034597351139156914,
+   "groupWAwaitMs": 0.2644045247465364,
+   "groupUtil": 0.0034312286752027003,
+   "groupSize": 2
+  }
+ ]
+}

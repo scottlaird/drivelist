@@ -1,0 +1,95 @@
+{
+ "row": {
+  "optic": {
+   "port": "eth0",
+   "ports": [
+    "eth0"
+   ],
+   "form": "QSFP+",
+   "identifier": "0x0d (QSFP+)",
+   "kind": "dac",
+   "vendor": "FS",
+   "oui": "64:9d:99",
+   "part": "QSFP-PC015",
+   "rev": "A",
+   "serial": "S2202303619-1",
+   "dateCode": "220311",
+   "compliance": "40G Ethernet: 40G Base-CR4",
+   "connector": "No separable connector",
+   "link": "up",
+   "diagnostics": true,
+   "tempC": 0,
+   "voltageV": 0
+  },
+  "status": "ok",
+  "hostname": "server14",
+  "present": true,
+  "firstSeen": "2026-09-27T15:26:46Z",
+  "lastSeen": "2026-09-27T19:42:28Z",
+  "sampledAt": "2026-09-27T19:42:28Z"
+ },
+ "placements": [
+  {
+   "hostname": "server14",
+   "port": "eth0",
+   "ports": [
+    "eth0"
+   ],
+   "firstSeen": "2026-09-27T15:26:46Z",
+   "lastSeen": "2026-09-27T19:42:28Z"
+  }
+ ],
+ "samples": [
+  {
+   "ts": "2026-09-27T19:42:28Z",
+   "hostname": "server14",
+   "port": "eth0",
+   "tempC": 0,
+   "voltageV": 0,
+   "link": "up"
+  },
+  {
+   "ts": "2026-09-27T18:57:20Z",
+   "hostname": "server14",
+   "port": "eth0",
+   "tempC": 0,
+   "voltageV": 0,
+   "link": "up"
+  },
+  {
+   "ts": "2026-09-27T17:57:10Z",
+   "hostname": "server14",
+   "port": "eth0",
+   "tempC": 0,
+   "voltageV": 0,
+   "link": "up"
+  },
+  {
+   "ts": "2026-09-27T16:57:01Z",
+   "hostname": "server14",
+   "port": "eth0",
+   "tempC": 0,
+   "voltageV": 0,
+   "link": "up"
+  },
+  {
+   "ts": "2026-09-27T15:56:51Z",
+   "hostname": "server14",
+   "port": "eth0",
+   "tempC": 0,
+   "voltageV": 0,
+   "link": "up"
+  }
+ ],
+ "events": [
+  {
+   "eventId": "922",
+   "ts": "2026-09-27T15:26:46Z",
+   "kind": "optic_first_seen",
+   "hostname": "server14",
+   "detail": "{\"form\":\"QSFP+\",\"part\":\"QSFP-PC015\",\"port\":\"eth0\",\"serial\":\"S2202303619-1\",\"vendor\":\"FS\"}",
+   "source": "report",
+   "opticSerial": "S2202303619-1"
+  }
+ ]
+}

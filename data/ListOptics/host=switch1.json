@@ -1,0 +1,371 @@
+{
+ "rows": [
+  {
+   "optic": {
+    "port": "enp22",
+    "ports": [
+     "enp22"
+    ],
+    "form": "QSFP+",
+    "identifier": "0x0d (QSFP+)",
+    "kind": "optical",
+    "vendor": "Arista Networks",
+    "oui": "00:1c:73",
+    "part": "QSFP-40G-UNIV",
+    "rev": "20",
+    "serial": "XLA164600338",
+    "dateCode": "16110900",
+    "compliance": "40G Ethernet: 40G Base-LR4",
+    "connector": "LC",
+    "wavelengthNm": 1310,
+    "link": "down",
+    "diagnostics": true,
+    "tempC": 57.03,
+    "voltageV": 3.3265,
+    "lanes": [
+     {
+      "lane": 1,
+      "biasMa": 44.582,
+      "txMw": 1.4837,
+      "rxMw": 0.7307
+     },
+     {
+      "lane": 2,
+      "biasMa": 63.392,
+      "txMw": 1.4827,
+      "rxMw": 0.7034
+     },
+     {
+      "lane": 3,
+      "biasMa": 42.018,
+      "txMw": 1.542,
+      "rxMw": 0.658
+     },
+     {
+      "lane": 4,
+      "biasMa": 43.1,
+      "txMw": 1.5217,
+      "rxMw": 0.78
+     }
+    ],
+    "thresholds": {
+     "bias_high_alarm": 100,
+     "bias_high_warning": 90,
+     "bias_low_alarm": 0.2,
+     "bias_low_warning": 0.3,
+     "rx_high_alarm": 2.8184,
+     "rx_high_warning": 2.5119,
+     "rx_low_alarm": 0.01,
+     "rx_low_warning": 0.0199,
+     "temp_high_alarm": 70,
+     "temp_high_warning": 65,
+     "temp_low_alarm": -5,
+     "temp_low_warning": 0,
+     "tx_high_alarm": 2.2387,
+     "tx_high_warning": 1.9952,
+     "tx_low_alarm": 0.425,
+     "tx_low_warning": 0.4575,
+     "voltage_high_alarm": 3.63,
+     "voltage_high_warning": 3.465,
+     "voltage_low_alarm": 2.97,
+     "voltage_low_warning": 3.135
+    },
+    "carrierChanges": "9470",
+    "flaps": 2,
+    "flapsDay": 10,
+    "flapHours": 1
+   },
+   "status": "bad",
+   "hostname": "switch1",
+   "present": true,
+   "firstSeen": "2026-09-27T15:36:04Z",
+   "lastSeen": "2026-09-27T19:42:22Z",
+   "sampledAt": "2026-09-27T19:42:22Z",
+   "problems": [
+    "marked bad",
+    "link flapped 10 times in the last day"
+   ],
+   "dark": true
+  },
+  {
+   "optic": {
+    "port": "enp5",
+    "ports": [
+     "enp5"
+    ],
+    "form": "SFP",
+    "identifier": "0x03 (SFP)",
+    "kind": "optical",
+    "vendor": "CISCO-FINISAR",
+    "oui": "44:7c:7f",
+    "part": "FTLF1436P3BCL-PR",
+    "rev": "1A",
+    "serial": "CS251P60341",
+    "dateCode": "250605",
+    "compliance": "Extended: 100G Base-LR4 or 25GBase-LR",
+    "connector": "LC",
+    "wavelengthNm": 1310,
+    "link": "up",
+    "diagnostics": true,
+    "tempC": 42.51,
+    "voltageV": 3.2597,
+    "lanes": [
+     {
+      "lane": 1,
+      "biasMa": 44.488,
+      "txMw": 1.0639,
+      "rxMw": 0.8648
+     }
+    ],
+    "thresholds": {
+     "bias_high_alarm": 100,
+     "bias_high_warning": 85,
+     "bias_low_alarm": 5,
+     "bias_low_warning": 10,
+     "rx_high_alarm": 2.5119,
+     "rx_high_warning": 1.9953,
+     "rx_low_alarm": 0.0234,
+     "rx_low_warning": 0.0468,
+     "temp_high_alarm": 95,
+     "temp_high_warning": 85,
+     "temp_low_alarm": -50,
+     "temp_low_warning": -40,
+     "tx_high_alarm": 3.9811,
+     "tx_high_warning": 1.9953,
+     "tx_low_alarm": 0.2089,
+     "tx_low_warning": 0.4169,
+     "voltage_high_alarm": 3.63,
+     "voltage_high_warning": 3.465,
+     "voltage_low_alarm": 2.97,
+     "voltage_low_warning": 3.135
+    },
+    "carrierChanges": "45"
+   },
+   "status": "ok",
+   "hostname": "switch1",
+   "present": true,
+   "firstSeen": "2026-09-27T15:26:04Z",
+   "lastSeen": "2026-09-27T19:42:22Z",
+   "sampledAt": "2026-09-27T19:42:22Z"
+  },
+  {
+   "optic": {
+    "port": "enp18",
+    "ports": [
+     "enp18"
+    ],
+    "form": "SFP",
+    "identifier": "0x03 (SFP)",
+    "kind": "optical",
+    "vendor": "OEM",
+    "oui": "00:90:65",
+    "part": "SFP-10G-LR",
+    "rev": "A",
+    "serial": "202603271096",
+    "dateCode": "260326",
+    "compliance": "10G Ethernet: 10G Base-LR",
+    "connector": "LC",
+    "wavelengthNm": 1310,
+    "link": "up",
+    "diagnostics": true,
+    "tempC": 43.68,
+    "voltageV": 3.3371,
+    "lanes": [
+     {
+      "lane": 1,
+      "biasMa": 46.812,
+      "txMw": 0.691,
+      "rxMw": 0.785
+     }
+    ],
+    "thresholds": {
+     "bias_high_alarm": 85,
+     "bias_high_warning": 80,
+     "bias_low_alarm": 15,
+     "bias_low_warning": 20,
+     "rx_high_alarm": 1.7783,
+     "rx_high_warning": 1.122,
+     "rx_low_alarm": 0.0229,
+     "rx_low_warning": 0.0363,
+     "temp_high_alarm": 80,
+     "temp_high_warning": 70,
+     "temp_low_alarm": -10,
+     "temp_low_warning": 0,
+     "tx_high_alarm": 1.7783,
+     "tx_high_warning": 1.122,
+     "tx_low_alarm": 0.0955,
+     "tx_low_warning": 0.1514,
+     "voltage_high_alarm": 3.63,
+     "voltage_high_warning": 3.465,
+     "voltage_low_alarm": 2.97,
+     "voltage_low_warning": 3.135
+    },
+    "carrierChanges": "5"
+   },
+   "status": "ok",
+   "hostname": "switch1",
+   "present": true,
+   "firstSeen": "2026-09-27T15:26:04Z",
+   "lastSeen": "2026-09-27T19:42:22Z",
+   "sampledAt": "2026-09-27T19:42:22Z"
+  },
+  {
+   "optic": {
+    "port": "enp19",
+    "ports": [
+     "enp19"
+    ],
+    "form": "QSFP28",
+    "identifier": "0x11 (QSFP28)",
+    "kind": "optical",
+    "vendor": "AOI",
+    "oui": "00:29:26",
+    "part": "AQPLBCQ4EDOA1106",
+    "rev": "1",
+    "serial": "25619E55087",
+    "dateCode": "190525",
+    "compliance": "100G Ethernet: 100G CWDM4 MSA with FEC",
+    "connector": "LC",
+    "wavelengthNm": 1301,
+    "link": "up",
+    "diagnostics": true,
+    "tempC": 44.36,
+    "voltageV": 3.2986,
+    "lanes": [
+     {
+      "lane": 1,
+      "biasMa": 41.136,
+      "txMw": 0.9633,
+      "rxMw": 1.132
+     },
+     {
+      "lane": 2,
+      "biasMa": 39.54,
+      "txMw": 1.1259,
+      "rxMw": 0.7219
+     },
+     {
+      "lane": 3,
+      "biasMa": 42.344,
+      "txMw": 1.0165,
+      "rxMw": 0.7479
+     },
+     {
+      "lane": 4,
+      "biasMa": 40.896,
+      "txMw": 0.8719,
+      "rxMw": 0.8894
+     }
+    ],
+    "thresholds": {
+     "bias_high_alarm": 90,
+     "bias_high_warning": 85,
+     "bias_low_alarm": 6,
+     "bias_low_warning": 6.5,
+     "rx_high_alarm": 3.5481,
+     "rx_high_warning": 1.7783,
+     "rx_low_alarm": 0.1,
+     "rx_low_warning": 0.1549,
+     "temp_high_alarm": 58,
+     "temp_high_warning": 53,
+     "temp_low_alarm": -10,
+     "temp_low_warning": -5,
+     "tx_high_alarm": 2.8184,
+     "tx_high_warning": 2.2387,
+     "tx_low_alarm": 0.1413,
+     "tx_low_warning": 0.1778,
+     "voltage_high_alarm": 3.6,
+     "voltage_high_warning": 3.5,
+     "voltage_low_alarm": 3,
+     "voltage_low_warning": 3.1
+    },
+    "carrierChanges": "3"
+   },
+   "status": "ok",
+   "hostname": "switch1",
+   "present": true,
+   "firstSeen": "2026-09-27T15:26:04Z",
+   "lastSeen": "2026-09-27T19:42:22Z",
+   "sampledAt": "2026-09-27T19:42:22Z"
+  },
+  {
+   "optic": {
+    "port": "enp21",
+    "ports": [
+     "enp21"
+    ],
+    "form": "QSFP+",
+    "identifier": "0x0d (QSFP+)",
+    "kind": "optical",
+    "vendor": "Arista Networks",
+    "oui": "00:1c:73",
+    "part": "QSFP-40G-UNIV",
+    "rev": "20",
+    "serial": "ATH1901000KP",
+    "dateCode": "181213",
+    "compliance": "40G Ethernet: 40G Base-LR4",
+    "connector": "LC",
+    "wavelengthNm": 1310,
+    "link": "up",
+    "diagnostics": true,
+    "tempC": 42.2,
+    "voltageV": 3.321,
+    "lanes": [
+     {
+      "lane": 1,
+      "biasMa": 37.758,
+      "txMw": 1.8148,
+      "rxMw": 1.1392
+     },
+     {
+      "lane": 2,
+      "biasMa": 38.982,
+      "txMw": 0.9683,
+      "rxMw": 1.5884
+     },
+     {
+      "lane": 3,
+      "biasMa": 40.672,
+      "txMw": 1.5629,
+      "rxMw": 0.7852
+     },
+     {
+      "lane": 4,
+      "biasMa": 38.716,
+      "txMw": 1.2222,
+      "rxMw": 0.9184
+     }
+    ],
+    "thresholds": {
+     "bias_high_alarm": 105,
+     "bias_high_warning": 105,
+     "bias_low_alarm": 8,
+     "bias_low_warning": 10,
+     "rx_high_alarm": 3.3884,
+     "rx_high_warning": 2.6915,
+     "rx_low_alarm": 0.017,
+     "rx_low_warning": 0.0427,
+     "temp_high_alarm": 78,
+     "temp_high_warning": 75,
+     "temp_low_alarm": -5,
+     "temp_low_warning": 0,
+     "tx_high_alarm": 5.3703,
+     "tx_high_warning": 3.1623,
+     "tx_low_alarm": 0.0794,
+     "tx_low_warning": 0.1995,
+     "voltage_high_alarm": 3.63,
+     "voltage_high_warning": 3.465,
+     "voltage_low_alarm": 2.97,
+     "voltage_low_warning": 3.1
+    },
+    "carrierChanges": "337255"
+   },
+   "status": "ok",
+   "hostname": "switch1",
+   "present": true,
+   "firstSeen": "2026-09-27T15:26:04Z",
+   "lastSeen": "2026-09-27T19:42:22Z",
+   "sampledAt": "2026-09-27T19:42:22Z"
+  }
+ ]
+}

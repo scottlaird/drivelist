@@ -1,0 +1,3305 @@
+{
+ "drive": {
+  "driveId": "144",
+  "wwn": "eui.0025385151419226",
+  "model": "Samsung SSD 990 EVO Plus 1TB",
+  "serial": "S7U5NJ0Y114944D",
+  "sizeBytes": "1000204886016",
+  "bus": "BUS_NVME",
+  "status": "ok",
+  "firstSeen": "2026-09-13T15:35:30Z",
+  "lastSeen": "2026-09-27T19:42:33Z",
+  "current": {
+   "hostname": "server2",
+   "enclosure": "dmi:CN7831V0S2",
+   "bay": "PCI-E Slot 6/00.0",
+   "devName": "nvme0n1",
+   "uses": [
+    "zfs > data3 7541214845925865559 > disk 4253007036015280370"
+   ],
+   "firstSeen": "2026-09-14T04:00:37Z",
+   "lastSeen": "2026-09-27T19:42:33Z",
+   "enclosureVia": "pci",
+   "bayLabel": "card port 0"
+  },
+  "memberState": "ONLINE"
+ },
+ "samples": [
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-27T18:00:00Z",
+   "bucketSecs": 3599,
+   "reads": "1",
+   "writes": "402308",
+   "readBytes": "512",
+   "writeBytes": "4808962048",
+   "writeMs": "94314",
+   "ioMs": "33586",
+   "weightedMs": "95249",
+   "wAwaitMaxMs": 0.6336058519793459,
+   "utilMax": 0.015488496165388463,
+   "hostname": "server2",
+   "awaitReads": "1",
+   "awaitWrites": "402308"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-27T17:00:00Z",
+   "bucketSecs": 3599,
+   "reads": "6",
+   "writes": "393572",
+   "readBytes": "533504",
+   "writeBytes": "4866205184",
+   "readMs": "2",
+   "writeMs": "78620",
+   "ioMs": "30326",
+   "weightedMs": "79389",
+   "rAwaitMaxMs": 0.4,
+   "wAwaitMaxMs": 0.38242458309911936,
+   "utilMax": 0.01161627945735142,
+   "hostname": "server2",
+   "awaitReads": "6",
+   "awaitWrites": "393572"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-27T16:00:00Z",
+   "bucketSecs": 3599,
+   "reads": "2",
+   "writes": "334715",
+   "readBytes": "101376",
+   "writeBytes": "3510402048",
+   "readMs": "1",
+   "writeMs": "74649",
+   "ioMs": "29359",
+   "weightedMs": "75463",
+   "rAwaitMaxMs": 0.5,
+   "wAwaitMaxMs": 0.5408455750627016,
+   "utilMax": 0.013630834347036377,
+   "hostname": "server2",
+   "awaitReads": "2",
+   "awaitWrites": "334715"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-27T15:00:00Z",
+   "bucketSecs": 3599,
+   "reads": "8",
+   "writes": "310971",
+   "readBytes": "403456",
+   "writeBytes": "2797719040",
+   "readMs": "2",
+   "writeMs": "73290",
+   "ioMs": "28840",
+   "weightedMs": "74150",
+   "rAwaitMaxMs": 0.3333333333333333,
+   "wAwaitMaxMs": 0.913642285501582,
+   "utilMax": 0.018180606242396972,
+   "hostname": "server2",
+   "awaitReads": "8",
+   "awaitWrites": "310971"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-27T14:00:00Z",
+   "bucketSecs": 3600,
+   "reads": "9328",
+   "writes": "323812",
+   "readBytes": "1176536064",
+   "writeBytes": "4302487552",
+   "readMs": "2201",
+   "writeMs": "69751",
+   "ioMs": "30122",
+   "weightedMs": "72807",
+   "rAwaitMaxMs": 0.23595626072041168,
+   "wAwaitMaxMs": 0.5441115272575947,
+   "utilMax": 0.03921928128541903,
+   "hostname": "server2",
+   "awaitReads": "9328",
+   "awaitWrites": "323812"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-27T13:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "326747",
+   "writeBytes": "3577874432",
+   "writeMs": "68447",
+   "ioMs": "28195",
+   "weightedMs": "69251",
+   "wAwaitMaxMs": 0.3889344262295082,
+   "utilMax": 0.010285218956808749,
+   "hostname": "server2",
+   "awaitWrites": "326747"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-27T12:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "352609",
+   "writeBytes": "3413955584",
+   "writeMs": "69103",
+   "ioMs": "28394",
+   "weightedMs": "69912",
+   "wAwaitMaxMs": 0.35892926924579915,
+   "utilMax": 0.008933333333333333,
+   "hostname": "server2",
+   "awaitWrites": "352609"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-27T11:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "315374",
+   "writeBytes": "3370102784",
+   "writeMs": "68229",
+   "ioMs": "28099",
+   "weightedMs": "69057",
+   "wAwaitMaxMs": 0.4248675246025738,
+   "utilMax": 0.01131685528092135,
+   "hostname": "server2",
+   "awaitWrites": "315374"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-27T10:00:00Z",
+   "bucketSecs": 3599,
+   "reads": "1",
+   "writes": "351559",
+   "readBytes": "512",
+   "writeBytes": "4118219264",
+   "readMs": "1",
+   "writeMs": "78735",
+   "ioMs": "30753",
+   "weightedMs": "79513",
+   "rAwaitMaxMs": 1,
+   "wAwaitMaxMs": 0.5471510819932499,
+   "utilMax": 0.015068515959306682,
+   "hostname": "server2",
+   "awaitReads": "1",
+   "awaitWrites": "351559"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-27T09:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "511641",
+   "writeBytes": "6622113280",
+   "writeMs": "82469",
+   "ioMs": "31155",
+   "weightedMs": "83215",
+   "wAwaitMaxMs": 0.30688524590163935,
+   "utilMax": 0.011534294524543713,
+   "hostname": "server2",
+   "awaitWrites": "511641"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-27T08:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "292549",
+   "writeBytes": "2863978496",
+   "writeMs": "83558",
+   "ioMs": "30878",
+   "weightedMs": "84410",
+   "wAwaitMaxMs": 0.9882691456396636,
+   "utilMax": 0.018067570045168926,
+   "hostname": "server2",
+   "awaitWrites": "292549"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-27T07:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "337901",
+   "writeBytes": "3377245696",
+   "writeMs": "78366",
+   "ioMs": "30273",
+   "weightedMs": "79362",
+   "wAwaitMaxMs": 0.5419558359621451,
+   "utilMax": 0.014069011501916986,
+   "hostname": "server2",
+   "awaitWrites": "337901"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-27T06:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "331194",
+   "writeBytes": "3112578560",
+   "writeMs": "74712",
+   "ioMs": "29346",
+   "weightedMs": "75573",
+   "wAwaitMaxMs": 0.7509535562037245,
+   "utilMax": 0.01609356257497001,
+   "hostname": "server2",
+   "awaitWrites": "331194"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-27T05:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "388704",
+   "writeBytes": "3820916224",
+   "writeMs": "72586",
+   "ioMs": "29035",
+   "weightedMs": "73366",
+   "wAwaitMaxMs": 0.30475581147366176,
+   "utilMax": 0.010966666666666666,
+   "hostname": "server2",
+   "awaitWrites": "388704"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-27T04:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "351771",
+   "writeBytes": "3776230912",
+   "writeMs": "74913",
+   "ioMs": "29797",
+   "weightedMs": "75708",
+   "wAwaitMaxMs": 0.5952283011106541,
+   "utilMax": 0.015115658956069596,
+   "hostname": "server2",
+   "awaitWrites": "351771"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-27T03:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "329469",
+   "writeBytes": "3013746176",
+   "writeMs": "68644",
+   "ioMs": "28335",
+   "weightedMs": "69402",
+   "wAwaitMaxMs": 0.2842203548085901,
+   "utilMax": 0.010499475026248688,
+   "hostname": "server2",
+   "awaitWrites": "329469"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-27T02:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "295836",
+   "writeBytes": "2507572736",
+   "writeMs": "69359",
+   "ioMs": "28220",
+   "weightedMs": "70176",
+   "wAwaitMaxMs": 0.7519397535371977,
+   "utilMax": 0.01415,
+   "hostname": "server2",
+   "awaitWrites": "295836"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-27T01:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "261521",
+   "writeBytes": "2120374272",
+   "writeMs": "67028",
+   "ioMs": "27994",
+   "weightedMs": "67819",
+   "wAwaitMaxMs": 0.5748087954110899,
+   "utilMax": 0.012329429014145521,
+   "hostname": "server2",
+   "awaitWrites": "261521"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-27T00:00:00Z",
+   "bucketSecs": 3600,
+   "reads": "282",
+   "writes": "262061",
+   "readBytes": "13404672",
+   "writeBytes": "2300330496",
+   "readMs": "61",
+   "writeMs": "78951",
+   "ioMs": "30783",
+   "weightedMs": "79917",
+   "rAwaitMaxMs": 0.21631205673758866,
+   "wAwaitMaxMs": 0.7266064011727339,
+   "utilMax": 0.014999750004166597,
+   "hostname": "server2",
+   "awaitReads": "282",
+   "awaitWrites": "262061"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-26T23:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "257733",
+   "writeBytes": "2314318336",
+   "writeMs": "67931",
+   "ioMs": "28416",
+   "weightedMs": "68795",
+   "wAwaitMaxMs": 0.6231128191051332,
+   "utilMax": 0.0129480577913313,
+   "hostname": "server2",
+   "awaitWrites": "257733"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-26T22:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "284774",
+   "writeBytes": "3004126720",
+   "writeMs": "75944",
+   "ioMs": "29725",
+   "weightedMs": "76873",
+   "wAwaitMaxMs": 0.5655994978028877,
+   "utilMax": 0.013317554503633576,
+   "hostname": "server2",
+   "awaitWrites": "284774"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-26T21:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "333491",
+   "writeBytes": "3939391488",
+   "writeMs": "75246",
+   "ioMs": "29970",
+   "weightedMs": "76044",
+   "wAwaitMaxMs": 0.4190415875026388,
+   "utilMax": 0.013114699461747405,
+   "hostname": "server2",
+   "awaitWrites": "333491"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-26T20:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "357790",
+   "writeBytes": "4046712320",
+   "writeMs": "77817",
+   "ioMs": "30430",
+   "weightedMs": "78595",
+   "wAwaitMaxMs": 0.6088717454194793,
+   "utilMax": 0.017337089702768933,
+   "hostname": "server2",
+   "awaitWrites": "357790"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-26T19:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "326757",
+   "writeBytes": "3604802048",
+   "writeMs": "77841",
+   "ioMs": "30515",
+   "weightedMs": "78602",
+   "wAwaitMaxMs": 0.7312614259597806,
+   "utilMax": 0.01863022829528412,
+   "hostname": "server2",
+   "awaitWrites": "326757"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-26T18:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "322553",
+   "writeBytes": "3083037696",
+   "writeMs": "74786",
+   "ioMs": "29904",
+   "weightedMs": "75661",
+   "wAwaitMaxMs": 0.626691042047532,
+   "utilMax": 0.017033617226953783,
+   "hostname": "server2",
+   "awaitWrites": "322553"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-26T17:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "309483",
+   "writeBytes": "3113750016",
+   "writeMs": "73125",
+   "ioMs": "29324",
+   "weightedMs": "73913",
+   "wAwaitMaxMs": 0.5143459915611814,
+   "utilMax": 0.013292467601692374,
+   "hostname": "server2",
+   "awaitWrites": "309483"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-26T16:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "266593",
+   "writeBytes": "2731640320",
+   "writeMs": "65833",
+   "ioMs": "27581",
+   "weightedMs": "66594",
+   "wAwaitMaxMs": 0.5370686261645453,
+   "utilMax": 0.015517183906130204,
+   "hostname": "server2",
+   "awaitWrites": "266593"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-26T15:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "278021",
+   "writeBytes": "2748688896",
+   "writeMs": "71705",
+   "ioMs": "28867",
+   "weightedMs": "72664",
+   "wAwaitMaxMs": 1.0111891180342256,
+   "utilMax": 0.013983100281661972,
+   "hostname": "server2",
+   "awaitWrites": "278021"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-26T14:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "322153",
+   "writeBytes": "3297485824",
+   "writeMs": "67517",
+   "ioMs": "28176",
+   "weightedMs": "68335",
+   "wAwaitMaxMs": 0.3308105954989046,
+   "utilMax": 0.010011827616651951,
+   "hostname": "server2",
+   "awaitWrites": "322153"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-26T13:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "311199",
+   "writeBytes": "3068750336",
+   "writeMs": "75222",
+   "ioMs": "29859",
+   "weightedMs": "76081",
+   "wAwaitMaxMs": 0.4217189728958631,
+   "utilMax": 0.011977344661002831,
+   "hostname": "server2",
+   "awaitWrites": "311199"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-26T12:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "316573",
+   "writeBytes": "3022307328",
+   "writeMs": "79275",
+   "ioMs": "30687",
+   "weightedMs": "80041",
+   "wAwaitMaxMs": 0.742493973263204,
+   "utilMax": 0.01633387779592653,
+   "hostname": "server2",
+   "awaitWrites": "316573"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-26T11:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "341442",
+   "writeBytes": "3711070208",
+   "writeMs": "75496",
+   "ioMs": "30154",
+   "weightedMs": "76335",
+   "wAwaitMaxMs": 0.4460494256874347,
+   "utilMax": 0.014984582048504043,
+   "hostname": "server2",
+   "awaitWrites": "341442"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-26T10:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "328691",
+   "writeBytes": "3200646656",
+   "writeMs": "69231",
+   "ioMs": "28438",
+   "weightedMs": "70052",
+   "wAwaitMaxMs": 0.3522182878566965,
+   "utilMax": 0.011205415951043005,
+   "hostname": "server2",
+   "awaitWrites": "328691"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-26T09:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "309640",
+   "writeBytes": "2830247936",
+   "writeMs": "73868",
+   "ioMs": "29746",
+   "weightedMs": "74719",
+   "wAwaitMaxMs": 0.552643470402169,
+   "utilMax": 0.015002750504259114,
+   "hostname": "server2",
+   "awaitWrites": "309640"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-26T08:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "375658",
+   "writeBytes": "4251386368",
+   "writeMs": "85178",
+   "ioMs": "31731",
+   "weightedMs": "86063",
+   "wAwaitMaxMs": 1.0072137060414788,
+   "utilMax": 0.01596719890663022,
+   "hostname": "server2",
+   "awaitWrites": "375658"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-26T07:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "420299",
+   "writeBytes": "4820521472",
+   "writeMs": "79883",
+   "ioMs": "31023",
+   "weightedMs": "80645",
+   "wAwaitMaxMs": 0.5028045770697779,
+   "utilMax": 0.013580390915301685,
+   "hostname": "server2",
+   "awaitWrites": "420299"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-26T06:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "284934",
+   "writeBytes": "2415202816",
+   "writeMs": "68954",
+   "ioMs": "28131",
+   "weightedMs": "69803",
+   "wAwaitMaxMs": 0.7386363636363636,
+   "utilMax": 0.01544742542909515,
+   "hostname": "server2",
+   "awaitWrites": "284934"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-26T05:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "294249",
+   "writeBytes": "2741400576",
+   "writeMs": "77170",
+   "ioMs": "29831",
+   "weightedMs": "77981",
+   "wAwaitMaxMs": 0.5583702765463373,
+   "utilMax": 0.012703811143343003,
+   "hostname": "server2",
+   "awaitWrites": "294249"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-26T04:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "285950",
+   "writeBytes": "2805344256",
+   "writeMs": "64142",
+   "ioMs": "27261",
+   "weightedMs": "64948",
+   "wAwaitMaxMs": 0.4013605442176871,
+   "utilMax": 0.010683511391856531,
+   "hostname": "server2",
+   "awaitWrites": "285950"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-26T03:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "291583",
+   "writeBytes": "2694983680",
+   "writeMs": "65248",
+   "ioMs": "27317",
+   "weightedMs": "66026",
+   "wAwaitMaxMs": 0.3391954720032343,
+   "utilMax": 0.009860257499292127,
+   "hostname": "server2",
+   "awaitWrites": "291583"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-26T02:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "285133",
+   "writeBytes": "2953703936",
+   "writeMs": "69333",
+   "ioMs": "28402",
+   "weightedMs": "70180",
+   "wAwaitMaxMs": 0.4319526627218935,
+   "utilMax": 0.012706353176588294,
+   "hostname": "server2",
+   "awaitWrites": "285133"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-26T01:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "317872",
+   "writeBytes": "2822431744",
+   "writeMs": "67604",
+   "ioMs": "27777",
+   "weightedMs": "68407",
+   "wAwaitMaxMs": 0.2972077614765736,
+   "utilMax": 0.009850656710447363,
+   "hostname": "server2",
+   "awaitWrites": "317872"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-26T00:00:00Z",
+   "bucketSecs": 3600,
+   "reads": "228",
+   "writes": "278061",
+   "readBytes": "13432832",
+   "writeBytes": "2573737472",
+   "readMs": "60",
+   "writeMs": "71951",
+   "ioMs": "29104",
+   "weightedMs": "72828",
+   "rAwaitMaxMs": 0.2631578947368421,
+   "wAwaitMaxMs": 0.5144282924712519,
+   "utilMax": 0.01353671751271151,
+   "hostname": "server2",
+   "awaitReads": "228",
+   "awaitWrites": "278061"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-25T23:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "277147",
+   "writeBytes": "2803640320",
+   "writeMs": "65129",
+   "ioMs": "27357",
+   "weightedMs": "65961",
+   "wAwaitMaxMs": 0.46035690083578046,
+   "utilMax": 0.010854522717799082,
+   "hostname": "server2",
+   "awaitWrites": "277147"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-25T22:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "291841",
+   "writeBytes": "2841737728",
+   "writeMs": "65237",
+   "ioMs": "27432",
+   "weightedMs": "66070",
+   "wAwaitMaxMs": 0.28491037932471863,
+   "utilMax": 0.009164680985786412,
+   "hostname": "server2",
+   "awaitWrites": "291841"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-25T21:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "334444",
+   "writeBytes": "3588326400",
+   "writeMs": "70062",
+   "ioMs": "28611",
+   "weightedMs": "70852",
+   "wAwaitMaxMs": 0.3649956024626209,
+   "utilMax": 0.010395322105052725,
+   "hostname": "server2",
+   "awaitWrites": "334444"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-25T20:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "330936",
+   "writeBytes": "3665656832",
+   "writeMs": "69253",
+   "ioMs": "28494",
+   "weightedMs": "70119",
+   "wAwaitMaxMs": 0.3829745596868884,
+   "utilMax": 0.010236233599519863,
+   "hostname": "server2",
+   "awaitWrites": "330936"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-25T19:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "383432",
+   "writeBytes": "4626429952",
+   "writeMs": "74220",
+   "ioMs": "29343",
+   "weightedMs": "75028",
+   "wAwaitMaxMs": 0.5330180712717446,
+   "utilMax": 0.014467148904963499,
+   "hostname": "server2",
+   "awaitWrites": "383432"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-25T18:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "519072",
+   "writeBytes": "6810285568",
+   "writeMs": "84529",
+   "ioMs": "31620",
+   "weightedMs": "85340",
+   "wAwaitMaxMs": 0.25184842883548986,
+   "utilMax": 0.011707609946465202,
+   "hostname": "server2",
+   "awaitWrites": "519072"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-25T17:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "289651",
+   "writeBytes": "2843476480",
+   "writeMs": "73152",
+   "ioMs": "28625",
+   "weightedMs": "73960",
+   "wAwaitMaxMs": 0.5925133689839572,
+   "utilMax": 0.014598783434713774,
+   "hostname": "server2",
+   "awaitWrites": "289651"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-25T16:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "404857",
+   "writeBytes": "4751462912",
+   "writeMs": "79768",
+   "ioMs": "30652",
+   "weightedMs": "80626",
+   "wAwaitMaxMs": 0.41236945169712796,
+   "utilMax": 0.011848617661272851,
+   "hostname": "server2",
+   "awaitWrites": "404857"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-25T15:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "370527",
+   "writeBytes": "3897977344",
+   "writeMs": "81768",
+   "ioMs": "31116",
+   "weightedMs": "82640",
+   "wAwaitMaxMs": 0.7501489868891538,
+   "utilMax": 0.01839007636133249,
+   "hostname": "server2",
+   "awaitWrites": "370527"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-25T14:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "324318",
+   "writeBytes": "3258986496",
+   "writeMs": "73578",
+   "ioMs": "29315",
+   "weightedMs": "74436",
+   "wAwaitMaxMs": 0.4522579570071655,
+   "utilMax": 0.01533410003833525,
+   "hostname": "server2",
+   "awaitWrites": "324318"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-25T13:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "335415",
+   "writeBytes": "3223099904",
+   "writeMs": "73099",
+   "ioMs": "29261",
+   "weightedMs": "73893",
+   "wAwaitMaxMs": 0.4771528998242531,
+   "utilMax": 0.014180024660912454,
+   "hostname": "server2",
+   "awaitWrites": "335415"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-25T12:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "337999",
+   "writeBytes": "3193370624",
+   "writeMs": "75373",
+   "ioMs": "29850",
+   "weightedMs": "76242",
+   "wAwaitMaxMs": 0.6172658862876255,
+   "utilMax": 0.01380884165639471,
+   "hostname": "server2",
+   "awaitWrites": "337999"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-25T11:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "350189",
+   "writeBytes": "3396136960",
+   "writeMs": "76353",
+   "ioMs": "29980",
+   "weightedMs": "77158",
+   "wAwaitMaxMs": 0.41366189527088243,
+   "utilMax": 0.012131311448091984,
+   "hostname": "server2",
+   "awaitWrites": "350189"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-25T10:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "344963",
+   "writeBytes": "3657086464",
+   "writeMs": "75819",
+   "ioMs": "30151",
+   "weightedMs": "76637",
+   "wAwaitMaxMs": 0.770509977827051,
+   "utilMax": 0.025183753062551044,
+   "hostname": "server2",
+   "awaitWrites": "344963"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-25T09:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "318289",
+   "writeBytes": "2840422400",
+   "writeMs": "76254",
+   "ioMs": "29865",
+   "weightedMs": "77066",
+   "wAwaitMaxMs": 0.4960461637101945,
+   "utilMax": 0.012434784058140117,
+   "hostname": "server2",
+   "awaitWrites": "318289"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-25T08:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "281923",
+   "writeBytes": "2546013184",
+   "writeMs": "71079",
+   "ioMs": "29031",
+   "weightedMs": "71933",
+   "wAwaitMaxMs": 0.6746291658639954,
+   "utilMax": 0.017602933822303716,
+   "hostname": "server2",
+   "awaitWrites": "281923"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-25T07:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "395316",
+   "writeBytes": "4189006848",
+   "writeMs": "86274",
+   "ioMs": "32249",
+   "weightedMs": "87077",
+   "wAwaitMaxMs": 1.0029398462234282,
+   "utilMax": 0.01941294196130754,
+   "hostname": "server2",
+   "awaitWrites": "395316"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-25T06:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "497465",
+   "writeBytes": "5654130688",
+   "writeMs": "82761",
+   "ioMs": "31031",
+   "weightedMs": "83542",
+   "wAwaitMaxMs": 0.3068688670829616,
+   "utilMax": 0.011094267961553198,
+   "hostname": "server2",
+   "awaitWrites": "497465"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-25T05:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "331519",
+   "writeBytes": "3174419968",
+   "writeMs": "71963",
+   "ioMs": "28837",
+   "weightedMs": "72786",
+   "wAwaitMaxMs": 0.5197654941373534,
+   "utilMax": 0.013631742963320946,
+   "hostname": "server2",
+   "awaitWrites": "331519"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-25T04:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "323638",
+   "writeBytes": "2706337792",
+   "writeMs": "72883",
+   "ioMs": "29233",
+   "weightedMs": "73697",
+   "wAwaitMaxMs": 0.46915763873535266,
+   "utilMax": 0.013613717027977272,
+   "hostname": "server2",
+   "awaitWrites": "323638"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-25T03:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "287808",
+   "writeBytes": "2868864000",
+   "writeMs": "78247",
+   "ioMs": "29723",
+   "weightedMs": "79099",
+   "wAwaitMaxMs": 1.0868117229129663,
+   "utilMax": 0.01648287482691313,
+   "hostname": "server2",
+   "awaitWrites": "287808"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-25T02:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "266291",
+   "writeBytes": "2152689152",
+   "writeMs": "68903",
+   "ioMs": "28986",
+   "weightedMs": "69762",
+   "wAwaitMaxMs": 0.5064018813692187,
+   "utilMax": 0.013418232127081493,
+   "hostname": "server2",
+   "awaitWrites": "266291"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-25T01:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "251990",
+   "writeBytes": "1883495936",
+   "writeMs": "64265",
+   "ioMs": "27392",
+   "weightedMs": "65142",
+   "wAwaitMaxMs": 0.41005421389847213,
+   "utilMax": 0.011850197503291722,
+   "hostname": "server2",
+   "awaitWrites": "251990"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-25T00:00:00Z",
+   "bucketSecs": 3600,
+   "reads": "234",
+   "writes": "259501",
+   "readBytes": "13644800",
+   "writeBytes": "2079967232",
+   "readMs": "79",
+   "writeMs": "67242",
+   "ioMs": "28278",
+   "weightedMs": "68103",
+   "rAwaitMaxMs": 0.33760683760683763,
+   "wAwaitMaxMs": 0.6085845682166582,
+   "utilMax": 0.01216281510854896,
+   "hostname": "server2",
+   "awaitReads": "234",
+   "awaitWrites": "259501"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-24T23:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "317400",
+   "writeBytes": "3278651904",
+   "writeMs": "74636",
+   "ioMs": "29652",
+   "weightedMs": "75488",
+   "wAwaitMaxMs": 0.6732690935046396,
+   "utilMax": 0.014677706879029705,
+   "hostname": "server2",
+   "awaitWrites": "317400"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-24T22:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "393648",
+   "writeBytes": "4066268160",
+   "writeMs": "77528",
+   "ioMs": "30386",
+   "weightedMs": "78302",
+   "wAwaitMaxMs": 0.37202291227012363,
+   "utilMax": 0.01250541901490646,
+   "hostname": "server2",
+   "awaitWrites": "393648"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-24T21:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "318120",
+   "writeBytes": "2993925632",
+   "writeMs": "80521",
+   "ioMs": "31130",
+   "weightedMs": "81350",
+   "wAwaitMaxMs": 0.5982575024201355,
+   "utilMax": 0.01688305194913418,
+   "hostname": "server2",
+   "awaitWrites": "318120"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-24T20:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "303079",
+   "writeBytes": "2943214080",
+   "writeMs": "71761",
+   "ioMs": "29349",
+   "weightedMs": "72567",
+   "wAwaitMaxMs": 0.5617257582229817,
+   "utilMax": 0.012732060127320602,
+   "hostname": "server2",
+   "awaitWrites": "303079"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-24T19:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "268694",
+   "writeBytes": "2440292352",
+   "writeMs": "69181",
+   "ioMs": "28583",
+   "weightedMs": "70008",
+   "wAwaitMaxMs": 0.5947136563876652,
+   "utilMax": 0.011698050324945843,
+   "hostname": "server2",
+   "awaitWrites": "268694"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-24T18:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "478669",
+   "writeBytes": "5785208832",
+   "writeMs": "86140",
+   "ioMs": "32093",
+   "weightedMs": "86967",
+   "wAwaitMaxMs": 0.3503981797497156,
+   "utilMax": 0.01322349880771732,
+   "hostname": "server2",
+   "awaitWrites": "478669"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-24T17:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "262663",
+   "writeBytes": "2178958336",
+   "writeMs": "69067",
+   "ioMs": "28455",
+   "weightedMs": "69906",
+   "wAwaitMaxMs": 0.5623383341955509,
+   "utilMax": 0.010567195026417987,
+   "hostname": "server2",
+   "awaitWrites": "262663"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-24T16:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "297256",
+   "writeBytes": "2764495872",
+   "writeMs": "76474",
+   "ioMs": "30330",
+   "weightedMs": "77402",
+   "wAwaitMaxMs": 0.656089017102823,
+   "utilMax": 0.013699315034248288,
+   "hostname": "server2",
+   "awaitWrites": "297256"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-24T15:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "298164",
+   "writeBytes": "2863095296",
+   "writeMs": "76667",
+   "ioMs": "30182",
+   "weightedMs": "77458",
+   "wAwaitMaxMs": 0.5404380791912384,
+   "utilMax": 0.012500208336805613,
+   "hostname": "server2",
+   "awaitWrites": "298164"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-24T14:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "314886",
+   "writeBytes": "2891612160",
+   "writeMs": "70974",
+   "ioMs": "29007",
+   "weightedMs": "71763",
+   "wAwaitMaxMs": 0.32298414116595936,
+   "utilMax": 0.009300465023251162,
+   "hostname": "server2",
+   "awaitWrites": "314886"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-24T13:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "355421",
+   "writeBytes": "3367076864",
+   "writeMs": "74514",
+   "ioMs": "29735",
+   "weightedMs": "75287",
+   "wAwaitMaxMs": 0.3030862126803086,
+   "utilMax": 0.010950365012167073,
+   "hostname": "server2",
+   "awaitWrites": "355421"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-24T12:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "379279",
+   "writeBytes": "3889761792",
+   "writeMs": "81435",
+   "ioMs": "31565",
+   "weightedMs": "82424",
+   "wAwaitMaxMs": 0.5161678706570347,
+   "utilMax": 0.016849719171347144,
+   "hostname": "server2",
+   "awaitWrites": "379279"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-24T11:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "367551",
+   "writeBytes": "3346794496",
+   "writeMs": "71227",
+   "ioMs": "28719",
+   "weightedMs": "72037",
+   "wAwaitMaxMs": 0.2849790929559344,
+   "utilMax": 0.010451741956992833,
+   "hostname": "server2",
+   "awaitWrites": "367551"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-24T10:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "308302",
+   "writeBytes": "2793103872",
+   "writeMs": "71396",
+   "ioMs": "28865",
+   "weightedMs": "72208",
+   "wAwaitMaxMs": 0.5195926499889307,
+   "utilMax": 0.014233570559509325,
+   "hostname": "server2",
+   "awaitWrites": "308302"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-24T09:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "327729",
+   "writeBytes": "3024709120",
+   "writeMs": "72840",
+   "ioMs": "29227",
+   "weightedMs": "73668",
+   "wAwaitMaxMs": 0.5850908331593234,
+   "utilMax": 0.01282864006405979,
+   "hostname": "server2",
+   "awaitWrites": "327729"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-24T08:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "335731",
+   "writeBytes": "2835138560",
+   "writeMs": "68899",
+   "ioMs": "28268",
+   "weightedMs": "69696",
+   "wAwaitMaxMs": 0.2779078844652615,
+   "utilMax": 0.009402037108040075,
+   "hostname": "server2",
+   "awaitWrites": "335731"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-24T07:00:00Z",
+   "bucketSecs": 3600,
+   "reads": "5555",
+   "writes": "315545",
+   "readBytes": "260679680",
+   "writeBytes": "3181507584",
+   "readMs": "3989",
+   "writeMs": "65673",
+   "ioMs": "30623",
+   "weightedMs": "70508",
+   "rAwaitMaxMs": 0.9127725856697819,
+   "wAwaitMaxMs": 0.35013648771610556,
+   "utilMax": 0.01611827849451612,
+   "hostname": "server2",
+   "awaitReads": "5555",
+   "awaitWrites": "315545"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-24T06:00:00Z",
+   "bucketSecs": 3599,
+   "reads": "79",
+   "writes": "337407",
+   "readBytes": "2065920",
+   "writeBytes": "2920219648",
+   "readMs": "99",
+   "writeMs": "71571",
+   "ioMs": "28880",
+   "weightedMs": "72477",
+   "rAwaitMaxMs": 1.2592592592592593,
+   "wAwaitMaxMs": 0.3728317188555981,
+   "utilMax": 0.010617374491632775,
+   "hostname": "server2",
+   "awaitReads": "79",
+   "awaitWrites": "337407"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-24T05:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "344682",
+   "writeBytes": "3511356416",
+   "writeMs": "75437",
+   "ioMs": "29177",
+   "weightedMs": "76245",
+   "wAwaitMaxMs": 0.9392314566577301,
+   "utilMax": 0.01660442784742598,
+   "hostname": "server2",
+   "awaitWrites": "344682"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-24T04:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "341925",
+   "writeBytes": "3349435392",
+   "writeMs": "75856",
+   "ioMs": "30304",
+   "weightedMs": "76785",
+   "wAwaitMaxMs": 0.47463828371860967,
+   "utilMax": 0.01406830796926308,
+   "hostname": "server2",
+   "awaitWrites": "341925"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-24T03:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "330994",
+   "writeBytes": "2805650944",
+   "writeMs": "68187",
+   "ioMs": "28261",
+   "weightedMs": "69006",
+   "wAwaitMaxMs": 0.42051086542127336,
+   "utilMax": 0.014022582686606935,
+   "hostname": "server2",
+   "awaitWrites": "330994"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-24T02:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "294906",
+   "writeBytes": "2475515392",
+   "writeMs": "67811",
+   "ioMs": "27994",
+   "weightedMs": "68621",
+   "wAwaitMaxMs": 0.4453897447689124,
+   "utilMax": 0.009899670010999633,
+   "hostname": "server2",
+   "awaitWrites": "294906"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-24T01:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "289791",
+   "writeBytes": "2793903616",
+   "writeMs": "66099",
+   "ioMs": "27707",
+   "weightedMs": "66899",
+   "wAwaitMaxMs": 0.3032845840326061,
+   "utilMax": 0.00833541718763024,
+   "hostname": "server2",
+   "awaitWrites": "289791"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-24T00:00:00Z",
+   "bucketSecs": 3599,
+   "reads": "221",
+   "writes": "302699",
+   "readBytes": "13340160",
+   "writeBytes": "2433669632",
+   "readMs": "89",
+   "writeMs": "67198",
+   "ioMs": "27974",
+   "weightedMs": "68097",
+   "rAwaitMaxMs": 0.40271493212669685,
+   "wAwaitMaxMs": 0.3831142970927917,
+   "utilMax": 0.010900181669694494,
+   "hostname": "server2",
+   "awaitReads": "221",
+   "awaitWrites": "302699"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-23T23:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "334398",
+   "writeBytes": "3316936704",
+   "writeMs": "75389",
+   "ioMs": "29874",
+   "weightedMs": "76197",
+   "wAwaitMaxMs": 0.6415718717683557,
+   "utilMax": 0.015017167238907964,
+   "hostname": "server2",
+   "awaitWrites": "334398"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-23T22:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "345918",
+   "writeBytes": "3202579456",
+   "writeMs": "83775",
+   "ioMs": "30841",
+   "weightedMs": "84565",
+   "wAwaitMaxMs": 0.9992084850403673,
+   "utilMax": 0.018459537427670963,
+   "hostname": "server2",
+   "awaitWrites": "345918"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-23T21:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "339409",
+   "writeBytes": "2913618432",
+   "writeMs": "70419",
+   "ioMs": "28554",
+   "weightedMs": "71220",
+   "wAwaitMaxMs": 0.4047421654783618,
+   "utilMax": 0.012415838944070395,
+   "hostname": "server2",
+   "awaitWrites": "339409"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-23T20:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "314567",
+   "writeBytes": "2324496896",
+   "writeMs": "70843",
+   "ioMs": "28530",
+   "weightedMs": "71616",
+   "wAwaitMaxMs": 0.4363602180861064,
+   "utilMax": 0.011431618590544751,
+   "hostname": "server2",
+   "awaitWrites": "314567"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-23T19:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "299905",
+   "writeBytes": "2566630400",
+   "writeMs": "69188",
+   "ioMs": "28385",
+   "weightedMs": "70033",
+   "wAwaitMaxMs": 0.34187472623740695,
+   "utilMax": 0.012570647371667694,
+   "hostname": "server2",
+   "awaitWrites": "299905"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-23T18:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "315511",
+   "writeBytes": "2912515584",
+   "writeMs": "73856",
+   "ioMs": "29108",
+   "weightedMs": "74614",
+   "wAwaitMaxMs": 0.4797486033519553,
+   "utilMax": 0.012164639226795533,
+   "hostname": "server2",
+   "awaitWrites": "315511"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-23T17:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "282279",
+   "writeBytes": "2293740032",
+   "writeMs": "73843",
+   "ioMs": "29451",
+   "weightedMs": "74672",
+   "wAwaitMaxMs": 0.48050106357835026,
+   "utilMax": 0.012383126947884201,
+   "hostname": "server2",
+   "awaitWrites": "282279"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-23T16:00:00Z",
+   "bucketSecs": 3599,
+   "reads": "5",
+   "writes": "320742",
+   "readBytes": "430080",
+   "writeBytes": "2703130112",
+   "readMs": "2",
+   "writeMs": "81059",
+   "ioMs": "30961",
+   "weightedMs": "81862",
+   "rAwaitMaxMs": 0.4,
+   "wAwaitMaxMs": 0.8841023792357606,
+   "utilMax": 0.018516975282921382,
+   "hostname": "server2",
+   "awaitReads": "5",
+   "awaitWrites": "320742"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-23T15:00:00Z",
+   "bucketSecs": 3599,
+   "reads": "2",
+   "writes": "295095",
+   "readBytes": "38912",
+   "writeBytes": "2298514432",
+   "readMs": "1",
+   "writeMs": "72488",
+   "ioMs": "29396",
+   "weightedMs": "73245",
+   "rAwaitMaxMs": 0.5,
+   "wAwaitMaxMs": 0.5421342583146297,
+   "utilMax": 0.015781659242947468,
+   "hostname": "server2",
+   "awaitReads": "2",
+   "awaitWrites": "295095"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-23T14:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "317067",
+   "writeBytes": "2520504832",
+   "writeMs": "77593",
+   "ioMs": "30142",
+   "weightedMs": "78412",
+   "wAwaitMaxMs": 0.7091446881932463,
+   "utilMax": 0.01439749086601825,
+   "hostname": "server2",
+   "awaitWrites": "317067"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-23T13:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "286020",
+   "writeBytes": "2348718592",
+   "writeMs": "74561",
+   "ioMs": "29057",
+   "weightedMs": "75344",
+   "wAwaitMaxMs": 0.9469506292352372,
+   "utilMax": 0.015978007330889703,
+   "hostname": "server2",
+   "awaitWrites": "286020"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-23T12:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "294761",
+   "writeBytes": "2579899392",
+   "writeMs": "72415",
+   "ioMs": "28648",
+   "weightedMs": "73246",
+   "wAwaitMaxMs": 0.5046615322253749,
+   "utilMax": 0.011383523058717645,
+   "hostname": "server2",
+   "awaitWrites": "294761"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-23T11:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "311260",
+   "writeBytes": "2830205440",
+   "writeMs": "68494",
+   "ioMs": "28289",
+   "weightedMs": "69317",
+   "wAwaitMaxMs": 0.32369204593789874,
+   "utilMax": 0.010163448241390226,
+   "hostname": "server2",
+   "awaitWrites": "311260"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-23T10:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "289283",
+   "writeBytes": "2441448448",
+   "writeMs": "79388",
+   "ioMs": "30638",
+   "weightedMs": "80203",
+   "wAwaitMaxMs": 0.7901684114701866,
+   "utilMax": 0.01563072821196467,
+   "hostname": "server2",
+   "awaitWrites": "289283"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-23T09:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "321594",
+   "writeBytes": "2881341952",
+   "writeMs": "79346",
+   "ioMs": "30267",
+   "weightedMs": "80236",
+   "wAwaitMaxMs": 0.620191368873267,
+   "utilMax": 0.01320242044374802,
+   "hostname": "server2",
+   "awaitWrites": "321594"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-23T08:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "335540",
+   "writeBytes": "2671660032",
+   "writeMs": "73651",
+   "ioMs": "29196",
+   "weightedMs": "74505",
+   "wAwaitMaxMs": 0.527810650887574,
+   "utilMax": 0.012768794799133188,
+   "hostname": "server2",
+   "awaitWrites": "335540"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-23T07:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "324320",
+   "writeBytes": "2944556544",
+   "writeMs": "74689",
+   "ioMs": "29201",
+   "weightedMs": "75474",
+   "wAwaitMaxMs": 0.6342847317744154,
+   "utilMax": 0.015045486354093772,
+   "hostname": "server2",
+   "awaitWrites": "324320"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-23T06:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "335545",
+   "writeBytes": "2857513984",
+   "writeMs": "76325",
+   "ioMs": "30113",
+   "weightedMs": "77163",
+   "wAwaitMaxMs": 0.35936356986100954,
+   "utilMax": 0.01138200543269952,
+   "hostname": "server2",
+   "awaitWrites": "335545"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-23T05:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "310719",
+   "writeBytes": "2441950720",
+   "writeMs": "73929",
+   "ioMs": "28699",
+   "weightedMs": "74724",
+   "wAwaitMaxMs": 0.8827586206896552,
+   "utilMax": 0.015916666666666666,
+   "hostname": "server2",
+   "awaitWrites": "310719"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-23T04:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "305335",
+   "writeBytes": "2532314112",
+   "writeMs": "68210",
+   "ioMs": "28154",
+   "weightedMs": "69018",
+   "wAwaitMaxMs": 0.31563845050215206,
+   "utilMax": 0.010235039173195532,
+   "hostname": "server2",
+   "awaitWrites": "305335"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-23T03:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "261826",
+   "writeBytes": "1789194752",
+   "writeMs": "70289",
+   "ioMs": "28593",
+   "weightedMs": "71111",
+   "wAwaitMaxMs": 0.582323912068192,
+   "utilMax": 0.012967098903296776,
+   "hostname": "server2",
+   "awaitWrites": "261826"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-23T02:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "268884",
+   "writeBytes": "2214758912",
+   "writeMs": "71255",
+   "ioMs": "28821",
+   "weightedMs": "72201",
+   "wAwaitMaxMs": 0.6387080620931397,
+   "utilMax": 0.013716209459684678,
+   "hostname": "server2",
+   "awaitWrites": "268884"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-23T01:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "246678",
+   "writeBytes": "1575186944",
+   "writeMs": "64091",
+   "ioMs": "27434",
+   "weightedMs": "65022",
+   "wAwaitMaxMs": 0.405457618932625,
+   "utilMax": 0.011237079026342115,
+   "hostname": "server2",
+   "awaitWrites": "246678"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-23T00:00:00Z",
+   "bucketSecs": 3600,
+   "reads": "232",
+   "writes": "344200",
+   "readBytes": "13435904",
+   "writeBytes": "1870965760",
+   "readMs": "53",
+   "writeMs": "74864",
+   "ioMs": "29457",
+   "weightedMs": "75851",
+   "rAwaitMaxMs": 0.22844827586206898,
+   "wAwaitMaxMs": 0.3896132596685083,
+   "utilMax": 0.0108,
+   "hostname": "server2",
+   "awaitReads": "232",
+   "awaitWrites": "344200"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-22T23:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "248955",
+   "writeBytes": "1810033152",
+   "writeMs": "75361",
+   "ioMs": "29779",
+   "weightedMs": "76181",
+   "wAwaitMaxMs": 0.8172739541160594,
+   "utilMax": 0.01552867473091406,
+   "hostname": "server2",
+   "awaitWrites": "248955"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-22T22:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "329703",
+   "writeBytes": "2947935744",
+   "writeMs": "85271",
+   "ioMs": "31249",
+   "weightedMs": "86162",
+   "wAwaitMaxMs": 0.8043609933373713,
+   "utilMax": 0.016051872718483823,
+   "hostname": "server2",
+   "awaitWrites": "329703"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-22T21:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "314009",
+   "writeBytes": "2823622144",
+   "writeMs": "78011",
+   "ioMs": "30434",
+   "weightedMs": "78923",
+   "wAwaitMaxMs": 0.5093589143659335,
+   "utilMax": 0.013833563892731545,
+   "hostname": "server2",
+   "awaitWrites": "314009"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-22T20:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "274123",
+   "writeBytes": "2355052544",
+   "writeMs": "68169",
+   "ioMs": "28119",
+   "weightedMs": "69000",
+   "wAwaitMaxMs": 0.4338235294117647,
+   "utilMax": 0.01216195925993894,
+   "hostname": "server2",
+   "awaitWrites": "274123"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-22T19:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "282898",
+   "writeBytes": "2207188480",
+   "writeMs": "64052",
+   "ioMs": "27299",
+   "weightedMs": "64842",
+   "wAwaitMaxMs": 0.3009248815700429,
+   "utilMax": 0.009684947491248541,
+   "hostname": "server2",
+   "awaitWrites": "282898"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-22T18:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "258001",
+   "writeBytes": "1807278592",
+   "writeMs": "71176",
+   "ioMs": "28945",
+   "weightedMs": "72012",
+   "wAwaitMaxMs": 0.6201383917919351,
+   "utilMax": 0.010753763817336068,
+   "hostname": "server2",
+   "awaitWrites": "258001"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-22T17:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "308862",
+   "writeBytes": "3379170816",
+   "writeMs": "74034",
+   "ioMs": "29473",
+   "weightedMs": "74807",
+   "wAwaitMaxMs": 0.6099151989562949,
+   "utilMax": 0.012116464725587906,
+   "hostname": "server2",
+   "awaitWrites": "308862"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-22T16:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "394730",
+   "writeBytes": "4091699712",
+   "writeMs": "72480",
+   "ioMs": "29125",
+   "weightedMs": "73249",
+   "wAwaitMaxMs": 0.39470468431771893,
+   "utilMax": 0.0103,
+   "hostname": "server2",
+   "awaitWrites": "394730"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-22T15:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "324431",
+   "writeBytes": "2904749568",
+   "writeMs": "70812",
+   "ioMs": "28842",
+   "weightedMs": "71583",
+   "wAwaitMaxMs": 0.3593519882179676,
+   "utilMax": 0.010016833613893565,
+   "hostname": "server2",
+   "awaitWrites": "324431"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-22T14:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "239770",
+   "writeBytes": "1791543296",
+   "writeMs": "83690",
+   "ioMs": "30701",
+   "weightedMs": "84583",
+   "wAwaitMaxMs": 0.9229946524064171,
+   "utilMax": 0.012671928597595498,
+   "hostname": "server2",
+   "awaitWrites": "239770"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-22T13:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "266165",
+   "writeBytes": "2150674944",
+   "writeMs": "68827",
+   "ioMs": "28304",
+   "weightedMs": "69669",
+   "wAwaitMaxMs": 0.454711802378774,
+   "utilMax": 0.011035172528754793,
+   "hostname": "server2",
+   "awaitWrites": "266165"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-22T12:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "287602",
+   "writeBytes": "2558149632",
+   "writeMs": "72056",
+   "ioMs": "28705",
+   "weightedMs": "72881",
+   "wAwaitMaxMs": 0.923785594639866,
+   "utilMax": 0.013752521295570854,
+   "hostname": "server2",
+   "awaitWrites": "287602"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-22T11:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "262608",
+   "writeBytes": "2662957568",
+   "writeMs": "65320",
+   "ioMs": "27809",
+   "weightedMs": "66180",
+   "wAwaitMaxMs": 0.45608247422680415,
+   "utilMax": 0.013233774459148638,
+   "hostname": "server2",
+   "awaitWrites": "262608"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-22T10:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "290838",
+   "writeBytes": "2628340736",
+   "writeMs": "69592",
+   "ioMs": "28419",
+   "weightedMs": "70381",
+   "wAwaitMaxMs": 0.3555914972273567,
+   "utilMax": 0.011737245748582861,
+   "hostname": "server2",
+   "awaitWrites": "290838"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-22T09:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "330380",
+   "writeBytes": "3241446912",
+   "writeMs": "80882",
+   "ioMs": "30108",
+   "weightedMs": "81654",
+   "wAwaitMaxMs": 0.8468828499657456,
+   "utilMax": 0.015330778203632729,
+   "hostname": "server2",
+   "awaitWrites": "330380"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-22T08:00:00Z",
+   "bucketSecs": 3599,
+   "reads": "3754",
+   "writes": "349956",
+   "readBytes": "126192128",
+   "writeBytes": "3505823232",
+   "readMs": "2754",
+   "writeMs": "107699",
+   "ioMs": "37914",
+   "weightedMs": "111382",
+   "rAwaitMaxMs": 0.9242424242424242,
+   "wAwaitMaxMs": 0.992503452357467,
+   "utilMax": 0.03101343915696802,
+   "hostname": "server2",
+   "awaitReads": "3754",
+   "awaitWrites": "349956"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-22T07:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "343552",
+   "writeBytes": "3187506688",
+   "writeMs": "120636",
+   "ioMs": "36572",
+   "weightedMs": "121605",
+   "wAwaitMaxMs": 1.0960715674834696,
+   "utilMax": 0.016866666666666665,
+   "hostname": "server2",
+   "awaitWrites": "343552"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-22T06:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "350675",
+   "writeBytes": "3320357888",
+   "writeMs": "106182",
+   "ioMs": "35287",
+   "weightedMs": "107051",
+   "wAwaitMaxMs": 0.8162786802880589,
+   "utilMax": 0.01580210694759301,
+   "hostname": "server2",
+   "awaitWrites": "350675"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-22T05:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "332870",
+   "writeBytes": "2874683392",
+   "writeMs": "109662",
+   "ioMs": "35621",
+   "weightedMs": "110940",
+   "wAwaitMaxMs": 1.4915565345080763,
+   "utilMax": 0.027287720525763406,
+   "hostname": "server2",
+   "awaitWrites": "332870"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-22T04:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "362866",
+   "writeBytes": "3675108352",
+   "writeMs": "111594",
+   "ioMs": "36129",
+   "weightedMs": "112424",
+   "wAwaitMaxMs": 1.2531280076997113,
+   "utilMax": 0.018178182848193013,
+   "hostname": "server2",
+   "awaitWrites": "362866"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-22T03:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "354922",
+   "writeBytes": "3664015360",
+   "writeMs": "99881",
+   "ioMs": "34665",
+   "weightedMs": "100677",
+   "wAwaitMaxMs": 0.7425013155586739,
+   "utilMax": 0.016133333333333333,
+   "hostname": "server2",
+   "awaitWrites": "354922"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-22T02:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "296692",
+   "writeBytes": "2568201216",
+   "writeMs": "89083",
+   "ioMs": "31608",
+   "weightedMs": "89874",
+   "wAwaitMaxMs": 0.9368441892694516,
+   "utilMax": 0.017151143409560636,
+   "hostname": "server2",
+   "awaitWrites": "296692"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-22T01:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "358592",
+   "writeBytes": "2588329472",
+   "writeMs": "99809",
+   "ioMs": "33424",
+   "weightedMs": "100725",
+   "wAwaitMaxMs": 0.7768974145120934,
+   "utilMax": 0.015131820151318202,
+   "hostname": "server2",
+   "awaitWrites": "358592"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-22T00:00:00Z",
+   "bucketSecs": 3600,
+   "reads": "170",
+   "writes": "320732",
+   "readBytes": "8911872",
+   "writeBytes": "3250790400",
+   "readMs": "41",
+   "writeMs": "89128",
+   "ioMs": "33730",
+   "weightedMs": "90025",
+   "rAwaitMaxMs": 0.2411764705882353,
+   "wAwaitMaxMs": 0.5494152717266682,
+   "utilMax": 0.016466941115685262,
+   "hostname": "server2",
+   "awaitReads": "170",
+   "awaitWrites": "320732"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-21T23:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "487527",
+   "writeBytes": "4005736960",
+   "writeMs": "110536",
+   "ioMs": "35435",
+   "weightedMs": "111419",
+   "wAwaitMaxMs": 0.7711136023916293,
+   "utilMax": 0.01729625247862963,
+   "hostname": "server2",
+   "awaitWrites": "487527"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-21T22:00:00Z",
+   "bucketSecs": 3599,
+   "reads": "3916",
+   "writes": "363885",
+   "readBytes": "499669504",
+   "writeBytes": "3969384448",
+   "readMs": "8405",
+   "writeMs": "95409",
+   "ioMs": "39567",
+   "weightedMs": "104844",
+   "rAwaitMaxMs": 3.093498119290704,
+   "wAwaitMaxMs": 0.8940693104680243,
+   "utilMax": 0.08496732026143791,
+   "hostname": "server2",
+   "awaitReads": "3916",
+   "awaitWrites": "363885"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-21T21:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "386191",
+   "writeBytes": "3271689728",
+   "writeMs": "120258",
+   "ioMs": "39101",
+   "weightedMs": "121115",
+   "wAwaitMaxMs": 1.1785586231624239,
+   "utilMax": 0.01888803757620174,
+   "hostname": "server2",
+   "awaitWrites": "386191"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-21T20:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "382510",
+   "writeBytes": "3718612992",
+   "writeMs": "111536",
+   "ioMs": "36300",
+   "weightedMs": "112444",
+   "wAwaitMaxMs": 1.2429176164115923,
+   "utilMax": 0.016683611393523225,
+   "hostname": "server2",
+   "awaitWrites": "382510"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-21T19:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "323201",
+   "writeBytes": "2997911552",
+   "writeMs": "90278",
+   "ioMs": "32601",
+   "weightedMs": "91293",
+   "wAwaitMaxMs": 0.7539970930232558,
+   "utilMax": 0.014900496683222774,
+   "hostname": "server2",
+   "awaitWrites": "323201"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-21T18:00:00Z",
+   "bucketSecs": 3600,
+   "reads": "1",
+   "writes": "305517",
+   "readBytes": "4096",
+   "writeBytes": "2868661760",
+   "readMs": "30",
+   "writeMs": "84794",
+   "ioMs": "32555",
+   "weightedMs": "85644",
+   "rAwaitMaxMs": 30,
+   "wAwaitMaxMs": 0.5899006972321994,
+   "utilMax": 0.016853370674134827,
+   "hostname": "server2",
+   "awaitReads": "1",
+   "awaitWrites": "305517"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-21T17:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "313452",
+   "writeBytes": "3132567552",
+   "writeMs": "89895",
+   "ioMs": "32708",
+   "weightedMs": "90745",
+   "wAwaitMaxMs": 0.8024967393329607,
+   "utilMax": 0.015685360330358333,
+   "hostname": "server2",
+   "awaitWrites": "313452"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-21T16:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "318873",
+   "writeBytes": "2974839296",
+   "writeMs": "95273",
+   "ioMs": "33607",
+   "weightedMs": "96333",
+   "wAwaitMaxMs": 0.9135331170070624,
+   "utilMax": 0.0159873301658748,
+   "hostname": "server2",
+   "awaitWrites": "318873"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-21T15:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "347869",
+   "writeBytes": "3148129792",
+   "writeMs": "115118",
+   "ioMs": "36647",
+   "weightedMs": "116068",
+   "wAwaitMaxMs": 0.9149448345035105,
+   "utilMax": 0.020233333333333332,
+   "hostname": "server2",
+   "awaitWrites": "347869"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-21T14:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "367508",
+   "writeBytes": "3859761664",
+   "writeMs": "118639",
+   "ioMs": "37422",
+   "weightedMs": "119631",
+   "wAwaitMaxMs": 1.3231145382734624,
+   "utilMax": 0.022516291395143415,
+   "hostname": "server2",
+   "awaitWrites": "367508"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-21T13:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "417050",
+   "writeBytes": "3594908672",
+   "writeMs": "93124",
+   "ioMs": "32761",
+   "weightedMs": "93986",
+   "wAwaitMaxMs": 0.5259981429897864,
+   "utilMax": 0.013547967804829275,
+   "hostname": "server2",
+   "awaitWrites": "417050"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-21T12:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "326991",
+   "writeBytes": "3226223104",
+   "writeMs": "92351",
+   "ioMs": "32939",
+   "weightedMs": "93330",
+   "wAwaitMaxMs": 0.700945864359026,
+   "utilMax": 0.01770354070814163,
+   "hostname": "server2",
+   "awaitWrites": "326991"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-21T11:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "294834",
+   "writeBytes": "2781800960",
+   "writeMs": "92451",
+   "ioMs": "33615",
+   "weightedMs": "93652",
+   "wAwaitMaxMs": 1.0597368988570197,
+   "utilMax": 0.01721437141714438,
+   "hostname": "server2",
+   "awaitWrites": "294834"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-21T10:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "385460",
+   "writeBytes": "3251653632",
+   "writeMs": "116566",
+   "ioMs": "36772",
+   "weightedMs": "117739",
+   "wAwaitMaxMs": 1.0508097165991903,
+   "utilMax": 0.018979636084657848,
+   "hostname": "server2",
+   "awaitWrites": "385460"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-21T09:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "333212",
+   "writeBytes": "3300481536",
+   "writeMs": "115592",
+   "ioMs": "37441",
+   "weightedMs": "116431",
+   "wAwaitMaxMs": 1.2112351586035797,
+   "utilMax": 0.029266666666666667,
+   "hostname": "server2",
+   "awaitWrites": "333212"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-21T08:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "296921",
+   "writeBytes": "2681177088",
+   "writeMs": "84355",
+   "ioMs": "32628",
+   "weightedMs": "85219",
+   "wAwaitMaxMs": 0.5356316520129569,
+   "utilMax": 0.014364124722643933,
+   "hostname": "server2",
+   "awaitWrites": "296921"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-21T07:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "296025",
+   "writeBytes": "2701827072",
+   "writeMs": "88188",
+   "ioMs": "32950",
+   "weightedMs": "88956",
+   "wAwaitMaxMs": 0.6962738301559792,
+   "utilMax": 0.016516666666666666,
+   "hostname": "server2",
+   "awaitWrites": "296025"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-21T06:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "308773",
+   "writeBytes": "3075062272",
+   "writeMs": "101232",
+   "ioMs": "35025",
+   "weightedMs": "102083",
+   "wAwaitMaxMs": 1.0352515243902438,
+   "utilMax": 0.021267021117018618,
+   "hostname": "server2",
+   "awaitWrites": "308773"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-21T05:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "368110",
+   "writeBytes": "3475939328",
+   "writeMs": "89734",
+   "ioMs": "32518",
+   "weightedMs": "90592",
+   "wAwaitMaxMs": 0.7083955223880597,
+   "utilMax": 0.016692766467863926,
+   "hostname": "server2",
+   "awaitWrites": "368110"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-21T04:00:00Z",
+   "bucketSecs": 2700,
+   "writes": "271816",
+   "writeBytes": "2748578304",
+   "writeMs": "88433",
+   "ioMs": "27408",
+   "weightedMs": "89141",
+   "wAwaitMaxMs": 1.077054794520548,
+   "utilMax": 0.025517091951532525,
+   "hostname": "server2",
+   "awaitWrites": "271816"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-21T03:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "297360",
+   "writeBytes": "2853466112",
+   "writeMs": "133290",
+   "ioMs": "38875",
+   "weightedMs": "134232",
+   "wAwaitMaxMs": 1.0385470719051149,
+   "utilMax": 0.02345,
+   "hostname": "server2",
+   "awaitWrites": "297360"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-21T02:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "303600",
+   "writeBytes": "2332646400",
+   "writeMs": "91686",
+   "ioMs": "32481",
+   "weightedMs": "92622",
+   "wAwaitMaxMs": 0.8063002680965148,
+   "utilMax": 0.015200253337555626,
+   "hostname": "server2",
+   "awaitWrites": "303600"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-21T01:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "265022",
+   "writeBytes": "1981654016",
+   "writeMs": "86035",
+   "ioMs": "31649",
+   "weightedMs": "87073",
+   "wAwaitMaxMs": 0.5734427609427609,
+   "utilMax": 0.0128,
+   "hostname": "server2",
+   "awaitWrites": "265022"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-21T00:00:00Z",
+   "bucketSecs": 3600,
+   "reads": "237",
+   "writes": "274048",
+   "readBytes": "14905344",
+   "writeBytes": "2174560256",
+   "readMs": "54",
+   "writeMs": "99217",
+   "ioMs": "33469",
+   "weightedMs": "100372",
+   "rAwaitMaxMs": 0.22784810126582278,
+   "wAwaitMaxMs": 1.0603408567480423,
+   "utilMax": 0.018983333333333335,
+   "hostname": "server2",
+   "awaitReads": "237",
+   "awaitWrites": "274048"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-20T23:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "291950",
+   "writeBytes": "2994805760",
+   "writeMs": "103101",
+   "ioMs": "34589",
+   "weightedMs": "104187",
+   "wAwaitMaxMs": 1.5776902240827382,
+   "utilMax": 0.024793388429752067,
+   "hostname": "server2",
+   "awaitWrites": "291950"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-20T22:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "387779",
+   "writeBytes": "4722111488",
+   "writeMs": "99929",
+   "ioMs": "33692",
+   "weightedMs": "100950",
+   "wAwaitMaxMs": 1.2896596017983302,
+   "utilMax": 0.02204816265311224,
+   "hostname": "server2",
+   "awaitWrites": "387779"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-20T21:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "297008",
+   "writeBytes": "2689021440",
+   "writeMs": "94149",
+   "ioMs": "32109",
+   "weightedMs": "95091",
+   "wAwaitMaxMs": 1.1802019315188763,
+   "utilMax": 0.01926252063841497,
+   "hostname": "server2",
+   "awaitWrites": "297008"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025385151419226",
+    "model": "Samsung SSD 990 EVO Plus 1TB",
+    "serial": "S7U5NJ0Y114944D"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-20T20:00:00Z",
+   "bucketSecs": 3599,
+   "reads": "102",
+   "writes": "265788",
+   "readBytes": "5098496",
+   "writeBytes": "2254934016",
+   "readMs": "472",
+   "writeMs": "84163",
+   "ioMs": "31550",
+   "weightedMs": "85553",
+   "rAwaitMaxMs": 4.627450980392157,
+   "wAwaitMaxMs": 0.9169073539213508,
+   "utilMax": 0.0182,
+   "hostname": "server2",
+   "awaitReads": "102",
+   "awaitWrites": "265788"
+  }
+ ]
+}

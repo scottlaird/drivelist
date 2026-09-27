@@ -1,0 +1,35 @@
+{
+ "drive": {
+  "driveId": "158",
+  "wwn": "eui.ace42e0035fe4a882ee4ac0000000001",
+  "model": "SHPP41-500GM",
+  "serial": "ASCBN54631070BS55",
+  "sizeBytes": "500107862016",
+  "bus": "BUS_NVME",
+  "status": "ok",
+  "firstSeen": "2026-09-19T21:13:23Z",
+  "lastSeen": "2026-09-27T19:42:28Z",
+  "current": {
+   "hostname": "server14",
+   "enclosure": "dmi:MD296VS139QQMQA00078",
+   "bay": "0000:00:1c.4",
+   "devName": "nvme1n1",
+   "uses": [
+    "mount > /boot",
+    "mount > /boot/grub",
+    "mount > /opt/vyatta/etc/config",
+    "mount > /usr/lib/live/mount/persistence",
+    "mount > /usr/lib/live/mount/persistence/boot/1.5-rolling-202501110007/grub",
+    "mount > /usr/lib/live/mount/persistence/container/storage/overlay"
+   ],
+   "firstSeen": "2026-09-19T21:13:23Z",
+   "lastSeen": "2026-09-27T19:42:28Z",
+   "enclosureVia": "pci",
+   "bayLabel": "M.2 PCIe 3.0 x4 / U.2"
+  }
+ },
+ "keys": [
+  "serial:SHPP41-500GM/ASCBN54631070BS55",
+  "wwn:eui.ace42e0035fe4a882ee4ac0000000001"
+ ]
+}

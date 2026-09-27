@@ -1,0 +1,54 @@
+{
+ "drive": {
+  "driveId": "116",
+  "wwn": "0x5000c500e8df0b98",
+  "model": "ST24000DM001-3Y7103",
+  "serial": "ZXA0YB6H",
+  "sizeBytes": "24000277250048",
+  "bus": "BUS_SATA",
+  "status": "ok",
+  "firstSeen": "2026-09-13T01:44:31Z",
+  "lastSeen": "2026-09-27T19:42:09Z",
+  "current": {
+   "hostname": "backups",
+   "enclosure": "0x50030480185b9e7f",
+   "bay": "23",
+   "devName": "sdm",
+   "uses": [
+    "zfs > spare backups > disk 15127882886004909357"
+   ],
+   "firstSeen": "2026-09-13T01:44:31Z",
+   "lastSeen": "2026-09-27T19:42:09Z",
+   "enclosureVia": "expander-6:0",
+   "enclosureName": "backups-front"
+  },
+  "memberState": "AVAIL"
+ },
+ "placements": [
+  {
+   "hostname": "backups",
+   "enclosure": "0x50030480185b9e7f",
+   "bay": "23",
+   "devName": "sdm",
+   "uses": [
+    "zfs > spare backups > disk 15127882886004909357"
+   ],
+   "firstSeen": "2026-09-13T01:44:31Z",
+   "lastSeen": "2026-09-27T19:42:09Z",
+   "enclosureVia": "expander-6:0",
+   "enclosureName": "backups-front"
+  }
+ ],
+ "events": [
+  {
+   "eventId": "377",
+   "ts": "2026-09-13T01:44:31Z",
+   "kind": "first_seen",
+   "serial": "ZXA0YB6H",
+   "wwn": "0x5000c500e8df0b98",
+   "hostname": "backups",
+   "detail": "{\"bay\":\"23\",\"dev_name\":\"sdm\",\"expander\":\"expander-6:0\",\"expander_dev\":\"expander-6:0\",\"uses\":[\"zfs \\u003e spare backups \\u003e disk 15127882886004909357\"]}",
+   "source": "snapshot:4"
+  }
+ ]
+}

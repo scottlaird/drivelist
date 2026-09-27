@@ -1,0 +1,28 @@
+{
+ "drive": {
+  "driveId": "80",
+  "wwn": "0x5000cca2548efee0",
+  "vendor": "HGST",
+  "model": "H7280A520SUN8.0T",
+  "serial": "001619PJMXHV_VKJJMXHV",
+  "sizeBytes": "8001563222016",
+  "bus": "BUS_SAS",
+  "status": "ok",
+  "firstSeen": "2026-09-13T01:41:39Z",
+  "lastSeen": "2026-09-27T19:41:38Z",
+  "current": {
+   "hostname": "nas",
+   "enclosure": "0x500304800000007f",
+   "bay": "5",
+   "devName": "sdh",
+   "uses": [
+    "zfs > space 5925914041408872576 > raidz2 3388823558429738332 > disk 13797029297166725296"
+   ],
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "enclosureVia": "expander-10:0",
+   "enclosureName": "nas-sc847-back"
+  },
+  "memberState": "ONLINE"
+ }
+}

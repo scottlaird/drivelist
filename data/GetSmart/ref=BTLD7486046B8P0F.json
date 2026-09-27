@@ -1,0 +1,1560 @@
+{
+ "drive": {
+  "driveId": "2",
+  "wwn": "eui.0100000006000000e4d25c0000000000",
+  "model": "INTEL SSDPD2KS076T7M",
+  "serial": "BTLD7486046B8P0F",
+  "sizeBytes": "7681502044160",
+  "bus": "BUS_NVME",
+  "status": "ok",
+  "firstSeen": "2026-09-13T01:40:06Z",
+  "lastSeen": "2026-09-27T19:43:32Z",
+  "current": {
+   "hostname": "server8",
+   "enclosure": "dmi:KCS0GX0000TB",
+   "bay": "10-1",
+   "devName": "nvme1n1",
+   "uses": [
+    "zfs > fast 15353959934024797625 > mirror 6580501177608322094 > disk 12717556308881655532"
+   ],
+   "firstSeen": "2026-09-13T23:12:04Z",
+   "lastSeen": "2026-09-27T19:43:32Z",
+   "enclosureVia": "pci",
+   "enclosureName": "server8-front"
+  },
+  "memberState": "ONLINE"
+ },
+ "samples": [
+  {
+   "identity": {
+    "wwn": "eui.0100000006000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486046B8P0F"
+   },
+   "devName": "nvme1n1",
+   "ts": "2026-09-27T19:43:32Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "57467",
+    "tempC": 36,
+    "uncorrectable": "0",
+    "readBytes": "7501281792000",
+    "writeBytes": "15371025408000",
+    "percentUsed": 0
+   },
+   "hostname": "server8",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000006000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486046B8P0F"
+   },
+   "devName": "nvme1n1",
+   "ts": "2026-09-27T15:24:49Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "57463",
+    "tempC": 34,
+    "uncorrectable": "0",
+    "readBytes": "7501280768000",
+    "writeBytes": "15371019264000",
+    "percentUsed": 0
+   },
+   "hostname": "server8",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000006000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486046B8P0F"
+   },
+   "devName": "nvme1n1",
+   "ts": "2026-09-27T15:11:55Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "57463",
+    "tempC": 34,
+    "uncorrectable": "0",
+    "readBytes": "7501280256000",
+    "writeBytes": "15371018240000",
+    "percentUsed": 0
+   },
+   "hostname": "server8",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000006000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486046B8P0F"
+   },
+   "devName": "nvme1n1",
+   "ts": "2026-09-27T10:05:20Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "57458",
+    "tempC": 39,
+    "uncorrectable": "0",
+    "readBytes": "7501279744000",
+    "writeBytes": "15371015168000",
+    "percentUsed": 0
+   },
+   "hostname": "server8",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000006000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486046B8P0F"
+   },
+   "devName": "nvme1n1",
+   "ts": "2026-09-27T04:05:20Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "57452",
+    "tempC": 36,
+    "uncorrectable": "0",
+    "readBytes": "7501279744000",
+    "writeBytes": "15371013120000",
+    "percentUsed": 0
+   },
+   "hostname": "server8",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000006000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486046B8P0F"
+   },
+   "devName": "nvme1n1",
+   "ts": "2026-09-26T22:05:20Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "57446",
+    "tempC": 37,
+    "uncorrectable": "0",
+    "readBytes": "7501279744000",
+    "writeBytes": "15371012096000",
+    "percentUsed": 0
+   },
+   "hostname": "server8",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000006000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486046B8P0F"
+   },
+   "devName": "nvme1n1",
+   "ts": "2026-09-26T16:05:20Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "57440",
+    "tempC": 34,
+    "uncorrectable": "0",
+    "readBytes": "7501279744000",
+    "writeBytes": "15371009536000",
+    "percentUsed": 0
+   },
+   "hostname": "server8",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000006000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486046B8P0F"
+   },
+   "devName": "nvme1n1",
+   "ts": "2026-09-26T10:05:20Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "57434",
+    "tempC": 35,
+    "uncorrectable": "0",
+    "readBytes": "7501279744000",
+    "writeBytes": "15371007488000",
+    "percentUsed": 0
+   },
+   "hostname": "server8",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000006000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486046B8P0F"
+   },
+   "devName": "nvme1n1",
+   "ts": "2026-09-26T04:05:20Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "57428",
+    "tempC": 36,
+    "uncorrectable": "0",
+    "readBytes": "7501278208000",
+    "writeBytes": "15371002368000",
+    "percentUsed": 0
+   },
+   "hostname": "server8",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000006000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486046B8P0F"
+   },
+   "devName": "nvme1n1",
+   "ts": "2026-09-25T22:05:20Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "57422",
+    "tempC": 37,
+    "uncorrectable": "0",
+    "readBytes": "7501277696000",
+    "writeBytes": "15370990080000",
+    "percentUsed": 0
+   },
+   "hostname": "server8",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000006000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486046B8P0F"
+   },
+   "devName": "nvme1n1",
+   "ts": "2026-09-25T16:05:20Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "57416",
+    "tempC": 37,
+    "uncorrectable": "0",
+    "readBytes": "7501277696000",
+    "writeBytes": "15370987008000",
+    "percentUsed": 0
+   },
+   "hostname": "server8",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000006000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486046B8P0F"
+   },
+   "devName": "nvme1n1",
+   "ts": "2026-09-25T10:05:20Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "57410",
+    "tempC": 37,
+    "uncorrectable": "0",
+    "readBytes": "7501277696000",
+    "writeBytes": "15370986496000",
+    "percentUsed": 0
+   },
+   "hostname": "server8",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000006000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486046B8P0F"
+   },
+   "devName": "nvme1n1",
+   "ts": "2026-09-25T04:05:20Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "57404",
+    "tempC": 37,
+    "uncorrectable": "0",
+    "readBytes": "7501275136000",
+    "writeBytes": "15370985472000",
+    "percentUsed": 0
+   },
+   "hostname": "server8",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000006000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486046B8P0F"
+   },
+   "devName": "nvme1n1",
+   "ts": "2026-09-24T22:05:20Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "57398",
+    "tempC": 38,
+    "uncorrectable": "0",
+    "readBytes": "7501275136000",
+    "writeBytes": "15370981888000",
+    "percentUsed": 0
+   },
+   "hostname": "server8",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000006000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486046B8P0F"
+   },
+   "devName": "nvme1n1",
+   "ts": "2026-09-24T16:05:20Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "57392",
+    "tempC": 36,
+    "uncorrectable": "0",
+    "readBytes": "7501275136000",
+    "writeBytes": "15370978816000",
+    "percentUsed": 0
+   },
+   "hostname": "server8",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000006000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486046B8P0F"
+   },
+   "devName": "nvme1n1",
+   "ts": "2026-09-24T10:05:20Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "57386",
+    "tempC": 36,
+    "uncorrectable": "0",
+    "readBytes": "7501260288000",
+    "writeBytes": "15370978304000",
+    "percentUsed": 0
+   },
+   "hostname": "server8",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000006000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486046B8P0F"
+   },
+   "devName": "nvme1n1",
+   "ts": "2026-09-24T04:05:20Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "57380",
+    "tempC": 37,
+    "uncorrectable": "0",
+    "readBytes": "7501260288000",
+    "writeBytes": "15370969600000",
+    "percentUsed": 0
+   },
+   "hostname": "server8",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000006000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486046B8P0F"
+   },
+   "devName": "nvme1n1",
+   "ts": "2026-09-23T22:05:19Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "57374",
+    "tempC": 38,
+    "uncorrectable": "0",
+    "readBytes": "7501260288000",
+    "writeBytes": "15370960384000",
+    "percentUsed": 0
+   },
+   "hostname": "server8",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000006000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486046B8P0F"
+   },
+   "devName": "nvme1n1",
+   "ts": "2026-09-23T16:05:19Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "57368",
+    "tempC": 37,
+    "uncorrectable": "0",
+    "readBytes": "7501260288000",
+    "writeBytes": "15370957824000",
+    "percentUsed": 0
+   },
+   "hostname": "server8",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000006000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486046B8P0F"
+   },
+   "devName": "nvme1n1",
+   "ts": "2026-09-23T10:05:19Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "57362",
+    "tempC": 38,
+    "uncorrectable": "0",
+    "readBytes": "7501254144000",
+    "writeBytes": "15370956800000",
+    "percentUsed": 0
+   },
+   "hostname": "server8",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000006000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486046B8P0F"
+   },
+   "devName": "nvme1n1",
+   "ts": "2026-09-23T04:05:19Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "57356",
+    "tempC": 39,
+    "uncorrectable": "0",
+    "readBytes": "7501252608000",
+    "writeBytes": "15370952704000",
+    "percentUsed": 0
+   },
+   "hostname": "server8",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000006000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486046B8P0F"
+   },
+   "devName": "nvme1n1",
+   "ts": "2026-09-22T22:05:19Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "57350",
+    "tempC": 39,
+    "uncorrectable": "0",
+    "readBytes": "7501252608000",
+    "writeBytes": "15370947072000",
+    "percentUsed": 0
+   },
+   "hostname": "server8",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000006000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486046B8P0F"
+   },
+   "devName": "nvme1n1",
+   "ts": "2026-09-22T16:05:19Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "57344",
+    "tempC": 35,
+    "uncorrectable": "0",
+    "readBytes": "7500914688000",
+    "writeBytes": "15370936832000",
+    "percentUsed": 0
+   },
+   "hostname": "server8",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000006000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486046B8P0F"
+   },
+   "devName": "nvme1n1",
+   "ts": "2026-09-22T10:05:19Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "57338",
+    "tempC": 38,
+    "uncorrectable": "0",
+    "readBytes": "7500914688000",
+    "writeBytes": "15370935808000",
+    "percentUsed": 0
+   },
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000006000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486046B8P0F"
+   },
+   "devName": "nvme1n1",
+   "ts": "2026-09-22T04:05:19Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "57332",
+    "tempC": 40,
+    "uncorrectable": "0",
+    "readBytes": "7500914688000",
+    "writeBytes": "15370935808000",
+    "percentUsed": 0
+   },
+   "hostname": "server8",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000006000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486046B8P0F"
+   },
+   "devName": "nvme1n1",
+   "ts": "2026-09-21T22:05:19Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "57326",
+    "tempC": 39,
+    "uncorrectable": "0",
+    "readBytes": "7500914176000",
+    "writeBytes": "15370931712000",
+    "percentUsed": 0
+   },
+   "hostname": "server8",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000006000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486046B8P0F"
+   },
+   "devName": "nvme1n1",
+   "ts": "2026-09-21T16:05:19Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "57320",
+    "tempC": 37,
+    "uncorrectable": "0",
+    "readBytes": "7500903936000",
+    "writeBytes": "15370926592000",
+    "percentUsed": 0
+   },
+   "hostname": "server8",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000006000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486046B8P0F"
+   },
+   "devName": "nvme1n1",
+   "ts": "2026-09-21T10:05:19Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "57314",
+    "tempC": 38,
+    "uncorrectable": "0",
+    "readBytes": "7500879360000",
+    "writeBytes": "15370924032000",
+    "percentUsed": 0
+   },
+   "hostname": "server8",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000006000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486046B8P0F"
+   },
+   "devName": "nvme1n1",
+   "ts": "2026-09-21T04:05:19Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "57308",
+    "tempC": 40,
+    "uncorrectable": "0",
+    "readBytes": "7500879360000",
+    "writeBytes": "15370918400000",
+    "percentUsed": 0
+   },
+   "hostname": "server8",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000006000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486046B8P0F"
+   },
+   "devName": "nvme1n1",
+   "ts": "2026-09-21T03:52:44Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "57308",
+    "tempC": 40,
+    "uncorrectable": "0",
+    "readBytes": "7500879360000",
+    "writeBytes": "15370918400000",
+    "percentUsed": 0
+   },
+   "hostname": "server8",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000006000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486046B8P0F"
+   },
+   "devName": "nvme1n1",
+   "ts": "2026-09-21T03:42:33Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "57308",
+    "tempC": 40,
+    "uncorrectable": "0",
+    "readBytes": "7500879360000",
+    "writeBytes": "15370918400000",
+    "percentUsed": 0
+   },
+   "hostname": "server8",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000006000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486046B8P0F"
+   },
+   "devName": "nvme1n1",
+   "ts": "2026-09-21T03:26:21Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "57307",
+    "tempC": 40,
+    "uncorrectable": "0",
+    "readBytes": "7500878848000",
+    "writeBytes": "15370918400000",
+    "percentUsed": 0
+   },
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000006000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486046B8P0F"
+   },
+   "devName": "nvme1n1",
+   "ts": "2026-09-21T01:41:15Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "57306",
+    "tempC": 39,
+    "uncorrectable": "0",
+    "readBytes": "7500878336000",
+    "writeBytes": "15370915840000",
+    "percentUsed": 0
+   },
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000006000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486046B8P0F"
+   },
+   "devName": "nvme1n1",
+   "ts": "2026-09-20T19:41:15Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "57300",
+    "tempC": 39,
+    "uncorrectable": "0",
+    "readBytes": "7500878336000",
+    "writeBytes": "15370911744000",
+    "percentUsed": 0
+   },
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000006000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486046B8P0F"
+   },
+   "devName": "nvme1n1",
+   "ts": "2026-09-20T14:19:29Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "57294",
+    "tempC": 36,
+    "uncorrectable": "0",
+    "readBytes": "7500877824000",
+    "writeBytes": "15370910208000",
+    "percentUsed": 0
+   },
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000006000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486046B8P0F"
+   },
+   "devName": "nvme1n1",
+   "ts": "2026-09-20T08:19:29Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "57288",
+    "tempC": 40,
+    "uncorrectable": "0",
+    "readBytes": "7500877824000",
+    "writeBytes": "15370906624000",
+    "percentUsed": 0
+   },
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000006000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486046B8P0F"
+   },
+   "devName": "nvme1n1",
+   "ts": "2026-09-20T02:19:29Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "57282",
+    "tempC": 39,
+    "uncorrectable": "0",
+    "readBytes": "7500877824000",
+    "writeBytes": "15370903552000",
+    "percentUsed": 0
+   },
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000006000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486046B8P0F"
+   },
+   "devName": "nvme1n1",
+   "ts": "2026-09-19T20:19:29Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "57276",
+    "tempC": 39,
+    "uncorrectable": "0",
+    "readBytes": "7500877824000",
+    "writeBytes": "15370894336000",
+    "percentUsed": 0
+   },
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000006000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486046B8P0F"
+   },
+   "devName": "nvme1n1",
+   "ts": "2026-09-19T17:42:52Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "57274",
+    "tempC": 38,
+    "uncorrectable": "0",
+    "readBytes": "7500877312000",
+    "writeBytes": "15370891264000",
+    "percentUsed": 0
+   },
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000006000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486046B8P0F"
+   },
+   "devName": "nvme1n1",
+   "ts": "2026-09-19T11:42:51Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "57268",
+    "tempC": 38,
+    "uncorrectable": "0",
+    "readBytes": "7500864512000",
+    "writeBytes": "15370889216000",
+    "percentUsed": 0
+   },
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000006000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486046B8P0F"
+   },
+   "devName": "nvme1n1",
+   "ts": "2026-09-19T05:42:51Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "57262",
+    "tempC": 39,
+    "uncorrectable": "0",
+    "readBytes": "7500850176000",
+    "writeBytes": "15370885632000",
+    "percentUsed": 0
+   },
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000006000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486046B8P0F"
+   },
+   "devName": "nvme1n1",
+   "ts": "2026-09-18T23:42:51Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "57256",
+    "tempC": 39,
+    "uncorrectable": "0",
+    "readBytes": "7500850176000",
+    "writeBytes": "15370884096000",
+    "percentUsed": 0
+   },
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000006000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486046B8P0F"
+   },
+   "devName": "nvme1n1",
+   "ts": "2026-09-18T17:42:51Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "57250",
+    "tempC": 38,
+    "uncorrectable": "0",
+    "readBytes": "7500370944000",
+    "writeBytes": "15370879488000",
+    "percentUsed": 0
+   },
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000006000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486046B8P0F"
+   },
+   "devName": "nvme1n1",
+   "ts": "2026-09-18T11:42:51Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "57244",
+    "tempC": 37,
+    "uncorrectable": "0",
+    "readBytes": "7500370944000",
+    "writeBytes": "15370870272000",
+    "percentUsed": 0
+   },
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000006000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486046B8P0F"
+   },
+   "devName": "nvme1n1",
+   "ts": "2026-09-18T05:42:51Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "57238",
+    "tempC": 38,
+    "uncorrectable": "0",
+    "readBytes": "7500370944000",
+    "writeBytes": "15370869760000",
+    "percentUsed": 0
+   },
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000006000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486046B8P0F"
+   },
+   "devName": "nvme1n1",
+   "ts": "2026-09-17T23:42:51Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "57232",
+    "tempC": 40,
+    "uncorrectable": "0",
+    "readBytes": "7500370944000",
+    "writeBytes": "15370864640000",
+    "percentUsed": 0
+   },
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000006000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486046B8P0F"
+   },
+   "devName": "nvme1n1",
+   "ts": "2026-09-17T17:42:51Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "57226",
+    "tempC": 38,
+    "uncorrectable": "0",
+    "readBytes": "7500370944000",
+    "writeBytes": "15370862080000",
+    "percentUsed": 0
+   },
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000006000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486046B8P0F"
+   },
+   "devName": "nvme1n1",
+   "ts": "2026-09-17T11:42:51Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "57220",
+    "tempC": 38,
+    "uncorrectable": "0",
+    "readBytes": "7500370944000",
+    "writeBytes": "15370861568000",
+    "percentUsed": 0
+   },
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000006000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486046B8P0F"
+   },
+   "devName": "nvme1n1",
+   "ts": "2026-09-17T05:42:51Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "57214",
+    "tempC": 39,
+    "uncorrectable": "0",
+    "readBytes": "7500369408000",
+    "writeBytes": "15370855424000",
+    "percentUsed": 0
+   },
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000006000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486046B8P0F"
+   },
+   "devName": "nvme1n1",
+   "ts": "2026-09-16T23:42:51Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "57208",
+    "tempC": 39,
+    "uncorrectable": "0",
+    "readBytes": "7500369408000",
+    "writeBytes": "15370851328000",
+    "percentUsed": 0
+   },
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000006000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486046B8P0F"
+   },
+   "devName": "nvme1n1",
+   "ts": "2026-09-16T17:42:51Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "57202",
+    "tempC": 37,
+    "uncorrectable": "0",
+    "readBytes": "7500369408000",
+    "writeBytes": "15370844160000",
+    "percentUsed": 0
+   },
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000006000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486046B8P0F"
+   },
+   "devName": "nvme1n1",
+   "ts": "2026-09-16T11:42:51Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "57196",
+    "tempC": 37,
+    "uncorrectable": "0",
+    "readBytes": "7500369408000",
+    "writeBytes": "15370841600000",
+    "percentUsed": 0
+   },
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000006000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486046B8P0F"
+   },
+   "devName": "nvme1n1",
+   "ts": "2026-09-16T05:42:50Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "57190",
+    "tempC": 38,
+    "uncorrectable": "0",
+    "readBytes": "7500367872000",
+    "writeBytes": "15370832896000",
+    "percentUsed": 0
+   },
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000006000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486046B8P0F"
+   },
+   "devName": "nvme1n1",
+   "ts": "2026-09-15T23:42:50Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "57184",
+    "tempC": 39,
+    "uncorrectable": "0",
+    "readBytes": "7500367872000",
+    "writeBytes": "15370828800000",
+    "percentUsed": 0
+   },
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000006000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486046B8P0F"
+   },
+   "devName": "nvme1n1",
+   "ts": "2026-09-15T17:42:50Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "57178",
+    "tempC": 36,
+    "uncorrectable": "0",
+    "readBytes": "7500367872000",
+    "writeBytes": "15370821632000",
+    "percentUsed": 0
+   },
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000006000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486046B8P0F"
+   },
+   "devName": "nvme1n1",
+   "ts": "2026-09-15T11:42:50Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "57172",
+    "tempC": 37,
+    "uncorrectable": "0",
+    "readBytes": "7500367872000",
+    "writeBytes": "15370818048000",
+    "percentUsed": 0
+   },
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000006000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486046B8P0F"
+   },
+   "devName": "nvme1n1",
+   "ts": "2026-09-15T05:42:50Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "57166",
+    "tempC": 38,
+    "uncorrectable": "0",
+    "readBytes": "7500367872000",
+    "writeBytes": "15370814976000",
+    "percentUsed": 0
+   },
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000006000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486046B8P0F"
+   },
+   "devName": "nvme1n1",
+   "ts": "2026-09-14T23:42:50Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "57160",
+    "tempC": 39,
+    "uncorrectable": "0",
+    "readBytes": "7500367360000",
+    "writeBytes": "15370812928000",
+    "percentUsed": 0
+   },
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000006000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486046B8P0F"
+   },
+   "devName": "nvme1n1",
+   "ts": "2026-09-14T17:42:50Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "57154",
+    "tempC": 38,
+    "uncorrectable": "0",
+    "readBytes": "7500367360000",
+    "writeBytes": "15370810880000",
+    "percentUsed": 0
+   },
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000006000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486046B8P0F"
+   },
+   "devName": "nvme1n1",
+   "ts": "2026-09-14T15:56:40Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "57152",
+    "tempC": 38,
+    "uncorrectable": "0",
+    "readBytes": "7500366848000",
+    "writeBytes": "15370810880000",
+    "percentUsed": 0
+   },
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000006000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486046B8P0F"
+   },
+   "devName": "nvme1n1",
+   "ts": "2026-09-14T15:40:11Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "57152",
+    "tempC": 38,
+    "uncorrectable": "0",
+    "readBytes": "7500366336000",
+    "writeBytes": "15370810368000",
+    "percentUsed": 0
+   },
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000006000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486046B8P0F"
+   },
+   "devName": "nvme1n1",
+   "ts": "2026-09-14T15:40:00Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "57152",
+    "tempC": 38,
+    "uncorrectable": "0",
+    "readBytes": "7500366336000",
+    "writeBytes": "15370810368000",
+    "percentUsed": 0
+   },
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000006000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486046B8P0F"
+   },
+   "devName": "nvme1n1",
+   "ts": "2026-09-14T10:08:48Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "57146",
+    "tempC": 38,
+    "uncorrectable": "0",
+    "readBytes": "7500365824000",
+    "writeBytes": "15370808832000",
+    "percentUsed": 0
+   },
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000006000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486046B8P0F"
+   },
+   "devName": "nvme1n1",
+   "ts": "2026-09-14T04:08:48Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "57140",
+    "tempC": 38,
+    "uncorrectable": "0",
+    "readBytes": "7500365824000",
+    "writeBytes": "15370808832000",
+    "percentUsed": 0
+   },
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000006000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486046B8P0F"
+   },
+   "devName": "nvme1n1",
+   "ts": "2026-09-14T03:58:18Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "57140",
+    "tempC": 38,
+    "uncorrectable": "0",
+    "readBytes": "7500365824000",
+    "writeBytes": "15370808832000",
+    "percentUsed": 0
+   },
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000006000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486046B8P0F"
+   },
+   "devName": "nvme1n1",
+   "ts": "2026-09-14T03:45:22Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "57140",
+    "tempC": 38,
+    "uncorrectable": "0",
+    "readBytes": "7500365312000",
+    "writeBytes": "15370808320000",
+    "percentUsed": 0
+   },
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000006000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486046B8P0F"
+   },
+   "devName": "nvme1n1",
+   "ts": "2026-09-13T23:12:04Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "57135",
+    "tempC": 38,
+    "uncorrectable": "0",
+    "readBytes": "7500364800000",
+    "writeBytes": "15370802688000",
+    "percentUsed": 0
+   },
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000006000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486046B8P0F"
+   },
+   "devName": "nvme1n1",
+   "ts": "2026-09-13T22:09:25Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "57134",
+    "tempC": 38,
+    "uncorrectable": "0",
+    "readBytes": "7500364288000",
+    "writeBytes": "15370797056000",
+    "percentUsed": 0
+   },
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000006000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486046B8P0F"
+   },
+   "devName": "nvme1n1",
+   "ts": "2026-09-13T21:36:06Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "57134",
+    "tempC": 38,
+    "uncorrectable": "0",
+    "readBytes": "7500364288000",
+    "writeBytes": "15370797056000",
+    "percentUsed": 0
+   },
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000006000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486046B8P0F"
+   },
+   "devName": "nvme1n1",
+   "ts": "2026-09-13T21:28:52Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "57133",
+    "tempC": 38,
+    "uncorrectable": "0",
+    "readBytes": "7500364288000",
+    "writeBytes": "15370797056000",
+    "percentUsed": 0
+   },
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000006000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486046B8P0F"
+   },
+   "devName": "nvme1n1",
+   "ts": "2026-09-13T17:04:07Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "57129",
+    "tempC": 38,
+    "uncorrectable": "0",
+    "readBytes": "7500361728000",
+    "writeBytes": "15370787840000",
+    "percentUsed": 0
+   },
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000006000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486046B8P0F"
+   },
+   "devName": "nvme1n1",
+   "ts": "2026-09-13T14:15:47Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "57126",
+    "tempC": 38,
+    "uncorrectable": "0",
+    "readBytes": "7500361216000",
+    "writeBytes": "15370786304000",
+    "percentUsed": 0
+   },
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000006000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486046B8P0F"
+   },
+   "devName": "nvme1n1",
+   "ts": "2026-09-13T08:15:47Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "57120",
+    "tempC": 39,
+    "uncorrectable": "0",
+    "readBytes": "7500361216000",
+    "writeBytes": "15370785280000",
+    "percentUsed": 0
+   },
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000006000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486046B8P0F"
+   },
+   "devName": "nvme1n1",
+   "ts": "2026-09-13T02:15:47Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "57114",
+    "tempC": 39,
+    "uncorrectable": "0",
+    "readBytes": "7500361216000",
+    "writeBytes": "15370783232000",
+    "percentUsed": 0
+   },
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000006000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486046B8P0F"
+   },
+   "devName": "nvme1n1",
+   "ts": "2026-09-13T02:07:16Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "57114",
+    "tempC": 39,
+    "uncorrectable": "0",
+    "readBytes": "7500360704000",
+    "writeBytes": "15370783232000",
+    "percentUsed": 0
+   },
+   "hostname": "server8",
+   "hasRaw": true
+  }
+ ]
+}

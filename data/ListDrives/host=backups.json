@@ -1,0 +1,377 @@
+{
+ "drives": [
+  {
+   "driveId": "104",
+   "wwn": "0x5000c500e9fd75c5",
+   "model": "ST24000DM001-3Y7103",
+   "serial": "ZXA03T5G",
+   "sizeBytes": "24000277250048",
+   "bus": "BUS_SATA",
+   "status": "ok",
+   "firstSeen": "2026-09-13T01:44:31Z",
+   "lastSeen": "2026-09-27T19:42:09Z",
+   "current": {
+    "hostname": "backups",
+    "enclosure": "0x50030480185b9e7f",
+    "bay": "2",
+    "devName": "sda",
+    "uses": [
+     "zfs > backups 14184269030502626926 > raidz3 12638130268554546894 > disk 6909562996738010975"
+    ],
+    "firstSeen": "2026-09-13T01:44:31Z",
+    "lastSeen": "2026-09-27T19:42:09Z",
+    "enclosureVia": "expander-6:0",
+    "enclosureName": "backups-front"
+   },
+   "memberState": "ONLINE"
+  },
+  {
+   "driveId": "105",
+   "wwn": "0x5000c500e8bf1d27",
+   "model": "ST24000DM001-3Y7103",
+   "serial": "ZXA0TCYT",
+   "sizeBytes": "24000277250048",
+   "bus": "BUS_SATA",
+   "status": "ok",
+   "firstSeen": "2026-09-13T01:44:31Z",
+   "lastSeen": "2026-09-27T19:42:09Z",
+   "current": {
+    "hostname": "backups",
+    "enclosure": "0x50030480185b9e7f",
+    "bay": "3",
+    "devName": "sdb",
+    "uses": [
+     "zfs > backups 14184269030502626926 > raidz3 12638130268554546894 > disk 12397832929899529994"
+    ],
+    "firstSeen": "2026-09-13T01:44:31Z",
+    "lastSeen": "2026-09-27T19:42:09Z",
+    "enclosureVia": "expander-6:0",
+    "enclosureName": "backups-front"
+   },
+   "memberState": "ONLINE"
+  },
+  {
+   "driveId": "106",
+   "wwn": "0x5000c500e8da3221",
+   "model": "ST24000DM001-3Y7103",
+   "serial": "ZXA0XV48",
+   "sizeBytes": "24000277250048",
+   "bus": "BUS_SATA",
+   "status": "ok",
+   "firstSeen": "2026-09-13T01:44:31Z",
+   "lastSeen": "2026-09-27T19:42:09Z",
+   "current": {
+    "hostname": "backups",
+    "enclosure": "0x50030480185b9e7f",
+    "bay": "4",
+    "devName": "sdc",
+    "uses": [
+     "zfs > backups 14184269030502626926 > raidz3 12638130268554546894 > disk 12294050993797249670"
+    ],
+    "firstSeen": "2026-09-13T01:44:31Z",
+    "lastSeen": "2026-09-27T19:42:09Z",
+    "enclosureVia": "expander-6:0",
+    "enclosureName": "backups-front"
+   },
+   "memberState": "ONLINE"
+  },
+  {
+   "driveId": "107",
+   "wwn": "0x5000c500e8d7e258",
+   "model": "ST24000DM001-3Y7103",
+   "serial": "ZXA0XH4E",
+   "sizeBytes": "24000277250048",
+   "bus": "BUS_SATA",
+   "status": "ok",
+   "firstSeen": "2026-09-13T01:44:31Z",
+   "lastSeen": "2026-09-27T19:42:09Z",
+   "current": {
+    "hostname": "backups",
+    "enclosure": "0x50030480185b9e7f",
+    "bay": "5",
+    "devName": "sdd",
+    "uses": [
+     "zfs > backups 14184269030502626926 > raidz3 12638130268554546894 > disk 11120317111489606304"
+    ],
+    "firstSeen": "2026-09-13T01:44:31Z",
+    "lastSeen": "2026-09-27T19:42:09Z",
+    "enclosureVia": "expander-6:0",
+    "enclosureName": "backups-front"
+   },
+   "memberState": "ONLINE"
+  },
+  {
+   "driveId": "108",
+   "wwn": "0x5000c500e8c1b72b",
+   "model": "ST24000DM001-3Y7103",
+   "serial": "ZXA0V75X",
+   "sizeBytes": "24000277250048",
+   "bus": "BUS_SATA",
+   "status": "ok",
+   "firstSeen": "2026-09-13T01:44:31Z",
+   "lastSeen": "2026-09-27T19:42:09Z",
+   "current": {
+    "hostname": "backups",
+    "enclosure": "0x50030480185b9e7f",
+    "bay": "8",
+    "devName": "sde",
+    "uses": [
+     "zfs > backups 14184269030502626926 > raidz3 12638130268554546894 > disk 6583091953762439930"
+    ],
+    "firstSeen": "2026-09-13T01:44:31Z",
+    "lastSeen": "2026-09-27T19:42:09Z",
+    "enclosureVia": "expander-6:0",
+    "enclosureName": "backups-front"
+   },
+   "memberState": "ONLINE"
+  },
+  {
+   "driveId": "109",
+   "wwn": "0x5000c500e96efc9f",
+   "model": "ST24000DM001-3Y7103",
+   "serial": "ZXA185XX",
+   "sizeBytes": "24000277250048",
+   "bus": "BUS_SATA",
+   "status": "ok",
+   "firstSeen": "2026-09-13T01:44:31Z",
+   "lastSeen": "2026-09-27T19:42:09Z",
+   "current": {
+    "hostname": "backups",
+    "enclosure": "0x50030480185b9e7f",
+    "bay": "10",
+    "devName": "sdf",
+    "uses": [
+     "zfs > backups 14184269030502626926 > raidz3 12638130268554546894 > disk 10414938989999790616"
+    ],
+    "firstSeen": "2026-09-13T01:44:31Z",
+    "lastSeen": "2026-09-27T19:42:09Z",
+    "enclosureVia": "expander-6:0",
+    "enclosureName": "backups-front"
+   },
+   "memberState": "ONLINE"
+  },
+  {
+   "driveId": "110",
+   "wwn": "0x5000c500e901b1e2",
+   "model": "ST24000DM001-3Y7103",
+   "serial": "ZXA115Y6",
+   "sizeBytes": "24000277250048",
+   "bus": "BUS_SATA",
+   "status": "ok",
+   "firstSeen": "2026-09-13T01:44:31Z",
+   "lastSeen": "2026-09-27T19:42:09Z",
+   "current": {
+    "hostname": "backups",
+    "enclosure": "0x50030480185b9e7f",
+    "bay": "11",
+    "devName": "sdg",
+    "uses": [
+     "zfs > backups 14184269030502626926 > raidz3 12638130268554546894 > disk 9310739970432676503"
+    ],
+    "firstSeen": "2026-09-13T01:44:31Z",
+    "lastSeen": "2026-09-27T19:42:09Z",
+    "enclosureVia": "expander-6:0",
+    "enclosureName": "backups-front"
+   },
+   "memberState": "ONLINE"
+  },
+  {
+   "driveId": "111",
+   "wwn": "0x5000c500e9009f9f",
+   "model": "ST24000DM001-3Y7103",
+   "serial": "ZXA11LGT",
+   "sizeBytes": "24000277250048",
+   "bus": "BUS_SATA",
+   "status": "ok",
+   "firstSeen": "2026-09-13T01:44:31Z",
+   "lastSeen": "2026-09-27T19:42:09Z",
+   "current": {
+    "hostname": "backups",
+    "enclosure": "0x50030480185b9e7f",
+    "bay": "15",
+    "devName": "sdh",
+    "uses": [
+     "zfs > backups 14184269030502626926 > raidz3 12638130268554546894 > disk 12715670843202606742"
+    ],
+    "firstSeen": "2026-09-13T01:44:31Z",
+    "lastSeen": "2026-09-27T19:42:09Z",
+    "enclosureVia": "expander-6:0",
+    "enclosureName": "backups-front"
+   },
+   "memberState": "ONLINE"
+  },
+  {
+   "driveId": "112",
+   "wwn": "0x5000c500e867f51a",
+   "model": "ST24000DM001-3Y7103",
+   "serial": "ZXA0GA9D",
+   "sizeBytes": "24000277250048",
+   "bus": "BUS_SATA",
+   "status": "ok",
+   "firstSeen": "2026-09-13T01:44:31Z",
+   "lastSeen": "2026-09-27T19:42:09Z",
+   "current": {
+    "hostname": "backups",
+    "enclosure": "0x50030480185b9e7f",
+    "bay": "16",
+    "devName": "sdi",
+    "uses": [
+     "zfs > backups 14184269030502626926 > raidz3 12638130268554546894 > disk 17702091168007131095"
+    ],
+    "firstSeen": "2026-09-13T01:44:31Z",
+    "lastSeen": "2026-09-27T19:42:09Z",
+    "enclosureVia": "expander-6:0",
+    "enclosureName": "backups-front"
+   },
+   "memberState": "ONLINE"
+  },
+  {
+   "driveId": "113",
+   "wwn": "0x5000c500ea01004e",
+   "model": "ST24000DM001-3Y7103",
+   "serial": "ZXA07M8F",
+   "sizeBytes": "24000277250048",
+   "bus": "BUS_SATA",
+   "status": "ok",
+   "firstSeen": "2026-09-13T01:44:31Z",
+   "lastSeen": "2026-09-27T19:42:09Z",
+   "current": {
+    "hostname": "backups",
+    "enclosure": "0x50030480185b9e7f",
+    "bay": "17",
+    "devName": "sdj",
+    "uses": [
+     "zfs > backups 14184269030502626926 > raidz3 12638130268554546894 > disk 10255298623913385142"
+    ],
+    "firstSeen": "2026-09-13T01:44:31Z",
+    "lastSeen": "2026-09-27T19:42:09Z",
+    "enclosureVia": "expander-6:0",
+    "enclosureName": "backups-front"
+   },
+   "memberState": "ONLINE"
+  },
+  {
+   "driveId": "114",
+   "wwn": "0x5000c500e8fd009f",
+   "model": "ST24000DM001-3Y7103",
+   "serial": "ZXA10QBK",
+   "sizeBytes": "24000277250048",
+   "bus": "BUS_SATA",
+   "status": "ok",
+   "firstSeen": "2026-09-13T01:44:31Z",
+   "lastSeen": "2026-09-27T19:42:09Z",
+   "current": {
+    "hostname": "backups",
+    "enclosure": "0x50030480185b9e7f",
+    "bay": "21",
+    "devName": "sdk",
+    "uses": [
+     "zfs > backups 14184269030502626926 > raidz3 12638130268554546894 > disk 2427754677181354078"
+    ],
+    "firstSeen": "2026-09-13T01:44:31Z",
+    "lastSeen": "2026-09-27T19:42:09Z",
+    "enclosureVia": "expander-6:0",
+    "enclosureName": "backups-front"
+   },
+   "memberState": "ONLINE"
+  },
+  {
+   "driveId": "115",
+   "wwn": "0x5000c500e8d55d13",
+   "model": "ST24000DM001-3Y7103",
+   "serial": "ZXA0XM4R",
+   "sizeBytes": "24000277250048",
+   "bus": "BUS_SATA",
+   "status": "ok",
+   "firstSeen": "2026-09-13T01:44:31Z",
+   "lastSeen": "2026-09-27T19:42:09Z",
+   "current": {
+    "hostname": "backups",
+    "enclosure": "0x50030480185b9e7f",
+    "bay": "22",
+    "devName": "sdl",
+    "uses": [
+     "zfs > spare backups > disk 10313488710348015701"
+    ],
+    "firstSeen": "2026-09-13T01:44:31Z",
+    "lastSeen": "2026-09-27T19:42:09Z",
+    "enclosureVia": "expander-6:0",
+    "enclosureName": "backups-front"
+   },
+   "memberState": "AVAIL"
+  },
+  {
+   "driveId": "116",
+   "wwn": "0x5000c500e8df0b98",
+   "model": "ST24000DM001-3Y7103",
+   "serial": "ZXA0YB6H",
+   "sizeBytes": "24000277250048",
+   "bus": "BUS_SATA",
+   "status": "ok",
+   "firstSeen": "2026-09-13T01:44:31Z",
+   "lastSeen": "2026-09-27T19:42:09Z",
+   "current": {
+    "hostname": "backups",
+    "enclosure": "0x50030480185b9e7f",
+    "bay": "23",
+    "devName": "sdm",
+    "uses": [
+     "zfs > spare backups > disk 15127882886004909357"
+    ],
+    "firstSeen": "2026-09-13T01:44:31Z",
+    "lastSeen": "2026-09-27T19:42:09Z",
+    "enclosureVia": "expander-6:0",
+    "enclosureName": "backups-front"
+   },
+   "memberState": "AVAIL"
+  },
+  {
+   "driveId": "103",
+   "wwn": "eui.fd5b42cebc8f9d54ace42e005528cee8",
+   "model": "SHPP51-1000GM",
+   "serial": "BSE3N45261OA43O21",
+   "sizeBytes": "1000204886016",
+   "bus": "BUS_NVME",
+   "status": "ok",
+   "firstSeen": "2026-09-13T01:44:31Z",
+   "lastSeen": "2026-09-27T19:42:09Z",
+   "current": {
+    "hostname": "backups",
+    "enclosure": "dmi:OM259S069895",
+    "bay": "M.2-C1 PCIe 4.0 X4",
+    "devName": "nvme0n1",
+    "uses": [
+     "zfs > rpool 18354710647381807540 > mirror 5264883868435595074 > disk 5223049671745381668"
+    ],
+    "firstSeen": "2026-09-13T23:12:25Z",
+    "lastSeen": "2026-09-27T19:42:09Z",
+    "enclosureVia": "pci"
+   },
+   "memberState": "ONLINE"
+  },
+  {
+   "driveId": "102",
+   "wwn": "eui.fd5b42cebc8f9d54ace42e005528ced4",
+   "model": "SHPP51-1000GM",
+   "serial": "BSE3N45261OA43O1H",
+   "sizeBytes": "1000204886016",
+   "bus": "BUS_NVME",
+   "status": "ok",
+   "firstSeen": "2026-09-13T01:44:31Z",
+   "lastSeen": "2026-09-27T19:42:09Z",
+   "current": {
+    "hostname": "backups",
+    "enclosure": "dmi:OM259S069895",
+    "bay": "M.2-C2 PCIe 4.0 X4",
+    "devName": "nvme1n1",
+    "uses": [
+     "zfs > rpool 18354710647381807540 > mirror 5264883868435595074 > disk 1250468358385806965"
+    ],
+    "firstSeen": "2026-09-13T23:12:25Z",
+    "lastSeen": "2026-09-27T19:42:09Z",
+    "enclosureVia": "pci"
+   },
+   "memberState": "ONLINE"
+  }
+ ]
+}

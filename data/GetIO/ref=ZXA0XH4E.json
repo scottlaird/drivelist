@@ -1,0 +1,2920 @@
+{
+ "drive": {
+  "driveId": "107",
+  "wwn": "0x5000c500e8d7e258",
+  "model": "ST24000DM001-3Y7103",
+  "serial": "ZXA0XH4E",
+  "sizeBytes": "24000277250048",
+  "bus": "BUS_SATA",
+  "status": "ok",
+  "firstSeen": "2026-09-13T01:44:31Z",
+  "lastSeen": "2026-09-27T19:42:09Z",
+  "current": {
+   "hostname": "backups",
+   "enclosure": "0x50030480185b9e7f",
+   "bay": "5",
+   "devName": "sdd",
+   "uses": [
+    "zfs > backups 14184269030502626926 > raidz3 12638130268554546894 > disk 11120317111489606304"
+   ],
+   "firstSeen": "2026-09-13T01:44:31Z",
+   "lastSeen": "2026-09-27T19:42:09Z",
+   "enclosureVia": "expander-6:0",
+   "enclosureName": "backups-front"
+  },
+  "memberState": "ONLINE"
+ },
+ "samples": [
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-27T18:00:00Z",
+   "bucketSecs": 3599,
+   "reads": "1886",
+   "writes": "28588",
+   "readBytes": "7733248",
+   "writeBytes": "258994176",
+   "readMs": "27010",
+   "writeMs": "67256",
+   "ioMs": "88550",
+   "weightedMs": "154042",
+   "rAwaitMaxMs": 21.666666666666668,
+   "wAwaitMaxMs": 2.7387387387387387,
+   "utilMax": 0.03241666666666667,
+   "hostname": "backups",
+   "awaitReads": "1886",
+   "awaitWrites": "28588"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-27T17:00:00Z",
+   "bucketSecs": 3600,
+   "reads": "2019",
+   "writes": "29405",
+   "readBytes": "8278016",
+   "writeBytes": "263442432",
+   "readMs": "28425",
+   "writeMs": "67024",
+   "ioMs": "89620",
+   "weightedMs": "154771",
+   "rAwaitMaxMs": 16.75,
+   "wAwaitMaxMs": 2.6872146118721463,
+   "utilMax": 0.03210053500891682,
+   "hostname": "backups",
+   "awaitReads": "2019",
+   "awaitWrites": "29405"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-27T16:00:00Z",
+   "bucketSecs": 3599,
+   "reads": "5324",
+   "writes": "29721",
+   "readBytes": "21815296",
+   "writeBytes": "256065536",
+   "readMs": "72976",
+   "writeMs": "66513",
+   "ioMs": "131585",
+   "weightedMs": "198141",
+   "rAwaitMaxMs": 15.413793103448276,
+   "wAwaitMaxMs": 2.5749486652977414,
+   "utilMax": 0.04406740112335206,
+   "hostname": "backups",
+   "awaitReads": "5324",
+   "awaitWrites": "29721"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-27T15:00:00Z",
+   "bucketSecs": 3599,
+   "reads": "5998",
+   "writes": "28712",
+   "readBytes": "24576000",
+   "writeBytes": "254087168",
+   "readMs": "80699",
+   "writeMs": "66934",
+   "ioMs": "137900",
+   "weightedMs": "206820",
+   "rAwaitMaxMs": 15.916666666666666,
+   "wAwaitMaxMs": 2.607296137339056,
+   "utilMax": 0.057633333333333335,
+   "hostname": "backups",
+   "awaitReads": "5998",
+   "awaitWrites": "28712"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-27T14:00:00Z",
+   "bucketSecs": 3599,
+   "reads": "4934",
+   "writes": "28238",
+   "readBytes": "20221952",
+   "writeBytes": "250650624",
+   "readMs": "68876",
+   "writeMs": "66865",
+   "ioMs": "128196",
+   "weightedMs": "195118",
+   "rAwaitMaxMs": 16.548780487804876,
+   "wAwaitMaxMs": 2.67827868852459,
+   "utilMax": 0.04515075251254187,
+   "hostname": "backups",
+   "awaitReads": "4934",
+   "awaitWrites": "28238"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-27T13:00:00Z",
+   "bucketSecs": 3600,
+   "reads": "6616",
+   "writes": "28645",
+   "readBytes": "27111424",
+   "writeBytes": "249008128",
+   "readMs": "87818",
+   "writeMs": "67182",
+   "ioMs": "146050",
+   "weightedMs": "214399",
+   "rAwaitMaxMs": 16.26984126984127,
+   "wAwaitMaxMs": 2.6339285714285716,
+   "utilMax": 0.058,
+   "hostname": "backups",
+   "awaitReads": "6616",
+   "awaitWrites": "28645"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-27T12:00:00Z",
+   "bucketSecs": 3599,
+   "reads": "4117",
+   "writes": "28295",
+   "readBytes": "16875520",
+   "writeBytes": "247173120",
+   "readMs": "57384",
+   "writeMs": "66534",
+   "ioMs": "116955",
+   "weightedMs": "182892",
+   "rAwaitMaxMs": 17.18,
+   "wAwaitMaxMs": 2.8214285714285716,
+   "utilMax": 0.04420073667894465,
+   "hostname": "backups",
+   "awaitReads": "4117",
+   "awaitWrites": "28295"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-27T11:00:00Z",
+   "bucketSecs": 3599,
+   "reads": "6108",
+   "writes": "28205",
+   "readBytes": "25026560",
+   "writeBytes": "247328768",
+   "readMs": "83025",
+   "writeMs": "67928",
+   "ioMs": "142029",
+   "weightedMs": "211116",
+   "rAwaitMaxMs": 14.982758620689655,
+   "wAwaitMaxMs": 2.8016032064128256,
+   "utilMax": 0.05303421723695395,
+   "hostname": "backups",
+   "awaitReads": "6108",
+   "awaitWrites": "28205"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-27T10:00:00Z",
+   "bucketSecs": 3600,
+   "reads": "7816",
+   "writes": "27992",
+   "readBytes": "32022528",
+   "writeBytes": "247816192",
+   "readMs": "103218",
+   "writeMs": "66027",
+   "ioMs": "159254",
+   "weightedMs": "227752",
+   "rAwaitMaxMs": 14.877358490566039,
+   "wAwaitMaxMs": 2.8244897959183675,
+   "utilMax": 0.05843430723845398,
+   "hostname": "backups",
+   "awaitReads": "7816",
+   "awaitWrites": "27992"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-27T09:00:00Z",
+   "bucketSecs": 3600,
+   "reads": "7311",
+   "writes": "29437",
+   "readBytes": "29954048",
+   "writeBytes": "357462016",
+   "readMs": "96825",
+   "writeMs": "69057",
+   "ioMs": "156193",
+   "weightedMs": "226252",
+   "rAwaitMaxMs": 15.912280701754385,
+   "wAwaitMaxMs": 2.861111111111111,
+   "utilMax": 0.06283438057300955,
+   "hostname": "backups",
+   "awaitReads": "7311",
+   "awaitWrites": "29437"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-27T08:00:00Z",
+   "bucketSecs": 3599,
+   "reads": "9468",
+   "writes": "28137",
+   "readBytes": "38780928",
+   "writeBytes": "249319424",
+   "readMs": "119187",
+   "writeMs": "65775",
+   "ioMs": "174824",
+   "weightedMs": "243253",
+   "rAwaitMaxMs": 15.158878504672897,
+   "wAwaitMaxMs": 3.0295454545454548,
+   "utilMax": 0.0676,
+   "hostname": "backups",
+   "awaitReads": "9468",
+   "awaitWrites": "28137"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-27T07:00:00Z",
+   "bucketSecs": 3599,
+   "reads": "12580",
+   "writes": "27444",
+   "readBytes": "51785728",
+   "writeBytes": "674721792",
+   "readMs": "316397",
+   "writeMs": "68919",
+   "ioMs": "151821",
+   "weightedMs": "444343",
+   "rAwaitMaxMs": 32.06520663202178,
+   "wAwaitMaxMs": 3.288198757763975,
+   "utilMax": 0.5939,
+   "hostname": "backups",
+   "awaitReads": "12580",
+   "awaitWrites": "27444"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-27T06:00:00Z",
+   "bucketSecs": 3600,
+   "reads": "1058",
+   "writes": "27024",
+   "readBytes": "4337664",
+   "writeBytes": "307490816",
+   "readMs": "13629",
+   "writeMs": "66850",
+   "ioMs": "75813",
+   "weightedMs": "139777",
+   "rAwaitMaxMs": 22,
+   "wAwaitMaxMs": 3.0379464285714284,
+   "utilMax": 0.03851730862181036,
+   "hostname": "backups",
+   "awaitReads": "1058",
+   "awaitWrites": "27024"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-27T05:00:00Z",
+   "bucketSecs": 3600,
+   "reads": "46",
+   "writes": "27582",
+   "readBytes": "188416",
+   "writeBytes": "316317696",
+   "readMs": "439",
+   "writeMs": "68099",
+   "ioMs": "64414",
+   "weightedMs": "129134",
+   "rAwaitMaxMs": 22.5,
+   "wAwaitMaxMs": 3.023605150214592,
+   "utilMax": 0.02488374806246771,
+   "hostname": "backups",
+   "awaitReads": "46",
+   "awaitWrites": "27582"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-27T04:00:00Z",
+   "bucketSecs": 3599,
+   "reads": "33",
+   "writes": "28026",
+   "readBytes": "135168",
+   "writeBytes": "233664512",
+   "readMs": "281",
+   "writeMs": "70665",
+   "ioMs": "66947",
+   "weightedMs": "134442",
+   "rAwaitMaxMs": 22,
+   "wAwaitMaxMs": 2.8443496801705757,
+   "utilMax": 0.021833333333333333,
+   "hostname": "backups",
+   "awaitReads": "33",
+   "awaitWrites": "28026"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-27T03:00:00Z",
+   "bucketSecs": 3600,
+   "reads": "35",
+   "writes": "28021",
+   "readBytes": "143360",
+   "writeBytes": "237490176",
+   "readMs": "328",
+   "writeMs": "69893",
+   "ioMs": "66133",
+   "weightedMs": "133013",
+   "rAwaitMaxMs": 33,
+   "wAwaitMaxMs": 2.8767123287671232,
+   "utilMax": 0.021583693061551026,
+   "hostname": "backups",
+   "awaitReads": "35",
+   "awaitWrites": "28021"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-27T02:00:00Z",
+   "bucketSecs": 3599,
+   "reads": "123",
+   "writes": "27671",
+   "readBytes": "503808",
+   "writeBytes": "293515264",
+   "readMs": "947",
+   "writeMs": "67295",
+   "ioMs": "63867",
+   "weightedMs": "128034",
+   "rAwaitMaxMs": 24,
+   "wAwaitMaxMs": 2.8020833333333335,
+   "utilMax": 0.02165,
+   "hostname": "backups",
+   "awaitReads": "123",
+   "awaitWrites": "27671"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-27T01:00:00Z",
+   "bucketSecs": 3599,
+   "reads": "173",
+   "writes": "27102",
+   "readBytes": "708608",
+   "writeBytes": "223608832",
+   "readMs": "1321",
+   "writeMs": "65946",
+   "ioMs": "63277",
+   "weightedMs": "126305",
+   "rAwaitMaxMs": 18.666666666666668,
+   "wAwaitMaxMs": 2.7146282973621103,
+   "utilMax": 0.0201,
+   "hostname": "backups",
+   "awaitReads": "173",
+   "awaitWrites": "27102"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-27T00:00:00Z",
+   "bucketSecs": 3599,
+   "reads": "168",
+   "writes": "27058",
+   "readBytes": "688128",
+   "writeBytes": "225652736",
+   "readMs": "1161",
+   "writeMs": "64114",
+   "ioMs": "61474",
+   "weightedMs": "122526",
+   "rAwaitMaxMs": 19,
+   "wAwaitMaxMs": 2.68640350877193,
+   "utilMax": 0.019766996116601942,
+   "hostname": "backups",
+   "awaitReads": "168",
+   "awaitWrites": "27058"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-26T23:00:00Z",
+   "bucketSecs": 3600,
+   "reads": "157",
+   "writes": "27539",
+   "readBytes": "643072",
+   "writeBytes": "244752384",
+   "readMs": "1023",
+   "writeMs": "66958",
+   "ioMs": "64021",
+   "weightedMs": "127885",
+   "rAwaitMaxMs": 20,
+   "wAwaitMaxMs": 2.8488120950323976,
+   "utilMax": 0.0216003600060001,
+   "hostname": "backups",
+   "awaitReads": "157",
+   "awaitWrites": "27539"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-26T22:00:00Z",
+   "bucketSecs": 3600,
+   "reads": "302",
+   "writes": "27654",
+   "readBytes": "1236992",
+   "writeBytes": "278351872",
+   "readMs": "1152",
+   "writeMs": "65897",
+   "ioMs": "62797",
+   "weightedMs": "125676",
+   "rAwaitMaxMs": 14,
+   "wAwaitMaxMs": 2.658008658008658,
+   "utilMax": 0.019616666666666668,
+   "hostname": "backups",
+   "awaitReads": "302",
+   "awaitWrites": "27654"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-26T21:00:00Z",
+   "bucketSecs": 3599,
+   "reads": "131",
+   "writes": "27200",
+   "readBytes": "536576",
+   "writeBytes": "545423360",
+   "readMs": "604",
+   "writeMs": "66994",
+   "ioMs": "62701",
+   "weightedMs": "125783",
+   "rAwaitMaxMs": 18.333333333333332,
+   "wAwaitMaxMs": 3.926530612244898,
+   "utilMax": 0.03816666666666667,
+   "hostname": "backups",
+   "awaitReads": "131",
+   "awaitWrites": "27200"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-26T20:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "24936",
+   "writeBytes": "200540160",
+   "writeMs": "59209",
+   "ioMs": "55695",
+   "weightedMs": "112047",
+   "wAwaitMaxMs": 2.787878787878788,
+   "utilMax": 0.01946699111651861,
+   "hostname": "backups",
+   "awaitWrites": "24936"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-26T19:00:00Z",
+   "bucketSecs": 3599,
+   "reads": "125",
+   "writes": "27350",
+   "readBytes": "512000",
+   "writeBytes": "313843712",
+   "readMs": "613",
+   "writeMs": "65351",
+   "ioMs": "61702",
+   "weightedMs": "123903",
+   "rAwaitMaxMs": 19,
+   "wAwaitMaxMs": 2.8825995807127884,
+   "utilMax": 0.03003383389723162,
+   "hostname": "backups",
+   "awaitReads": "125",
+   "awaitWrites": "27350"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-26T18:00:00Z",
+   "bucketSecs": 3600,
+   "reads": "280",
+   "writes": "27981",
+   "readBytes": "1146880",
+   "writeBytes": "282374144",
+   "readMs": "1526",
+   "writeMs": "66750",
+   "ioMs": "63890",
+   "weightedMs": "127511",
+   "rAwaitMaxMs": 25,
+   "wAwaitMaxMs": 2.74617067833698,
+   "utilMax": 0.021017016950282505,
+   "hostname": "backups",
+   "awaitReads": "280",
+   "awaitWrites": "27981"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-26T17:00:00Z",
+   "bucketSecs": 3599,
+   "reads": "122",
+   "writes": "24544",
+   "readBytes": "499712",
+   "writeBytes": "194940928",
+   "readMs": "1168",
+   "writeMs": "57934",
+   "ioMs": "55580",
+   "weightedMs": "110701",
+   "rAwaitMaxMs": 62,
+   "wAwaitMaxMs": 2.902325581395349,
+   "utilMax": 0.020433333333333335,
+   "hostname": "backups",
+   "awaitReads": "122",
+   "awaitWrites": "24544"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-26T16:00:00Z",
+   "bucketSecs": 3599,
+   "reads": "77",
+   "writes": "26073",
+   "readBytes": "315392",
+   "writeBytes": "207138816",
+   "readMs": "656",
+   "writeMs": "61827",
+   "ioMs": "58848",
+   "weightedMs": "117757",
+   "rAwaitMaxMs": 22,
+   "wAwaitMaxMs": 2.8095238095238093,
+   "utilMax": 0.0201,
+   "hostname": "backups",
+   "awaitReads": "77",
+   "awaitWrites": "26073"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-26T15:00:00Z",
+   "bucketSecs": 3600,
+   "reads": "369",
+   "writes": "27718",
+   "readBytes": "1511424",
+   "writeBytes": "221892608",
+   "readMs": "3556",
+   "writeMs": "64015",
+   "ioMs": "63440",
+   "weightedMs": "124500",
+   "rAwaitMaxMs": 19,
+   "wAwaitMaxMs": 2.793028322440087,
+   "utilMax": 0.02195,
+   "hostname": "backups",
+   "awaitReads": "369",
+   "awaitWrites": "27718"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-26T14:00:00Z",
+   "bucketSecs": 3599,
+   "reads": "412",
+   "writes": "22431",
+   "readBytes": "1695744",
+   "writeBytes": "851890176",
+   "readMs": "4747",
+   "writeMs": "57740",
+   "ioMs": "56849",
+   "weightedMs": "110006",
+   "rAwaitMaxMs": 19.2,
+   "wAwaitMaxMs": 3.967479674796748,
+   "utilMax": 0.03693394889914832,
+   "hostname": "backups",
+   "awaitReads": "412",
+   "awaitWrites": "22431"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-26T13:00:00Z",
+   "bucketSecs": 3600,
+   "reads": "2",
+   "writes": "2145",
+   "readBytes": "8192",
+   "writeBytes": "21295104",
+   "readMs": "26",
+   "writeMs": "8185",
+   "ioMs": "6830",
+   "weightedMs": "13658",
+   "rAwaitMaxMs": 16,
+   "wAwaitMaxMs": 15.513513513513514,
+   "utilMax": 0.013916666666666667,
+   "hostname": "backups",
+   "awaitReads": "2",
+   "awaitWrites": "2145"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-26T12:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "1341",
+   "writeBytes": "24719360",
+   "writeMs": "7963",
+   "ioMs": "5727",
+   "weightedMs": "11454",
+   "wAwaitMaxMs": 17.210526315789473,
+   "utilMax": 0.007833463891064851,
+   "hostname": "backups",
+   "awaitWrites": "1341"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-26T11:00:00Z",
+   "bucketSecs": 3600,
+   "reads": "972",
+   "writes": "22862",
+   "readBytes": "3981312",
+   "writeBytes": "181039104",
+   "readMs": "12382",
+   "writeMs": "54282",
+   "ioMs": "62490",
+   "weightedMs": "115088",
+   "rAwaitMaxMs": 18.181818181818183,
+   "wAwaitMaxMs": 7.191489361702128,
+   "utilMax": 0.025716666666666665,
+   "hostname": "backups",
+   "awaitReads": "972",
+   "awaitWrites": "22862"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-26T10:00:00Z",
+   "bucketSecs": 3599,
+   "reads": "3759",
+   "writes": "25805",
+   "readBytes": "15396864",
+   "writeBytes": "194756608",
+   "readMs": "49503",
+   "writeMs": "60195",
+   "ioMs": "103820",
+   "weightedMs": "163224",
+   "rAwaitMaxMs": 15.166666666666666,
+   "wAwaitMaxMs": 2.8637469586374698,
+   "utilMax": 0.04735,
+   "hostname": "backups",
+   "awaitReads": "3759",
+   "awaitWrites": "25805"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-26T09:00:00Z",
+   "bucketSecs": 3600,
+   "reads": "20179",
+   "writes": "27183",
+   "readBytes": "82739200",
+   "writeBytes": "281600000",
+   "readMs": "208376",
+   "writeMs": "60390",
+   "ioMs": "255279",
+   "weightedMs": "321257",
+   "rAwaitMaxMs": 13.705882352941176,
+   "wAwaitMaxMs": 2.6391184573002753,
+   "utilMax": 0.13086884781413025,
+   "hostname": "backups",
+   "awaitReads": "20179",
+   "awaitWrites": "27183"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-26T08:00:00Z",
+   "bucketSecs": 3599,
+   "reads": "11302",
+   "writes": "7048",
+   "readBytes": "47067136",
+   "writeBytes": "73547776",
+   "readMs": "89829",
+   "writeMs": "13228",
+   "ioMs": "97312",
+   "weightedMs": "114290",
+   "rAwaitMaxMs": 11.47926267281106,
+   "wAwaitMaxMs": 2.178494623655914,
+   "utilMax": 0.1316,
+   "hostname": "backups",
+   "awaitReads": "11302",
+   "awaitWrites": "7048"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-26T07:00:00Z",
+   "bucketSecs": 3600,
+   "reads": "11105",
+   "writes": "677",
+   "readBytes": "45805568",
+   "writeBytes": "6909952",
+   "readMs": "307730",
+   "writeMs": "1893",
+   "ioMs": "53379",
+   "weightedMs": "311249",
+   "rAwaitMaxMs": 30.031036623215392,
+   "wAwaitMaxMs": 3.1785714285714284,
+   "utilMax": 0.7027950465841097,
+   "hostname": "backups",
+   "awaitReads": "11105",
+   "awaitWrites": "677"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-26T06:00:00Z",
+   "bucketSecs": 3599,
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-26T05:00:00Z",
+   "bucketSecs": 3600,
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-26T04:00:00Z",
+   "bucketSecs": 3599,
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-26T03:00:00Z",
+   "bucketSecs": 3599,
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-26T02:00:00Z",
+   "bucketSecs": 3600,
+   "reads": "491",
+   "writes": "3013",
+   "readBytes": "2121728",
+   "writeBytes": "133251072",
+   "readMs": "5014",
+   "writeMs": "6834",
+   "ioMs": "9816",
+   "weightedMs": "17240",
+   "rAwaitMaxMs": 33.6530612244898,
+   "wAwaitMaxMs": 2.8596491228070176,
+   "utilMax": 0.03496666666666667,
+   "hostname": "backups",
+   "awaitReads": "491",
+   "awaitWrites": "3013"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-26T01:00:00Z",
+   "bucketSecs": 3599,
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-26T00:00:00Z",
+   "bucketSecs": 3600,
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-25T23:00:00Z",
+   "bucketSecs": 3600,
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-25T22:00:00Z",
+   "bucketSecs": 3599,
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-25T21:00:00Z",
+   "bucketSecs": 3600,
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-25T20:00:00Z",
+   "bucketSecs": 3599,
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-25T19:00:00Z",
+   "bucketSecs": 3600,
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-25T18:00:00Z",
+   "bucketSecs": 3599,
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-25T17:00:00Z",
+   "bucketSecs": 3599,
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-25T16:00:00Z",
+   "bucketSecs": 3600,
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-25T15:00:00Z",
+   "bucketSecs": 3599,
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-25T14:00:00Z",
+   "bucketSecs": 3600,
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-25T13:00:00Z",
+   "bucketSecs": 3599,
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-25T12:00:00Z",
+   "bucketSecs": 3599,
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-25T11:00:00Z",
+   "bucketSecs": 3600,
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-25T10:00:00Z",
+   "bucketSecs": 3600,
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-25T09:00:00Z",
+   "bucketSecs": 2940,
+   "reads": "1",
+   "writes": "38",
+   "readBytes": "4096",
+   "writeBytes": "237568",
+   "readMs": "11",
+   "writeMs": "88",
+   "ioMs": "94",
+   "weightedMs": "175",
+   "rAwaitMaxMs": 11,
+   "wAwaitMaxMs": 2.3157894736842106,
+   "utilMax": 0.0015660924327746493,
+   "hostname": "backups",
+   "awaitReads": "1",
+   "awaitWrites": "38"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-25T08:00:00Z",
+   "bucketSecs": 3600,
+   "reads": "21492",
+   "writes": "13941",
+   "readBytes": "88838144",
+   "writeBytes": "260837376",
+   "readMs": "182132",
+   "writeMs": "29119",
+   "ioMs": "198814",
+   "weightedMs": "235524",
+   "rAwaitMaxMs": 15.524663677130045,
+   "wAwaitMaxMs": 2.8771331058020477,
+   "utilMax": 0.13553333333333334,
+   "hostname": "backups",
+   "awaitReads": "21492",
+   "awaitWrites": "13941"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-25T07:00:00Z",
+   "bucketSecs": 3599,
+   "reads": "8501",
+   "writes": "532",
+   "readBytes": "35115008",
+   "writeBytes": "5222400",
+   "readMs": "240056",
+   "writeMs": "1485",
+   "ioMs": "40409",
+   "weightedMs": "242847",
+   "rAwaitMaxMs": 28.4469976517947,
+   "wAwaitMaxMs": 2.922360248447205,
+   "utilMax": 0.4638833333333333,
+   "hostname": "backups",
+   "awaitReads": "8501",
+   "awaitWrites": "532"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-25T06:00:00Z",
+   "bucketSecs": 3600,
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-25T05:00:00Z",
+   "bucketSecs": 3600,
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-25T04:00:00Z",
+   "bucketSecs": 3600,
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-25T03:00:00Z",
+   "bucketSecs": 3599,
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-25T02:00:00Z",
+   "bucketSecs": 3599,
+   "reads": "394",
+   "writes": "2956",
+   "readBytes": "1818624",
+   "writeBytes": "103837696",
+   "readMs": "4720",
+   "writeMs": "6294",
+   "ioMs": "8953",
+   "weightedMs": "16080",
+   "rAwaitMaxMs": 44.08510638297872,
+   "wAwaitMaxMs": 2.5588235294117645,
+   "utilMax": 0.031216666666666667,
+   "hostname": "backups",
+   "awaitReads": "394",
+   "awaitWrites": "2956"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-25T01:00:00Z",
+   "bucketSecs": 3599,
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-25T00:00:00Z",
+   "bucketSecs": 3599,
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-24T23:00:00Z",
+   "bucketSecs": 3600,
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-24T22:00:00Z",
+   "bucketSecs": 3599,
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-24T21:00:00Z",
+   "bucketSecs": 3600,
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-24T20:00:00Z",
+   "bucketSecs": 3600,
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-24T19:00:00Z",
+   "bucketSecs": 3599,
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-24T18:00:00Z",
+   "bucketSecs": 3600,
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-24T17:00:00Z",
+   "bucketSecs": 3600,
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-24T16:00:00Z",
+   "bucketSecs": 3300,
+   "reads": "1",
+   "writes": "33",
+   "readBytes": "4096",
+   "writeBytes": "233472",
+   "writeMs": "75",
+   "ioMs": "72",
+   "weightedMs": "142",
+   "wAwaitMaxMs": 2.272727272727273,
+   "utilMax": 0.0011994202801979042,
+   "hostname": "backups",
+   "awaitReads": "1",
+   "awaitWrites": "33"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-24T15:00:00Z",
+   "bucketSecs": 3600,
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-24T14:00:00Z",
+   "bucketSecs": 3599,
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-24T13:00:00Z",
+   "bucketSecs": 3600,
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-24T12:00:00Z",
+   "bucketSecs": 2040,
+   "writes": "34",
+   "writeBytes": "245760",
+   "writeMs": "75",
+   "ioMs": "69",
+   "weightedMs": "140",
+   "wAwaitMaxMs": 2.2058823529411766,
+   "utilMax": 0.0011499233384441036,
+   "hostname": "backups",
+   "awaitWrites": "34"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-24T11:00:00Z",
+   "bucketSecs": 3600,
+   "reads": "5647",
+   "writes": "26409",
+   "readBytes": "23130112",
+   "writeBytes": "205651968",
+   "readMs": "74109",
+   "writeMs": "63856",
+   "ioMs": "130072",
+   "weightedMs": "194969",
+   "rAwaitMaxMs": 15.472727272727273,
+   "wAwaitMaxMs": 2.719047619047619,
+   "utilMax": 0.0567,
+   "hostname": "backups",
+   "awaitReads": "5647",
+   "awaitWrites": "26409"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-24T10:00:00Z",
+   "bucketSecs": 3599,
+   "reads": "29161",
+   "writes": "28182",
+   "readBytes": "119476224",
+   "writeBytes": "230559744",
+   "readMs": "271379",
+   "writeMs": "62730",
+   "ioMs": "315371",
+   "weightedMs": "388681",
+   "rAwaitMaxMs": 13.422413793103448,
+   "wAwaitMaxMs": 2.82,
+   "utilMax": 0.13121885364756078,
+   "hostname": "backups",
+   "awaitReads": "29161",
+   "awaitWrites": "28182"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-24T09:00:00Z",
+   "bucketSecs": 3599,
+   "reads": "334",
+   "writes": "1054",
+   "readBytes": "2146304",
+   "writeBytes": "116604928",
+   "readMs": "4568",
+   "writeMs": "2342",
+   "ioMs": "4623",
+   "weightedMs": "8310",
+   "rAwaitMaxMs": 17.773722627737225,
+   "wAwaitMaxMs": 3.152941176470588,
+   "utilMax": 0.03181666666666667,
+   "hostname": "backups",
+   "awaitReads": "334",
+   "awaitWrites": "1054"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-24T08:00:00Z",
+   "bucketSecs": 3600,
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-24T07:00:00Z",
+   "bucketSecs": 3600,
+   "reads": "6232",
+   "writes": "416",
+   "readBytes": "25821184",
+   "writeBytes": "4124672",
+   "readMs": "179132",
+   "writeMs": "1231",
+   "ioMs": "28262",
+   "weightedMs": "181439",
+   "rAwaitMaxMs": 29.31311475409836,
+   "wAwaitMaxMs": 3.0220264317180616,
+   "utilMax": 0.2454,
+   "hostname": "backups",
+   "awaitReads": "6232",
+   "awaitWrites": "416"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-24T06:00:00Z",
+   "bucketSecs": 3600,
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-24T05:00:00Z",
+   "bucketSecs": 3599,
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-24T04:00:00Z",
+   "bucketSecs": 3600,
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-24T03:00:00Z",
+   "bucketSecs": 3599,
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-24T02:00:00Z",
+   "bucketSecs": 3599,
+   "reads": "361",
+   "writes": "3017",
+   "readBytes": "1703936",
+   "writeBytes": "80064512",
+   "readMs": "3401",
+   "writeMs": "6442",
+   "ioMs": "8928",
+   "weightedMs": "15213",
+   "rAwaitMaxMs": 17.266666666666666,
+   "wAwaitMaxMs": 2.4523809523809526,
+   "utilMax": 0.03231720528675478,
+   "hostname": "backups",
+   "awaitReads": "361",
+   "awaitWrites": "3017"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-24T01:00:00Z",
+   "bucketSecs": 3599,
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-24T00:00:00Z",
+   "bucketSecs": 3600,
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-23T23:00:00Z",
+   "bucketSecs": 3599,
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-23T22:00:00Z",
+   "bucketSecs": 3599,
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-23T21:00:00Z",
+   "bucketSecs": 3600,
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-23T20:00:00Z",
+   "bucketSecs": 3600,
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-23T19:00:00Z",
+   "bucketSecs": 3599,
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-23T18:00:00Z",
+   "bucketSecs": 3599,
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-23T17:00:00Z",
+   "bucketSecs": 3600,
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-23T16:00:00Z",
+   "bucketSecs": 3600,
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-23T15:00:00Z",
+   "bucketSecs": 3599,
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-23T14:00:00Z",
+   "bucketSecs": 3599,
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-23T13:00:00Z",
+   "bucketSecs": 3600,
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-23T12:00:00Z",
+   "bucketSecs": 3599,
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-23T11:00:00Z",
+   "bucketSecs": 3600,
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-23T10:00:00Z",
+   "bucketSecs": 3599,
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-23T09:00:00Z",
+   "bucketSecs": 3599,
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-23T08:00:00Z",
+   "bucketSecs": 1380,
+   "writes": "35",
+   "writeBytes": "217088",
+   "writeMs": "73",
+   "ioMs": "68",
+   "weightedMs": "137",
+   "wAwaitMaxMs": 2.085714285714286,
+   "utilMax": 0.0011322576885292306,
+   "hostname": "backups",
+   "awaitWrites": "35"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-23T07:00:00Z",
+   "bucketSecs": 3599,
+   "reads": "16389",
+   "writes": "1285",
+   "readBytes": "67432448",
+   "writeBytes": "12824576",
+   "readMs": "384322",
+   "writeMs": "3439",
+   "ioMs": "81744",
+   "weightedMs": "390748",
+   "rAwaitMaxMs": 42.4,
+   "wAwaitMaxMs": 3.1211009174311926,
+   "utilMax": 0.6610276837947299,
+   "hostname": "backups",
+   "awaitReads": "16389",
+   "awaitWrites": "1285"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-23T06:00:00Z",
+   "bucketSecs": 3600,
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-23T05:00:00Z",
+   "bucketSecs": 3600,
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-23T04:00:00Z",
+   "bucketSecs": 3600,
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-23T03:00:00Z",
+   "bucketSecs": 3599,
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-23T02:00:00Z",
+   "bucketSecs": 3600,
+   "reads": "323",
+   "writes": "3120",
+   "readBytes": "1474560",
+   "writeBytes": "69963776",
+   "readMs": "3362",
+   "writeMs": "6443",
+   "ioMs": "8887",
+   "weightedMs": "15196",
+   "rAwaitMaxMs": 21.20408163265306,
+   "wAwaitMaxMs": 2.519280205655527,
+   "utilMax": 0.025833333333333333,
+   "hostname": "backups",
+   "awaitReads": "323",
+   "awaitWrites": "3120"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-23T01:00:00Z",
+   "bucketSecs": 3599,
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-23T00:00:00Z",
+   "bucketSecs": 3599,
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-22T23:00:00Z",
+   "bucketSecs": 3599,
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-22T22:00:00Z",
+   "bucketSecs": 3600,
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-22T21:00:00Z",
+   "bucketSecs": 3600,
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-22T20:00:00Z",
+   "bucketSecs": 3599,
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-22T19:00:00Z",
+   "bucketSecs": 3600,
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-22T18:00:00Z",
+   "bucketSecs": 3600,
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-22T17:00:00Z",
+   "bucketSecs": 3599,
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-22T16:00:00Z",
+   "bucketSecs": 3600,
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-22T15:00:00Z",
+   "bucketSecs": 540,
+   "reads": "1",
+   "writes": "43",
+   "readBytes": "4096",
+   "writeBytes": "307200",
+   "writeMs": "87",
+   "ioMs": "81",
+   "weightedMs": "162",
+   "wAwaitMaxMs": 2.0232558139534884,
+   "utilMax": 0.0013486962602817277,
+   "hostname": "backups",
+   "awaitReads": "1",
+   "awaitWrites": "43"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-22T14:00:00Z",
+   "bucketSecs": 3599,
+   "reads": "6320",
+   "writes": "29222",
+   "readBytes": "25903104",
+   "writeBytes": "263929856",
+   "readMs": "86290",
+   "writeMs": "64911",
+   "ioMs": "142939",
+   "weightedMs": "208235",
+   "rAwaitMaxMs": 15.609756097560975,
+   "wAwaitMaxMs": 2.567404426559356,
+   "utilMax": 0.05085084751412523,
+   "hostname": "backups",
+   "awaitReads": "6320",
+   "awaitWrites": "29222"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-22T13:00:00Z",
+   "bucketSecs": 3600,
+   "reads": "2688",
+   "writes": "29420",
+   "readBytes": "11022336",
+   "writeBytes": "265461760",
+   "readMs": "38470",
+   "writeMs": "66570",
+   "ioMs": "98763",
+   "weightedMs": "163929",
+   "rAwaitMaxMs": 17.816326530612244,
+   "wAwaitMaxMs": 2.6194895591647334,
+   "utilMax": 0.04343333333333333,
+   "hostname": "backups",
+   "awaitReads": "2688",
+   "awaitWrites": "29420"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-22T12:00:00Z",
+   "bucketSecs": 3599,
+   "reads": "4694",
+   "writes": "29357",
+   "readBytes": "19230720",
+   "writeBytes": "263503872",
+   "readMs": "65287",
+   "writeMs": "67671",
+   "ioMs": "124451",
+   "weightedMs": "192837",
+   "rAwaitMaxMs": 17.193548387096776,
+   "wAwaitMaxMs": 2.682875264270613,
+   "utilMax": 0.04755,
+   "hostname": "backups",
+   "awaitReads": "4694",
+   "awaitWrites": "29357"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-22T11:00:00Z",
+   "bucketSecs": 3600,
+   "reads": "7104",
+   "writes": "29286",
+   "readBytes": "29106176",
+   "writeBytes": "264327168",
+   "readMs": "94390",
+   "writeMs": "66404",
+   "ioMs": "150498",
+   "weightedMs": "219257",
+   "rAwaitMaxMs": 15.807692307692308,
+   "wAwaitMaxMs": 2.6012145748987856,
+   "utilMax": 0.0604843414056901,
+   "hostname": "backups",
+   "awaitReads": "7104",
+   "awaitWrites": "29286"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-22T10:00:00Z",
+   "bucketSecs": 3600,
+   "reads": "3639",
+   "writes": "29818",
+   "readBytes": "14962688",
+   "writeBytes": "370786304",
+   "readMs": "50830",
+   "writeMs": "69636",
+   "ioMs": "112722",
+   "weightedMs": "181502",
+   "rAwaitMaxMs": 16.214285714285715,
+   "wAwaitMaxMs": 2.7651821862348176,
+   "utilMax": 0.06063434390573176,
+   "hostname": "backups",
+   "awaitReads": "3639",
+   "awaitWrites": "29818"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-22T09:00:00Z",
+   "bucketSecs": 3599,
+   "reads": "7795",
+   "writes": "28668",
+   "readBytes": "31944704",
+   "writeBytes": "259325952",
+   "readMs": "103528",
+   "writeMs": "65426",
+   "ioMs": "158410",
+   "weightedMs": "226605",
+   "rAwaitMaxMs": 14.982905982905983,
+   "wAwaitMaxMs": 2.5363825363825363,
+   "utilMax": 0.05483333333333333,
+   "hostname": "backups",
+   "awaitReads": "7795",
+   "awaitWrites": "28668"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-22T08:00:00Z",
+   "bucketSecs": 3600,
+   "reads": "2760",
+   "writes": "29014",
+   "readBytes": "11304960",
+   "writeBytes": "749510656",
+   "readMs": "39029",
+   "writeMs": "68661",
+   "ioMs": "99930",
+   "weightedMs": "165846",
+   "rAwaitMaxMs": 19.333333333333332,
+   "wAwaitMaxMs": 3.2655860349127184,
+   "utilMax": 0.054018467282242744,
+   "hostname": "backups",
+   "awaitReads": "2760",
+   "awaitWrites": "29014"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-22T07:00:00Z",
+   "bucketSecs": 3599,
+   "reads": "5164",
+   "writes": "27332",
+   "readBytes": "21422080",
+   "writeBytes": "251785216",
+   "readMs": "59939",
+   "writeMs": "65005",
+   "ioMs": "112936",
+   "weightedMs": "182199",
+   "rAwaitMaxMs": 29.014634146341464,
+   "wAwaitMaxMs": 3.074074074074074,
+   "utilMax": 0.1344,
+   "hostname": "backups",
+   "awaitReads": "5164",
+   "awaitWrites": "27332"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-22T06:00:00Z",
+   "bucketSecs": 3600,
+   "reads": "898",
+   "writes": "28212",
+   "readBytes": "3678208",
+   "writeBytes": "328548352",
+   "readMs": "12895",
+   "writeMs": "66951",
+   "ioMs": "74872",
+   "weightedMs": "139010",
+   "rAwaitMaxMs": 22,
+   "wAwaitMaxMs": 2.84629294755877,
+   "utilMax": 0.035616666666666665,
+   "hostname": "backups",
+   "awaitReads": "898",
+   "awaitWrites": "28212"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-22T05:00:00Z",
+   "bucketSecs": 3600,
+   "reads": "524",
+   "writes": "28057",
+   "readBytes": "2146304",
+   "writeBytes": "254476288",
+   "readMs": "7834",
+   "writeMs": "64669",
+   "ioMs": "68353",
+   "weightedMs": "129816",
+   "rAwaitMaxMs": 19,
+   "wAwaitMaxMs": 2.5841121495327104,
+   "utilMax": 0.025183333333333332,
+   "hostname": "backups",
+   "awaitReads": "524",
+   "awaitWrites": "28057"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-22T04:00:00Z",
+   "bucketSecs": 3599,
+   "reads": "668",
+   "writes": "28324",
+   "readBytes": "2736128",
+   "writeBytes": "204345344",
+   "readMs": "9897",
+   "writeMs": "69554",
+   "ioMs": "74952",
+   "weightedMs": "141685",
+   "rAwaitMaxMs": 21.125,
+   "wAwaitMaxMs": 2.96,
+   "utilMax": 0.02390039833997233,
+   "hostname": "backups",
+   "awaitReads": "668",
+   "awaitWrites": "28324"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-22T03:00:00Z",
+   "bucketSecs": 3600,
+   "reads": "1041",
+   "writes": "28047",
+   "readBytes": "4268032",
+   "writeBytes": "216158208",
+   "readMs": "15083",
+   "writeMs": "66533",
+   "ioMs": "76457",
+   "weightedMs": "140916",
+   "rAwaitMaxMs": 30,
+   "wAwaitMaxMs": 2.7551487414187643,
+   "utilMax": 0.0301,
+   "hostname": "backups",
+   "awaitReads": "1041",
+   "awaitWrites": "28047"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-22T02:00:00Z",
+   "bucketSecs": 3599,
+   "reads": "4546",
+   "writes": "28600",
+   "readBytes": "18718720",
+   "writeBytes": "299511808",
+   "readMs": "63023",
+   "writeMs": "65764",
+   "ioMs": "121586",
+   "weightedMs": "186766",
+   "rAwaitMaxMs": 18.742857142857144,
+   "wAwaitMaxMs": 2.710144927536232,
+   "utilMax": 0.04593409890164836,
+   "hostname": "backups",
+   "awaitReads": "4546",
+   "awaitWrites": "28600"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-22T01:00:00Z",
+   "bucketSecs": 3599,
+   "reads": "4151",
+   "writes": "28127",
+   "readBytes": "17006592",
+   "writeBytes": "232374272",
+   "readMs": "58201",
+   "writeMs": "64731",
+   "ioMs": "115956",
+   "weightedMs": "180320",
+   "rAwaitMaxMs": 16.725806451612904,
+   "wAwaitMaxMs": 2.5892116182572615,
+   "utilMax": 0.0412,
+   "hostname": "backups",
+   "awaitReads": "4151",
+   "awaitWrites": "28127"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-22T00:00:00Z",
+   "bucketSecs": 3599,
+   "reads": "2342",
+   "writes": "28276",
+   "readBytes": "9596928",
+   "writeBytes": "243724288",
+   "readMs": "33233",
+   "writeMs": "64703",
+   "ioMs": "92251",
+   "weightedMs": "155192",
+   "rAwaitMaxMs": 17.666666666666668,
+   "wAwaitMaxMs": 2.620833333333333,
+   "utilMax": 0.037767296121602026,
+   "hostname": "backups",
+   "awaitReads": "2342",
+   "awaitWrites": "28276"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-21T23:00:00Z",
+   "bucketSecs": 3600,
+   "reads": "156",
+   "writes": "28659",
+   "readBytes": "643072",
+   "writeBytes": "279146496",
+   "readMs": "2358",
+   "writeMs": "66971",
+   "ioMs": "64962",
+   "weightedMs": "128818",
+   "rAwaitMaxMs": 21,
+   "wAwaitMaxMs": 2.5817805383022776,
+   "utilMax": 0.02171702861714362,
+   "hostname": "backups",
+   "awaitReads": "156",
+   "awaitWrites": "28659"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-21T22:00:00Z",
+   "bucketSecs": 3600,
+   "reads": "1",
+   "writes": "28349",
+   "readBytes": "4096",
+   "writeBytes": "388665344",
+   "readMs": "11",
+   "writeMs": "65594",
+   "ioMs": "61059",
+   "weightedMs": "123031",
+   "rAwaitMaxMs": 11,
+   "wAwaitMaxMs": 2.9297994269340975,
+   "utilMax": 0.027483791396523276,
+   "hostname": "backups",
+   "awaitReads": "1",
+   "awaitWrites": "28349"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-21T21:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "26655",
+   "writeBytes": "233017344",
+   "writeMs": "60922",
+   "ioMs": "57043",
+   "weightedMs": "114999",
+   "wAwaitMaxMs": 2.7193347193347193,
+   "utilMax": 0.02075034583909732,
+   "hostname": "backups",
+   "awaitWrites": "26655"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-21T20:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "29260",
+   "writeBytes": "334970880",
+   "writeMs": "65459",
+   "ioMs": "61089",
+   "weightedMs": "122961",
+   "wAwaitMaxMs": 2.776053215077605,
+   "utilMax": 0.0289504825080418,
+   "hostname": "backups",
+   "awaitWrites": "29260"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-21T19:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "29240",
+   "writeBytes": "301899776",
+   "writeMs": "67664",
+   "ioMs": "63322",
+   "weightedMs": "127602",
+   "wAwaitMaxMs": 2.840248962655602,
+   "utilMax": 0.0215996400059999,
+   "hostname": "backups",
+   "awaitWrites": "29240"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-21T18:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "28100",
+   "writeBytes": "273051648",
+   "writeMs": "63561",
+   "ioMs": "59633",
+   "weightedMs": "119729",
+   "wAwaitMaxMs": 2.653658536585366,
+   "utilMax": 0.021367022783713063,
+   "hostname": "backups",
+   "awaitWrites": "28100"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-21T17:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "25763",
+   "writeBytes": "193867776",
+   "writeMs": "60764",
+   "ioMs": "57314",
+   "weightedMs": "115089",
+   "wAwaitMaxMs": 2.8404907975460123,
+   "utilMax": 0.020916666666666667,
+   "hostname": "backups",
+   "awaitWrites": "25763"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-21T16:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "28163",
+   "writeBytes": "236228608",
+   "writeMs": "66367",
+   "ioMs": "62410",
+   "weightedMs": "125513",
+   "wAwaitMaxMs": 2.9018789144050103,
+   "utilMax": 0.021900365006083434,
+   "hostname": "backups",
+   "awaitWrites": "28163"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-21T15:00:00Z",
+   "bucketSecs": 3599,
+   "reads": "16",
+   "writes": "28071",
+   "readBytes": "77824",
+   "writeBytes": "964730880",
+   "readMs": "214",
+   "writeMs": "65077",
+   "ioMs": "58992",
+   "weightedMs": "118439",
+   "rAwaitMaxMs": 16,
+   "wAwaitMaxMs": 10.88888888888889,
+   "utilMax": 0.03938398973316222,
+   "hostname": "backups",
+   "awaitReads": "16",
+   "awaitWrites": "28071"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-21T14:00:00Z",
+   "bucketSecs": 3599,
+   "reads": "8",
+   "writes": "6733",
+   "readBytes": "32768",
+   "writeBytes": "125739008",
+   "readMs": "115",
+   "writeMs": "16036",
+   "ioMs": "14128",
+   "weightedMs": "28086",
+   "rAwaitMaxMs": 16,
+   "wAwaitMaxMs": 13.536585365853659,
+   "utilMax": 0.02383412780426014,
+   "hostname": "backups",
+   "awaitReads": "8",
+   "awaitWrites": "6733"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-21T13:00:00Z",
+   "bucketSecs": 2640,
+   "writes": "739",
+   "writeBytes": "12836864",
+   "writeMs": "3746",
+   "ioMs": "2664",
+   "weightedMs": "5318",
+   "wAwaitMaxMs": 11.529411764705882,
+   "utilMax": 0.008283471391189854,
+   "hostname": "backups",
+   "awaitWrites": "739"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-21T12:00:00Z",
+   "bucketSecs": 3600,
+   "reads": "3",
+   "writes": "58668",
+   "readBytes": "36864",
+   "writeBytes": "20091203584",
+   "readMs": "250",
+   "writeMs": "218039",
+   "ioMs": "150696",
+   "weightedMs": "303941",
+   "rAwaitMaxMs": 223,
+   "wAwaitMaxMs": 13.173076923076923,
+   "utilMax": 0.14883333333333335,
+   "hostname": "backups",
+   "awaitReads": "3",
+   "awaitWrites": "58668"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-21T11:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "26690",
+   "writeBytes": "199987200",
+   "writeMs": "63750",
+   "ioMs": "60004",
+   "weightedMs": "120843",
+   "wAwaitMaxMs": 2.6420323325635104,
+   "utilMax": 0.019766666666666665,
+   "hostname": "backups",
+   "awaitWrites": "26690"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-21T10:00:00Z",
+   "bucketSecs": 3599,
+   "reads": "2",
+   "writes": "27269",
+   "readBytes": "8192",
+   "writeBytes": "205996032",
+   "readMs": "29",
+   "writeMs": "63015",
+   "ioMs": "59165",
+   "weightedMs": "119106",
+   "rAwaitMaxMs": 14.5,
+   "wAwaitMaxMs": 2.6179245283018866,
+   "utilMax": 0.018766979449657495,
+   "hostname": "backups",
+   "awaitReads": "2",
+   "awaitWrites": "27269"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-21T09:00:00Z",
+   "bucketSecs": 3599,
+   "reads": "69",
+   "writes": "15831",
+   "readBytes": "1044480",
+   "writeBytes": "153702400",
+   "readMs": "1449",
+   "writeMs": "33017",
+   "ioMs": "31380",
+   "weightedMs": "63330",
+   "rAwaitMaxMs": 24.166666666666668,
+   "wAwaitMaxMs": 3.0255102040816326,
+   "utilMax": 0.018516975282921382,
+   "hostname": "backups",
+   "awaitReads": "69",
+   "awaitWrites": "15831"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-21T08:00:00Z",
+   "bucketSecs": 3600,
+   "reads": "2",
+   "writes": "508",
+   "readBytes": "32768",
+   "writeBytes": "106029056",
+   "readMs": "227",
+   "writeMs": "1886",
+   "ioMs": "1330",
+   "weightedMs": "3000",
+   "rAwaitMaxMs": 113.5,
+   "wAwaitMaxMs": 3.7125984251968505,
+   "utilMax": 0.022166666666666668,
+   "hostname": "backups",
+   "awaitReads": "2",
+   "awaitWrites": "508"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-21T07:00:00Z",
+   "bucketSecs": 3599,
+   "reads": "58787",
+   "writes": "16091",
+   "readBytes": "241217536",
+   "writeBytes": "113545216",
+   "readMs": "714098",
+   "writeMs": "30857",
+   "ioMs": "385843",
+   "weightedMs": "771493",
+   "rAwaitMaxMs": 25.646680942184155,
+   "wAwaitMaxMs": 2.463675213675214,
+   "utilMax": 0.65475,
+   "hostname": "backups",
+   "awaitReads": "58787",
+   "awaitWrites": "16091"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-21T06:00:00Z",
+   "bucketSecs": 3600,
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-21T05:00:00Z",
+   "bucketSecs": 3599,
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-21T04:00:00Z",
+   "bucketSecs": 3600,
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-21T03:00:00Z",
+   "bucketSecs": 360,
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-21T02:00:00Z",
+   "bucketSecs": 3599,
+   "reads": "331",
+   "writes": "3181",
+   "readBytes": "1540096",
+   "writeBytes": "68833280",
+   "readMs": "3323",
+   "writeMs": "6366",
+   "ioMs": "8744",
+   "weightedMs": "15002",
+   "rAwaitMaxMs": 23.352941176470587,
+   "wAwaitMaxMs": 2.3408,
+   "utilMax": 0.03420057000950016,
+   "hostname": "backups",
+   "awaitReads": "331",
+   "awaitWrites": "3181"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-21T01:00:00Z",
+   "bucketSecs": 3599,
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-21T00:00:00Z",
+   "bucketSecs": 3599,
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-20T23:00:00Z",
+   "bucketSecs": 3600,
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-20T22:00:00Z",
+   "bucketSecs": 3600,
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-20T21:00:00Z",
+   "bucketSecs": 3599,
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "bucketStart": "2026-09-20T20:00:00Z",
+   "bucketSecs": 3180,
+   "reads": "1",
+   "writes": "52",
+   "readBytes": "4096",
+   "writeBytes": "380928",
+   "readMs": "10",
+   "writeMs": "78",
+   "ioMs": "82",
+   "weightedMs": "151",
+   "rAwaitMaxMs": 10,
+   "wAwaitMaxMs": 1.5,
+   "utilMax": 0.001365346831396317,
+   "hostname": "backups",
+   "awaitReads": "1",
+   "awaitWrites": "52"
+  }
+ ]
+}

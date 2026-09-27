@@ -1,0 +1,303 @@
+{
+ "enclosure": {
+  "enclosure": "0x5003048001e8967f",
+  "hostname": "nas",
+  "via": "expander-11:1",
+  "name": "nas-sc847-front",
+  "drives": 21,
+  "firstSeen": "2026-09-13T01:41:39Z",
+  "lastSeen": "2026-09-27T19:41:38Z",
+  "product": "LSI SAS2X36",
+  "bays": 22
+ },
+ "bays": [
+  {
+   "label": "1",
+   "ids": [
+    "sas:1"
+   ],
+   "present": true,
+   "devName": "sdbw",
+   "serial": "WCT0VA8J",
+   "model": "ST8000DM004-2CX1",
+   "status": "ok",
+   "uses": [
+    "zfs > space 5925914041408872576 > raidz2 9007031778331642784 > disk 5460098026287034887"
+   ]
+  },
+  {
+   "label": "10",
+   "ids": [
+    "sas:10"
+   ],
+   "present": true,
+   "devName": "sdcd",
+   "serial": "7SK2R4TW",
+   "model": "HUH721008AL4200",
+   "status": "ok",
+   "uses": [
+    "zfs > backups 12143466076769931197 > raidz2 17954131499336888302 > disk 3016384749925427947"
+   ]
+  },
+  {
+   "label": "11",
+   "ids": [
+    "sas:11"
+   ],
+   "present": true,
+   "devName": "sdce",
+   "serial": "2EK1WD8X",
+   "model": "HUH728080ALE601",
+   "status": "ok",
+   "uses": [
+    "zfs > space 5925914041408872576 > raidz2 3388823558429738332 > disk 1541592169950923378"
+   ]
+  },
+  {
+   "label": "12",
+   "ids": [
+    "sas:12"
+   ],
+   "present": true,
+   "devName": "sdcf",
+   "serial": "ZCT0FBMM",
+   "model": "ST8000DM004-2CX1",
+   "status": "ok"
+  },
+  {
+   "label": "13",
+   "ids": [
+    "sas:13"
+   ],
+   "present": true,
+   "devName": "sdcg",
+   "serial": "7SJG77PW",
+   "model": "HUH721008AL4200",
+   "status": "ok",
+   "uses": [
+    "zfs > backups 12143466076769931197 > raidz2 5338052500984404557 > disk 1541146137294520958"
+   ]
+  },
+  {
+   "label": "14",
+   "ids": [
+    "sas:14"
+   ],
+   "present": true,
+   "devName": "sdch",
+   "serial": "C7XBG0ZP0KA05172",
+   "model": "MZILT3T8HALS",
+   "status": "ok",
+   "uses": [
+    "zfs > space 5925914041408872576 > mirror 737277534668809963 > disk 238920797006525894"
+   ]
+  },
+  {
+   "label": "15",
+   "ids": [
+    "sas:15"
+   ],
+   "present": true,
+   "devName": "sdci",
+   "serial": "2EG67SKP",
+   "model": "HUH728080AL4200",
+   "status": "ok",
+   "uses": [
+    "zfs > backups 12143466076769931197 > raidz2 5338052500984404557 > disk 3322808112866682979"
+   ]
+  },
+  {
+   "label": "16",
+   "ids": [
+    "sas:16"
+   ],
+   "present": true,
+   "devName": "sdcj",
+   "serial": "2EG6HP1R",
+   "model": "HUH728080AL4200",
+   "status": "ok",
+   "uses": [
+    "zfs > backups 12143466076769931197 > raidz2 17954131499336888302 > disk 13607477501350774139"
+   ]
+  },
+  {
+   "label": "17",
+   "ids": [
+    "sas:17"
+   ],
+   "present": true,
+   "devName": "sdck",
+   "serial": "VLG32AEY",
+   "model": "HUH728080ALE601",
+   "status": "ok",
+   "uses": [
+    "zfs > space 5925914041408872576 > raidz2 1731578064309998343 > disk 17320259033768849942"
+   ]
+  },
+  {
+   "label": "18",
+   "ids": [
+    "sas:18"
+   ],
+   "present": true,
+   "devName": "sdcl",
+   "serial": "71J0A191FBLG",
+   "model": "TOSHIBA_HDWR180",
+   "status": "ok",
+   "uses": [
+    "zfs > space 5925914041408872576 > raidz2 5236016460003016805 > disk 6614421116723416414"
+   ]
+  },
+  {
+   "label": "19",
+   "ids": [
+    "sas:19"
+   ],
+   "present": true,
+   "devName": "sdcm",
+   "serial": "C7XBG0ZK0KA05168",
+   "model": "MZILT3T8HALS",
+   "status": "ok",
+   "uses": [
+    "zfs > space 5925914041408872576 > mirror 737277534668809963 > disk 2613912595685689289"
+   ]
+  },
+  {
+   "label": "2",
+   "ids": [
+    "sas:2"
+   ],
+   "present": true,
+   "devName": "sdbx",
+   "serial": "07V2XKRA",
+   "model": "HUSMR1680ASS204",
+   "status": "ok"
+  },
+  {
+   "label": "20",
+   "ids": [
+    "sas:20"
+   ],
+   "present": true,
+   "devName": "sdcn",
+   "serial": "C7XBG0YY0KA05147",
+   "model": "MZILT3T8HALS",
+   "status": "ok",
+   "uses": [
+    "zfs > space 5925914041408872576 > mirror 737277534668809963 > disk 1161082729107973602"
+   ]
+  },
+  {
+   "label": "21",
+   "ids": [
+    "sas:21"
+   ],
+   "present": true,
+   "devName": "sdco",
+   "serial": "2EGPAEKV",
+   "model": "HUH728080AL4200",
+   "status": "ok",
+   "uses": [
+    "zfs > backups 12143466076769931197 > raidz2 5338052500984404557 > disk 2922563178447707709"
+   ]
+  },
+  {
+   "label": "22",
+   "ids": [
+    "sas:22"
+   ],
+   "present": true,
+   "devName": "sdcp",
+   "serial": "WKD32WVK",
+   "model": "ST8000VN004-2M21",
+   "status": "ok",
+   "uses": [
+    "zfs > space 5925914041408872576 > raidz2 9007031778331642784 > disk 13320454780145336341"
+   ]
+  },
+  {
+   "label": "23",
+   "ids": [
+    "sas:23"
+   ],
+   "present": true,
+   "devName": "sdcq",
+   "serial": "2EG6AS1R",
+   "model": "HUH728080AL4200",
+   "status": "ok",
+   "uses": [
+    "zfs > backups 12143466076769931197 > raidz2 5338052500984404557 > disk 10946084812727461689"
+   ]
+  },
+  {
+   "label": "3",
+   "ids": [
+    "sas:3"
+   ],
+   "present": true,
+   "devName": "sdby",
+   "serial": "2EG17DZJ",
+   "model": "HUH728080AL4200",
+   "status": "ok",
+   "uses": [
+    "zfs > backups 12143466076769931197 > raidz2 17954131499336888302 > disk 17267404244838488514"
+   ]
+  },
+  {
+   "label": "4",
+   "ids": [
+    "sas:4"
+   ],
+   "present": true,
+   "devName": "sdbz",
+   "serial": "7HK77YXF",
+   "model": "HUH721008AL4200",
+   "status": "ok",
+   "uses": [
+    "zfs > backups 12143466076769931197 > raidz2 17954131499336888302 > disk 12734872772442045668"
+   ]
+  },
+  {
+   "label": "5",
+   "ids": [
+    "sas:5"
+   ],
+   "present": true,
+   "devName": "sdca",
+   "serial": "R6GBW8JY",
+   "model": "HUH728080ALE601",
+   "status": "ok",
+   "uses": [
+    "zfs > space 5925914041408872576 > raidz2 3388823558429738332 > disk 16809762363229148826"
+   ]
+  },
+  {
+   "label": "7",
+   "ids": [
+    "sas:7"
+   ],
+   "present": true,
+   "devName": "sdcb",
+   "serial": "ZCT3BJRW",
+   "model": "ST8000DM004-2CX1",
+   "status": "ok",
+   "uses": [
+    "zfs > space 5925914041408872576 > raidz2 5236016460003016805 > disk 10354587686331016347"
+   ]
+  },
+  {
+   "label": "9",
+   "ids": [
+    "sas:9"
+   ],
+   "present": true,
+   "devName": "sdcc",
+   "serial": "2EGV9EPX",
+   "model": "HUH728080AL5200",
+   "status": "ok",
+   "uses": [
+    "zfs > backups 12143466076769931197 > raidz2 17954131499336888302 > disk 686487638661057379"
+   ]
+  }
+ ]
+}

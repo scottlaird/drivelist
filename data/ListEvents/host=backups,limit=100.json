@@ -1,0 +1,814 @@
+{
+ "events": [
+  {
+   "eventId": "790",
+   "ts": "2026-09-27T00:01:45Z",
+   "kind": "memory_errors",
+   "hostname": "backups",
+   "detail": "{\"edac\":\"mc0/csrow2/ch1+mc0/csrow3/ch1\",\"grew\":{\"ce\":300,\"ue\":0},\"key\":\"DIMMB1\",\"label\":\"DIMMB1\",\"mapping\":\"exact\",\"part\":\"MB32G56U80S2R8.RtR\",\"serial\":\"80CE042542F50C0000\",\"slot\":\"DIMMB1\",\"total\":{\"ce\":138263,\"ue\":0}}",
+   "source": "report"
+  },
+  {
+   "eventId": "793",
+   "ts": "2026-09-27T00:00:00Z",
+   "kind": "hardware_error",
+   "hostname": "backups",
+   "detail": "{\"class\":\"hw_corrected\",\"code\":\"mc0/csrow2/ch1\",\"count\":1,\"part\":\"MB32G56U80S2R8.RtR\",\"sample\":\"EDAC MC0: 1 CE on mc#0csrow#2channel#1 (csrow:2 channel:1 page:0x78cd2d offset:0x500 grain:64 syndrome:0x10)\",\"serial\":\"80CE042542F50C0000\",\"slot\":\"DIMMB1\"}",
+   "source": "kernel"
+  },
+  {
+   "eventId": "792",
+   "ts": "2026-09-27T00:00:00Z",
+   "kind": "hardware_error",
+   "hostname": "backups",
+   "detail": "{\"class\":\"hw_corrected\",\"code\":\"\",\"count\":3600,\"sample\":\"[Hardware Error]: Corrected error, no action required.\"}",
+   "source": "kernel"
+  },
+  {
+   "eventId": "791",
+   "ts": "2026-09-27T00:00:00Z",
+   "kind": "hardware_error",
+   "hostname": "backups",
+   "detail": "{\"class\":\"hw_corrected\",\"code\":\"mc0/csrow3/ch1\",\"count\":3599,\"part\":\"MB32G56U80S2R8.RtR\",\"sample\":\"EDAC MC0: 1 CE on mc#0csrow#3channel#1 (csrow:3 channel:1 page:0x5664e5 offset:0x980 grain:64 syndrome:0x800)\",\"serial\":\"80CE042542F50C0000\",\"slot\":\"DIMMB1\"}",
+   "source": "kernel"
+  },
+  {
+   "eventId": "782",
+   "ts": "2026-09-26T00:01:16Z",
+   "kind": "memory_errors",
+   "hostname": "backups",
+   "detail": "{\"edac\":\"mc0/csrow2/ch1+mc0/csrow3/ch1\",\"grew\":{\"ce\":297,\"ue\":0},\"key\":\"DIMMB1\",\"label\":\"DIMMB1\",\"mapping\":\"exact\",\"part\":\"MB32G56U80S2R8.RtR\",\"serial\":\"80CE042542F50C0000\",\"slot\":\"DIMMB1\",\"total\":{\"ce\":52295,\"ue\":0}}",
+   "source": "report"
+  },
+  {
+   "eventId": "785",
+   "ts": "2026-09-26T00:00:00Z",
+   "kind": "hardware_error",
+   "hostname": "backups",
+   "detail": "{\"class\":\"hw_corrected\",\"code\":\"mc0/csrow3/ch1\",\"count\":3570,\"part\":\"MB32G56U80S2R8.RtR\",\"sample\":\"EDAC MC0: 1 CE on mc#0csrow#3channel#1 (csrow:3 channel:1 page:0x1156e2 offset:0x580 grain:64 syndrome:0x800)\",\"serial\":\"80CE042542F50C0000\",\"slot\":\"DIMMB1\"}",
+   "source": "kernel"
+  },
+  {
+   "eventId": "784",
+   "ts": "2026-09-26T00:00:00Z",
+   "kind": "hardware_error",
+   "hostname": "backups",
+   "detail": "{\"class\":\"hw_corrected\",\"code\":\"\",\"count\":3571,\"sample\":\"[Hardware Error]: Corrected error, no action required.\"}",
+   "source": "kernel"
+  },
+  {
+   "eventId": "783",
+   "ts": "2026-09-26T00:00:00Z",
+   "kind": "hardware_error",
+   "hostname": "backups",
+   "detail": "{\"class\":\"hw_corrected\",\"code\":\"mc0/csrow2/ch1\",\"count\":1,\"part\":\"MB32G56U80S2R8.RtR\",\"sample\":\"EDAC MC0: 1 CE on mc#0csrow#2channel#1 (csrow:2 channel:1 page:0xfdee50 offset:0x500 grain:64 syndrome:0x1)\",\"serial\":\"80CE042542F50C0000\",\"slot\":\"DIMMB1\"}",
+   "source": "kernel"
+  },
+  {
+   "eventId": "777",
+   "ts": "2026-09-25T09:10:43Z",
+   "kind": "host_rebooted",
+   "hostname": "backups",
+   "detail": "{\"boot_id\":\"0e4f6b39-47dd-4ab2-bc21-a7d53bb29907\",\"booted_at\":1790327443,\"last_report\":1790327081,\"previous_boot_id\":\"f7ce05bc-1665-4754-b2ee-ea47f6539e54\",\"silent_secs\":362,\"up_secs\":61228}",
+   "source": "report"
+  },
+  {
+   "eventId": "775",
+   "ts": "2026-09-25T01:00:00Z",
+   "kind": "hardware_error",
+   "hostname": "backups",
+   "detail": "{\"class\":\"hw_corrected\",\"code\":\"mc0/csrow2/ch1\",\"count\":1,\"part\":\"MB32G56U80S2R8.RtR\",\"sample\":\"EDAC MC0: 1 CE on mc#0csrow#2channel#1 (csrow:2 channel:1 page:0x18e91f offset:0xf80 grain:64 syndrome:0x4)\",\"serial\":\"80CE042542F50C0000\",\"slot\":\"DIMMB1\"}",
+   "source": "kernel"
+  },
+  {
+   "eventId": "772",
+   "ts": "2026-09-25T00:04:30Z",
+   "kind": "memory_errors",
+   "hostname": "backups",
+   "detail": "{\"edac\":\"mc0/csrow2/ch1+mc0/csrow3/ch1\",\"grew\":{\"ce\":300,\"ue\":0},\"key\":\"DIMMB1\",\"label\":\"DIMMB1\",\"mapping\":\"exact\",\"part\":\"MB32G56U80S2R8.RtR\",\"serial\":\"80CE042542F50C0000\",\"slot\":\"DIMMB1\",\"total\":{\"ce\":28162,\"ue\":0}}",
+   "source": "report"
+  },
+  {
+   "eventId": "774",
+   "ts": "2026-09-25T00:00:00Z",
+   "kind": "hardware_error",
+   "hostname": "backups",
+   "detail": "{\"class\":\"hw_corrected\",\"code\":\"mc0/csrow3/ch1\",\"count\":3599,\"part\":\"MB32G56U80S2R8.RtR\",\"sample\":\"EDAC MC0: 1 CE on mc#0csrow#3channel#1 (csrow:3 channel:1 page:0x11a5ab offset:0x300 grain:64 syndrome:0x4000)\",\"serial\":\"80CE042542F50C0000\",\"slot\":\"DIMMB1\"}",
+   "source": "kernel"
+  },
+  {
+   "eventId": "773",
+   "ts": "2026-09-25T00:00:00Z",
+   "kind": "hardware_error",
+   "hostname": "backups",
+   "detail": "{\"class\":\"hw_corrected\",\"code\":\"\",\"count\":3599,\"sample\":\"[Hardware Error]: Corrected error, no action required.\"}",
+   "source": "kernel"
+  },
+  {
+   "eventId": "771",
+   "ts": "2026-09-24T16:04:13Z",
+   "kind": "host_rebooted",
+   "hostname": "backups",
+   "detail": "{\"boot_id\":\"f7ce05bc-1665-4754-b2ee-ea47f6539e54\",\"booted_at\":1790265853,\"last_report\":1790265659,\"previous_boot_id\":\"28381069-5ad3-465a-ba40-c66392dd901e\",\"silent_secs\":194,\"up_secs\":12919}",
+   "source": "report"
+  },
+  {
+   "eventId": "769",
+   "ts": "2026-09-24T12:25:40Z",
+   "kind": "host_rebooted",
+   "hostname": "backups",
+   "detail": "{\"boot_id\":\"28381069-5ad3-465a-ba40-c66392dd901e\",\"booted_at\":1790252740,\"last_report\":1790252531,\"previous_boot_id\":\"55beeaa5-711d-42b3-ab48-5f983e8b71c4\",\"silent_secs\":209,\"up_secs\":99950}",
+   "source": "report"
+  },
+  {
+   "eventId": "761",
+   "ts": "2026-09-24T00:01:56Z",
+   "kind": "memory_errors",
+   "hostname": "backups",
+   "detail": "{\"edac\":\"mc0/csrow2/ch1+mc0/csrow3/ch1\",\"grew\":{\"ce\":270,\"ue\":0},\"key\":\"DIMMB1\",\"label\":\"DIMMB1\",\"mapping\":\"exact\",\"part\":\"MB32G56U80S2R8.RtR\",\"serial\":\"80CE042542F50C0000\",\"slot\":\"DIMMB1\",\"total\":{\"ce\":49538,\"ue\":0}}",
+   "source": "report"
+  },
+  {
+   "eventId": "764",
+   "ts": "2026-09-24T00:00:00Z",
+   "kind": "hardware_error",
+   "hostname": "backups",
+   "detail": "{\"class\":\"hw_corrected\",\"code\":\"mc0/csrow2/ch1\",\"count\":3,\"part\":\"MB32G56U80S2R8.RtR\",\"sample\":\"EDAC MC0: 1 CE on mc#0csrow#2channel#1 (csrow:2 channel:1 page:0x501739 offset:0x980 grain:64 syndrome:0x10)\",\"serial\":\"80CE042542F50C0000\",\"slot\":\"DIMMB1\"}",
+   "source": "kernel"
+  },
+  {
+   "eventId": "763",
+   "ts": "2026-09-24T00:00:00Z",
+   "kind": "hardware_error",
+   "hostname": "backups",
+   "detail": "{\"class\":\"hw_corrected\",\"code\":\"mc0/csrow3/ch1\",\"count\":3264,\"part\":\"MB32G56U80S2R8.RtR\",\"sample\":\"EDAC MC0: 1 CE on mc#0csrow#3channel#1 (csrow:3 channel:1 page:0x1a85d9 offset:0x580 grain:64 syndrome:0x4000)\",\"serial\":\"80CE042542F50C0000\",\"slot\":\"DIMMB1\"}",
+   "source": "kernel"
+  },
+  {
+   "eventId": "762",
+   "ts": "2026-09-24T00:00:00Z",
+   "kind": "hardware_error",
+   "hostname": "backups",
+   "detail": "{\"class\":\"hw_corrected\",\"code\":\"\",\"count\":3267,\"sample\":\"[Hardware Error]: Corrected error, no action required.\"}",
+   "source": "kernel"
+  },
+  {
+   "eventId": "759",
+   "ts": "2026-09-23T08:36:21Z",
+   "kind": "host_rebooted",
+   "hostname": "backups",
+   "detail": "{\"boot_id\":\"55beeaa5-711d-42b3-ab48-5f983e8b71c4\",\"booted_at\":1790152581,\"last_report\":1790152235,\"previous_boot_id\":\"f912f5b4-611d-4030-9bb5-0d4ce45d323c\",\"silent_secs\":346,\"up_secs\":60036}",
+   "source": "report"
+  },
+  {
+   "eventId": "752",
+   "ts": "2026-09-23T00:00:25Z",
+   "kind": "memory_errors",
+   "hostname": "backups",
+   "detail": "{\"edac\":\"mc0/csrow2/ch1+mc0/csrow3/ch1\",\"grew\":{\"ce\":272,\"ue\":0},\"key\":\"DIMMB1\",\"label\":\"DIMMB1\",\"mapping\":\"exact\",\"part\":\"MB32G56U80S2R8.RtR\",\"serial\":\"80CE042542F50C0000\",\"slot\":\"DIMMB1\",\"total\":{\"ce\":27065,\"ue\":0}}",
+   "source": "report"
+  },
+  {
+   "eventId": "755",
+   "ts": "2026-09-23T00:00:00Z",
+   "kind": "hardware_error",
+   "hostname": "backups",
+   "detail": "{\"class\":\"hw_corrected\",\"code\":\"mc0/csrow2/ch1\",\"count\":2,\"part\":\"MB32G56U80S2R8.RtR\",\"sample\":\"EDAC MC0: 1 CE on mc#0csrow#2channel#1 (csrow:2 channel:1 page:0xf9f522 offset:0x140 grain:64 syndrome:0x8)\",\"serial\":\"80CE042542F50C0000\",\"slot\":\"DIMMB1\"}",
+   "source": "kernel"
+  },
+  {
+   "eventId": "754",
+   "ts": "2026-09-23T00:00:00Z",
+   "kind": "hardware_error",
+   "hostname": "backups",
+   "detail": "{\"class\":\"hw_corrected\",\"code\":\"\",\"count\":3425,\"sample\":\"[Hardware Error]: Corrected error, no action required.\"}",
+   "source": "kernel"
+  },
+  {
+   "eventId": "753",
+   "ts": "2026-09-23T00:00:00Z",
+   "kind": "hardware_error",
+   "hostname": "backups",
+   "detail": "{\"class\":\"hw_corrected\",\"code\":\"mc0/csrow3/ch1\",\"count\":3423,\"part\":\"MB32G56U80S2R8.RtR\",\"sample\":\"EDAC MC0: 1 CE on mc#0csrow#3channel#1 (csrow:3 channel:1 page:0x10208c offset:0x780 grain:64 syndrome:0x2000)\",\"serial\":\"80CE042542F50C0000\",\"slot\":\"DIMMB1\"}",
+   "source": "kernel"
+  },
+  {
+   "eventId": "751",
+   "ts": "2026-09-22T15:49:59Z",
+   "kind": "host_rebooted",
+   "hostname": "backups",
+   "detail": "{\"boot_id\":\"f912f5b4-611d-4030-9bb5-0d4ce45d323c\",\"booted_at\":1790092199,\"last_report\":1790091931,\"previous_boot_id\":\"c080bb32-946b-4775-a7ef-393161874341\",\"silent_secs\":268,\"up_secs\":157153}",
+   "source": "report"
+  },
+  {
+   "eventId": "731",
+   "ts": "2026-09-22T00:00:12Z",
+   "kind": "memory_errors",
+   "hostname": "backups",
+   "detail": "{\"edac\":\"mc0/csrow2/ch1+mc0/csrow3/ch1\",\"grew\":{\"ce\":300,\"ue\":0},\"key\":\"DIMMB1\",\"label\":\"DIMMB1\",\"mapping\":\"exact\",\"part\":\"MB32G56U80S2R8.RtR\",\"serial\":\"80CE042542F50C0000\",\"slot\":\"DIMMB1\",\"total\":{\"ce\":97208,\"ue\":0}}",
+   "source": "report"
+  },
+  {
+   "eventId": "734",
+   "ts": "2026-09-22T00:00:00Z",
+   "kind": "hardware_error",
+   "hostname": "backups",
+   "detail": "{\"class\":\"hw_corrected\",\"code\":\"mc0/csrow2/ch1\",\"count\":2,\"part\":\"MB32G56U80S2R8.RtR\",\"sample\":\"EDAC MC0: 1 CE on mc#0csrow#2channel#1 (csrow:2 channel:1 page:0x591421 offset:0x3c0 grain:64 syndrome:0x8)\",\"serial\":\"80CE042542F50C0000\",\"slot\":\"DIMMB1\"}",
+   "source": "kernel"
+  },
+  {
+   "eventId": "733",
+   "ts": "2026-09-22T00:00:00Z",
+   "kind": "hardware_error",
+   "hostname": "backups",
+   "detail": "{\"class\":\"hw_corrected\",\"code\":\"mc0/csrow3/ch1\",\"count\":3598,\"part\":\"MB32G56U80S2R8.RtR\",\"sample\":\"EDAC MC0: 1 CE on mc#0csrow#3channel#1 (csrow:3 channel:1 page:0x401fc3 offset:0xb00 grain:64 syndrome:0x800)\",\"serial\":\"80CE042542F50C0000\",\"slot\":\"DIMMB1\"}",
+   "source": "kernel"
+  },
+  {
+   "eventId": "732",
+   "ts": "2026-09-22T00:00:00Z",
+   "kind": "hardware_error",
+   "hostname": "backups",
+   "detail": "{\"class\":\"hw_corrected\",\"code\":\"\",\"count\":3600,\"sample\":\"[Hardware Error]: Corrected error, no action required.\"}",
+   "source": "kernel"
+  },
+  {
+   "eventId": "729",
+   "ts": "2026-09-21T05:00:00Z",
+   "kind": "hardware_error",
+   "hostname": "backups",
+   "detail": "{\"class\":\"hw_corrected\",\"code\":\"mc0/csrow2/ch1\",\"count\":2,\"part\":\"MB32G56U80S2R8.RtR\",\"sample\":\"EDAC MC0: 1 CE on mc#0csrow#2channel#1 (csrow:2 channel:1 page:0xfdee50 offset:0x500 grain:64 syndrome:0x1)\",\"serial\":\"80CE042542F50C0000\",\"slot\":\"DIMMB1\"}",
+   "source": "kernel"
+  },
+  {
+   "eventId": "699",
+   "ts": "2026-09-21T03:43:16Z",
+   "kind": "memory_errors",
+   "hostname": "backups",
+   "detail": "{\"edac\":\"mc0/csrow2/ch1+mc0/csrow3/ch1\",\"grew\":{\"ce\":25638,\"ue\":0},\"key\":\"DIMMB1\",\"label\":\"DIMMB1\",\"mapping\":\"exact\",\"part\":\"MB32G56U80S2R8.RtR\",\"serial\":\"80CE042542F50C0000\",\"slot\":\"DIMMB1\",\"total\":{\"ce\":25638,\"ue\":0}}",
+   "source": "report"
+  },
+  {
+   "eventId": "655",
+   "ts": "2026-09-21T03:26:48Z",
+   "kind": "dimm_changed",
+   "hostname": "backups",
+   "detail": "{\"change\":\"appeared\",\"edac\":\"\",\"part\":\"MB32G56U80S2R8.RtR\",\"serial\":\"80CE042542F50C0000\",\"size_bytes\":34359738368,\"slot\":\"DIMMB1\"}",
+   "source": "report"
+  },
+  {
+   "eventId": "654",
+   "ts": "2026-09-21T03:26:48Z",
+   "kind": "dimm_changed",
+   "hostname": "backups",
+   "detail": "{\"change\":\"appeared\",\"edac\":\"\",\"part\":\"MB32G56U80M2R8.RtR\",\"serial\":\"802C042537BB080000\",\"size_bytes\":34359738368,\"slot\":\"DIMMA1\"}",
+   "source": "report"
+  },
+  {
+   "eventId": "652",
+   "ts": "2026-09-21T00:00:00Z",
+   "kind": "hardware_error",
+   "hostname": "backups",
+   "detail": "{\"class\":\"hw_corrected\",\"code\":\"mc0/csrow3/ch1\",\"count\":3384,\"sample\":\"EDAC MC0: 1 CE on mc#0csrow#3channel#1 (csrow:3 channel:1 page:0x11b4f4 offset:0xb00 grain:64 syndrome:0x800)\"}",
+   "source": "kernel"
+  },
+  {
+   "eventId": "651",
+   "ts": "2026-09-21T00:00:00Z",
+   "kind": "hardware_error",
+   "hostname": "backups",
+   "detail": "{\"class\":\"hw_corrected\",\"code\":\"\",\"count\":3384,\"sample\":\"[Hardware Error]: Corrected error, no action required.\"}",
+   "source": "kernel"
+  },
+  {
+   "eventId": "648",
+   "ts": "2026-09-20T20:06:18Z",
+   "kind": "host_rebooted",
+   "hostname": "backups",
+   "detail": "{\"boot_id\":\"c080bb32-946b-4775-a7ef-393161874341\",\"booted_at\":1789934778,\"last_report\":1789934426,\"previous_boot_id\":\"e9816d6a-7d02-4596-a1b2-7efda5bfa5a2\",\"silent_secs\":352,\"up_secs\":192521}",
+   "source": "report"
+  },
+  {
+   "eventId": "640",
+   "ts": "2026-09-20T00:00:00Z",
+   "kind": "hardware_error",
+   "hostname": "backups",
+   "detail": "{\"class\":\"hw_corrected\",\"code\":\"mc0/csrow2/ch1\",\"count\":3,\"sample\":\"EDAC MC0: 1 CE on mc#0csrow#2channel#1 (csrow:2 channel:1 page:0x1adc68 offset:0x500 grain:64 syndrome:0x1)\"}",
+   "source": "kernel"
+  },
+  {
+   "eventId": "639",
+   "ts": "2026-09-20T00:00:00Z",
+   "kind": "hardware_error",
+   "hostname": "backups",
+   "detail": "{\"class\":\"hw_corrected\",\"code\":\"mc0/csrow3/ch1\",\"count\":3597,\"sample\":\"EDAC MC0: 1 CE on mc#0csrow#3channel#1 (csrow:3 channel:1 page:0x11dcd2 offset:0xb40 grain:64 syndrome:0x800)\"}",
+   "source": "kernel"
+  },
+  {
+   "eventId": "638",
+   "ts": "2026-09-20T00:00:00Z",
+   "kind": "hardware_error",
+   "hostname": "backups",
+   "detail": "{\"class\":\"hw_corrected\",\"code\":\"\",\"count\":3600,\"sample\":\"[Hardware Error]: Corrected error, no action required.\"}",
+   "source": "kernel"
+  },
+  {
+   "eventId": "615",
+   "ts": "2026-09-19T20:00:00Z",
+   "kind": "hardware_error",
+   "hostname": "backups",
+   "detail": "{\"class\":\"hw_corrected\",\"code\":\"mc0/csrow3/ch1\",\"count\":2102,\"sample\":\"EDAC MC0: 1 CE on mc#0csrow#3channel#1 (csrow:3 channel:1 page:0x206598 offset:0xb00 grain:64 syndrome:0x200)\"}",
+   "source": "kernel"
+  },
+  {
+   "eventId": "614",
+   "ts": "2026-09-19T20:00:00Z",
+   "kind": "hardware_error",
+   "hostname": "backups",
+   "detail": "{\"class\":\"hw_corrected\",\"code\":\"\",\"count\":2103,\"sample\":\"[Hardware Error]: Corrected error, no action required.\"}",
+   "source": "kernel"
+  },
+  {
+   "eventId": "613",
+   "ts": "2026-09-19T20:00:00Z",
+   "kind": "hardware_error",
+   "hostname": "backups",
+   "detail": "{\"class\":\"hw_corrected\",\"code\":\"mc0/csrow2/ch1\",\"count\":1,\"sample\":\"EDAC MC0: 1 CE on mc#0csrow#2channel#1 (csrow:2 channel:1 page:0x867372 offset:0x540 grain:64 syndrome:0x40)\"}",
+   "source": "kernel"
+  },
+  {
+   "eventId": "607",
+   "ts": "2026-09-18T14:32:01Z",
+   "kind": "sas_errors",
+   "hostname": "backups",
+   "detail": "{\"attached\":\"\",\"attached_kind\":\"upstream\",\"bay\":\"\",\"dev_name\":\"\",\"grew\":{\"disparity_error\":4,\"invalid_dword\":11,\"loss_dword_sync\":1,\"phy_reset_problem\":0},\"owner\":\"0x500304801ea12dff\",\"owner_name\":\"expander-6:1\",\"phy\":23,\"port\":\"\",\"total\":{\"disparity_error\":21,\"invalid_dword\":63,\"loss_dword_sync\":6,\"phy_reset_problem\":0}}",
+   "source": "report"
+  },
+  {
+   "eventId": "606",
+   "ts": "2026-09-18T14:32:01Z",
+   "kind": "sas_errors",
+   "hostname": "backups",
+   "detail": "{\"attached\":\"\",\"attached_kind\":\"upstream\",\"bay\":\"\",\"dev_name\":\"\",\"grew\":{\"disparity_error\":6,\"invalid_dword\":15,\"loss_dword_sync\":1,\"phy_reset_problem\":0},\"owner\":\"0x500304801ea12dff\",\"owner_name\":\"expander-6:1\",\"phy\":22,\"port\":\"\",\"total\":{\"disparity_error\":37,\"invalid_dword\":95,\"loss_dword_sync\":6,\"phy_reset_problem\":0}}",
+   "source": "report"
+  },
+  {
+   "eventId": "605",
+   "ts": "2026-09-18T14:32:01Z",
+   "kind": "sas_errors",
+   "hostname": "backups",
+   "detail": "{\"attached\":\"\",\"attached_kind\":\"upstream\",\"bay\":\"\",\"dev_name\":\"\",\"grew\":{\"disparity_error\":4,\"invalid_dword\":14,\"loss_dword_sync\":1,\"phy_reset_problem\":0},\"owner\":\"0x500304801ea12dff\",\"owner_name\":\"expander-6:1\",\"phy\":21,\"port\":\"\",\"total\":{\"disparity_error\":40,\"invalid_dword\":100,\"loss_dword_sync\":6,\"phy_reset_problem\":0}}",
+   "source": "report"
+  },
+  {
+   "eventId": "604",
+   "ts": "2026-09-18T14:32:01Z",
+   "kind": "sas_errors",
+   "hostname": "backups",
+   "detail": "{\"attached\":\"\",\"attached_kind\":\"upstream\",\"bay\":\"\",\"dev_name\":\"\",\"grew\":{\"disparity_error\":8,\"invalid_dword\":14,\"loss_dword_sync\":1,\"phy_reset_problem\":0},\"owner\":\"0x500304801ea12dff\",\"owner_name\":\"expander-6:1\",\"phy\":20,\"port\":\"\",\"total\":{\"disparity_error\":44,\"invalid_dword\":96,\"loss_dword_sync\":6,\"phy_reset_problem\":0}}",
+   "source": "report"
+  },
+  {
+   "eventId": "603",
+   "ts": "2026-09-18T14:32:01Z",
+   "kind": "sas_errors",
+   "hostname": "backups",
+   "detail": "{\"attached\":\"\",\"attached_kind\":\"upstream\",\"bay\":\"\",\"dev_name\":\"\",\"grew\":{\"disparity_error\":0,\"invalid_dword\":5,\"loss_dword_sync\":1,\"phy_reset_problem\":0},\"owner\":\"0x50030480185b9e7f\",\"owner_name\":\"expander-6:0\",\"phy\":23,\"port\":\"\",\"total\":{\"disparity_error\":3,\"invalid_dword\":29,\"loss_dword_sync\":6,\"phy_reset_problem\":0}}",
+   "source": "report"
+  },
+  {
+   "eventId": "602",
+   "ts": "2026-09-18T14:32:01Z",
+   "kind": "sas_errors",
+   "hostname": "backups",
+   "detail": "{\"attached\":\"\",\"attached_kind\":\"upstream\",\"bay\":\"\",\"dev_name\":\"\",\"grew\":{\"disparity_error\":0,\"invalid_dword\":5,\"loss_dword_sync\":1,\"phy_reset_problem\":0},\"owner\":\"0x50030480185b9e7f\",\"owner_name\":\"expander-6:0\",\"phy\":22,\"port\":\"\",\"total\":{\"disparity_error\":4,\"invalid_dword\":30,\"loss_dword_sync\":6,\"phy_reset_problem\":0}}",
+   "source": "report"
+  },
+  {
+   "eventId": "601",
+   "ts": "2026-09-18T14:32:01Z",
+   "kind": "sas_errors",
+   "hostname": "backups",
+   "detail": "{\"attached\":\"\",\"attached_kind\":\"upstream\",\"bay\":\"\",\"dev_name\":\"\",\"grew\":{\"disparity_error\":0,\"invalid_dword\":5,\"loss_dword_sync\":1,\"phy_reset_problem\":0},\"owner\":\"0x50030480185b9e7f\",\"owner_name\":\"expander-6:0\",\"phy\":21,\"port\":\"\",\"total\":{\"disparity_error\":5,\"invalid_dword\":33,\"loss_dword_sync\":6,\"phy_reset_problem\":0}}",
+   "source": "report"
+  },
+  {
+   "eventId": "600",
+   "ts": "2026-09-18T14:32:01Z",
+   "kind": "sas_errors",
+   "hostname": "backups",
+   "detail": "{\"attached\":\"\",\"attached_kind\":\"upstream\",\"bay\":\"\",\"dev_name\":\"\",\"grew\":{\"disparity_error\":0,\"invalid_dword\":5,\"loss_dword_sync\":1,\"phy_reset_problem\":0},\"owner\":\"0x50030480185b9e7f\",\"owner_name\":\"expander-6:0\",\"phy\":20,\"port\":\"\",\"total\":{\"disparity_error\":3,\"invalid_dword\":30,\"loss_dword_sync\":6,\"phy_reset_problem\":0}}",
+   "source": "report"
+  },
+  {
+   "eventId": "597",
+   "ts": "2026-09-17T01:09:32Z",
+   "kind": "sas_errors",
+   "hostname": "backups",
+   "detail": "{\"attached\":\"\",\"attached_kind\":\"upstream\",\"bay\":\"\",\"dev_name\":\"\",\"grew\":{\"disparity_error\":1,\"invalid_dword\":10,\"loss_dword_sync\":1,\"phy_reset_problem\":0},\"owner\":\"0x500304801ea12dff\",\"owner_name\":\"expander-6:1\",\"phy\":23,\"port\":\"\",\"total\":{\"disparity_error\":17,\"invalid_dword\":52,\"loss_dword_sync\":5,\"phy_reset_problem\":0}}",
+   "source": "report"
+  },
+  {
+   "eventId": "596",
+   "ts": "2026-09-17T01:09:32Z",
+   "kind": "sas_errors",
+   "hostname": "backups",
+   "detail": "{\"attached\":\"\",\"attached_kind\":\"upstream\",\"bay\":\"\",\"dev_name\":\"\",\"grew\":{\"disparity_error\":5,\"invalid_dword\":14,\"loss_dword_sync\":1,\"phy_reset_problem\":0},\"owner\":\"0x500304801ea12dff\",\"owner_name\":\"expander-6:1\",\"phy\":22,\"port\":\"\",\"total\":{\"disparity_error\":31,\"invalid_dword\":80,\"loss_dword_sync\":5,\"phy_reset_problem\":0}}",
+   "source": "report"
+  },
+  {
+   "eventId": "595",
+   "ts": "2026-09-17T01:09:32Z",
+   "kind": "sas_errors",
+   "hostname": "backups",
+   "detail": "{\"attached\":\"\",\"attached_kind\":\"upstream\",\"bay\":\"\",\"dev_name\":\"\",\"grew\":{\"disparity_error\":8,\"invalid_dword\":19,\"loss_dword_sync\":1,\"phy_reset_problem\":0},\"owner\":\"0x500304801ea12dff\",\"owner_name\":\"expander-6:1\",\"phy\":21,\"port\":\"\",\"total\":{\"disparity_error\":36,\"invalid_dword\":86,\"loss_dword_sync\":5,\"phy_reset_problem\":0}}",
+   "source": "report"
+  },
+  {
+   "eventId": "594",
+   "ts": "2026-09-17T01:09:32Z",
+   "kind": "sas_errors",
+   "hostname": "backups",
+   "detail": "{\"attached\":\"\",\"attached_kind\":\"upstream\",\"bay\":\"\",\"dev_name\":\"\",\"grew\":{\"disparity_error\":6,\"invalid_dword\":15,\"loss_dword_sync\":1,\"phy_reset_problem\":0},\"owner\":\"0x500304801ea12dff\",\"owner_name\":\"expander-6:1\",\"phy\":20,\"port\":\"\",\"total\":{\"disparity_error\":36,\"invalid_dword\":82,\"loss_dword_sync\":5,\"phy_reset_problem\":0}}",
+   "source": "report"
+  },
+  {
+   "eventId": "593",
+   "ts": "2026-09-17T01:09:32Z",
+   "kind": "sas_errors",
+   "hostname": "backups",
+   "detail": "{\"attached\":\"\",\"attached_kind\":\"upstream\",\"bay\":\"\",\"dev_name\":\"\",\"grew\":{\"disparity_error\":0,\"invalid_dword\":4,\"loss_dword_sync\":1,\"phy_reset_problem\":0},\"owner\":\"0x50030480185b9e7f\",\"owner_name\":\"expander-6:0\",\"phy\":23,\"port\":\"\",\"total\":{\"disparity_error\":3,\"invalid_dword\":24,\"loss_dword_sync\":5,\"phy_reset_problem\":0}}",
+   "source": "report"
+  },
+  {
+   "eventId": "592",
+   "ts": "2026-09-17T01:09:32Z",
+   "kind": "sas_errors",
+   "hostname": "backups",
+   "detail": "{\"attached\":\"\",\"attached_kind\":\"upstream\",\"bay\":\"\",\"dev_name\":\"\",\"grew\":{\"disparity_error\":1,\"invalid_dword\":5,\"loss_dword_sync\":1,\"phy_reset_problem\":0},\"owner\":\"0x50030480185b9e7f\",\"owner_name\":\"expander-6:0\",\"phy\":22,\"port\":\"\",\"total\":{\"disparity_error\":4,\"invalid_dword\":25,\"loss_dword_sync\":5,\"phy_reset_problem\":0}}",
+   "source": "report"
+  },
+  {
+   "eventId": "591",
+   "ts": "2026-09-17T01:09:32Z",
+   "kind": "sas_errors",
+   "hostname": "backups",
+   "detail": "{\"attached\":\"\",\"attached_kind\":\"upstream\",\"bay\":\"\",\"dev_name\":\"\",\"grew\":{\"disparity_error\":1,\"invalid_dword\":5,\"loss_dword_sync\":1,\"phy_reset_problem\":0},\"owner\":\"0x50030480185b9e7f\",\"owner_name\":\"expander-6:0\",\"phy\":21,\"port\":\"\",\"total\":{\"disparity_error\":5,\"invalid_dword\":28,\"loss_dword_sync\":5,\"phy_reset_problem\":0}}",
+   "source": "report"
+  },
+  {
+   "eventId": "590",
+   "ts": "2026-09-17T01:09:32Z",
+   "kind": "sas_errors",
+   "hostname": "backups",
+   "detail": "{\"attached\":\"\",\"attached_kind\":\"upstream\",\"bay\":\"\",\"dev_name\":\"\",\"grew\":{\"disparity_error\":1,\"invalid_dword\":5,\"loss_dword_sync\":1,\"phy_reset_problem\":0},\"owner\":\"0x50030480185b9e7f\",\"owner_name\":\"expander-6:0\",\"phy\":20,\"port\":\"\",\"total\":{\"disparity_error\":3,\"invalid_dword\":25,\"loss_dword_sync\":5,\"phy_reset_problem\":0}}",
+   "source": "report"
+  },
+  {
+   "eventId": "588",
+   "ts": "2026-09-16T10:12:15Z",
+   "kind": "sas_errors",
+   "hostname": "backups",
+   "detail": "{\"attached\":\"\",\"attached_kind\":\"upstream\",\"bay\":\"\",\"dev_name\":\"\",\"grew\":{\"disparity_error\":1,\"invalid_dword\":9,\"loss_dword_sync\":1,\"phy_reset_problem\":0},\"owner\":\"0x500304801ea12dff\",\"owner_name\":\"expander-1:1\",\"phy\":23,\"port\":\"\",\"total\":{\"disparity_error\":16,\"invalid_dword\":42,\"loss_dword_sync\":4,\"phy_reset_problem\":0}}",
+   "source": "report"
+  },
+  {
+   "eventId": "587",
+   "ts": "2026-09-16T10:12:15Z",
+   "kind": "sas_errors",
+   "hostname": "backups",
+   "detail": "{\"attached\":\"\",\"attached_kind\":\"upstream\",\"bay\":\"\",\"dev_name\":\"\",\"grew\":{\"disparity_error\":5,\"invalid_dword\":13,\"loss_dword_sync\":1,\"phy_reset_problem\":0},\"owner\":\"0x500304801ea12dff\",\"owner_name\":\"expander-1:1\",\"phy\":22,\"port\":\"\",\"total\":{\"disparity_error\":26,\"invalid_dword\":66,\"loss_dword_sync\":4,\"phy_reset_problem\":0}}",
+   "source": "report"
+  },
+  {
+   "eventId": "586",
+   "ts": "2026-09-16T10:12:15Z",
+   "kind": "sas_errors",
+   "hostname": "backups",
+   "detail": "{\"attached\":\"\",\"attached_kind\":\"upstream\",\"bay\":\"\",\"dev_name\":\"\",\"grew\":{\"disparity_error\":6,\"invalid_dword\":13,\"loss_dword_sync\":1,\"phy_reset_problem\":0},\"owner\":\"0x500304801ea12dff\",\"owner_name\":\"expander-1:1\",\"phy\":21,\"port\":\"\",\"total\":{\"disparity_error\":28,\"invalid_dword\":67,\"loss_dword_sync\":4,\"phy_reset_problem\":0}}",
+   "source": "report"
+  },
+  {
+   "eventId": "585",
+   "ts": "2026-09-16T10:12:15Z",
+   "kind": "sas_errors",
+   "hostname": "backups",
+   "detail": "{\"attached\":\"\",\"attached_kind\":\"upstream\",\"bay\":\"\",\"dev_name\":\"\",\"grew\":{\"disparity_error\":4,\"invalid_dword\":15,\"loss_dword_sync\":1,\"phy_reset_problem\":0},\"owner\":\"0x500304801ea12dff\",\"owner_name\":\"expander-1:1\",\"phy\":20,\"port\":\"\",\"total\":{\"disparity_error\":30,\"invalid_dword\":67,\"loss_dword_sync\":4,\"phy_reset_problem\":0}}",
+   "source": "report"
+  },
+  {
+   "eventId": "584",
+   "ts": "2026-09-16T10:12:15Z",
+   "kind": "sas_errors",
+   "hostname": "backups",
+   "detail": "{\"attached\":\"\",\"attached_kind\":\"upstream\",\"bay\":\"\",\"dev_name\":\"\",\"grew\":{\"disparity_error\":1,\"invalid_dword\":5,\"loss_dword_sync\":1,\"phy_reset_problem\":0},\"owner\":\"0x50030480185b9e7f\",\"owner_name\":\"expander-1:0\",\"phy\":23,\"port\":\"\",\"total\":{\"disparity_error\":3,\"invalid_dword\":20,\"loss_dword_sync\":4,\"phy_reset_problem\":0}}",
+   "source": "report"
+  },
+  {
+   "eventId": "583",
+   "ts": "2026-09-16T10:12:15Z",
+   "kind": "sas_errors",
+   "hostname": "backups",
+   "detail": "{\"attached\":\"\",\"attached_kind\":\"upstream\",\"bay\":\"\",\"dev_name\":\"\",\"grew\":{\"disparity_error\":0,\"invalid_dword\":5,\"loss_dword_sync\":1,\"phy_reset_problem\":0},\"owner\":\"0x50030480185b9e7f\",\"owner_name\":\"expander-1:0\",\"phy\":22,\"port\":\"\",\"total\":{\"disparity_error\":3,\"invalid_dword\":20,\"loss_dword_sync\":4,\"phy_reset_problem\":0}}",
+   "source": "report"
+  },
+  {
+   "eventId": "582",
+   "ts": "2026-09-16T10:12:15Z",
+   "kind": "sas_errors",
+   "hostname": "backups",
+   "detail": "{\"attached\":\"\",\"attached_kind\":\"upstream\",\"bay\":\"\",\"dev_name\":\"\",\"grew\":{\"disparity_error\":1,\"invalid_dword\":6,\"loss_dword_sync\":1,\"phy_reset_problem\":0},\"owner\":\"0x50030480185b9e7f\",\"owner_name\":\"expander-1:0\",\"phy\":21,\"port\":\"\",\"total\":{\"disparity_error\":4,\"invalid_dword\":23,\"loss_dword_sync\":4,\"phy_reset_problem\":0}}",
+   "source": "report"
+  },
+  {
+   "eventId": "581",
+   "ts": "2026-09-16T10:12:15Z",
+   "kind": "sas_errors",
+   "hostname": "backups",
+   "detail": "{\"attached\":\"\",\"attached_kind\":\"upstream\",\"bay\":\"\",\"dev_name\":\"\",\"grew\":{\"disparity_error\":1,\"invalid_dword\":5,\"loss_dword_sync\":1,\"phy_reset_problem\":0},\"owner\":\"0x50030480185b9e7f\",\"owner_name\":\"expander-1:0\",\"phy\":20,\"port\":\"\",\"total\":{\"disparity_error\":2,\"invalid_dword\":20,\"loss_dword_sync\":4,\"phy_reset_problem\":0}}",
+   "source": "report"
+  },
+  {
+   "eventId": "578",
+   "ts": "2026-09-15T09:52:38Z",
+   "kind": "sas_errors",
+   "hostname": "backups",
+   "detail": "{\"attached\":\"\",\"attached_kind\":\"upstream\",\"bay\":\"\",\"dev_name\":\"\",\"grew\":{\"disparity_error\":3,\"invalid_dword\":9,\"loss_dword_sync\":1,\"phy_reset_problem\":0},\"owner\":\"0x500304801ea12dff\",\"owner_name\":\"expander-6:1\",\"phy\":23,\"port\":\"\",\"total\":{\"disparity_error\":15,\"invalid_dword\":33,\"loss_dword_sync\":3,\"phy_reset_problem\":0}}",
+   "source": "report"
+  },
+  {
+   "eventId": "577",
+   "ts": "2026-09-15T09:52:38Z",
+   "kind": "sas_errors",
+   "hostname": "backups",
+   "detail": "{\"attached\":\"\",\"attached_kind\":\"upstream\",\"bay\":\"\",\"dev_name\":\"\",\"grew\":{\"disparity_error\":6,\"invalid_dword\":15,\"loss_dword_sync\":1,\"phy_reset_problem\":0},\"owner\":\"0x500304801ea12dff\",\"owner_name\":\"expander-6:1\",\"phy\":22,\"port\":\"\",\"total\":{\"disparity_error\":21,\"invalid_dword\":53,\"loss_dword_sync\":3,\"phy_reset_problem\":0}}",
+   "source": "report"
+  },
+  {
+   "eventId": "576",
+   "ts": "2026-09-15T09:52:38Z",
+   "kind": "sas_errors",
+   "hostname": "backups",
+   "detail": "{\"attached\":\"\",\"attached_kind\":\"upstream\",\"bay\":\"\",\"dev_name\":\"\",\"grew\":{\"disparity_error\":5,\"invalid_dword\":14,\"loss_dword_sync\":1,\"phy_reset_problem\":0},\"owner\":\"0x500304801ea12dff\",\"owner_name\":\"expander-6:1\",\"phy\":21,\"port\":\"\",\"total\":{\"disparity_error\":22,\"invalid_dword\":54,\"loss_dword_sync\":3,\"phy_reset_problem\":0}}",
+   "source": "report"
+  },
+  {
+   "eventId": "575",
+   "ts": "2026-09-15T09:52:38Z",
+   "kind": "sas_errors",
+   "hostname": "backups",
+   "detail": "{\"attached\":\"\",\"attached_kind\":\"upstream\",\"bay\":\"\",\"dev_name\":\"\",\"grew\":{\"disparity_error\":8,\"invalid_dword\":16,\"loss_dword_sync\":1,\"phy_reset_problem\":0},\"owner\":\"0x500304801ea12dff\",\"owner_name\":\"expander-6:1\",\"phy\":20,\"port\":\"\",\"total\":{\"disparity_error\":26,\"invalid_dword\":52,\"loss_dword_sync\":3,\"phy_reset_problem\":0}}",
+   "source": "report"
+  },
+  {
+   "eventId": "574",
+   "ts": "2026-09-15T09:52:38Z",
+   "kind": "sas_errors",
+   "hostname": "backups",
+   "detail": "{\"attached\":\"\",\"attached_kind\":\"upstream\",\"bay\":\"\",\"dev_name\":\"\",\"grew\":{\"disparity_error\":0,\"invalid_dword\":5,\"loss_dword_sync\":1,\"phy_reset_problem\":0},\"owner\":\"0x50030480185b9e7f\",\"owner_name\":\"expander-6:0\",\"phy\":23,\"port\":\"\",\"total\":{\"disparity_error\":2,\"invalid_dword\":15,\"loss_dword_sync\":3,\"phy_reset_problem\":0}}",
+   "source": "report"
+  },
+  {
+   "eventId": "573",
+   "ts": "2026-09-15T09:52:38Z",
+   "kind": "sas_errors",
+   "hostname": "backups",
+   "detail": "{\"attached\":\"\",\"attached_kind\":\"upstream\",\"bay\":\"\",\"dev_name\":\"\",\"grew\":{\"disparity_error\":1,\"invalid_dword\":5,\"loss_dword_sync\":1,\"phy_reset_problem\":0},\"owner\":\"0x50030480185b9e7f\",\"owner_name\":\"expander-6:0\",\"phy\":22,\"port\":\"\",\"total\":{\"disparity_error\":3,\"invalid_dword\":15,\"loss_dword_sync\":3,\"phy_reset_problem\":0}}",
+   "source": "report"
+  },
+  {
+   "eventId": "572",
+   "ts": "2026-09-15T09:52:38Z",
+   "kind": "sas_errors",
+   "hostname": "backups",
+   "detail": "{\"attached\":\"\",\"attached_kind\":\"upstream\",\"bay\":\"\",\"dev_name\":\"\",\"grew\":{\"disparity_error\":1,\"invalid_dword\":6,\"loss_dword_sync\":1,\"phy_reset_problem\":0},\"owner\":\"0x50030480185b9e7f\",\"owner_name\":\"expander-6:0\",\"phy\":21,\"port\":\"\",\"total\":{\"disparity_error\":3,\"invalid_dword\":17,\"loss_dword_sync\":3,\"phy_reset_problem\":0}}",
+   "source": "report"
+  },
+  {
+   "eventId": "571",
+   "ts": "2026-09-15T09:52:38Z",
+   "kind": "sas_errors",
+   "hostname": "backups",
+   "detail": "{\"attached\":\"\",\"attached_kind\":\"upstream\",\"bay\":\"\",\"dev_name\":\"\",\"grew\":{\"disparity_error\":0,\"invalid_dword\":5,\"loss_dword_sync\":1,\"phy_reset_problem\":0},\"owner\":\"0x50030480185b9e7f\",\"owner_name\":\"expander-6:0\",\"phy\":20,\"port\":\"\",\"total\":{\"disparity_error\":1,\"invalid_dword\":15,\"loss_dword_sync\":3,\"phy_reset_problem\":0}}",
+   "source": "report"
+  },
+  {
+   "eventId": "521",
+   "ts": "2026-09-13T23:12:25Z",
+   "kind": "moved_bay",
+   "serial": "BSE3N45261OA43O1H",
+   "wwn": "eui.fd5b42cebc8f9d54ace42e005528ced4",
+   "hostname": "backups",
+   "detail": "{\"from_bay\":\"\",\"from_enclosure\":\"\",\"from_enclosure_via\":\"\",\"from_host\":\"backups\",\"from_uses\":[\"zfs \\u003e rpool 18354710647381807540 \\u003e mirror 5264883868435595074 \\u003e disk 1250468358385806965\"],\"to_bay\":\"M.2-C2 PCIe 4.0 X4\",\"to_dev_name\":\"nvme1n1\",\"to_enclosure\":\"dmi:OM259S069895\",\"to_enclosure_via\":\"pci\",\"to_uses\":[\"zfs \\u003e rpool 18354710647381807540 \\u003e mirror 5264883868435595074 \\u003e disk 1250468358385806965\"]}",
+   "source": "snapshot:33"
+  },
+  {
+   "eventId": "520",
+   "ts": "2026-09-13T23:12:25Z",
+   "kind": "moved_bay",
+   "serial": "BSE3N45261OA43O21",
+   "wwn": "eui.fd5b42cebc8f9d54ace42e005528cee8",
+   "hostname": "backups",
+   "detail": "{\"from_bay\":\"\",\"from_enclosure\":\"\",\"from_enclosure_via\":\"\",\"from_host\":\"backups\",\"from_uses\":[\"zfs \\u003e rpool 18354710647381807540 \\u003e mirror 5264883868435595074 \\u003e disk 5223049671745381668\"],\"to_bay\":\"M.2-C1 PCIe 4.0 X4\",\"to_dev_name\":\"nvme0n1\",\"to_enclosure\":\"dmi:OM259S069895\",\"to_enclosure_via\":\"pci\",\"to_uses\":[\"zfs \\u003e rpool 18354710647381807540 \\u003e mirror 5264883868435595074 \\u003e disk 5223049671745381668\"]}",
+   "source": "snapshot:33"
+  },
+  {
+   "eventId": "512",
+   "ts": "2026-09-13T21:37:16Z",
+   "kind": "sas_node_changed",
+   "hostname": "backups",
+   "detail": "{\"address\":\"0x500304801ea12dff\",\"change\":\"appeared\",\"kind\":\"expander\",\"name\":\"expander-0:1\",\"product\":\"LSI SAS3x28\",\"revision\":\"0601\"}",
+   "source": "report"
+  },
+  {
+   "eventId": "511",
+   "ts": "2026-09-13T21:37:16Z",
+   "kind": "sas_node_changed",
+   "hostname": "backups",
+   "detail": "{\"address\":\"0x50030480185b9e7f\",\"change\":\"appeared\",\"kind\":\"expander\",\"name\":\"expander-0:0\",\"product\":\"SMC SC846P\",\"revision\":\"0c1f\"}",
+   "source": "report"
+  },
+  {
+   "eventId": "510",
+   "ts": "2026-09-13T21:37:16Z",
+   "kind": "sas_node_changed",
+   "hostname": "backups",
+   "detail": "{\"address\":\"0x500062b204570c40\",\"change\":\"appeared\",\"kind\":\"hba\",\"name\":\"host0\",\"product\":\"mpt3sas Avago SAS3216\",\"revision\":\"15.00.00.00\"}",
+   "source": "report"
+  },
+  {
+   "eventId": "504",
+   "ts": "2026-09-13T17:08:43Z",
+   "kind": "expander_renamed",
+   "hostname": "backups",
+   "detail": "{\"drives\":13,\"from\":\"expander-0:0\",\"from_dev\":\"expander-0:0\",\"to\":\"0x50030480185b9e7f\",\"to_dev\":\"expander-0:0\",\"to_name\":\"backups-front\"}",
+   "source": "snapshot:27"
+  },
+  {
+   "eventId": "500",
+   "ts": "2026-09-13T16:37:31Z",
+   "kind": "expander_renamed",
+   "hostname": "backups",
+   "detail": "{\"drives\":13,\"from\":\"expander-6:0\",\"from_dev\":\"expander-6:0\",\"to\":\"expander-0:0\",\"to_dev\":\"expander-0:0\"}",
+   "source": "snapshot:16"
+  },
+  {
+   "eventId": "377",
+   "ts": "2026-09-13T01:44:31Z",
+   "kind": "first_seen",
+   "serial": "ZXA0YB6H",
+   "wwn": "0x5000c500e8df0b98",
+   "hostname": "backups",
+   "detail": "{\"bay\":\"23\",\"dev_name\":\"sdm\",\"expander\":\"expander-6:0\",\"expander_dev\":\"expander-6:0\",\"uses\":[\"zfs \\u003e spare backups \\u003e disk 15127882886004909357\"]}",
+   "source": "snapshot:4"
+  },
+  {
+   "eventId": "376",
+   "ts": "2026-09-13T01:44:31Z",
+   "kind": "first_seen",
+   "serial": "ZXA0XM4R",
+   "wwn": "0x5000c500e8d55d13",
+   "hostname": "backups",
+   "detail": "{\"bay\":\"22\",\"dev_name\":\"sdl\",\"expander\":\"expander-6:0\",\"expander_dev\":\"expander-6:0\",\"uses\":[\"zfs \\u003e spare backups \\u003e disk 10313488710348015701\"]}",
+   "source": "snapshot:4"
+  },
+  {
+   "eventId": "375",
+   "ts": "2026-09-13T01:44:31Z",
+   "kind": "first_seen",
+   "serial": "ZXA10QBK",
+   "wwn": "0x5000c500e8fd009f",
+   "hostname": "backups",
+   "detail": "{\"bay\":\"21\",\"dev_name\":\"sdk\",\"expander\":\"expander-6:0\",\"expander_dev\":\"expander-6:0\",\"uses\":[\"zfs \\u003e backups 14184269030502626926 \\u003e raidz3 12638130268554546894 \\u003e disk 2427754677181354078\"]}",
+   "source": "snapshot:4"
+  },
+  {
+   "eventId": "374",
+   "ts": "2026-09-13T01:44:31Z",
+   "kind": "first_seen",
+   "serial": "ZXA07M8F",
+   "wwn": "0x5000c500ea01004e",
+   "hostname": "backups",
+   "detail": "{\"bay\":\"17\",\"dev_name\":\"sdj\",\"expander\":\"expander-6:0\",\"expander_dev\":\"expander-6:0\",\"uses\":[\"zfs \\u003e backups 14184269030502626926 \\u003e raidz3 12638130268554546894 \\u003e disk 10255298623913385142\"]}",
+   "source": "snapshot:4"
+  },
+  {
+   "eventId": "373",
+   "ts": "2026-09-13T01:44:31Z",
+   "kind": "first_seen",
+   "serial": "ZXA0GA9D",
+   "wwn": "0x5000c500e867f51a",
+   "hostname": "backups",
+   "detail": "{\"bay\":\"16\",\"dev_name\":\"sdi\",\"expander\":\"expander-6:0\",\"expander_dev\":\"expander-6:0\",\"uses\":[\"zfs \\u003e backups 14184269030502626926 \\u003e raidz3 12638130268554546894 \\u003e disk 17702091168007131095\"]}",
+   "source": "snapshot:4"
+  },
+  {
+   "eventId": "372",
+   "ts": "2026-09-13T01:44:31Z",
+   "kind": "first_seen",
+   "serial": "ZXA11LGT",
+   "wwn": "0x5000c500e9009f9f",
+   "hostname": "backups",
+   "detail": "{\"bay\":\"15\",\"dev_name\":\"sdh\",\"expander\":\"expander-6:0\",\"expander_dev\":\"expander-6:0\",\"uses\":[\"zfs \\u003e backups 14184269030502626926 \\u003e raidz3 12638130268554546894 \\u003e disk 12715670843202606742\"]}",
+   "source": "snapshot:4"
+  },
+  {
+   "eventId": "371",
+   "ts": "2026-09-13T01:44:31Z",
+   "kind": "first_seen",
+   "serial": "ZXA115Y6",
+   "wwn": "0x5000c500e901b1e2",
+   "hostname": "backups",
+   "detail": "{\"bay\":\"11\",\"dev_name\":\"sdg\",\"expander\":\"expander-6:0\",\"expander_dev\":\"expander-6:0\",\"uses\":[\"zfs \\u003e backups 14184269030502626926 \\u003e raidz3 12638130268554546894 \\u003e disk 9310739970432676503\"]}",
+   "source": "snapshot:4"
+  },
+  {
+   "eventId": "370",
+   "ts": "2026-09-13T01:44:31Z",
+   "kind": "first_seen",
+   "serial": "ZXA185XX",
+   "wwn": "0x5000c500e96efc9f",
+   "hostname": "backups",
+   "detail": "{\"bay\":\"10\",\"dev_name\":\"sdf\",\"expander\":\"expander-6:0\",\"expander_dev\":\"expander-6:0\",\"uses\":[\"zfs \\u003e backups 14184269030502626926 \\u003e raidz3 12638130268554546894 \\u003e disk 10414938989999790616\"]}",
+   "source": "snapshot:4"
+  },
+  {
+   "eventId": "369",
+   "ts": "2026-09-13T01:44:31Z",
+   "kind": "first_seen",
+   "serial": "ZXA0V75X",
+   "wwn": "0x5000c500e8c1b72b",
+   "hostname": "backups",
+   "detail": "{\"bay\":\"8\",\"dev_name\":\"sde\",\"expander\":\"expander-6:0\",\"expander_dev\":\"expander-6:0\",\"uses\":[\"zfs \\u003e backups 14184269030502626926 \\u003e raidz3 12638130268554546894 \\u003e disk 6583091953762439930\"]}",
+   "source": "snapshot:4"
+  },
+  {
+   "eventId": "368",
+   "ts": "2026-09-13T01:44:31Z",
+   "kind": "first_seen",
+   "serial": "ZXA0XH4E",
+   "wwn": "0x5000c500e8d7e258",
+   "hostname": "backups",
+   "detail": "{\"bay\":\"5\",\"dev_name\":\"sdd\",\"expander\":\"expander-6:0\",\"expander_dev\":\"expander-6:0\",\"uses\":[\"zfs \\u003e backups 14184269030502626926 \\u003e raidz3 12638130268554546894 \\u003e disk 11120317111489606304\"]}",
+   "source": "snapshot:4"
+  },
+  {
+   "eventId": "367",
+   "ts": "2026-09-13T01:44:31Z",
+   "kind": "first_seen",
+   "serial": "ZXA0XV48",
+   "wwn": "0x5000c500e8da3221",
+   "hostname": "backups",
+   "detail": "{\"bay\":\"4\",\"dev_name\":\"sdc\",\"expander\":\"expander-6:0\",\"expander_dev\":\"expander-6:0\",\"uses\":[\"zfs \\u003e backups 14184269030502626926 \\u003e raidz3 12638130268554546894 \\u003e disk 12294050993797249670\"]}",
+   "source": "snapshot:4"
+  },
+  {
+   "eventId": "366",
+   "ts": "2026-09-13T01:44:31Z",
+   "kind": "first_seen",
+   "serial": "ZXA0TCYT",
+   "wwn": "0x5000c500e8bf1d27",
+   "hostname": "backups",
+   "detail": "{\"bay\":\"3\",\"dev_name\":\"sdb\",\"expander\":\"expander-6:0\",\"expander_dev\":\"expander-6:0\",\"uses\":[\"zfs \\u003e backups 14184269030502626926 \\u003e raidz3 12638130268554546894 \\u003e disk 12397832929899529994\"]}",
+   "source": "snapshot:4"
+  },
+  {
+   "eventId": "365",
+   "ts": "2026-09-13T01:44:31Z",
+   "kind": "first_seen",
+   "serial": "ZXA03T5G",
+   "wwn": "0x5000c500e9fd75c5",
+   "hostname": "backups",
+   "detail": "{\"bay\":\"2\",\"dev_name\":\"sda\",\"expander\":\"expander-6:0\",\"expander_dev\":\"expander-6:0\",\"uses\":[\"zfs \\u003e backups 14184269030502626926 \\u003e raidz3 12638130268554546894 \\u003e disk 6909562996738010975\"]}",
+   "source": "snapshot:4"
+  },
+  {
+   "eventId": "364",
+   "ts": "2026-09-13T01:44:31Z",
+   "kind": "first_seen",
+   "serial": "BSE3N45261OA43O21",
+   "wwn": "eui.fd5b42cebc8f9d54ace42e005528cee8",
+   "hostname": "backups",
+   "detail": "{\"bay\":\"\",\"dev_name\":\"nvme1n1\",\"expander\":\"\",\"expander_dev\":\"\",\"uses\":[\"zfs \\u003e rpool 18354710647381807540 \\u003e mirror 5264883868435595074 \\u003e disk 5223049671745381668\"]}",
+   "source": "snapshot:4"
+  },
+  {
+   "eventId": "363",
+   "ts": "2026-09-13T01:44:31Z",
+   "kind": "first_seen",
+   "serial": "BSE3N45261OA43O1H",
+   "wwn": "eui.fd5b42cebc8f9d54ace42e005528ced4",
+   "hostname": "backups",
+   "detail": "{\"bay\":\"\",\"dev_name\":\"nvme0n1\",\"expander\":\"\",\"expander_dev\":\"\",\"uses\":[\"zfs \\u003e rpool 18354710647381807540 \\u003e mirror 5264883868435595074 \\u003e disk 1250468358385806965\"]}",
+   "source": "snapshot:4"
+  },
+  {
+   "eventId": "106",
+   "ts": "2026-09-13T01:44:31Z",
+   "kind": "host_first_seen",
+   "hostname": "backups",
+   "detail": "{\"hostname\":\"backups\",\"os\":\"linux\"}",
+   "source": "report"
+  }
+ ]
+}

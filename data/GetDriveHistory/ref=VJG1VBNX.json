@@ -1,0 +1,67 @@
+{
+ "drive": {
+  "driveId": "51",
+  "wwn": "0x5000cca261035d88",
+  "vendor": "HITACHI",
+  "model": "HUH72808CLAR8000",
+  "serial": "VJG1VBNX",
+  "sizeBytes": "8001563222016",
+  "bus": "BUS_SAS",
+  "status": "ok",
+  "firstSeen": "2026-09-13T01:41:39Z",
+  "lastSeen": "2026-09-27T19:41:38Z",
+  "current": {
+   "hostname": "nas",
+   "enclosure": "0x5000ccab020094ff",
+   "bay": "12",
+   "devName": "sdbt",
+   "uses": [
+    "zfs > space 5925914041408872576 > raidz2 16950899211129714203 > disk 15663109361216978631"
+   ],
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "enclosureVia": "expander-11:0",
+   "enclosureName": "nas-hgst-u60-1",
+   "bayLabel": "12"
+  },
+  "memberState": "ONLINE"
+ },
+ "placements": [
+  {
+   "hostname": "nas",
+   "enclosure": "0x5000ccab020094ff",
+   "bay": "12",
+   "devName": "sdbt",
+   "uses": [
+    "zfs > space 5925914041408872576 > raidz2 16950899211129714203 > disk 15663109361216978631"
+   ],
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "enclosureVia": "expander-11:0",
+   "enclosureName": "nas-hgst-u60-1",
+   "bayLabel": "12"
+  }
+ ],
+ "events": [
+  {
+   "eventId": "312",
+   "ts": "2026-09-13T01:41:39Z",
+   "kind": "first_seen",
+   "serial": "VJG1VBNX",
+   "wwn": "0x5000cca261035d88",
+   "hostname": "nas",
+   "detail": "{\"bay\":\"12\",\"dev_name\":\"sdbt\",\"expander\":\"expander-11:0\",\"expander_dev\":\"expander-11:0\",\"uses\":[\"zfs \\u003e space 5925914041408872576 \\u003e raidz2 16950899211129714203 \\u003e disk 15663109361216978631\"]}",
+   "source": "snapshot:2"
+  },
+  {
+   "eventId": "427",
+   "ts": "2026-09-13T02:09:06Z",
+   "kind": "member_state_changed",
+   "serial": "VJG1VBNX",
+   "wwn": "0x5000cca261035d88",
+   "hostname": "nas",
+   "detail": "{\"from\":\"\",\"to\":\"ONLINE\",\"uses\":[\"zfs \\u003e space 5925914041408872576 \\u003e raidz2 16950899211129714203 \\u003e disk 15663109361216978631\"]}",
+   "source": "snapshot:8"
+  }
+ ]
+}

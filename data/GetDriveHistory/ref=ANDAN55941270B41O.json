@@ -1,0 +1,75 @@
+{
+ "drive": {
+  "driveId": "124",
+  "wwn": "eui.ace42e00457ed8b42ee4ac0000000001",
+  "model": "SHPP41-1000GM",
+  "serial": "ANDAN55941270B41O",
+  "sizeBytes": "1000204886016",
+  "bus": "BUS_NVME",
+  "status": "ok",
+  "firstSeen": "2026-09-13T02:42:05Z",
+  "lastSeen": "2026-09-27T19:42:51Z",
+  "current": {
+   "hostname": "server3",
+   "enclosure": "dmi:CN7831V0PM",
+   "bay": "PCI-E Slot 6/00.0",
+   "devName": "nvme0n1",
+   "uses": [
+    "zfs > data3 2907462846242516316 > disk 4045355090445648087"
+   ],
+   "firstSeen": "2026-09-14T06:28:25Z",
+   "lastSeen": "2026-09-27T19:42:51Z",
+   "enclosureVia": "pci",
+   "bayLabel": "card port 0"
+  },
+  "memberState": "ONLINE"
+ },
+ "placements": [
+  {
+   "hostname": "server3",
+   "devName": "nvme0n1",
+   "uses": [
+    "zfs > data3 2907462846242516316 > disk 4045355090445648087"
+   ],
+   "firstSeen": "2026-09-13T02:42:05Z",
+   "lastSeen": "2026-09-14T06:27:46Z",
+   "endedAt": "2026-09-14T06:28:25Z",
+   "endReason": "moved"
+  },
+  {
+   "hostname": "server3",
+   "enclosure": "dmi:CN7831V0PM",
+   "bay": "PCI-E Slot 6/00.0",
+   "devName": "nvme0n1",
+   "uses": [
+    "zfs > data3 2907462846242516316 > disk 4045355090445648087"
+   ],
+   "firstSeen": "2026-09-14T06:28:25Z",
+   "lastSeen": "2026-09-27T19:42:51Z",
+   "enclosureVia": "pci",
+   "bayLabel": "card port 0"
+  }
+ ],
+ "events": [
+  {
+   "eventId": "474",
+   "ts": "2026-09-13T02:42:05Z",
+   "kind": "first_seen",
+   "serial": "ANDAN55941270B41O",
+   "wwn": "eui.ace42e00457ed8b42ee4ac0000000001",
+   "hostname": "server3",
+   "detail": "{\"bay\":\"\",\"dev_name\":\"nvme0n1\",\"expander\":\"\",\"expander_dev\":\"\",\"uses\":[\"zfs \\u003e data3 2907462846242516316 \\u003e disk 4045355090445648087\"]}",
+   "source": "snapshot:10"
+  },
+  {
+   "eventId": "554",
+   "ts": "2026-09-14T06:28:25Z",
+   "kind": "moved_bay",
+   "serial": "ANDAN55941270B41O",
+   "wwn": "eui.ace42e00457ed8b42ee4ac0000000001",
+   "hostname": "server3",
+   "detail": "{\"from_bay\":\"\",\"from_enclosure\":\"\",\"from_enclosure_via\":\"\",\"from_host\":\"server3\",\"from_uses\":[\"zfs \\u003e data3 2907462846242516316 \\u003e disk 4045355090445648087\"],\"to_bay\":\"PCI-E Slot 6/00.0\",\"to_bay_label\":\"card port 0\",\"to_dev_name\":\"nvme0n1\",\"to_enclosure\":\"dmi:CN7831V0PM\",\"to_enclosure_via\":\"pci\",\"to_uses\":[\"zfs \\u003e data3 2907462846242516316 \\u003e disk 4045355090445648087\"]}",
+   "source": "snapshot:46"
+  }
+ ]
+}

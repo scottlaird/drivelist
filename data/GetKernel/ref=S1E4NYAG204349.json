@@ -1,0 +1,29 @@
+{
+ "drive": {
+  "driveId": "4",
+  "wwn": "0x500253850025c532",
+  "vendor": "ATA",
+  "model": "SAMSUNG_MZ7WD960",
+  "serial": "S1E4NYAG204349",
+  "sizeBytes": "960197124096",
+  "bus": "BUS_SATA",
+  "status": "ok",
+  "firstSeen": "2026-09-13T01:41:39Z",
+  "lastSeen": "2026-09-27T19:41:38Z",
+  "current": {
+   "hostname": "nas",
+   "enclosure": "dmi:NM168S004999",
+   "bay": "pci-0000:00:1f.2-ata-5",
+   "devName": "sda",
+   "uses": [
+    "mount > /boot/efi",
+    "zfs > bpool 6822782206755274061 > mirror 7879420759522091481 > disk 10940132855821023010",
+    "zfs > rpool 6335217808421659663 > mirror 10116968943579434558 > disk 13477747630627346864"
+   ],
+   "firstSeen": "2026-09-14T03:46:13Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "enclosureVia": "ata"
+  },
+  "memberState": "ONLINE"
+ }
+}

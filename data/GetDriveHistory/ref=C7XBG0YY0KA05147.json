@@ -1,0 +1,65 @@
+{
+ "drive": {
+  "driveId": "72",
+  "wwn": "0x5002538b48a797f0",
+  "vendor": "IBM-E051",
+  "model": "MZILT3T8HALS",
+  "serial": "C7XBG0YY0KA05147",
+  "sizeBytes": "3840755982336",
+  "bus": "BUS_SAS",
+  "status": "ok",
+  "firstSeen": "2026-09-13T01:41:39Z",
+  "lastSeen": "2026-09-27T19:41:38Z",
+  "current": {
+   "hostname": "nas",
+   "enclosure": "0x5003048001e8967f",
+   "bay": "20",
+   "devName": "sdcn",
+   "uses": [
+    "zfs > space 5925914041408872576 > mirror 737277534668809963 > disk 1161082729107973602"
+   ],
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "enclosureVia": "expander-11:1",
+   "enclosureName": "nas-sc847-front"
+  },
+  "memberState": "ONLINE"
+ },
+ "placements": [
+  {
+   "hostname": "nas",
+   "enclosure": "0x5003048001e8967f",
+   "bay": "20",
+   "devName": "sdcn",
+   "uses": [
+    "zfs > space 5925914041408872576 > mirror 737277534668809963 > disk 1161082729107973602"
+   ],
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "enclosureVia": "expander-11:1",
+   "enclosureName": "nas-sc847-front"
+  }
+ ],
+ "events": [
+  {
+   "eventId": "333",
+   "ts": "2026-09-13T01:41:39Z",
+   "kind": "first_seen",
+   "serial": "C7XBG0YY0KA05147",
+   "wwn": "0x5002538b48a797f0",
+   "hostname": "nas",
+   "detail": "{\"bay\":\"20\",\"dev_name\":\"sdcn\",\"expander\":\"expander-11:1\",\"expander_dev\":\"expander-11:1\",\"uses\":[\"zfs \\u003e space 5925914041408872576 \\u003e mirror 737277534668809963 \\u003e disk 1161082729107973602\"]}",
+   "source": "snapshot:2"
+  },
+  {
+   "eventId": "444",
+   "ts": "2026-09-13T02:09:06Z",
+   "kind": "member_state_changed",
+   "serial": "C7XBG0YY0KA05147",
+   "wwn": "0x5002538b48a797f0",
+   "hostname": "nas",
+   "detail": "{\"from\":\"\",\"to\":\"ONLINE\",\"uses\":[\"zfs \\u003e space 5925914041408872576 \\u003e mirror 737277534668809963 \\u003e disk 1161082729107973602\"]}",
+   "source": "snapshot:8"
+  }
+ ]
+}

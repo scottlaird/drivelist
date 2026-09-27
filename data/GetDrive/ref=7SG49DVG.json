@@ -1,0 +1,32 @@
+{
+ "drive": {
+  "driveId": "78",
+  "wwn": "0x5000cca25207d34c",
+  "vendor": "HGST",
+  "model": "HUH721008AL5204",
+  "serial": "7SG49DVG",
+  "sizeBytes": "8001563222016",
+  "bus": "BUS_SAS",
+  "status": "ok",
+  "firstSeen": "2026-09-13T01:41:39Z",
+  "lastSeen": "2026-09-27T19:41:38Z",
+  "current": {
+   "hostname": "nas",
+   "enclosure": "0x500304800000007f",
+   "bay": "3",
+   "devName": "sdf",
+   "uses": [
+    "zfs > space 5925914041408872576 > raidz2 5204885172110344134 > disk 6199030208081625901"
+   ],
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "enclosureVia": "expander-10:0",
+   "enclosureName": "nas-sc847-back"
+  },
+  "memberState": "ONLINE"
+ },
+ "keys": [
+  "serial:HUH721008AL5204/7SG49DVG",
+  "wwn:0x5000cca25207d34c"
+ ]
+}

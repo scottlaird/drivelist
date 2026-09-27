@@ -1,0 +1,1687 @@
+{
+ "nodes": [
+  {
+   "node": {
+    "kind": "hba",
+    "name": "host6",
+    "address": "0x500062b204570c40",
+    "vendor": "mpt3sas",
+    "product": "Avago SAS3216",
+    "revision": "15.00.00.00"
+   },
+   "hostname": "backups",
+   "firstSeen": "2026-09-13T21:37:16Z",
+   "lastSeen": "2026-09-27T19:42:09Z"
+  },
+  {
+   "node": {
+    "kind": "expander",
+    "name": "expander-6:0",
+    "address": "0x50030480185b9e7f",
+    "vendor": "SMC",
+    "product": "SC846P",
+    "revision": "0c1f",
+    "parentAddress": "0x500062b204570c40",
+    "upstreamPort": "port-6:0"
+   },
+   "hostname": "backups",
+   "firstSeen": "2026-09-13T21:37:16Z",
+   "lastSeen": "2026-09-27T19:42:09Z"
+  },
+  {
+   "node": {
+    "kind": "expander",
+    "name": "expander-6:1",
+    "address": "0x500304801ea12dff",
+    "vendor": "LSI",
+    "product": "SAS3x28",
+    "revision": "0601",
+    "parentAddress": "0x50030480185b9e7f",
+    "upstreamPort": "port-6:0:0"
+   },
+   "hostname": "backups",
+   "firstSeen": "2026-09-13T21:37:16Z",
+   "lastSeen": "2026-09-27T19:42:09Z"
+  }
+ ],
+ "phys": [
+  {
+   "phy": {
+    "ownerAddress": "0x500062b204570c40",
+    "name": "phy-6:0",
+    "port": "port-6:0",
+    "portWidth": 4,
+    "rate": "12.0 Gbit",
+    "rateGbit": 12,
+    "attachedKind": "expander",
+    "attached": "expander-6:0",
+    "attachedAddress": "0x50030480185b9e7f",
+    "enabled": true
+   },
+   "hostname": "backups",
+   "ownerName": "host6",
+   "firstSeen": "2026-09-13T21:37:16Z",
+   "lastSeen": "2026-09-27T19:42:09Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x500062b204570c40",
+    "phyId": 1,
+    "name": "phy-6:1",
+    "port": "port-6:0",
+    "portWidth": 4,
+    "rate": "12.0 Gbit",
+    "rateGbit": 12,
+    "attachedKind": "expander",
+    "attached": "expander-6:0",
+    "attachedAddress": "0x50030480185b9e7f",
+    "enabled": true
+   },
+   "hostname": "backups",
+   "ownerName": "host6",
+   "firstSeen": "2026-09-13T21:37:16Z",
+   "lastSeen": "2026-09-27T19:42:09Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x500062b204570c40",
+    "phyId": 2,
+    "name": "phy-6:2",
+    "port": "port-6:0",
+    "portWidth": 4,
+    "rate": "12.0 Gbit",
+    "rateGbit": 12,
+    "attachedKind": "expander",
+    "attached": "expander-6:0",
+    "attachedAddress": "0x50030480185b9e7f",
+    "enabled": true
+   },
+   "hostname": "backups",
+   "ownerName": "host6",
+   "firstSeen": "2026-09-13T21:37:16Z",
+   "lastSeen": "2026-09-27T19:42:09Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x500062b204570c40",
+    "phyId": 3,
+    "name": "phy-6:3",
+    "port": "port-6:0",
+    "portWidth": 4,
+    "rate": "12.0 Gbit",
+    "rateGbit": 12,
+    "attachedKind": "expander",
+    "attached": "expander-6:0",
+    "attachedAddress": "0x50030480185b9e7f",
+    "enabled": true
+   },
+   "hostname": "backups",
+   "ownerName": "host6",
+   "firstSeen": "2026-09-13T21:37:16Z",
+   "lastSeen": "2026-09-27T19:42:09Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x500062b204570c40",
+    "phyId": 4,
+    "name": "phy-6:4",
+    "rate": "12.0 Gbit",
+    "rateGbit": 12,
+    "enabled": true
+   },
+   "hostname": "backups",
+   "ownerName": "host6",
+   "firstSeen": "2026-09-13T21:37:16Z",
+   "lastSeen": "2026-09-27T19:42:09Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x500062b204570c40",
+    "phyId": 5,
+    "name": "phy-6:5",
+    "rate": "12.0 Gbit",
+    "rateGbit": 12,
+    "enabled": true
+   },
+   "hostname": "backups",
+   "ownerName": "host6",
+   "firstSeen": "2026-09-13T21:37:16Z",
+   "lastSeen": "2026-09-27T19:42:09Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x500062b204570c40",
+    "phyId": 6,
+    "name": "phy-6:6",
+    "rate": "12.0 Gbit",
+    "rateGbit": 12,
+    "enabled": true
+   },
+   "hostname": "backups",
+   "ownerName": "host6",
+   "firstSeen": "2026-09-13T21:37:16Z",
+   "lastSeen": "2026-09-27T19:42:09Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x500062b204570c40",
+    "phyId": 7,
+    "name": "phy-6:7",
+    "rate": "12.0 Gbit",
+    "rateGbit": 12,
+    "enabled": true
+   },
+   "hostname": "backups",
+   "ownerName": "host6",
+   "firstSeen": "2026-09-13T21:37:16Z",
+   "lastSeen": "2026-09-27T19:42:09Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x500062b204570c40",
+    "phyId": 8,
+    "name": "phy-6:8",
+    "rate": "Phy disabled",
+    "enabled": true
+   },
+   "hostname": "backups",
+   "ownerName": "host6",
+   "firstSeen": "2026-09-13T21:37:16Z",
+   "lastSeen": "2026-09-27T19:42:09Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x500062b204570c40",
+    "phyId": 9,
+    "name": "phy-6:9",
+    "rate": "Phy disabled",
+    "enabled": true
+   },
+   "hostname": "backups",
+   "ownerName": "host6",
+   "firstSeen": "2026-09-13T21:37:16Z",
+   "lastSeen": "2026-09-27T19:42:09Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x500062b204570c40",
+    "phyId": 10,
+    "name": "phy-6:10",
+    "rate": "Phy disabled",
+    "enabled": true
+   },
+   "hostname": "backups",
+   "ownerName": "host6",
+   "firstSeen": "2026-09-13T21:37:16Z",
+   "lastSeen": "2026-09-27T19:42:09Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x500062b204570c40",
+    "phyId": 11,
+    "name": "phy-6:11",
+    "rate": "Phy disabled",
+    "enabled": true
+   },
+   "hostname": "backups",
+   "ownerName": "host6",
+   "firstSeen": "2026-09-13T21:37:16Z",
+   "lastSeen": "2026-09-27T19:42:09Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x500062b204570c40",
+    "phyId": 12,
+    "name": "phy-6:12",
+    "rate": "Phy disabled",
+    "enabled": true
+   },
+   "hostname": "backups",
+   "ownerName": "host6",
+   "firstSeen": "2026-09-13T21:37:16Z",
+   "lastSeen": "2026-09-27T19:42:09Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x500062b204570c40",
+    "phyId": 13,
+    "name": "phy-6:13",
+    "rate": "Phy disabled",
+    "enabled": true
+   },
+   "hostname": "backups",
+   "ownerName": "host6",
+   "firstSeen": "2026-09-13T21:37:16Z",
+   "lastSeen": "2026-09-27T19:42:09Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x500062b204570c40",
+    "phyId": 14,
+    "name": "phy-6:14",
+    "rate": "Phy disabled",
+    "enabled": true
+   },
+   "hostname": "backups",
+   "ownerName": "host6",
+   "firstSeen": "2026-09-13T21:37:16Z",
+   "lastSeen": "2026-09-27T19:42:09Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x500062b204570c40",
+    "phyId": 15,
+    "name": "phy-6:15",
+    "rate": "Phy disabled",
+    "enabled": true
+   },
+   "hostname": "backups",
+   "ownerName": "host6",
+   "firstSeen": "2026-09-13T21:37:16Z",
+   "lastSeen": "2026-09-27T19:42:09Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x500062b204570c40",
+    "phyId": 16,
+    "name": "phy-6:16",
+    "rate": "Unknown",
+    "enabled": true
+   },
+   "hostname": "backups",
+   "ownerName": "host6",
+   "firstSeen": "2026-09-13T21:37:16Z",
+   "lastSeen": "2026-09-27T19:42:09Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x500062b204570c40",
+    "phyId": 17,
+    "name": "phy-6:17",
+    "rate": "Unknown",
+    "enabled": true
+   },
+   "hostname": "backups",
+   "ownerName": "host6",
+   "firstSeen": "2026-09-13T21:37:16Z",
+   "lastSeen": "2026-09-27T19:42:09Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x500062b204570c40",
+    "phyId": 18,
+    "name": "phy-6:18",
+    "rate": "Unknown",
+    "enabled": true
+   },
+   "hostname": "backups",
+   "ownerName": "host6",
+   "firstSeen": "2026-09-13T21:37:16Z",
+   "lastSeen": "2026-09-27T19:42:09Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x500062b204570c40",
+    "phyId": 19,
+    "name": "phy-6:19",
+    "rate": "Unknown",
+    "enabled": true
+   },
+   "hostname": "backups",
+   "ownerName": "host6",
+   "firstSeen": "2026-09-13T21:37:16Z",
+   "lastSeen": "2026-09-27T19:42:09Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x500062b204570c40",
+    "phyId": 20,
+    "name": "phy-6:20",
+    "rate": "Unknown",
+    "enabled": true
+   },
+   "hostname": "backups",
+   "ownerName": "host6",
+   "firstSeen": "2026-09-13T21:37:16Z",
+   "lastSeen": "2026-09-27T19:42:09Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x500062b204570c40",
+    "phyId": 21,
+    "name": "phy-6:21",
+    "rate": "Unknown",
+    "enabled": true
+   },
+   "hostname": "backups",
+   "ownerName": "host6",
+   "firstSeen": "2026-09-13T21:37:16Z",
+   "lastSeen": "2026-09-27T19:42:09Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x500062b204570c40",
+    "phyId": 22,
+    "name": "phy-6:22",
+    "rate": "Unknown",
+    "enabled": true
+   },
+   "hostname": "backups",
+   "ownerName": "host6",
+   "firstSeen": "2026-09-13T21:37:16Z",
+   "lastSeen": "2026-09-27T19:42:09Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x500062b204570c40",
+    "phyId": 23,
+    "name": "phy-6:23",
+    "rate": "Unknown",
+    "enabled": true
+   },
+   "hostname": "backups",
+   "ownerName": "host6",
+   "firstSeen": "2026-09-13T21:37:16Z",
+   "lastSeen": "2026-09-27T19:42:09Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x50030480185b9e7f",
+    "name": "phy-6:0:0",
+    "rate": "Unknown",
+    "enabled": true
+   },
+   "hostname": "backups",
+   "ownerName": "expander-6:0",
+   "firstSeen": "2026-09-13T21:37:16Z",
+   "lastSeen": "2026-09-27T19:42:09Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x50030480185b9e7f",
+    "phyId": 1,
+    "name": "phy-6:0:1",
+    "rate": "Unknown",
+    "enabled": true
+   },
+   "hostname": "backups",
+   "ownerName": "expander-6:0",
+   "firstSeen": "2026-09-13T21:37:16Z",
+   "lastSeen": "2026-09-27T19:42:09Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x50030480185b9e7f",
+    "phyId": 2,
+    "name": "phy-6:0:2",
+    "port": "port-6:0:1",
+    "portWidth": 1,
+    "rate": "12.0 Gbit",
+    "rateGbit": 12,
+    "attachedKind": "drive",
+    "attached": "end_device-6:0:1",
+    "attachedAddress": "0x50030480185b9e42",
+    "devName": "sda",
+    "bay": "2",
+    "enabled": true
+   },
+   "hostname": "backups",
+   "ownerName": "expander-6:0",
+   "serial": "ZXA03T5G",
+   "firstSeen": "2026-09-13T21:37:16Z",
+   "lastSeen": "2026-09-27T19:42:09Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x50030480185b9e7f",
+    "phyId": 3,
+    "name": "phy-6:0:3",
+    "port": "port-6:0:2",
+    "portWidth": 1,
+    "rate": "12.0 Gbit",
+    "rateGbit": 12,
+    "attachedKind": "drive",
+    "attached": "end_device-6:0:2",
+    "attachedAddress": "0x50030480185b9e43",
+    "devName": "sdb",
+    "bay": "3",
+    "enabled": true
+   },
+   "hostname": "backups",
+   "ownerName": "expander-6:0",
+   "serial": "ZXA0TCYT",
+   "firstSeen": "2026-09-13T21:37:16Z",
+   "lastSeen": "2026-09-27T19:42:09Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x50030480185b9e7f",
+    "phyId": 4,
+    "name": "phy-6:0:4",
+    "port": "port-6:0:3",
+    "portWidth": 1,
+    "rate": "12.0 Gbit",
+    "rateGbit": 12,
+    "attachedKind": "drive",
+    "attached": "end_device-6:0:3",
+    "attachedAddress": "0x50030480185b9e44",
+    "devName": "sdc",
+    "bay": "4",
+    "enabled": true
+   },
+   "hostname": "backups",
+   "ownerName": "expander-6:0",
+   "serial": "ZXA0XV48",
+   "firstSeen": "2026-09-13T21:37:16Z",
+   "lastSeen": "2026-09-27T19:42:09Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x50030480185b9e7f",
+    "phyId": 5,
+    "name": "phy-6:0:5",
+    "port": "port-6:0:4",
+    "portWidth": 1,
+    "rate": "12.0 Gbit",
+    "rateGbit": 12,
+    "attachedKind": "drive",
+    "attached": "end_device-6:0:4",
+    "attachedAddress": "0x50030480185b9e45",
+    "devName": "sdd",
+    "bay": "5",
+    "enabled": true
+   },
+   "hostname": "backups",
+   "ownerName": "expander-6:0",
+   "serial": "ZXA0XH4E",
+   "firstSeen": "2026-09-13T21:37:16Z",
+   "lastSeen": "2026-09-27T19:42:09Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x50030480185b9e7f",
+    "phyId": 6,
+    "name": "phy-6:0:6",
+    "rate": "Unknown",
+    "enabled": true
+   },
+   "hostname": "backups",
+   "ownerName": "expander-6:0",
+   "firstSeen": "2026-09-13T21:37:16Z",
+   "lastSeen": "2026-09-27T19:42:09Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x50030480185b9e7f",
+    "phyId": 7,
+    "name": "phy-6:0:7",
+    "rate": "Unknown",
+    "enabled": true
+   },
+   "hostname": "backups",
+   "ownerName": "expander-6:0",
+   "firstSeen": "2026-09-13T21:37:16Z",
+   "lastSeen": "2026-09-27T19:42:09Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x50030480185b9e7f",
+    "phyId": 8,
+    "name": "phy-6:0:8",
+    "port": "port-6:0:5",
+    "portWidth": 1,
+    "rate": "12.0 Gbit",
+    "rateGbit": 12,
+    "attachedKind": "drive",
+    "attached": "end_device-6:0:5",
+    "attachedAddress": "0x50030480185b9e48",
+    "devName": "sde",
+    "bay": "8",
+    "enabled": true
+   },
+   "hostname": "backups",
+   "ownerName": "expander-6:0",
+   "serial": "ZXA0V75X",
+   "firstSeen": "2026-09-13T21:37:16Z",
+   "lastSeen": "2026-09-27T19:42:09Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x50030480185b9e7f",
+    "phyId": 9,
+    "name": "phy-6:0:9",
+    "rate": "Unknown",
+    "enabled": true
+   },
+   "hostname": "backups",
+   "ownerName": "expander-6:0",
+   "firstSeen": "2026-09-13T21:37:16Z",
+   "lastSeen": "2026-09-27T19:42:09Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x50030480185b9e7f",
+    "phyId": 10,
+    "name": "phy-6:0:10",
+    "port": "port-6:0:6",
+    "portWidth": 1,
+    "rate": "12.0 Gbit",
+    "rateGbit": 12,
+    "attachedKind": "drive",
+    "attached": "end_device-6:0:6",
+    "attachedAddress": "0x50030480185b9e4a",
+    "devName": "sdf",
+    "bay": "10",
+    "enabled": true
+   },
+   "hostname": "backups",
+   "ownerName": "expander-6:0",
+   "serial": "ZXA185XX",
+   "firstSeen": "2026-09-13T21:37:16Z",
+   "lastSeen": "2026-09-27T19:42:09Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x50030480185b9e7f",
+    "phyId": 11,
+    "name": "phy-6:0:11",
+    "port": "port-6:0:7",
+    "portWidth": 1,
+    "rate": "12.0 Gbit",
+    "rateGbit": 12,
+    "attachedKind": "drive",
+    "attached": "end_device-6:0:7",
+    "attachedAddress": "0x50030480185b9e4b",
+    "devName": "sdg",
+    "bay": "11",
+    "enabled": true
+   },
+   "hostname": "backups",
+   "ownerName": "expander-6:0",
+   "serial": "ZXA115Y6",
+   "firstSeen": "2026-09-13T21:37:16Z",
+   "lastSeen": "2026-09-27T19:42:09Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x50030480185b9e7f",
+    "phyId": 12,
+    "name": "phy-6:0:12",
+    "port": "port-6:0:0",
+    "portWidth": 8,
+    "rate": "12.0 Gbit",
+    "rateGbit": 12,
+    "attachedKind": "expander",
+    "attached": "expander-6:1",
+    "attachedAddress": "0x500304801ea12dff",
+    "enabled": true
+   },
+   "hostname": "backups",
+   "ownerName": "expander-6:0",
+   "firstSeen": "2026-09-13T21:37:16Z",
+   "lastSeen": "2026-09-27T19:42:09Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x50030480185b9e7f",
+    "phyId": 13,
+    "name": "phy-6:0:13",
+    "port": "port-6:0:0",
+    "portWidth": 8,
+    "rate": "12.0 Gbit",
+    "rateGbit": 12,
+    "attachedKind": "expander",
+    "attached": "expander-6:1",
+    "attachedAddress": "0x500304801ea12dff",
+    "enabled": true
+   },
+   "hostname": "backups",
+   "ownerName": "expander-6:0",
+   "firstSeen": "2026-09-13T21:37:16Z",
+   "lastSeen": "2026-09-27T19:42:09Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x50030480185b9e7f",
+    "phyId": 14,
+    "name": "phy-6:0:14",
+    "port": "port-6:0:0",
+    "portWidth": 8,
+    "rate": "12.0 Gbit",
+    "rateGbit": 12,
+    "attachedKind": "expander",
+    "attached": "expander-6:1",
+    "attachedAddress": "0x500304801ea12dff",
+    "enabled": true
+   },
+   "hostname": "backups",
+   "ownerName": "expander-6:0",
+   "firstSeen": "2026-09-13T21:37:16Z",
+   "lastSeen": "2026-09-27T19:42:09Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x50030480185b9e7f",
+    "phyId": 15,
+    "name": "phy-6:0:15",
+    "port": "port-6:0:0",
+    "portWidth": 8,
+    "rate": "12.0 Gbit",
+    "rateGbit": 12,
+    "attachedKind": "expander",
+    "attached": "expander-6:1",
+    "attachedAddress": "0x500304801ea12dff",
+    "enabled": true
+   },
+   "hostname": "backups",
+   "ownerName": "expander-6:0",
+   "firstSeen": "2026-09-13T21:37:16Z",
+   "lastSeen": "2026-09-27T19:42:09Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x50030480185b9e7f",
+    "phyId": 16,
+    "name": "phy-6:0:16",
+    "port": "port-6:0:0",
+    "portWidth": 8,
+    "rate": "12.0 Gbit",
+    "rateGbit": 12,
+    "attachedKind": "expander",
+    "attached": "expander-6:1",
+    "attachedAddress": "0x500304801ea12dff",
+    "enabled": true
+   },
+   "hostname": "backups",
+   "ownerName": "expander-6:0",
+   "firstSeen": "2026-09-13T21:37:16Z",
+   "lastSeen": "2026-09-27T19:42:09Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x50030480185b9e7f",
+    "phyId": 17,
+    "name": "phy-6:0:17",
+    "port": "port-6:0:0",
+    "portWidth": 8,
+    "rate": "12.0 Gbit",
+    "rateGbit": 12,
+    "attachedKind": "expander",
+    "attached": "expander-6:1",
+    "attachedAddress": "0x500304801ea12dff",
+    "enabled": true
+   },
+   "hostname": "backups",
+   "ownerName": "expander-6:0",
+   "firstSeen": "2026-09-13T21:37:16Z",
+   "lastSeen": "2026-09-27T19:42:09Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x50030480185b9e7f",
+    "phyId": 18,
+    "name": "phy-6:0:18",
+    "port": "port-6:0:0",
+    "portWidth": 8,
+    "rate": "12.0 Gbit",
+    "rateGbit": 12,
+    "attachedKind": "expander",
+    "attached": "expander-6:1",
+    "attachedAddress": "0x500304801ea12dff",
+    "enabled": true
+   },
+   "hostname": "backups",
+   "ownerName": "expander-6:0",
+   "firstSeen": "2026-09-13T21:37:16Z",
+   "lastSeen": "2026-09-27T19:42:09Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x50030480185b9e7f",
+    "phyId": 19,
+    "name": "phy-6:0:19",
+    "port": "port-6:0:0",
+    "portWidth": 8,
+    "rate": "12.0 Gbit",
+    "rateGbit": 12,
+    "attachedKind": "expander",
+    "attached": "expander-6:1",
+    "attachedAddress": "0x500304801ea12dff",
+    "enabled": true
+   },
+   "hostname": "backups",
+   "ownerName": "expander-6:0",
+   "firstSeen": "2026-09-13T21:37:16Z",
+   "lastSeen": "2026-09-27T19:42:09Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x50030480185b9e7f",
+    "phyId": 20,
+    "name": "phy-6:0:20",
+    "rate": "12.0 Gbit",
+    "rateGbit": 12,
+    "attachedKind": "upstream",
+    "enabled": true,
+    "invalidDword": "63",
+    "disparityError": "9",
+    "lossDwordSync": "12"
+   },
+   "hostname": "backups",
+   "ownerName": "expander-6:0",
+   "firstSeen": "2026-09-13T21:37:16Z",
+   "lastSeen": "2026-09-27T19:42:09Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x50030480185b9e7f",
+    "phyId": 21,
+    "name": "phy-6:0:21",
+    "rate": "12.0 Gbit",
+    "rateGbit": 12,
+    "attachedKind": "upstream",
+    "enabled": true,
+    "invalidDword": "63",
+    "disparityError": "7",
+    "lossDwordSync": "12"
+   },
+   "hostname": "backups",
+   "ownerName": "expander-6:0",
+   "firstSeen": "2026-09-13T21:37:16Z",
+   "lastSeen": "2026-09-27T19:42:09Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x50030480185b9e7f",
+    "phyId": 22,
+    "name": "phy-6:0:22",
+    "rate": "12.0 Gbit",
+    "rateGbit": 12,
+    "attachedKind": "upstream",
+    "enabled": true,
+    "invalidDword": "61",
+    "disparityError": "5",
+    "lossDwordSync": "12"
+   },
+   "hostname": "backups",
+   "ownerName": "expander-6:0",
+   "firstSeen": "2026-09-13T21:37:16Z",
+   "lastSeen": "2026-09-27T19:42:09Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x50030480185b9e7f",
+    "phyId": 23,
+    "name": "phy-6:0:23",
+    "rate": "12.0 Gbit",
+    "rateGbit": 12,
+    "attachedKind": "upstream",
+    "enabled": true,
+    "invalidDword": "60",
+    "disparityError": "7",
+    "lossDwordSync": "12"
+   },
+   "hostname": "backups",
+   "ownerName": "expander-6:0",
+   "firstSeen": "2026-09-13T21:37:16Z",
+   "lastSeen": "2026-09-27T19:42:09Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x50030480185b9e7f",
+    "phyId": 24,
+    "name": "phy-6:0:24",
+    "rate": "Unknown",
+    "enabled": true
+   },
+   "hostname": "backups",
+   "ownerName": "expander-6:0",
+   "firstSeen": "2026-09-13T21:37:16Z",
+   "lastSeen": "2026-09-27T19:42:09Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x50030480185b9e7f",
+    "phyId": 25,
+    "name": "phy-6:0:25",
+    "rate": "Unknown",
+    "enabled": true
+   },
+   "hostname": "backups",
+   "ownerName": "expander-6:0",
+   "firstSeen": "2026-09-13T21:37:16Z",
+   "lastSeen": "2026-09-27T19:42:09Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x50030480185b9e7f",
+    "phyId": 26,
+    "name": "phy-6:0:26",
+    "rate": "Unknown",
+    "enabled": true
+   },
+   "hostname": "backups",
+   "ownerName": "expander-6:0",
+   "firstSeen": "2026-09-13T21:37:16Z",
+   "lastSeen": "2026-09-27T19:42:09Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x50030480185b9e7f",
+    "phyId": 27,
+    "name": "phy-6:0:27",
+    "rate": "Unknown",
+    "enabled": true
+   },
+   "hostname": "backups",
+   "ownerName": "expander-6:0",
+   "firstSeen": "2026-09-13T21:37:16Z",
+   "lastSeen": "2026-09-27T19:42:09Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x50030480185b9e7f",
+    "phyId": 28,
+    "name": "phy-6:0:28",
+    "rate": "Unknown",
+    "enabled": true
+   },
+   "hostname": "backups",
+   "ownerName": "expander-6:0",
+   "firstSeen": "2026-09-13T21:37:16Z",
+   "lastSeen": "2026-09-27T19:42:09Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x50030480185b9e7f",
+    "phyId": 29,
+    "name": "phy-6:0:29",
+    "rate": "Unknown",
+    "enabled": true
+   },
+   "hostname": "backups",
+   "ownerName": "expander-6:0",
+   "firstSeen": "2026-09-13T21:37:16Z",
+   "lastSeen": "2026-09-27T19:42:09Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x50030480185b9e7f",
+    "phyId": 30,
+    "name": "phy-6:0:30",
+    "rate": "Unknown",
+    "enabled": true
+   },
+   "hostname": "backups",
+   "ownerName": "expander-6:0",
+   "firstSeen": "2026-09-13T21:37:16Z",
+   "lastSeen": "2026-09-27T19:42:09Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x50030480185b9e7f",
+    "phyId": 31,
+    "name": "phy-6:0:31",
+    "port": "port-6:0:8",
+    "portWidth": 1,
+    "rate": "12.0 Gbit",
+    "rateGbit": 12,
+    "attachedKind": "drive",
+    "attached": "end_device-6:0:8",
+    "attachedAddress": "0x50030480185b9e5f",
+    "devName": "sdh",
+    "bay": "15",
+    "enabled": true
+   },
+   "hostname": "backups",
+   "ownerName": "expander-6:0",
+   "serial": "ZXA11LGT",
+   "firstSeen": "2026-09-13T21:37:16Z",
+   "lastSeen": "2026-09-27T19:42:09Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x50030480185b9e7f",
+    "phyId": 32,
+    "name": "phy-6:0:32",
+    "port": "port-6:0:9",
+    "portWidth": 1,
+    "rate": "12.0 Gbit",
+    "rateGbit": 12,
+    "attachedKind": "drive",
+    "attached": "end_device-6:0:9",
+    "attachedAddress": "0x50030480185b9e60",
+    "devName": "sdi",
+    "bay": "16",
+    "enabled": true
+   },
+   "hostname": "backups",
+   "ownerName": "expander-6:0",
+   "serial": "ZXA0GA9D",
+   "firstSeen": "2026-09-13T21:37:16Z",
+   "lastSeen": "2026-09-27T19:42:09Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x50030480185b9e7f",
+    "phyId": 33,
+    "name": "phy-6:0:33",
+    "port": "port-6:0:10",
+    "portWidth": 1,
+    "rate": "12.0 Gbit",
+    "rateGbit": 12,
+    "attachedKind": "drive",
+    "attached": "end_device-6:0:10",
+    "attachedAddress": "0x50030480185b9e61",
+    "devName": "sdj",
+    "bay": "17",
+    "enabled": true
+   },
+   "hostname": "backups",
+   "ownerName": "expander-6:0",
+   "serial": "ZXA07M8F",
+   "firstSeen": "2026-09-13T21:37:16Z",
+   "lastSeen": "2026-09-27T19:42:09Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x50030480185b9e7f",
+    "phyId": 34,
+    "name": "phy-6:0:34",
+    "rate": "Unknown",
+    "enabled": true
+   },
+   "hostname": "backups",
+   "ownerName": "expander-6:0",
+   "firstSeen": "2026-09-13T21:37:16Z",
+   "lastSeen": "2026-09-27T19:42:09Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x50030480185b9e7f",
+    "phyId": 35,
+    "name": "phy-6:0:35",
+    "rate": "Unknown",
+    "enabled": true
+   },
+   "hostname": "backups",
+   "ownerName": "expander-6:0",
+   "firstSeen": "2026-09-13T21:37:16Z",
+   "lastSeen": "2026-09-27T19:42:09Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x50030480185b9e7f",
+    "phyId": 36,
+    "name": "phy-6:0:36",
+    "rate": "Unknown",
+    "enabled": true
+   },
+   "hostname": "backups",
+   "ownerName": "expander-6:0",
+   "firstSeen": "2026-09-13T21:37:16Z",
+   "lastSeen": "2026-09-27T19:42:09Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x50030480185b9e7f",
+    "phyId": 37,
+    "name": "phy-6:0:37",
+    "port": "port-6:0:11",
+    "portWidth": 1,
+    "rate": "12.0 Gbit",
+    "rateGbit": 12,
+    "attachedKind": "drive",
+    "attached": "end_device-6:0:11",
+    "attachedAddress": "0x50030480185b9e65",
+    "devName": "sdk",
+    "bay": "21",
+    "enabled": true
+   },
+   "hostname": "backups",
+   "ownerName": "expander-6:0",
+   "serial": "ZXA10QBK",
+   "firstSeen": "2026-09-13T21:37:16Z",
+   "lastSeen": "2026-09-27T19:42:09Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x50030480185b9e7f",
+    "phyId": 38,
+    "name": "phy-6:0:38",
+    "port": "port-6:0:12",
+    "portWidth": 1,
+    "rate": "12.0 Gbit",
+    "rateGbit": 12,
+    "attachedKind": "drive",
+    "attached": "end_device-6:0:12",
+    "attachedAddress": "0x50030480185b9e66",
+    "devName": "sdl",
+    "bay": "22",
+    "enabled": true
+   },
+   "hostname": "backups",
+   "ownerName": "expander-6:0",
+   "serial": "ZXA0XM4R",
+   "firstSeen": "2026-09-13T21:37:16Z",
+   "lastSeen": "2026-09-27T19:42:09Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x50030480185b9e7f",
+    "phyId": 39,
+    "name": "phy-6:0:39",
+    "port": "port-6:0:13",
+    "portWidth": 1,
+    "rate": "12.0 Gbit",
+    "rateGbit": 12,
+    "attachedKind": "drive",
+    "attached": "end_device-6:0:13",
+    "attachedAddress": "0x50030480185b9e67",
+    "devName": "sdm",
+    "bay": "23",
+    "enabled": true
+   },
+   "hostname": "backups",
+   "ownerName": "expander-6:0",
+   "serial": "ZXA0YB6H",
+   "firstSeen": "2026-09-13T21:37:16Z",
+   "lastSeen": "2026-09-27T19:42:09Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x50030480185b9e7f",
+    "phyId": 40,
+    "name": "phy-6:0:40",
+    "port": "port-6:0:14",
+    "portWidth": 1,
+    "rate": "12.0 Gbit",
+    "rateGbit": 12,
+    "attachedKind": "device",
+    "attached": "end_device-6:0:14",
+    "attachedAddress": "0x50030480185b9e7d",
+    "bay": "24",
+    "enabled": true
+   },
+   "hostname": "backups",
+   "ownerName": "expander-6:0",
+   "firstSeen": "2026-09-13T21:37:16Z",
+   "lastSeen": "2026-09-27T19:42:09Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x50030480185b9e7f",
+    "phyId": 41,
+    "name": "phy-6:0:41",
+    "rate": "Unknown",
+    "enabled": true
+   },
+   "hostname": "backups",
+   "ownerName": "expander-6:0",
+   "firstSeen": "2026-09-13T21:37:16Z",
+   "lastSeen": "2026-09-27T19:42:09Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x50030480185b9e7f",
+    "phyId": 42,
+    "name": "phy-6:0:42",
+    "rate": "Unknown",
+    "enabled": true
+   },
+   "hostname": "backups",
+   "ownerName": "expander-6:0",
+   "firstSeen": "2026-09-13T21:37:16Z",
+   "lastSeen": "2026-09-27T19:42:09Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x50030480185b9e7f",
+    "phyId": 43,
+    "name": "phy-6:0:43",
+    "rate": "Unknown",
+    "enabled": true
+   },
+   "hostname": "backups",
+   "ownerName": "expander-6:0",
+   "firstSeen": "2026-09-13T21:37:16Z",
+   "lastSeen": "2026-09-27T19:42:09Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x50030480185b9e7f",
+    "phyId": 44,
+    "name": "phy-6:0:44",
+    "rate": "Unknown",
+    "enabled": true
+   },
+   "hostname": "backups",
+   "ownerName": "expander-6:0",
+   "firstSeen": "2026-09-13T21:37:16Z",
+   "lastSeen": "2026-09-27T19:42:09Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x50030480185b9e7f",
+    "phyId": 45,
+    "name": "phy-6:0:45",
+    "rate": "Unknown",
+    "enabled": true
+   },
+   "hostname": "backups",
+   "ownerName": "expander-6:0",
+   "firstSeen": "2026-09-13T21:37:16Z",
+   "lastSeen": "2026-09-27T19:42:09Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x50030480185b9e7f",
+    "phyId": 46,
+    "name": "phy-6:0:46",
+    "rate": "Unknown",
+    "enabled": true
+   },
+   "hostname": "backups",
+   "ownerName": "expander-6:0",
+   "firstSeen": "2026-09-13T21:37:16Z",
+   "lastSeen": "2026-09-27T19:42:09Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x50030480185b9e7f",
+    "phyId": 47,
+    "name": "phy-6:0:47",
+    "rate": "Unknown",
+    "enabled": true
+   },
+   "hostname": "backups",
+   "ownerName": "expander-6:0",
+   "firstSeen": "2026-09-13T21:37:16Z",
+   "lastSeen": "2026-09-27T19:42:09Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x50030480185b9e7f",
+    "phyId": 48,
+    "name": "phy-6:0:48",
+    "rate": "Unknown",
+    "enabled": true
+   },
+   "hostname": "backups",
+   "ownerName": "expander-6:0",
+   "firstSeen": "2026-09-13T21:37:16Z",
+   "lastSeen": "2026-09-27T19:42:09Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x50030480185b9e7f",
+    "phyId": 49,
+    "name": "phy-6:0:49",
+    "rate": "Unknown",
+    "enabled": true
+   },
+   "hostname": "backups",
+   "ownerName": "expander-6:0",
+   "firstSeen": "2026-09-13T21:37:16Z",
+   "lastSeen": "2026-09-27T19:42:09Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x50030480185b9e7f",
+    "phyId": 50,
+    "name": "phy-6:0:50",
+    "rate": "Unknown",
+    "enabled": true
+   },
+   "hostname": "backups",
+   "ownerName": "expander-6:0",
+   "firstSeen": "2026-09-13T21:37:16Z",
+   "lastSeen": "2026-09-27T19:42:09Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x500304801ea12dff",
+    "name": "phy-6:1:0",
+    "rate": "Unknown",
+    "enabled": true
+   },
+   "hostname": "backups",
+   "ownerName": "expander-6:1",
+   "firstSeen": "2026-09-13T21:37:16Z",
+   "lastSeen": "2026-09-27T19:42:09Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x500304801ea12dff",
+    "phyId": 1,
+    "name": "phy-6:1:1",
+    "rate": "Unknown",
+    "enabled": true
+   },
+   "hostname": "backups",
+   "ownerName": "expander-6:1",
+   "firstSeen": "2026-09-13T21:37:16Z",
+   "lastSeen": "2026-09-27T19:42:09Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x500304801ea12dff",
+    "phyId": 2,
+    "name": "phy-6:1:2",
+    "rate": "Unknown",
+    "enabled": true
+   },
+   "hostname": "backups",
+   "ownerName": "expander-6:1",
+   "firstSeen": "2026-09-13T21:37:16Z",
+   "lastSeen": "2026-09-27T19:42:09Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x500304801ea12dff",
+    "phyId": 3,
+    "name": "phy-6:1:3",
+    "rate": "Unknown",
+    "enabled": true
+   },
+   "hostname": "backups",
+   "ownerName": "expander-6:1",
+   "firstSeen": "2026-09-13T21:37:16Z",
+   "lastSeen": "2026-09-27T19:42:09Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x500304801ea12dff",
+    "phyId": 4,
+    "name": "phy-6:1:4",
+    "rate": "Unknown",
+    "enabled": true
+   },
+   "hostname": "backups",
+   "ownerName": "expander-6:1",
+   "firstSeen": "2026-09-13T21:37:16Z",
+   "lastSeen": "2026-09-27T19:42:09Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x500304801ea12dff",
+    "phyId": 5,
+    "name": "phy-6:1:5",
+    "rate": "Unknown",
+    "enabled": true
+   },
+   "hostname": "backups",
+   "ownerName": "expander-6:1",
+   "firstSeen": "2026-09-13T21:37:16Z",
+   "lastSeen": "2026-09-27T19:42:09Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x500304801ea12dff",
+    "phyId": 6,
+    "name": "phy-6:1:6",
+    "rate": "Unknown",
+    "enabled": true
+   },
+   "hostname": "backups",
+   "ownerName": "expander-6:1",
+   "firstSeen": "2026-09-13T21:37:16Z",
+   "lastSeen": "2026-09-27T19:42:09Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x500304801ea12dff",
+    "phyId": 7,
+    "name": "phy-6:1:7",
+    "rate": "Unknown",
+    "enabled": true
+   },
+   "hostname": "backups",
+   "ownerName": "expander-6:1",
+   "firstSeen": "2026-09-13T21:37:16Z",
+   "lastSeen": "2026-09-27T19:42:09Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x500304801ea12dff",
+    "phyId": 8,
+    "name": "phy-6:1:8",
+    "rate": "Unknown",
+    "enabled": true
+   },
+   "hostname": "backups",
+   "ownerName": "expander-6:1",
+   "firstSeen": "2026-09-13T21:37:16Z",
+   "lastSeen": "2026-09-27T19:42:09Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x500304801ea12dff",
+    "phyId": 9,
+    "name": "phy-6:1:9",
+    "rate": "Unknown",
+    "enabled": true
+   },
+   "hostname": "backups",
+   "ownerName": "expander-6:1",
+   "firstSeen": "2026-09-13T21:37:16Z",
+   "lastSeen": "2026-09-27T19:42:09Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x500304801ea12dff",
+    "phyId": 10,
+    "name": "phy-6:1:10",
+    "rate": "Unknown",
+    "enabled": true
+   },
+   "hostname": "backups",
+   "ownerName": "expander-6:1",
+   "firstSeen": "2026-09-13T21:37:16Z",
+   "lastSeen": "2026-09-27T19:42:09Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x500304801ea12dff",
+    "phyId": 11,
+    "name": "phy-6:1:11",
+    "rate": "Unknown",
+    "enabled": true
+   },
+   "hostname": "backups",
+   "ownerName": "expander-6:1",
+   "firstSeen": "2026-09-13T21:37:16Z",
+   "lastSeen": "2026-09-27T19:42:09Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x500304801ea12dff",
+    "phyId": 12,
+    "name": "phy-6:1:12",
+    "rate": "12.0 Gbit",
+    "rateGbit": 12,
+    "attachedKind": "upstream",
+    "enabled": true
+   },
+   "hostname": "backups",
+   "ownerName": "expander-6:1",
+   "firstSeen": "2026-09-13T21:37:16Z",
+   "lastSeen": "2026-09-27T19:42:09Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x500304801ea12dff",
+    "phyId": 13,
+    "name": "phy-6:1:13",
+    "rate": "12.0 Gbit",
+    "rateGbit": 12,
+    "attachedKind": "upstream",
+    "enabled": true
+   },
+   "hostname": "backups",
+   "ownerName": "expander-6:1",
+   "firstSeen": "2026-09-13T21:37:16Z",
+   "lastSeen": "2026-09-27T19:42:09Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x500304801ea12dff",
+    "phyId": 14,
+    "name": "phy-6:1:14",
+    "rate": "12.0 Gbit",
+    "rateGbit": 12,
+    "attachedKind": "upstream",
+    "enabled": true
+   },
+   "hostname": "backups",
+   "ownerName": "expander-6:1",
+   "firstSeen": "2026-09-13T21:37:16Z",
+   "lastSeen": "2026-09-27T19:42:09Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x500304801ea12dff",
+    "phyId": 15,
+    "name": "phy-6:1:15",
+    "rate": "12.0 Gbit",
+    "rateGbit": 12,
+    "attachedKind": "upstream",
+    "enabled": true
+   },
+   "hostname": "backups",
+   "ownerName": "expander-6:1",
+   "firstSeen": "2026-09-13T21:37:16Z",
+   "lastSeen": "2026-09-27T19:42:09Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x500304801ea12dff",
+    "phyId": 16,
+    "name": "phy-6:1:16",
+    "rate": "12.0 Gbit",
+    "rateGbit": 12,
+    "attachedKind": "upstream",
+    "enabled": true
+   },
+   "hostname": "backups",
+   "ownerName": "expander-6:1",
+   "firstSeen": "2026-09-13T21:37:16Z",
+   "lastSeen": "2026-09-27T19:42:09Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x500304801ea12dff",
+    "phyId": 17,
+    "name": "phy-6:1:17",
+    "rate": "12.0 Gbit",
+    "rateGbit": 12,
+    "attachedKind": "upstream",
+    "enabled": true
+   },
+   "hostname": "backups",
+   "ownerName": "expander-6:1",
+   "firstSeen": "2026-09-13T21:37:16Z",
+   "lastSeen": "2026-09-27T19:42:09Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x500304801ea12dff",
+    "phyId": 18,
+    "name": "phy-6:1:18",
+    "rate": "12.0 Gbit",
+    "rateGbit": 12,
+    "attachedKind": "upstream",
+    "enabled": true
+   },
+   "hostname": "backups",
+   "ownerName": "expander-6:1",
+   "firstSeen": "2026-09-13T21:37:16Z",
+   "lastSeen": "2026-09-27T19:42:09Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x500304801ea12dff",
+    "phyId": 19,
+    "name": "phy-6:1:19",
+    "rate": "12.0 Gbit",
+    "rateGbit": 12,
+    "attachedKind": "upstream",
+    "enabled": true
+   },
+   "hostname": "backups",
+   "ownerName": "expander-6:1",
+   "firstSeen": "2026-09-13T21:37:16Z",
+   "lastSeen": "2026-09-27T19:42:09Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x500304801ea12dff",
+    "phyId": 20,
+    "name": "phy-6:1:20",
+    "rate": "12.0 Gbit",
+    "rateGbit": 12,
+    "attachedKind": "upstream",
+    "enabled": true,
+    "invalidDword": "189",
+    "disparityError": "87",
+    "lossDwordSync": "12"
+   },
+   "hostname": "backups",
+   "ownerName": "expander-6:1",
+   "firstSeen": "2026-09-13T21:37:16Z",
+   "lastSeen": "2026-09-27T19:42:09Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x500304801ea12dff",
+    "phyId": 21,
+    "name": "phy-6:1:21",
+    "rate": "12.0 Gbit",
+    "rateGbit": 12,
+    "attachedKind": "upstream",
+    "enabled": true,
+    "invalidDword": "191",
+    "disparityError": "75",
+    "lossDwordSync": "12"
+   },
+   "hostname": "backups",
+   "ownerName": "expander-6:1",
+   "firstSeen": "2026-09-13T21:37:16Z",
+   "lastSeen": "2026-09-27T19:42:09Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x500304801ea12dff",
+    "phyId": 22,
+    "name": "phy-6:1:22",
+    "rate": "12.0 Gbit",
+    "rateGbit": 12,
+    "attachedKind": "upstream",
+    "enabled": true,
+    "invalidDword": "182",
+    "disparityError": "78",
+    "lossDwordSync": "12"
+   },
+   "hostname": "backups",
+   "ownerName": "expander-6:1",
+   "firstSeen": "2026-09-13T21:37:16Z",
+   "lastSeen": "2026-09-27T19:42:09Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x500304801ea12dff",
+    "phyId": 23,
+    "name": "phy-6:1:23",
+    "rate": "12.0 Gbit",
+    "rateGbit": 12,
+    "attachedKind": "upstream",
+    "enabled": true,
+    "invalidDword": "121",
+    "disparityError": "40",
+    "lossDwordSync": "12"
+   },
+   "hostname": "backups",
+   "ownerName": "expander-6:1",
+   "firstSeen": "2026-09-13T21:37:16Z",
+   "lastSeen": "2026-09-27T19:42:09Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x500304801ea12dff",
+    "phyId": 24,
+    "name": "phy-6:1:24",
+    "rate": "Unknown",
+    "enabled": true
+   },
+   "hostname": "backups",
+   "ownerName": "expander-6:1",
+   "firstSeen": "2026-09-13T21:37:16Z",
+   "lastSeen": "2026-09-27T19:42:09Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x500304801ea12dff",
+    "phyId": 25,
+    "name": "phy-6:1:25",
+    "rate": "Unknown",
+    "enabled": true
+   },
+   "hostname": "backups",
+   "ownerName": "expander-6:1",
+   "firstSeen": "2026-09-13T21:37:16Z",
+   "lastSeen": "2026-09-27T19:42:09Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x500304801ea12dff",
+    "phyId": 26,
+    "name": "phy-6:1:26",
+    "rate": "Unknown",
+    "enabled": true
+   },
+   "hostname": "backups",
+   "ownerName": "expander-6:1",
+   "firstSeen": "2026-09-13T21:37:16Z",
+   "lastSeen": "2026-09-27T19:42:09Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x500304801ea12dff",
+    "phyId": 27,
+    "name": "phy-6:1:27",
+    "rate": "Unknown",
+    "enabled": true
+   },
+   "hostname": "backups",
+   "ownerName": "expander-6:1",
+   "firstSeen": "2026-09-13T21:37:16Z",
+   "lastSeen": "2026-09-27T19:42:09Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x500304801ea12dff",
+    "phyId": 28,
+    "name": "phy-6:1:28",
+    "port": "port-6:1:0",
+    "portWidth": 1,
+    "rate": "12.0 Gbit",
+    "rateGbit": 12,
+    "attachedKind": "device",
+    "attached": "end_device-6:1:0",
+    "attachedAddress": "0x500304801ea12dfd",
+    "bay": "12",
+    "enabled": true
+   },
+   "hostname": "backups",
+   "ownerName": "expander-6:1",
+   "firstSeen": "2026-09-13T21:37:16Z",
+   "lastSeen": "2026-09-27T19:42:09Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x500304801ea12dff",
+    "phyId": 29,
+    "name": "phy-6:1:29",
+    "rate": "Unknown",
+    "enabled": true
+   },
+   "hostname": "backups",
+   "ownerName": "expander-6:1",
+   "firstSeen": "2026-09-13T21:37:16Z",
+   "lastSeen": "2026-09-27T19:42:09Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x500304801ea12dff",
+    "phyId": 30,
+    "name": "phy-6:1:30",
+    "rate": "Unknown",
+    "enabled": true
+   },
+   "hostname": "backups",
+   "ownerName": "expander-6:1",
+   "firstSeen": "2026-09-13T21:37:16Z",
+   "lastSeen": "2026-09-27T19:42:09Z"
+  }
+ ]
+}

@@ -1,0 +1,54 @@
+{
+ "drive": {
+  "driveId": "108",
+  "wwn": "0x5000c500e8c1b72b",
+  "model": "ST24000DM001-3Y7103",
+  "serial": "ZXA0V75X",
+  "sizeBytes": "24000277250048",
+  "bus": "BUS_SATA",
+  "status": "ok",
+  "firstSeen": "2026-09-13T01:44:31Z",
+  "lastSeen": "2026-09-27T19:42:09Z",
+  "current": {
+   "hostname": "backups",
+   "enclosure": "0x50030480185b9e7f",
+   "bay": "8",
+   "devName": "sde",
+   "uses": [
+    "zfs > backups 14184269030502626926 > raidz3 12638130268554546894 > disk 6583091953762439930"
+   ],
+   "firstSeen": "2026-09-13T01:44:31Z",
+   "lastSeen": "2026-09-27T19:42:09Z",
+   "enclosureVia": "expander-6:0",
+   "enclosureName": "backups-front"
+  },
+  "memberState": "ONLINE"
+ },
+ "placements": [
+  {
+   "hostname": "backups",
+   "enclosure": "0x50030480185b9e7f",
+   "bay": "8",
+   "devName": "sde",
+   "uses": [
+    "zfs > backups 14184269030502626926 > raidz3 12638130268554546894 > disk 6583091953762439930"
+   ],
+   "firstSeen": "2026-09-13T01:44:31Z",
+   "lastSeen": "2026-09-27T19:42:09Z",
+   "enclosureVia": "expander-6:0",
+   "enclosureName": "backups-front"
+  }
+ ],
+ "events": [
+  {
+   "eventId": "369",
+   "ts": "2026-09-13T01:44:31Z",
+   "kind": "first_seen",
+   "serial": "ZXA0V75X",
+   "wwn": "0x5000c500e8c1b72b",
+   "hostname": "backups",
+   "detail": "{\"bay\":\"8\",\"dev_name\":\"sde\",\"expander\":\"expander-6:0\",\"expander_dev\":\"expander-6:0\",\"uses\":[\"zfs \\u003e backups 14184269030502626926 \\u003e raidz3 12638130268554546894 \\u003e disk 6583091953762439930\"]}",
+   "source": "snapshot:4"
+  }
+ ]
+}

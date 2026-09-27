@@ -1,0 +1,67 @@
+{
+ "rows": [
+  {
+   "hostname": "server1",
+   "serial": "0029030000073",
+   "model": "NT-512_2242",
+   "devName": "sda",
+   "reads": "7857",
+   "writes": "2290325",
+   "rAwaitMs": 1.8010691103474608,
+   "wAwaitMs": 18.14589850785369,
+   "util": 0.12548653774143284,
+   "groupRAwaitMs": 1.8010691103474608,
+   "groupWAwaitMs": 18.14589850785369,
+   "groupUtil": 0.12548653774143284,
+   "groupSize": 1
+  },
+  {
+   "group": "zfs > data1 10826709420671084023",
+   "hostname": "server1",
+   "serial": "7FE00711107183369898",
+   "model": "Sabrent Rocket 4.0 1TB",
+   "devName": "nvme2n1",
+   "reads": "343",
+   "writes": "7889012",
+   "rAwaitMs": 0.577259475218659,
+   "wAwaitMs": 0.07916694764819726,
+   "util": 0.002397562419220409,
+   "groupRAwaitMs": 0.577259475218659,
+   "groupWAwaitMs": 0.07916694764819726,
+   "groupUtil": 0.002397562419220409,
+   "groupSize": 1
+  },
+  {
+   "group": "zfs > data2 11105532281327824834",
+   "hostname": "server1",
+   "serial": "S7U5NJ0Y231177H",
+   "model": "Samsung SSD 990 EVO Plus 1TB",
+   "devName": "nvme1n1",
+   "groupSize": 1
+  },
+  {
+   "group": "zfs > data3 2616664540848791033",
+   "hostname": "server1",
+   "serial": "S5H7NS0NC15221V",
+   "model": "Samsung SSD 970 EVO 500GB",
+   "devName": "nvme3n1",
+   "groupSize": 1
+  },
+  {
+   "group": "zfs > data4 10368888190417419184",
+   "hostname": "server1",
+   "serial": "S7U5NJ0Y114895R",
+   "model": "Samsung SSD 990 EVO Plus 1TB",
+   "devName": "nvme0n1",
+   "reads": "182",
+   "writes": "7185608",
+   "rAwaitMs": 0.2802197802197802,
+   "wAwaitMs": 0.3496690885447689,
+   "util": 0.011304625122301811,
+   "groupRAwaitMs": 0.2802197802197802,
+   "groupWAwaitMs": 0.3496690885447689,
+   "groupUtil": 0.011304625122301811,
+   "groupSize": 1
+  }
+ ]
+}

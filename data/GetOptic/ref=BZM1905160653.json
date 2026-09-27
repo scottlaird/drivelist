@@ -1,0 +1,166 @@
+{
+ "row": {
+  "optic": {
+   "port": "swp48",
+   "ports": [
+    "swp48"
+   ],
+   "form": "SFP",
+   "identifier": "0x03 (SFP)",
+   "kind": "optical",
+   "vendor": "OEM",
+   "oui": "00:00:00",
+   "part": "SFP-10G-SR",
+   "rev": "B",
+   "serial": "BZM1905160653",
+   "dateCode": "190517",
+   "compliance": "10G Ethernet: 10G Base-SR",
+   "connector": "LC",
+   "wavelengthNm": 850,
+   "link": "up",
+   "diagnostics": true,
+   "tempC": 38,
+   "voltageV": 3.272,
+   "lanes": [
+    {
+     "lane": 1,
+     "biasMa": 5.94,
+     "txMw": 0.6172,
+     "rxMw": 0.4978
+    }
+   ],
+   "thresholds": {
+    "bias_high_alarm": 15,
+    "bias_high_warning": 12,
+    "bias_low_alarm": 1,
+    "bias_low_warning": 2,
+    "rx_high_alarm": 1.2589,
+    "rx_high_warning": 1.122,
+    "rx_low_alarm": 0.0631,
+    "rx_low_warning": 0.1,
+    "temp_high_alarm": 73,
+    "temp_high_warning": 70,
+    "temp_low_alarm": -3,
+    "temp_low_warning": 0,
+    "tx_high_alarm": 1.7783,
+    "tx_high_warning": 1.122,
+    "tx_low_alarm": 0.1585,
+    "tx_low_warning": 0.2512,
+    "voltage_high_alarm": 3.6,
+    "voltage_high_warning": 3.5,
+    "voltage_low_alarm": 3,
+    "voltage_low_warning": 3.1
+   }
+  },
+  "status": "ok",
+  "hostname": "switch2",
+  "present": true,
+  "firstSeen": "2026-09-27T15:28:08Z",
+  "lastSeen": "2026-09-27T19:43:36Z",
+  "sampledAt": "2026-09-27T19:43:36Z"
+ },
+ "placements": [
+  {
+   "hostname": "switch2",
+   "port": "swp48",
+   "ports": [
+    "swp48"
+   ],
+   "firstSeen": "2026-09-27T15:28:08Z",
+   "lastSeen": "2026-09-27T19:43:36Z"
+  }
+ ],
+ "samples": [
+  {
+   "ts": "2026-09-27T19:43:36Z",
+   "hostname": "switch2",
+   "port": "swp48",
+   "tempC": 38,
+   "voltageV": 3.272,
+   "lanes": [
+    {
+     "lane": 1,
+     "biasMa": 5.94,
+     "txMw": 0.6172,
+     "rxMw": 0.4978
+    }
+   ],
+   "link": "up"
+  },
+  {
+   "ts": "2026-09-27T18:58:31Z",
+   "hostname": "switch2",
+   "port": "swp48",
+   "tempC": 37,
+   "voltageV": 3.272,
+   "lanes": [
+    {
+     "lane": 1,
+     "biasMa": 5.94,
+     "txMw": 0.6172,
+     "rxMw": 0.489
+    }
+   ],
+   "link": "up"
+  },
+  {
+   "ts": "2026-09-27T17:58:25Z",
+   "hostname": "switch2",
+   "port": "swp48",
+   "tempC": 36,
+   "voltageV": 3.274,
+   "lanes": [
+    {
+     "lane": 1,
+     "biasMa": 5.94,
+     "txMw": 0.6172,
+     "rxMw": 0.489
+    }
+   ],
+   "link": "up"
+  },
+  {
+   "ts": "2026-09-27T16:58:18Z",
+   "hostname": "switch2",
+   "port": "swp48",
+   "tempC": 35,
+   "voltageV": 3.272,
+   "lanes": [
+    {
+     "lane": 1,
+     "biasMa": 5.94,
+     "txMw": 0.6172,
+     "rxMw": 0.4925
+    }
+   ],
+   "link": "up"
+  },
+  {
+   "ts": "2026-09-27T15:58:12Z",
+   "hostname": "switch2",
+   "port": "swp48",
+   "tempC": 35,
+   "voltageV": 3.274,
+   "lanes": [
+    {
+     "lane": 1,
+     "biasMa": 5.94,
+     "txMw": 0.6172,
+     "rxMw": 0.4943
+    }
+   ],
+   "link": "up"
+  }
+ ],
+ "events": [
+  {
+   "eventId": "926",
+   "ts": "2026-09-27T15:28:08Z",
+   "kind": "optic_first_seen",
+   "hostname": "switch2",
+   "detail": "{\"form\":\"SFP\",\"part\":\"SFP-10G-SR\",\"port\":\"swp48\",\"serial\":\"BZM1905160653\",\"vendor\":\"OEM\"}",
+   "source": "report",
+   "opticSerial": "BZM1905160653"
+  }
+ ]
+}

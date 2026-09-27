@@ -1,0 +1,33 @@
+{
+ "drive": {
+  "driveId": "19",
+  "wwn": "0x5000039b08ca908c",
+  "vendor": "ATA",
+  "model": "TOSHIBA_HDWG180",
+  "serial": "7160A2TZFBEG",
+  "sizeBytes": "8001563222016",
+  "bus": "BUS_SAS",
+  "status": "ok",
+  "firstSeen": "2026-09-13T01:41:39Z",
+  "lastSeen": "2026-09-27T19:41:38Z",
+  "current": {
+   "hostname": "nas",
+   "enclosure": "0x5000ccab020094ff",
+   "bay": "42",
+   "devName": "sdao",
+   "uses": [
+    "zfs > space 5925914041408872576 > raidz2 16950899211129714203 > disk 12228003088763601407"
+   ],
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "enclosureVia": "expander-11:0",
+   "enclosureName": "nas-hgst-u60-1",
+   "bayLabel": "42"
+  },
+  "memberState": "ONLINE"
+ },
+ "keys": [
+  "serial:TOSHIBA_HDWG180/7160A2TZFBEG",
+  "wwn:0x5000039b08ca908c"
+ ]
+}

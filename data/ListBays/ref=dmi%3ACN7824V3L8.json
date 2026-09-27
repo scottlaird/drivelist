@@ -1,0 +1,95 @@
+{
+ "enclosure": {
+  "enclosure": "dmi:CN7824V3L8",
+  "hostname": "server6",
+  "via": "pci",
+  "drives": 5,
+  "firstSeen": "2026-09-14T06:48:30Z",
+  "lastSeen": "2026-09-27T19:44:13Z",
+  "product": "HP ProLiant m510 Server Cartridge",
+  "bays": 5,
+  "profile": "HPE ProLiant m510 Moonshot cartridge: 2 x M.2 NVMe and 1 x M.2 SATA on board, plus a 2 x M.2 carrier card",
+  "board": "ProLiant m510 Server Cartridge"
+ },
+ "bays": [
+  {
+   "label": "M.2 1",
+   "ids": [
+    "pci:1"
+   ],
+   "declared": true,
+   "present": true,
+   "devName": "nvme2n1",
+   "serial": "7D620718193D00008557",
+   "model": "Sabrent Rocket 4.0 Plus",
+   "status": "ok",
+   "uses": [
+    "zfs > data4 12071317661975938558 > disk 1380984678337085650"
+   ]
+  },
+  {
+   "label": "M.2 2",
+   "ids": [
+    "pci:2"
+   ],
+   "declared": true,
+   "present": true,
+   "devName": "nvme3n1",
+   "serial": "S7U5NJ0Y114910Z",
+   "model": "Samsung SSD 990 EVO Plus 1TB",
+   "status": "ok",
+   "uses": [
+    "zfs > data3 4886974060788330011 > disk 4276253004973604622"
+   ]
+  },
+  {
+   "label": "M.2 SATA",
+   "ids": [
+    "ata:pci-0000:00:1f.2-ata-5"
+   ],
+   "declared": true,
+   "present": true,
+   "devName": "sda",
+   "serial": "0029030000044",
+   "model": "NT-512_2242",
+   "status": "ok",
+   "uses": [
+    "mount > /",
+    "mount > /boot/efi"
+   ]
+  },
+  {
+   "label": "card port 0",
+   "ids": [
+    "pci:PCI-E Slot 6/00.0"
+   ],
+   "declared": true,
+   "present": true,
+   "devName": "nvme0n1",
+   "serial": "S7U5NJ0Y225528K",
+   "model": "Samsung SSD 990 EVO Plus 1TB",
+   "status": "ok",
+   "uses": [
+    "zfs > data1 8745015803076599719 > disk 6438636062170316550"
+   ]
+  },
+  {
+   "label": "card port 8",
+   "ids": [
+    "pci:PCI-E Slot 6/08.0"
+   ],
+   "declared": true,
+   "present": true,
+   "devName": "nvme1n1",
+   "serial": "S7U5NJ0Y220165V",
+   "model": "Samsung SSD 990 EVO Plus 1TB",
+   "status": "ok",
+   "uses": [
+    "zfs > data2 12955032411672799560 > disk 6309270608912369856"
+   ]
+  }
+ ],
+ "rows": 1,
+ "columns": 5,
+ "order": "row-major"
+}

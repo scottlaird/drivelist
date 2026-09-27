@@ -1,0 +1,1666 @@
+{
+ "drive": {
+  "driveId": "107",
+  "wwn": "0x5000c500e8d7e258",
+  "model": "ST24000DM001-3Y7103",
+  "serial": "ZXA0XH4E",
+  "sizeBytes": "24000277250048",
+  "bus": "BUS_SATA",
+  "status": "ok",
+  "firstSeen": "2026-09-13T01:44:31Z",
+  "lastSeen": "2026-09-27T19:42:09Z",
+  "current": {
+   "hostname": "backups",
+   "enclosure": "0x50030480185b9e7f",
+   "bay": "5",
+   "devName": "sdd",
+   "uses": [
+    "zfs > backups 14184269030502626926 > raidz3 12638130268554546894 > disk 11120317111489606304"
+   ],
+   "firstSeen": "2026-09-13T01:44:31Z",
+   "lastSeen": "2026-09-27T19:42:09Z",
+   "enclosureVia": "expander-6:0",
+   "enclosureName": "backups-front"
+  },
+  "memberState": "ONLINE"
+ },
+ "samples": [
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "ts": "2026-09-27T15:11:11Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "6594",
+    "tempC": 32,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "1007465916928",
+    "writeBytes": "2677172626944"
+   },
+   "hostname": "backups",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "ts": "2026-09-27T09:11:10Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "6588",
+    "tempC": 33,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "1007320893952",
+    "writeBytes": "2675571811840"
+   },
+   "hostname": "backups",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "ts": "2026-09-27T03:11:08Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "6582",
+    "tempC": 35,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "1007216912896",
+    "writeBytes": "2673547703808"
+   },
+   "hostname": "backups",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "ts": "2026-09-26T21:11:07Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "6576",
+    "tempC": 34,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "1007212567040",
+    "writeBytes": "2671735842304"
+   },
+   "hostname": "backups",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "ts": "2026-09-26T15:11:06Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "6570",
+    "tempC": 32,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "1007208933888",
+    "writeBytes": "2670313661952"
+   },
+   "hostname": "backups",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "ts": "2026-09-26T09:11:05Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "6564",
+    "tempC": 33,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "1007137470976",
+    "writeBytes": "2668758607360"
+   },
+   "hostname": "backups",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "ts": "2026-09-26T03:11:03Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "6558",
+    "tempC": 32,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "1007011887616",
+    "writeBytes": "2668638602752"
+   },
+   "hostname": "backups",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "ts": "2026-09-25T21:11:01Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "6552",
+    "tempC": 32,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "1007009765888",
+    "writeBytes": "2668505351680"
+   },
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "ts": "2026-09-25T15:10:59Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "6546",
+    "tempC": 33,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "1007009765888",
+    "writeBytes": "2668505351680"
+   },
+   "hostname": "backups",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "ts": "2026-09-25T09:10:58Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "6540",
+    "tempC": 34,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "1007009761792",
+    "writeBytes": "2668505114112"
+   },
+   "hostname": "backups",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "ts": "2026-09-25T04:04:23Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "6535",
+    "tempC": 33,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "1006851618816",
+    "writeBytes": "2668207171072"
+   },
+   "hostname": "backups",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "ts": "2026-09-24T22:04:21Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "6529",
+    "tempC": 33,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "1006849800192",
+    "writeBytes": "2668103333376"
+   },
+   "hostname": "backups",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "ts": "2026-09-24T16:04:20Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "6523",
+    "tempC": 32,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "1006849796096",
+    "writeBytes": "2668103099904"
+   },
+   "hostname": "backups",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "ts": "2026-09-24T12:25:55Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "6520",
+    "tempC": 33,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "1006830478848",
+    "writeBytes": "2668101236224"
+   },
+   "hostname": "backups",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "ts": "2026-09-24T08:36:45Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "6516",
+    "tempC": 32,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "1006662661120",
+    "writeBytes": "2667464160768"
+   },
+   "hostname": "backups",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "ts": "2026-09-24T02:36:43Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "6510",
+    "tempC": 34,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "1006636839936",
+    "writeBytes": "2667460036096"
+   },
+   "hostname": "backups",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "ts": "2026-09-23T20:36:41Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "6504",
+    "tempC": 33,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "1006635136000",
+    "writeBytes": "2667379971584"
+   },
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "ts": "2026-09-23T14:36:39Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "6498",
+    "tempC": 33,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "1006635136000",
+    "writeBytes": "2667379971584"
+   },
+   "hostname": "backups",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "ts": "2026-09-23T08:36:38Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "6492",
+    "tempC": 35,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "1006635136000",
+    "writeBytes": "2667379754496"
+   },
+   "hostname": "backups",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "ts": "2026-09-23T03:50:18Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "6487",
+    "tempC": 34,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "1006504444416",
+    "writeBytes": "2667253900800"
+   },
+   "hostname": "backups",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "ts": "2026-09-22T21:50:16Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "6481",
+    "tempC": 34,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "1006502969856",
+    "writeBytes": "2667183937024"
+   },
+   "hostname": "backups",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "ts": "2026-09-22T15:50:15Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "6475",
+    "tempC": 34,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "1006502965760",
+    "writeBytes": "2667183629824"
+   },
+   "hostname": "backups",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "ts": "2026-09-22T13:15:04Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "6472",
+    "tempC": 35,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "1006430142464",
+    "writeBytes": "2666508285440"
+   },
+   "hostname": "backups",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "ts": "2026-09-22T07:15:03Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "6466",
+    "tempC": 36,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "1006302924800",
+    "writeBytes": "2664350438912"
+   },
+   "hostname": "backups",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "ts": "2026-09-22T01:15:02Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "6460",
+    "tempC": 37,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "1006256582656",
+    "writeBytes": "2662805030400"
+   },
+   "hostname": "backups",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "ts": "2026-09-21T19:15:00Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "6454",
+    "tempC": 36,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "1006241161216",
+    "writeBytes": "2661084849664"
+   },
+   "hostname": "backups",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "ts": "2026-09-21T13:14:59Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "6448",
+    "tempC": 34,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "1006241050624",
+    "writeBytes": "2659153724928"
+   },
+   "hostname": "backups",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "ts": "2026-09-21T09:53:06Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "6445",
+    "tempC": 35,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "1006241005568",
+    "writeBytes": "2638631704064"
+   },
+   "hostname": "backups",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "ts": "2026-09-21T03:53:04Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "6439",
+    "tempC": 34,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "1005998710784",
+    "writeBytes": "2638279091712"
+   },
+   "hostname": "backups",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "ts": "2026-09-21T03:43:16Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "6439",
+    "tempC": 34,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "1005998710784",
+    "writeBytes": "2638279091712"
+   },
+   "hostname": "backups",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "ts": "2026-09-21T03:26:49Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "6439",
+    "tempC": 34,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "1005998710784",
+    "writeBytes": "2638279091712"
+   },
+   "hostname": "backups",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "ts": "2026-09-21T02:06:36Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "6437",
+    "tempC": 36,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "1005998645248",
+    "writeBytes": "2638277481984"
+   },
+   "hostname": "backups",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "ts": "2026-09-20T20:06:35Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "6431",
+    "tempC": 35,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "1005997166592",
+    "writeBytes": "2638209877504"
+   },
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "ts": "2026-09-20T14:25:01Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "6425",
+    "tempC": 34,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "1005651029504",
+    "writeBytes": "2116803888640"
+   },
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "ts": "2026-09-20T08:24:59Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "6419",
+    "tempC": 35,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "1005521645056",
+    "writeBytes": "2083456521728"
+   },
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "ts": "2026-09-20T02:24:58Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "6413",
+    "tempC": 37,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "1005445332480",
+    "writeBytes": "2081180030464"
+   },
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "ts": "2026-09-19T20:24:57Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "6407",
+    "tempC": 35,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "1005445320192",
+    "writeBytes": "2079730079232"
+   },
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "ts": "2026-09-19T14:32:07Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "6402",
+    "tempC": 35,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "1005445312000",
+    "writeBytes": "2078142928384"
+   },
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "ts": "2026-09-19T08:32:06Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "6396",
+    "tempC": 35,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "1005445258752",
+    "writeBytes": "2076319512064"
+   },
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "ts": "2026-09-19T02:32:04Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "6390",
+    "tempC": 35,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "1005235752448",
+    "writeBytes": "2075864106496"
+   },
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "ts": "2026-09-18T20:32:02Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "6384",
+    "tempC": 34,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "1005234097664",
+    "writeBytes": "2075799934464"
+   },
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "ts": "2026-09-18T14:32:01Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "6378",
+    "tempC": 34,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "1005234097664",
+    "writeBytes": "2075799725568"
+   },
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "ts": "2026-09-18T13:09:40Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "6376",
+    "tempC": 35,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "1005139856384",
+    "writeBytes": "1952282920448"
+   },
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "ts": "2026-09-18T07:09:39Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "6370",
+    "tempC": 35,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "1004937174016",
+    "writeBytes": "1635798644224"
+   },
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "ts": "2026-09-18T01:09:37Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "6364",
+    "tempC": 38,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "1004900629504",
+    "writeBytes": "1633240155648"
+   },
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "ts": "2026-09-17T19:09:36Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "6358",
+    "tempC": 35,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "1004900355072",
+    "writeBytes": "1631719065088"
+   },
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "ts": "2026-09-17T13:09:35Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "6352",
+    "tempC": 33,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "1004899998720",
+    "writeBytes": "1629699003904"
+   },
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "ts": "2026-09-17T07:09:33Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "6346",
+    "tempC": 33,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "1004707941376",
+    "writeBytes": "1628924417536"
+   },
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "ts": "2026-09-17T01:09:32Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "6340",
+    "tempC": 36,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "1004707941376",
+    "writeBytes": "1628924106240"
+   },
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "ts": "2026-09-16T19:25:54Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "6335",
+    "tempC": 35,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "1004682160640",
+    "writeBytes": "1627071026688"
+   },
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "ts": "2026-09-16T16:12:17Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "6331",
+    "tempC": 34,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "1004678580736",
+    "writeBytes": "1626121946624"
+   },
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "ts": "2026-09-16T10:12:16Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "6325",
+    "tempC": 34,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "1004545128960",
+    "writeBytes": "1624116610560"
+   },
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "ts": "2026-09-16T09:52:45Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "6325",
+    "tempC": 34,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "1004525664256",
+    "writeBytes": "1624058586624"
+   },
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "ts": "2026-09-16T03:52:44Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "6319",
+    "tempC": 34,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "1004331112448",
+    "writeBytes": "1621860587008"
+   },
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "ts": "2026-09-15T21:52:42Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "6313",
+    "tempC": 34,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "1004322920448",
+    "writeBytes": "1621757482496"
+   },
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "ts": "2026-09-15T15:52:40Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "6307",
+    "tempC": 33,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "1004322920448",
+    "writeBytes": "1621757482496"
+   },
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "ts": "2026-09-15T09:52:39Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "6301",
+    "tempC": 34,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "1004322920448",
+    "writeBytes": "1621757285888"
+   },
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "ts": "2026-09-15T04:09:00Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "6295",
+    "tempC": 36,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "1004167079424",
+    "writeBytes": "1201358452224"
+   },
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "ts": "2026-09-14T22:08:58Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "6289",
+    "tempC": 36,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "1004166788608",
+    "writeBytes": "1177796462080"
+   },
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "ts": "2026-09-14T16:08:57Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "6283",
+    "tempC": 35,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "1004166456832",
+    "writeBytes": "1175775856128"
+   },
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "ts": "2026-09-14T10:08:56Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "6277",
+    "tempC": 35,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "1004165641728",
+    "writeBytes": "1172915234304"
+   },
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "ts": "2026-09-14T04:08:54Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "6271",
+    "tempC": 34,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "1003992253952",
+    "writeBytes": "1172592121344"
+   },
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "ts": "2026-09-14T03:58:57Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "6271",
+    "tempC": 34,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "1003992253952",
+    "writeBytes": "1172592121344"
+   },
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "ts": "2026-09-14T03:45:58Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "6271",
+    "tempC": 33,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "1003992253952",
+    "writeBytes": "1172592121344"
+   },
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "ts": "2026-09-13T23:12:25Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "6266",
+    "tempC": 33,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "1003990529536",
+    "writeBytes": "1172512916992"
+   },
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "ts": "2026-09-13T22:09:39Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "6265",
+    "tempC": 33,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "1003990529536",
+    "writeBytes": "1172512916992"
+   },
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "ts": "2026-09-13T21:37:17Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "6265",
+    "tempC": 33,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "1003990529536",
+    "writeBytes": "1172512916992"
+   },
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "ts": "2026-09-13T21:18:19Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "6264",
+    "tempC": 33,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "1003990529536",
+    "writeBytes": "1172512916992"
+   },
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "ts": "2026-09-13T17:08:44Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "6260",
+    "tempC": 33,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "1003990529536",
+    "writeBytes": "1172512916992"
+   },
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "ts": "2026-09-13T16:37:31Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "6260",
+    "tempC": 36,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "1003990525440",
+    "writeBytes": "1172512704000"
+   },
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "ts": "2026-09-13T14:16:06Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "6257",
+    "tempC": 36,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "1003968807936",
+    "writeBytes": "1167120659968"
+   },
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "ts": "2026-09-13T08:16:04Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "6251",
+    "tempC": 36,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "491322979328",
+    "writeBytes": "1065519937024"
+   },
+   "hostname": "backups"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8d7e258",
+    "model": "ST24000DM001-3Y7103",
+    "serial": "ZXA0XH4E"
+   },
+   "devName": "sdd",
+   "ts": "2026-09-13T02:16:02Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "6245",
+    "tempC": 35,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "5903135744",
+    "writeBytes": "849768814080"
+   },
+   "hostname": "backups",
+   "hasRaw": true
+  }
+ ]
+}

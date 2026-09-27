@@ -1,0 +1,53 @@
+{
+ "events": [
+  {
+   "eventId": "741",
+   "ts": "2026-09-22T06:40:16Z",
+   "kind": "dimm_changed",
+   "hostname": "server12",
+   "detail": "{\"change\":\"appeared\",\"edac\":\"mc0/MC#0_Chan#1_DIMM#1\",\"part\":\"\",\"serial\":\"20000000\",\"size_bytes\":4294967296,\"slot\":\"Controller0-ChannelD\"}",
+   "source": "report"
+  },
+  {
+   "eventId": "740",
+   "ts": "2026-09-22T06:40:16Z",
+   "kind": "dimm_changed",
+   "hostname": "server12",
+   "detail": "{\"change\":\"appeared\",\"edac\":\"mc0/MC#0_Chan#1_DIMM#0\",\"part\":\"\",\"serial\":\"20000000\",\"size_bytes\":4294967296,\"slot\":\"Controller0-ChannelC\"}",
+   "source": "report"
+  },
+  {
+   "eventId": "739",
+   "ts": "2026-09-22T06:40:16Z",
+   "kind": "dimm_changed",
+   "hostname": "server12",
+   "detail": "{\"change\":\"appeared\",\"edac\":\"mc0/MC#0_Chan#0_DIMM#1\",\"part\":\"\",\"serial\":\"20000000\",\"size_bytes\":4294967296,\"slot\":\"Controller0-ChannelB\"}",
+   "source": "report"
+  },
+  {
+   "eventId": "738",
+   "ts": "2026-09-22T06:40:16Z",
+   "kind": "dimm_changed",
+   "hostname": "server12",
+   "detail": "{\"change\":\"appeared\",\"edac\":\"mc0/MC#0_Chan#0_DIMM#0\",\"part\":\"\",\"serial\":\"20000000\",\"size_bytes\":4294967296,\"slot\":\"Controller0-ChannelA\"}",
+   "source": "report"
+  },
+  {
+   "eventId": "619",
+   "ts": "2026-09-19T21:09:37Z",
+   "kind": "first_seen",
+   "serial": "240102AA01040",
+   "hostname": "server12",
+   "detail": "{\"bay\":\"\",\"dev_name\":\"sda\",\"enclosure\":\"\",\"enclosure_via\":\"\",\"uses\":[\"mount \\u003e /\",\"mount \\u003e /boot/efi\",\"mount \\u003e /var/lib/kubelet/pods/0c23e149-2506-48b3-9d12-4a6b5abc971e/volume-subpaths/config/grafana/0\",\"mount \\u003e /var/lib/kubelet/pods/0c23e149-2506-48b3-9d12-4a6b5abc971e/volume-subpaths/sc-dashboard-provider/grafana/3\",\"mount \\u003e /var/lib/kubelet/pods/21dbe75e-4a80-45b4-b053-2854bcf9aab0/volume-subpaths/custom-dnsmasq/pihole/1\",\"mount \\u003e /var/lib/kubelet/pods/21dbe75e-4a80-45b4-b053-2854bcf9aab0/volume-subpaths/custom-dnsmasq/pihole/2\"]}",
+   "source": "snapshot:56"
+  },
+  {
+   "eventId": "618",
+   "ts": "2026-09-19T21:09:37Z",
+   "kind": "host_first_seen",
+   "hostname": "server12",
+   "detail": "{\"hostname\":\"server12\",\"os\":\"linux\"}",
+   "source": "report"
+  }
+ ]
+}

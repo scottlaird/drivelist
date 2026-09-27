@@ -1,0 +1,33 @@
+{
+ "drive": {
+  "driveId": "24",
+  "wwn": "0x5000c500caf55bbb",
+  "vendor": "SEAGATE",
+  "model": "STMPSED1CLAR8000",
+  "serial": "ZA1K1X7E",
+  "sizeBytes": "8001563222016",
+  "bus": "BUS_SAS",
+  "status": "ok",
+  "firstSeen": "2026-09-13T01:41:39Z",
+  "lastSeen": "2026-09-27T19:41:38Z",
+  "current": {
+   "hostname": "nas",
+   "enclosure": "0x5000ccab020094ff",
+   "bay": "41",
+   "devName": "sdat",
+   "uses": [
+    "zfs > space 5925914041408872576 > raidz2 1731578064309998343 > disk 5376298655796057137"
+   ],
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "enclosureVia": "expander-11:0",
+   "enclosureName": "nas-hgst-u60-1",
+   "bayLabel": "41"
+  },
+  "memberState": "ONLINE"
+ },
+ "keys": [
+  "serial:STMPSED1CLAR8000/ZA1K1X7E",
+  "wwn:0x5000c500caf55bbb"
+ ]
+}

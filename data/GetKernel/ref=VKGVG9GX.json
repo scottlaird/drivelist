@@ -1,0 +1,185 @@
+{
+ "drive": {
+  "driveId": "34",
+  "wwn": "0x5000cca254301d64",
+  "vendor": "HITACHI",
+  "model": "HUH72808CLAR8000",
+  "serial": "VKGVG9GX",
+  "sizeBytes": "8001563222016",
+  "bus": "BUS_SAS",
+  "status": "ok",
+  "firstSeen": "2026-09-13T01:41:39Z",
+  "lastSeen": "2026-09-27T19:41:38Z",
+  "current": {
+   "hostname": "nas",
+   "enclosure": "0x5000ccab020094ff",
+   "bay": "4",
+   "devName": "sdbc",
+   "uses": [
+    "zfs > backups 12143466076769931197 > raidz2 5338052500984404557 > disk 18335223806475789631"
+   ],
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "enclosureVia": "expander-11:0",
+   "enclosureName": "nas-hgst-u60-1",
+   "bayLabel": "4"
+  },
+  "memberState": "ONLINE"
+ },
+ "samples": [
+  {
+   "identity": {
+    "wwn": "0x5000cca254301d64",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGVG9GX"
+   },
+   "bucketStart": "2026-09-27T15:00:00Z",
+   "bucketSecs": 3600,
+   "class": "predictive_failure",
+   "scsiCode": "1:5d:fd",
+   "count": 1,
+   "sample": "sd 11:0:39:0: [sdbc] tag#2444 Sense Key : Recovered Error [current] [descriptor]  | sd 11:0:39:0: [sdbc] tag#2444 ASC=0x5d <<vendor>>ASCQ=0xfd ",
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254301d64",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGVG9GX"
+   },
+   "bucketStart": "2026-09-27T05:00:00Z",
+   "bucketSecs": 3600,
+   "class": "predictive_failure",
+   "scsiCode": "1:5d:fd",
+   "count": 1,
+   "sample": "sd 11:0:39:0: [sdbc] tag#6075 Sense Key : Recovered Error [current] [descriptor]  | sd 11:0:39:0: [sdbc] tag#6075 ASC=0x5d <<vendor>>ASCQ=0xfd ",
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254301d64",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGVG9GX"
+   },
+   "bucketStart": "2026-09-26T19:00:00Z",
+   "bucketSecs": 3600,
+   "class": "predictive_failure",
+   "scsiCode": "1:5d:fd",
+   "count": 1,
+   "sample": "sd 11:0:39:0: [sdbc] tag#5301 Sense Key : Recovered Error [current] [descriptor]  | sd 11:0:39:0: [sdbc] tag#5301 ASC=0x5d <<vendor>>ASCQ=0xfd ",
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254301d64",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGVG9GX"
+   },
+   "bucketStart": "2026-09-26T09:00:00Z",
+   "bucketSecs": 3600,
+   "class": "predictive_failure",
+   "scsiCode": "1:5d:fd",
+   "count": 1,
+   "sample": "sd 11:0:39:0: [sdbc] tag#1392 Sense Key : Recovered Error [current] [descriptor]  | sd 11:0:39:0: [sdbc] tag#1392 ASC=0x5d <<vendor>>ASCQ=0xfd ",
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254301d64",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGVG9GX"
+   },
+   "bucketStart": "2026-09-26T07:00:00Z",
+   "bucketSecs": 3600,
+   "class": "predictive_failure",
+   "scsiCode": "1:5d:fd",
+   "count": 1,
+   "sample": "sd 11:0:39:0: [sdbc] tag#3900 Sense Key : Recovered Error [current] [descriptor]  | sd 11:0:39:0: [sdbc] tag#3900 ASC=0x5d <<vendor>>ASCQ=0xfd ",
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254301d64",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGVG9GX"
+   },
+   "bucketStart": "2026-09-25T13:00:00Z",
+   "bucketSecs": 3600,
+   "class": "predictive_failure",
+   "scsiCode": "1:5d:fd",
+   "count": 1,
+   "sample": "sd 11:0:39:0: [sdbc] tag#6764 Sense Key : Recovered Error [current] [descriptor]  | sd 11:0:39:0: [sdbc] tag#6764 ASC=0x5d <<vendor>>ASCQ=0xfd ",
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254301d64",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGVG9GX"
+   },
+   "bucketStart": "2026-09-24T17:00:00Z",
+   "bucketSecs": 3600,
+   "class": "predictive_failure",
+   "scsiCode": "1:5d:fd",
+   "count": 1,
+   "sample": "sd 11:0:39:0: [sdbc] tag#6346 Sense Key : Recovered Error [current] [descriptor]  | sd 11:0:39:0: [sdbc] tag#6346 ASC=0x5d <<vendor>>ASCQ=0xfd ",
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254301d64",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGVG9GX"
+   },
+   "bucketStart": "2026-09-24T07:00:00Z",
+   "bucketSecs": 3600,
+   "class": "predictive_failure",
+   "scsiCode": "1:5d:fd",
+   "count": 1,
+   "sample": "sd 11:0:39:0: [sdbc] tag#383 Sense Key : Recovered Error [current] [descriptor]  | sd 11:0:39:0: [sdbc] tag#383 ASC=0x5d <<vendor>>ASCQ=0xfd ",
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254301d64",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGVG9GX"
+   },
+   "bucketStart": "2026-09-23T22:00:00Z",
+   "bucketSecs": 3600,
+   "class": "predictive_failure",
+   "scsiCode": "1:5d",
+   "count": 1,
+   "sample": "sd 11:0:39:0: [sdbc] tag#5518 Sense Key : Recovered Error [current] [descriptor]  | sd 11:0:39:0: [sdbc] tag#5518 Add. Sense: Firmware impending failure seek error rate too high",
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254301d64",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGVG9GX"
+   },
+   "bucketStart": "2026-09-21T09:00:00Z",
+   "bucketSecs": 3600,
+   "class": "predictive_failure",
+   "scsiCode": "1:5d:fd",
+   "count": 1,
+   "sample": "sd 11:0:39:0: [sdbc] tag#6198 Sense Key : Recovered Error [current] [descriptor]  | sd 11:0:39:0: [sdbc] tag#6198 ASC=0x5d <<vendor>>ASCQ=0xfd ",
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254301d64",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGVG9GX"
+   },
+   "bucketStart": "2026-09-21T01:00:00Z",
+   "bucketSecs": 3600,
+   "class": "predictive_failure",
+   "scsiCode": "1:5d",
+   "count": 1,
+   "sample": "sd 11:0:39:0: [sdbc] tag#4441 Sense Key : Recovered Error [current] [descriptor]  | sd 11:0:39:0: [sdbc] tag#4441 Add. Sense: Firmware impending failure seek error rate too high",
+   "hostname": "nas"
+  }
+ ]
+}

@@ -1,0 +1,22 @@
+{
+ "events": [
+  {
+   "eventId": "937",
+   "ts": "2026-09-27T16:11:42Z",
+   "kind": "optic_status_changed",
+   "hostname": "switch1",
+   "detail": "{\"note\":\"lane 2 laser runaway, link down with good light\",\"part\":\"QSFP-40G-UNIV\",\"previous\":\"suspect\",\"serial\":\"XLA164600338\",\"status\":\"bad\",\"vendor\":\"Arista Networks\"}",
+   "source": "user:scott@mac1",
+   "opticSerial": "XLA164600338"
+  },
+  {
+   "eventId": "936",
+   "ts": "2026-09-27T15:52:58Z",
+   "kind": "optic_status_changed",
+   "hostname": "switch1",
+   "detail": "{\"note\":\"Was flapping and has high bias on 1 lane\",\"part\":\"QSFP-40G-UNIV\",\"previous\":\"ok\",\"serial\":\"XLA164600338\",\"status\":\"suspect\",\"vendor\":\"Arista Networks\"}",
+   "source": "user:scott@mac1",
+   "opticSerial": "XLA164600338"
+  }
+ ]
+}

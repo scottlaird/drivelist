@@ -1,0 +1,64 @@
+{
+ "rows": [
+  {
+   "optic": {
+    "port": "enp2s0f0np0",
+    "ports": [
+     "enp2s0f0np0"
+    ],
+    "form": "SFP",
+    "identifier": "0x03 (SFP)",
+    "kind": "optical",
+    "vendor": "OEM",
+    "oui": "00:90:65",
+    "part": "SFP-10G-LR",
+    "rev": "A",
+    "serial": "202603271086",
+    "dateCode": "260326",
+    "compliance": "10G Ethernet: 10G Base-LR",
+    "connector": "LC",
+    "wavelengthNm": 1310,
+    "link": "up",
+    "diagnostics": true,
+    "tempC": 52.67,
+    "voltageV": 3.3042,
+    "lanes": [
+     {
+      "lane": 1,
+      "biasMa": 46.776,
+      "txMw": 0.7235,
+      "rxMw": 0.7485
+     }
+    ],
+    "thresholds": {
+     "bias_high_alarm": 85,
+     "bias_high_warning": 80,
+     "bias_low_alarm": 15,
+     "bias_low_warning": 20,
+     "rx_high_alarm": 1.7783,
+     "rx_high_warning": 1.122,
+     "rx_low_alarm": 0.0229,
+     "rx_low_warning": 0.0363,
+     "temp_high_alarm": 80,
+     "temp_high_warning": 70,
+     "temp_low_alarm": -10,
+     "temp_low_warning": 0,
+     "tx_high_alarm": 1.7783,
+     "tx_high_warning": 1.122,
+     "tx_low_alarm": 0.0955,
+     "tx_low_warning": 0.1514,
+     "voltage_high_alarm": 3.63,
+     "voltage_high_warning": 3.465,
+     "voltage_low_alarm": 2.97,
+     "voltage_low_warning": 3.135
+    }
+   },
+   "status": "ok",
+   "hostname": "server7",
+   "present": true,
+   "firstSeen": "2026-09-27T15:17:42Z",
+   "lastSeen": "2026-09-27T19:43:34Z",
+   "sampledAt": "2026-09-27T19:43:34Z"
+  }
+ ]
+}

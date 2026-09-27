@@ -1,0 +1,120 @@
+{
+ "events": [
+  {
+   "eventId": "938",
+   "ts": "2026-09-27T18:27:17Z",
+   "kind": "optic_flapping",
+   "hostname": "switch1",
+   "detail": "{\"flaps\":4,\"form\":\"QSFP+\",\"part\":\"QSFP-40G-UNIV\",\"port\":\"enp22\",\"serial\":\"XLA164600338\",\"vendor\":\"Arista Networks\"}",
+   "source": "report",
+   "opticSerial": "XLA164600338"
+  },
+  {
+   "eventId": "937",
+   "ts": "2026-09-27T16:11:42Z",
+   "kind": "optic_status_changed",
+   "hostname": "switch1",
+   "detail": "{\"note\":\"lane 2 laser runaway, link down with good light\",\"part\":\"QSFP-40G-UNIV\",\"previous\":\"suspect\",\"serial\":\"XLA164600338\",\"status\":\"bad\",\"vendor\":\"Arista Networks\"}",
+   "source": "user:scott@mac1",
+   "opticSerial": "XLA164600338"
+  },
+  {
+   "eventId": "936",
+   "ts": "2026-09-27T15:52:58Z",
+   "kind": "optic_status_changed",
+   "hostname": "switch1",
+   "detail": "{\"note\":\"Was flapping and has high bias on 1 lane\",\"part\":\"QSFP-40G-UNIV\",\"previous\":\"ok\",\"serial\":\"XLA164600338\",\"status\":\"suspect\",\"vendor\":\"Arista Networks\"}",
+   "source": "user:scott@mac1",
+   "opticSerial": "XLA164600338"
+  },
+  {
+   "eventId": "935",
+   "ts": "2026-09-27T15:51:22Z",
+   "kind": "optic_moved",
+   "hostname": "switch1",
+   "detail": "{\"form\":\"QSFP+\",\"from_port\":\"enp21\",\"part\":\"QSFP-40G-UNIV\",\"port\":\"enp22\",\"serial\":\"XLA164600338\",\"vendor\":\"Arista Networks\"}",
+   "source": "report",
+   "opticSerial": "XLA164600338"
+  },
+  {
+   "eventId": "934",
+   "ts": "2026-09-27T15:51:22Z",
+   "kind": "optic_moved",
+   "hostname": "switch1",
+   "detail": "{\"form\":\"QSFP+\",\"from_port\":\"enp22\",\"part\":\"QSFP-40G-UNIV\",\"port\":\"enp21\",\"serial\":\"ATH1901000KP\",\"vendor\":\"Arista Networks\"}",
+   "source": "report",
+   "opticSerial": "ATH1901000KP"
+  },
+  {
+   "eventId": "933",
+   "ts": "2026-09-27T15:36:04Z",
+   "kind": "optic_first_seen",
+   "hostname": "switch1",
+   "detail": "{\"form\":\"QSFP+\",\"part\":\"QSFP-40G-UNIV\",\"port\":\"enp21\",\"serial\":\"XLA164600338\",\"vendor\":\"Arista Networks\"}",
+   "source": "report",
+   "opticSerial": "XLA164600338"
+  },
+  {
+   "eventId": "914",
+   "ts": "2026-09-27T15:26:04Z",
+   "kind": "optic_first_seen",
+   "hostname": "switch1",
+   "detail": "{\"form\":\"QSFP+\",\"part\":\"QSFP-40G-UNIV\",\"port\":\"enp22\",\"serial\":\"ATH1901000KP\",\"vendor\":\"Arista Networks\"}",
+   "source": "report",
+   "opticSerial": "ATH1901000KP"
+  },
+  {
+   "eventId": "913",
+   "ts": "2026-09-27T15:26:04Z",
+   "kind": "optic_first_seen",
+   "hostname": "switch1",
+   "detail": "{\"form\":\"QSFP28\",\"part\":\"AQPLBCQ4EDOA1106\",\"port\":\"enp19\",\"serial\":\"25619E55087\",\"vendor\":\"AOI\"}",
+   "source": "report",
+   "opticSerial": "25619E55087"
+  },
+  {
+   "eventId": "912",
+   "ts": "2026-09-27T15:26:04Z",
+   "kind": "optic_first_seen",
+   "hostname": "switch1",
+   "detail": "{\"form\":\"SFP\",\"part\":\"SFP-10G-LR\",\"port\":\"enp18\",\"serial\":\"202603271096\",\"vendor\":\"OEM\"}",
+   "source": "report",
+   "opticSerial": "202603271096"
+  },
+  {
+   "eventId": "911",
+   "ts": "2026-09-27T15:26:04Z",
+   "kind": "optic_first_seen",
+   "hostname": "switch1",
+   "detail": "{\"form\":\"SFP\",\"part\":\"FTLF1436P3BCL-PR\",\"port\":\"enp5\",\"serial\":\"CS251P60341\",\"vendor\":\"CISCO-FINISAR\"}",
+   "source": "report",
+   "opticSerial": "CS251P60341"
+  },
+  {
+   "eventId": "702",
+   "ts": "2026-09-21T04:08:33Z",
+   "kind": "dimm_changed",
+   "hostname": "switch1",
+   "detail": "{\"change\":\"appeared\",\"edac\":\"\",\"part\":\"i-DIMM\",\"serial\":\"59130113\",\"size_bytes\":8589934592,\"slot\":\"DIMM0\"}",
+   "source": "report"
+  },
+  {
+   "eventId": "626",
+   "ts": "2026-09-19T21:19:49Z",
+   "kind": "first_seen",
+   "serial": "J246760154",
+   "wwn": "0x57c3548262c126da",
+   "hostname": "switch1",
+   "detail": "{\"bay\":\"pci-0000:00:18.0-ata-1\",\"dev_name\":\"sda\",\"enclosure\":\"dmi:MT1911X08269\",\"enclosure_via\":\"ata\",\"uses\":[\"mount \\u003e /boot\",\"mount \\u003e /boot/grub\",\"mount \\u003e /usr/lib/live/mount/persistence\",\"mount \\u003e /usr/lib/live/mount/persistence/boot/2026.05.03-0041-rolling/grub\"]}",
+   "source": "snapshot:59"
+  },
+  {
+   "eventId": "625",
+   "ts": "2026-09-19T21:19:49Z",
+   "kind": "host_first_seen",
+   "hostname": "switch1",
+   "detail": "{\"hostname\":\"switch1\",\"os\":\"linux\"}",
+   "source": "report"
+  }
+ ]
+}

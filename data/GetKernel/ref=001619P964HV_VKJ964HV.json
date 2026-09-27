@@ -1,0 +1,100 @@
+{
+ "drive": {
+  "driveId": "84",
+  "wwn": "0x5000cca2548175a8",
+  "vendor": "HGST",
+  "model": "H7280A520SUN8.0T",
+  "serial": "001619P964HV_VKJ964HV",
+  "sizeBytes": "8001563222016",
+  "bus": "BUS_SAS",
+  "status": "ok",
+  "firstSeen": "2026-09-13T01:41:39Z",
+  "lastSeen": "2026-09-27T19:41:38Z",
+  "current": {
+   "hostname": "nas",
+   "enclosure": "0x500304800000007f",
+   "bay": "9",
+   "devName": "sdl",
+   "uses": [
+    "zfs > space 5925914041408872576 > raidz2 5204885172110344134 > disk 13160228476946060421"
+   ],
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "enclosureVia": "expander-10:0",
+   "enclosureName": "nas-sc847-back"
+  },
+  "memberState": "ONLINE"
+ },
+ "samples": [
+  {
+   "identity": {
+    "wwn": "0x5000cca2548175a8",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619P964HV_VKJ964HV"
+   },
+   "bucketStart": "2026-09-23T16:00:00Z",
+   "bucketSecs": 3600,
+   "class": "warning",
+   "scsiCode": "1:b:97",
+   "count": 1,
+   "sample": "sd 10:0:9:0: [sdl] tag#9005 Sense Key : Recovered Error [current] [descriptor]  | sd 10:0:9:0: [sdl] tag#9005 ASC=0xb <<vendor>>ASCQ=0x97 ",
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548175a8",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619P964HV_VKJ964HV"
+   },
+   "bucketStart": "2026-09-23T10:00:00Z",
+   "bucketSecs": 3600,
+   "class": "warning",
+   "scsiCode": "1:b:96",
+   "count": 2,
+   "sample": "sd 10:0:9:0: [sdl] tag#3243 Sense Key : Recovered Error [current] [descriptor]  | sd 10:0:9:0: [sdl] tag#3243 ASC=0xb <<vendor>>ASCQ=0x96 ",
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548175a8",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619P964HV_VKJ964HV"
+   },
+   "bucketStart": "2026-09-23T10:00:00Z",
+   "bucketSecs": 3600,
+   "class": "warning",
+   "scsiCode": "1:b:97",
+   "count": 2,
+   "sample": "sd 10:0:9:0: [sdl] tag#3241 Sense Key : Recovered Error [current] [descriptor]  | sd 10:0:9:0: [sdl] tag#3241 ASC=0xb <<vendor>>ASCQ=0x97 ",
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548175a8",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619P964HV_VKJ964HV"
+   },
+   "bucketStart": "2026-09-22T03:00:00Z",
+   "bucketSecs": 3600,
+   "class": "warning",
+   "scsiCode": "1:b:96",
+   "count": 2,
+   "sample": "sd 10:0:9:0: [sdl] tag#5588 Sense Key : Recovered Error [current] [descriptor]  | sd 10:0:9:0: [sdl] tag#5588 ASC=0xb <<vendor>>ASCQ=0x96 ",
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548175a8",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619P964HV_VKJ964HV"
+   },
+   "bucketStart": "2026-09-22T03:00:00Z",
+   "bucketSecs": 3600,
+   "class": "warning",
+   "scsiCode": "1:b:97",
+   "count": 2,
+   "sample": "sd 10:0:9:0: [sdl] tag#5581 Sense Key : Recovered Error [current] [descriptor]  | sd 10:0:9:0: [sdl] tag#5581 ASC=0xb <<vendor>>ASCQ=0x97 ",
+   "hostname": "nas"
+  }
+ ]
+}

@@ -1,0 +1,274 @@
+{
+ "row": {
+  "optic": {
+   "port": "swp5",
+   "ports": [
+    "swp5"
+   ],
+   "form": "QSFP28",
+   "identifier": "0x11 (QSFP28)",
+   "kind": "optical",
+   "vendor": "AOI",
+   "oui": "00:29:26",
+   "part": "AQPLBCQ4EDOA1106",
+   "rev": "1",
+   "serial": "53818L15022",
+   "dateCode": "181213",
+   "compliance": "100G Ethernet: 100G CWDM4 MSA with FEC",
+   "connector": "LC",
+   "wavelengthNm": 1301,
+   "link": "up",
+   "diagnostics": true,
+   "tempC": 40.87,
+   "voltageV": 3.3934,
+   "lanes": [
+    {
+     "lane": 1,
+     "biasMa": 34.302,
+     "txMw": 0.9669,
+     "rxMw": 1.0002
+    },
+    {
+     "lane": 2,
+     "biasMa": 33.538,
+     "txMw": 1.0538,
+     "rxMw": 0.8104
+    },
+    {
+     "lane": 3,
+     "biasMa": 37.666,
+     "txMw": 0.9048,
+     "rxMw": 0.6966
+    },
+    {
+     "lane": 4,
+     "biasMa": 36.494,
+     "txMw": 0.9586,
+     "rxMw": 0.8642
+    }
+   ],
+   "thresholds": {
+    "bias_high_alarm": 90,
+    "bias_high_warning": 85,
+    "bias_low_alarm": 6,
+    "bias_low_warning": 6.5,
+    "rx_high_alarm": 3.5481,
+    "rx_high_warning": 1.7783,
+    "rx_low_alarm": 0.1,
+    "rx_low_warning": 0.1549,
+    "temp_high_alarm": 58,
+    "temp_high_warning": 53,
+    "temp_low_alarm": -10,
+    "temp_low_warning": -5,
+    "tx_high_alarm": 2.8184,
+    "tx_high_warning": 2.2387,
+    "tx_low_alarm": 0.1413,
+    "tx_low_warning": 0.1778,
+    "voltage_high_alarm": 3.6,
+    "voltage_high_warning": 3.5,
+    "voltage_low_alarm": 3,
+    "voltage_low_warning": 3.1
+   }
+  },
+  "status": "ok",
+  "hostname": "switch3",
+  "present": true,
+  "firstSeen": "2026-09-27T15:26:32Z",
+  "lastSeen": "2026-09-27T19:42:02Z",
+  "sampledAt": "2026-09-27T19:42:02Z"
+ },
+ "placements": [
+  {
+   "hostname": "switch3",
+   "port": "swp5",
+   "ports": [
+    "swp5"
+   ],
+   "firstSeen": "2026-09-27T15:26:32Z",
+   "lastSeen": "2026-09-27T19:42:02Z"
+  }
+ ],
+ "samples": [
+  {
+   "ts": "2026-09-27T19:42:02Z",
+   "hostname": "switch3",
+   "port": "swp5",
+   "tempC": 40.87,
+   "voltageV": 3.3934,
+   "lanes": [
+    {
+     "lane": 1,
+     "biasMa": 34.302,
+     "txMw": 0.9669,
+     "rxMw": 1.0002
+    },
+    {
+     "lane": 2,
+     "biasMa": 33.538,
+     "txMw": 1.0538,
+     "rxMw": 0.8104
+    },
+    {
+     "lane": 3,
+     "biasMa": 37.666,
+     "txMw": 0.9048,
+     "rxMw": 0.6966
+    },
+    {
+     "lane": 4,
+     "biasMa": 36.494,
+     "txMw": 0.9586,
+     "rxMw": 0.8642
+    }
+   ],
+   "link": "up"
+  },
+  {
+   "ts": "2026-09-27T18:56:56Z",
+   "hostname": "switch3",
+   "port": "swp5",
+   "tempC": 40.15,
+   "voltageV": 3.3934,
+   "lanes": [
+    {
+     "lane": 1,
+     "biasMa": 33.886,
+     "txMw": 0.9657,
+     "rxMw": 1.0112
+    },
+    {
+     "lane": 2,
+     "biasMa": 33.262,
+     "txMw": 1.0559,
+     "rxMw": 0.8138
+    },
+    {
+     "lane": 3,
+     "biasMa": 37.25,
+     "txMw": 0.8977,
+     "rxMw": 0.6986
+    },
+    {
+     "lane": 4,
+     "biasMa": 36.078,
+     "txMw": 0.9571,
+     "rxMw": 0.8703
+    }
+   ],
+   "link": "up"
+  },
+  {
+   "ts": "2026-09-27T17:56:50Z",
+   "hostname": "switch3",
+   "port": "swp5",
+   "tempC": 39.14,
+   "voltageV": 3.3946,
+   "lanes": [
+    {
+     "lane": 1,
+     "biasMa": 33.886,
+     "txMw": 0.9756,
+     "rxMw": 1.0304
+    },
+    {
+     "lane": 2,
+     "biasMa": 33.262,
+     "txMw": 1.0688,
+     "rxMw": 0.8152
+    },
+    {
+     "lane": 3,
+     "biasMa": 37.25,
+     "txMw": 0.9064,
+     "rxMw": 0.7008
+    },
+    {
+     "lane": 4,
+     "biasMa": 36.078,
+     "txMw": 0.9707,
+     "rxMw": 0.8726
+    }
+   ],
+   "link": "up"
+  },
+  {
+   "ts": "2026-09-27T16:56:43Z",
+   "hostname": "switch3",
+   "port": "swp5",
+   "tempC": 38.43,
+   "voltageV": 3.3952,
+   "lanes": [
+    {
+     "lane": 1,
+     "biasMa": 33.886,
+     "txMw": 0.9837,
+     "rxMw": 1.0394
+    },
+    {
+     "lane": 2,
+     "biasMa": 33.262,
+     "txMw": 1.0769,
+     "rxMw": 0.8245
+    },
+    {
+     "lane": 3,
+     "biasMa": 37.25,
+     "txMw": 0.9146,
+     "rxMw": 0.706
+    },
+    {
+     "lane": 4,
+     "biasMa": 36.078,
+     "txMw": 0.9783,
+     "rxMw": 0.8793
+    }
+   ],
+   "link": "up"
+  },
+  {
+   "ts": "2026-09-27T15:56:36Z",
+   "hostname": "switch3",
+   "port": "swp5",
+   "tempC": 38.07,
+   "voltageV": 3.394,
+   "lanes": [
+    {
+     "lane": 1,
+     "biasMa": 33.886,
+     "txMw": 0.9901,
+     "rxMw": 1.0321
+    },
+    {
+     "lane": 2,
+     "biasMa": 33.262,
+     "txMw": 1.0806,
+     "rxMw": 0.829
+    },
+    {
+     "lane": 3,
+     "biasMa": 37.25,
+     "txMw": 0.919,
+     "rxMw": 0.7107
+    },
+    {
+     "lane": 4,
+     "biasMa": 36.078,
+     "txMw": 0.9814,
+     "rxMw": 0.8845
+    }
+   ],
+   "link": "up"
+  }
+ ],
+ "events": [
+  {
+   "eventId": "917",
+   "ts": "2026-09-27T15:26:32Z",
+   "kind": "optic_first_seen",
+   "hostname": "switch3",
+   "detail": "{\"form\":\"QSFP28\",\"part\":\"AQPLBCQ4EDOA1106\",\"port\":\"swp5\",\"serial\":\"53818L15022\",\"vendor\":\"AOI\"}",
+   "source": "report",
+   "opticSerial": "53818L15022"
+  }
+ ]
+}

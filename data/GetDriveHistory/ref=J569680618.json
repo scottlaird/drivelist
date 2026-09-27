@@ -1,0 +1,57 @@
+{
+ "drive": {
+  "driveId": "161",
+  "wwn": "0x57c35482760086ea",
+  "model": "TS512GMTS430S",
+  "serial": "J569680618",
+  "sizeBytes": "512110190592",
+  "bus": "BUS_SATA",
+  "status": "ok",
+  "firstSeen": "2026-09-19T21:23:24Z",
+  "lastSeen": "2026-09-27T19:42:02Z",
+  "current": {
+   "hostname": "switch3",
+   "enclosure": "dmi:MT1921X00756",
+   "bay": "pci-0000:00:1f.2-ata-1",
+   "devName": "sda",
+   "uses": [
+    "mount > /boot",
+    "mount > /boot/grub",
+    "mount > /usr/lib/live/mount/persistence",
+    "mount > /usr/lib/live/mount/persistence/boot/2026.05.18-0045-rolling/grub"
+   ],
+   "firstSeen": "2026-09-19T21:23:24Z",
+   "lastSeen": "2026-09-27T19:42:02Z",
+   "enclosureVia": "ata"
+  }
+ },
+ "placements": [
+  {
+   "hostname": "switch3",
+   "enclosure": "dmi:MT1921X00756",
+   "bay": "pci-0000:00:1f.2-ata-1",
+   "devName": "sda",
+   "uses": [
+    "mount > /boot",
+    "mount > /boot/grub",
+    "mount > /usr/lib/live/mount/persistence",
+    "mount > /usr/lib/live/mount/persistence/boot/2026.05.18-0045-rolling/grub"
+   ],
+   "firstSeen": "2026-09-19T21:23:24Z",
+   "lastSeen": "2026-09-27T19:42:02Z",
+   "enclosureVia": "ata"
+  }
+ ],
+ "events": [
+  {
+   "eventId": "630",
+   "ts": "2026-09-19T21:23:24Z",
+   "kind": "first_seen",
+   "serial": "J569680618",
+   "wwn": "0x57c35482760086ea",
+   "hostname": "switch3",
+   "detail": "{\"bay\":\"pci-0000:00:1f.2-ata-1\",\"dev_name\":\"sda\",\"enclosure\":\"dmi:MT1921X00756\",\"enclosure_via\":\"ata\",\"uses\":[\"mount \\u003e /boot\",\"mount \\u003e /boot/grub\",\"mount \\u003e /usr/lib/live/mount/persistence\",\"mount \\u003e /usr/lib/live/mount/persistence/boot/2026.05.18-0045-rolling/grub\"]}",
+   "source": "snapshot:61"
+  }
+ ]
+}

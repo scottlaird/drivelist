@@ -1,0 +1,841 @@
+{
+ "enclosure": {
+  "enclosure": "0x5000ccab020094ff",
+  "hostname": "nas",
+  "via": "expander-11:0",
+  "name": "nas-hgst-u60-1",
+  "drives": 51,
+  "firstSeen": "2026-09-13T01:41:39Z",
+  "lastSeen": "2026-09-27T19:41:38Z",
+  "product": "HGST 4U60_STOR_ENCL",
+  "bays": 60,
+  "profile": "HGST 4U60 storage enclosure, 60 x 3.5\" top-loading bays"
+ },
+ "bays": [
+  {
+   "label": "0",
+   "ids": [
+    "sas:0"
+   ],
+   "declared": true,
+   "present": true,
+   "devName": "sdbr",
+   "serial": "VJG41ZTX",
+   "model": "HUH72808CLAR8000",
+   "status": "ok",
+   "uses": [
+    "zfs > space 5925914041408872576 > raidz2 3388823558429738332 > disk 17108523430413874900"
+   ]
+  },
+  {
+   "label": "1",
+   "ids": [
+    "sas:1"
+   ],
+   "declared": true,
+   "present": true,
+   "devName": "sdbq",
+   "serial": "P0NA0HA00483",
+   "model": "P1633N19_EMC1920",
+   "status": "ok",
+   "uses": [
+    "zfs > l2arc space > disk 11947748110017711895"
+   ]
+  },
+  {
+   "label": "2",
+   "ids": [
+    "sas:2"
+   ],
+   "declared": true,
+   "present": true,
+   "devName": "sdbk",
+   "serial": "WWZ61ANG",
+   "model": "ST8000VN004-3CP1",
+   "status": "ok",
+   "uses": [
+    "zfs > space 5925914041408872576 > raidz2 9007031778331642784 > disk 4275947122481209035"
+   ]
+  },
+  {
+   "label": "3",
+   "ids": [
+    "sas:3"
+   ],
+   "declared": true,
+   "present": true,
+   "devName": "sdbg",
+   "serial": "P0NA0H906141",
+   "model": "P1633N19_EMC1920",
+   "status": "ok",
+   "uses": [
+    "zfs > l2arc space > disk 14309469848396800428"
+   ]
+  },
+  {
+   "label": "4",
+   "ids": [
+    "sas:4"
+   ],
+   "declared": true,
+   "present": true,
+   "devName": "sdbc",
+   "serial": "VKGVG9GX",
+   "model": "HUH72808CLAR8000",
+   "status": "ok",
+   "uses": [
+    "zfs > backups 12143466076769931197 > raidz2 5338052500984404557 > disk 18335223806475789631"
+   ]
+  },
+  {
+   "label": "5",
+   "ids": [
+    "sas:5"
+   ],
+   "declared": true
+  },
+  {
+   "label": "6",
+   "ids": [
+    "sas:6"
+   ],
+   "declared": true,
+   "present": true,
+   "devName": "sdax",
+   "serial": "VGJSKZBK",
+   "model": "HGST_HUS728T8TAL",
+   "status": "ok",
+   "uses": [
+    "zfs > space 5925914041408872576 > raidz2 3388823558429738332 > disk 779833430179635364"
+   ]
+  },
+  {
+   "label": "7",
+   "ids": [
+    "sas:7"
+   ],
+   "declared": true,
+   "present": true,
+   "devName": "sdar",
+   "serial": "VDJSBPBK",
+   "model": "HGST_HUS728T8TAL",
+   "status": "ok",
+   "uses": [
+    "zfs > space 5925914041408872576 > raidz2 5204885172110344134 > disk 17157010119101828456"
+   ]
+  },
+  {
+   "label": "8",
+   "ids": [
+    "sas:8"
+   ],
+   "declared": true,
+   "present": true,
+   "devName": "sdaq",
+   "serial": "VGJS0Y6K",
+   "model": "HGST_HUS728T8TAL",
+   "status": "ok",
+   "uses": [
+    "zfs > space 5925914041408872576 > raidz2 16950899211129714203 > disk 11330324464113506692"
+   ]
+  },
+  {
+   "label": "9",
+   "ids": [
+    "sas:9"
+   ],
+   "declared": true,
+   "present": true,
+   "devName": "sdak",
+   "serial": "WWZ62CA0",
+   "model": "ST8000VN004-3CP1",
+   "status": "ok",
+   "uses": [
+    "zfs > backups 12143466076769931197 > raidz2 5338052500984404557 > disk 17976892840358164373"
+   ]
+  },
+  {
+   "label": "10",
+   "ids": [
+    "sas:10"
+   ],
+   "declared": true,
+   "present": true,
+   "devName": "sdai",
+   "serial": "VJG24UZX",
+   "model": "HUH72808CLAR8000",
+   "status": "ok",
+   "uses": [
+    "zfs > space 5925914041408872576 > raidz2 12372305547527317295 > disk 4484622911110778645"
+   ]
+  },
+  {
+   "label": "11",
+   "ids": [
+    "sas:11"
+   ],
+   "declared": true,
+   "present": true,
+   "devName": "sdac",
+   "serial": "VJG4B90X",
+   "model": "HUH72808CLAR8000",
+   "status": "ok",
+   "uses": [
+    "zfs > space 5925914041408872576 > raidz2 12372305547527317295 > disk 7178308151547831118"
+   ]
+  },
+  {
+   "label": "12",
+   "ids": [
+    "sas:12"
+   ],
+   "declared": true,
+   "present": true,
+   "devName": "sdbt",
+   "serial": "VJG1VBNX",
+   "model": "HUH72808CLAR8000",
+   "status": "ok",
+   "uses": [
+    "zfs > space 5925914041408872576 > raidz2 16950899211129714203 > disk 15663109361216978631"
+   ]
+  },
+  {
+   "label": "13",
+   "ids": [
+    "sas:13"
+   ],
+   "declared": true,
+   "present": true,
+   "devName": "sdbp",
+   "serial": "VKGR6VJX",
+   "model": "HUH72808CLAR8000",
+   "status": "ok",
+   "uses": [
+    "zfs > space 5925914041408872576 > raidz2 16950899211129714203 > disk 11897712593002579400"
+   ]
+  },
+  {
+   "label": "14",
+   "ids": [
+    "sas:14"
+   ],
+   "declared": true,
+   "present": true,
+   "devName": "sdbl",
+   "serial": "VJGREREX",
+   "model": "HUH72808CLAR8000",
+   "status": "ok",
+   "uses": [
+    "zfs > space 5925914041408872576 > raidz2 1731578064309998343 > disk 886436519714569443"
+   ]
+  },
+  {
+   "label": "15",
+   "ids": [
+    "sas:15"
+   ],
+   "declared": true,
+   "present": true,
+   "devName": "sdbf",
+   "serial": "VJGYXMPX",
+   "model": "HUH728080ALE601",
+   "status": "ok",
+   "uses": [
+    "zfs > space 5925914041408872576 > raidz2 12372305547527317295 > disk 15837447166093813087"
+   ]
+  },
+  {
+   "label": "16",
+   "ids": [
+    "sas:16"
+   ],
+   "declared": true,
+   "present": true,
+   "devName": "sdbb",
+   "serial": "VJGS573X",
+   "model": "HUH72808CLAR8000",
+   "status": "ok",
+   "uses": [
+    "zfs > space 5925914041408872576 > raidz2 5204885172110344134 > disk 9753708214178611793"
+   ]
+  },
+  {
+   "label": "17",
+   "ids": [
+    "sas:17"
+   ],
+   "declared": true,
+   "present": true,
+   "devName": "sdaz",
+   "serial": "ZA1K1FZN",
+   "model": "STMPSED1CLAR8000",
+   "status": "ok",
+   "uses": [
+    "zfs > space 5925914041408872576 > raidz2 12372305547527317295 > disk 2305530796469611037"
+   ]
+  },
+  {
+   "label": "18",
+   "ids": [
+    "sas:18"
+   ],
+   "declared": true,
+   "present": true,
+   "devName": "sdav",
+   "serial": "VJGSHAVX",
+   "model": "HUH728080ALE601",
+   "status": "ok",
+   "uses": [
+    "zfs > space 5925914041408872576 > raidz2 3388823558429738332 > disk 15584877991290069928"
+   ]
+  },
+  {
+   "label": "19",
+   "ids": [
+    "sas:19"
+   ],
+   "declared": true,
+   "present": true,
+   "devName": "sdap",
+   "serial": "2EK595JX",
+   "model": "HUH72808CLAR8000",
+   "status": "ok",
+   "uses": [
+    "zfs > space 5925914041408872576 > raidz2 5204885172110344134 > disk 2969812317754238394"
+   ]
+  },
+  {
+   "label": "20",
+   "ids": [
+    "sas:20"
+   ],
+   "declared": true,
+   "present": true,
+   "devName": "sdal",
+   "serial": "VJG1V09X",
+   "model": "HUH72808CLAR8000",
+   "status": "ok",
+   "uses": [
+    "zfs > space 5925914041408872576 > raidz2 12372305547527317295 > disk 12983238309654781705"
+   ]
+  },
+  {
+   "label": "21",
+   "ids": [
+    "sas:21"
+   ],
+   "declared": true,
+   "present": true,
+   "devName": "sdaj",
+   "serial": "2EG694WP",
+   "model": "HUH728080AL4200",
+   "status": "ok"
+  },
+  {
+   "label": "22",
+   "ids": [
+    "sas:22"
+   ],
+   "declared": true,
+   "present": true,
+   "devName": "sdaf",
+   "serial": "2EG0B0WJ",
+   "model": "HUH728080AL4200",
+   "status": "ok",
+   "uses": [
+    "zfs > backups 12143466076769931197 > raidz2 5338052500984404557 > disk 16774907883495458181"
+   ]
+  },
+  {
+   "label": "23",
+   "ids": [
+    "sas:23"
+   ],
+   "declared": true,
+   "present": true,
+   "devName": "sdaa",
+   "serial": "VJGRBU1X",
+   "model": "HUH72808CLAR8000",
+   "status": "ok",
+   "uses": [
+    "zfs > space 5925914041408872576 > raidz2 3388823558429738332 > disk 18371018139643991268"
+   ]
+  },
+  {
+   "label": "24",
+   "ids": [
+    "sas:24"
+   ],
+   "declared": true,
+   "present": true,
+   "devName": "sdbs",
+   "serial": "VJGRBUKX",
+   "model": "HUH72808CLAR8000",
+   "status": "ok",
+   "uses": [
+    "zfs > space 5925914041408872576 > raidz2 16950899211129714203 > disk 7674628401698022491"
+   ]
+  },
+  {
+   "label": "25",
+   "ids": [
+    "sas:25"
+   ],
+   "declared": true,
+   "present": true,
+   "devName": "sdbo",
+   "serial": "2EK0TUSX",
+   "model": "HUH72808CLAR8000",
+   "status": "ok",
+   "uses": [
+    "zfs > space 5925914041408872576 > raidz2 9007031778331642784 > disk 13919307554659960383"
+   ]
+  },
+  {
+   "label": "26",
+   "ids": [
+    "sas:26"
+   ],
+   "declared": true,
+   "present": true,
+   "devName": "sdbj",
+   "serial": "WSD6LL44",
+   "model": "ST8000VN004-2M21",
+   "status": "ok",
+   "uses": [
+    "zfs > space 5925914041408872576 > raidz2 16950899211129714203 > disk 2622484631566025123"
+   ]
+  },
+  {
+   "label": "27",
+   "ids": [
+    "sas:27"
+   ],
+   "declared": true,
+   "present": true,
+   "devName": "sdbd",
+   "serial": "VJGR81YX",
+   "model": "HUH72808CLAR8000",
+   "status": "ok",
+   "uses": [
+    "zfs > space 5925914041408872576 > raidz2 1731578064309998343 > disk 18396237114283760904"
+   ]
+  },
+  {
+   "label": "28",
+   "ids": [
+    "sas:28"
+   ],
+   "declared": true,
+   "present": true,
+   "devName": "sdaw",
+   "serial": "2EKT63HX",
+   "model": "HUH728080ALE601",
+   "status": "ok",
+   "uses": [
+    "zfs > space 5925914041408872576 > raidz2 1731578064309998343 > disk 4424673123196391603"
+   ]
+  },
+  {
+   "label": "29",
+   "ids": [
+    "sas:29"
+   ],
+   "declared": true,
+   "present": true,
+   "devName": "sdau",
+   "serial": "VJGS4VDX",
+   "model": "HUH72808CLAR8000",
+   "status": "ok",
+   "uses": [
+    "zfs > space 5925914041408872576 > raidz2 12372305547527317295 > disk 1709552244939736735"
+   ]
+  },
+  {
+   "label": "30",
+   "ids": [
+    "sas:30"
+   ],
+   "declared": true
+  },
+  {
+   "label": "31",
+   "ids": [
+    "sas:31"
+   ],
+   "declared": true
+  },
+  {
+   "label": "32",
+   "ids": [
+    "sas:32"
+   ],
+   "declared": true
+  },
+  {
+   "label": "33",
+   "ids": [
+    "sas:33"
+   ],
+   "declared": true
+  },
+  {
+   "label": "34",
+   "ids": [
+    "sas:34"
+   ],
+   "declared": true,
+   "present": true,
+   "devName": "sdae",
+   "serial": "WSD5T2MP",
+   "model": "ST8000VN004-2M21",
+   "status": "ok",
+   "uses": [
+    "zfs > space 5925914041408872576 > raidz2 3388823558429738332 > disk 8173906984701470597"
+   ]
+  },
+  {
+   "label": "35",
+   "ids": [
+    "sas:35"
+   ],
+   "declared": true,
+   "present": true,
+   "devName": "sdz",
+   "serial": "2EGDYBMR",
+   "model": "HUH728080AL4200",
+   "status": "ok",
+   "uses": [
+    "zfs > backups 12143466076769931197 > raidz2 5338052500984404557 > disk 16862381265388060190"
+   ]
+  },
+  {
+   "label": "36",
+   "ids": [
+    "sas:36"
+   ],
+   "declared": true,
+   "present": true,
+   "devName": "sdbu",
+   "serial": "001619PJMJVV_VKJJMJVV",
+   "model": "H7280A520SUN8.0T",
+   "status": "ok",
+   "uses": [
+    "zfs > space 5925914041408872576 > raidz2 5236016460003016805 > disk 17283963709945061389"
+   ]
+  },
+  {
+   "label": "37",
+   "ids": [
+    "sas:37"
+   ],
+   "declared": true,
+   "present": true,
+   "devName": "sdbn",
+   "serial": "001619P8KK0V_VKJ8KK0V",
+   "model": "H7280A520SUN8.0T",
+   "status": "ok",
+   "uses": [
+    "zfs > space 5925914041408872576 > raidz2 1731578064309998343 > disk 13028152974510422910"
+   ]
+  },
+  {
+   "label": "38",
+   "ids": [
+    "sas:38"
+   ],
+   "declared": true,
+   "present": true,
+   "devName": "sdbh",
+   "serial": "001619PEP7BV_VKJEP7BV",
+   "model": "H7280A520SUN8.0T",
+   "status": "ok",
+   "uses": [
+    "zfs > space 5925914041408872576 > raidz2 1731578064309998343 > disk 3095252915821648391"
+   ]
+  },
+  {
+   "label": "39",
+   "ids": [
+    "sas:39"
+   ],
+   "declared": true,
+   "present": true,
+   "devName": "sdbe",
+   "serial": "P0NA0H912672",
+   "model": "P1633N19_EMC1920",
+   "status": "ok",
+   "uses": [
+    "zfs > l2arc space > disk 9633240364690830390"
+   ]
+  },
+  {
+   "label": "40",
+   "ids": [
+    "sas:40"
+   ],
+   "declared": true,
+   "present": true,
+   "devName": "sday",
+   "serial": "001619PJN1YV_VKJJN1YV",
+   "model": "H7280A520SUN8.0T",
+   "status": "ok",
+   "uses": [
+    "zfs > space 5925914041408872576 > raidz2 1731578064309998343 > disk 10240545959618689249"
+   ]
+  },
+  {
+   "label": "41",
+   "ids": [
+    "sas:41"
+   ],
+   "declared": true,
+   "present": true,
+   "devName": "sdat",
+   "serial": "ZA1K1X7E",
+   "model": "STMPSED1CLAR8000",
+   "status": "ok",
+   "uses": [
+    "zfs > space 5925914041408872576 > raidz2 1731578064309998343 > disk 5376298655796057137"
+   ]
+  },
+  {
+   "label": "42",
+   "ids": [
+    "sas:42"
+   ],
+   "declared": true,
+   "present": true,
+   "devName": "sdao",
+   "serial": "7160A2TZFBEG",
+   "model": "TOSHIBA_HDWG180",
+   "status": "ok",
+   "uses": [
+    "zfs > space 5925914041408872576 > raidz2 16950899211129714203 > disk 12228003088763601407"
+   ]
+  },
+  {
+   "label": "43",
+   "ids": [
+    "sas:43"
+   ],
+   "declared": true,
+   "present": true,
+   "devName": "sdan",
+   "serial": "P0NA0HA00158",
+   "model": "P1633N19_EMC1920",
+   "status": "ok",
+   "uses": [
+    "zfs > l2arc space > disk 16862988291587455250"
+   ]
+  },
+  {
+   "label": "44",
+   "ids": [
+    "sas:44"
+   ],
+   "declared": true
+  },
+  {
+   "label": "45",
+   "ids": [
+    "sas:45"
+   ],
+   "declared": true,
+   "present": true,
+   "devName": "sdah",
+   "serial": "ZA1K3KEZ",
+   "model": "STMPSED1CLAR8000",
+   "status": "ok",
+   "uses": [
+    "zfs > spare space > disk 6934462713112163834"
+   ]
+  },
+  {
+   "label": "46",
+   "ids": [
+    "sas:46"
+   ],
+   "declared": true,
+   "present": true,
+   "devName": "sdad",
+   "serial": "ZA1K2WML",
+   "model": "STMPSED1CLAR8000",
+   "status": "ok",
+   "uses": [
+    "zfs > space 5925914041408872576 > raidz2 9007031778331642784 > disk 16788047725255307764"
+   ]
+  },
+  {
+   "label": "47",
+   "ids": [
+    "sas:47"
+   ],
+   "declared": true,
+   "present": true,
+   "devName": "sdx",
+   "serial": "ZA1K2KC2",
+   "model": "STMPSED1CLAR8000",
+   "status": "ok",
+   "uses": [
+    "zfs > space 5925914041408872576 > raidz2 5204885172110344134 > disk 4011944550979922045"
+   ]
+  },
+  {
+   "label": "48",
+   "ids": [
+    "sas:48"
+   ],
+   "declared": true,
+   "present": true,
+   "devName": "sdbv",
+   "serial": "001851PY9YMV_VLKY9YMV",
+   "model": "H7280A520SUN8.0T",
+   "status": "ok"
+  },
+  {
+   "label": "49",
+   "ids": [
+    "sas:49"
+   ],
+   "declared": true,
+   "present": true,
+   "devName": "sdbm",
+   "serial": "001619PHKEBV_VKJHKEBV",
+   "model": "H7280A520SUN8.0T",
+   "status": "ok",
+   "uses": [
+    "zfs > space 5925914041408872576 > raidz2 5236016460003016805 > disk 6116510512297950695"
+   ]
+  },
+  {
+   "label": "50",
+   "ids": [
+    "sas:50"
+   ],
+   "declared": true,
+   "present": true,
+   "devName": "sdbi",
+   "serial": "001619PJML2V_VKJJML2V",
+   "model": "H7280A520SUN8.0T",
+   "status": "ok",
+   "uses": [
+    "zfs > space 5925914041408872576 > raidz2 5236016460003016805 > disk 14117335847534821566"
+   ]
+  },
+  {
+   "label": "51",
+   "ids": [
+    "sas:51"
+   ],
+   "declared": true,
+   "present": true,
+   "devName": "sdba",
+   "serial": "001619PM9BVV_VKJM9BVV",
+   "model": "H7280A520SUN8.0T",
+   "status": "ok",
+   "uses": [
+    "zfs > space 5925914041408872576 > raidz2 5236016460003016805 > disk 386918665121169072"
+   ]
+  },
+  {
+   "label": "52",
+   "ids": [
+    "sas:52"
+   ],
+   "declared": true,
+   "present": true,
+   "devName": "sdas",
+   "serial": "ZA1K2VPW",
+   "model": "STMPSED1CLAR8000",
+   "status": "ok",
+   "uses": [
+    "zfs > space 5925914041408872576 > raidz2 16950899211129714203 > disk 1171797100647372475"
+   ]
+  },
+  {
+   "label": "53",
+   "ids": [
+    "sas:53"
+   ],
+   "declared": true,
+   "present": true,
+   "devName": "sdam",
+   "serial": "001619PHKAHV_VKJHKAHV",
+   "model": "H7280A520SUN8.0T",
+   "status": "ok",
+   "uses": [
+    "zfs > space 5925914041408872576 > raidz2 5236016460003016805 > disk 18306089983861482320"
+   ]
+  },
+  {
+   "label": "54",
+   "ids": [
+    "sas:54"
+   ],
+   "declared": true,
+   "present": true,
+   "devName": "sdag",
+   "serial": "001619PJLREV_VKJJLREV",
+   "model": "H7280A520SUN8.0T",
+   "status": "suspect",
+   "uses": [
+    "zfs > space 5925914041408872576 > raidz2 5236016460003016805 > disk 9810514795403010748"
+   ]
+  },
+  {
+   "label": "55",
+   "ids": [
+    "sas:55"
+   ],
+   "declared": true
+  },
+  {
+   "label": "56",
+   "ids": [
+    "sas:56"
+   ],
+   "declared": true
+  },
+  {
+   "label": "57",
+   "ids": [
+    "sas:57"
+   ],
+   "declared": true,
+   "present": true,
+   "devName": "sdab",
+   "serial": "ZCT0ELAY",
+   "model": "ST8000DM004-2CX1",
+   "status": "ok",
+   "uses": [
+    "zfs > space 5925914041408872576 > raidz2 16950899211129714203 > spare 9322934535608033256 > disk 17885295320081759272"
+   ]
+  },
+  {
+   "label": "58",
+   "ids": [
+    "sas:58"
+   ],
+   "declared": true,
+   "present": true,
+   "devName": "sdy",
+   "serial": "ZCT0CQLK",
+   "model": "ST8000DM004-2CX1",
+   "status": "ok",
+   "uses": [
+    "zfs > spare backups > disk 891643583844207151"
+   ]
+  },
+  {
+   "label": "59",
+   "ids": [
+    "sas:59"
+   ],
+   "declared": true
+  }
+ ],
+ "rows": 5,
+ "columns": 12,
+ "order": "row-major"
+}

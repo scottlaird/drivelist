@@ -1,0 +1,33 @@
+{
+ "drive": {
+  "driveId": "15",
+  "wwn": "0x5000c500e8e71e56",
+  "vendor": "ATA",
+  "model": "ST8000VN004-3CP1",
+  "serial": "WWZ62CA0",
+  "sizeBytes": "8001563222016",
+  "bus": "BUS_SAS",
+  "status": "ok",
+  "firstSeen": "2026-09-13T01:41:39Z",
+  "lastSeen": "2026-09-27T19:41:38Z",
+  "current": {
+   "hostname": "nas",
+   "enclosure": "0x5000ccab020094ff",
+   "bay": "9",
+   "devName": "sdak",
+   "uses": [
+    "zfs > backups 12143466076769931197 > raidz2 5338052500984404557 > disk 17976892840358164373"
+   ],
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "enclosureVia": "expander-11:0",
+   "enclosureName": "nas-hgst-u60-1",
+   "bayLabel": "9"
+  },
+  "memberState": "ONLINE"
+ },
+ "keys": [
+  "serial:ST8000VN004-3CP1/WWZ62CA0",
+  "wwn:0x5000c500e8e71e56"
+ ]
+}

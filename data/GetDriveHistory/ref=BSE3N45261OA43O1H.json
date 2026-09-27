@@ -1,0 +1,73 @@
+{
+ "drive": {
+  "driveId": "102",
+  "wwn": "eui.fd5b42cebc8f9d54ace42e005528ced4",
+  "model": "SHPP51-1000GM",
+  "serial": "BSE3N45261OA43O1H",
+  "sizeBytes": "1000204886016",
+  "bus": "BUS_NVME",
+  "status": "ok",
+  "firstSeen": "2026-09-13T01:44:31Z",
+  "lastSeen": "2026-09-27T19:42:09Z",
+  "current": {
+   "hostname": "backups",
+   "enclosure": "dmi:OM259S069895",
+   "bay": "M.2-C2 PCIe 4.0 X4",
+   "devName": "nvme1n1",
+   "uses": [
+    "zfs > rpool 18354710647381807540 > mirror 5264883868435595074 > disk 1250468358385806965"
+   ],
+   "firstSeen": "2026-09-13T23:12:25Z",
+   "lastSeen": "2026-09-27T19:42:09Z",
+   "enclosureVia": "pci"
+  },
+  "memberState": "ONLINE"
+ },
+ "placements": [
+  {
+   "hostname": "backups",
+   "devName": "nvme1n1",
+   "uses": [
+    "zfs > rpool 18354710647381807540 > mirror 5264883868435595074 > disk 1250468358385806965"
+   ],
+   "firstSeen": "2026-09-13T01:44:31Z",
+   "lastSeen": "2026-09-13T23:09:40Z",
+   "endedAt": "2026-09-13T23:12:25Z",
+   "endReason": "moved"
+  },
+  {
+   "hostname": "backups",
+   "enclosure": "dmi:OM259S069895",
+   "bay": "M.2-C2 PCIe 4.0 X4",
+   "devName": "nvme1n1",
+   "uses": [
+    "zfs > rpool 18354710647381807540 > mirror 5264883868435595074 > disk 1250468358385806965"
+   ],
+   "firstSeen": "2026-09-13T23:12:25Z",
+   "lastSeen": "2026-09-27T19:42:09Z",
+   "enclosureVia": "pci"
+  }
+ ],
+ "events": [
+  {
+   "eventId": "363",
+   "ts": "2026-09-13T01:44:31Z",
+   "kind": "first_seen",
+   "serial": "BSE3N45261OA43O1H",
+   "wwn": "eui.fd5b42cebc8f9d54ace42e005528ced4",
+   "hostname": "backups",
+   "detail": "{\"bay\":\"\",\"dev_name\":\"nvme0n1\",\"expander\":\"\",\"expander_dev\":\"\",\"uses\":[\"zfs \\u003e rpool 18354710647381807540 \\u003e mirror 5264883868435595074 \\u003e disk 1250468358385806965\"]}",
+   "source": "snapshot:4"
+  },
+  {
+   "eventId": "521",
+   "ts": "2026-09-13T23:12:25Z",
+   "kind": "moved_bay",
+   "serial": "BSE3N45261OA43O1H",
+   "wwn": "eui.fd5b42cebc8f9d54ace42e005528ced4",
+   "hostname": "backups",
+   "detail": "{\"from_bay\":\"\",\"from_enclosure\":\"\",\"from_enclosure_via\":\"\",\"from_host\":\"backups\",\"from_uses\":[\"zfs \\u003e rpool 18354710647381807540 \\u003e mirror 5264883868435595074 \\u003e disk 1250468358385806965\"],\"to_bay\":\"M.2-C2 PCIe 4.0 X4\",\"to_dev_name\":\"nvme1n1\",\"to_enclosure\":\"dmi:OM259S069895\",\"to_enclosure_via\":\"pci\",\"to_uses\":[\"zfs \\u003e rpool 18354710647381807540 \\u003e mirror 5264883868435595074 \\u003e disk 1250468358385806965\"]}",
+   "source": "snapshot:33"
+  }
+ ]
+}

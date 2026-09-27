@@ -1,0 +1,65 @@
+{
+ "drive": {
+  "driveId": "88",
+  "wwn": "0x5000cca2547fac54",
+  "vendor": "HGST",
+  "model": "H7280A520SUN8.0T",
+  "serial": "001619P86PAV_VKJ86PAV",
+  "sizeBytes": "7865536647168",
+  "bus": "BUS_SAS",
+  "status": "ok",
+  "firstSeen": "2026-09-13T01:41:39Z",
+  "lastSeen": "2026-09-27T19:41:38Z",
+  "current": {
+   "hostname": "nas",
+   "enclosure": "0x500304800000007f",
+   "bay": "14",
+   "devName": "sdp",
+   "uses": [
+    "zfs > backups 12143466076769931197 > raidz2 17954131499336888302 > disk 11687791957475096531"
+   ],
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "enclosureVia": "expander-10:0",
+   "enclosureName": "nas-sc847-back"
+  },
+  "memberState": "ONLINE"
+ },
+ "placements": [
+  {
+   "hostname": "nas",
+   "enclosure": "0x500304800000007f",
+   "bay": "14",
+   "devName": "sdp",
+   "uses": [
+    "zfs > backups 12143466076769931197 > raidz2 17954131499336888302 > disk 11687791957475096531"
+   ],
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "enclosureVia": "expander-10:0",
+   "enclosureName": "nas-sc847-back"
+  }
+ ],
+ "events": [
+  {
+   "eventId": "349",
+   "ts": "2026-09-13T01:41:39Z",
+   "kind": "first_seen",
+   "serial": "001619P86PAV_VKJ86PAV",
+   "wwn": "0x5000cca2547fac54",
+   "hostname": "nas",
+   "detail": "{\"bay\":\"14\",\"dev_name\":\"sdp\",\"expander\":\"expander-10:0\",\"expander_dev\":\"expander-10:0\",\"uses\":[\"zfs \\u003e backups 12143466076769931197 \\u003e raidz2 17954131499336888302 \\u003e disk 11687791957475096531\"]}",
+   "source": "snapshot:2"
+  },
+  {
+   "eventId": "459",
+   "ts": "2026-09-13T02:09:06Z",
+   "kind": "member_state_changed",
+   "serial": "001619P86PAV_VKJ86PAV",
+   "wwn": "0x5000cca2547fac54",
+   "hostname": "nas",
+   "detail": "{\"from\":\"\",\"to\":\"ONLINE\",\"uses\":[\"zfs \\u003e backups 12143466076769931197 \\u003e raidz2 17954131499336888302 \\u003e disk 11687791957475096531\"]}",
+   "source": "snapshot:8"
+  }
+ ]
+}

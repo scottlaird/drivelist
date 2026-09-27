@@ -1,0 +1,894 @@
+{
+ "events": [
+  {
+   "eventId": "494",
+   "ts": "2026-09-13T12:08:58Z",
+   "kind": "member_state_changed",
+   "serial": "001619PJLREV_VKJJLREV",
+   "wwn": "0x5000cca2548eecec",
+   "hostname": "nas",
+   "detail": "{\"from\":\"ONLINE\",\"to\":\"FAULTED\",\"uses\":[\"zfs \\u003e space 5925914041408872576 \\u003e raidz2 5236016460003016805 \\u003e disk 9810514795403010748\"]}",
+   "source": "snapshot:14"
+  },
+  {
+   "eventId": "468",
+   "ts": "2026-09-13T02:09:06Z",
+   "kind": "member_state_changed",
+   "serial": "2EGDYBMR",
+   "wwn": "0x5000cca23b178ae4",
+   "hostname": "nas",
+   "detail": "{\"from\":\"\",\"to\":\"ONLINE\",\"uses\":[\"zfs \\u003e backups 12143466076769931197 \\u003e raidz2 5338052500984404557 \\u003e disk 16862381265388060190\"]}",
+   "source": "snapshot:8"
+  },
+  {
+   "eventId": "467",
+   "ts": "2026-09-13T02:09:06Z",
+   "kind": "member_state_changed",
+   "serial": "ZCT0CQLK",
+   "wwn": "0x5000c500b32d1a9c",
+   "hostname": "nas",
+   "detail": "{\"from\":\"\",\"to\":\"INUSE\",\"uses\":[\"zfs \\u003e spare backups \\u003e disk 891643583844207151\"]}",
+   "source": "snapshot:8"
+  },
+  {
+   "eventId": "466",
+   "ts": "2026-09-13T02:09:06Z",
+   "kind": "member_state_changed",
+   "serial": "ZA1K2KC2",
+   "wwn": "0x5000c500caf7af6f",
+   "hostname": "nas",
+   "detail": "{\"from\":\"\",\"to\":\"ONLINE\",\"uses\":[\"zfs \\u003e space 5925914041408872576 \\u003e raidz2 5204885172110344134 \\u003e disk 4011944550979922045\"]}",
+   "source": "snapshot:8"
+  },
+  {
+   "eventId": "465",
+   "ts": "2026-09-13T02:09:06Z",
+   "kind": "member_state_changed",
+   "serial": "0LY3PT0A",
+   "wwn": "0x5000cca04aafd574",
+   "hostname": "nas",
+   "detail": "{\"from\":\"\",\"to\":\"ONLINE\",\"uses\":[\"zfs \\u003e space 5925914041408872576 \\u003e log \\u003e mirror 11643308628144396865 \\u003e disk 6658585271831292557\"]}",
+   "source": "snapshot:8"
+  },
+  {
+   "eventId": "464",
+   "ts": "2026-09-13T02:09:06Z",
+   "kind": "member_state_changed",
+   "serial": "0SWWPRRA",
+   "wwn": "0x5000cca0506abc6c",
+   "hostname": "nas",
+   "detail": "{\"from\":\"\",\"to\":\"ONLINE\",\"uses\":[\"zfs \\u003e backups 12143466076769931197 \\u003e mirror 4044852472690946034 \\u003e disk 16075576088670221827\"]}",
+   "source": "snapshot:8"
+  },
+  {
+   "eventId": "463",
+   "ts": "2026-09-13T02:09:06Z",
+   "kind": "member_state_changed",
+   "serial": "0LY3PSSA",
+   "wwn": "0x5000cca04aafd554",
+   "hostname": "nas",
+   "detail": "{\"from\":\"\",\"to\":\"ONLINE\",\"uses\":[\"zfs \\u003e space 5925914041408872576 \\u003e log \\u003e mirror 11643308628144396865 \\u003e disk 9523780891956275038\"]}",
+   "source": "snapshot:8"
+  },
+  {
+   "eventId": "462",
+   "ts": "2026-09-13T02:09:06Z",
+   "kind": "member_state_changed",
+   "serial": "0SVHM7EA",
+   "wwn": "0x5000cca0501c6728",
+   "hostname": "nas",
+   "detail": "{\"from\":\"\",\"to\":\"ONLINE\",\"uses\":[\"zfs \\u003e backups 12143466076769931197 \\u003e mirror 10433001683690774586 \\u003e disk 7733054877028270239\"]}",
+   "source": "snapshot:8"
+  },
+  {
+   "eventId": "461",
+   "ts": "2026-09-13T02:09:06Z",
+   "kind": "member_state_changed",
+   "serial": "0SWWM72A",
+   "wwn": "0x5000cca0506a96d0",
+   "hostname": "nas",
+   "detail": "{\"from\":\"\",\"to\":\"ONLINE\",\"uses\":[\"zfs \\u003e backups 12143466076769931197 \\u003e mirror 10433001683690774586 \\u003e disk 2013986898276113415\"]}",
+   "source": "snapshot:8"
+  },
+  {
+   "eventId": "460",
+   "ts": "2026-09-13T02:09:06Z",
+   "kind": "member_state_changed",
+   "serial": "0SWX1KLA",
+   "wwn": "0x5000cca0506b5f1c",
+   "hostname": "nas",
+   "detail": "{\"from\":\"\",\"to\":\"ONLINE\",\"uses\":[\"zfs \\u003e backups 12143466076769931197 \\u003e mirror 4044852472690946034 \\u003e disk 11828207356583110866\"]}",
+   "source": "snapshot:8"
+  },
+  {
+   "eventId": "459",
+   "ts": "2026-09-13T02:09:06Z",
+   "kind": "member_state_changed",
+   "serial": "001619P86PAV_VKJ86PAV",
+   "wwn": "0x5000cca2547fac54",
+   "hostname": "nas",
+   "detail": "{\"from\":\"\",\"to\":\"ONLINE\",\"uses\":[\"zfs \\u003e backups 12143466076769931197 \\u003e raidz2 17954131499336888302 \\u003e disk 11687791957475096531\"]}",
+   "source": "snapshot:8"
+  },
+  {
+   "eventId": "458",
+   "ts": "2026-09-13T02:09:06Z",
+   "kind": "member_state_changed",
+   "serial": "001619PKAV6V_VKJKAV6V",
+   "wwn": "0x5000cca25490481c",
+   "hostname": "nas",
+   "detail": "{\"from\":\"\",\"to\":\"ONLINE\",\"uses\":[\"zfs \\u003e space 5925914041408872576 \\u003e raidz2 9007031778331642784 \\u003e disk 15351399526994441874\"]}",
+   "source": "snapshot:8"
+  },
+  {
+   "eventId": "457",
+   "ts": "2026-09-13T02:09:06Z",
+   "kind": "member_state_changed",
+   "serial": "001619PKD9YV_VKJKD9YV",
+   "wwn": "0x5000cca254905e44",
+   "hostname": "nas",
+   "detail": "{\"from\":\"\",\"to\":\"ONLINE\",\"uses\":[\"zfs \\u003e space 5925914041408872576 \\u003e raidz2 9007031778331642784 \\u003e disk 3487896885370626489\"]}",
+   "source": "snapshot:8"
+  },
+  {
+   "eventId": "456",
+   "ts": "2026-09-13T02:09:06Z",
+   "kind": "member_state_changed",
+   "serial": "001619PJM90V_VKJJM90V",
+   "wwn": "0x5000cca2548ef570",
+   "hostname": "nas",
+   "detail": "{\"from\":\"\",\"to\":\"ONLINE\",\"uses\":[\"zfs \\u003e space 5925914041408872576 \\u003e raidz2 9007031778331642784 \\u003e disk 3409693676319033394\"]}",
+   "source": "snapshot:8"
+  },
+  {
+   "eventId": "455",
+   "ts": "2026-09-13T02:09:06Z",
+   "kind": "member_state_changed",
+   "serial": "001619P964HV_VKJ964HV",
+   "wwn": "0x5000cca2548175a8",
+   "hostname": "nas",
+   "detail": "{\"from\":\"\",\"to\":\"ONLINE\",\"uses\":[\"zfs \\u003e space 5925914041408872576 \\u003e raidz2 5204885172110344134 \\u003e disk 13160228476946060421\"]}",
+   "source": "snapshot:8"
+  },
+  {
+   "eventId": "454",
+   "ts": "2026-09-13T02:09:06Z",
+   "kind": "member_state_changed",
+   "serial": "001619PHJPEV_VKJHJPEV",
+   "wwn": "0x5000cca2548cfcec",
+   "hostname": "nas",
+   "detail": "{\"from\":\"\",\"to\":\"ONLINE\",\"uses\":[\"zfs \\u003e space 5925914041408872576 \\u003e raidz2 12372305547527317295 \\u003e disk 5227188687168818047\"]}",
+   "source": "snapshot:8"
+  },
+  {
+   "eventId": "453",
+   "ts": "2026-09-13T02:09:06Z",
+   "kind": "member_state_changed",
+   "serial": "2EKB12BX",
+   "wwn": "0x5000cca23bbd2a88",
+   "hostname": "nas",
+   "detail": "{\"from\":\"\",\"to\":\"ONLINE\",\"uses\":[\"zfs \\u003e backups 12143466076769931197 \\u003e raidz2 17954131499336888302 \\u003e disk 6405638789467097001\"]}",
+   "source": "snapshot:8"
+  },
+  {
+   "eventId": "452",
+   "ts": "2026-09-13T02:09:06Z",
+   "kind": "member_state_changed",
+   "serial": "7SG4B9MG",
+   "wwn": "0x5000cca25207efc4",
+   "hostname": "nas",
+   "detail": "{\"from\":\"\",\"to\":\"ONLINE\",\"uses\":[\"zfs \\u003e space 5925914041408872576 \\u003e raidz2 5204885172110344134 \\u003e disk 12789853407961503446\"]}",
+   "source": "snapshot:8"
+  },
+  {
+   "eventId": "451",
+   "ts": "2026-09-13T02:09:06Z",
+   "kind": "member_state_changed",
+   "serial": "001619PJMXHV_VKJJMXHV",
+   "wwn": "0x5000cca2548efee0",
+   "hostname": "nas",
+   "detail": "{\"from\":\"\",\"to\":\"ONLINE\",\"uses\":[\"zfs \\u003e space 5925914041408872576 \\u003e raidz2 3388823558429738332 \\u003e disk 13797029297166725296\"]}",
+   "source": "snapshot:8"
+  },
+  {
+   "eventId": "450",
+   "ts": "2026-09-13T02:09:06Z",
+   "kind": "member_state_changed",
+   "serial": "7SG3M07G",
+   "wwn": "0x5000cca2520691dc",
+   "hostname": "nas",
+   "detail": "{\"from\":\"\",\"to\":\"ONLINE\",\"uses\":[\"zfs \\u003e space 5925914041408872576 \\u003e raidz2 12372305547527317295 \\u003e disk 15192423959397411076\"]}",
+   "source": "snapshot:8"
+  },
+  {
+   "eventId": "449",
+   "ts": "2026-09-13T02:09:06Z",
+   "kind": "member_state_changed",
+   "serial": "7SG49DVG",
+   "wwn": "0x5000cca25207d34c",
+   "hostname": "nas",
+   "detail": "{\"from\":\"\",\"to\":\"ONLINE\",\"uses\":[\"zfs \\u003e space 5925914041408872576 \\u003e raidz2 5204885172110344134 \\u003e disk 6199030208081625901\"]}",
+   "source": "snapshot:8"
+  },
+  {
+   "eventId": "448",
+   "ts": "2026-09-13T02:09:06Z",
+   "kind": "member_state_changed",
+   "serial": "7SG4B86G",
+   "wwn": "0x5000cca25207ef14",
+   "hostname": "nas",
+   "detail": "{\"from\":\"\",\"to\":\"ONLINE\",\"uses\":[\"zfs \\u003e space 5925914041408872576 \\u003e raidz2 5204885172110344134 \\u003e disk 5369926289127318604\"]}",
+   "source": "snapshot:8"
+  },
+  {
+   "eventId": "447",
+   "ts": "2026-09-13T02:09:06Z",
+   "kind": "member_state_changed",
+   "serial": "2EG6AS1R",
+   "wwn": "0x5000cca23b0b8a38",
+   "hostname": "nas",
+   "detail": "{\"from\":\"\",\"to\":\"ONLINE\",\"uses\":[\"zfs \\u003e backups 12143466076769931197 \\u003e raidz2 5338052500984404557 \\u003e disk 10946084812727461689\"]}",
+   "source": "snapshot:8"
+  },
+  {
+   "eventId": "446",
+   "ts": "2026-09-13T02:09:06Z",
+   "kind": "member_state_changed",
+   "serial": "WKD32WVK",
+   "wwn": "0x5000c500c7913439",
+   "hostname": "nas",
+   "detail": "{\"from\":\"\",\"to\":\"ONLINE\",\"uses\":[\"zfs \\u003e space 5925914041408872576 \\u003e raidz2 9007031778331642784 \\u003e disk 13320454780145336341\"]}",
+   "source": "snapshot:8"
+  },
+  {
+   "eventId": "445",
+   "ts": "2026-09-13T02:09:06Z",
+   "kind": "member_state_changed",
+   "serial": "2EGPAEKV",
+   "wwn": "0x5000cca23b26cbe4",
+   "hostname": "nas",
+   "detail": "{\"from\":\"\",\"to\":\"ONLINE\",\"uses\":[\"zfs \\u003e backups 12143466076769931197 \\u003e raidz2 5338052500984404557 \\u003e disk 2922563178447707709\"]}",
+   "source": "snapshot:8"
+  },
+  {
+   "eventId": "444",
+   "ts": "2026-09-13T02:09:06Z",
+   "kind": "member_state_changed",
+   "serial": "C7XBG0YY0KA05147",
+   "wwn": "0x5002538b48a797f0",
+   "hostname": "nas",
+   "detail": "{\"from\":\"\",\"to\":\"ONLINE\",\"uses\":[\"zfs \\u003e space 5925914041408872576 \\u003e mirror 737277534668809963 \\u003e disk 1161082729107973602\"]}",
+   "source": "snapshot:8"
+  },
+  {
+   "eventId": "443",
+   "ts": "2026-09-13T02:09:06Z",
+   "kind": "member_state_changed",
+   "serial": "C7XBG0ZK0KA05168",
+   "wwn": "0x5002538b48a79940",
+   "hostname": "nas",
+   "detail": "{\"from\":\"\",\"to\":\"ONLINE\",\"uses\":[\"zfs \\u003e space 5925914041408872576 \\u003e mirror 737277534668809963 \\u003e disk 2613912595685689289\"]}",
+   "source": "snapshot:8"
+  },
+  {
+   "eventId": "442",
+   "ts": "2026-09-13T02:09:06Z",
+   "kind": "member_state_changed",
+   "serial": "71J0A191FBLG",
+   "wwn": "0x5000039b08d8b993",
+   "hostname": "nas",
+   "detail": "{\"from\":\"\",\"to\":\"ONLINE\",\"uses\":[\"zfs \\u003e space 5925914041408872576 \\u003e raidz2 5236016460003016805 \\u003e disk 6614421116723416414\"]}",
+   "source": "snapshot:8"
+  },
+  {
+   "eventId": "441",
+   "ts": "2026-09-13T02:09:06Z",
+   "kind": "member_state_changed",
+   "serial": "VLG32AEY",
+   "wwn": "0x5000cca260c165e2",
+   "hostname": "nas",
+   "detail": "{\"from\":\"\",\"to\":\"ONLINE\",\"uses\":[\"zfs \\u003e space 5925914041408872576 \\u003e raidz2 1731578064309998343 \\u003e disk 17320259033768849942\"]}",
+   "source": "snapshot:8"
+  },
+  {
+   "eventId": "440",
+   "ts": "2026-09-13T02:09:06Z",
+   "kind": "member_state_changed",
+   "serial": "2EG6HP1R",
+   "wwn": "0x5000cca23b0bd454",
+   "hostname": "nas",
+   "detail": "{\"from\":\"\",\"to\":\"ONLINE\",\"uses\":[\"zfs \\u003e backups 12143466076769931197 \\u003e raidz2 17954131499336888302 \\u003e disk 13607477501350774139\"]}",
+   "source": "snapshot:8"
+  },
+  {
+   "eventId": "439",
+   "ts": "2026-09-13T02:09:06Z",
+   "kind": "member_state_changed",
+   "serial": "2EG67SKP",
+   "wwn": "0x5000cca23b0b5d6c",
+   "hostname": "nas",
+   "detail": "{\"from\":\"\",\"to\":\"ONLINE\",\"uses\":[\"zfs \\u003e backups 12143466076769931197 \\u003e raidz2 5338052500984404557 \\u003e disk 3322808112866682979\"]}",
+   "source": "snapshot:8"
+  },
+  {
+   "eventId": "438",
+   "ts": "2026-09-13T02:09:06Z",
+   "kind": "member_state_changed",
+   "serial": "C7XBG0ZP0KA05172",
+   "wwn": "0x5002538b48a79980",
+   "hostname": "nas",
+   "detail": "{\"from\":\"\",\"to\":\"ONLINE\",\"uses\":[\"zfs \\u003e space 5925914041408872576 \\u003e mirror 737277534668809963 \\u003e disk 238920797006525894\"]}",
+   "source": "snapshot:8"
+  },
+  {
+   "eventId": "437",
+   "ts": "2026-09-13T02:09:06Z",
+   "kind": "member_state_changed",
+   "serial": "7SJG77PW",
+   "wwn": "0x5000cca2528a9da4",
+   "hostname": "nas",
+   "detail": "{\"from\":\"\",\"to\":\"ONLINE\",\"uses\":[\"zfs \\u003e backups 12143466076769931197 \\u003e raidz2 5338052500984404557 \\u003e disk 1541146137294520958\"]}",
+   "source": "snapshot:8"
+  },
+  {
+   "eventId": "436",
+   "ts": "2026-09-13T02:09:06Z",
+   "kind": "member_state_changed",
+   "serial": "2EK1WD8X",
+   "wwn": "0x5000cca23beb21b9",
+   "hostname": "nas",
+   "detail": "{\"from\":\"\",\"to\":\"ONLINE\",\"uses\":[\"zfs \\u003e space 5925914041408872576 \\u003e raidz2 3388823558429738332 \\u003e disk 1541592169950923378\"]}",
+   "source": "snapshot:8"
+  },
+  {
+   "eventId": "435",
+   "ts": "2026-09-13T02:09:06Z",
+   "kind": "member_state_changed",
+   "serial": "7SK2R4TW",
+   "wwn": "0x5000cca252ae09ac",
+   "hostname": "nas",
+   "detail": "{\"from\":\"\",\"to\":\"ONLINE\",\"uses\":[\"zfs \\u003e backups 12143466076769931197 \\u003e raidz2 17954131499336888302 \\u003e disk 3016384749925427947\"]}",
+   "source": "snapshot:8"
+  },
+  {
+   "eventId": "434",
+   "ts": "2026-09-13T02:09:06Z",
+   "kind": "member_state_changed",
+   "serial": "2EGV9EPX",
+   "wwn": "0x5000cca23b2fd45c",
+   "hostname": "nas",
+   "detail": "{\"from\":\"\",\"to\":\"ONLINE\",\"uses\":[\"zfs \\u003e backups 12143466076769931197 \\u003e raidz2 17954131499336888302 \\u003e disk 686487638661057379\"]}",
+   "source": "snapshot:8"
+  },
+  {
+   "eventId": "433",
+   "ts": "2026-09-13T02:09:06Z",
+   "kind": "member_state_changed",
+   "serial": "ZCT3BJRW",
+   "wwn": "0x5000c500c74b82b9",
+   "hostname": "nas",
+   "detail": "{\"from\":\"\",\"to\":\"ONLINE\",\"uses\":[\"zfs \\u003e space 5925914041408872576 \\u003e raidz2 5236016460003016805 \\u003e disk 10354587686331016347\"]}",
+   "source": "snapshot:8"
+  },
+  {
+   "eventId": "432",
+   "ts": "2026-09-13T02:09:06Z",
+   "kind": "member_state_changed",
+   "serial": "R6GBW8JY",
+   "wwn": "0x5000cca263c56678",
+   "hostname": "nas",
+   "detail": "{\"from\":\"\",\"to\":\"ONLINE\",\"uses\":[\"zfs \\u003e space 5925914041408872576 \\u003e raidz2 3388823558429738332 \\u003e disk 16809762363229148826\"]}",
+   "source": "snapshot:8"
+  },
+  {
+   "eventId": "431",
+   "ts": "2026-09-13T02:09:06Z",
+   "kind": "member_state_changed",
+   "serial": "7HK77YXF",
+   "wwn": "0x5000cca257b64c08",
+   "hostname": "nas",
+   "detail": "{\"from\":\"\",\"to\":\"ONLINE\",\"uses\":[\"zfs \\u003e backups 12143466076769931197 \\u003e raidz2 17954131499336888302 \\u003e disk 12734872772442045668\"]}",
+   "source": "snapshot:8"
+  },
+  {
+   "eventId": "430",
+   "ts": "2026-09-13T02:09:06Z",
+   "kind": "member_state_changed",
+   "serial": "2EG17DZJ",
+   "wwn": "0x5000cca23b0240e0",
+   "hostname": "nas",
+   "detail": "{\"from\":\"\",\"to\":\"ONLINE\",\"uses\":[\"zfs \\u003e backups 12143466076769931197 \\u003e raidz2 17954131499336888302 \\u003e disk 17267404244838488514\"]}",
+   "source": "snapshot:8"
+  },
+  {
+   "eventId": "429",
+   "ts": "2026-09-13T02:09:06Z",
+   "kind": "member_state_changed",
+   "serial": "WCT0VA8J",
+   "wwn": "0x5000c500baa141ea",
+   "hostname": "nas",
+   "detail": "{\"from\":\"\",\"to\":\"ONLINE\",\"uses\":[\"zfs \\u003e space 5925914041408872576 \\u003e raidz2 9007031778331642784 \\u003e disk 5460098026287034887\"]}",
+   "source": "snapshot:8"
+  },
+  {
+   "eventId": "428",
+   "ts": "2026-09-13T02:09:06Z",
+   "kind": "member_state_changed",
+   "serial": "001619PJMJVV_VKJJMJVV",
+   "wwn": "0x5000cca2548ef93c",
+   "hostname": "nas",
+   "detail": "{\"from\":\"\",\"to\":\"ONLINE\",\"uses\":[\"zfs \\u003e space 5925914041408872576 \\u003e raidz2 5236016460003016805 \\u003e disk 17283963709945061389\"]}",
+   "source": "snapshot:8"
+  },
+  {
+   "eventId": "427",
+   "ts": "2026-09-13T02:09:06Z",
+   "kind": "member_state_changed",
+   "serial": "VJG1VBNX",
+   "wwn": "0x5000cca261035d88",
+   "hostname": "nas",
+   "detail": "{\"from\":\"\",\"to\":\"ONLINE\",\"uses\":[\"zfs \\u003e space 5925914041408872576 \\u003e raidz2 16950899211129714203 \\u003e disk 15663109361216978631\"]}",
+   "source": "snapshot:8"
+  },
+  {
+   "eventId": "426",
+   "ts": "2026-09-13T02:09:06Z",
+   "kind": "member_state_changed",
+   "serial": "VJGRBUKX",
+   "wwn": "0x5000cca26128b234",
+   "hostname": "nas",
+   "detail": "{\"from\":\"\",\"to\":\"ONLINE\",\"uses\":[\"zfs \\u003e space 5925914041408872576 \\u003e raidz2 16950899211129714203 \\u003e disk 7674628401698022491\"]}",
+   "source": "snapshot:8"
+  },
+  {
+   "eventId": "425",
+   "ts": "2026-09-13T02:09:06Z",
+   "kind": "member_state_changed",
+   "serial": "VJG41ZTX",
+   "wwn": "0x5000cca2610763dc",
+   "hostname": "nas",
+   "detail": "{\"from\":\"\",\"to\":\"ONLINE\",\"uses\":[\"zfs \\u003e space 5925914041408872576 \\u003e raidz2 3388823558429738332 \\u003e disk 17108523430413874900\"]}",
+   "source": "snapshot:8"
+  },
+  {
+   "eventId": "424",
+   "ts": "2026-09-13T02:09:06Z",
+   "kind": "member_state_changed",
+   "serial": "P0NA0HA00483",
+   "wwn": "0x5002538a06a04540",
+   "hostname": "nas",
+   "detail": "{\"from\":\"\",\"to\":\"ONLINE\",\"uses\":[\"zfs \\u003e l2arc space \\u003e disk 11947748110017711895\"]}",
+   "source": "snapshot:8"
+  },
+  {
+   "eventId": "423",
+   "ts": "2026-09-13T02:09:06Z",
+   "kind": "member_state_changed",
+   "serial": "VKGR6VJX",
+   "wwn": "0x5000cca254286798",
+   "hostname": "nas",
+   "detail": "{\"from\":\"\",\"to\":\"ONLINE\",\"uses\":[\"zfs \\u003e space 5925914041408872576 \\u003e raidz2 16950899211129714203 \\u003e disk 11897712593002579400\"]}",
+   "source": "snapshot:8"
+  },
+  {
+   "eventId": "422",
+   "ts": "2026-09-13T02:09:06Z",
+   "kind": "member_state_changed",
+   "serial": "2EK0TUSX",
+   "wwn": "0x5000cca23baa8ee4",
+   "hostname": "nas",
+   "detail": "{\"from\":\"\",\"to\":\"ONLINE\",\"uses\":[\"zfs \\u003e space 5925914041408872576 \\u003e raidz2 9007031778331642784 \\u003e disk 13919307554659960383\"]}",
+   "source": "snapshot:8"
+  },
+  {
+   "eventId": "421",
+   "ts": "2026-09-13T02:09:06Z",
+   "kind": "member_state_changed",
+   "serial": "001619P8KK0V_VKJ8KK0V",
+   "wwn": "0x5000cca254804f68",
+   "hostname": "nas",
+   "detail": "{\"from\":\"\",\"to\":\"ONLINE\",\"uses\":[\"zfs \\u003e space 5925914041408872576 \\u003e raidz2 1731578064309998343 \\u003e disk 13028152974510422910\"]}",
+   "source": "snapshot:8"
+  },
+  {
+   "eventId": "420",
+   "ts": "2026-09-13T02:09:06Z",
+   "kind": "member_state_changed",
+   "serial": "001619PHKEBV_VKJHKEBV",
+   "wwn": "0x5000cca2548d0808",
+   "hostname": "nas",
+   "detail": "{\"from\":\"\",\"to\":\"ONLINE\",\"uses\":[\"zfs \\u003e space 5925914041408872576 \\u003e raidz2 5236016460003016805 \\u003e disk 6116510512297950695\"]}",
+   "source": "snapshot:8"
+  },
+  {
+   "eventId": "419",
+   "ts": "2026-09-13T02:09:06Z",
+   "kind": "member_state_changed",
+   "serial": "VJGREREX",
+   "wwn": "0x5000cca26128ceb8",
+   "hostname": "nas",
+   "detail": "{\"from\":\"\",\"to\":\"ONLINE\",\"uses\":[\"zfs \\u003e space 5925914041408872576 \\u003e raidz2 1731578064309998343 \\u003e disk 886436519714569443\"]}",
+   "source": "snapshot:8"
+  },
+  {
+   "eventId": "418",
+   "ts": "2026-09-13T02:09:06Z",
+   "kind": "member_state_changed",
+   "serial": "WWZ61ANG",
+   "wwn": "0x5000c500e8e71bc2",
+   "hostname": "nas",
+   "detail": "{\"from\":\"\",\"to\":\"ONLINE\",\"uses\":[\"zfs \\u003e space 5925914041408872576 \\u003e raidz2 9007031778331642784 \\u003e disk 4275947122481209035\"]}",
+   "source": "snapshot:8"
+  },
+  {
+   "eventId": "417",
+   "ts": "2026-09-13T02:09:06Z",
+   "kind": "member_state_changed",
+   "serial": "WSD6LL44",
+   "wwn": "0x5000c500e3f9397c",
+   "hostname": "nas",
+   "detail": "{\"from\":\"\",\"to\":\"ONLINE\",\"uses\":[\"zfs \\u003e space 5925914041408872576 \\u003e raidz2 16950899211129714203 \\u003e disk 2622484631566025123\"]}",
+   "source": "snapshot:8"
+  },
+  {
+   "eventId": "416",
+   "ts": "2026-09-13T02:09:06Z",
+   "kind": "member_state_changed",
+   "serial": "001619PJML2V_VKJJML2V",
+   "wwn": "0x5000cca2548ef9d4",
+   "hostname": "nas",
+   "detail": "{\"from\":\"\",\"to\":\"ONLINE\",\"uses\":[\"zfs \\u003e space 5925914041408872576 \\u003e raidz2 5236016460003016805 \\u003e disk 14117335847534821566\"]}",
+   "source": "snapshot:8"
+  },
+  {
+   "eventId": "415",
+   "ts": "2026-09-13T02:09:06Z",
+   "kind": "member_state_changed",
+   "serial": "001619PEP7BV_VKJEP7BV",
+   "wwn": "0x5000cca254899e38",
+   "hostname": "nas",
+   "detail": "{\"from\":\"\",\"to\":\"ONLINE\",\"uses\":[\"zfs \\u003e space 5925914041408872576 \\u003e raidz2 1731578064309998343 \\u003e disk 3095252915821648391\"]}",
+   "source": "snapshot:8"
+  },
+  {
+   "eventId": "414",
+   "ts": "2026-09-13T02:09:06Z",
+   "kind": "member_state_changed",
+   "serial": "P0NA0H906141",
+   "wwn": "0x5002538a069524f0",
+   "hostname": "nas",
+   "detail": "{\"from\":\"\",\"to\":\"ONLINE\",\"uses\":[\"zfs \\u003e l2arc space \\u003e disk 14309469848396800428\"]}",
+   "source": "snapshot:8"
+  },
+  {
+   "eventId": "413",
+   "ts": "2026-09-13T02:09:06Z",
+   "kind": "member_state_changed",
+   "serial": "VJGYXMPX",
+   "wwn": "0x5000cca261cd9a41",
+   "hostname": "nas",
+   "detail": "{\"from\":\"\",\"to\":\"ONLINE\",\"uses\":[\"zfs \\u003e space 5925914041408872576 \\u003e raidz2 12372305547527317295 \\u003e disk 15837447166093813087\"]}",
+   "source": "snapshot:8"
+  },
+  {
+   "eventId": "412",
+   "ts": "2026-09-13T02:09:06Z",
+   "kind": "member_state_changed",
+   "serial": "P0NA0H912672",
+   "wwn": "0x5002538a069d70f0",
+   "hostname": "nas",
+   "detail": "{\"from\":\"\",\"to\":\"ONLINE\",\"uses\":[\"zfs \\u003e l2arc space \\u003e disk 9633240364690830390\"]}",
+   "source": "snapshot:8"
+  },
+  {
+   "eventId": "411",
+   "ts": "2026-09-13T02:09:06Z",
+   "kind": "member_state_changed",
+   "serial": "VJGR81YX",
+   "wwn": "0x5000cca2612879b8",
+   "hostname": "nas",
+   "detail": "{\"from\":\"\",\"to\":\"ONLINE\",\"uses\":[\"zfs \\u003e space 5925914041408872576 \\u003e raidz2 1731578064309998343 \\u003e disk 18396237114283760904\"]}",
+   "source": "snapshot:8"
+  },
+  {
+   "eventId": "410",
+   "ts": "2026-09-13T02:09:06Z",
+   "kind": "member_state_changed",
+   "serial": "VKGVG9GX",
+   "wwn": "0x5000cca254301d64",
+   "hostname": "nas",
+   "detail": "{\"from\":\"\",\"to\":\"ONLINE\",\"uses\":[\"zfs \\u003e backups 12143466076769931197 \\u003e raidz2 5338052500984404557 \\u003e disk 18335223806475789631\"]}",
+   "source": "snapshot:8"
+  },
+  {
+   "eventId": "409",
+   "ts": "2026-09-13T02:09:06Z",
+   "kind": "member_state_changed",
+   "serial": "VJGS573X",
+   "wwn": "0x5000cca2612a20a8",
+   "hostname": "nas",
+   "detail": "{\"from\":\"\",\"to\":\"ONLINE\",\"uses\":[\"zfs \\u003e space 5925914041408872576 \\u003e raidz2 5204885172110344134 \\u003e disk 9753708214178611793\"]}",
+   "source": "snapshot:8"
+  },
+  {
+   "eventId": "408",
+   "ts": "2026-09-13T02:09:06Z",
+   "kind": "member_state_changed",
+   "serial": "001619PM9BVV_VKJM9BVV",
+   "wwn": "0x5000cca25493d51c",
+   "hostname": "nas",
+   "detail": "{\"from\":\"\",\"to\":\"ONLINE\",\"uses\":[\"zfs \\u003e space 5925914041408872576 \\u003e raidz2 5236016460003016805 \\u003e disk 386918665121169072\"]}",
+   "source": "snapshot:8"
+  },
+  {
+   "eventId": "407",
+   "ts": "2026-09-13T02:09:06Z",
+   "kind": "member_state_changed",
+   "serial": "S1E4NYAG205230",
+   "wwn": "0x500253850025cbf1",
+   "hostname": "nas",
+   "detail": "{\"from\":\"\",\"to\":\"ONLINE\",\"uses\":[\"zfs \\u003e bpool 6822782206755274061 \\u003e mirror 7879420759522091481 \\u003e disk 16883674818163482239\",\"zfs \\u003e rpool 6335217808421659663 \\u003e mirror 10116968943579434558 \\u003e disk 4017281962645193462\"]}",
+   "source": "snapshot:8"
+  },
+  {
+   "eventId": "406",
+   "ts": "2026-09-13T02:09:06Z",
+   "kind": "member_state_changed",
+   "serial": "ZA1K1FZN",
+   "wwn": "0x5000c500cb019b2b",
+   "hostname": "nas",
+   "detail": "{\"from\":\"\",\"to\":\"ONLINE\",\"uses\":[\"zfs \\u003e space 5925914041408872576 \\u003e raidz2 12372305547527317295 \\u003e disk 2305530796469611037\"]}",
+   "source": "snapshot:8"
+  },
+  {
+   "eventId": "405",
+   "ts": "2026-09-13T02:09:06Z",
+   "kind": "member_state_changed",
+   "serial": "001619PJN1YV_VKJJN1YV",
+   "wwn": "0x5000cca2548f0108",
+   "hostname": "nas",
+   "detail": "{\"from\":\"\",\"to\":\"ONLINE\",\"uses\":[\"zfs \\u003e space 5925914041408872576 \\u003e raidz2 1731578064309998343 \\u003e disk 10240545959618689249\"]}",
+   "source": "snapshot:8"
+  },
+  {
+   "eventId": "404",
+   "ts": "2026-09-13T02:09:06Z",
+   "kind": "member_state_changed",
+   "serial": "VGJSKZBK",
+   "wwn": "0x5000cca0bee6e709",
+   "hostname": "nas",
+   "detail": "{\"from\":\"\",\"to\":\"ONLINE\",\"uses\":[\"zfs \\u003e space 5925914041408872576 \\u003e raidz2 3388823558429738332 \\u003e disk 779833430179635364\"]}",
+   "source": "snapshot:8"
+  },
+  {
+   "eventId": "403",
+   "ts": "2026-09-13T02:09:06Z",
+   "kind": "member_state_changed",
+   "serial": "2EKT63HX",
+   "wwn": "0x5000cca23bf5465d",
+   "hostname": "nas",
+   "detail": "{\"from\":\"\",\"to\":\"ONLINE\",\"uses\":[\"zfs \\u003e space 5925914041408872576 \\u003e raidz2 1731578064309998343 \\u003e disk 4424673123196391603\"]}",
+   "source": "snapshot:8"
+  },
+  {
+   "eventId": "402",
+   "ts": "2026-09-13T02:09:06Z",
+   "kind": "member_state_changed",
+   "serial": "VJGSHAVX",
+   "wwn": "0x5000cca261caae28",
+   "hostname": "nas",
+   "detail": "{\"from\":\"\",\"to\":\"ONLINE\",\"uses\":[\"zfs \\u003e space 5925914041408872576 \\u003e raidz2 3388823558429738332 \\u003e disk 15584877991290069928\"]}",
+   "source": "snapshot:8"
+  },
+  {
+   "eventId": "401",
+   "ts": "2026-09-13T02:09:06Z",
+   "kind": "member_state_changed",
+   "serial": "VJGS4VDX",
+   "wwn": "0x5000cca2612a1afc",
+   "hostname": "nas",
+   "detail": "{\"from\":\"\",\"to\":\"ONLINE\",\"uses\":[\"zfs \\u003e space 5925914041408872576 \\u003e raidz2 12372305547527317295 \\u003e disk 1709552244939736735\"]}",
+   "source": "snapshot:8"
+  },
+  {
+   "eventId": "400",
+   "ts": "2026-09-13T02:09:06Z",
+   "kind": "member_state_changed",
+   "serial": "ZA1K1X7E",
+   "wwn": "0x5000c500caf55bbb",
+   "hostname": "nas",
+   "detail": "{\"from\":\"\",\"to\":\"ONLINE\",\"uses\":[\"zfs \\u003e space 5925914041408872576 \\u003e raidz2 1731578064309998343 \\u003e disk 5376298655796057137\"]}",
+   "source": "snapshot:8"
+  },
+  {
+   "eventId": "399",
+   "ts": "2026-09-13T02:09:06Z",
+   "kind": "member_state_changed",
+   "serial": "ZA1K2VPW",
+   "wwn": "0x5000c500caf880cb",
+   "hostname": "nas",
+   "detail": "{\"from\":\"\",\"to\":\"ONLINE\",\"uses\":[\"zfs \\u003e space 5925914041408872576 \\u003e raidz2 16950899211129714203 \\u003e disk 1171797100647372475\"]}",
+   "source": "snapshot:8"
+  },
+  {
+   "eventId": "398",
+   "ts": "2026-09-13T02:09:06Z",
+   "kind": "member_state_changed",
+   "serial": "VDJSBPBK",
+   "wwn": "0x5000cca0bbe6cf6c",
+   "hostname": "nas",
+   "detail": "{\"from\":\"\",\"to\":\"ONLINE\",\"uses\":[\"zfs \\u003e space 5925914041408872576 \\u003e raidz2 5204885172110344134 \\u003e disk 17157010119101828456\"]}",
+   "source": "snapshot:8"
+  },
+  {
+   "eventId": "397",
+   "ts": "2026-09-13T02:09:06Z",
+   "kind": "member_state_changed",
+   "serial": "VGJS0Y6K",
+   "wwn": "0x5000cca0bee6a714",
+   "hostname": "nas",
+   "detail": "{\"from\":\"\",\"to\":\"ONLINE\",\"uses\":[\"zfs \\u003e space 5925914041408872576 \\u003e raidz2 16950899211129714203 \\u003e disk 11330324464113506692\"]}",
+   "source": "snapshot:8"
+  },
+  {
+   "eventId": "396",
+   "ts": "2026-09-13T02:09:06Z",
+   "kind": "member_state_changed",
+   "serial": "2EK595JX",
+   "wwn": "0x5000cca23bb2bb48",
+   "hostname": "nas",
+   "detail": "{\"from\":\"\",\"to\":\"ONLINE\",\"uses\":[\"zfs \\u003e space 5925914041408872576 \\u003e raidz2 5204885172110344134 \\u003e disk 2969812317754238394\"]}",
+   "source": "snapshot:8"
+  },
+  {
+   "eventId": "395",
+   "ts": "2026-09-13T02:09:06Z",
+   "kind": "member_state_changed",
+   "serial": "7160A2TZFBEG",
+   "wwn": "0x5000039b08ca908c",
+   "hostname": "nas",
+   "detail": "{\"from\":\"\",\"to\":\"ONLINE\",\"uses\":[\"zfs \\u003e space 5925914041408872576 \\u003e raidz2 16950899211129714203 \\u003e disk 12228003088763601407\"]}",
+   "source": "snapshot:8"
+  },
+  {
+   "eventId": "394",
+   "ts": "2026-09-13T02:09:06Z",
+   "kind": "member_state_changed",
+   "serial": "P0NA0HA00158",
+   "wwn": "0x5002538a06a030f0",
+   "hostname": "nas",
+   "detail": "{\"from\":\"\",\"to\":\"ONLINE\",\"uses\":[\"zfs \\u003e l2arc space \\u003e disk 16862988291587455250\"]}",
+   "source": "snapshot:8"
+  },
+  {
+   "eventId": "393",
+   "ts": "2026-09-13T02:09:06Z",
+   "kind": "member_state_changed",
+   "serial": "001619PHKAHV_VKJHKAHV",
+   "wwn": "0x5000cca2548d06a4",
+   "hostname": "nas",
+   "detail": "{\"from\":\"\",\"to\":\"ONLINE\",\"uses\":[\"zfs \\u003e space 5925914041408872576 \\u003e raidz2 5236016460003016805 \\u003e disk 18306089983861482320\"]}",
+   "source": "snapshot:8"
+  },
+  {
+   "eventId": "392",
+   "ts": "2026-09-13T02:09:06Z",
+   "kind": "member_state_changed",
+   "serial": "VJG1V09X",
+   "wwn": "0x5000cca261035808",
+   "hostname": "nas",
+   "detail": "{\"from\":\"\",\"to\":\"ONLINE\",\"uses\":[\"zfs \\u003e space 5925914041408872576 \\u003e raidz2 12372305547527317295 \\u003e disk 12983238309654781705\"]}",
+   "source": "snapshot:8"
+  },
+  {
+   "eventId": "391",
+   "ts": "2026-09-13T02:09:06Z",
+   "kind": "member_state_changed",
+   "serial": "WWZ62CA0",
+   "wwn": "0x5000c500e8e71e56",
+   "hostname": "nas",
+   "detail": "{\"from\":\"\",\"to\":\"ONLINE\",\"uses\":[\"zfs \\u003e backups 12143466076769931197 \\u003e raidz2 5338052500984404557 \\u003e disk 17976892840358164373\"]}",
+   "source": "snapshot:8"
+  },
+  {
+   "eventId": "390",
+   "ts": "2026-09-13T02:09:06Z",
+   "kind": "member_state_changed",
+   "serial": "VJG24UZX",
+   "wwn": "0x5000cca26103eb9c",
+   "hostname": "nas",
+   "detail": "{\"from\":\"\",\"to\":\"ONLINE\",\"uses\":[\"zfs \\u003e space 5925914041408872576 \\u003e raidz2 12372305547527317295 \\u003e disk 4484622911110778645\"]}",
+   "source": "snapshot:8"
+  },
+  {
+   "eventId": "389",
+   "ts": "2026-09-13T02:09:06Z",
+   "kind": "member_state_changed",
+   "serial": "ZA1K3KEZ",
+   "wwn": "0x5000c500cafaac4f",
+   "hostname": "nas",
+   "detail": "{\"from\":\"\",\"to\":\"INUSE\",\"uses\":[\"zfs \\u003e spare space \\u003e disk 6934462713112163834\"]}",
+   "source": "snapshot:8"
+  },
+  {
+   "eventId": "388",
+   "ts": "2026-09-13T02:09:06Z",
+   "kind": "member_state_changed",
+   "serial": "001619PJLREV_VKJJLREV",
+   "wwn": "0x5000cca2548eecec",
+   "hostname": "nas",
+   "detail": "{\"from\":\"\",\"to\":\"ONLINE\",\"uses\":[\"zfs \\u003e space 5925914041408872576 \\u003e raidz2 5236016460003016805 \\u003e disk 9810514795403010748\"]}",
+   "source": "snapshot:8"
+  },
+  {
+   "eventId": "387",
+   "ts": "2026-09-13T02:09:06Z",
+   "kind": "member_state_changed",
+   "serial": "2EG0B0WJ",
+   "wwn": "0x5000cca23b00a598",
+   "hostname": "nas",
+   "detail": "{\"from\":\"\",\"to\":\"ONLINE\",\"uses\":[\"zfs \\u003e backups 12143466076769931197 \\u003e raidz2 5338052500984404557 \\u003e disk 16774907883495458181\"]}",
+   "source": "snapshot:8"
+  },
+  {
+   "eventId": "386",
+   "ts": "2026-09-13T02:09:06Z",
+   "kind": "member_state_changed",
+   "serial": "WSD5T2MP",
+   "wwn": "0x5000c500e38e0986",
+   "hostname": "nas",
+   "detail": "{\"from\":\"\",\"to\":\"ONLINE\",\"uses\":[\"zfs \\u003e space 5925914041408872576 \\u003e raidz2 3388823558429738332 \\u003e disk 8173906984701470597\"]}",
+   "source": "snapshot:8"
+  },
+  {
+   "eventId": "385",
+   "ts": "2026-09-13T02:09:06Z",
+   "kind": "member_state_changed",
+   "serial": "ZA1K2WML",
+   "wwn": "0x5000c500cb04e933",
+   "hostname": "nas",
+   "detail": "{\"from\":\"\",\"to\":\"ONLINE\",\"uses\":[\"zfs \\u003e space 5925914041408872576 \\u003e raidz2 9007031778331642784 \\u003e disk 16788047725255307764\"]}",
+   "source": "snapshot:8"
+  },
+  {
+   "eventId": "384",
+   "ts": "2026-09-13T02:09:06Z",
+   "kind": "member_state_changed",
+   "serial": "VJG4B90X",
+   "wwn": "0x5000cca26107ef78",
+   "hostname": "nas",
+   "detail": "{\"from\":\"\",\"to\":\"ONLINE\",\"uses\":[\"zfs \\u003e space 5925914041408872576 \\u003e raidz2 12372305547527317295 \\u003e disk 7178308151547831118\"]}",
+   "source": "snapshot:8"
+  },
+  {
+   "eventId": "383",
+   "ts": "2026-09-13T02:09:06Z",
+   "kind": "member_state_changed",
+   "serial": "ZCT0ELAY",
+   "wwn": "0x5000c500b3928e24",
+   "hostname": "nas",
+   "detail": "{\"from\":\"\",\"to\":\"ONLINE\",\"uses\":[\"zfs \\u003e space 5925914041408872576 \\u003e raidz2 16950899211129714203 \\u003e spare 9322934535608033256 \\u003e disk 17885295320081759272\"]}",
+   "source": "snapshot:8"
+  },
+  {
+   "eventId": "382",
+   "ts": "2026-09-13T02:09:06Z",
+   "kind": "member_state_changed",
+   "serial": "VJGRBU1X",
+   "wwn": "0x5000cca26128b1f4",
+   "hostname": "nas",
+   "detail": "{\"from\":\"\",\"to\":\"ONLINE\",\"uses\":[\"zfs \\u003e space 5925914041408872576 \\u003e raidz2 3388823558429738332 \\u003e disk 18371018139643991268\"]}",
+   "source": "snapshot:8"
+  },
+  {
+   "eventId": "381",
+   "ts": "2026-09-13T02:09:06Z",
+   "kind": "member_state_changed",
+   "serial": "S1E4NYAG204349",
+   "wwn": "0x500253850025c532",
+   "hostname": "nas",
+   "detail": "{\"from\":\"\",\"to\":\"ONLINE\",\"uses\":[\"mount \\u003e /boot/efi\",\"zfs \\u003e bpool 6822782206755274061 \\u003e mirror 7879420759522091481 \\u003e disk 10940132855821023010\",\"zfs \\u003e rpool 6335217808421659663 \\u003e mirror 10116968943579434558 \\u003e disk 13477747630627346864\"]}",
+   "source": "snapshot:8"
+  }
+ ]
+}

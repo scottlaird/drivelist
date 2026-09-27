@@ -1,0 +1,66 @@
+{
+ "rows": [
+  {
+   "hostname": "backups",
+   "dimm": {
+    "slot": "DIMMB1",
+    "bank": "P0_Node0_Channel1_Dimm1",
+    "sizeBytes": "34359738368",
+    "ranks": 2,
+    "type": "DDR5",
+    "speedMts": 5600,
+    "manufacturer": "Samsung",
+    "part": "MB32G56U80S2R8.RtR",
+    "serial": "80CE042542F50C0000",
+    "edac": "mc0/csrow2/ch1+mc0/csrow3/ch1",
+    "edacType": "Unbuffered-DDR5",
+    "mapping": "exact",
+    "ce": "209076",
+    "edacSizeBytes": "34359738368",
+    "totalWidth": 72,
+    "dataWidth": 64,
+    "edacMode": "SECDED"
+   },
+   "firstSeen": "2026-09-21T03:26:48Z",
+   "lastSeen": "2026-09-27T19:42:09Z",
+   "ceDay": "86413",
+   "lastError": "2026-09-27T19:42:09Z",
+   "problem": true
+  },
+  {
+   "hostname": "backups",
+   "dimm": {
+    "slot": "DIMMA1",
+    "bank": "P0_Node0_Channel0_Dimm1",
+    "sizeBytes": "34359738368",
+    "ranks": 2,
+    "type": "DDR5",
+    "speedMts": 5600,
+    "manufacturer": "Micron Technology",
+    "part": "MB32G56U80M2R8.RtR",
+    "serial": "802C042537BB080000",
+    "edac": "mc0/csrow2/ch0+mc0/csrow3/ch0",
+    "edacType": "Unbuffered-DDR5",
+    "mapping": "exact",
+    "edacSizeBytes": "34359738368",
+    "totalWidth": 72,
+    "dataWidth": 64,
+    "edacMode": "SECDED"
+   },
+   "firstSeen": "2026-09-21T03:26:48Z",
+   "lastSeen": "2026-09-27T19:42:09Z"
+  }
+ ],
+ "hosts": [
+  {
+   "hostname": "backups",
+   "kernelBytes": "64875311104",
+   "firmwareBytes": "68719476736",
+   "edacBytes": "68719476736",
+   "modules": 2,
+   "correction": "multi-bit ECC",
+   "edacMode": "SECDED",
+   "eccModules": 2
+  }
+ ]
+}

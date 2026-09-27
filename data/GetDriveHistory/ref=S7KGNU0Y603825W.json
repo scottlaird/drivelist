@@ -1,0 +1,75 @@
+{
+ "drive": {
+  "driveId": "99",
+  "wwn": "eui.0025384651a0a8a9",
+  "model": "Samsung SSD 990 PRO 4TB",
+  "serial": "S7KGNU0Y603825W",
+  "sizeBytes": "4000787030016",
+  "bus": "BUS_NVME",
+  "status": "ok",
+  "firstSeen": "2026-09-13T01:43:29Z",
+  "lastSeen": "2026-09-27T19:42:19Z",
+  "current": {
+   "hostname": "server9",
+   "enclosure": "dmi:MD337LA27FQQMQA00061",
+   "bay": "J3502",
+   "devName": "nvme0n1",
+   "uses": [
+    "zfs > data 10648486609276903990 > mirror 12388082022523346833 > disk 1259551880347934375"
+   ],
+   "firstSeen": "2026-09-13T23:12:36Z",
+   "lastSeen": "2026-09-27T19:42:19Z",
+   "enclosureVia": "pci",
+   "bayLabel": "M.2 1"
+  },
+  "memberState": "ONLINE"
+ },
+ "placements": [
+  {
+   "hostname": "server9",
+   "devName": "nvme0n1",
+   "uses": [
+    "zfs > data 10648486609276903990 > mirror 12388082022523346833 > disk 1259551880347934375"
+   ],
+   "firstSeen": "2026-09-13T01:43:29Z",
+   "lastSeen": "2026-09-13T23:08:57Z",
+   "endedAt": "2026-09-13T23:12:36Z",
+   "endReason": "moved"
+  },
+  {
+   "hostname": "server9",
+   "enclosure": "dmi:MD337LA27FQQMQA00061",
+   "bay": "J3502",
+   "devName": "nvme0n1",
+   "uses": [
+    "zfs > data 10648486609276903990 > mirror 12388082022523346833 > disk 1259551880347934375"
+   ],
+   "firstSeen": "2026-09-13T23:12:36Z",
+   "lastSeen": "2026-09-27T19:42:19Z",
+   "enclosureVia": "pci",
+   "bayLabel": "M.2 1"
+  }
+ ],
+ "events": [
+  {
+   "eventId": "360",
+   "ts": "2026-09-13T01:43:29Z",
+   "kind": "first_seen",
+   "serial": "S7KGNU0Y603825W",
+   "wwn": "eui.0025384651a0a8a9",
+   "hostname": "server9",
+   "detail": "{\"bay\":\"\",\"dev_name\":\"nvme0n1\",\"expander\":\"\",\"expander_dev\":\"\",\"uses\":[\"zfs \\u003e data 10648486609276903990 \\u003e mirror 12388082022523346833 \\u003e disk 1259551880347934375\"]}",
+   "source": "snapshot:3"
+  },
+  {
+   "eventId": "522",
+   "ts": "2026-09-13T23:12:36Z",
+   "kind": "moved_bay",
+   "serial": "S7KGNU0Y603825W",
+   "wwn": "eui.0025384651a0a8a9",
+   "hostname": "server9",
+   "detail": "{\"from_bay\":\"\",\"from_enclosure\":\"\",\"from_enclosure_via\":\"\",\"from_host\":\"server9\",\"from_uses\":[\"zfs \\u003e data 10648486609276903990 \\u003e mirror 12388082022523346833 \\u003e disk 1259551880347934375\"],\"to_bay\":\"J3502\",\"to_bay_label\":\"M.2 1\",\"to_dev_name\":\"nvme0n1\",\"to_enclosure\":\"dmi:MD337LA27FQQMQA00061\",\"to_enclosure_via\":\"pci\",\"to_uses\":[\"zfs \\u003e data 10648486609276903990 \\u003e mirror 12388082022523346833 \\u003e disk 1259551880347934375\"]}",
+   "source": "snapshot:34"
+  }
+ ]
+}

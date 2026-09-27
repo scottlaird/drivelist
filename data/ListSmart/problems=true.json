@@ -1,0 +1,499 @@
+{
+ "rows": [
+  {
+   "drive": {
+    "driveId": "34",
+    "wwn": "0x5000cca254301d64",
+    "vendor": "HITACHI",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGVG9GX",
+    "sizeBytes": "8001563222016",
+    "bus": "BUS_SAS",
+    "status": "ok",
+    "firstSeen": "2026-09-13T01:41:39Z",
+    "lastSeen": "2026-09-27T19:41:38Z",
+    "current": {
+     "hostname": "nas",
+     "enclosure": "0x5000ccab020094ff",
+     "bay": "4",
+     "devName": "sdbc",
+     "uses": [
+      "zfs > backups 12143466076769931197 > raidz2 5338052500984404557 > disk 18335223806475789631"
+     ],
+     "firstSeen": "2026-09-13T01:41:39Z",
+     "lastSeen": "2026-09-27T19:41:38Z",
+     "enclosureVia": "expander-11:0",
+     "enclosureName": "nas-hgst-u60-1",
+     "bayLabel": "4"
+    },
+    "memberState": "ONLINE"
+   },
+   "sample": {
+    "identity": {
+     "wwn": "0x5000cca254301d64",
+     "model": "HUH72808CLAR8000",
+     "serial": "VKGVG9GX"
+    },
+    "devName": "sdbc",
+    "ts": "2026-09-27T15:34:36Z",
+    "summary": {
+     "protocol": "SCSI",
+     "healthy": true,
+     "powerOnHours": "7749",
+     "tempC": 30,
+     "reallocated": "2",
+     "uncorrectable": "1",
+     "readBytes": "304605241000000",
+     "writeBytes": "71791100000000",
+     "selftestLast": "short: unknown error, incomplete @ 46851h"
+    },
+    "hostname": "nas",
+    "hasRaw": true
+   },
+   "problem": true
+  },
+  {
+   "drive": {
+    "driveId": "14",
+    "wwn": "0x5000cca23b0b7268",
+    "vendor": "HGST",
+    "model": "HUH728080AL4200",
+    "serial": "2EG694WP",
+    "sizeBytes": "8001563222016",
+    "bus": "BUS_SAS",
+    "status": "ok",
+    "firstSeen": "2026-09-13T01:41:39Z",
+    "lastSeen": "2026-09-27T19:41:38Z",
+    "current": {
+     "hostname": "nas",
+     "enclosure": "0x5000ccab020094ff",
+     "bay": "21",
+     "devName": "sdaj",
+     "firstSeen": "2026-09-13T01:41:39Z",
+     "lastSeen": "2026-09-27T19:41:38Z",
+     "enclosureVia": "expander-11:0",
+     "enclosureName": "nas-hgst-u60-1",
+     "bayLabel": "21"
+    }
+   },
+   "sample": {
+    "identity": {
+     "wwn": "0x5000cca23b0b7268",
+     "model": "HUH728080AL4200",
+     "serial": "2EG694WP"
+    },
+    "devName": "sdaj",
+    "ts": "2026-09-27T15:25:16Z",
+    "summary": {
+     "protocol": "SCSI",
+     "healthy": true,
+     "powerOnHours": "52097",
+     "tempC": 33,
+     "reallocated": "2",
+     "uncorrectable": "105",
+     "readBytes": "4703503000000",
+     "writeBytes": "23080779000000"
+    },
+    "hostname": "nas",
+    "hasRaw": true
+   },
+   "problem": true
+  },
+  {
+   "drive": {
+    "driveId": "53",
+    "wwn": "0x5000cca260de6a94",
+    "vendor": "HGST",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001851PY9YMV_VLKY9YMV",
+    "sizeBytes": "8001563222016",
+    "bus": "BUS_SAS",
+    "status": "ok",
+    "firstSeen": "2026-09-13T01:41:39Z",
+    "lastSeen": "2026-09-27T19:41:38Z",
+    "current": {
+     "hostname": "nas",
+     "enclosure": "0x5000ccab020094ff",
+     "bay": "48",
+     "devName": "sdbv",
+     "firstSeen": "2026-09-13T01:41:39Z",
+     "lastSeen": "2026-09-27T19:41:38Z",
+     "enclosureVia": "expander-11:0",
+     "enclosureName": "nas-hgst-u60-1",
+     "bayLabel": "48"
+    }
+   },
+   "sample": {
+    "identity": {
+     "wwn": "0x5000cca260de6a94",
+     "model": "H7280A520SUN8.0T",
+     "serial": "001851PY9YMV_VLKY9YMV"
+    },
+    "devName": "sdbv",
+    "ts": "2026-09-27T15:25:22Z",
+    "summary": {
+     "protocol": "SCSI",
+     "healthy": true,
+     "powerOnHours": "44600",
+     "tempC": 37,
+     "reallocated": "87",
+     "uncorrectable": "3",
+     "readBytes": "159291182000000",
+     "writeBytes": "38975142000000"
+    },
+    "hostname": "nas",
+    "hasRaw": true
+   },
+   "problem": true
+  },
+  {
+   "drive": {
+    "driveId": "17",
+    "wwn": "0x5000cca2548d06a4",
+    "vendor": "HGST",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PHKAHV_VKJHKAHV",
+    "sizeBytes": "8001563222016",
+    "bus": "BUS_SAS",
+    "status": "ok",
+    "firstSeen": "2026-09-13T01:41:39Z",
+    "lastSeen": "2026-09-27T19:41:38Z",
+    "current": {
+     "hostname": "nas",
+     "enclosure": "0x5000ccab020094ff",
+     "bay": "53",
+     "devName": "sdam",
+     "uses": [
+      "zfs > space 5925914041408872576 > raidz2 5236016460003016805 > disk 18306089983861482320"
+     ],
+     "firstSeen": "2026-09-13T01:41:39Z",
+     "lastSeen": "2026-09-27T19:41:38Z",
+     "enclosureVia": "expander-11:0",
+     "enclosureName": "nas-hgst-u60-1",
+     "bayLabel": "53"
+    },
+    "memberState": "ONLINE"
+   },
+   "sample": {
+    "identity": {
+     "wwn": "0x5000cca2548d06a4",
+     "model": "H7280A520SUN8.0T",
+     "serial": "001619PHKAHV_VKJHKAHV"
+    },
+    "devName": "sdam",
+    "ts": "2026-09-27T15:25:16Z",
+    "summary": {
+     "protocol": "SCSI",
+     "healthy": true,
+     "powerOnHours": "9422",
+     "tempC": 37,
+     "reallocated": "2",
+     "uncorrectable": "0",
+     "readBytes": "209847418000000",
+     "writeBytes": "57487092000000"
+    },
+    "hostname": "nas",
+    "hasRaw": true
+   },
+   "problem": true
+  },
+  {
+   "drive": {
+    "driveId": "11",
+    "wwn": "0x5000cca2548eecec",
+    "vendor": "HGST",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJLREV_VKJJLREV",
+    "sizeBytes": "8001563222016",
+    "bus": "BUS_SAS",
+    "status": "suspect",
+    "firstSeen": "2026-09-13T01:41:39Z",
+    "lastSeen": "2026-09-27T19:41:38Z",
+    "current": {
+     "hostname": "nas",
+     "enclosure": "0x5000ccab020094ff",
+     "bay": "54",
+     "devName": "sdag",
+     "uses": [
+      "zfs > space 5925914041408872576 > raidz2 5236016460003016805 > disk 9810514795403010748"
+     ],
+     "firstSeen": "2026-09-13T01:41:39Z",
+     "lastSeen": "2026-09-27T19:41:38Z",
+     "enclosureVia": "expander-11:0",
+     "enclosureName": "nas-hgst-u60-1",
+     "bayLabel": "54"
+    },
+    "memberState": "FAULTED"
+   },
+   "sample": {
+    "identity": {
+     "wwn": "0x5000cca2548eecec",
+     "model": "H7280A520SUN8.0T",
+     "serial": "001619PJLREV_VKJJLREV"
+    },
+    "devName": "sdag",
+    "ts": "2026-09-27T15:25:15Z",
+    "summary": {
+     "protocol": "SCSI",
+     "healthy": true,
+     "powerOnHours": "9421",
+     "tempC": 36,
+     "reallocated": "2",
+     "uncorrectable": "2",
+     "readBytes": "198483010000000",
+     "writeBytes": "57677712000000"
+    },
+    "hostname": "nas",
+    "hasRaw": true
+   },
+   "problem": true
+  },
+  {
+   "drive": {
+    "driveId": "58",
+    "wwn": "0x5000cca25206c808",
+    "vendor": "HGST",
+    "model": "HUH721008AL5204",
+    "serial": "7SG3RM2G",
+    "sizeBytes": "8001563222016",
+    "bus": "BUS_SAS",
+    "status": "ok",
+    "firstSeen": "2026-09-13T01:41:39Z",
+    "lastSeen": "2026-09-27T19:41:38Z",
+    "current": {
+     "hostname": "nas",
+     "enclosure": "0x500304800000007f",
+     "bay": "0",
+     "devName": "sdc",
+     "firstSeen": "2026-09-13T01:41:39Z",
+     "lastSeen": "2026-09-27T19:41:38Z",
+     "enclosureVia": "expander-10:0",
+     "enclosureName": "nas-sc847-back"
+    }
+   },
+   "sample": {
+    "identity": {
+     "wwn": "0x5000cca25206c808",
+     "model": "HUH721008AL5204",
+     "serial": "7SG3RM2G"
+    },
+    "devName": "sdc",
+    "ts": "2026-09-27T15:25:23Z",
+    "summary": {
+     "protocol": "SCSI",
+     "healthy": true,
+     "powerOnHours": "21024",
+     "tempC": 32,
+     "reallocated": "3",
+     "uncorrectable": "3",
+     "readBytes": "232721354000000",
+     "writeBytes": "48670045000000"
+    },
+    "hostname": "nas",
+    "hasRaw": true
+   },
+   "problem": true
+  },
+  {
+   "drive": {
+    "driveId": "77",
+    "wwn": "0x5000cca25207ef14",
+    "vendor": "HGST",
+    "model": "HUH721008AL5204",
+    "serial": "7SG4B86G",
+    "sizeBytes": "8001563222016",
+    "bus": "BUS_SAS",
+    "status": "ok",
+    "firstSeen": "2026-09-13T01:41:39Z",
+    "lastSeen": "2026-09-27T19:41:38Z",
+    "current": {
+     "hostname": "nas",
+     "enclosure": "0x500304800000007f",
+     "bay": "2",
+     "devName": "sde",
+     "uses": [
+      "zfs > space 5925914041408872576 > raidz2 5204885172110344134 > disk 5369926289127318604"
+     ],
+     "firstSeen": "2026-09-13T01:41:39Z",
+     "lastSeen": "2026-09-27T19:41:38Z",
+     "enclosureVia": "expander-10:0",
+     "enclosureName": "nas-sc847-back"
+    },
+    "memberState": "ONLINE"
+   },
+   "sample": {
+    "identity": {
+     "wwn": "0x5000cca25207ef14",
+     "model": "HUH721008AL5204",
+     "serial": "7SG4B86G"
+    },
+    "devName": "sde",
+    "ts": "2026-09-27T15:25:26Z",
+    "summary": {
+     "protocol": "SCSI",
+     "healthy": true,
+     "powerOnHours": "21025",
+     "tempC": 32,
+     "reallocated": "3",
+     "uncorrectable": "0",
+     "readBytes": "339021801000000",
+     "writeBytes": "47743907000000"
+    },
+    "hostname": "nas",
+    "hasRaw": true
+   },
+   "problem": true
+  },
+  {
+   "drive": {
+    "driveId": "87",
+    "wwn": "0x5000cca25490481c",
+    "vendor": "HGST",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PKAV6V_VKJKAV6V",
+    "sizeBytes": "8001563222016",
+    "bus": "BUS_SAS",
+    "status": "ok",
+    "firstSeen": "2026-09-13T01:41:39Z",
+    "lastSeen": "2026-09-27T19:41:38Z",
+    "current": {
+     "hostname": "nas",
+     "enclosure": "0x500304800000007f",
+     "bay": "13",
+     "devName": "sdo",
+     "uses": [
+      "zfs > space 5925914041408872576 > raidz2 9007031778331642784 > disk 15351399526994441874"
+     ],
+     "firstSeen": "2026-09-13T01:41:39Z",
+     "lastSeen": "2026-09-27T19:41:38Z",
+     "enclosureVia": "expander-10:0",
+     "enclosureName": "nas-sc847-back"
+    },
+    "memberState": "ONLINE"
+   },
+   "sample": {
+    "identity": {
+     "wwn": "0x5000cca25490481c",
+     "model": "H7280A520SUN8.0T",
+     "serial": "001619PKAV6V_VKJKAV6V"
+    },
+    "devName": "sdo",
+    "ts": "2026-09-27T15:25:27Z",
+    "summary": {
+     "protocol": "SCSI",
+     "healthy": true,
+     "powerOnHours": "16160",
+     "tempC": 33,
+     "reallocated": "1",
+     "uncorrectable": "0",
+     "readBytes": "251948001000000",
+     "writeBytes": "43103536000000"
+    },
+    "hostname": "nas",
+    "hasRaw": true
+   },
+   "problem": true
+  },
+  {
+   "drive": {
+    "driveId": "4",
+    "wwn": "0x500253850025c532",
+    "vendor": "ATA",
+    "model": "SAMSUNG_MZ7WD960",
+    "serial": "S1E4NYAG204349",
+    "sizeBytes": "960197124096",
+    "bus": "BUS_SATA",
+    "status": "ok",
+    "firstSeen": "2026-09-13T01:41:39Z",
+    "lastSeen": "2026-09-27T19:41:38Z",
+    "current": {
+     "hostname": "nas",
+     "enclosure": "dmi:NM168S004999",
+     "bay": "pci-0000:00:1f.2-ata-5",
+     "devName": "sda",
+     "uses": [
+      "mount > /boot/efi",
+      "zfs > bpool 6822782206755274061 > mirror 7879420759522091481 > disk 10940132855821023010",
+      "zfs > rpool 6335217808421659663 > mirror 10116968943579434558 > disk 13477747630627346864"
+     ],
+     "firstSeen": "2026-09-14T03:46:13Z",
+     "lastSeen": "2026-09-27T19:41:38Z",
+     "enclosureVia": "ata"
+    },
+    "memberState": "ONLINE"
+   },
+   "sample": {
+    "identity": {
+     "wwn": "0x500253850025c532",
+     "model": "SAMSUNG_MZ7WD960",
+     "serial": "S1E4NYAG204349"
+    },
+    "devName": "sda",
+    "ts": "2026-09-27T15:25:13Z",
+    "summary": {
+     "protocol": "ATA",
+     "healthy": true,
+     "powerOnHours": "67394",
+     "tempC": 25,
+     "reallocated": "606",
+     "crcErrors": "1",
+     "writeBytes": "211618807271424",
+     "percentUsed": 1
+    },
+    "hostname": "nas",
+    "hasRaw": true
+   },
+   "problem": true
+  },
+  {
+   "drive": {
+    "driveId": "31",
+    "wwn": "0x500253850025cbf1",
+    "vendor": "ATA",
+    "model": "SAMSUNG_MZ7WD960",
+    "serial": "S1E4NYAG205230",
+    "sizeBytes": "960197124096",
+    "bus": "BUS_SATA",
+    "status": "ok",
+    "firstSeen": "2026-09-13T01:41:39Z",
+    "lastSeen": "2026-09-27T19:41:38Z",
+    "current": {
+     "hostname": "nas",
+     "enclosure": "dmi:NM168S004999",
+     "bay": "pci-0000:00:1f.2-ata-6",
+     "devName": "sdb",
+     "uses": [
+      "zfs > bpool 6822782206755274061 > mirror 7879420759522091481 > disk 16883674818163482239",
+      "zfs > rpool 6335217808421659663 > mirror 10116968943579434558 > disk 4017281962645193462"
+     ],
+     "firstSeen": "2026-09-14T03:46:13Z",
+     "lastSeen": "2026-09-27T19:41:38Z",
+     "enclosureVia": "ata"
+    },
+    "memberState": "ONLINE"
+   },
+   "sample": {
+    "identity": {
+     "wwn": "0x500253850025cbf1",
+     "model": "SAMSUNG_MZ7WD960",
+     "serial": "S1E4NYAG205230"
+    },
+    "devName": "sdb",
+    "ts": "2026-09-27T15:25:20Z",
+    "summary": {
+     "protocol": "ATA",
+     "healthy": true,
+     "powerOnHours": "67394",
+     "tempC": 25,
+     "reallocated": "731",
+     "crcErrors": "1",
+     "writeBytes": "211604750302208",
+     "percentUsed": 1
+    },
+    "hostname": "nas",
+    "hasRaw": true
+   },
+   "problem": true
+  }
+ ]
+}

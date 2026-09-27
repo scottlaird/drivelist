@@ -1,0 +1,67 @@
+{
+ "drive": {
+  "driveId": "7",
+  "wwn": "0x5000cca26107ef78",
+  "vendor": "HITACHI",
+  "model": "HUH72808CLAR8000",
+  "serial": "VJG4B90X",
+  "sizeBytes": "8001563222016",
+  "bus": "BUS_SAS",
+  "status": "ok",
+  "firstSeen": "2026-09-13T01:41:39Z",
+  "lastSeen": "2026-09-27T19:41:38Z",
+  "current": {
+   "hostname": "nas",
+   "enclosure": "0x5000ccab020094ff",
+   "bay": "11",
+   "devName": "sdac",
+   "uses": [
+    "zfs > space 5925914041408872576 > raidz2 12372305547527317295 > disk 7178308151547831118"
+   ],
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "enclosureVia": "expander-11:0",
+   "enclosureName": "nas-hgst-u60-1",
+   "bayLabel": "11"
+  },
+  "memberState": "ONLINE"
+ },
+ "placements": [
+  {
+   "hostname": "nas",
+   "enclosure": "0x5000ccab020094ff",
+   "bay": "11",
+   "devName": "sdac",
+   "uses": [
+    "zfs > space 5925914041408872576 > raidz2 12372305547527317295 > disk 7178308151547831118"
+   ],
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "enclosureVia": "expander-11:0",
+   "enclosureName": "nas-hgst-u60-1",
+   "bayLabel": "11"
+  }
+ ],
+ "events": [
+  {
+   "eventId": "268",
+   "ts": "2026-09-13T01:41:39Z",
+   "kind": "first_seen",
+   "serial": "VJG4B90X",
+   "wwn": "0x5000cca26107ef78",
+   "hostname": "nas",
+   "detail": "{\"bay\":\"11\",\"dev_name\":\"sdac\",\"expander\":\"expander-11:0\",\"expander_dev\":\"expander-11:0\",\"uses\":[\"zfs \\u003e space 5925914041408872576 \\u003e raidz2 12372305547527317295 \\u003e disk 7178308151547831118\"]}",
+   "source": "snapshot:2"
+  },
+  {
+   "eventId": "384",
+   "ts": "2026-09-13T02:09:06Z",
+   "kind": "member_state_changed",
+   "serial": "VJG4B90X",
+   "wwn": "0x5000cca26107ef78",
+   "hostname": "nas",
+   "detail": "{\"from\":\"\",\"to\":\"ONLINE\",\"uses\":[\"zfs \\u003e space 5925914041408872576 \\u003e raidz2 12372305547527317295 \\u003e disk 7178308151547831118\"]}",
+   "source": "snapshot:8"
+  }
+ ]
+}

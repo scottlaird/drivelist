@@ -1,0 +1,1240 @@
+{
+ "drive": {
+  "driveId": "133",
+  "wwn": "0x5000000000000036",
+  "vendor": "ATA",
+  "model": "NT-512_2242",
+  "serial": "0029030000034",
+  "sizeBytes": "512110190592",
+  "bus": "BUS_SATA",
+  "status": "ok",
+  "firstSeen": "2026-09-13T02:42:07Z",
+  "lastSeen": "2026-09-27T19:43:13Z",
+  "current": {
+   "hostname": "server4",
+   "enclosure": "dmi:CN7831V0PR",
+   "bay": "pci-0000:00:1f.2-ata-5",
+   "devName": "sda",
+   "uses": [
+    "mount > /",
+    "mount > /boot/efi",
+    "mount > /var/lib/kubelet/pods/27ac825c-298f-40a2-b3da-6a905955277b/volumes/kubernetes.io~local-volume/pvc-f81c1381-45a6-400f-a13b-1b6d7cb27911"
+   ],
+   "firstSeen": "2026-09-14T06:17:22Z",
+   "lastSeen": "2026-09-27T19:43:13Z",
+   "enclosureVia": "ata",
+   "bayLabel": "M.2 SATA"
+  }
+ },
+ "samples": [
+  {
+   "identity": {
+    "wwn": "0x5000000000000036",
+    "model": "NT-512_2242",
+    "serial": "0029030000034"
+   },
+   "devName": "sda",
+   "ts": "2026-09-27T16:15:09Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "11862",
+    "tempC": 30,
+    "reallocated": "0",
+    "readBytes": "697344",
+    "writeBytes": "17311744"
+   },
+   "hostname": "server4",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000000000000036",
+    "model": "NT-512_2242",
+    "serial": "0029030000034"
+   },
+   "devName": "sda",
+   "ts": "2026-09-27T10:15:09Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "11856",
+    "tempC": 30,
+    "reallocated": "0",
+    "readBytes": "697344",
+    "writeBytes": "17305600"
+   },
+   "hostname": "server4",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000000000000036",
+    "model": "NT-512_2242",
+    "serial": "0029030000034"
+   },
+   "devName": "sda",
+   "ts": "2026-09-27T04:15:09Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "11850",
+    "tempC": 30,
+    "reallocated": "0",
+    "readBytes": "696832",
+    "writeBytes": "17299968"
+   },
+   "hostname": "server4",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000000000000036",
+    "model": "NT-512_2242",
+    "serial": "0029030000034"
+   },
+   "devName": "sda",
+   "ts": "2026-09-26T22:15:08Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "11845",
+    "tempC": 30,
+    "reallocated": "0",
+    "readBytes": "696320",
+    "writeBytes": "17294848"
+   },
+   "hostname": "server4",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000000000000036",
+    "model": "NT-512_2242",
+    "serial": "0029030000034"
+   },
+   "devName": "sda",
+   "ts": "2026-09-26T16:15:08Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "11839",
+    "tempC": 30,
+    "reallocated": "0",
+    "readBytes": "696320",
+    "writeBytes": "17288704"
+   },
+   "hostname": "server4",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000000000000036",
+    "model": "NT-512_2242",
+    "serial": "0029030000034"
+   },
+   "devName": "sda",
+   "ts": "2026-09-26T10:15:08Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "11834",
+    "tempC": 30,
+    "reallocated": "0",
+    "readBytes": "696320",
+    "writeBytes": "17283584"
+   },
+   "hostname": "server4",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000000000000036",
+    "model": "NT-512_2242",
+    "serial": "0029030000034"
+   },
+   "devName": "sda",
+   "ts": "2026-09-26T04:15:07Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "11828",
+    "tempC": 30,
+    "reallocated": "0",
+    "readBytes": "696320",
+    "writeBytes": "17277952"
+   },
+   "hostname": "server4",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000000000000036",
+    "model": "NT-512_2242",
+    "serial": "0029030000034"
+   },
+   "devName": "sda",
+   "ts": "2026-09-25T22:15:07Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "11822",
+    "tempC": 30,
+    "reallocated": "0",
+    "readBytes": "696320",
+    "writeBytes": "17271808"
+   },
+   "hostname": "server4",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000000000000036",
+    "model": "NT-512_2242",
+    "serial": "0029030000034"
+   },
+   "devName": "sda",
+   "ts": "2026-09-25T16:15:07Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "11817",
+    "tempC": 30,
+    "reallocated": "0",
+    "readBytes": "696320",
+    "writeBytes": "17266688"
+   },
+   "hostname": "server4",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000000000000036",
+    "model": "NT-512_2242",
+    "serial": "0029030000034"
+   },
+   "devName": "sda",
+   "ts": "2026-09-25T10:15:06Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "11811",
+    "tempC": 30,
+    "reallocated": "0",
+    "readBytes": "696320",
+    "writeBytes": "17261568"
+   },
+   "hostname": "server4",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000000000000036",
+    "model": "NT-512_2242",
+    "serial": "0029030000034"
+   },
+   "devName": "sda",
+   "ts": "2026-09-25T04:15:06Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "11806",
+    "tempC": 30,
+    "reallocated": "0",
+    "readBytes": "695296",
+    "writeBytes": "17254912"
+   },
+   "hostname": "server4",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000000000000036",
+    "model": "NT-512_2242",
+    "serial": "0029030000034"
+   },
+   "devName": "sda",
+   "ts": "2026-09-24T22:15:06Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "11800",
+    "tempC": 30,
+    "reallocated": "0",
+    "readBytes": "695296",
+    "writeBytes": "17249792"
+   },
+   "hostname": "server4",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000000000000036",
+    "model": "NT-512_2242",
+    "serial": "0029030000034"
+   },
+   "devName": "sda",
+   "ts": "2026-09-24T16:15:05Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "11794",
+    "tempC": 30,
+    "reallocated": "0",
+    "readBytes": "695296",
+    "writeBytes": "17244672"
+   },
+   "hostname": "server4",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000000000000036",
+    "model": "NT-512_2242",
+    "serial": "0029030000034"
+   },
+   "devName": "sda",
+   "ts": "2026-09-24T10:15:05Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "11789",
+    "tempC": 30,
+    "reallocated": "0",
+    "readBytes": "695296",
+    "writeBytes": "17238016"
+   },
+   "hostname": "server4",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000000000000036",
+    "model": "NT-512_2242",
+    "serial": "0029030000034"
+   },
+   "devName": "sda",
+   "ts": "2026-09-24T04:15:05Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "11783",
+    "tempC": 30,
+    "reallocated": "0",
+    "readBytes": "694784",
+    "writeBytes": "17232384"
+   },
+   "hostname": "server4",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000000000000036",
+    "model": "NT-512_2242",
+    "serial": "0029030000034"
+   },
+   "devName": "sda",
+   "ts": "2026-09-23T22:15:04Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "11778",
+    "tempC": 30,
+    "reallocated": "0",
+    "readBytes": "694784",
+    "writeBytes": "17227264"
+   },
+   "hostname": "server4",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000000000000036",
+    "model": "NT-512_2242",
+    "serial": "0029030000034"
+   },
+   "devName": "sda",
+   "ts": "2026-09-23T16:15:04Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "11772",
+    "tempC": 30,
+    "reallocated": "0",
+    "readBytes": "694784",
+    "writeBytes": "17220608"
+   },
+   "hostname": "server4",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000000000000036",
+    "model": "NT-512_2242",
+    "serial": "0029030000034"
+   },
+   "devName": "sda",
+   "ts": "2026-09-23T10:15:04Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "11766",
+    "tempC": 30,
+    "reallocated": "0",
+    "readBytes": "694784",
+    "writeBytes": "17215488"
+   },
+   "hostname": "server4",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000000000000036",
+    "model": "NT-512_2242",
+    "serial": "0029030000034"
+   },
+   "devName": "sda",
+   "ts": "2026-09-23T04:15:03Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "11761",
+    "tempC": 30,
+    "reallocated": "0",
+    "readBytes": "694784",
+    "writeBytes": "17210368"
+   },
+   "hostname": "server4",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000000000000036",
+    "model": "NT-512_2242",
+    "serial": "0029030000034"
+   },
+   "devName": "sda",
+   "ts": "2026-09-22T22:15:03Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "11755",
+    "tempC": 30,
+    "reallocated": "0",
+    "readBytes": "694784",
+    "writeBytes": "17203712"
+   },
+   "hostname": "server4",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000000000000036",
+    "model": "NT-512_2242",
+    "serial": "0029030000034"
+   },
+   "devName": "sda",
+   "ts": "2026-09-22T16:15:03Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "11749",
+    "tempC": 30,
+    "reallocated": "0",
+    "readBytes": "694272",
+    "writeBytes": "17198592"
+   },
+   "hostname": "server4",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000000000000036",
+    "model": "NT-512_2242",
+    "serial": "0029030000034"
+   },
+   "devName": "sda",
+   "ts": "2026-09-22T10:15:02Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "11744",
+    "tempC": 30,
+    "reallocated": "0",
+    "readBytes": "694272",
+    "writeBytes": "17193472"
+   },
+   "hostname": "server4",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000000000000036",
+    "model": "NT-512_2242",
+    "serial": "0029030000034"
+   },
+   "devName": "sda",
+   "ts": "2026-09-22T04:15:02Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "11738",
+    "tempC": 30,
+    "reallocated": "0",
+    "readBytes": "693760",
+    "writeBytes": "17186816"
+   },
+   "hostname": "server4",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000000000000036",
+    "model": "NT-512_2242",
+    "serial": "0029030000034"
+   },
+   "devName": "sda",
+   "ts": "2026-09-21T22:15:01Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "11732",
+    "tempC": 30,
+    "reallocated": "0",
+    "readBytes": "693760",
+    "writeBytes": "17181696"
+   },
+   "hostname": "server4",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000000000000036",
+    "model": "NT-512_2242",
+    "serial": "0029030000034"
+   },
+   "devName": "sda",
+   "ts": "2026-09-21T16:15:01Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "11727",
+    "tempC": 30,
+    "reallocated": "0",
+    "readBytes": "693760",
+    "writeBytes": "17176576"
+   },
+   "hostname": "server4",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000000000000036",
+    "model": "NT-512_2242",
+    "serial": "0029030000034"
+   },
+   "devName": "sda",
+   "ts": "2026-09-21T10:15:01Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "11721",
+    "tempC": 30,
+    "reallocated": "0",
+    "readBytes": "693760",
+    "writeBytes": "17170432"
+   },
+   "hostname": "server4",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000000000000036",
+    "model": "NT-512_2242",
+    "serial": "0029030000034"
+   },
+   "devName": "sda",
+   "ts": "2026-09-21T04:15:00Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "11716",
+    "tempC": 30,
+    "reallocated": "0",
+    "readBytes": "693248",
+    "writeBytes": "17164800"
+   },
+   "hostname": "server4",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000000000000036",
+    "model": "NT-512_2242",
+    "serial": "0029030000034"
+   },
+   "devName": "sda",
+   "ts": "2026-09-21T00:12:22Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "11712",
+    "tempC": 30,
+    "reallocated": "0",
+    "readBytes": "693248",
+    "writeBytes": "17161216"
+   },
+   "hostname": "server4",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000000000000036",
+    "model": "NT-512_2242",
+    "serial": "0029030000034"
+   },
+   "devName": "sda",
+   "ts": "2026-09-20T18:12:22Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "11706",
+    "tempC": 30,
+    "reallocated": "0",
+    "readBytes": "693248",
+    "writeBytes": "17156096"
+   },
+   "hostname": "server4",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000000000000036",
+    "model": "NT-512_2242",
+    "serial": "0029030000034"
+   },
+   "devName": "sda",
+   "ts": "2026-09-20T12:12:21Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "11701",
+    "tempC": 30,
+    "reallocated": "0",
+    "readBytes": "693248",
+    "writeBytes": "17149952"
+   },
+   "hostname": "server4",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000000000000036",
+    "model": "NT-512_2242",
+    "serial": "0029030000034"
+   },
+   "devName": "sda",
+   "ts": "2026-09-20T06:12:21Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "11695",
+    "tempC": 30,
+    "reallocated": "0",
+    "readBytes": "693248",
+    "writeBytes": "17144832"
+   },
+   "hostname": "server4"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000000000000036",
+    "model": "NT-512_2242",
+    "serial": "0029030000034"
+   },
+   "devName": "sda",
+   "ts": "2026-09-20T01:27:07Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "11691",
+    "tempC": 30,
+    "reallocated": "0",
+    "readBytes": "692736",
+    "writeBytes": "17140224"
+   },
+   "hostname": "server4"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000000000000036",
+    "model": "NT-512_2242",
+    "serial": "0029030000034"
+   },
+   "devName": "sda",
+   "ts": "2026-09-19T19:27:07Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "11685",
+    "tempC": 30,
+    "reallocated": "0",
+    "readBytes": "692224",
+    "writeBytes": "17134080"
+   },
+   "hostname": "server4"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000000000000036",
+    "model": "NT-512_2242",
+    "serial": "0029030000034"
+   },
+   "devName": "sda",
+   "ts": "2026-09-19T13:27:06Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "11679",
+    "tempC": 30,
+    "reallocated": "0",
+    "readBytes": "692224",
+    "writeBytes": "17128960"
+   },
+   "hostname": "server4"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000000000000036",
+    "model": "NT-512_2242",
+    "serial": "0029030000034"
+   },
+   "devName": "sda",
+   "ts": "2026-09-19T07:27:06Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "11674",
+    "tempC": 30,
+    "reallocated": "0",
+    "readBytes": "692224",
+    "writeBytes": "17123840"
+   },
+   "hostname": "server4"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000000000000036",
+    "model": "NT-512_2242",
+    "serial": "0029030000034"
+   },
+   "devName": "sda",
+   "ts": "2026-09-19T01:27:06Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "11668",
+    "tempC": 30,
+    "reallocated": "0",
+    "readBytes": "691712",
+    "writeBytes": "17117696"
+   },
+   "hostname": "server4"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000000000000036",
+    "model": "NT-512_2242",
+    "serial": "0029030000034"
+   },
+   "devName": "sda",
+   "ts": "2026-09-18T19:27:05Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "11663",
+    "tempC": 30,
+    "reallocated": "0",
+    "readBytes": "691712",
+    "writeBytes": "17112576"
+   },
+   "hostname": "server4"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000000000000036",
+    "model": "NT-512_2242",
+    "serial": "0029030000034"
+   },
+   "devName": "sda",
+   "ts": "2026-09-18T13:27:05Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "11657",
+    "tempC": 30,
+    "reallocated": "0",
+    "readBytes": "691712",
+    "writeBytes": "17107456"
+   },
+   "hostname": "server4"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000000000000036",
+    "model": "NT-512_2242",
+    "serial": "0029030000034"
+   },
+   "devName": "sda",
+   "ts": "2026-09-18T07:27:05Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "11651",
+    "tempC": 30,
+    "reallocated": "0",
+    "readBytes": "691712",
+    "writeBytes": "17101824"
+   },
+   "hostname": "server4"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000000000000036",
+    "model": "NT-512_2242",
+    "serial": "0029030000034"
+   },
+   "devName": "sda",
+   "ts": "2026-09-18T01:27:04Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "11646",
+    "tempC": 30,
+    "reallocated": "0",
+    "readBytes": "691712",
+    "writeBytes": "17096704"
+   },
+   "hostname": "server4"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000000000000036",
+    "model": "NT-512_2242",
+    "serial": "0029030000034"
+   },
+   "devName": "sda",
+   "ts": "2026-09-17T19:27:04Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "11640",
+    "tempC": 30,
+    "reallocated": "0",
+    "readBytes": "691712",
+    "writeBytes": "17092096"
+   },
+   "hostname": "server4"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000000000000036",
+    "model": "NT-512_2242",
+    "serial": "0029030000034"
+   },
+   "devName": "sda",
+   "ts": "2026-09-17T13:27:04Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "11634",
+    "tempC": 30,
+    "reallocated": "0",
+    "readBytes": "691712",
+    "writeBytes": "17087488"
+   },
+   "hostname": "server4"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000000000000036",
+    "model": "NT-512_2242",
+    "serial": "0029030000034"
+   },
+   "devName": "sda",
+   "ts": "2026-09-17T07:27:03Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "11629",
+    "tempC": 30,
+    "reallocated": "0",
+    "readBytes": "691712",
+    "writeBytes": "17082880"
+   },
+   "hostname": "server4"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000000000000036",
+    "model": "NT-512_2242",
+    "serial": "0029030000034"
+   },
+   "devName": "sda",
+   "ts": "2026-09-17T01:27:03Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "11623",
+    "tempC": 30,
+    "reallocated": "0",
+    "readBytes": "691712",
+    "writeBytes": "17078272"
+   },
+   "hostname": "server4"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000000000000036",
+    "model": "NT-512_2242",
+    "serial": "0029030000034"
+   },
+   "devName": "sda",
+   "ts": "2026-09-16T19:27:03Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "11618",
+    "tempC": 30,
+    "reallocated": "0",
+    "readBytes": "691712",
+    "writeBytes": "17073664"
+   },
+   "hostname": "server4"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000000000000036",
+    "model": "NT-512_2242",
+    "serial": "0029030000034"
+   },
+   "devName": "sda",
+   "ts": "2026-09-16T18:17:27Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "11617",
+    "tempC": 30,
+    "reallocated": "0",
+    "readBytes": "691200",
+    "writeBytes": "17072640"
+   },
+   "hostname": "server4"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000000000000036",
+    "model": "NT-512_2242",
+    "serial": "0029030000034"
+   },
+   "devName": "sda",
+   "ts": "2026-09-16T12:17:27Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "11611",
+    "tempC": 30,
+    "reallocated": "0",
+    "readBytes": "691200",
+    "writeBytes": "17068032"
+   },
+   "hostname": "server4"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000000000000036",
+    "model": "NT-512_2242",
+    "serial": "0029030000034"
+   },
+   "devName": "sda",
+   "ts": "2026-09-16T06:17:24Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "11606",
+    "tempC": 30,
+    "reallocated": "0",
+    "readBytes": "691200",
+    "writeBytes": "17063936"
+   },
+   "hostname": "server4"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000000000000036",
+    "model": "NT-512_2242",
+    "serial": "0029030000034"
+   },
+   "devName": "sda",
+   "ts": "2026-09-16T00:17:24Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "11600",
+    "tempC": 30,
+    "reallocated": "0",
+    "readBytes": "691200",
+    "writeBytes": "17058816"
+   },
+   "hostname": "server4"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000000000000036",
+    "model": "NT-512_2242",
+    "serial": "0029030000034"
+   },
+   "devName": "sda",
+   "ts": "2026-09-15T18:17:24Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "11594",
+    "tempC": 30,
+    "reallocated": "0",
+    "readBytes": "691200",
+    "writeBytes": "17054208"
+   },
+   "hostname": "server4"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000000000000036",
+    "model": "NT-512_2242",
+    "serial": "0029030000034"
+   },
+   "devName": "sda",
+   "ts": "2026-09-15T12:17:23Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "11589",
+    "tempC": 30,
+    "reallocated": "0",
+    "readBytes": "691200",
+    "writeBytes": "17050112"
+   },
+   "hostname": "server4"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000000000000036",
+    "model": "NT-512_2242",
+    "serial": "0029030000034"
+   },
+   "devName": "sda",
+   "ts": "2026-09-15T06:17:23Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "11583",
+    "tempC": 30,
+    "reallocated": "0",
+    "readBytes": "691200",
+    "writeBytes": "17044992"
+   },
+   "hostname": "server4"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000000000000036",
+    "model": "NT-512_2242",
+    "serial": "0029030000034"
+   },
+   "devName": "sda",
+   "ts": "2026-09-15T00:17:23Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "11577",
+    "tempC": 30,
+    "reallocated": "0",
+    "readBytes": "691200",
+    "writeBytes": "17040384"
+   },
+   "hostname": "server4"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000000000000036",
+    "model": "NT-512_2242",
+    "serial": "0029030000034"
+   },
+   "devName": "sda",
+   "ts": "2026-09-14T18:17:22Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "11572",
+    "tempC": 30,
+    "reallocated": "0",
+    "readBytes": "691200",
+    "writeBytes": "17036288"
+   },
+   "hostname": "server4"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000000000000036",
+    "model": "NT-512_2242",
+    "serial": "0029030000034"
+   },
+   "devName": "sda",
+   "ts": "2026-09-14T12:17:22Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "11566",
+    "tempC": 30,
+    "reallocated": "0",
+    "readBytes": "691200",
+    "writeBytes": "17031168"
+   },
+   "hostname": "server4"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000000000000036",
+    "model": "NT-512_2242",
+    "serial": "0029030000034"
+   },
+   "devName": "sda",
+   "ts": "2026-09-14T06:17:22Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "11561",
+    "tempC": 30,
+    "reallocated": "0",
+    "readBytes": "691200",
+    "writeBytes": "17026560"
+   },
+   "hostname": "server4"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000000000000036",
+    "model": "NT-512_2242",
+    "serial": "0029030000034"
+   },
+   "devName": "sda",
+   "ts": "2026-09-14T05:07:44Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "11560",
+    "tempC": 30,
+    "reallocated": "0",
+    "readBytes": "691200",
+    "writeBytes": "17026048"
+   },
+   "hostname": "server4"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000000000000036",
+    "model": "NT-512_2242",
+    "serial": "0029030000034"
+   },
+   "devName": "sda",
+   "ts": "2026-09-13T23:07:44Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "11554",
+    "tempC": 30,
+    "reallocated": "0",
+    "readBytes": "691200",
+    "writeBytes": "17021440"
+   },
+   "hostname": "server4"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000000000000036",
+    "model": "NT-512_2242",
+    "serial": "0029030000034"
+   },
+   "devName": "sda",
+   "ts": "2026-09-13T17:07:43Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "11548",
+    "tempC": 30,
+    "reallocated": "0",
+    "readBytes": "690688",
+    "writeBytes": "17016320"
+   },
+   "hostname": "server4"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000000000000036",
+    "model": "NT-512_2242",
+    "serial": "0029030000034"
+   },
+   "devName": "sda",
+   "ts": "2026-09-13T14:42:08Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "11546",
+    "tempC": 30,
+    "reallocated": "0",
+    "readBytes": "690688",
+    "writeBytes": "17014272"
+   },
+   "hostname": "server4"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000000000000036",
+    "model": "NT-512_2242",
+    "serial": "0029030000034"
+   },
+   "devName": "sda",
+   "ts": "2026-09-13T08:42:08Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "11540",
+    "tempC": 30,
+    "reallocated": "0",
+    "readBytes": "690688",
+    "writeBytes": "17010176"
+   },
+   "hostname": "server4"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000000000000036",
+    "model": "NT-512_2242",
+    "serial": "0029030000034"
+   },
+   "devName": "sda",
+   "ts": "2026-09-13T02:42:07Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "11535",
+    "tempC": 30,
+    "reallocated": "0",
+    "readBytes": "690688",
+    "writeBytes": "17005056"
+   },
+   "hostname": "server4",
+   "hasRaw": true
+  }
+ ]
+}

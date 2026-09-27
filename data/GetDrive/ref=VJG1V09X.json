@@ -1,0 +1,33 @@
+{
+ "drive": {
+  "driveId": "16",
+  "wwn": "0x5000cca261035808",
+  "vendor": "HITACHI",
+  "model": "HUH72808CLAR8000",
+  "serial": "VJG1V09X",
+  "sizeBytes": "8001563222016",
+  "bus": "BUS_SAS",
+  "status": "ok",
+  "firstSeen": "2026-09-13T01:41:39Z",
+  "lastSeen": "2026-09-27T19:41:38Z",
+  "current": {
+   "hostname": "nas",
+   "enclosure": "0x5000ccab020094ff",
+   "bay": "20",
+   "devName": "sdal",
+   "uses": [
+    "zfs > space 5925914041408872576 > raidz2 12372305547527317295 > disk 12983238309654781705"
+   ],
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "enclosureVia": "expander-11:0",
+   "enclosureName": "nas-hgst-u60-1",
+   "bayLabel": "20"
+  },
+  "memberState": "ONLINE"
+ },
+ "keys": [
+  "serial:HUH72808CLAR8000/VJG1V09X",
+  "wwn:0x5000cca261035808"
+ ]
+}

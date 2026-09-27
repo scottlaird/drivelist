@@ -1,0 +1,70 @@
+{
+ "drive": {
+  "driveId": "53",
+  "wwn": "0x5000cca260de6a94",
+  "vendor": "HGST",
+  "model": "H7280A520SUN8.0T",
+  "serial": "001851PY9YMV_VLKY9YMV",
+  "sizeBytes": "8001563222016",
+  "bus": "BUS_SAS",
+  "status": "ok",
+  "firstSeen": "2026-09-13T01:41:39Z",
+  "lastSeen": "2026-09-27T19:41:38Z",
+  "current": {
+   "hostname": "nas",
+   "enclosure": "0x5000ccab020094ff",
+   "bay": "48",
+   "devName": "sdbv",
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "enclosureVia": "expander-11:0",
+   "enclosureName": "nas-hgst-u60-1",
+   "bayLabel": "48"
+  }
+ },
+ "placements": [
+  {
+   "hostname": "nas",
+   "enclosure": "0x5000ccab020094ff",
+   "bay": "48",
+   "devName": "sdbv",
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "enclosureVia": "expander-11:0",
+   "enclosureName": "nas-hgst-u60-1",
+   "bayLabel": "48"
+  }
+ ],
+ "events": [
+  {
+   "eventId": "314",
+   "ts": "2026-09-13T01:41:39Z",
+   "kind": "first_seen",
+   "serial": "001851PY9YMV_VLKY9YMV",
+   "wwn": "0x5000cca260de6a94",
+   "hostname": "nas",
+   "detail": "{\"bay\":\"48\",\"dev_name\":\"sdbv\",\"expander\":\"expander-11:0\",\"expander_dev\":\"expander-11:0\",\"uses\":[]}",
+   "source": "snapshot:2"
+  },
+  {
+   "eventId": "221",
+   "ts": "2026-09-13T02:09:17Z",
+   "kind": "smart_warning",
+   "serial": "001851PY9YMV_VLKY9YMV",
+   "wwn": "0x5000cca260de6a94",
+   "hostname": "nas",
+   "detail": "{\"dev_name\":\"sdbv\",\"healthy\":true,\"protocol\":\"SCSI\",\"reasons\":[\"reallocated 86\",\"uncorrectable 3\"]}",
+   "source": "smart"
+  },
+  {
+   "eventId": "570",
+   "ts": "2026-09-14T16:09:54Z",
+   "kind": "smart_warning",
+   "serial": "001851PY9YMV_VLKY9YMV",
+   "wwn": "0x5000cca260de6a94",
+   "hostname": "nas",
+   "detail": "{\"dev_name\":\"sdbv\",\"healthy\":true,\"protocol\":\"SCSI\",\"reasons\":[\"reallocated 87\"]}",
+   "source": "smart"
+  }
+ ]
+}

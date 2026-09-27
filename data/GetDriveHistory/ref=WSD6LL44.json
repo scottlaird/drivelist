@@ -1,0 +1,67 @@
+{
+ "drive": {
+  "driveId": "41",
+  "wwn": "0x5000c500e3f9397c",
+  "vendor": "ATA",
+  "model": "ST8000VN004-2M21",
+  "serial": "WSD6LL44",
+  "sizeBytes": "8001563222016",
+  "bus": "BUS_SAS",
+  "status": "ok",
+  "firstSeen": "2026-09-13T01:41:39Z",
+  "lastSeen": "2026-09-27T19:41:38Z",
+  "current": {
+   "hostname": "nas",
+   "enclosure": "0x5000ccab020094ff",
+   "bay": "26",
+   "devName": "sdbj",
+   "uses": [
+    "zfs > space 5925914041408872576 > raidz2 16950899211129714203 > disk 2622484631566025123"
+   ],
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "enclosureVia": "expander-11:0",
+   "enclosureName": "nas-hgst-u60-1",
+   "bayLabel": "26"
+  },
+  "memberState": "ONLINE"
+ },
+ "placements": [
+  {
+   "hostname": "nas",
+   "enclosure": "0x5000ccab020094ff",
+   "bay": "26",
+   "devName": "sdbj",
+   "uses": [
+    "zfs > space 5925914041408872576 > raidz2 16950899211129714203 > disk 2622484631566025123"
+   ],
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "enclosureVia": "expander-11:0",
+   "enclosureName": "nas-hgst-u60-1",
+   "bayLabel": "26"
+  }
+ ],
+ "events": [
+  {
+   "eventId": "302",
+   "ts": "2026-09-13T01:41:39Z",
+   "kind": "first_seen",
+   "serial": "WSD6LL44",
+   "wwn": "0x5000c500e3f9397c",
+   "hostname": "nas",
+   "detail": "{\"bay\":\"26\",\"dev_name\":\"sdbj\",\"expander\":\"expander-11:0\",\"expander_dev\":\"expander-11:0\",\"uses\":[\"zfs \\u003e space 5925914041408872576 \\u003e raidz2 16950899211129714203 \\u003e disk 2622484631566025123\"]}",
+   "source": "snapshot:2"
+  },
+  {
+   "eventId": "417",
+   "ts": "2026-09-13T02:09:06Z",
+   "kind": "member_state_changed",
+   "serial": "WSD6LL44",
+   "wwn": "0x5000c500e3f9397c",
+   "hostname": "nas",
+   "detail": "{\"from\":\"\",\"to\":\"ONLINE\",\"uses\":[\"zfs \\u003e space 5925914041408872576 \\u003e raidz2 16950899211129714203 \\u003e disk 2622484631566025123\"]}",
+   "source": "snapshot:8"
+  }
+ ]
+}

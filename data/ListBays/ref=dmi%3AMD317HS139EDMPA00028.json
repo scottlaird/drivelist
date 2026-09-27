@@ -1,0 +1,59 @@
+{
+ "enclosure": {
+  "enclosure": "dmi:MD317HS139EDMPA00028",
+  "hostname": "server7",
+  "via": "pci",
+  "drives": 1,
+  "firstSeen": "2026-09-14T03:47:51Z",
+  "lastSeen": "2026-09-27T19:43:34Z",
+  "product": "Micro Computer (HK) Tech Limited Venus Series",
+  "bays": 4,
+  "profile": "Minisforum MS-01, 3 x M.2 (PCIe 4.0 x4, 3.0 x4 with U.2 support, 3.0 x2) plus one PCIe x16 slot (x8 electrical)",
+  "board": "AHWSA"
+ },
+ "bays": [
+  {
+   "label": "M.2 PCIe 4.0 x4",
+   "ids": [
+    "pci:0000:00:06.0"
+   ],
+   "declared": true
+  },
+  {
+   "label": "M.2 PCIe 3.0 x4 / U.2",
+   "ids": [
+    "pci:0000:00:1c.4"
+   ],
+   "declared": true
+  },
+  {
+   "label": "M.2 PCIe 3.0 x2",
+   "declared": true
+  },
+  {
+   "label": "PCIe slot",
+   "ids": [
+    "pci:0000:00:01.0"
+   ],
+   "declared": true
+  },
+  {
+   "label": "0000:00:1d.0",
+   "ids": [
+    "pci:0000:00:1d.0"
+   ],
+   "present": true,
+   "devName": "nvme0n1",
+   "serial": "50026B738289A711",
+   "model": "KINGSTON OM8PGP41024Q-A0",
+   "status": "ok",
+   "uses": [
+    "mount > /",
+    "mount > /boot/efi"
+   ]
+  }
+ ],
+ "rows": 1,
+ "columns": 4,
+ "order": "row-major"
+}

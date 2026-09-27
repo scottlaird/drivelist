@@ -1,0 +1,72 @@
+{
+ "drive": {
+  "driveId": "164",
+  "model": "Sabrent Rocket CFX",
+  "serial": "288E07371A5300744737",
+  "sizeBytes": "1024209543168",
+  "bus": "BUS_NVME",
+  "status": "ok",
+  "firstSeen": "2026-09-20T00:42:40Z",
+  "lastSeen": "2026-09-27T19:43:06Z",
+  "current": {
+   "hostname": "mac1",
+   "devName": "disk4",
+   "uses": [
+    "mount > /Volumes/LUMIX"
+   ],
+   "firstSeen": "2026-09-20T18:00:08Z",
+   "lastSeen": "2026-09-27T19:43:06Z"
+  }
+ },
+ "placements": [
+  {
+   "hostname": "mac1",
+   "devName": "disk4",
+   "uses": [
+    "mount > /Volumes/LUMIX"
+   ],
+   "firstSeen": "2026-09-20T00:42:40Z",
+   "lastSeen": "2026-09-20T03:13:58Z",
+   "endedAt": "2026-09-20T03:19:00Z",
+   "endReason": "vanished"
+  },
+  {
+   "hostname": "mac1",
+   "devName": "disk4",
+   "uses": [
+    "mount > /Volumes/LUMIX"
+   ],
+   "firstSeen": "2026-09-20T18:00:08Z",
+   "lastSeen": "2026-09-27T19:43:06Z"
+  }
+ ],
+ "events": [
+  {
+   "eventId": "637",
+   "ts": "2026-09-20T00:42:40Z",
+   "kind": "first_seen",
+   "serial": "288E07371A5300744737",
+   "hostname": "mac1",
+   "detail": "{\"bay\":\"\",\"dev_name\":\"disk4\",\"enclosure\":\"\",\"enclosure_via\":\"\",\"uses\":[\"mount \\u003e /Volumes/LUMIX\"]}",
+   "source": "snapshot:65"
+  },
+  {
+   "eventId": "645",
+   "ts": "2026-09-20T03:19:00Z",
+   "kind": "vanished",
+   "serial": "288E07371A5300744737",
+   "hostname": "mac1",
+   "detail": "{\"bay\":\"\",\"dev_name\":\"disk4\",\"enclosure\":\"\",\"enclosure_via\":\"\",\"last_seen\":1789874038,\"uses\":[\"mount \\u003e /Volumes/LUMIX\"]}",
+   "source": "snapshot:66"
+  },
+  {
+   "eventId": "647",
+   "ts": "2026-09-20T18:00:08Z",
+   "kind": "reappeared",
+   "serial": "288E07371A5300744737",
+   "hostname": "mac1",
+   "detail": "{\"bay\":\"\",\"dev_name\":\"disk4\",\"enclosure\":\"\",\"enclosure_via\":\"\",\"from_bay\":\"\",\"from_enclosure\":\"\",\"from_enclosure_via\":\"\",\"from_host\":\"mac1\",\"gap_secs\":53170,\"same_slot\":true,\"uses\":[\"mount \\u003e /Volumes/LUMIX\"]}",
+   "source": "snapshot:67"
+  }
+ ]
+}

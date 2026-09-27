@@ -1,0 +1,56 @@
+{
+ "drive": {
+  "driveId": "150",
+  "model": "LEXAR CFEXPRESS 2TB CARD",
+  "serial": "43303251514150001138",
+  "sizeBytes": "2048408248320",
+  "bus": "BUS_NVME",
+  "status": "ok",
+  "firstSeen": "2026-09-14T16:08:08Z",
+  "lastSeen": "2026-09-18T19:21:35Z",
+  "last": {
+   "hostname": "mac1",
+   "devName": "disk4",
+   "uses": [
+    "mount > /Volumes/A024"
+   ],
+   "firstSeen": "2026-09-14T16:08:08Z",
+   "lastSeen": "2026-09-18T19:21:35Z",
+   "endedAt": "2026-09-18T19:26:37Z",
+   "endReason": "vanished"
+  }
+ },
+ "placements": [
+  {
+   "hostname": "mac1",
+   "devName": "disk4",
+   "uses": [
+    "mount > /Volumes/A024"
+   ],
+   "firstSeen": "2026-09-14T16:08:08Z",
+   "lastSeen": "2026-09-18T19:21:35Z",
+   "endedAt": "2026-09-18T19:26:37Z",
+   "endReason": "vanished"
+  }
+ ],
+ "events": [
+  {
+   "eventId": "566",
+   "ts": "2026-09-14T16:08:08Z",
+   "kind": "first_seen",
+   "serial": "43303251514150001138",
+   "hostname": "mac1",
+   "detail": "{\"bay\":\"\",\"dev_name\":\"disk4\",\"enclosure\":\"\",\"enclosure_via\":\"\",\"uses\":[\"mount \\u003e /Volumes/A024\"]}",
+   "source": "snapshot:48"
+  },
+  {
+   "eventId": "608",
+   "ts": "2026-09-18T19:26:37Z",
+   "kind": "vanished",
+   "serial": "43303251514150001138",
+   "hostname": "mac1",
+   "detail": "{\"bay\":\"\",\"dev_name\":\"disk4\",\"enclosure\":\"\",\"enclosure_via\":\"\",\"last_seen\":1789759295,\"uses\":[\"mount \\u003e /Volumes/A024\"]}",
+   "source": "snapshot:53"
+  }
+ ]
+}

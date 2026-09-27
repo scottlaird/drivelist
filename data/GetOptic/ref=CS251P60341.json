@@ -1,0 +1,167 @@
+{
+ "row": {
+  "optic": {
+   "port": "enp5",
+   "ports": [
+    "enp5"
+   ],
+   "form": "SFP",
+   "identifier": "0x03 (SFP)",
+   "kind": "optical",
+   "vendor": "CISCO-FINISAR",
+   "oui": "44:7c:7f",
+   "part": "FTLF1436P3BCL-PR",
+   "rev": "1A",
+   "serial": "CS251P60341",
+   "dateCode": "250605",
+   "compliance": "Extended: 100G Base-LR4 or 25GBase-LR",
+   "connector": "LC",
+   "wavelengthNm": 1310,
+   "link": "up",
+   "diagnostics": true,
+   "tempC": 42.51,
+   "voltageV": 3.2597,
+   "lanes": [
+    {
+     "lane": 1,
+     "biasMa": 44.488,
+     "txMw": 1.0639,
+     "rxMw": 0.8648
+    }
+   ],
+   "thresholds": {
+    "bias_high_alarm": 100,
+    "bias_high_warning": 85,
+    "bias_low_alarm": 5,
+    "bias_low_warning": 10,
+    "rx_high_alarm": 2.5119,
+    "rx_high_warning": 1.9953,
+    "rx_low_alarm": 0.0234,
+    "rx_low_warning": 0.0468,
+    "temp_high_alarm": 95,
+    "temp_high_warning": 85,
+    "temp_low_alarm": -50,
+    "temp_low_warning": -40,
+    "tx_high_alarm": 3.9811,
+    "tx_high_warning": 1.9953,
+    "tx_low_alarm": 0.2089,
+    "tx_low_warning": 0.4169,
+    "voltage_high_alarm": 3.63,
+    "voltage_high_warning": 3.465,
+    "voltage_low_alarm": 2.97,
+    "voltage_low_warning": 3.135
+   },
+   "carrierChanges": "45"
+  },
+  "status": "ok",
+  "hostname": "switch1",
+  "present": true,
+  "firstSeen": "2026-09-27T15:26:04Z",
+  "lastSeen": "2026-09-27T19:42:22Z",
+  "sampledAt": "2026-09-27T19:42:22Z"
+ },
+ "placements": [
+  {
+   "hostname": "switch1",
+   "port": "enp5",
+   "ports": [
+    "enp5"
+   ],
+   "firstSeen": "2026-09-27T15:26:04Z",
+   "lastSeen": "2026-09-27T19:42:22Z"
+  }
+ ],
+ "samples": [
+  {
+   "ts": "2026-09-27T19:42:22Z",
+   "hostname": "switch1",
+   "port": "enp5",
+   "tempC": 42.51,
+   "voltageV": 3.2597,
+   "lanes": [
+    {
+     "lane": 1,
+     "biasMa": 44.488,
+     "txMw": 1.0639,
+     "rxMw": 0.8648
+    }
+   ],
+   "link": "up"
+  },
+  {
+   "ts": "2026-09-27T18:57:19Z",
+   "hostname": "switch1",
+   "port": "enp5",
+   "tempC": 43.55,
+   "voltageV": 3.2609,
+   "lanes": [
+    {
+     "lane": 1,
+     "biasMa": 44.488,
+     "txMw": 1.0558,
+     "rxMw": 0.8587
+    }
+   ],
+   "link": "up"
+  },
+  {
+   "ts": "2026-09-27T17:57:16Z",
+   "hostname": "switch1",
+   "port": "enp5",
+   "tempC": 43.34,
+   "voltageV": 3.2586,
+   "lanes": [
+    {
+     "lane": 1,
+     "biasMa": 44.488,
+     "txMw": 1.0558,
+     "rxMw": 0.8587
+    }
+   ],
+   "link": "up"
+  },
+  {
+   "ts": "2026-09-27T16:57:12Z",
+   "hostname": "switch1",
+   "port": "enp5",
+   "tempC": 43.55,
+   "voltageV": 3.2597,
+   "lanes": [
+    {
+     "lane": 1,
+     "biasMa": 44.488,
+     "txMw": 1.0477,
+     "rxMw": 0.8525
+    }
+   ],
+   "link": "up"
+  },
+  {
+   "ts": "2026-09-27T15:57:08Z",
+   "hostname": "switch1",
+   "port": "enp5",
+   "tempC": 42.93,
+   "voltageV": 3.2621,
+   "lanes": [
+    {
+     "lane": 1,
+     "biasMa": 44.488,
+     "txMw": 1.0639,
+     "rxMw": 0.8525
+    }
+   ],
+   "link": "up"
+  }
+ ],
+ "events": [
+  {
+   "eventId": "911",
+   "ts": "2026-09-27T15:26:04Z",
+   "kind": "optic_first_seen",
+   "hostname": "switch1",
+   "detail": "{\"form\":\"SFP\",\"part\":\"FTLF1436P3BCL-PR\",\"port\":\"enp5\",\"serial\":\"CS251P60341\",\"vendor\":\"CISCO-FINISAR\"}",
+   "source": "report",
+   "opticSerial": "CS251P60341"
+  }
+ ]
+}

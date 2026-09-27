@@ -1,0 +1,26 @@
+{
+ "drive": {
+  "driveId": "103",
+  "wwn": "eui.fd5b42cebc8f9d54ace42e005528cee8",
+  "model": "SHPP51-1000GM",
+  "serial": "BSE3N45261OA43O21",
+  "sizeBytes": "1000204886016",
+  "bus": "BUS_NVME",
+  "status": "ok",
+  "firstSeen": "2026-09-13T01:44:31Z",
+  "lastSeen": "2026-09-27T19:42:09Z",
+  "current": {
+   "hostname": "backups",
+   "enclosure": "dmi:OM259S069895",
+   "bay": "M.2-C1 PCIe 4.0 X4",
+   "devName": "nvme0n1",
+   "uses": [
+    "zfs > rpool 18354710647381807540 > mirror 5264883868435595074 > disk 5223049671745381668"
+   ],
+   "firstSeen": "2026-09-13T23:12:25Z",
+   "lastSeen": "2026-09-27T19:42:09Z",
+   "enclosureVia": "pci"
+  },
+  "memberState": "ONLINE"
+ }
+}

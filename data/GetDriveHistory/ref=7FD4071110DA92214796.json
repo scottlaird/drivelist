@@ -1,0 +1,75 @@
+{
+ "drive": {
+  "driveId": "147",
+  "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+  "model": "Sabrent Rocket 4.0 1TB",
+  "serial": "7FD4071110DA92214796",
+  "sizeBytes": "1000204886016",
+  "bus": "BUS_NVME",
+  "status": "ok",
+  "firstSeen": "2026-09-13T15:35:30Z",
+  "lastSeen": "2026-09-27T19:42:33Z",
+  "current": {
+   "hostname": "server2",
+   "enclosure": "dmi:CN7831V0S2",
+   "bay": "2",
+   "devName": "nvme3n1",
+   "uses": [
+    "zfs > data2 3944605847870461868 > disk 2987962314565959930"
+   ],
+   "firstSeen": "2026-09-14T04:00:37Z",
+   "lastSeen": "2026-09-27T19:42:33Z",
+   "enclosureVia": "pci",
+   "bayLabel": "M.2 2"
+  },
+  "memberState": "ONLINE"
+ },
+ "placements": [
+  {
+   "hostname": "server2",
+   "devName": "nvme3n1",
+   "uses": [
+    "zfs > data2 3944605847870461868 > disk 2987962314565959930"
+   ],
+   "firstSeen": "2026-09-13T15:35:30Z",
+   "lastSeen": "2026-09-14T03:57:34Z",
+   "endedAt": "2026-09-14T04:00:37Z",
+   "endReason": "moved"
+  },
+  {
+   "hostname": "server2",
+   "enclosure": "dmi:CN7831V0S2",
+   "bay": "2",
+   "devName": "nvme3n1",
+   "uses": [
+    "zfs > data2 3944605847870461868 > disk 2987962314565959930"
+   ],
+   "firstSeen": "2026-09-14T04:00:37Z",
+   "lastSeen": "2026-09-27T19:42:33Z",
+   "enclosureVia": "pci",
+   "bayLabel": "M.2 2"
+  }
+ ],
+ "events": [
+  {
+   "eventId": "498",
+   "ts": "2026-09-13T15:35:30Z",
+   "kind": "first_seen",
+   "serial": "7FD4071110DA92214796",
+   "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+   "hostname": "server2",
+   "detail": "{\"bay\":\"\",\"dev_name\":\"nvme3n1\",\"expander\":\"\",\"expander_dev\":\"\",\"uses\":[\"zfs \\u003e data2 3944605847870461868 \\u003e disk 2987962314565959930\"]}",
+   "source": "snapshot:15"
+  },
+  {
+   "eventId": "542",
+   "ts": "2026-09-14T04:00:37Z",
+   "kind": "moved_bay",
+   "serial": "7FD4071110DA92214796",
+   "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+   "hostname": "server2",
+   "detail": "{\"from_bay\":\"\",\"from_enclosure\":\"\",\"from_enclosure_via\":\"\",\"from_host\":\"server2\",\"from_uses\":[\"zfs \\u003e data2 3944605847870461868 \\u003e disk 2987962314565959930\"],\"to_bay\":\"2\",\"to_bay_label\":\"M.2 2\",\"to_dev_name\":\"nvme3n1\",\"to_enclosure\":\"dmi:CN7831V0S2\",\"to_enclosure_via\":\"pci\",\"to_uses\":[\"zfs \\u003e data2 3944605847870461868 \\u003e disk 2987962314565959930\"]}",
+   "source": "snapshot:43"
+  }
+ ]
+}

@@ -1,0 +1,36 @@
+{
+ "drives": [
+  {
+   "driveId": "150",
+   "model": "LEXAR CFEXPRESS 2TB CARD",
+   "serial": "43303251514150001138",
+   "sizeBytes": "2048408248320",
+   "bus": "BUS_NVME",
+   "status": "ok",
+   "firstSeen": "2026-09-14T16:08:08Z",
+   "lastSeen": "2026-09-18T19:21:35Z",
+   "last": {
+    "hostname": "mac1",
+    "devName": "disk4",
+    "uses": [
+     "mount > /Volumes/A024"
+    ],
+    "firstSeen": "2026-09-14T16:08:08Z",
+    "lastSeen": "2026-09-18T19:21:35Z",
+    "endedAt": "2026-09-18T19:26:37Z",
+    "endReason": "vanished"
+   }
+  }
+ ],
+ "ghosts": [
+  {
+   "hostname": "nas",
+   "pool": "backups",
+   "path": "/dev/disk/by-id/scsi-35000cca25492cd80-part1",
+   "guid": "1082024170414391897",
+   "state": "REMOVED",
+   "firstSeen": "2026-09-13T02:09:06Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  }
+ ]
+}

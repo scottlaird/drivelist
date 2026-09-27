@@ -1,0 +1,1994 @@
+{
+ "drive": {
+  "driveId": "34",
+  "wwn": "0x5000cca254301d64",
+  "vendor": "HITACHI",
+  "model": "HUH72808CLAR8000",
+  "serial": "VKGVG9GX",
+  "sizeBytes": "8001563222016",
+  "bus": "BUS_SAS",
+  "status": "ok",
+  "firstSeen": "2026-09-13T01:41:39Z",
+  "lastSeen": "2026-09-27T19:41:38Z",
+  "current": {
+   "hostname": "nas",
+   "enclosure": "0x5000ccab020094ff",
+   "bay": "4",
+   "devName": "sdbc",
+   "uses": [
+    "zfs > backups 12143466076769931197 > raidz2 5338052500984404557 > disk 18335223806475789631"
+   ],
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "enclosureVia": "expander-11:0",
+   "enclosureName": "nas-hgst-u60-1",
+   "bayLabel": "4"
+  },
+  "memberState": "ONLINE"
+ },
+ "samples": [
+  {
+   "identity": {
+    "wwn": "0x5000cca254301d64",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGVG9GX"
+   },
+   "devName": "sdbc",
+   "ts": "2026-09-27T15:34:36Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7749",
+    "tempC": 30,
+    "reallocated": "2",
+    "uncorrectable": "1",
+    "readBytes": "304605241000000",
+    "writeBytes": "71791100000000",
+    "selftestLast": "short: unknown error, incomplete @ 46851h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254301d64",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGVG9GX"
+   },
+   "devName": "sdbc",
+   "ts": "2026-09-27T15:25:20Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7749",
+    "tempC": 30,
+    "reallocated": "2",
+    "uncorrectable": "1",
+    "readBytes": "304605231000000",
+    "writeBytes": "71791098000000",
+    "selftestLast": "short: unknown error, incomplete @ 46851h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254301d64",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGVG9GX"
+   },
+   "devName": "sdbc",
+   "ts": "2026-09-27T15:12:52Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7749",
+    "tempC": 30,
+    "reallocated": "2",
+    "uncorrectable": "1",
+    "readBytes": "304605208000000",
+    "writeBytes": "71791097000000",
+    "selftestLast": "short: unknown error, incomplete @ 46851h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254301d64",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGVG9GX"
+   },
+   "devName": "sdbc",
+   "ts": "2026-09-27T10:13:51Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7744",
+    "tempC": 30,
+    "reallocated": "2",
+    "uncorrectable": "1",
+    "readBytes": "304604397000000",
+    "writeBytes": "71791054000000",
+    "selftestLast": "short: unknown error, incomplete @ 46851h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254301d64",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGVG9GX"
+   },
+   "devName": "sdbc",
+   "ts": "2026-09-27T05:34:38Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7739",
+    "tempC": 31,
+    "reallocated": "2",
+    "uncorrectable": "1",
+    "readBytes": "304602847000000",
+    "writeBytes": "71790767000000",
+    "selftestLast": "short: unknown error, incomplete @ 46851h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254301d64",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGVG9GX"
+   },
+   "devName": "sdbc",
+   "ts": "2026-09-27T04:13:34Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7738",
+    "tempC": 31,
+    "reallocated": "2",
+    "uncorrectable": "1",
+    "readBytes": "304601372000000",
+    "writeBytes": "71790755000000",
+    "selftestLast": "short: unknown error, incomplete @ 46851h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254301d64",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGVG9GX"
+   },
+   "devName": "sdbc",
+   "ts": "2026-09-26T22:13:17Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7732",
+    "tempC": 33,
+    "reallocated": "2",
+    "uncorrectable": "1",
+    "readBytes": "304596962000000",
+    "writeBytes": "71790703000000",
+    "selftestLast": "short: unknown error, incomplete @ 46851h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254301d64",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGVG9GX"
+   },
+   "devName": "sdbc",
+   "ts": "2026-09-26T19:34:34Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7729",
+    "tempC": 32,
+    "reallocated": "2",
+    "uncorrectable": "1",
+    "readBytes": "304595153000000",
+    "writeBytes": "71790680000000",
+    "selftestLast": "short: unknown error, incomplete @ 46851h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254301d64",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGVG9GX"
+   },
+   "devName": "sdbc",
+   "ts": "2026-09-26T16:13:00Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7726",
+    "tempC": 29,
+    "reallocated": "2",
+    "uncorrectable": "1",
+    "readBytes": "304594164000000",
+    "writeBytes": "71790652000000",
+    "selftestLast": "short: unknown error, incomplete @ 46851h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254301d64",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGVG9GX"
+   },
+   "devName": "sdbc",
+   "ts": "2026-09-26T10:12:43Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7720",
+    "tempC": 30,
+    "reallocated": "2",
+    "uncorrectable": "1",
+    "readBytes": "304593043000000",
+    "writeBytes": "71790600000000",
+    "selftestLast": "short: unknown error, incomplete @ 46851h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254301d64",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGVG9GX"
+   },
+   "devName": "sdbc",
+   "ts": "2026-09-26T09:34:36Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7719",
+    "tempC": 31,
+    "reallocated": "2",
+    "uncorrectable": "1",
+    "readBytes": "304592933000000",
+    "writeBytes": "71790579000000",
+    "selftestLast": "short: unknown error, incomplete @ 46851h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254301d64",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGVG9GX"
+   },
+   "devName": "sdbc",
+   "ts": "2026-09-26T07:00:11Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7717",
+    "tempC": 30,
+    "reallocated": "2",
+    "uncorrectable": "1",
+    "readBytes": "304590772000000",
+    "writeBytes": "71790423000000",
+    "selftestLast": "short: unknown error, incomplete @ 46851h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254301d64",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGVG9GX"
+   },
+   "devName": "sdbc",
+   "ts": "2026-09-26T04:12:27Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7714",
+    "tempC": 31,
+    "reallocated": "2",
+    "uncorrectable": "1",
+    "readBytes": "304590749000000",
+    "writeBytes": "71790423000000",
+    "selftestLast": "short: unknown error, incomplete @ 46851h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254301d64",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGVG9GX"
+   },
+   "devName": "sdbc",
+   "ts": "2026-09-25T22:12:10Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7708",
+    "tempC": 32,
+    "reallocated": "2",
+    "uncorrectable": "1",
+    "readBytes": "304590749000000",
+    "writeBytes": "71790423000000",
+    "selftestLast": "short: unknown error, incomplete @ 46851h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254301d64",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGVG9GX"
+   },
+   "devName": "sdbc",
+   "ts": "2026-09-25T16:11:54Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7702",
+    "tempC": 32,
+    "reallocated": "2",
+    "uncorrectable": "1",
+    "readBytes": "304583627000000",
+    "writeBytes": "71790374000000",
+    "selftestLast": "short: unknown error, incomplete @ 46851h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254301d64",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGVG9GX"
+   },
+   "devName": "sdbc",
+   "ts": "2026-09-25T13:34:38Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7699",
+    "tempC": 32,
+    "reallocated": "2",
+    "uncorrectable": "1",
+    "readBytes": "304580313000000",
+    "writeBytes": "71790352000000",
+    "selftestLast": "short: unknown error, incomplete @ 46851h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254301d64",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGVG9GX"
+   },
+   "devName": "sdbc",
+   "ts": "2026-09-25T10:11:38Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7696",
+    "tempC": 32,
+    "reallocated": "2",
+    "uncorrectable": "1",
+    "readBytes": "304578187000000",
+    "writeBytes": "71790323000000",
+    "selftestLast": "short: unknown error, incomplete @ 46851h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254301d64",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGVG9GX"
+   },
+   "devName": "sdbc",
+   "ts": "2026-09-25T04:11:22Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7690",
+    "tempC": 32,
+    "reallocated": "2",
+    "uncorrectable": "1",
+    "readBytes": "304575844000000",
+    "writeBytes": "71789980000000",
+    "selftestLast": "short: unknown error, incomplete @ 46851h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254301d64",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGVG9GX"
+   },
+   "devName": "sdbc",
+   "ts": "2026-09-24T22:11:06Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7684",
+    "tempC": 32,
+    "reallocated": "2",
+    "uncorrectable": "1",
+    "readBytes": "304575727000000",
+    "writeBytes": "71789979000000",
+    "selftestLast": "short: unknown error, incomplete @ 46851h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254301d64",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGVG9GX"
+   },
+   "devName": "sdbc",
+   "ts": "2026-09-24T17:34:37Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7679",
+    "tempC": 31,
+    "reallocated": "2",
+    "uncorrectable": "1",
+    "readBytes": "304569891000000",
+    "writeBytes": "71789939000000",
+    "selftestLast": "short: unknown error, incomplete @ 46851h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254301d64",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGVG9GX"
+   },
+   "devName": "sdbc",
+   "ts": "2026-09-24T16:10:50Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7678",
+    "tempC": 31,
+    "reallocated": "2",
+    "uncorrectable": "1",
+    "readBytes": "304568164000000",
+    "writeBytes": "71789927000000",
+    "selftestLast": "short: unknown error, incomplete @ 46851h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254301d64",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGVG9GX"
+   },
+   "devName": "sdbc",
+   "ts": "2026-09-24T10:10:32Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7672",
+    "tempC": 32,
+    "reallocated": "2",
+    "uncorrectable": "1",
+    "readBytes": "304563528000000",
+    "writeBytes": "71789875000000",
+    "selftestLast": "short: unknown error, incomplete @ 46851h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254301d64",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGVG9GX"
+   },
+   "devName": "sdbc",
+   "ts": "2026-09-24T07:34:34Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7669",
+    "tempC": 32,
+    "reallocated": "2",
+    "uncorrectable": "1",
+    "readBytes": "304561665000000",
+    "writeBytes": "71789632000000",
+    "selftestLast": "short: unknown error, incomplete @ 46851h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254301d64",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGVG9GX"
+   },
+   "devName": "sdbc",
+   "ts": "2026-09-24T04:10:09Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7666",
+    "tempC": 32,
+    "reallocated": "2",
+    "uncorrectable": "1",
+    "readBytes": "304557809000000",
+    "writeBytes": "71789605000000",
+    "selftestLast": "short: unknown error, incomplete @ 46851h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254301d64",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGVG9GX"
+   },
+   "devName": "sdbc",
+   "ts": "2026-09-23T22:17:35Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7660",
+    "tempC": 33,
+    "reallocated": "2",
+    "uncorrectable": "1",
+    "readBytes": "304550444000000",
+    "writeBytes": "71789554000000",
+    "selftestLast": "short: unknown error, incomplete @ 46851h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254301d64",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGVG9GX"
+   },
+   "devName": "sdbc",
+   "ts": "2026-09-23T22:09:50Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7660",
+    "tempC": 33,
+    "reallocated": "2",
+    "uncorrectable": "1",
+    "readBytes": "304550267000000",
+    "writeBytes": "71789553000000",
+    "selftestLast": "short: unknown error, incomplete @ 46851h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254301d64",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGVG9GX"
+   },
+   "devName": "sdbc",
+   "ts": "2026-09-23T16:09:26Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7654",
+    "tempC": 32,
+    "reallocated": "2",
+    "uncorrectable": "1",
+    "readBytes": "304542787000000",
+    "writeBytes": "71789501000000",
+    "selftestLast": "short: unknown error, incomplete @ 46851h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254301d64",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGVG9GX"
+   },
+   "devName": "sdbc",
+   "ts": "2026-09-23T10:09:03Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7648",
+    "tempC": 33,
+    "reallocated": "2",
+    "uncorrectable": "1",
+    "readBytes": "304536181000000",
+    "writeBytes": "71789449000000",
+    "selftestLast": "short: unknown error, incomplete @ 46851h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254301d64",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGVG9GX"
+   },
+   "devName": "sdbc",
+   "ts": "2026-09-23T04:08:44Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7642",
+    "tempC": 33,
+    "reallocated": "2",
+    "uncorrectable": "1",
+    "readBytes": "304534278000000",
+    "writeBytes": "71789177000000",
+    "selftestLast": "short: unknown error, incomplete @ 46851h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254301d64",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGVG9GX"
+   },
+   "devName": "sdbc",
+   "ts": "2026-09-22T22:08:25Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7636",
+    "tempC": 34,
+    "reallocated": "2",
+    "uncorrectable": "1",
+    "readBytes": "304533172000000",
+    "writeBytes": "71789125000000",
+    "selftestLast": "short: unknown error, incomplete @ 46851h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254301d64",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGVG9GX"
+   },
+   "devName": "sdbc",
+   "ts": "2026-09-22T16:08:02Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7630",
+    "tempC": 31,
+    "reallocated": "2",
+    "uncorrectable": "1",
+    "readBytes": "304532126000000",
+    "writeBytes": "71789074000000",
+    "selftestLast": "short: unknown error, incomplete @ 46851h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254301d64",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGVG9GX"
+   },
+   "devName": "sdbc",
+   "ts": "2026-09-22T10:07:43Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7624",
+    "tempC": 33,
+    "reallocated": "2",
+    "uncorrectable": "1",
+    "readBytes": "304531192000000",
+    "writeBytes": "71788838000000",
+    "selftestLast": "short: unknown error, incomplete @ 46851h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254301d64",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGVG9GX"
+   },
+   "devName": "sdbc",
+   "ts": "2026-09-22T04:07:24Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7618",
+    "tempC": 34,
+    "reallocated": "2",
+    "uncorrectable": "1",
+    "readBytes": "304527316000000",
+    "writeBytes": "71788786000000",
+    "selftestLast": "short: unknown error, incomplete @ 46851h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254301d64",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGVG9GX"
+   },
+   "devName": "sdbc",
+   "ts": "2026-09-21T22:07:05Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7612",
+    "tempC": 35,
+    "reallocated": "2",
+    "uncorrectable": "1",
+    "readBytes": "304522666000000",
+    "writeBytes": "71788734000000",
+    "selftestLast": "short: unknown error, incomplete @ 46851h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254301d64",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGVG9GX"
+   },
+   "devName": "sdbc",
+   "ts": "2026-09-21T16:06:42Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7606",
+    "tempC": 32,
+    "reallocated": "2",
+    "uncorrectable": "1",
+    "readBytes": "304520069000000",
+    "writeBytes": "71788681000000",
+    "selftestLast": "short: unknown error, incomplete @ 46851h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254301d64",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGVG9GX"
+   },
+   "devName": "sdbc",
+   "ts": "2026-09-21T10:06:21Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7600",
+    "tempC": 33,
+    "reallocated": "2",
+    "uncorrectable": "1",
+    "readBytes": "304518933000000",
+    "writeBytes": "71788631000000",
+    "selftestLast": "short: unknown error, incomplete @ 46851h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254301d64",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGVG9GX"
+   },
+   "devName": "sdbc",
+   "ts": "2026-09-21T09:34:37Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7599",
+    "tempC": 33,
+    "reallocated": "2",
+    "uncorrectable": "1",
+    "readBytes": "304518823000000",
+    "writeBytes": "71788626000000",
+    "selftestLast": "short: unknown error, incomplete @ 46851h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254301d64",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGVG9GX"
+   },
+   "devName": "sdbc",
+   "ts": "2026-09-21T04:05:57Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7594",
+    "tempC": 34,
+    "reallocated": "2",
+    "uncorrectable": "1",
+    "readBytes": "304517789000000",
+    "writeBytes": "71788376000000",
+    "selftestLast": "short: unknown error, incomplete @ 46851h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254301d64",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGVG9GX"
+   },
+   "devName": "sdbc",
+   "ts": "2026-09-21T03:53:28Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7593",
+    "tempC": 34,
+    "reallocated": "2",
+    "uncorrectable": "1",
+    "readBytes": "304517771000000",
+    "writeBytes": "71788374000000",
+    "selftestLast": "short: unknown error, incomplete @ 46851h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254301d64",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGVG9GX"
+   },
+   "devName": "sdbc",
+   "ts": "2026-09-21T03:43:08Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7593",
+    "tempC": 34,
+    "reallocated": "2",
+    "uncorrectable": "1",
+    "readBytes": "304517729000000",
+    "writeBytes": "71788373000000",
+    "selftestLast": "short: unknown error, incomplete @ 46851h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254301d64",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGVG9GX"
+   },
+   "devName": "sdbc",
+   "ts": "2026-09-21T03:28:38Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7593",
+    "tempC": 34,
+    "reallocated": "2",
+    "uncorrectable": "1",
+    "readBytes": "304517706000000",
+    "writeBytes": "71788371000000",
+    "selftestLast": "short: unknown error, incomplete @ 46851h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254301d64",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGVG9GX"
+   },
+   "devName": "sdbc",
+   "ts": "2026-09-21T01:42:24Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7591",
+    "tempC": 35,
+    "reallocated": "2",
+    "uncorrectable": "1",
+    "readBytes": "304517400000000",
+    "writeBytes": "71788356000000",
+    "selftestLast": "short: unknown error, incomplete @ 46851h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254301d64",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGVG9GX"
+   },
+   "devName": "sdbc",
+   "ts": "2026-09-21T01:34:52Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7591",
+    "tempC": 35,
+    "reallocated": "2",
+    "uncorrectable": "1",
+    "readBytes": "304517377000000",
+    "writeBytes": "71788355000000",
+    "selftestLast": "short: unknown error, incomplete @ 46851h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254301d64",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGVG9GX"
+   },
+   "devName": "sdbc",
+   "ts": "2026-09-20T19:42:02Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7585",
+    "tempC": 34,
+    "reallocated": "2",
+    "uncorrectable": "1",
+    "readBytes": "304516305000000",
+    "writeBytes": "71788304000000",
+    "selftestLast": "short: unknown error, incomplete @ 46851h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254301d64",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGVG9GX"
+   },
+   "devName": "sdbc",
+   "ts": "2026-09-20T14:22:02Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7580",
+    "tempC": 32,
+    "reallocated": "2",
+    "uncorrectable": "1",
+    "readBytes": "304515383000000",
+    "writeBytes": "71788257000000",
+    "selftestLast": "short: unknown error, incomplete @ 46851h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254301d64",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGVG9GX"
+   },
+   "devName": "sdbc",
+   "ts": "2026-09-20T09:27:47Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7575",
+    "tempC": 33,
+    "reallocated": "2",
+    "uncorrectable": "1",
+    "readBytes": "304514500000000",
+    "writeBytes": "71752710000000",
+    "selftestLast": "short: unknown error, incomplete @ 46851h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254301d64",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGVG9GX"
+   },
+   "devName": "sdbc",
+   "ts": "2026-09-20T08:21:32Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7574",
+    "tempC": 33,
+    "reallocated": "2",
+    "uncorrectable": "1",
+    "readBytes": "304514317000000",
+    "writeBytes": "71752701000000",
+    "selftestLast": "short: unknown error, incomplete @ 46851h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254301d64",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGVG9GX"
+   },
+   "devName": "sdbc",
+   "ts": "2026-09-20T02:21:13Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7568",
+    "tempC": 34,
+    "reallocated": "2",
+    "uncorrectable": "1",
+    "readBytes": "304512180000000",
+    "writeBytes": "71752648000000",
+    "selftestLast": "short: unknown error, incomplete @ 46851h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254301d64",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGVG9GX"
+   },
+   "devName": "sdbc",
+   "ts": "2026-09-19T20:25:11Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7562",
+    "tempC": 34,
+    "reallocated": "2",
+    "uncorrectable": "1",
+    "readBytes": "304508240000000",
+    "writeBytes": "71752597000000",
+    "selftestLast": "short: unknown error, incomplete @ 46851h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254301d64",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGVG9GX"
+   },
+   "devName": "sdbc",
+   "ts": "2026-09-19T20:20:45Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7562",
+    "tempC": 34,
+    "reallocated": "2",
+    "uncorrectable": "1",
+    "readBytes": "304508213000000",
+    "writeBytes": "71752596000000",
+    "selftestLast": "short: unknown error, incomplete @ 46851h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254301d64",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGVG9GX"
+   },
+   "devName": "sdbc",
+   "ts": "2026-09-19T17:50:01Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7559",
+    "tempC": 33,
+    "reallocated": "2",
+    "uncorrectable": "1",
+    "readBytes": "304505391000000",
+    "writeBytes": "71752575000000",
+    "selftestLast": "short: unknown error, incomplete @ 46851h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254301d64",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGVG9GX"
+   },
+   "devName": "sdbc",
+   "ts": "2026-09-19T11:49:40Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7553",
+    "tempC": 33,
+    "reallocated": "2",
+    "uncorrectable": "1",
+    "readBytes": "304502819000000",
+    "writeBytes": "71752524000000",
+    "selftestLast": "short: unknown error, incomplete @ 46851h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254301d64",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGVG9GX"
+   },
+   "devName": "sdbc",
+   "ts": "2026-09-19T06:25:10Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7548",
+    "tempC": 33,
+    "reallocated": "2",
+    "uncorrectable": "1",
+    "readBytes": "304501808000000",
+    "writeBytes": "71752477000000",
+    "selftestLast": "short: unknown error, incomplete @ 46851h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254301d64",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGVG9GX"
+   },
+   "devName": "sdbc",
+   "ts": "2026-09-19T05:49:09Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7547",
+    "tempC": 34,
+    "reallocated": "2",
+    "uncorrectable": "1",
+    "readBytes": "304501678000000",
+    "writeBytes": "71752471000000",
+    "selftestLast": "short: unknown error, incomplete @ 46851h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254301d64",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGVG9GX"
+   },
+   "devName": "sdbc",
+   "ts": "2026-09-18T23:48:33Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7541",
+    "tempC": 35,
+    "reallocated": "2",
+    "uncorrectable": "1",
+    "readBytes": "304500487000000",
+    "writeBytes": "71752419000000",
+    "selftestLast": "short: unknown error, incomplete @ 46851h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254301d64",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGVG9GX"
+   },
+   "devName": "sdbc",
+   "ts": "2026-09-18T17:48:00Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7535",
+    "tempC": 33,
+    "reallocated": "2",
+    "uncorrectable": "1",
+    "readBytes": "304499328000000",
+    "writeBytes": "71752368000000",
+    "selftestLast": "short: unknown error, incomplete @ 46851h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254301d64",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGVG9GX"
+   },
+   "devName": "sdbc",
+   "ts": "2026-09-18T13:07:20Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7531",
+    "tempC": 33,
+    "reallocated": "2",
+    "uncorrectable": "1",
+    "readBytes": "304498508000000",
+    "writeBytes": "71752327000000",
+    "selftestLast": "short: unknown error, incomplete @ 46851h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254301d64",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGVG9GX"
+   },
+   "devName": "sdbc",
+   "ts": "2026-09-18T11:47:41Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7529",
+    "tempC": 33,
+    "reallocated": "2",
+    "uncorrectable": "1",
+    "readBytes": "304498275000000",
+    "writeBytes": "71752316000000",
+    "selftestLast": "short: unknown error, incomplete @ 46851h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254301d64",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGVG9GX"
+   },
+   "devName": "sdbc",
+   "ts": "2026-09-18T05:47:21Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7523",
+    "tempC": 33,
+    "reallocated": "2",
+    "uncorrectable": "1",
+    "readBytes": "304497247000000",
+    "writeBytes": "71752264000000",
+    "selftestLast": "short: unknown error, incomplete @ 46851h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254301d64",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGVG9GX"
+   },
+   "devName": "sdbc",
+   "ts": "2026-09-17T23:49:03Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7517",
+    "tempC": 36,
+    "reallocated": "2",
+    "uncorrectable": "1",
+    "readBytes": "304491620000000",
+    "writeBytes": "71752213000000",
+    "selftestLast": "short: unknown error, incomplete @ 46851h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254301d64",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGVG9GX"
+   },
+   "devName": "sdbc",
+   "ts": "2026-09-17T23:46:55Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7517",
+    "tempC": 36,
+    "reallocated": "2",
+    "uncorrectable": "1",
+    "readBytes": "304491572000000",
+    "writeBytes": "71752213000000",
+    "selftestLast": "short: unknown error, incomplete @ 46851h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254301d64",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGVG9GX"
+   },
+   "devName": "sdbc",
+   "ts": "2026-09-17T17:46:35Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7511",
+    "tempC": 34,
+    "reallocated": "2",
+    "uncorrectable": "1",
+    "readBytes": "304486450000000",
+    "writeBytes": "71752160000000",
+    "selftestLast": "short: unknown error, incomplete @ 46851h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254301d64",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGVG9GX"
+   },
+   "devName": "sdbc",
+   "ts": "2026-09-17T11:46:17Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7505",
+    "tempC": 33,
+    "reallocated": "2",
+    "uncorrectable": "1",
+    "readBytes": "304485041000000",
+    "writeBytes": "71752108000000",
+    "selftestLast": "short: unknown error, incomplete @ 46851h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254301d64",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGVG9GX"
+   },
+   "devName": "sdbc",
+   "ts": "2026-09-17T10:26:43Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7504",
+    "tempC": 34,
+    "reallocated": "2",
+    "uncorrectable": "1",
+    "readBytes": "304484813000000",
+    "writeBytes": "71752097000000",
+    "selftestLast": "short: unknown error, incomplete @ 46851h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254301d64",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGVG9GX"
+   },
+   "devName": "sdbc",
+   "ts": "2026-09-17T05:46:00Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7499",
+    "tempC": 34,
+    "reallocated": "2",
+    "uncorrectable": "1",
+    "readBytes": "304480650000000",
+    "writeBytes": "71752056000000",
+    "selftestLast": "short: unknown error, incomplete @ 46851h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254301d64",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGVG9GX"
+   },
+   "devName": "sdbc",
+   "ts": "2026-09-16T23:45:44Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7493",
+    "tempC": 35,
+    "reallocated": "2",
+    "uncorrectable": "1",
+    "readBytes": "304473862000000",
+    "writeBytes": "71752004000000",
+    "selftestLast": "short: unknown error, incomplete @ 46851h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254301d64",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGVG9GX"
+   },
+   "devName": "sdbc",
+   "ts": "2026-09-16T23:39:21Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7493",
+    "tempC": 35,
+    "reallocated": "2",
+    "uncorrectable": "1",
+    "readBytes": "304473726000000",
+    "writeBytes": "71752003000000",
+    "selftestLast": "short: unknown error, incomplete @ 46851h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254301d64",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGVG9GX"
+   },
+   "devName": "sdbc",
+   "ts": "2026-09-16T17:45:27Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7487",
+    "tempC": 33,
+    "reallocated": "2",
+    "uncorrectable": "1",
+    "readBytes": "304468545000000",
+    "writeBytes": "71751952000000",
+    "selftestLast": "short: unknown error, incomplete @ 46851h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254301d64",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGVG9GX"
+   },
+   "devName": "sdbc",
+   "ts": "2026-09-16T11:45:11Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7481",
+    "tempC": 32,
+    "reallocated": "2",
+    "uncorrectable": "1",
+    "readBytes": "304467381000000",
+    "writeBytes": "71751901000000",
+    "selftestLast": "short: unknown error, incomplete @ 46851h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254301d64",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGVG9GX"
+   },
+   "devName": "sdbc",
+   "ts": "2026-09-16T09:28:48Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7479",
+    "tempC": 33,
+    "reallocated": "2",
+    "uncorrectable": "1",
+    "readBytes": "304466943000000",
+    "writeBytes": "71751881000000",
+    "selftestLast": "short: unknown error, incomplete @ 46851h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254301d64",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGVG9GX"
+   },
+   "devName": "sdbc",
+   "ts": "2026-09-16T05:44:55Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7475",
+    "tempC": 34,
+    "reallocated": "2",
+    "uncorrectable": "1",
+    "readBytes": "304466211000000",
+    "writeBytes": "71751849000000",
+    "selftestLast": "short: unknown error, incomplete @ 46851h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254301d64",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGVG9GX"
+   },
+   "devName": "sdbc",
+   "ts": "2026-09-15T23:44:38Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7469",
+    "tempC": 34,
+    "reallocated": "2",
+    "uncorrectable": "1",
+    "readBytes": "304465082000000",
+    "writeBytes": "71751797000000",
+    "selftestLast": "short: unknown error, incomplete @ 46851h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254301d64",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGVG9GX"
+   },
+   "devName": "sdbc",
+   "ts": "2026-09-15T17:44:22Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7463",
+    "tempC": 32,
+    "reallocated": "2",
+    "uncorrectable": "1",
+    "readBytes": "304463937000000",
+    "writeBytes": "71751746000000",
+    "selftestLast": "short: unknown error, incomplete @ 46851h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254301d64",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGVG9GX"
+   },
+   "devName": "sdbc",
+   "ts": "2026-09-15T15:44:47Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7461",
+    "tempC": 32,
+    "reallocated": "2",
+    "uncorrectable": "1",
+    "readBytes": "304463555000000",
+    "writeBytes": "71751729000000",
+    "selftestLast": "short: unknown error, incomplete @ 46851h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254301d64",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGVG9GX"
+   },
+   "devName": "sdbc",
+   "ts": "2026-09-15T11:44:05Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7457",
+    "tempC": 32,
+    "reallocated": "2",
+    "uncorrectable": "1",
+    "readBytes": "304462841000000",
+    "writeBytes": "71751695000000",
+    "selftestLast": "short: unknown error, incomplete @ 46851h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254301d64",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGVG9GX"
+   },
+   "devName": "sdbc",
+   "ts": "2026-09-15T05:43:48Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7451",
+    "tempC": 33,
+    "reallocated": "2",
+    "uncorrectable": "1",
+    "readBytes": "304461928000000",
+    "writeBytes": "71751654000000",
+    "selftestLast": "short: unknown error, incomplete @ 46851h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254301d64",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGVG9GX"
+   },
+   "devName": "sdbc",
+   "ts": "2026-09-14T23:43:31Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7445",
+    "tempC": 34,
+    "reallocated": "2",
+    "uncorrectable": "1",
+    "readBytes": "304456132000000",
+    "writeBytes": "71751602000000",
+    "selftestLast": "short: unknown error, incomplete @ 46851h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254301d64",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGVG9GX"
+   },
+   "devName": "sdbc",
+   "ts": "2026-09-14T17:43:15Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7439",
+    "tempC": 33,
+    "reallocated": "2",
+    "uncorrectable": "1",
+    "readBytes": "304451323000000",
+    "writeBytes": "71751551000000",
+    "selftestLast": "short: unknown error, incomplete @ 46851h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254301d64",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGVG9GX"
+   },
+   "devName": "sdbc",
+   "ts": "2026-09-14T16:09:51Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7438",
+    "tempC": 33,
+    "reallocated": "2",
+    "uncorrectable": "1",
+    "readBytes": "304451012000000",
+    "writeBytes": "71751537000000",
+    "selftestLast": "short: unknown error, incomplete @ 46851h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254301d64",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGVG9GX"
+   },
+   "devName": "sdbc",
+   "ts": "2026-09-14T10:09:34Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7432",
+    "tempC": 33,
+    "reallocated": "2",
+    "uncorrectable": "1",
+    "readBytes": "304449779000000",
+    "writeBytes": "71751485000000",
+    "selftestLast": "short: unknown error, incomplete @ 46851h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254301d64",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGVG9GX"
+   },
+   "devName": "sdbc",
+   "ts": "2026-09-14T04:09:16Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7426",
+    "tempC": 33,
+    "reallocated": "2",
+    "uncorrectable": "1",
+    "readBytes": "304446356000000",
+    "writeBytes": "71751458000000",
+    "selftestLast": "short: unknown error, incomplete @ 46851h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254301d64",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGVG9GX"
+   },
+   "devName": "sdbc",
+   "ts": "2026-09-14T03:59:11Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7426",
+    "tempC": 33,
+    "reallocated": "2",
+    "uncorrectable": "1",
+    "readBytes": "304446356000000",
+    "writeBytes": "71751458000000",
+    "selftestLast": "short: unknown error, incomplete @ 46851h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254301d64",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGVG9GX"
+   },
+   "devName": "sdbc",
+   "ts": "2026-09-14T03:46:20Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7425",
+    "tempC": 33,
+    "reallocated": "2",
+    "uncorrectable": "1",
+    "readBytes": "304446356000000",
+    "writeBytes": "71751458000000",
+    "selftestLast": "short: unknown error, incomplete @ 46851h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254301d64",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGVG9GX"
+   },
+   "devName": "sdbc",
+   "ts": "2026-09-13T23:13:00Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7421",
+    "tempC": 33,
+    "reallocated": "2",
+    "uncorrectable": "1",
+    "readBytes": "304445061000000",
+    "writeBytes": "71751430000000",
+    "selftestLast": "short: unknown error, incomplete @ 46851h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254301d64",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGVG9GX"
+   },
+   "devName": "sdbc",
+   "ts": "2026-09-13T22:10:25Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7420",
+    "tempC": 33,
+    "reallocated": "2",
+    "uncorrectable": "1",
+    "readBytes": "304444750000000",
+    "writeBytes": "71751421000000",
+    "selftestLast": "short: unknown error, incomplete @ 46851h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254301d64",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGVG9GX"
+   },
+   "devName": "sdbc",
+   "ts": "2026-09-13T21:37:11Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7419",
+    "tempC": 33,
+    "reallocated": "2",
+    "uncorrectable": "1",
+    "readBytes": "304444057000000",
+    "writeBytes": "71751416000000",
+    "selftestLast": "short: unknown error, incomplete @ 46851h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254301d64",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGVG9GX"
+   },
+   "devName": "sdbc",
+   "ts": "2026-09-13T21:15:22Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7419",
+    "tempC": 33,
+    "reallocated": "2",
+    "uncorrectable": "1",
+    "readBytes": "304443585000000",
+    "writeBytes": "71751413000000",
+    "selftestLast": "short: unknown error, incomplete @ 46851h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254301d64",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGVG9GX"
+   },
+   "devName": "sdbc",
+   "ts": "2026-09-13T17:05:01Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7415",
+    "tempC": 32,
+    "reallocated": "2",
+    "uncorrectable": "1",
+    "readBytes": "304441051000000",
+    "writeBytes": "71751376000000",
+    "selftestLast": "short: unknown error, incomplete @ 46851h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254301d64",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGVG9GX"
+   },
+   "devName": "sdbc",
+   "ts": "2026-09-13T14:18:28Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7412",
+    "tempC": 33,
+    "reallocated": "2",
+    "uncorrectable": "1",
+    "readBytes": "304438365000000",
+    "writeBytes": "71751352000000",
+    "selftestLast": "short: unknown error, incomplete @ 46851h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254301d64",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGVG9GX"
+   },
+   "devName": "sdbc",
+   "ts": "2026-09-13T08:17:42Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7406",
+    "tempC": 34,
+    "reallocated": "2",
+    "uncorrectable": "1",
+    "readBytes": "304432663000000",
+    "writeBytes": "71751301000000",
+    "selftestLast": "short: unknown error, incomplete @ 46851h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254301d64",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGVG9GX"
+   },
+   "devName": "sdbc",
+   "ts": "2026-09-13T02:17:10Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7400",
+    "tempC": 35,
+    "reallocated": "2",
+    "uncorrectable": "1",
+    "readBytes": "304429894000000",
+    "writeBytes": "71751276000000",
+    "selftestLast": "short: unknown error, incomplete @ 46851h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254301d64",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGVG9GX"
+   },
+   "devName": "sdbc",
+   "ts": "2026-09-13T02:09:14Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7400",
+    "tempC": 34,
+    "reallocated": "2",
+    "uncorrectable": "1",
+    "readBytes": "304429704000000",
+    "writeBytes": "71751275000000",
+    "selftestLast": "short: unknown error, incomplete @ 46851h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  }
+ ]
+}

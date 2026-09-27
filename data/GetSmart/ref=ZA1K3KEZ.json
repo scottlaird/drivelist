@@ -1,0 +1,1574 @@
+{
+ "drive": {
+  "driveId": "12",
+  "wwn": "0x5000c500cafaac4f",
+  "vendor": "SEAGATE",
+  "model": "STMPSED1CLAR8000",
+  "serial": "ZA1K3KEZ",
+  "sizeBytes": "8001563222016",
+  "bus": "BUS_SAS",
+  "status": "ok",
+  "firstSeen": "2026-09-13T01:41:39Z",
+  "lastSeen": "2026-09-27T19:41:38Z",
+  "current": {
+   "hostname": "nas",
+   "enclosure": "0x5000ccab020094ff",
+   "bay": "45",
+   "devName": "sdah",
+   "uses": [
+    "zfs > spare space > disk 6934462713112163834"
+   ],
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "enclosureVia": "expander-11:0",
+   "enclosureName": "nas-hgst-u60-1",
+   "bayLabel": "45"
+  },
+  "memberState": "INUSE"
+ },
+ "samples": [
+  {
+   "identity": {
+    "wwn": "0x5000c500cafaac4f",
+    "model": "STMPSED1CLAR8000",
+    "serial": "ZA1K3KEZ"
+   },
+   "devName": "sdah",
+   "ts": "2026-09-27T15:25:15Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "36255",
+    "tempC": 40,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1639037164000000",
+    "writeBytes": "78567133000000",
+    "selftestLast": "long: completed @ 20288h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500cafaac4f",
+    "model": "STMPSED1CLAR8000",
+    "serial": "ZA1K3KEZ"
+   },
+   "devName": "sdah",
+   "ts": "2026-09-27T15:12:46Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "36255",
+    "tempC": 40,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1639032218000000",
+    "writeBytes": "78567092000000",
+    "selftestLast": "long: completed @ 20288h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500cafaac4f",
+    "model": "STMPSED1CLAR8000",
+    "serial": "ZA1K3KEZ"
+   },
+   "devName": "sdah",
+   "ts": "2026-09-27T10:13:46Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "36250",
+    "tempC": 41,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1638906016000000",
+    "writeBytes": "78566254000000",
+    "selftestLast": "long: completed @ 20288h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500cafaac4f",
+    "model": "STMPSED1CLAR8000",
+    "serial": "ZA1K3KEZ"
+   },
+   "devName": "sdah",
+   "ts": "2026-09-27T04:13:29Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "36244",
+    "tempC": 42,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1638747159000000",
+    "writeBytes": "78565169000000",
+    "selftestLast": "long: completed @ 20288h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500cafaac4f",
+    "model": "STMPSED1CLAR8000",
+    "serial": "ZA1K3KEZ"
+   },
+   "devName": "sdah",
+   "ts": "2026-09-26T22:13:12Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "36238",
+    "tempC": 43,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1638604224000000",
+    "writeBytes": "78564126000000",
+    "selftestLast": "long: completed @ 20288h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500cafaac4f",
+    "model": "STMPSED1CLAR8000",
+    "serial": "ZA1K3KEZ"
+   },
+   "devName": "sdah",
+   "ts": "2026-09-26T16:12:55Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "36232",
+    "tempC": 41,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1638435897000000",
+    "writeBytes": "78563110000000",
+    "selftestLast": "long: completed @ 20288h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500cafaac4f",
+    "model": "STMPSED1CLAR8000",
+    "serial": "ZA1K3KEZ"
+   },
+   "devName": "sdah",
+   "ts": "2026-09-26T10:12:38Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "36226",
+    "tempC": 40,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1638298511000000",
+    "writeBytes": "78561772000000",
+    "selftestLast": "long: completed @ 20288h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500cafaac4f",
+    "model": "STMPSED1CLAR8000",
+    "serial": "ZA1K3KEZ"
+   },
+   "devName": "sdah",
+   "ts": "2026-09-26T04:12:22Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "36220",
+    "tempC": 41,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1638290307000000",
+    "writeBytes": "78561038000000",
+    "selftestLast": "long: completed @ 20288h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500cafaac4f",
+    "model": "STMPSED1CLAR8000",
+    "serial": "ZA1K3KEZ"
+   },
+   "devName": "sdah",
+   "ts": "2026-09-25T22:12:05Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "36214",
+    "tempC": 42,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1638290166000000",
+    "writeBytes": "78560343000000",
+    "selftestLast": "long: completed @ 20288h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500cafaac4f",
+    "model": "STMPSED1CLAR8000",
+    "serial": "ZA1K3KEZ"
+   },
+   "devName": "sdah",
+   "ts": "2026-09-25T16:11:49Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "36208",
+    "tempC": 42,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1638289981000000",
+    "writeBytes": "78559664000000",
+    "selftestLast": "long: completed @ 20288h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500cafaac4f",
+    "model": "STMPSED1CLAR8000",
+    "serial": "ZA1K3KEZ"
+   },
+   "devName": "sdah",
+   "ts": "2026-09-25T10:11:33Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "36202",
+    "tempC": 42,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1638288605000000",
+    "writeBytes": "78558955000000",
+    "selftestLast": "long: completed @ 20288h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500cafaac4f",
+    "model": "STMPSED1CLAR8000",
+    "serial": "ZA1K3KEZ"
+   },
+   "devName": "sdah",
+   "ts": "2026-09-25T04:11:17Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "36196",
+    "tempC": 42,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1638283876000000",
+    "writeBytes": "78558231000000",
+    "selftestLast": "long: completed @ 20288h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500cafaac4f",
+    "model": "STMPSED1CLAR8000",
+    "serial": "ZA1K3KEZ"
+   },
+   "devName": "sdah",
+   "ts": "2026-09-24T22:11:01Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "36190",
+    "tempC": 43,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1638283676000000",
+    "writeBytes": "78557514000000",
+    "selftestLast": "long: completed @ 20288h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500cafaac4f",
+    "model": "STMPSED1CLAR8000",
+    "serial": "ZA1K3KEZ"
+   },
+   "devName": "sdah",
+   "ts": "2026-09-24T16:10:43Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "36184",
+    "tempC": 41,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1638283606000000",
+    "writeBytes": "78556863000000",
+    "selftestLast": "long: completed @ 20288h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500cafaac4f",
+    "model": "STMPSED1CLAR8000",
+    "serial": "ZA1K3KEZ"
+   },
+   "devName": "sdah",
+   "ts": "2026-09-24T10:10:20Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "36178",
+    "tempC": 42,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1638230745000000",
+    "writeBytes": "78556041000000",
+    "selftestLast": "long: completed @ 20288h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500cafaac4f",
+    "model": "STMPSED1CLAR8000",
+    "serial": "ZA1K3KEZ"
+   },
+   "devName": "sdah",
+   "ts": "2026-09-24T04:10:01Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "36172",
+    "tempC": 43,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1638228661000000",
+    "writeBytes": "78555200000000",
+    "selftestLast": "long: completed @ 20288h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500cafaac4f",
+    "model": "STMPSED1CLAR8000",
+    "serial": "ZA1K3KEZ"
+   },
+   "devName": "sdah",
+   "ts": "2026-09-23T22:09:37Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "36166",
+    "tempC": 45,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1638228549000000",
+    "writeBytes": "78554349000000",
+    "selftestLast": "long: completed @ 20288h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500cafaac4f",
+    "model": "STMPSED1CLAR8000",
+    "serial": "ZA1K3KEZ"
+   },
+   "devName": "sdah",
+   "ts": "2026-09-23T16:09:14Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "36160",
+    "tempC": 44,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1638228432000000",
+    "writeBytes": "78553507000000",
+    "selftestLast": "long: completed @ 20288h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500cafaac4f",
+    "model": "STMPSED1CLAR8000",
+    "serial": "ZA1K3KEZ"
+   },
+   "devName": "sdah",
+   "ts": "2026-09-23T10:08:56Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "36154",
+    "tempC": 44,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1638227679000000",
+    "writeBytes": "78552571000000",
+    "selftestLast": "long: completed @ 20288h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500cafaac4f",
+    "model": "STMPSED1CLAR8000",
+    "serial": "ZA1K3KEZ"
+   },
+   "devName": "sdah",
+   "ts": "2026-09-23T04:08:36Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "36148",
+    "tempC": 43,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1638005595000000",
+    "writeBytes": "78551540000000",
+    "selftestLast": "long: completed @ 20288h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500cafaac4f",
+    "model": "STMPSED1CLAR8000",
+    "serial": "ZA1K3KEZ"
+   },
+   "devName": "sdah",
+   "ts": "2026-09-22T22:08:14Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "36142",
+    "tempC": 45,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1637696491000000",
+    "writeBytes": "78550485000000",
+    "selftestLast": "long: completed @ 20288h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500cafaac4f",
+    "model": "STMPSED1CLAR8000",
+    "serial": "ZA1K3KEZ"
+   },
+   "devName": "sdah",
+   "ts": "2026-09-22T16:07:54Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "36136",
+    "tempC": 43,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1637397113000000",
+    "writeBytes": "78549450000000",
+    "selftestLast": "long: completed @ 20288h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500cafaac4f",
+    "model": "STMPSED1CLAR8000",
+    "serial": "ZA1K3KEZ"
+   },
+   "devName": "sdah",
+   "ts": "2026-09-22T10:07:36Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "36130",
+    "tempC": 43,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1637244909000000",
+    "writeBytes": "78548392000000",
+    "selftestLast": "long: completed @ 20288h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500cafaac4f",
+    "model": "STMPSED1CLAR8000",
+    "serial": "ZA1K3KEZ"
+   },
+   "devName": "sdah",
+   "ts": "2026-09-22T04:07:16Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "36124",
+    "tempC": 44,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1637088730000000",
+    "writeBytes": "78547338000000",
+    "selftestLast": "long: completed @ 20288h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500cafaac4f",
+    "model": "STMPSED1CLAR8000",
+    "serial": "ZA1K3KEZ"
+   },
+   "devName": "sdah",
+   "ts": "2026-09-21T22:06:54Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "36118",
+    "tempC": 44,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1636935868000000",
+    "writeBytes": "78546199000000",
+    "selftestLast": "long: completed @ 20288h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500cafaac4f",
+    "model": "STMPSED1CLAR8000",
+    "serial": "ZA1K3KEZ"
+   },
+   "devName": "sdah",
+   "ts": "2026-09-21T16:06:33Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "36112",
+    "tempC": 43,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1636772512000000",
+    "writeBytes": "78545164000000",
+    "selftestLast": "long: completed @ 20288h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500cafaac4f",
+    "model": "STMPSED1CLAR8000",
+    "serial": "ZA1K3KEZ"
+   },
+   "devName": "sdah",
+   "ts": "2026-09-21T10:06:10Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "36106",
+    "tempC": 44,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1636616808000000",
+    "writeBytes": "78544071000000",
+    "selftestLast": "long: completed @ 20288h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500cafaac4f",
+    "model": "STMPSED1CLAR8000",
+    "serial": "ZA1K3KEZ"
+   },
+   "devName": "sdah",
+   "ts": "2026-09-21T04:05:48Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "36100",
+    "tempC": 44,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1636330483000000",
+    "writeBytes": "78542220000000",
+    "selftestLast": "long: completed @ 20288h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500cafaac4f",
+    "model": "STMPSED1CLAR8000",
+    "serial": "ZA1K3KEZ"
+   },
+   "devName": "sdah",
+   "ts": "2026-09-21T03:53:12Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "36099",
+    "tempC": 44,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1636318015000000",
+    "writeBytes": "78541764000000",
+    "selftestLast": "long: completed @ 20288h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500cafaac4f",
+    "model": "STMPSED1CLAR8000",
+    "serial": "ZA1K3KEZ"
+   },
+   "devName": "sdah",
+   "ts": "2026-09-21T03:42:59Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "36099",
+    "tempC": 44,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1636308835000000",
+    "writeBytes": "78541414000000",
+    "selftestLast": "long: completed @ 20288h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500cafaac4f",
+    "model": "STMPSED1CLAR8000",
+    "serial": "ZA1K3KEZ"
+   },
+   "devName": "sdah",
+   "ts": "2026-09-21T03:28:29Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "36099",
+    "tempC": 44,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1636294704000000",
+    "writeBytes": "78540584000000",
+    "selftestLast": "long: completed @ 20288h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500cafaac4f",
+    "model": "STMPSED1CLAR8000",
+    "serial": "ZA1K3KEZ"
+   },
+   "devName": "sdah",
+   "ts": "2026-09-21T01:42:16Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "36097",
+    "tempC": 44,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1636190274000000",
+    "writeBytes": "78535553000000",
+    "selftestLast": "long: completed @ 20288h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500cafaac4f",
+    "model": "STMPSED1CLAR8000",
+    "serial": "ZA1K3KEZ"
+   },
+   "devName": "sdah",
+   "ts": "2026-09-20T19:41:49Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "36091",
+    "tempC": 45,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1635835197000000",
+    "writeBytes": "78534358000000",
+    "selftestLast": "long: completed @ 20288h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500cafaac4f",
+    "model": "STMPSED1CLAR8000",
+    "serial": "ZA1K3KEZ"
+   },
+   "devName": "sdah",
+   "ts": "2026-09-20T14:21:43Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "36086",
+    "tempC": 43,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1635670663000000",
+    "writeBytes": "78528869000000",
+    "selftestLast": "long: completed @ 20288h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500cafaac4f",
+    "model": "STMPSED1CLAR8000",
+    "serial": "ZA1K3KEZ"
+   },
+   "devName": "sdah",
+   "ts": "2026-09-20T08:21:25Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "36080",
+    "tempC": 44,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1635523773000000",
+    "writeBytes": "78527677000000",
+    "selftestLast": "long: completed @ 20288h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500cafaac4f",
+    "model": "STMPSED1CLAR8000",
+    "serial": "ZA1K3KEZ"
+   },
+   "devName": "sdah",
+   "ts": "2026-09-20T02:20:56Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "36074",
+    "tempC": 43,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1635355852000000",
+    "writeBytes": "78519403000000",
+    "selftestLast": "long: completed @ 20288h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500cafaac4f",
+    "model": "STMPSED1CLAR8000",
+    "serial": "ZA1K3KEZ"
+   },
+   "devName": "sdah",
+   "ts": "2026-09-19T20:20:09Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "36068",
+    "tempC": 44,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1635210589000000",
+    "writeBytes": "78511485000000",
+    "selftestLast": "long: completed @ 20288h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500cafaac4f",
+    "model": "STMPSED1CLAR8000",
+    "serial": "ZA1K3KEZ"
+   },
+   "devName": "sdah",
+   "ts": "2026-09-19T17:49:51Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "36065",
+    "tempC": 44,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1635144947000000",
+    "writeBytes": "78511040000000",
+    "selftestLast": "long: completed @ 20288h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500cafaac4f",
+    "model": "STMPSED1CLAR8000",
+    "serial": "ZA1K3KEZ"
+   },
+   "devName": "sdah",
+   "ts": "2026-09-19T11:49:22Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "36059",
+    "tempC": 43,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1634977527000000",
+    "writeBytes": "78509989000000",
+    "selftestLast": "long: completed @ 20288h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500cafaac4f",
+    "model": "STMPSED1CLAR8000",
+    "serial": "ZA1K3KEZ"
+   },
+   "devName": "sdah",
+   "ts": "2026-09-19T05:48:45Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "36053",
+    "tempC": 43,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1634807160000000",
+    "writeBytes": "78508911000000",
+    "selftestLast": "long: completed @ 20288h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500cafaac4f",
+    "model": "STMPSED1CLAR8000",
+    "serial": "ZA1K3KEZ"
+   },
+   "devName": "sdah",
+   "ts": "2026-09-18T23:48:12Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "36047",
+    "tempC": 44,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1634504196000000",
+    "writeBytes": "78507821000000",
+    "selftestLast": "long: completed @ 20288h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500cafaac4f",
+    "model": "STMPSED1CLAR8000",
+    "serial": "ZA1K3KEZ"
+   },
+   "devName": "sdah",
+   "ts": "2026-09-18T17:47:52Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "36041",
+    "tempC": 44,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1634202259000000",
+    "writeBytes": "78506792000000",
+    "selftestLast": "long: completed @ 20288h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500cafaac4f",
+    "model": "STMPSED1CLAR8000",
+    "serial": "ZA1K3KEZ"
+   },
+   "devName": "sdah",
+   "ts": "2026-09-18T11:47:32Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "36035",
+    "tempC": 44,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1633973745000000",
+    "writeBytes": "78505773000000",
+    "selftestLast": "long: completed @ 20288h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500cafaac4f",
+    "model": "STMPSED1CLAR8000",
+    "serial": "ZA1K3KEZ"
+   },
+   "devName": "sdah",
+   "ts": "2026-09-18T05:47:06Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "36029",
+    "tempC": 44,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1633824829000000",
+    "writeBytes": "78504712000000",
+    "selftestLast": "long: completed @ 20288h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500cafaac4f",
+    "model": "STMPSED1CLAR8000",
+    "serial": "ZA1K3KEZ"
+   },
+   "devName": "sdah",
+   "ts": "2026-09-17T23:46:46Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "36023",
+    "tempC": 45,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1633671510000000",
+    "writeBytes": "78503654000000",
+    "selftestLast": "long: completed @ 20288h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500cafaac4f",
+    "model": "STMPSED1CLAR8000",
+    "serial": "ZA1K3KEZ"
+   },
+   "devName": "sdah",
+   "ts": "2026-09-17T17:46:28Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "36017",
+    "tempC": 44,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1633565460000000",
+    "writeBytes": "78502656000000",
+    "selftestLast": "long: completed @ 20288h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500cafaac4f",
+    "model": "STMPSED1CLAR8000",
+    "serial": "ZA1K3KEZ"
+   },
+   "devName": "sdah",
+   "ts": "2026-09-17T11:46:12Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "36011",
+    "tempC": 44,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1633489977000000",
+    "writeBytes": "78501545000000",
+    "selftestLast": "long: completed @ 20288h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500cafaac4f",
+    "model": "STMPSED1CLAR8000",
+    "serial": "ZA1K3KEZ"
+   },
+   "devName": "sdah",
+   "ts": "2026-09-17T05:45:56Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "36005",
+    "tempC": 44,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1633435994000000",
+    "writeBytes": "78500530000000",
+    "selftestLast": "long: completed @ 20288h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500cafaac4f",
+    "model": "STMPSED1CLAR8000",
+    "serial": "ZA1K3KEZ"
+   },
+   "devName": "sdah",
+   "ts": "2026-09-16T23:45:39Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "35999",
+    "tempC": 44,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1633394239000000",
+    "writeBytes": "78499507000000",
+    "selftestLast": "long: completed @ 20288h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500cafaac4f",
+    "model": "STMPSED1CLAR8000",
+    "serial": "ZA1K3KEZ"
+   },
+   "devName": "sdah",
+   "ts": "2026-09-16T17:45:22Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "35993",
+    "tempC": 43,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1633229603000000",
+    "writeBytes": "78498454000000",
+    "selftestLast": "long: completed @ 20288h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500cafaac4f",
+    "model": "STMPSED1CLAR8000",
+    "serial": "ZA1K3KEZ"
+   },
+   "devName": "sdah",
+   "ts": "2026-09-16T11:45:06Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "35987",
+    "tempC": 43,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1633127478000000",
+    "writeBytes": "78497433000000",
+    "selftestLast": "long: completed @ 20288h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500cafaac4f",
+    "model": "STMPSED1CLAR8000",
+    "serial": "ZA1K3KEZ"
+   },
+   "devName": "sdah",
+   "ts": "2026-09-16T05:44:49Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "35981",
+    "tempC": 44,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1632994692000000",
+    "writeBytes": "78496401000000",
+    "selftestLast": "long: completed @ 20288h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500cafaac4f",
+    "model": "STMPSED1CLAR8000",
+    "serial": "ZA1K3KEZ"
+   },
+   "devName": "sdah",
+   "ts": "2026-09-15T23:44:33Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "35975",
+    "tempC": 45,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1632739262000000",
+    "writeBytes": "78495304000000",
+    "selftestLast": "long: completed @ 20288h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500cafaac4f",
+    "model": "STMPSED1CLAR8000",
+    "serial": "ZA1K3KEZ"
+   },
+   "devName": "sdah",
+   "ts": "2026-09-15T17:44:16Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "35969",
+    "tempC": 42,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1632435000000000",
+    "writeBytes": "78494274000000",
+    "selftestLast": "long: completed @ 20288h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500cafaac4f",
+    "model": "STMPSED1CLAR8000",
+    "serial": "ZA1K3KEZ"
+   },
+   "devName": "sdah",
+   "ts": "2026-09-15T11:43:59Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "35963",
+    "tempC": 43,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1632137463000000",
+    "writeBytes": "78493276000000",
+    "selftestLast": "long: completed @ 20288h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500cafaac4f",
+    "model": "STMPSED1CLAR8000",
+    "serial": "ZA1K3KEZ"
+   },
+   "devName": "sdah",
+   "ts": "2026-09-15T05:43:42Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "35957",
+    "tempC": 43,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1631935825000000",
+    "writeBytes": "78492113000000",
+    "selftestLast": "long: completed @ 20288h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500cafaac4f",
+    "model": "STMPSED1CLAR8000",
+    "serial": "ZA1K3KEZ"
+   },
+   "devName": "sdah",
+   "ts": "2026-09-14T23:43:26Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "35951",
+    "tempC": 44,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1631797815000000",
+    "writeBytes": "78491052000000",
+    "selftestLast": "long: completed @ 20288h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500cafaac4f",
+    "model": "STMPSED1CLAR8000",
+    "serial": "ZA1K3KEZ"
+   },
+   "devName": "sdah",
+   "ts": "2026-09-14T17:43:10Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "35945",
+    "tempC": 43,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1631639222000000",
+    "writeBytes": "78490015000000",
+    "selftestLast": "long: completed @ 20288h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500cafaac4f",
+    "model": "STMPSED1CLAR8000",
+    "serial": "ZA1K3KEZ"
+   },
+   "devName": "sdah",
+   "ts": "2026-09-14T16:09:45Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "35944",
+    "tempC": 44,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1631603357000000",
+    "writeBytes": "78489731000000",
+    "selftestLast": "long: completed @ 20288h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500cafaac4f",
+    "model": "STMPSED1CLAR8000",
+    "serial": "ZA1K3KEZ"
+   },
+   "devName": "sdah",
+   "ts": "2026-09-14T10:09:28Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "35938",
+    "tempC": 43,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1631447938000000",
+    "writeBytes": "78488661000000",
+    "selftestLast": "long: completed @ 20288h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500cafaac4f",
+    "model": "STMPSED1CLAR8000",
+    "serial": "ZA1K3KEZ"
+   },
+   "devName": "sdah",
+   "ts": "2026-09-14T04:09:11Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "35932",
+    "tempC": 43,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1631438899000000",
+    "writeBytes": "78487991000000",
+    "selftestLast": "long: completed @ 20288h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500cafaac4f",
+    "model": "STMPSED1CLAR8000",
+    "serial": "ZA1K3KEZ"
+   },
+   "devName": "sdah",
+   "ts": "2026-09-14T03:59:06Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "35931",
+    "tempC": 43,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1631438899000000",
+    "writeBytes": "78487969000000",
+    "selftestLast": "long: completed @ 20288h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500cafaac4f",
+    "model": "STMPSED1CLAR8000",
+    "serial": "ZA1K3KEZ"
+   },
+   "devName": "sdah",
+   "ts": "2026-09-14T03:46:15Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "35931",
+    "tempC": 43,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1631438890000000",
+    "writeBytes": "78487934000000",
+    "selftestLast": "long: completed @ 20288h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500cafaac4f",
+    "model": "STMPSED1CLAR8000",
+    "serial": "ZA1K3KEZ"
+   },
+   "devName": "sdah",
+   "ts": "2026-09-13T23:12:42Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "35927",
+    "tempC": 45,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1630532467000000",
+    "writeBytes": "78486570000000",
+    "selftestLast": "long: completed @ 20288h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500cafaac4f",
+    "model": "STMPSED1CLAR8000",
+    "serial": "ZA1K3KEZ"
+   },
+   "devName": "sdah",
+   "ts": "2026-09-13T22:10:08Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "35926",
+    "tempC": 44,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1630230147000000",
+    "writeBytes": "78486385000000",
+    "selftestLast": "long: completed @ 20288h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500cafaac4f",
+    "model": "STMPSED1CLAR8000",
+    "serial": "ZA1K3KEZ"
+   },
+   "devName": "sdah",
+   "ts": "2026-09-13T21:37:03Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "35925",
+    "tempC": 45,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1630071911000000",
+    "writeBytes": "78486308000000",
+    "selftestLast": "long: completed @ 20288h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500cafaac4f",
+    "model": "STMPSED1CLAR8000",
+    "serial": "ZA1K3KEZ"
+   },
+   "devName": "sdah",
+   "ts": "2026-09-13T21:15:10Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "35925",
+    "tempC": 45,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1629944153000000",
+    "writeBytes": "78486262000000",
+    "selftestLast": "long: completed @ 20288h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500cafaac4f",
+    "model": "STMPSED1CLAR8000",
+    "serial": "ZA1K3KEZ"
+   },
+   "devName": "sdah",
+   "ts": "2026-09-13T17:04:45Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "35920",
+    "tempC": 44,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1628720598000000",
+    "writeBytes": "78485531000000",
+    "selftestLast": "long: completed @ 20288h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500cafaac4f",
+    "model": "STMPSED1CLAR8000",
+    "serial": "ZA1K3KEZ"
+   },
+   "devName": "sdah",
+   "ts": "2026-09-13T14:18:14Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "35918",
+    "tempC": 45,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1627948696000000",
+    "writeBytes": "78485087000000",
+    "selftestLast": "long: completed @ 20288h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500cafaac4f",
+    "model": "STMPSED1CLAR8000",
+    "serial": "ZA1K3KEZ"
+   },
+   "devName": "sdah",
+   "ts": "2026-09-13T08:17:25Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "35912",
+    "tempC": 45,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1626449648000000",
+    "writeBytes": "78484191000000",
+    "selftestLast": "long: completed @ 20288h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500cafaac4f",
+    "model": "STMPSED1CLAR8000",
+    "serial": "ZA1K3KEZ"
+   },
+   "devName": "sdah",
+   "ts": "2026-09-13T02:17:05Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "35906",
+    "tempC": 45,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1626162987000000",
+    "writeBytes": "78482872000000",
+    "selftestLast": "long: completed @ 20288h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500cafaac4f",
+    "model": "STMPSED1CLAR8000",
+    "serial": "ZA1K3KEZ"
+   },
+   "devName": "sdah",
+   "ts": "2026-09-13T02:09:09Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "35906",
+    "tempC": 45,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1626158636000000",
+    "writeBytes": "78482847000000",
+    "selftestLast": "long: completed @ 20288h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  }
+ ]
+}

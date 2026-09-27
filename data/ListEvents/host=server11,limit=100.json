@@ -1,0 +1,53 @@
+{
+ "events": [
+  {
+   "eventId": "902",
+   "ts": "2026-09-27T15:14:20Z",
+   "kind": "dimm_changed",
+   "hostname": "server11",
+   "detail": "{\"change\":\"appeared\",\"edac\":\"mc0/MC#0_Chan#1_DIMM#1\",\"part\":\"\",\"serial\":\"20000000\",\"size_bytes\":4294967296,\"slot\":\"Controller0-ChannelD\"}",
+   "source": "report"
+  },
+  {
+   "eventId": "901",
+   "ts": "2026-09-27T15:14:20Z",
+   "kind": "dimm_changed",
+   "hostname": "server11",
+   "detail": "{\"change\":\"appeared\",\"edac\":\"mc0/MC#0_Chan#1_DIMM#0\",\"part\":\"\",\"serial\":\"20000000\",\"size_bytes\":4294967296,\"slot\":\"Controller0-ChannelC\"}",
+   "source": "report"
+  },
+  {
+   "eventId": "900",
+   "ts": "2026-09-27T15:14:20Z",
+   "kind": "dimm_changed",
+   "hostname": "server11",
+   "detail": "{\"change\":\"appeared\",\"edac\":\"mc0/MC#0_Chan#0_DIMM#1\",\"part\":\"\",\"serial\":\"20000000\",\"size_bytes\":4294967296,\"slot\":\"Controller0-ChannelB\"}",
+   "source": "report"
+  },
+  {
+   "eventId": "899",
+   "ts": "2026-09-27T15:14:20Z",
+   "kind": "dimm_changed",
+   "hostname": "server11",
+   "detail": "{\"change\":\"appeared\",\"edac\":\"mc0/MC#0_Chan#0_DIMM#0\",\"part\":\"\",\"serial\":\"20000000\",\"size_bytes\":4294967296,\"slot\":\"Controller0-ChannelA\"}",
+   "source": "report"
+  },
+  {
+   "eventId": "617",
+   "ts": "2026-09-19T21:08:19Z",
+   "kind": "first_seen",
+   "serial": "240102AA01601",
+   "hostname": "server11",
+   "detail": "{\"bay\":\"\",\"dev_name\":\"sda\",\"enclosure\":\"\",\"enclosure_via\":\"\",\"uses\":[\"mount \\u003e /\",\"mount \\u003e /boot/efi\",\"mount \\u003e /var/lib/kubelet/pods/77c1606a-37cc-421f-8194-a73032c0f641/volume-subpaths/custom-dnsmasq/pihole/1\",\"mount \\u003e /var/lib/kubelet/pods/77c1606a-37cc-421f-8194-a73032c0f641/volume-subpaths/custom-dnsmasq/pihole/2\",\"mount \\u003e /var/lib/kubelet/pods/a0c993bb-0487-472a-965f-a986c5179cdc/volume-subpaths/config/grafana/0\",\"mount \\u003e /var/lib/kubelet/pods/a0c993bb-0487-472a-965f-a986c5179cdc/volume-subpaths/sc-dashboard-provider/grafana/3\"]}",
+   "source": "snapshot:55"
+  },
+  {
+   "eventId": "616",
+   "ts": "2026-09-19T21:08:19Z",
+   "kind": "host_first_seen",
+   "hostname": "server11",
+   "detail": "{\"hostname\":\"server11\",\"os\":\"linux\"}",
+   "source": "report"
+  }
+ ]
+}

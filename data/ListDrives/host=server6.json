@@ -1,0 +1,130 @@
+{
+ "drives": [
+  {
+   "driveId": "139",
+   "wwn": "eui.0025385251415cf3",
+   "model": "Samsung SSD 990 EVO Plus 1TB",
+   "serial": "S7U5NJ0Y225528K",
+   "sizeBytes": "1000204886016",
+   "bus": "BUS_NVME",
+   "status": "ok",
+   "firstSeen": "2026-09-13T02:42:15Z",
+   "lastSeen": "2026-09-27T19:39:13Z",
+   "current": {
+    "hostname": "server6",
+    "enclosure": "dmi:CN7824V3L8",
+    "bay": "PCI-E Slot 6/00.0",
+    "devName": "nvme0n1",
+    "uses": [
+     "zfs > data1 8745015803076599719 > disk 6438636062170316550"
+    ],
+    "firstSeen": "2026-09-14T06:48:30Z",
+    "lastSeen": "2026-09-27T19:39:13Z",
+    "enclosureVia": "pci",
+    "bayLabel": "card port 0"
+   },
+   "memberState": "ONLINE"
+  },
+  {
+   "driveId": "140",
+   "wwn": "eui.002538525140cf12",
+   "model": "Samsung SSD 990 EVO Plus 1TB",
+   "serial": "S7U5NJ0Y220165V",
+   "sizeBytes": "1000204886016",
+   "bus": "BUS_NVME",
+   "status": "ok",
+   "firstSeen": "2026-09-13T02:42:15Z",
+   "lastSeen": "2026-09-27T19:39:13Z",
+   "current": {
+    "hostname": "server6",
+    "enclosure": "dmi:CN7824V3L8",
+    "bay": "PCI-E Slot 6/08.0",
+    "devName": "nvme1n1",
+    "uses": [
+     "zfs > data2 12955032411672799560 > disk 6309270608912369856"
+    ],
+    "firstSeen": "2026-09-14T06:48:30Z",
+    "lastSeen": "2026-09-27T19:39:13Z",
+    "enclosureVia": "pci",
+    "bayLabel": "card port 8"
+   },
+   "memberState": "ONLINE"
+  },
+  {
+   "driveId": "143",
+   "wwn": "0x5000000000000046",
+   "vendor": "ATA",
+   "model": "NT-512_2242",
+   "serial": "0029030000044",
+   "sizeBytes": "512110190592",
+   "bus": "BUS_SATA",
+   "status": "ok",
+   "firstSeen": "2026-09-13T02:42:15Z",
+   "lastSeen": "2026-09-27T19:39:13Z",
+   "current": {
+    "hostname": "server6",
+    "enclosure": "dmi:CN7824V3L8",
+    "bay": "pci-0000:00:1f.2-ata-5",
+    "devName": "sda",
+    "uses": [
+     "mount > /",
+     "mount > /boot/efi"
+    ],
+    "firstSeen": "2026-09-14T06:48:30Z",
+    "lastSeen": "2026-09-27T19:39:13Z",
+    "enclosureVia": "ata",
+    "bayLabel": "M.2 SATA"
+   }
+  },
+  {
+   "driveId": "141",
+   "wwn": "eui.6479a75340c000c3",
+   "model": "Sabrent Rocket 4.0 Plus",
+   "serial": "7D620718193D00008557",
+   "sizeBytes": "1000204886016",
+   "bus": "BUS_NVME",
+   "status": "ok",
+   "firstSeen": "2026-09-13T02:42:15Z",
+   "lastSeen": "2026-09-27T19:39:13Z",
+   "current": {
+    "hostname": "server6",
+    "enclosure": "dmi:CN7824V3L8",
+    "bay": "1",
+    "devName": "nvme2n1",
+    "uses": [
+     "zfs > data4 12071317661975938558 > disk 1380984678337085650"
+    ],
+    "firstSeen": "2026-09-14T06:48:30Z",
+    "lastSeen": "2026-09-27T19:39:13Z",
+    "enclosureVia": "pci",
+    "bayLabel": "M.2 1"
+   },
+   "memberState": "ONLINE"
+  },
+  {
+   "driveId": "142",
+   "wwn": "eui.0025385151419204",
+   "model": "Samsung SSD 990 EVO Plus 1TB",
+   "serial": "S7U5NJ0Y114910Z",
+   "sizeBytes": "1000204886016",
+   "bus": "BUS_NVME",
+   "status": "ok",
+   "firstSeen": "2026-09-13T02:42:15Z",
+   "lastSeen": "2026-09-27T19:39:13Z",
+   "current": {
+    "hostname": "server6",
+    "enclosure": "dmi:CN7824V3L8",
+    "bay": "2",
+    "devName": "nvme3n1",
+    "uses": [
+     "zfs > data3 4886974060788330011 > disk 4276253004973604622"
+    ],
+    "firstSeen": "2026-09-14T06:48:30Z",
+    "lastSeen": "2026-09-27T19:39:13Z",
+    "enclosureVia": "pci",
+    "bayLabel": "M.2 2"
+   },
+   "memberState": "ONLINE"
+  }
+ ]
+}

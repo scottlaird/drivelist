@@ -1,0 +1,1501 @@
+{
+ "drive": {
+  "driveId": "31",
+  "wwn": "0x500253850025cbf1",
+  "vendor": "ATA",
+  "model": "SAMSUNG_MZ7WD960",
+  "serial": "S1E4NYAG205230",
+  "sizeBytes": "960197124096",
+  "bus": "BUS_SATA",
+  "status": "ok",
+  "firstSeen": "2026-09-13T01:41:39Z",
+  "lastSeen": "2026-09-27T19:41:38Z",
+  "current": {
+   "hostname": "nas",
+   "enclosure": "dmi:NM168S004999",
+   "bay": "pci-0000:00:1f.2-ata-6",
+   "devName": "sdb",
+   "uses": [
+    "zfs > bpool 6822782206755274061 > mirror 7879420759522091481 > disk 16883674818163482239",
+    "zfs > rpool 6335217808421659663 > mirror 10116968943579434558 > disk 4017281962645193462"
+   ],
+   "firstSeen": "2026-09-14T03:46:13Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "enclosureVia": "ata"
+  },
+  "memberState": "ONLINE"
+ },
+ "samples": [
+  {
+   "identity": {
+    "wwn": "0x500253850025cbf1",
+    "model": "SAMSUNG_MZ7WD960",
+    "serial": "S1E4NYAG205230"
+   },
+   "devName": "sdb",
+   "ts": "2026-09-27T15:25:20Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "67394",
+    "tempC": 25,
+    "reallocated": "731",
+    "crcErrors": "1",
+    "writeBytes": "211604750302208",
+    "percentUsed": 1
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x500253850025cbf1",
+    "model": "SAMSUNG_MZ7WD960",
+    "serial": "S1E4NYAG205230"
+   },
+   "devName": "sdb",
+   "ts": "2026-09-27T15:12:51Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "67394",
+    "tempC": 25,
+    "reallocated": "731",
+    "crcErrors": "1",
+    "writeBytes": "211603191114752",
+    "percentUsed": 1
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x500253850025cbf1",
+    "model": "SAMSUNG_MZ7WD960",
+    "serial": "S1E4NYAG205230"
+   },
+   "devName": "sdb",
+   "ts": "2026-09-27T10:13:50Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "67389",
+    "tempC": 25,
+    "reallocated": "731",
+    "crcErrors": "1",
+    "writeBytes": "211567509928960",
+    "percentUsed": 1
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x500253850025cbf1",
+    "model": "SAMSUNG_MZ7WD960",
+    "serial": "S1E4NYAG205230"
+   },
+   "devName": "sdb",
+   "ts": "2026-09-27T04:13:34Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "67383",
+    "tempC": 26,
+    "reallocated": "731",
+    "crcErrors": "1",
+    "writeBytes": "211523163139072",
+    "percentUsed": 1
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x500253850025cbf1",
+    "model": "SAMSUNG_MZ7WD960",
+    "serial": "S1E4NYAG205230"
+   },
+   "devName": "sdb",
+   "ts": "2026-09-26T22:13:17Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "67377",
+    "tempC": 27,
+    "reallocated": "731",
+    "crcErrors": "1",
+    "writeBytes": "211482428136448",
+    "percentUsed": 1
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x500253850025cbf1",
+    "model": "SAMSUNG_MZ7WD960",
+    "serial": "S1E4NYAG205230"
+   },
+   "devName": "sdb",
+   "ts": "2026-09-26T16:13:00Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "67371",
+    "tempC": 25,
+    "reallocated": "731",
+    "crcErrors": "1",
+    "writeBytes": "211440751778816",
+    "percentUsed": 1
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x500253850025cbf1",
+    "model": "SAMSUNG_MZ7WD960",
+    "serial": "S1E4NYAG205230"
+   },
+   "devName": "sdb",
+   "ts": "2026-09-26T10:12:43Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "67365",
+    "tempC": 25,
+    "reallocated": "731",
+    "crcErrors": "1",
+    "writeBytes": "211398691773440",
+    "percentUsed": 1
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x500253850025cbf1",
+    "model": "SAMSUNG_MZ7WD960",
+    "serial": "S1E4NYAG205230"
+   },
+   "devName": "sdb",
+   "ts": "2026-09-26T04:12:27Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "67359",
+    "tempC": 26,
+    "reallocated": "731",
+    "crcErrors": "1",
+    "writeBytes": "211359656360960",
+    "percentUsed": 1
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x500253850025cbf1",
+    "model": "SAMSUNG_MZ7WD960",
+    "serial": "S1E4NYAG205230"
+   },
+   "devName": "sdb",
+   "ts": "2026-09-25T22:12:10Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "67353",
+    "tempC": 27,
+    "reallocated": "731",
+    "crcErrors": "1",
+    "writeBytes": "211320609635328",
+    "percentUsed": 1
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x500253850025cbf1",
+    "model": "SAMSUNG_MZ7WD960",
+    "serial": "S1E4NYAG205230"
+   },
+   "devName": "sdb",
+   "ts": "2026-09-25T16:11:54Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "67347",
+    "tempC": 27,
+    "reallocated": "730",
+    "crcErrors": "1",
+    "writeBytes": "211279580359680",
+    "percentUsed": 1
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x500253850025cbf1",
+    "model": "SAMSUNG_MZ7WD960",
+    "serial": "S1E4NYAG205230"
+   },
+   "devName": "sdb",
+   "ts": "2026-09-25T10:11:38Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "67341",
+    "tempC": 27,
+    "reallocated": "730",
+    "crcErrors": "1",
+    "writeBytes": "211239581469696",
+    "percentUsed": 1
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x500253850025cbf1",
+    "model": "SAMSUNG_MZ7WD960",
+    "serial": "S1E4NYAG205230"
+   },
+   "devName": "sdb",
+   "ts": "2026-09-25T04:11:22Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "67335",
+    "tempC": 28,
+    "reallocated": "730",
+    "crcErrors": "1",
+    "writeBytes": "211199671311360",
+    "percentUsed": 1
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x500253850025cbf1",
+    "model": "SAMSUNG_MZ7WD960",
+    "serial": "S1E4NYAG205230"
+   },
+   "devName": "sdb",
+   "ts": "2026-09-24T22:11:06Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "67329",
+    "tempC": 28,
+    "reallocated": "729",
+    "crcErrors": "1",
+    "writeBytes": "211160872848384",
+    "percentUsed": 1
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x500253850025cbf1",
+    "model": "SAMSUNG_MZ7WD960",
+    "serial": "S1E4NYAG205230"
+   },
+   "devName": "sdb",
+   "ts": "2026-09-24T16:10:50Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "67323",
+    "tempC": 26,
+    "reallocated": "729",
+    "crcErrors": "1",
+    "writeBytes": "211121008512000",
+    "percentUsed": 1
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x500253850025cbf1",
+    "model": "SAMSUNG_MZ7WD960",
+    "serial": "S1E4NYAG205230"
+   },
+   "devName": "sdb",
+   "ts": "2026-09-24T10:10:32Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "67317",
+    "tempC": 27,
+    "reallocated": "729",
+    "crcErrors": "1",
+    "writeBytes": "211079074982912",
+    "percentUsed": 1
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x500253850025cbf1",
+    "model": "SAMSUNG_MZ7WD960",
+    "serial": "S1E4NYAG205230"
+   },
+   "devName": "sdb",
+   "ts": "2026-09-24T04:10:09Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "67311",
+    "tempC": 28,
+    "reallocated": "729",
+    "crcErrors": "1",
+    "writeBytes": "211041320778752",
+    "percentUsed": 1
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x500253850025cbf1",
+    "model": "SAMSUNG_MZ7WD960",
+    "serial": "S1E4NYAG205230"
+   },
+   "devName": "sdb",
+   "ts": "2026-09-23T22:09:50Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "67305",
+    "tempC": 28,
+    "reallocated": "729",
+    "crcErrors": "1",
+    "writeBytes": "211000658586624",
+    "percentUsed": 1
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x500253850025cbf1",
+    "model": "SAMSUNG_MZ7WD960",
+    "serial": "S1E4NYAG205230"
+   },
+   "devName": "sdb",
+   "ts": "2026-09-23T16:09:25Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "67299",
+    "tempC": 28,
+    "reallocated": "729",
+    "crcErrors": "1",
+    "writeBytes": "210961276468736",
+    "percentUsed": 1
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x500253850025cbf1",
+    "model": "SAMSUNG_MZ7WD960",
+    "serial": "S1E4NYAG205230"
+   },
+   "devName": "sdb",
+   "ts": "2026-09-23T10:09:03Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "67293",
+    "tempC": 28,
+    "reallocated": "729",
+    "crcErrors": "1",
+    "writeBytes": "210920761810432",
+    "percentUsed": 1
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x500253850025cbf1",
+    "model": "SAMSUNG_MZ7WD960",
+    "serial": "S1E4NYAG205230"
+   },
+   "devName": "sdb",
+   "ts": "2026-09-23T04:08:44Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "67287",
+    "tempC": 29,
+    "reallocated": "729",
+    "crcErrors": "1",
+    "writeBytes": "210877817728512",
+    "percentUsed": 1
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x500253850025cbf1",
+    "model": "SAMSUNG_MZ7WD960",
+    "serial": "S1E4NYAG205230"
+   },
+   "devName": "sdb",
+   "ts": "2026-09-22T22:08:25Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "67281",
+    "tempC": 29,
+    "reallocated": "729",
+    "crcErrors": "1",
+    "writeBytes": "210834051354112",
+    "percentUsed": 1
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x500253850025cbf1",
+    "model": "SAMSUNG_MZ7WD960",
+    "serial": "S1E4NYAG205230"
+   },
+   "devName": "sdb",
+   "ts": "2026-09-22T16:08:02Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "67275",
+    "tempC": 24,
+    "reallocated": "729",
+    "crcErrors": "1",
+    "writeBytes": "210789631131136",
+    "percentUsed": 1
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x500253850025cbf1",
+    "model": "SAMSUNG_MZ7WD960",
+    "serial": "S1E4NYAG205230"
+   },
+   "devName": "sdb",
+   "ts": "2026-09-22T10:07:43Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "67269",
+    "tempC": 28,
+    "reallocated": "729",
+    "crcErrors": "1",
+    "writeBytes": "210746272423424",
+    "percentUsed": 1
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x500253850025cbf1",
+    "model": "SAMSUNG_MZ7WD960",
+    "serial": "S1E4NYAG205230"
+   },
+   "devName": "sdb",
+   "ts": "2026-09-22T04:07:24Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "67263",
+    "tempC": 30,
+    "reallocated": "728",
+    "crcErrors": "1",
+    "writeBytes": "210703064903168",
+    "percentUsed": 1
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x500253850025cbf1",
+    "model": "SAMSUNG_MZ7WD960",
+    "serial": "S1E4NYAG205230"
+   },
+   "devName": "sdb",
+   "ts": "2026-09-21T22:07:05Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "67257",
+    "tempC": 31,
+    "reallocated": "728",
+    "crcErrors": "1",
+    "writeBytes": "210661694082560",
+    "percentUsed": 1
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x500253850025cbf1",
+    "model": "SAMSUNG_MZ7WD960",
+    "serial": "S1E4NYAG205230"
+   },
+   "devName": "sdb",
+   "ts": "2026-09-21T16:06:42Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "67251",
+    "tempC": 27,
+    "reallocated": "728",
+    "crcErrors": "1",
+    "writeBytes": "210619859529216",
+    "percentUsed": 1
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x500253850025cbf1",
+    "model": "SAMSUNG_MZ7WD960",
+    "serial": "S1E4NYAG205230"
+   },
+   "devName": "sdb",
+   "ts": "2026-09-21T10:06:21Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "67245",
+    "tempC": 28,
+    "reallocated": "728",
+    "crcErrors": "1",
+    "writeBytes": "210577767529984",
+    "percentUsed": 1
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x500253850025cbf1",
+    "model": "SAMSUNG_MZ7WD960",
+    "serial": "S1E4NYAG205230"
+   },
+   "devName": "sdb",
+   "ts": "2026-09-21T04:05:57Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "67239",
+    "tempC": 30,
+    "reallocated": "728",
+    "crcErrors": "1",
+    "writeBytes": "210532652252672",
+    "percentUsed": 1
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x500253850025cbf1",
+    "model": "SAMSUNG_MZ7WD960",
+    "serial": "S1E4NYAG205230"
+   },
+   "devName": "sdb",
+   "ts": "2026-09-21T03:53:27Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "67239",
+    "tempC": 30,
+    "reallocated": "728",
+    "crcErrors": "1",
+    "writeBytes": "210530573803008",
+    "percentUsed": 1
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x500253850025cbf1",
+    "model": "SAMSUNG_MZ7WD960",
+    "serial": "S1E4NYAG205230"
+   },
+   "devName": "sdb",
+   "ts": "2026-09-21T03:43:07Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "67238",
+    "tempC": 30,
+    "reallocated": "728",
+    "crcErrors": "1",
+    "writeBytes": "210529362001408",
+    "percentUsed": 1
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x500253850025cbf1",
+    "model": "SAMSUNG_MZ7WD960",
+    "serial": "S1E4NYAG205230"
+   },
+   "devName": "sdb",
+   "ts": "2026-09-21T03:28:37Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "67238",
+    "tempC": 30,
+    "reallocated": "728",
+    "crcErrors": "1",
+    "writeBytes": "210527046426112",
+    "percentUsed": 1
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x500253850025cbf1",
+    "model": "SAMSUNG_MZ7WD960",
+    "serial": "S1E4NYAG205230"
+   },
+   "devName": "sdb",
+   "ts": "2026-09-21T01:42:23Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "67236",
+    "tempC": 30,
+    "reallocated": "728",
+    "crcErrors": "1",
+    "writeBytes": "210512682151424",
+    "percentUsed": 1
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x500253850025cbf1",
+    "model": "SAMSUNG_MZ7WD960",
+    "serial": "S1E4NYAG205230"
+   },
+   "devName": "sdb",
+   "ts": "2026-09-20T19:42:01Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "67230",
+    "tempC": 28,
+    "reallocated": "728",
+    "crcErrors": "1",
+    "writeBytes": "210466047806976",
+    "percentUsed": 1
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x500253850025cbf1",
+    "model": "SAMSUNG_MZ7WD960",
+    "serial": "S1E4NYAG205230"
+   },
+   "devName": "sdb",
+   "ts": "2026-09-20T14:22:02Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "67225",
+    "tempC": 27,
+    "reallocated": "728",
+    "crcErrors": "1",
+    "writeBytes": "210425296346624",
+    "percentUsed": 1
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x500253850025cbf1",
+    "model": "SAMSUNG_MZ7WD960",
+    "serial": "S1E4NYAG205230"
+   },
+   "devName": "sdb",
+   "ts": "2026-09-20T08:21:32Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "67219",
+    "tempC": 28,
+    "reallocated": "728",
+    "crcErrors": "1",
+    "writeBytes": "210381169753600",
+    "percentUsed": 1
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x500253850025cbf1",
+    "model": "SAMSUNG_MZ7WD960",
+    "serial": "S1E4NYAG205230"
+   },
+   "devName": "sdb",
+   "ts": "2026-09-20T02:21:13Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "67213",
+    "tempC": 29,
+    "reallocated": "728",
+    "crcErrors": "1",
+    "writeBytes": "210333551390208",
+    "percentUsed": 1
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x500253850025cbf1",
+    "model": "SAMSUNG_MZ7WD960",
+    "serial": "S1E4NYAG205230"
+   },
+   "devName": "sdb",
+   "ts": "2026-09-19T20:20:45Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "67207",
+    "tempC": 28,
+    "reallocated": "728",
+    "crcErrors": "1",
+    "writeBytes": "210290575867392",
+    "percentUsed": 1
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x500253850025cbf1",
+    "model": "SAMSUNG_MZ7WD960",
+    "serial": "S1E4NYAG205230"
+   },
+   "devName": "sdb",
+   "ts": "2026-09-19T17:50:01Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "67205",
+    "tempC": 28,
+    "reallocated": "728",
+    "crcErrors": "1",
+    "writeBytes": "210273227660800",
+    "percentUsed": 1
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x500253850025cbf1",
+    "model": "SAMSUNG_MZ7WD960",
+    "serial": "S1E4NYAG205230"
+   },
+   "devName": "sdb",
+   "ts": "2026-09-19T11:49:40Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "67199",
+    "tempC": 28,
+    "reallocated": "728",
+    "crcErrors": "1",
+    "writeBytes": "210228681375232",
+    "percentUsed": 1
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x500253850025cbf1",
+    "model": "SAMSUNG_MZ7WD960",
+    "serial": "S1E4NYAG205230"
+   },
+   "devName": "sdb",
+   "ts": "2026-09-19T05:49:09Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "67193",
+    "tempC": 29,
+    "reallocated": "728",
+    "crcErrors": "1",
+    "writeBytes": "210185766485504",
+    "percentUsed": 1
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x500253850025cbf1",
+    "model": "SAMSUNG_MZ7WD960",
+    "serial": "S1E4NYAG205230"
+   },
+   "devName": "sdb",
+   "ts": "2026-09-18T23:48:33Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "67187",
+    "tempC": 30,
+    "reallocated": "726",
+    "crcErrors": "1",
+    "writeBytes": "210142043966976",
+    "percentUsed": 1
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x500253850025cbf1",
+    "model": "SAMSUNG_MZ7WD960",
+    "serial": "S1E4NYAG205230"
+   },
+   "devName": "sdb",
+   "ts": "2026-09-18T17:48:00Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "67181",
+    "tempC": 28,
+    "reallocated": "726",
+    "crcErrors": "1",
+    "writeBytes": "210098150653440",
+    "percentUsed": 1
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x500253850025cbf1",
+    "model": "SAMSUNG_MZ7WD960",
+    "serial": "S1E4NYAG205230"
+   },
+   "devName": "sdb",
+   "ts": "2026-09-18T11:47:40Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "67175",
+    "tempC": 28,
+    "reallocated": "726",
+    "crcErrors": "1",
+    "writeBytes": "210054950292992",
+    "percentUsed": 1
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x500253850025cbf1",
+    "model": "SAMSUNG_MZ7WD960",
+    "serial": "S1E4NYAG205230"
+   },
+   "devName": "sdb",
+   "ts": "2026-09-18T05:47:20Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "67169",
+    "tempC": 28,
+    "reallocated": "726",
+    "crcErrors": "1",
+    "writeBytes": "210011694394880",
+    "percentUsed": 1
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x500253850025cbf1",
+    "model": "SAMSUNG_MZ7WD960",
+    "serial": "S1E4NYAG205230"
+   },
+   "devName": "sdb",
+   "ts": "2026-09-17T23:46:54Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "67163",
+    "tempC": 31,
+    "reallocated": "726",
+    "crcErrors": "1",
+    "writeBytes": "209969862393344",
+    "percentUsed": 1
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x500253850025cbf1",
+    "model": "SAMSUNG_MZ7WD960",
+    "serial": "S1E4NYAG205230"
+   },
+   "devName": "sdb",
+   "ts": "2026-09-17T17:46:35Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "67157",
+    "tempC": 28,
+    "reallocated": "726",
+    "crcErrors": "1",
+    "writeBytes": "209929262390784",
+    "percentUsed": 1
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x500253850025cbf1",
+    "model": "SAMSUNG_MZ7WD960",
+    "serial": "S1E4NYAG205230"
+   },
+   "devName": "sdb",
+   "ts": "2026-09-17T11:46:16Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "67151",
+    "tempC": 28,
+    "reallocated": "726",
+    "crcErrors": "1",
+    "writeBytes": "209885996568064",
+    "percentUsed": 1
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x500253850025cbf1",
+    "model": "SAMSUNG_MZ7WD960",
+    "serial": "S1E4NYAG205230"
+   },
+   "devName": "sdb",
+   "ts": "2026-09-17T05:46:00Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "67144",
+    "tempC": 29,
+    "reallocated": "726",
+    "crcErrors": "1",
+    "writeBytes": "209844568251904",
+    "percentUsed": 1
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x500253850025cbf1",
+    "model": "SAMSUNG_MZ7WD960",
+    "serial": "S1E4NYAG205230"
+   },
+   "devName": "sdb",
+   "ts": "2026-09-16T23:45:44Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "67138",
+    "tempC": 30,
+    "reallocated": "726",
+    "crcErrors": "1",
+    "writeBytes": "209805095669248",
+    "percentUsed": 1
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x500253850025cbf1",
+    "model": "SAMSUNG_MZ7WD960",
+    "serial": "S1E4NYAG205230"
+   },
+   "devName": "sdb",
+   "ts": "2026-09-16T17:45:27Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "67132",
+    "tempC": 27,
+    "reallocated": "726",
+    "crcErrors": "1",
+    "writeBytes": "209765187550720",
+    "percentUsed": 1
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x500253850025cbf1",
+    "model": "SAMSUNG_MZ7WD960",
+    "serial": "S1E4NYAG205230"
+   },
+   "devName": "sdb",
+   "ts": "2026-09-16T11:45:10Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "67126",
+    "tempC": 27,
+    "reallocated": "725",
+    "crcErrors": "1",
+    "writeBytes": "209723506834944",
+    "percentUsed": 1
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x500253850025cbf1",
+    "model": "SAMSUNG_MZ7WD960",
+    "serial": "S1E4NYAG205230"
+   },
+   "devName": "sdb",
+   "ts": "2026-09-16T05:44:54Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "67120",
+    "tempC": 28,
+    "reallocated": "725",
+    "crcErrors": "1",
+    "writeBytes": "209681890520576",
+    "percentUsed": 1
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x500253850025cbf1",
+    "model": "SAMSUNG_MZ7WD960",
+    "serial": "S1E4NYAG205230"
+   },
+   "devName": "sdb",
+   "ts": "2026-09-15T23:44:38Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "67114",
+    "tempC": 29,
+    "reallocated": "725",
+    "crcErrors": "1",
+    "writeBytes": "209641439895040",
+    "percentUsed": 1
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x500253850025cbf1",
+    "model": "SAMSUNG_MZ7WD960",
+    "serial": "S1E4NYAG205230"
+   },
+   "devName": "sdb",
+   "ts": "2026-09-15T17:44:22Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "67108",
+    "tempC": 26,
+    "reallocated": "725",
+    "crcErrors": "1",
+    "writeBytes": "209599023492608",
+    "percentUsed": 1
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x500253850025cbf1",
+    "model": "SAMSUNG_MZ7WD960",
+    "serial": "S1E4NYAG205230"
+   },
+   "devName": "sdb",
+   "ts": "2026-09-15T11:44:05Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "67102",
+    "tempC": 27,
+    "reallocated": "725",
+    "crcErrors": "1",
+    "writeBytes": "209556947533312",
+    "percentUsed": 1
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x500253850025cbf1",
+    "model": "SAMSUNG_MZ7WD960",
+    "serial": "S1E4NYAG205230"
+   },
+   "devName": "sdb",
+   "ts": "2026-09-15T05:43:48Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "67096",
+    "tempC": 28,
+    "reallocated": "725",
+    "crcErrors": "1",
+    "writeBytes": "209514076642816",
+    "percentUsed": 1
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x500253850025cbf1",
+    "model": "SAMSUNG_MZ7WD960",
+    "serial": "S1E4NYAG205230"
+   },
+   "devName": "sdb",
+   "ts": "2026-09-14T23:43:31Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "67090",
+    "tempC": 29,
+    "reallocated": "725",
+    "crcErrors": "1",
+    "writeBytes": "209474194472448",
+    "percentUsed": 1
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x500253850025cbf1",
+    "model": "SAMSUNG_MZ7WD960",
+    "serial": "S1E4NYAG205230"
+   },
+   "devName": "sdb",
+   "ts": "2026-09-14T17:43:14Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "67084",
+    "tempC": 28,
+    "reallocated": "725",
+    "crcErrors": "1",
+    "writeBytes": "209433828150784",
+    "percentUsed": 1
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x500253850025cbf1",
+    "model": "SAMSUNG_MZ7WD960",
+    "serial": "S1E4NYAG205230"
+   },
+   "devName": "sdb",
+   "ts": "2026-09-14T16:09:50Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "67083",
+    "tempC": 28,
+    "reallocated": "725",
+    "crcErrors": "1",
+    "writeBytes": "209422853615104",
+    "percentUsed": 1
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x500253850025cbf1",
+    "model": "SAMSUNG_MZ7WD960",
+    "serial": "S1E4NYAG205230"
+   },
+   "devName": "sdb",
+   "ts": "2026-09-14T10:09:33Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "67077",
+    "tempC": 28,
+    "reallocated": "725",
+    "crcErrors": "1",
+    "writeBytes": "209381461773824",
+    "percentUsed": 1
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x500253850025cbf1",
+    "model": "SAMSUNG_MZ7WD960",
+    "serial": "S1E4NYAG205230"
+   },
+   "devName": "sdb",
+   "ts": "2026-09-14T04:09:16Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "67071",
+    "tempC": 28,
+    "reallocated": "725",
+    "crcErrors": "1",
+    "writeBytes": "209340861029888",
+    "percentUsed": 1
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x500253850025cbf1",
+    "model": "SAMSUNG_MZ7WD960",
+    "serial": "S1E4NYAG205230"
+   },
+   "devName": "sdb",
+   "ts": "2026-09-14T03:59:11Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "67071",
+    "tempC": 28,
+    "reallocated": "725",
+    "crcErrors": "1",
+    "writeBytes": "209339775356416",
+    "percentUsed": 1
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x500253850025cbf1",
+    "model": "SAMSUNG_MZ7WD960",
+    "serial": "S1E4NYAG205230"
+   },
+   "devName": "sdb",
+   "ts": "2026-09-14T03:46:20Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "67071",
+    "tempC": 28,
+    "reallocated": "725",
+    "crcErrors": "1",
+    "writeBytes": "209338489212416",
+    "percentUsed": 1
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x500253850025cbf1",
+    "model": "SAMSUNG_MZ7WD960",
+    "serial": "S1E4NYAG205230"
+   },
+   "devName": "sdb",
+   "ts": "2026-09-13T23:12:58Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "67066",
+    "tempC": 28,
+    "reallocated": "725",
+    "crcErrors": "1",
+    "writeBytes": "209307464306176",
+    "percentUsed": 1
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x500253850025cbf1",
+    "model": "SAMSUNG_MZ7WD960",
+    "serial": "S1E4NYAG205230"
+   },
+   "devName": "sdb",
+   "ts": "2026-09-13T22:10:24Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "67065",
+    "tempC": 28,
+    "reallocated": "725",
+    "crcErrors": "1",
+    "writeBytes": "209300841758208",
+    "percentUsed": 1
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x500253850025cbf1",
+    "model": "SAMSUNG_MZ7WD960",
+    "serial": "S1E4NYAG205230"
+   },
+   "devName": "sdb",
+   "ts": "2026-09-13T21:37:11Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "67064",
+    "tempC": 28,
+    "reallocated": "725",
+    "crcErrors": "1",
+    "writeBytes": "209297037241856",
+    "percentUsed": 1
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x500253850025cbf1",
+    "model": "SAMSUNG_MZ7WD960",
+    "serial": "S1E4NYAG205230"
+   },
+   "devName": "sdb",
+   "ts": "2026-09-13T21:15:20Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "67064",
+    "tempC": 28,
+    "reallocated": "725",
+    "crcErrors": "1",
+    "writeBytes": "209294014275072",
+    "percentUsed": 1
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x500253850025cbf1",
+    "model": "SAMSUNG_MZ7WD960",
+    "serial": "S1E4NYAG205230"
+   },
+   "devName": "sdb",
+   "ts": "2026-09-13T17:04:59Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "67060",
+    "tempC": 28,
+    "reallocated": "725",
+    "crcErrors": "1",
+    "writeBytes": "209266496232960",
+    "percentUsed": 1
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x500253850025cbf1",
+    "model": "SAMSUNG_MZ7WD960",
+    "serial": "S1E4NYAG205230"
+   },
+   "devName": "sdb",
+   "ts": "2026-09-13T14:18:26Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "67057",
+    "tempC": 28,
+    "reallocated": "725",
+    "crcErrors": "1",
+    "writeBytes": "209248040566272",
+    "percentUsed": 1
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x500253850025cbf1",
+    "model": "SAMSUNG_MZ7WD960",
+    "serial": "S1E4NYAG205230"
+   },
+   "devName": "sdb",
+   "ts": "2026-09-13T08:17:41Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "67051",
+    "tempC": 30,
+    "reallocated": "725",
+    "crcErrors": "1",
+    "writeBytes": "209206504791552",
+    "percentUsed": 1
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x500253850025cbf1",
+    "model": "SAMSUNG_MZ7WD960",
+    "serial": "S1E4NYAG205230"
+   },
+   "devName": "sdb",
+   "ts": "2026-09-13T02:17:10Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "67045",
+    "tempC": 29,
+    "reallocated": "725",
+    "crcErrors": "1",
+    "writeBytes": "209163507678720",
+    "percentUsed": 1
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x500253850025cbf1",
+    "model": "SAMSUNG_MZ7WD960",
+    "serial": "S1E4NYAG205230"
+   },
+   "devName": "sdb",
+   "ts": "2026-09-13T02:09:14Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "67045",
+    "tempC": 29,
+    "reallocated": "725",
+    "crcErrors": "1",
+    "writeBytes": "209162100018688",
+    "percentUsed": 1
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  }
+ ]
+}

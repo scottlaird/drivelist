@@ -1,0 +1,205 @@
+{
+ "enclosure": {
+  "enclosure": "0x500304800000007f",
+  "hostname": "nas",
+  "via": "expander-10:0",
+  "name": "nas-sc847-back",
+  "drives": 14,
+  "firstSeen": "2026-09-13T01:41:39Z",
+  "lastSeen": "2026-09-27T19:41:38Z",
+  "product": "LSI SAS2X36",
+  "bays": 15
+ },
+ "bays": [
+  {
+   "label": "0",
+   "ids": [
+    "sas:0"
+   ],
+   "present": true,
+   "devName": "sdc",
+   "serial": "7SG3RM2G",
+   "model": "HUH721008AL5204",
+   "status": "ok"
+  },
+  {
+   "label": "1",
+   "ids": [
+    "sas:1"
+   ],
+   "present": true,
+   "devName": "sdd",
+   "serial": "7SG4MAAG",
+   "model": "HUH721008AL5204",
+   "status": "ok"
+  },
+  {
+   "label": "11",
+   "ids": [
+    "sas:11"
+   ],
+   "present": true,
+   "devName": "sdm",
+   "serial": "001619PJM90V_VKJJM90V",
+   "model": "H7280A520SUN8.0T",
+   "status": "ok",
+   "uses": [
+    "zfs > space 5925914041408872576 > raidz2 9007031778331642784 > disk 3409693676319033394"
+   ]
+  },
+  {
+   "label": "12",
+   "ids": [
+    "sas:12"
+   ],
+   "present": true,
+   "devName": "sdn",
+   "serial": "001619PKD9YV_VKJKD9YV",
+   "model": "H7280A520SUN8.0T",
+   "status": "ok",
+   "uses": [
+    "zfs > space 5925914041408872576 > raidz2 9007031778331642784 > disk 3487896885370626489"
+   ]
+  },
+  {
+   "label": "13",
+   "ids": [
+    "sas:13"
+   ],
+   "present": true,
+   "devName": "sdo",
+   "serial": "001619PKAV6V_VKJKAV6V",
+   "model": "H7280A520SUN8.0T",
+   "status": "ok",
+   "uses": [
+    "zfs > space 5925914041408872576 > raidz2 9007031778331642784 > disk 15351399526994441874"
+   ]
+  },
+  {
+   "label": "14",
+   "ids": [
+    "sas:14"
+   ],
+   "present": true,
+   "devName": "sdp",
+   "serial": "001619P86PAV_VKJ86PAV",
+   "model": "H7280A520SUN8.0T",
+   "status": "ok",
+   "uses": [
+    "zfs > backups 12143466076769931197 > raidz2 17954131499336888302 > disk 11687791957475096531"
+   ]
+  },
+  {
+   "label": "2",
+   "ids": [
+    "sas:2"
+   ],
+   "present": true,
+   "devName": "sde",
+   "serial": "7SG4B86G",
+   "model": "HUH721008AL5204",
+   "status": "ok",
+   "uses": [
+    "zfs > space 5925914041408872576 > raidz2 5204885172110344134 > disk 5369926289127318604"
+   ]
+  },
+  {
+   "label": "3",
+   "ids": [
+    "sas:3"
+   ],
+   "present": true,
+   "devName": "sdf",
+   "serial": "7SG49DVG",
+   "model": "HUH721008AL5204",
+   "status": "ok",
+   "uses": [
+    "zfs > space 5925914041408872576 > raidz2 5204885172110344134 > disk 6199030208081625901"
+   ]
+  },
+  {
+   "label": "4",
+   "ids": [
+    "sas:4"
+   ],
+   "present": true,
+   "devName": "sdg",
+   "serial": "7SG3M07G",
+   "model": "HUH721008AL5204",
+   "status": "ok",
+   "uses": [
+    "zfs > space 5925914041408872576 > raidz2 12372305547527317295 > disk 15192423959397411076"
+   ]
+  },
+  {
+   "label": "5",
+   "ids": [
+    "sas:5"
+   ],
+   "present": true,
+   "devName": "sdh",
+   "serial": "001619PJMXHV_VKJJMXHV",
+   "model": "H7280A520SUN8.0T",
+   "status": "ok",
+   "uses": [
+    "zfs > space 5925914041408872576 > raidz2 3388823558429738332 > disk 13797029297166725296"
+   ]
+  },
+  {
+   "label": "6",
+   "ids": [
+    "sas:6"
+   ],
+   "present": true,
+   "devName": "sdi",
+   "serial": "7SG4B9MG",
+   "model": "HUH721008AL5204",
+   "status": "ok",
+   "uses": [
+    "zfs > space 5925914041408872576 > raidz2 5204885172110344134 > disk 12789853407961503446"
+   ]
+  },
+  {
+   "label": "7",
+   "ids": [
+    "sas:7"
+   ],
+   "present": true,
+   "devName": "sdj",
+   "serial": "2EKB12BX",
+   "model": "HUH728080AL4200",
+   "status": "ok",
+   "uses": [
+    "zfs > backups 12143466076769931197 > raidz2 17954131499336888302 > disk 6405638789467097001"
+   ]
+  },
+  {
+   "label": "8",
+   "ids": [
+    "sas:8"
+   ],
+   "present": true,
+   "devName": "sdk",
+   "serial": "001619PHJPEV_VKJHJPEV",
+   "model": "H7280A520SUN8.0T",
+   "status": "ok",
+   "uses": [
+    "zfs > space 5925914041408872576 > raidz2 12372305547527317295 > disk 5227188687168818047"
+   ]
+  },
+  {
+   "label": "9",
+   "ids": [
+    "sas:9"
+   ],
+   "present": true,
+   "devName": "sdl",
+   "serial": "001619P964HV_VKJ964HV",
+   "model": "H7280A520SUN8.0T",
+   "status": "ok",
+   "uses": [
+    "zfs > space 5925914041408872576 > raidz2 5204885172110344134 > disk 13160228476946060421"
+   ]
+  }
+ ]
+}

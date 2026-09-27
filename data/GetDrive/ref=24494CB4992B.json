@@ -1,0 +1,34 @@
+{
+ "drive": {
+  "driveId": "156",
+  "wwn": "eui.000000000000000100a075244cb4992b",
+  "model": "CT500P3PSSD8",
+  "serial": "24494CB4992B",
+  "sizeBytes": "500107862016",
+  "bus": "BUS_NVME",
+  "status": "ok",
+  "firstSeen": "2026-09-19T21:10:57Z",
+  "lastSeen": "2026-09-27T19:42:34Z",
+  "current": {
+   "hostname": "server13",
+   "enclosure": "dmi:B12455EF50051",
+   "bay": "0000:00:06.0",
+   "devName": "nvme0n1",
+   "uses": [
+    "mount > /",
+    "mount > /boot/efi",
+    "mount > /var/lib/kubelet/pods/5252b320-3fc1-41dc-8464-c41f6e27178b/volume-subpaths/config/grafana/0",
+    "mount > /var/lib/kubelet/pods/5252b320-3fc1-41dc-8464-c41f6e27178b/volume-subpaths/sc-dashboard-provider/grafana/3",
+    "mount > /var/lib/kubelet/pods/8c57675f-3a5b-4b58-aeee-f316f31c9fad/volume-subpaths/custom-dnsmasq/pihole/1",
+    "mount > /var/lib/kubelet/pods/8c57675f-3a5b-4b58-aeee-f316f31c9fad/volume-subpaths/custom-dnsmasq/pihole/2"
+   ],
+   "firstSeen": "2026-09-19T21:10:57Z",
+   "lastSeen": "2026-09-27T19:42:34Z",
+   "enclosureVia": "pci"
+  }
+ },
+ "keys": [
+  "serial:CT500P3PSSD8/24494CB4992B",
+  "wwn:eui.000000000000000100a075244cb4992b"
+ ]
+}

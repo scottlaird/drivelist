@@ -1,0 +1,30 @@
+{
+ "enclosure": {
+  "enclosure": "dmi:F1FXM794502C1040083",
+  "hostname": "server10",
+  "via": "pci",
+  "drives": 1,
+  "firstSeen": "2026-09-13T23:14:18Z",
+  "lastSeen": "2026-09-27T19:40:53Z",
+  "product": "Micro Computer (HK) Tech Limited DeskMini Series",
+  "bays": 1,
+  "board": "F1FXM"
+ },
+ "bays": [
+  {
+   "label": "J3502",
+   "ids": [
+    "pci:J3502"
+   ],
+   "present": true,
+   "devName": "nvme0n1",
+   "serial": "SNB5N481410605D4J",
+   "model": "SHPP41-500GM",
+   "status": "ok",
+   "uses": [
+    "mount > /",
+    "mount > /boot/efi"
+   ]
+  }
+ ]
+}

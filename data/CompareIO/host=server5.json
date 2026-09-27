@@ -1,0 +1,83 @@
+{
+ "rows": [
+  {
+   "hostname": "server5",
+   "serial": "0029030000199",
+   "model": "NT-512_2242",
+   "devName": "sda",
+   "reads": "17660",
+   "writes": "2516008",
+   "rAwaitMs": 1.0223103057757645,
+   "wAwaitMs": 17.812280803558654,
+   "util": 0.13680579780166688,
+   "groupRAwaitMs": 1.0223103057757645,
+   "groupWAwaitMs": 17.812280803558654,
+   "groupUtil": 0.13680579780166688,
+   "groupSize": 1
+  },
+  {
+   "group": "zfs > data1 11798871081237000459",
+   "hostname": "server5",
+   "serial": "S7U5NJ0Y225431V",
+   "model": "Samsung SSD 990 EVO Plus 1TB",
+   "devName": "nvme0n1",
+   "reads": "3548",
+   "writes": "7422349",
+   "rAwaitMs": 0.24041713641488163,
+   "wAwaitMs": 0.20804950023233884,
+   "util": 0.007915895639569997,
+   "groupRAwaitMs": 0.24041713641488163,
+   "groupWAwaitMs": 0.20804950023233884,
+   "groupUtil": 0.007915895639569997,
+   "groupSize": 1
+  },
+  {
+   "group": "zfs > data2 15404047406438188562",
+   "hostname": "server5",
+   "serial": "S7U5NJ0Y214756R",
+   "model": "Samsung SSD 990 EVO Plus 1TB",
+   "devName": "nvme1n1",
+   "reads": "5237",
+   "writes": "6668981",
+   "rAwaitMs": 0.2995990070651136,
+   "wAwaitMs": 0.385475382221062,
+   "util": 0.011575383500422757,
+   "groupRAwaitMs": 0.2995990070651136,
+   "groupWAwaitMs": 0.385475382221062,
+   "groupUtil": 0.011575383500422757,
+   "groupSize": 1
+  },
+  {
+   "group": "zfs > data3 2155466178248037867",
+   "hostname": "server5",
+   "serial": "S7U5NJ0Y214792F",
+   "model": "Samsung SSD 990 EVO Plus 1TB",
+   "devName": "nvme3n1",
+   "reads": "7971",
+   "writes": "6472216",
+   "rAwaitMs": 0.4048425542591896,
+   "wAwaitMs": 0.29874250179536654,
+   "util": 0.00899821234448605,
+   "groupRAwaitMs": 0.4048425542591896,
+   "groupWAwaitMs": 0.29874250179536654,
+   "groupUtil": 0.00899821234448605,
+   "groupSize": 1
+  },
+  {
+   "group": "zfs > data4 10340610283291516242",
+   "hostname": "server5",
+   "serial": "7D620718193D00008558",
+   "model": "Sabrent Rocket 4.0 Plus",
+   "devName": "nvme2n1",
+   "reads": "8656",
+   "writes": "6785254",
+   "rAwaitMs": 0.296326247689464,
+   "wAwaitMs": 0.0796858894302262,
+   "util": 0.002785300157023795,
+   "groupRAwaitMs": 0.296326247689464,
+   "groupWAwaitMs": 0.0796858894302262,
+   "groupUtil": 0.002785300157023795,
+   "groupSize": 1
+  }
+ ]
+}

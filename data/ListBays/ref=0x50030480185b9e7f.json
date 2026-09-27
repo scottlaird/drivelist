@@ -1,0 +1,197 @@
+{
+ "enclosure": {
+  "enclosure": "0x50030480185b9e7f",
+  "hostname": "backups",
+  "via": "expander-6:0",
+  "name": "backups-front",
+  "drives": 13,
+  "firstSeen": "2026-09-13T01:44:31Z",
+  "lastSeen": "2026-09-27T19:42:09Z",
+  "product": "SMC SC846P",
+  "bays": 14
+ },
+ "bays": [
+  {
+   "label": "10",
+   "ids": [
+    "sas:10"
+   ],
+   "present": true,
+   "devName": "sdf",
+   "serial": "ZXA185XX",
+   "model": "ST24000DM001-3Y7103",
+   "status": "ok",
+   "uses": [
+    "zfs > backups 14184269030502626926 > raidz3 12638130268554546894 > disk 10414938989999790616"
+   ]
+  },
+  {
+   "label": "11",
+   "ids": [
+    "sas:11"
+   ],
+   "present": true,
+   "devName": "sdg",
+   "serial": "ZXA115Y6",
+   "model": "ST24000DM001-3Y7103",
+   "status": "ok",
+   "uses": [
+    "zfs > backups 14184269030502626926 > raidz3 12638130268554546894 > disk 9310739970432676503"
+   ]
+  },
+  {
+   "label": "15",
+   "ids": [
+    "sas:15"
+   ],
+   "present": true,
+   "devName": "sdh",
+   "serial": "ZXA11LGT",
+   "model": "ST24000DM001-3Y7103",
+   "status": "ok",
+   "uses": [
+    "zfs > backups 14184269030502626926 > raidz3 12638130268554546894 > disk 12715670843202606742"
+   ]
+  },
+  {
+   "label": "16",
+   "ids": [
+    "sas:16"
+   ],
+   "present": true,
+   "devName": "sdi",
+   "serial": "ZXA0GA9D",
+   "model": "ST24000DM001-3Y7103",
+   "status": "ok",
+   "uses": [
+    "zfs > backups 14184269030502626926 > raidz3 12638130268554546894 > disk 17702091168007131095"
+   ]
+  },
+  {
+   "label": "17",
+   "ids": [
+    "sas:17"
+   ],
+   "present": true,
+   "devName": "sdj",
+   "serial": "ZXA07M8F",
+   "model": "ST24000DM001-3Y7103",
+   "status": "ok",
+   "uses": [
+    "zfs > backups 14184269030502626926 > raidz3 12638130268554546894 > disk 10255298623913385142"
+   ]
+  },
+  {
+   "label": "2",
+   "ids": [
+    "sas:2"
+   ],
+   "present": true,
+   "devName": "sda",
+   "serial": "ZXA03T5G",
+   "model": "ST24000DM001-3Y7103",
+   "status": "ok",
+   "uses": [
+    "zfs > backups 14184269030502626926 > raidz3 12638130268554546894 > disk 6909562996738010975"
+   ]
+  },
+  {
+   "label": "21",
+   "ids": [
+    "sas:21"
+   ],
+   "present": true,
+   "devName": "sdk",
+   "serial": "ZXA10QBK",
+   "model": "ST24000DM001-3Y7103",
+   "status": "ok",
+   "uses": [
+    "zfs > backups 14184269030502626926 > raidz3 12638130268554546894 > disk 2427754677181354078"
+   ]
+  },
+  {
+   "label": "22",
+   "ids": [
+    "sas:22"
+   ],
+   "present": true,
+   "devName": "sdl",
+   "serial": "ZXA0XM4R",
+   "model": "ST24000DM001-3Y7103",
+   "status": "ok",
+   "uses": [
+    "zfs > spare backups > disk 10313488710348015701"
+   ]
+  },
+  {
+   "label": "23",
+   "ids": [
+    "sas:23"
+   ],
+   "present": true,
+   "devName": "sdm",
+   "serial": "ZXA0YB6H",
+   "model": "ST24000DM001-3Y7103",
+   "status": "ok",
+   "uses": [
+    "zfs > spare backups > disk 15127882886004909357"
+   ]
+  },
+  {
+   "label": "3",
+   "ids": [
+    "sas:3"
+   ],
+   "present": true,
+   "devName": "sdb",
+   "serial": "ZXA0TCYT",
+   "model": "ST24000DM001-3Y7103",
+   "status": "ok",
+   "uses": [
+    "zfs > backups 14184269030502626926 > raidz3 12638130268554546894 > disk 12397832929899529994"
+   ]
+  },
+  {
+   "label": "4",
+   "ids": [
+    "sas:4"
+   ],
+   "present": true,
+   "devName": "sdc",
+   "serial": "ZXA0XV48",
+   "model": "ST24000DM001-3Y7103",
+   "status": "ok",
+   "uses": [
+    "zfs > backups 14184269030502626926 > raidz3 12638130268554546894 > disk 12294050993797249670"
+   ]
+  },
+  {
+   "label": "5",
+   "ids": [
+    "sas:5"
+   ],
+   "present": true,
+   "devName": "sdd",
+   "serial": "ZXA0XH4E",
+   "model": "ST24000DM001-3Y7103",
+   "status": "ok",
+   "uses": [
+    "zfs > backups 14184269030502626926 > raidz3 12638130268554546894 > disk 11120317111489606304"
+   ]
+  },
+  {
+   "label": "8",
+   "ids": [
+    "sas:8"
+   ],
+   "present": true,
+   "devName": "sde",
+   "serial": "ZXA0V75X",
+   "model": "ST24000DM001-3Y7103",
+   "status": "ok",
+   "uses": [
+    "zfs > backups 14184269030502626926 > raidz3 12638130268554546894 > disk 6583091953762439930"
+   ]
+  }
+ ]
+}

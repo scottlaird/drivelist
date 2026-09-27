@@ -1,0 +1,3309 @@
+{
+ "drive": {
+  "driveId": "147",
+  "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+  "model": "Sabrent Rocket 4.0 1TB",
+  "serial": "7FD4071110DA92214796",
+  "sizeBytes": "1000204886016",
+  "bus": "BUS_NVME",
+  "status": "ok",
+  "firstSeen": "2026-09-13T15:35:30Z",
+  "lastSeen": "2026-09-27T19:42:33Z",
+  "current": {
+   "hostname": "server2",
+   "enclosure": "dmi:CN7831V0S2",
+   "bay": "2",
+   "devName": "nvme3n1",
+   "uses": [
+    "zfs > data2 3944605847870461868 > disk 2987962314565959930"
+   ],
+   "firstSeen": "2026-09-14T04:00:37Z",
+   "lastSeen": "2026-09-27T19:42:33Z",
+   "enclosureVia": "pci",
+   "bayLabel": "M.2 2"
+  },
+  "memberState": "ONLINE"
+ },
+ "samples": [
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-27T18:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "321193",
+   "writeBytes": "3071275520",
+   "writeMs": "28329",
+   "ioMs": "8755",
+   "weightedMs": "29145",
+   "wAwaitMaxMs": 0.10202255235367819,
+   "utilMax": 0.003199573390214638,
+   "hostname": "server2",
+   "awaitWrites": "321193"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-27T17:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "277525",
+   "writeBytes": "2587774976",
+   "writeMs": "24865",
+   "ioMs": "8198",
+   "weightedMs": "25668",
+   "wAwaitMaxMs": 0.11606978879706152,
+   "utilMax": 0.003033181674249621,
+   "hostname": "server2",
+   "awaitWrites": "277525"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-27T16:00:00Z",
+   "bucketSecs": 3599,
+   "reads": "276",
+   "writes": "299063",
+   "readBytes": "27120128",
+   "writeBytes": "2969096704",
+   "readMs": "99",
+   "writeMs": "27047",
+   "ioMs": "8634",
+   "weightedMs": "27955",
+   "rAwaitMaxMs": 0.358695652173913,
+   "wAwaitMaxMs": 0.11515277489087508,
+   "utilMax": 0.003717224250304212,
+   "hostname": "server2",
+   "awaitReads": "276",
+   "awaitWrites": "299063"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-27T15:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "270478",
+   "writeBytes": "2751021056",
+   "writeMs": "22906",
+   "ioMs": "7776",
+   "weightedMs": "23726",
+   "wAwaitMaxMs": 0.11351737267967635,
+   "utilMax": 0.002501292334372759,
+   "hostname": "server2",
+   "awaitWrites": "270478"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-27T14:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "303413",
+   "writeBytes": "3000213504",
+   "writeMs": "27596",
+   "ioMs": "8585",
+   "weightedMs": "28405",
+   "wAwaitMaxMs": 0.14923595951577695,
+   "utilMax": 0.003350223348223215,
+   "hostname": "server2",
+   "awaitWrites": "303413"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-27T13:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "296626",
+   "writeBytes": "2912788992",
+   "writeMs": "22781",
+   "ioMs": "7761",
+   "weightedMs": "23592",
+   "wAwaitMaxMs": 0.08872793119058398,
+   "utilMax": 0.0036840701473628058,
+   "hostname": "server2",
+   "awaitWrites": "296626"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-27T12:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "254686",
+   "writeBytes": "2275610624",
+   "writeMs": "19437",
+   "ioMs": "7243",
+   "weightedMs": "20254",
+   "wAwaitMaxMs": 0.08800167224080267,
+   "utilMax": 0.0023316623086787804,
+   "hostname": "server2",
+   "awaitWrites": "254686"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-27T11:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "269523",
+   "writeBytes": "2454854144",
+   "writeMs": "20680",
+   "ioMs": "7412",
+   "weightedMs": "21492",
+   "wAwaitMaxMs": 0.08965163934426229,
+   "utilMax": 0.0028168075070420188,
+   "hostname": "server2",
+   "awaitWrites": "269523"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-27T10:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "256013",
+   "writeBytes": "2224307200",
+   "writeMs": "19264",
+   "ioMs": "7129",
+   "weightedMs": "20074",
+   "wAwaitMaxMs": 0.09068261086198307,
+   "utilMax": 0.0026991002999000335,
+   "hostname": "server2",
+   "awaitWrites": "256013"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-27T09:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "257136",
+   "writeBytes": "2388302336",
+   "writeMs": "19886",
+   "ioMs": "7275",
+   "weightedMs": "20682",
+   "wAwaitMaxMs": 0.0885831004085143,
+   "utilMax": 0.002582515536746697,
+   "hostname": "server2",
+   "awaitWrites": "257136"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-27T08:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "294070",
+   "writeBytes": "3450853376",
+   "writeMs": "23938",
+   "ioMs": "8120",
+   "weightedMs": "24736",
+   "wAwaitMaxMs": 0.09878005448300367,
+   "utilMax": 0.0036169077938529234,
+   "hostname": "server2",
+   "awaitWrites": "294070"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-27T07:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "259246",
+   "writeBytes": "2522812928",
+   "writeMs": "20368",
+   "ioMs": "7410",
+   "weightedMs": "21191",
+   "wAwaitMaxMs": 0.09537774053903086,
+   "utilMax": 0.0034840301393612057,
+   "hostname": "server2",
+   "awaitWrites": "259246"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-27T06:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "234853",
+   "writeBytes": "2418217984",
+   "writeMs": "18695",
+   "ioMs": "7149",
+   "weightedMs": "19503",
+   "wAwaitMaxMs": 0.10565698892547142,
+   "utilMax": 0.003066973364003067,
+   "hostname": "server2",
+   "awaitWrites": "234853"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-27T05:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "248382",
+   "writeBytes": "2690546176",
+   "writeMs": "19507",
+   "ioMs": "7226",
+   "weightedMs": "20311",
+   "wAwaitMaxMs": 0.09396249742427365,
+   "utilMax": 0.0026641357377158365,
+   "hostname": "server2",
+   "awaitWrites": "248382"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-27T04:00:00Z",
+   "bucketSecs": 3600,
+   "reads": "117",
+   "writes": "263996",
+   "readBytes": "6979584",
+   "writeBytes": "2381788160",
+   "readMs": "172",
+   "writeMs": "20832",
+   "ioMs": "7560",
+   "weightedMs": "21824",
+   "rAwaitMaxMs": 1.4700854700854702,
+   "wAwaitMaxMs": 0.09495225102319237,
+   "utilMax": 0.004300286685779052,
+   "hostname": "server2",
+   "awaitReads": "117",
+   "awaitWrites": "263996"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-27T03:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "462349",
+   "writeBytes": "5818024960",
+   "writeMs": "43491",
+   "ioMs": "11569",
+   "weightedMs": "44285",
+   "wAwaitMaxMs": 0.1345016891891892,
+   "utilMax": 0.0049118366939176475,
+   "hostname": "server2",
+   "awaitWrites": "462349"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-27T02:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "331000",
+   "writeBytes": "3629180416",
+   "writeMs": "29149",
+   "ioMs": "8967",
+   "weightedMs": "29970",
+   "wAwaitMaxMs": 0.10351027397260273,
+   "utilMax": 0.004749841671944269,
+   "hostname": "server2",
+   "awaitWrites": "331000"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-27T01:00:00Z",
+   "bucketSecs": 3600,
+   "reads": "1",
+   "writes": "439565",
+   "readBytes": "1024",
+   "writeBytes": "5565003776",
+   "writeMs": "40429",
+   "ioMs": "11101",
+   "weightedMs": "41228",
+   "wAwaitMaxMs": 0.10399583496030197,
+   "utilMax": 0.004150138337944598,
+   "hostname": "server2",
+   "awaitReads": "1",
+   "awaitWrites": "439565"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-27T00:00:00Z",
+   "bucketSecs": 3600,
+   "reads": "180",
+   "writes": "379813",
+   "readBytes": "7892480",
+   "writeBytes": "4324168704",
+   "readMs": "128",
+   "writeMs": "31809",
+   "ioMs": "9639",
+   "weightedMs": "32724",
+   "rAwaitMaxMs": 0.7111111111111111,
+   "wAwaitMaxMs": 0.09643073200241985,
+   "utilMax": 0.004500150005000167,
+   "hostname": "server2",
+   "awaitReads": "180",
+   "awaitWrites": "379813"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-26T23:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "290203",
+   "writeBytes": "2630087680",
+   "writeMs": "24232",
+   "ioMs": "7898",
+   "weightedMs": "25031",
+   "wAwaitMaxMs": 0.11784002018672722,
+   "utilMax": 0.0034649341995668832,
+   "hostname": "server2",
+   "awaitWrites": "290203"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-26T22:00:00Z",
+   "bucketSecs": 3599,
+   "reads": "5697",
+   "writes": "282734",
+   "readBytes": "547161600",
+   "writeBytes": "3692249600",
+   "readMs": "4903",
+   "writeMs": "22840",
+   "ioMs": "12457",
+   "weightedMs": "28538",
+   "rAwaitMaxMs": 2.0098039215686274,
+   "wAwaitMaxMs": 0.09473684210526316,
+   "utilMax": 0.01635,
+   "hostname": "server2",
+   "awaitReads": "5697",
+   "awaitWrites": "282734"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-26T21:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "257061",
+   "writeBytes": "2445500416",
+   "writeMs": "20740",
+   "ioMs": "7254",
+   "weightedMs": "21556",
+   "wAwaitMaxMs": 0.09186140209508462,
+   "utilMax": 0.002666711111851864,
+   "hostname": "server2",
+   "awaitWrites": "257061"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-26T20:00:00Z",
+   "bucketSecs": 3599,
+   "reads": "3",
+   "writes": "268490",
+   "readBytes": "316928",
+   "writeBytes": "2474798592",
+   "readMs": "1",
+   "writeMs": "22141",
+   "ioMs": "7516",
+   "weightedMs": "22963",
+   "rAwaitMaxMs": 0.3333333333333333,
+   "wAwaitMaxMs": 0.09814250069309675,
+   "utilMax": 0.002883237225425819,
+   "hostname": "server2",
+   "awaitReads": "3",
+   "awaitWrites": "268490"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-26T19:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "260237",
+   "writeBytes": "2636979200",
+   "writeMs": "23215",
+   "ioMs": "7803",
+   "weightedMs": "24030",
+   "wAwaitMaxMs": 0.11689145793192036,
+   "utilMax": 0.0025652130459406335,
+   "hostname": "server2",
+   "awaitWrites": "260237"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-26T18:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "250319",
+   "writeBytes": "2171460608",
+   "writeMs": "22789",
+   "ioMs": "7524",
+   "weightedMs": "23613",
+   "wAwaitMaxMs": 0.12727272727272726,
+   "utilMax": 0.0026999550007499873,
+   "hostname": "server2",
+   "awaitWrites": "250319"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-26T17:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "243935",
+   "writeBytes": "2072549376",
+   "writeMs": "20295",
+   "ioMs": "7184",
+   "weightedMs": "21119",
+   "wAwaitMaxMs": 0.11593499878729081,
+   "utilMax": 0.0028335222348156545,
+   "hostname": "server2",
+   "awaitWrites": "243935"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-26T16:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "238236",
+   "writeBytes": "1896638976",
+   "writeMs": "18583",
+   "ioMs": "6847",
+   "weightedMs": "19390",
+   "wAwaitMaxMs": 0.09282051282051282,
+   "utilMax": 0.0032166666666666667,
+   "hostname": "server2",
+   "awaitWrites": "238236"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-26T15:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "258508",
+   "writeBytes": "2623399424",
+   "writeMs": "20166",
+   "ioMs": "7432",
+   "weightedMs": "20992",
+   "wAwaitMaxMs": 0.11100680591410467,
+   "utilMax": 0.0026500441674027903,
+   "hostname": "server2",
+   "awaitWrites": "258508"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-26T14:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "239685",
+   "writeBytes": "2033659392",
+   "writeMs": "18458",
+   "ioMs": "7012",
+   "weightedMs": "19274",
+   "wAwaitMaxMs": 0.08538283062645012,
+   "utilMax": 0.00231790288153682,
+   "hostname": "server2",
+   "awaitWrites": "239685"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-26T13:00:00Z",
+   "bucketSecs": 3599,
+   "reads": "1",
+   "writes": "243240",
+   "readBytes": "1024",
+   "writeBytes": "2075279872",
+   "writeMs": "19068",
+   "ioMs": "7079",
+   "weightedMs": "19879",
+   "wAwaitMaxMs": 0.08885976408912188,
+   "utilMax": 0.0028014474144974905,
+   "hostname": "server2",
+   "awaitReads": "1",
+   "awaitWrites": "243240"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-26T12:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "483036",
+   "writeBytes": "6710351872",
+   "writeMs": "42459",
+   "ioMs": "11932",
+   "weightedMs": "43251",
+   "wAwaitMaxMs": 0.10538116591928251,
+   "utilMax": 0.004615589695737661,
+   "hostname": "server2",
+   "awaitWrites": "483036"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-26T11:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "272129",
+   "writeBytes": "2989719040",
+   "writeMs": "21512",
+   "ioMs": "7517",
+   "weightedMs": "22317",
+   "wAwaitMaxMs": 0.08978544776119403,
+   "utilMax": 0.0031816894604454367,
+   "hostname": "server2",
+   "awaitWrites": "272129"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-26T10:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "230914",
+   "writeBytes": "1897207296",
+   "writeMs": "18394",
+   "ioMs": "6914",
+   "weightedMs": "19213",
+   "wAwaitMaxMs": 0.14127764127764128,
+   "utilMax": 0.0026491169610129957,
+   "hostname": "server2",
+   "awaitWrites": "230914"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-26T09:00:00Z",
+   "bucketSecs": 3600,
+   "reads": "2",
+   "writes": "241286",
+   "readBytes": "11776",
+   "writeBytes": "2681164800",
+   "readMs": "8",
+   "writeMs": "18923",
+   "ioMs": "7165",
+   "weightedMs": "19762",
+   "rAwaitMaxMs": 4,
+   "wAwaitMaxMs": 0.08919049927290354,
+   "utilMax": 0.002866857790519368,
+   "hostname": "server2",
+   "awaitReads": "2",
+   "awaitWrites": "241286"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-26T08:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "229354",
+   "writeBytes": "2148127232",
+   "writeMs": "17662",
+   "ioMs": "6835",
+   "weightedMs": "18481",
+   "wAwaitMaxMs": 0.0898379970544919,
+   "utilMax": 0.0022492877255535747,
+   "hostname": "server2",
+   "awaitWrites": "229354"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-26T07:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "239063",
+   "writeBytes": "2075112448",
+   "writeMs": "18724",
+   "ioMs": "6929",
+   "weightedMs": "19531",
+   "wAwaitMaxMs": 0.09129458717884759,
+   "utilMax": 0.002383015597920277,
+   "hostname": "server2",
+   "awaitWrites": "239063"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-26T06:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "368219",
+   "writeBytes": "4139154432",
+   "writeMs": "32460",
+   "ioMs": "9521",
+   "weightedMs": "33258",
+   "wAwaitMaxMs": 0.103111288392501,
+   "utilMax": 0.004215893752811985,
+   "hostname": "server2",
+   "awaitWrites": "368219"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-26T05:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "382368",
+   "writeBytes": "4229162496",
+   "writeMs": "33280",
+   "ioMs": "9792",
+   "weightedMs": "34086",
+   "wAwaitMaxMs": 0.09811509174884533,
+   "utilMax": 0.004568722591832991,
+   "hostname": "server2",
+   "awaitWrites": "382368"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-26T04:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "271673",
+   "writeBytes": "2744877568",
+   "writeMs": "23213",
+   "ioMs": "7740",
+   "weightedMs": "24016",
+   "wAwaitMaxMs": 0.10847107438016529,
+   "utilMax": 0.0026311407160699418,
+   "hostname": "server2",
+   "awaitWrites": "271673"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-26T03:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "332944",
+   "writeBytes": "4106627584",
+   "writeMs": "27428",
+   "ioMs": "8916",
+   "weightedMs": "28240",
+   "wAwaitMaxMs": 0.09887783188651281,
+   "utilMax": 0.005332444592567906,
+   "hostname": "server2",
+   "awaitWrites": "332944"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-26T02:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "454006",
+   "writeBytes": "5761069056",
+   "writeMs": "37427",
+   "ioMs": "11064",
+   "weightedMs": "38218",
+   "wAwaitMaxMs": 0.0957501943508681,
+   "utilMax": 0.0038365944386061484,
+   "hostname": "server2",
+   "awaitWrites": "454006"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-26T01:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "287931",
+   "writeBytes": "2475950592",
+   "writeMs": "23884",
+   "ioMs": "7964",
+   "weightedMs": "24694",
+   "wAwaitMaxMs": 0.099848386398094,
+   "utilMax": 0.0029498525073746312,
+   "hostname": "server2",
+   "awaitWrites": "287931"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-26T00:00:00Z",
+   "bucketSecs": 3600,
+   "reads": "268",
+   "writes": "266307",
+   "readBytes": "13301760",
+   "writeBytes": "2433265152",
+   "readMs": "58",
+   "writeMs": "22321",
+   "ioMs": "7689",
+   "weightedMs": "23192",
+   "rAwaitMaxMs": 0.21804511278195488,
+   "wAwaitMaxMs": 0.10293463761671855,
+   "utilMax": 0.0031333333333333335,
+   "hostname": "server2",
+   "awaitReads": "268",
+   "awaitWrites": "266307"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-25T23:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "239742",
+   "writeBytes": "1987030528",
+   "writeMs": "19668",
+   "ioMs": "7176",
+   "weightedMs": "20464",
+   "wAwaitMaxMs": 0.10693970420932879,
+   "utilMax": 0.003083744499266569,
+   "hostname": "server2",
+   "awaitWrites": "239742"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-25T22:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "241822",
+   "writeBytes": "2369555968",
+   "writeMs": "20720",
+   "ioMs": "7390",
+   "weightedMs": "21525",
+   "wAwaitMaxMs": 0.119375,
+   "utilMax": 0.0028006534858133563,
+   "hostname": "server2",
+   "awaitWrites": "241822"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-25T21:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "243893",
+   "writeBytes": "2119214592",
+   "writeMs": "19668",
+   "ioMs": "7198",
+   "weightedMs": "20488",
+   "wAwaitMaxMs": 0.11031664964249234,
+   "utilMax": 0.002450408401400233,
+   "hostname": "server2",
+   "awaitWrites": "243893"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-25T20:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "354390",
+   "writeBytes": "4169932288",
+   "writeMs": "30440",
+   "ioMs": "9405",
+   "weightedMs": "31251",
+   "wAwaitMaxMs": 0.1040638055450057,
+   "utilMax": 0.0034487354636633235,
+   "hostname": "server2",
+   "awaitWrites": "354390"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-25T19:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "267537",
+   "writeBytes": "2435128320",
+   "writeMs": "21310",
+   "ioMs": "7495",
+   "weightedMs": "22109",
+   "wAwaitMaxMs": 0.09721645201495638,
+   "utilMax": 0.002816572780907303,
+   "hostname": "server2",
+   "awaitWrites": "267537"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-25T18:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "378706",
+   "writeBytes": "4026483200",
+   "writeMs": "31696",
+   "ioMs": "9564",
+   "weightedMs": "32509",
+   "wAwaitMaxMs": 0.10030777839955232,
+   "utilMax": 0.004100068334472241,
+   "hostname": "server2",
+   "awaitWrites": "378706"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-25T17:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "307273",
+   "writeBytes": "2885444608",
+   "writeMs": "24742",
+   "ioMs": "8195",
+   "weightedMs": "25548",
+   "wAwaitMaxMs": 0.09950156913420713,
+   "utilMax": 0.0028371635040638195,
+   "hostname": "server2",
+   "awaitWrites": "307273"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-25T16:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "286716",
+   "writeBytes": "2867227648",
+   "writeMs": "23431",
+   "ioMs": "7908",
+   "weightedMs": "24252",
+   "wAwaitMaxMs": 0.09455587392550144,
+   "utilMax": 0.002749816678888074,
+   "hostname": "server2",
+   "awaitWrites": "286716"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-25T15:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "274434",
+   "writeBytes": "2661623808",
+   "writeMs": "21550",
+   "ioMs": "7671",
+   "weightedMs": "22370",
+   "wAwaitMaxMs": 0.09193776520509193,
+   "utilMax": 0.0025513607257203843,
+   "hostname": "server2",
+   "awaitWrites": "274434"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-25T14:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "300688",
+   "writeBytes": "3070868480",
+   "writeMs": "24007",
+   "ioMs": "8040",
+   "weightedMs": "24811",
+   "wAwaitMaxMs": 0.09534409200519384,
+   "utilMax": 0.0029668150074170377,
+   "hostname": "server2",
+   "awaitWrites": "300688"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-25T13:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "287315",
+   "writeBytes": "3242518528",
+   "writeMs": "22684",
+   "ioMs": "7881",
+   "weightedMs": "23505",
+   "wAwaitMaxMs": 0.09726013547669599,
+   "utilMax": 0.0037835855723714912,
+   "hostname": "server2",
+   "awaitWrites": "287315"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-25T12:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "273059",
+   "writeBytes": "2532206080",
+   "writeMs": "21331",
+   "ioMs": "7585",
+   "weightedMs": "22148",
+   "wAwaitMaxMs": 0.09377510040160643,
+   "utilMax": 0.0037505625843876583,
+   "hostname": "server2",
+   "awaitWrites": "273059"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-25T11:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "283069",
+   "writeBytes": "3039766528",
+   "writeMs": "22509",
+   "ioMs": "7838",
+   "weightedMs": "23313",
+   "wAwaitMaxMs": 0.09753086419753086,
+   "utilMax": 0.0029666666666666665,
+   "hostname": "server2",
+   "awaitWrites": "283069"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-25T10:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "279124",
+   "writeBytes": "2781209088",
+   "writeMs": "22405",
+   "ioMs": "7868",
+   "weightedMs": "23227",
+   "wAwaitMaxMs": 0.15410305343511452,
+   "utilMax": 0.0028497625197900175,
+   "hostname": "server2",
+   "awaitWrites": "279124"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-25T09:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "311421",
+   "writeBytes": "3120751104",
+   "writeMs": "27293",
+   "ioMs": "8621",
+   "weightedMs": "28096",
+   "wAwaitMaxMs": 0.11106934786694231,
+   "utilMax": 0.0028667622254075135,
+   "hostname": "server2",
+   "awaitWrites": "311421"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-25T08:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "269830",
+   "writeBytes": "2582814720",
+   "writeMs": "22822",
+   "ioMs": "7801",
+   "weightedMs": "23648",
+   "wAwaitMaxMs": 0.10784525610546791,
+   "utilMax": 0.0028497150284971504,
+   "hostname": "server2",
+   "awaitWrites": "269830"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-25T07:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "277651",
+   "writeBytes": "2576150528",
+   "writeMs": "25433",
+   "ioMs": "8177",
+   "weightedMs": "26249",
+   "wAwaitMaxMs": 0.11587510993843447,
+   "utilMax": 0.003150157507875394,
+   "hostname": "server2",
+   "awaitWrites": "277651"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-25T06:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "287871",
+   "writeBytes": "2415035904",
+   "writeMs": "30145",
+   "ioMs": "8820",
+   "weightedMs": "30962",
+   "wAwaitMaxMs": 0.13573162657250054,
+   "utilMax": 0.003569046030687125,
+   "hostname": "server2",
+   "awaitWrites": "287871"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-25T05:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "432996",
+   "writeBytes": "5263089664",
+   "writeMs": "38751",
+   "ioMs": "10962",
+   "weightedMs": "39552",
+   "wAwaitMaxMs": 0.10598919416024831,
+   "utilMax": 0.0044998500049998336,
+   "hostname": "server2",
+   "awaitWrites": "432996"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-25T04:00:00Z",
+   "bucketSecs": 3600,
+   "reads": "101",
+   "writes": "377331",
+   "readBytes": "7736832",
+   "writeBytes": "4232994304",
+   "readMs": "29",
+   "writeMs": "31496",
+   "ioMs": "9710",
+   "weightedMs": "32340",
+   "rAwaitMaxMs": 0.2871287128712871,
+   "wAwaitMaxMs": 0.09853297909206422,
+   "utilMax": 0.0037684252651237243,
+   "hostname": "server2",
+   "awaitReads": "101",
+   "awaitWrites": "377331"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-25T03:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "273860",
+   "writeBytes": "2257319936",
+   "writeMs": "20884",
+   "ioMs": "7391",
+   "weightedMs": "21712",
+   "wAwaitMaxMs": 0.08655498281786941,
+   "utilMax": 0.0028168544569637977,
+   "hostname": "server2",
+   "awaitWrites": "273860"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-25T02:00:00Z",
+   "bucketSecs": 3599,
+   "reads": "7",
+   "writes": "281202",
+   "readBytes": "41984",
+   "writeBytes": "2243241984",
+   "readMs": "21",
+   "writeMs": "21336",
+   "ioMs": "7627",
+   "weightedMs": "22183",
+   "rAwaitMaxMs": 3,
+   "wAwaitMaxMs": 0.08885163453478626,
+   "utilMax": 0.0027669894821062456,
+   "hostname": "server2",
+   "awaitReads": "7",
+   "awaitWrites": "281202"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-25T01:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "279123",
+   "writeBytes": "2113476608",
+   "writeMs": "21228",
+   "ioMs": "7485",
+   "weightedMs": "22057",
+   "wAwaitMaxMs": 0.09346938775510204,
+   "utilMax": 0.0030651340996168583,
+   "hostname": "server2",
+   "awaitWrites": "279123"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-25T00:00:00Z",
+   "bucketSecs": 3600,
+   "reads": "174",
+   "writes": "274282",
+   "readBytes": "8147968",
+   "writeBytes": "2504154112",
+   "readMs": "57",
+   "writeMs": "20751",
+   "ioMs": "7560",
+   "weightedMs": "21633",
+   "rAwaitMaxMs": 0.3275862068965517,
+   "wAwaitMaxMs": 0.0933456561922366,
+   "utilMax": 0.003099483419430095,
+   "hostname": "server2",
+   "awaitReads": "174",
+   "awaitWrites": "274282"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-24T23:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "307557",
+   "writeBytes": "2971003392",
+   "writeMs": "24518",
+   "ioMs": "8164",
+   "weightedMs": "25354",
+   "wAwaitMaxMs": 0.09875567845151097,
+   "utilMax": 0.003198720511795282,
+   "hostname": "server2",
+   "awaitWrites": "307557"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-24T22:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "282115",
+   "writeBytes": "2518630912",
+   "writeMs": "22309",
+   "ioMs": "7795",
+   "weightedMs": "23118",
+   "wAwaitMaxMs": 0.0973335819504009,
+   "utilMax": 0.0026171028504750793,
+   "hostname": "server2",
+   "awaitWrites": "282115"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-24T21:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "385816",
+   "writeBytes": "3841482240",
+   "writeMs": "33502",
+   "ioMs": "9813",
+   "weightedMs": "34308",
+   "wAwaitMaxMs": 0.10137068835668023,
+   "utilMax": 0.004000133337777926,
+   "hostname": "server2",
+   "awaitWrites": "385816"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-24T20:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "292479",
+   "writeBytes": "2625668096",
+   "writeMs": "22906",
+   "ioMs": "7860",
+   "weightedMs": "23726",
+   "wAwaitMaxMs": 0.09227395411605938,
+   "utilMax": 0.0027972959472509907,
+   "hostname": "server2",
+   "awaitWrites": "292479"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-24T19:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "272300",
+   "writeBytes": "2484710400",
+   "writeMs": "20944",
+   "ioMs": "7557",
+   "weightedMs": "21745",
+   "wAwaitMaxMs": 0.09082693176683236,
+   "utilMax": 0.0028834775072086936,
+   "hostname": "server2",
+   "awaitWrites": "272300"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-24T18:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "318619",
+   "writeBytes": "2973121536",
+   "writeMs": "25295",
+   "ioMs": "8466",
+   "weightedMs": "26103",
+   "wAwaitMaxMs": 0.09396887159533074,
+   "utilMax": 0.0029985007496251873,
+   "hostname": "server2",
+   "awaitWrites": "318619"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-24T17:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "283727",
+   "writeBytes": "2443295744",
+   "writeMs": "21713",
+   "ioMs": "7540",
+   "weightedMs": "22519",
+   "wAwaitMaxMs": 0.09499247797120138,
+   "utilMax": 0.0027336978263768504,
+   "hostname": "server2",
+   "awaitWrites": "283727"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-24T16:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "268931",
+   "writeBytes": "2077056000",
+   "writeMs": "20252",
+   "ioMs": "7327",
+   "weightedMs": "21061",
+   "wAwaitMaxMs": 0.10205115219042796,
+   "utilMax": 0.002766205632394601,
+   "hostname": "server2",
+   "awaitWrites": "268931"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-24T15:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "256723",
+   "writeBytes": "2098753024",
+   "writeMs": "19369",
+   "ioMs": "7228",
+   "weightedMs": "20189",
+   "wAwaitMaxMs": 0.08652447891420262,
+   "utilMax": 0.0028000466674444574,
+   "hostname": "server2",
+   "awaitWrites": "256723"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-24T14:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "265716",
+   "writeBytes": "1942830592",
+   "writeMs": "20312",
+   "ioMs": "7271",
+   "weightedMs": "21128",
+   "wAwaitMaxMs": 0.08549107142857143,
+   "utilMax": 0.003283388056467608,
+   "hostname": "server2",
+   "awaitWrites": "265716"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-24T13:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "275619",
+   "writeBytes": "2077121536",
+   "writeMs": "20486",
+   "ioMs": "7427",
+   "weightedMs": "21294",
+   "wAwaitMaxMs": 0.08713910761154856,
+   "utilMax": 0.002966172304615897,
+   "hostname": "server2",
+   "awaitWrites": "275619"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-24T12:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "250845",
+   "writeBytes": "2107066368",
+   "writeMs": "18309",
+   "ioMs": "7077",
+   "weightedMs": "19119",
+   "wAwaitMaxMs": 0.08341254752851711,
+   "utilMax": 0.0024502041836819734,
+   "hostname": "server2",
+   "awaitWrites": "250845"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-24T11:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "252581",
+   "writeBytes": "1964506624",
+   "writeMs": "18590",
+   "ioMs": "7154",
+   "weightedMs": "19415",
+   "wAwaitMaxMs": 0.08355410637864276,
+   "utilMax": 0.002415982138394122,
+   "hostname": "server2",
+   "awaitWrites": "252581"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-24T10:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "267743",
+   "writeBytes": "2351288320",
+   "writeMs": "20085",
+   "ioMs": "7470",
+   "weightedMs": "20902",
+   "wAwaitMaxMs": 0.08533077660594439,
+   "utilMax": 0.0025,
+   "hostname": "server2",
+   "awaitWrites": "267743"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-24T09:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "293321",
+   "writeBytes": "2710206464",
+   "writeMs": "22815",
+   "ioMs": "7998",
+   "weightedMs": "23625",
+   "wAwaitMaxMs": 0.10351966873706005,
+   "utilMax": 0.003416666666666667,
+   "hostname": "server2",
+   "awaitWrites": "293321"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-24T08:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "255232",
+   "writeBytes": "1813504512",
+   "writeMs": "18851",
+   "ioMs": "7187",
+   "weightedMs": "19660",
+   "wAwaitMaxMs": 0.08761197290801835,
+   "utilMax": 0.002416666666666667,
+   "hostname": "server2",
+   "awaitWrites": "255232"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-24T07:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "265065",
+   "writeBytes": "2175452672",
+   "writeMs": "19856",
+   "ioMs": "7293",
+   "weightedMs": "20672",
+   "wAwaitMaxMs": 0.08838934962898298,
+   "utilMax": 0.0024500408340139,
+   "hostname": "server2",
+   "awaitWrites": "265065"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-24T06:00:00Z",
+   "bucketSecs": 3599,
+   "reads": "79",
+   "writes": "287180",
+   "readBytes": "2065920",
+   "writeBytes": "2486140416",
+   "readMs": "16",
+   "writeMs": "22208",
+   "ioMs": "7920",
+   "weightedMs": "23035",
+   "rAwaitMaxMs": 0.2222222222222222,
+   "wAwaitMaxMs": 0.0987450462351387,
+   "utilMax": 0.0034147316520638303,
+   "hostname": "server2",
+   "awaitReads": "79",
+   "awaitWrites": "287180"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-24T05:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "274502",
+   "writeBytes": "2012485632",
+   "writeMs": "20268",
+   "ioMs": "7366",
+   "weightedMs": "21089",
+   "wAwaitMaxMs": 0.09482964021920419,
+   "utilMax": 0.0024662556240626562,
+   "hostname": "server2",
+   "awaitWrites": "274502"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-24T04:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "286540",
+   "writeBytes": "2662147584",
+   "writeMs": "21571",
+   "ioMs": "7690",
+   "weightedMs": "22381",
+   "wAwaitMaxMs": 0.08737660155429532,
+   "utilMax": 0.00295,
+   "hostname": "server2",
+   "awaitWrites": "286540"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-24T03:00:00Z",
+   "bucketSecs": 3600,
+   "reads": "3",
+   "writes": "277598",
+   "readBytes": "50176",
+   "writeBytes": "2002855936",
+   "writeMs": "20641",
+   "ioMs": "7484",
+   "weightedMs": "21458",
+   "wAwaitMaxMs": 0.08390984155322473,
+   "utilMax": 0.003166719445324089,
+   "hostname": "server2",
+   "awaitReads": "3",
+   "awaitWrites": "277598"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-24T02:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "272748",
+   "writeBytes": "2430297088",
+   "writeMs": "20525",
+   "ioMs": "7435",
+   "weightedMs": "21354",
+   "wAwaitMaxMs": 0.0928664636798608,
+   "utilMax": 0.0029165694476850773,
+   "hostname": "server2",
+   "awaitWrites": "272748"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-24T01:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "263693",
+   "writeBytes": "2142122496",
+   "writeMs": "19795",
+   "ioMs": "7262",
+   "weightedMs": "20610",
+   "wAwaitMaxMs": 0.08796296296296297,
+   "utilMax": 0.0031333333333333335,
+   "hostname": "server2",
+   "awaitWrites": "263693"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-24T00:00:00Z",
+   "bucketSecs": 3599,
+   "reads": "176",
+   "writes": "281738",
+   "readBytes": "6966272",
+   "writeBytes": "2412910592",
+   "readMs": "45",
+   "writeMs": "21041",
+   "ioMs": "7522",
+   "weightedMs": "21898",
+   "rAwaitMaxMs": 0.2556818181818182,
+   "wAwaitMaxMs": 0.08638392857142857,
+   "utilMax": 0.002866953362002867,
+   "hostname": "server2",
+   "awaitReads": "176",
+   "awaitWrites": "281738"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-23T23:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "322635",
+   "writeBytes": "3404174848",
+   "writeMs": "26333",
+   "ioMs": "8678",
+   "weightedMs": "27141",
+   "wAwaitMaxMs": 0.10062799043062201,
+   "utilMax": 0.003283388056467608,
+   "hostname": "server2",
+   "awaitWrites": "322635"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-23T22:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "337892",
+   "writeBytes": "3635614720",
+   "writeMs": "27594",
+   "ioMs": "8931",
+   "weightedMs": "28412",
+   "wAwaitMaxMs": 0.10460666194188518,
+   "utilMax": 0.0035679749241388507,
+   "hostname": "server2",
+   "awaitWrites": "337892"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-23T21:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "366298",
+   "writeBytes": "3772088832",
+   "writeMs": "31236",
+   "ioMs": "9433",
+   "weightedMs": "32040",
+   "wAwaitMaxMs": 0.10823563054046326,
+   "utilMax": 0.0036167269454490908,
+   "hostname": "server2",
+   "awaitWrites": "366298"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-23T20:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "263236",
+   "writeBytes": "2373062656",
+   "writeMs": "20071",
+   "ioMs": "7371",
+   "weightedMs": "20889",
+   "wAwaitMaxMs": 0.09369797859690844,
+   "utilMax": 0.002482919513414431,
+   "hostname": "server2",
+   "awaitWrites": "263236"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-23T19:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "416139",
+   "writeBytes": "5358607872",
+   "writeMs": "34854",
+   "ioMs": "10413",
+   "weightedMs": "35663",
+   "wAwaitMaxMs": 0.0978469169203021,
+   "utilMax": 0.004832608442067023,
+   "hostname": "server2",
+   "awaitWrites": "416139"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-23T18:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "414886",
+   "writeBytes": "4779145216",
+   "writeMs": "35888",
+   "ioMs": "10562",
+   "weightedMs": "36694",
+   "wAwaitMaxMs": 0.09984586401781127,
+   "utilMax": 0.00450067510126519,
+   "hostname": "server2",
+   "awaitWrites": "414886"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-23T17:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "282131",
+   "writeBytes": "2289368064",
+   "writeMs": "21542",
+   "ioMs": "7491",
+   "weightedMs": "22360",
+   "wAwaitMaxMs": 0.0905750505236083,
+   "utilMax": 0.0028346561728806777,
+   "hostname": "server2",
+   "awaitWrites": "282131"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-23T16:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "286502",
+   "writeBytes": "2311087104",
+   "writeMs": "21854",
+   "ioMs": "7611",
+   "weightedMs": "22670",
+   "wAwaitMaxMs": 0.08866782006920415,
+   "utilMax": 0.0029362696029362695,
+   "hostname": "server2",
+   "awaitWrites": "286502"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-23T15:00:00Z",
+   "bucketSecs": 3599,
+   "reads": "1",
+   "writes": "273208",
+   "readBytes": "1536",
+   "writeBytes": "2346349056",
+   "readMs": "1",
+   "writeMs": "20438",
+   "ioMs": "7354",
+   "weightedMs": "21244",
+   "rAwaitMaxMs": 1,
+   "wAwaitMaxMs": 0.0879144385026738,
+   "utilMax": 0.0026171028504750793,
+   "hostname": "server2",
+   "awaitReads": "1",
+   "awaitWrites": "273208"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-23T14:00:00Z",
+   "bucketSecs": 3600,
+   "reads": "3",
+   "writes": "288775",
+   "readBytes": "80896",
+   "writeBytes": "2388640256",
+   "writeMs": "21749",
+   "ioMs": "7762",
+   "weightedMs": "22572",
+   "wAwaitMaxMs": 0.08586147681740126,
+   "utilMax": 0.0030996900309969004,
+   "hostname": "server2",
+   "awaitReads": "3",
+   "awaitWrites": "288775"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-23T13:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "276209",
+   "writeBytes": "2177820160",
+   "writeMs": "20546",
+   "ioMs": "7598",
+   "weightedMs": "21366",
+   "wAwaitMaxMs": 0.09277410531114658,
+   "utilMax": 0.002547537380532152,
+   "hostname": "server2",
+   "awaitWrites": "276209"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-23T12:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "252424",
+   "writeBytes": "1848611840",
+   "writeMs": "18723",
+   "ioMs": "7262",
+   "weightedMs": "19540",
+   "wAwaitMaxMs": 0.08588801621484672,
+   "utilMax": 0.00405,
+   "hostname": "server2",
+   "awaitWrites": "252424"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-23T11:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "254522",
+   "writeBytes": "1972302336",
+   "writeMs": "19134",
+   "ioMs": "7170",
+   "weightedMs": "19943",
+   "wAwaitMaxMs": 0.10084206202505648,
+   "utilMax": 0.0025840654852208127,
+   "hostname": "server2",
+   "awaitWrites": "254522"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-23T10:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "299501",
+   "writeBytes": "2443032064",
+   "writeMs": "22216",
+   "ioMs": "7803",
+   "weightedMs": "23039",
+   "wAwaitMaxMs": 0.09209280303030302,
+   "utilMax": 0.0030333838897314957,
+   "hostname": "server2",
+   "awaitWrites": "299501"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-23T09:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "258516",
+   "writeBytes": "1903653888",
+   "writeMs": "18950",
+   "ioMs": "7291",
+   "weightedMs": "19760",
+   "wAwaitMaxMs": 0.08995459704880818,
+   "utilMax": 0.002766620556324061,
+   "hostname": "server2",
+   "awaitWrites": "258516"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-23T08:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "212355",
+   "writeBytes": "1451983872",
+   "writeMs": "15536",
+   "ioMs": "6509",
+   "weightedMs": "16352",
+   "wAwaitMaxMs": 0.08035714285714286,
+   "utilMax": 0.0021502150215021503,
+   "hostname": "server2",
+   "awaitWrites": "212355"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-23T07:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "250668",
+   "writeBytes": "2140048384",
+   "writeMs": "18841",
+   "ioMs": "7202",
+   "weightedMs": "19660",
+   "wAwaitMaxMs": 0.08887915936952714,
+   "utilMax": 0.0027503208707682562,
+   "hostname": "server2",
+   "awaitWrites": "250668"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-23T06:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "398240",
+   "writeBytes": "4542646784",
+   "writeMs": "33795",
+   "ioMs": "10218",
+   "weightedMs": "34599",
+   "wAwaitMaxMs": 0.10150091782744844,
+   "utilMax": 0.004249787510624469,
+   "hostname": "server2",
+   "awaitWrites": "398240"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-23T05:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "369251",
+   "writeBytes": "3957076480",
+   "writeMs": "29831",
+   "ioMs": "9393",
+   "weightedMs": "30629",
+   "wAwaitMaxMs": 0.09297348710022589,
+   "utilMax": 0.003783900918471104,
+   "hostname": "server2",
+   "awaitWrites": "369251"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-23T04:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "261952",
+   "writeBytes": "1883888128",
+   "writeMs": "19744",
+   "ioMs": "7271",
+   "weightedMs": "20558",
+   "wAwaitMaxMs": 0.08789473684210526,
+   "utilMax": 0.0031837047655559813,
+   "hostname": "server2",
+   "awaitWrites": "261952"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-23T03:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "267967",
+   "writeBytes": "2039818752",
+   "writeMs": "19817",
+   "ioMs": "7457",
+   "weightedMs": "20641",
+   "wAwaitMaxMs": 0.08902691511387163,
+   "utilMax": 0.0033022565419703466,
+   "hostname": "server2",
+   "awaitWrites": "267967"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-23T02:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "260554",
+   "writeBytes": "2800782336",
+   "writeMs": "19634",
+   "ioMs": "7409",
+   "weightedMs": "20451",
+   "wAwaitMaxMs": 0.08862009380399902,
+   "utilMax": 0.002400360054008101,
+   "hostname": "server2",
+   "awaitWrites": "260554"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-23T01:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "256871",
+   "writeBytes": "2303651328",
+   "writeMs": "19277",
+   "ioMs": "7317",
+   "weightedMs": "20100",
+   "wAwaitMaxMs": 0.08555825242718447,
+   "utilMax": 0.0025025025025025025,
+   "hostname": "server2",
+   "awaitWrites": "256871"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-23T00:00:00Z",
+   "bucketSecs": 3600,
+   "reads": "158",
+   "writes": "247778",
+   "readBytes": "7007232",
+   "writeBytes": "1997497856",
+   "readMs": "70",
+   "writeMs": "18455",
+   "ioMs": "7114",
+   "weightedMs": "19340",
+   "rAwaitMaxMs": 0.4430379746835443,
+   "wAwaitMaxMs": 0.08710462287104623,
+   "utilMax": 0.002815962675997667,
+   "hostname": "server2",
+   "awaitReads": "158",
+   "awaitWrites": "247778"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-22T23:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "288272",
+   "writeBytes": "2500359680",
+   "writeMs": "22529",
+   "ioMs": "7839",
+   "weightedMs": "23332",
+   "wAwaitMaxMs": 0.08932414980628497,
+   "utilMax": 0.002732695704335655,
+   "hostname": "server2",
+   "awaitWrites": "288272"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-22T22:00:00Z",
+   "bucketSecs": 3600,
+   "reads": "217",
+   "writes": "277242",
+   "readBytes": "21949952",
+   "writeBytes": "2303628288",
+   "readMs": "77",
+   "writeMs": "20676",
+   "ioMs": "7584",
+   "weightedMs": "21573",
+   "rAwaitMaxMs": 0.3548387096774194,
+   "wAwaitMaxMs": 0.08891129032258065,
+   "utilMax": 0.003132498000533191,
+   "hostname": "server2",
+   "awaitReads": "217",
+   "awaitWrites": "277242"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-22T21:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "255943",
+   "writeBytes": "2420638720",
+   "writeMs": "19470",
+   "ioMs": "7405",
+   "weightedMs": "20267",
+   "wAwaitMaxMs": 0.08917197452229299,
+   "utilMax": 0.0033165008416245856,
+   "hostname": "server2",
+   "awaitWrites": "255943"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-22T20:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "246817",
+   "writeBytes": "2313415680",
+   "writeMs": "18518",
+   "ioMs": "7199",
+   "weightedMs": "19337",
+   "wAwaitMaxMs": 0.08824242424242425,
+   "utilMax": 0.002517463863556793,
+   "hostname": "server2",
+   "awaitWrites": "246817"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-22T19:00:00Z",
+   "bucketSecs": 3599,
+   "reads": "5",
+   "writes": "252304",
+   "readBytes": "406528",
+   "writeBytes": "3060756992",
+   "readMs": "2",
+   "writeMs": "18954",
+   "ioMs": "7519",
+   "weightedMs": "19765",
+   "rAwaitMaxMs": 0.4,
+   "wAwaitMaxMs": 0.08818713450292398,
+   "utilMax": 0.002416787506041969,
+   "hostname": "server2",
+   "awaitReads": "5",
+   "awaitWrites": "252304"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-22T18:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "521038",
+   "writeBytes": "7507683328",
+   "writeMs": "46154",
+   "ioMs": "12724",
+   "weightedMs": "46942",
+   "wAwaitMaxMs": 0.10268998670348778,
+   "utilMax": 0.004516741945699095,
+   "hostname": "server2",
+   "awaitWrites": "521038"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-22T17:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "306481",
+   "writeBytes": "2917296128",
+   "writeMs": "23720",
+   "ioMs": "8094",
+   "weightedMs": "24528",
+   "wAwaitMaxMs": 0.08819115779752973,
+   "utilMax": 0.0035011670556852285,
+   "hostname": "server2",
+   "awaitWrites": "306481"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-22T16:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "306194",
+   "writeBytes": "3119832064",
+   "writeMs": "24080",
+   "ioMs": "8165",
+   "weightedMs": "24890",
+   "wAwaitMaxMs": 0.09769259397097134,
+   "utilMax": 0.003201120392137248,
+   "hostname": "server2",
+   "awaitWrites": "306194"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-22T15:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "315196",
+   "writeBytes": "3289998336",
+   "writeMs": "25788",
+   "ioMs": "8391",
+   "weightedMs": "26592",
+   "wAwaitMaxMs": 0.09936640395611189,
+   "utilMax": 0.002982885900448266,
+   "hostname": "server2",
+   "awaitWrites": "315196"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-22T14:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "302418",
+   "writeBytes": "2986939904",
+   "writeMs": "24785",
+   "ioMs": "8209",
+   "weightedMs": "25595",
+   "wAwaitMaxMs": 0.11366518706404566,
+   "utilMax": 0.003500233348889926,
+   "hostname": "server2",
+   "awaitWrites": "302418"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-22T13:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "312426",
+   "writeBytes": "3619902976",
+   "writeMs": "24732",
+   "ioMs": "8378",
+   "weightedMs": "25533",
+   "wAwaitMaxMs": 0.09592722762042588,
+   "utilMax": 0.003000150007500375,
+   "hostname": "server2",
+   "awaitWrites": "312426"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-22T12:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "332119",
+   "writeBytes": "4082740736",
+   "writeMs": "27174",
+   "ioMs": "8986",
+   "weightedMs": "28000",
+   "wAwaitMaxMs": 0.10080872672559714,
+   "utilMax": 0.0031303073695427754,
+   "hostname": "server2",
+   "awaitWrites": "332119"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-22T11:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "320818",
+   "writeBytes": "3416798720",
+   "writeMs": "25813",
+   "ioMs": "8468",
+   "weightedMs": "26630",
+   "wAwaitMaxMs": 0.09858425414364641,
+   "utilMax": 0.002948967861248563,
+   "hostname": "server2",
+   "awaitWrites": "320818"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-22T10:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "306406",
+   "writeBytes": "2835660800",
+   "writeMs": "24180",
+   "ioMs": "8089",
+   "weightedMs": "24996",
+   "wAwaitMaxMs": 0.09567958464676432,
+   "utilMax": 0.003084310031509978,
+   "hostname": "server2",
+   "awaitWrites": "306406"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-22T09:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "329832",
+   "writeBytes": "3281780224",
+   "writeMs": "26463",
+   "ioMs": "8574",
+   "weightedMs": "27270",
+   "wAwaitMaxMs": 0.09436232382261946,
+   "utilMax": 0.003416666666666667,
+   "hostname": "server2",
+   "awaitWrites": "329832"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-22T08:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "292688",
+   "writeBytes": "2613640704",
+   "writeMs": "22339",
+   "ioMs": "7860",
+   "weightedMs": "23139",
+   "wAwaitMaxMs": 0.08570889182556164,
+   "utilMax": 0.002766666666666667,
+   "hostname": "server2",
+   "awaitWrites": "292688"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-22T07:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "307821",
+   "writeBytes": "3147138048",
+   "writeMs": "25537",
+   "ioMs": "8409",
+   "weightedMs": "26345",
+   "wAwaitMaxMs": 0.11613774476704929,
+   "utilMax": 0.003233764501933591,
+   "hostname": "server2",
+   "awaitWrites": "307821"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-22T06:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "339033",
+   "writeBytes": "3566905856",
+   "writeMs": "28558",
+   "ioMs": "8971",
+   "weightedMs": "29359",
+   "wAwaitMaxMs": 0.10264133456904541,
+   "utilMax": 0.0033833333333333332,
+   "hostname": "server2",
+   "awaitWrites": "339033"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-22T05:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "375719",
+   "writeBytes": "4211092992",
+   "writeMs": "30830",
+   "ioMs": "9483",
+   "weightedMs": "31628",
+   "wAwaitMaxMs": 0.10177777777777777,
+   "utilMax": 0.003949605039496051,
+   "hostname": "server2",
+   "awaitWrites": "375719"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-22T04:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "296275",
+   "writeBytes": "2768697856",
+   "writeMs": "23125",
+   "ioMs": "8039",
+   "weightedMs": "23936",
+   "wAwaitMaxMs": 0.09000793021411578,
+   "utilMax": 0.004033400556675944,
+   "hostname": "server2",
+   "awaitWrites": "296275"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-22T03:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "290206",
+   "writeBytes": "2327222272",
+   "writeMs": "22232",
+   "ioMs": "7632",
+   "weightedMs": "23047",
+   "wAwaitMaxMs": 0.09058872305140962,
+   "utilMax": 0.0027333333333333333,
+   "hostname": "server2",
+   "awaitWrites": "290206"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-22T02:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "294430",
+   "writeBytes": "2856761856",
+   "writeMs": "23683",
+   "ioMs": "7956",
+   "weightedMs": "24503",
+   "wAwaitMaxMs": 0.09982588508415555,
+   "utilMax": 0.0028495250791534745,
+   "hostname": "server2",
+   "awaitWrites": "294430"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-22T01:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "261969",
+   "writeBytes": "2030680064",
+   "writeMs": "19959",
+   "ioMs": "7266",
+   "weightedMs": "20786",
+   "wAwaitMaxMs": 0.08745659722222222,
+   "utilMax": 0.0022667044450740844,
+   "hostname": "server2",
+   "awaitWrites": "261969"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-22T00:00:00Z",
+   "bucketSecs": 3600,
+   "reads": "228",
+   "writes": "301248",
+   "readBytes": "13043200",
+   "writeBytes": "3030936576",
+   "readMs": "47",
+   "writeMs": "23977",
+   "ioMs": "8085",
+   "weightedMs": "24851",
+   "rAwaitMaxMs": 0.20614035087719298,
+   "wAwaitMaxMs": 0.10372040586245772,
+   "utilMax": 0.0033500558342639043,
+   "hostname": "server2",
+   "awaitReads": "228",
+   "awaitWrites": "301248"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-21T23:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "301193",
+   "writeBytes": "2842155008",
+   "writeMs": "23118",
+   "ioMs": "7915",
+   "weightedMs": "23935",
+   "wAwaitMaxMs": 0.0982488060040937,
+   "utilMax": 0.0035324502207781387,
+   "hostname": "server2",
+   "awaitWrites": "301193"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-21T22:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "293527",
+   "writeBytes": "2607480320",
+   "writeMs": "23596",
+   "ioMs": "7997",
+   "weightedMs": "24402",
+   "wAwaitMaxMs": 0.10086956521739131,
+   "utilMax": 0.0033661056490584904,
+   "hostname": "server2",
+   "awaitWrites": "293527"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-21T21:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "286427",
+   "writeBytes": "2804401664",
+   "writeMs": "22658",
+   "ioMs": "7728",
+   "weightedMs": "23473",
+   "wAwaitMaxMs": 0.09742288168684107,
+   "utilMax": 0.0028163850281638504,
+   "hostname": "server2",
+   "awaitWrites": "286427"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-21T20:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "305302",
+   "writeBytes": "3397329408",
+   "writeMs": "24363",
+   "ioMs": "8250",
+   "weightedMs": "25186",
+   "wAwaitMaxMs": 0.09353970390309556,
+   "utilMax": 0.003382656801972939,
+   "hostname": "server2",
+   "awaitWrites": "305302"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-21T19:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "338871",
+   "writeBytes": "3650659840",
+   "writeMs": "30448",
+   "ioMs": "9099",
+   "weightedMs": "31249",
+   "wAwaitMaxMs": 0.10985813022917425,
+   "utilMax": 0.00311687445829722,
+   "hostname": "server2",
+   "awaitWrites": "338871"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-21T18:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "274494",
+   "writeBytes": "2343256064",
+   "writeMs": "22331",
+   "ioMs": "7685",
+   "weightedMs": "23151",
+   "wAwaitMaxMs": 0.09970111016225448,
+   "utilMax": 0.0027167119451990867,
+   "hostname": "server2",
+   "awaitWrites": "274494"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-21T17:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "288313",
+   "writeBytes": "2670296064",
+   "writeMs": "23538",
+   "ioMs": "7920",
+   "weightedMs": "24354",
+   "wAwaitMaxMs": 0.1100765570039313,
+   "utilMax": 0.0026319296375266524,
+   "hostname": "server2",
+   "awaitWrites": "288313"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-21T16:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "280545",
+   "writeBytes": "2536462336",
+   "writeMs": "22546",
+   "ioMs": "7769",
+   "weightedMs": "23353",
+   "wAwaitMaxMs": 0.09808565225971975,
+   "utilMax": 0.0028497625197900175,
+   "hostname": "server2",
+   "awaitWrites": "280545"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-21T15:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "286036",
+   "writeBytes": "2514008576",
+   "writeMs": "22522",
+   "ioMs": "7783",
+   "weightedMs": "23334",
+   "wAwaitMaxMs": 0.09998224116497957,
+   "utilMax": 0.002917104232301512,
+   "hostname": "server2",
+   "awaitWrites": "286036"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-21T14:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "307844",
+   "writeBytes": "3219777024",
+   "writeMs": "24539",
+   "ioMs": "8201",
+   "weightedMs": "25362",
+   "wAwaitMaxMs": 0.09758897818599312,
+   "utilMax": 0.002983631696502984,
+   "hostname": "server2",
+   "awaitWrites": "307844"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-21T13:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "282267",
+   "writeBytes": "2516263424",
+   "writeMs": "21344",
+   "ioMs": "7611",
+   "weightedMs": "22155",
+   "wAwaitMaxMs": 0.08716289104638619,
+   "utilMax": 0.0027687894052106617,
+   "hostname": "server2",
+   "awaitWrites": "282267"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-21T12:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "292024",
+   "writeBytes": "2533457408",
+   "writeMs": "22518",
+   "ioMs": "7902",
+   "weightedMs": "23333",
+   "wAwaitMaxMs": 0.10238844658396594,
+   "utilMax": 0.003216773892463082,
+   "hostname": "server2",
+   "awaitWrites": "292024"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-21T11:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "328259",
+   "writeBytes": "3260896768",
+   "writeMs": "26779",
+   "ioMs": "8679",
+   "weightedMs": "27583",
+   "wAwaitMaxMs": 0.1041361433562493,
+   "utilMax": 0.00398207234375781,
+   "hostname": "server2",
+   "awaitWrites": "328259"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-21T10:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "453574",
+   "writeBytes": "6086031872",
+   "writeMs": "38461",
+   "ioMs": "11065",
+   "weightedMs": "39253",
+   "wAwaitMaxMs": 0.09708159618820726,
+   "utilMax": 0.0038833980566342773,
+   "hostname": "server2",
+   "awaitWrites": "453574"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-21T09:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "343484",
+   "writeBytes": "3026353152",
+   "writeMs": "27178",
+   "ioMs": "8691",
+   "weightedMs": "27988",
+   "wAwaitMaxMs": 0.0971278751042784,
+   "utilMax": 0.0037493751041493086,
+   "hostname": "server2",
+   "awaitWrites": "343484"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-21T08:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "287326",
+   "writeBytes": "2796338176",
+   "writeMs": "22096",
+   "ioMs": "7748",
+   "weightedMs": "22896",
+   "wAwaitMaxMs": 0.09185918591859187,
+   "utilMax": 0.0030666666666666668,
+   "hostname": "server2",
+   "awaitWrites": "287326"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-21T07:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "283486",
+   "writeBytes": "2698087424",
+   "writeMs": "21346",
+   "ioMs": "7669",
+   "weightedMs": "22176",
+   "wAwaitMaxMs": 0.08581671521398163,
+   "utilMax": 0.002515995734470808,
+   "hostname": "server2",
+   "awaitWrites": "283486"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-21T06:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "281398",
+   "writeBytes": "2989748224",
+   "writeMs": "21527",
+   "ioMs": "7754",
+   "weightedMs": "22338",
+   "wAwaitMaxMs": 0.08950548221078541,
+   "utilMax": 0.003164188052692058,
+   "hostname": "server2",
+   "awaitWrites": "281398"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-21T05:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "494655",
+   "writeBytes": "6165347840",
+   "writeMs": "40178",
+   "ioMs": "11542",
+   "weightedMs": "40983",
+   "wAwaitMaxMs": 0.09032330997060818,
+   "utilMax": 0.004570322925006672,
+   "hostname": "server2",
+   "awaitWrites": "494655"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-21T04:00:00Z",
+   "bucketSecs": 2700,
+   "writes": "263829",
+   "writeBytes": "2718402048",
+   "writeMs": "22494",
+   "ioMs": "7018",
+   "weightedMs": "23109",
+   "wAwaitMaxMs": 0.10678374167964877,
+   "utilMax": 0.0035,
+   "hostname": "server2",
+   "awaitWrites": "263829"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-21T03:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "303696",
+   "writeBytes": "2744727040",
+   "writeMs": "26210",
+   "ioMs": "8430",
+   "weightedMs": "27026",
+   "wAwaitMaxMs": 0.14997243153832016,
+   "utilMax": 0.00445,
+   "hostname": "server2",
+   "awaitWrites": "303696"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-21T02:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "320806",
+   "writeBytes": "3454994432",
+   "writeMs": "28040",
+   "ioMs": "8785",
+   "weightedMs": "28855",
+   "wAwaitMaxMs": 0.12012076773776148,
+   "utilMax": 0.0034150160755634777,
+   "hostname": "server2",
+   "awaitWrites": "320806"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-21T01:00:00Z",
+   "bucketSecs": 3599,
+   "reads": "5",
+   "writes": "343430",
+   "readBytes": "523264",
+   "writeBytes": "3483020288",
+   "readMs": "42",
+   "writeMs": "28330",
+   "ioMs": "8861",
+   "weightedMs": "29180",
+   "rAwaitMaxMs": 8.4,
+   "wAwaitMaxMs": 0.09961599277162864,
+   "utilMax": 0.0037332088930368988,
+   "hostname": "server2",
+   "awaitReads": "5",
+   "awaitWrites": "343430"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-21T00:00:00Z",
+   "bucketSecs": 3600,
+   "reads": "191",
+   "writes": "404373",
+   "readBytes": "9210880",
+   "writeBytes": "4754467328",
+   "readMs": "43",
+   "writeMs": "33523",
+   "ioMs": "10060",
+   "weightedMs": "34365",
+   "rAwaitMaxMs": 0.225130890052356,
+   "wAwaitMaxMs": 0.10189518015910154,
+   "utilMax": 0.003950065834430574,
+   "hostname": "server2",
+   "awaitReads": "191",
+   "awaitWrites": "404373"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-20T23:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "293519",
+   "writeBytes": "3333779456",
+   "writeMs": "24914",
+   "ioMs": "8344",
+   "weightedMs": "25727",
+   "wAwaitMaxMs": 0.10332927324401137,
+   "utilMax": 0.0028328611898017,
+   "hostname": "server2",
+   "awaitWrites": "293519"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-20T22:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "324486",
+   "writeBytes": "3505319936",
+   "writeMs": "30205",
+   "ioMs": "9131",
+   "weightedMs": "31021",
+   "wAwaitMaxMs": 0.11358574610244988,
+   "utilMax": 0.0029517710626375824,
+   "hostname": "server2",
+   "awaitWrites": "324486"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-20T21:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "304835",
+   "writeBytes": "3127007744",
+   "writeMs": "27305",
+   "ioMs": "8688",
+   "weightedMs": "28104",
+   "wAwaitMaxMs": 0.11891426109435588,
+   "utilMax": 0.003116770559018634,
+   "hostname": "server2",
+   "awaitWrites": "304835"
+  },
+  {
+   "identity": {
+    "wwn": "nvme.1987-3746443430373131313044413932323134373936-53616272656e7420526f636b657420342e3020315442-00000001",
+    "model": "Sabrent Rocket 4.0 1TB",
+    "serial": "7FD4071110DA92214796"
+   },
+   "devName": "nvme3n1",
+   "bucketStart": "2026-09-20T20:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "300210",
+   "writeBytes": "3046077952",
+   "writeMs": "27573",
+   "ioMs": "8594",
+   "weightedMs": "28377",
+   "wAwaitMaxMs": 0.121049092131809,
+   "utilMax": 0.0031333333333333335,
+   "hostname": "server2",
+   "awaitWrites": "300210"
+  }
+ ]
+}

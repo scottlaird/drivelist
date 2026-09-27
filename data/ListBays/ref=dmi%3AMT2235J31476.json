@@ -1,0 +1,32 @@
+{
+ "enclosure": {
+  "enclosure": "dmi:MT2235J31476",
+  "hostname": "switch2",
+  "via": "ata",
+  "drives": 1,
+  "firstSeen": "2026-09-19T21:21:43Z",
+  "lastSeen": "2026-09-27T19:43:36Z",
+  "product": "Mellanox Technologies Ltd. MSN2410",
+  "bays": 1,
+  "board": "VMOD0001"
+ },
+ "bays": [
+  {
+   "label": "pci-0000:00:1f.2-ata-1",
+   "ids": [
+    "ata:pci-0000:00:1f.2-ata-1"
+   ],
+   "present": true,
+   "devName": "sda",
+   "serial": "58402-2876",
+   "model": "VSF304XC016G-B201",
+   "status": "ok",
+   "uses": [
+    "mount > /boot",
+    "mount > /boot/grub",
+    "mount > /usr/lib/live/mount/persistence",
+    "mount > /usr/lib/live/mount/persistence/boot/2026.06.30-0048-rolling/grub"
+   ]
+  }
+ ]
+}

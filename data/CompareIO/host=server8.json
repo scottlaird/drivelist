@@ -1,0 +1,45 @@
+{
+ "rows": [
+  {
+   "hostname": "server8",
+   "serial": "7F6007041D9D02909994",
+   "model": "Sabrent Rocket 4.0 1TB",
+   "devName": "nvme2n1",
+   "reads": "144",
+   "writes": "598857",
+   "rAwaitMs": 0.6666666666666666,
+   "wAwaitMs": 1.2621310262717143,
+   "util": 0.0026171382458263985,
+   "groupRAwaitMs": 0.6666666666666666,
+   "groupWAwaitMs": 1.2621310262717143,
+   "groupUtil": 0.0026171382458263985,
+   "groupSize": 1
+  },
+  {
+   "group": "zfs > fast 15353959934024797625 > mirror 6580501177608322094",
+   "hostname": "server8",
+   "serial": "BTLD7486036U8P0F",
+   "model": "INTEL SSDPD2KS076T7M",
+   "devName": "nvme0n1",
+   "writes": "1466",
+   "wAwaitMs": 0.1480218281036835,
+   "util": 0.00000172744237655722,
+   "groupWAwaitMs": 0.14287115828522032,
+   "groupUtil": 0.00003385534876683311,
+   "groupSize": 2
+  },
+  {
+   "group": "zfs > fast 15353959934024797625 > mirror 6580501177608322094",
+   "hostname": "server8",
+   "serial": "BTLD7486046B8P0F",
+   "model": "INTEL SSDPD2KS076T7M",
+   "devName": "nvme1n1",
+   "writes": "1474",
+   "wAwaitMs": 0.13772048846675713,
+   "util": 0.00006598325515710899,
+   "groupWAwaitMs": 0.14287115828522032,
+   "groupUtil": 0.00003385534876683311,
+   "groupSize": 2
+  }
+ ]
+}

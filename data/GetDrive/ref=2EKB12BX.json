@@ -1,0 +1,32 @@
+{
+ "drive": {
+  "driveId": "82",
+  "wwn": "0x5000cca23bbd2a88",
+  "vendor": "HGST",
+  "model": "HUH728080AL4200",
+  "serial": "2EKB12BX",
+  "sizeBytes": "8001563222016",
+  "bus": "BUS_SAS",
+  "status": "ok",
+  "firstSeen": "2026-09-13T01:41:39Z",
+  "lastSeen": "2026-09-27T19:41:38Z",
+  "current": {
+   "hostname": "nas",
+   "enclosure": "0x500304800000007f",
+   "bay": "7",
+   "devName": "sdj",
+   "uses": [
+    "zfs > backups 12143466076769931197 > raidz2 17954131499336888302 > disk 6405638789467097001"
+   ],
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "enclosureVia": "expander-10:0",
+   "enclosureName": "nas-sc847-back"
+  },
+  "memberState": "ONLINE"
+ },
+ "keys": [
+  "serial:HUH728080AL4200/2EKB12BX",
+  "wwn:0x5000cca23bbd2a88"
+ ]
+}

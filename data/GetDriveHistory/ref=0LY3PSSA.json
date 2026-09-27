@@ -1,0 +1,65 @@
+{
+ "drive": {
+  "driveId": "93",
+  "wwn": "0x5000cca04aafd554",
+  "vendor": "HITACHI",
+  "model": "HUSMH842_CLAR200",
+  "serial": "0LY3PSSA",
+  "sizeBytes": "200049647616",
+  "bus": "BUS_SAS",
+  "status": "ok",
+  "firstSeen": "2026-09-13T01:41:39Z",
+  "lastSeen": "2026-09-27T19:41:38Z",
+  "current": {
+   "hostname": "nas",
+   "enclosure": "0x500062b2047b51c0",
+   "bay": "5",
+   "devName": "sdu",
+   "uses": [
+    "zfs > space 5925914041408872576 > log > mirror 11643308628144396865 > disk 9523780891956275038"
+   ],
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "enclosureVia": "host11",
+   "enclosureName": "nas-front"
+  },
+  "memberState": "ONLINE"
+ },
+ "placements": [
+  {
+   "hostname": "nas",
+   "enclosure": "0x500062b2047b51c0",
+   "bay": "5",
+   "devName": "sdu",
+   "uses": [
+    "zfs > space 5925914041408872576 > log > mirror 11643308628144396865 > disk 9523780891956275038"
+   ],
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "enclosureVia": "host11",
+   "enclosureName": "nas-front"
+  }
+ ],
+ "events": [
+  {
+   "eventId": "354",
+   "ts": "2026-09-13T01:41:39Z",
+   "kind": "first_seen",
+   "serial": "0LY3PSSA",
+   "wwn": "0x5000cca04aafd554",
+   "hostname": "nas",
+   "detail": "{\"bay\":\"5\",\"dev_name\":\"sdu\",\"expander\":\"\",\"expander_dev\":\"\",\"uses\":[\"zfs \\u003e space 5925914041408872576 \\u003e log \\u003e mirror 11643308628144396865 \\u003e disk 9523780891956275038\"]}",
+   "source": "snapshot:2"
+  },
+  {
+   "eventId": "463",
+   "ts": "2026-09-13T02:09:06Z",
+   "kind": "member_state_changed",
+   "serial": "0LY3PSSA",
+   "wwn": "0x5000cca04aafd554",
+   "hostname": "nas",
+   "detail": "{\"from\":\"\",\"to\":\"ONLINE\",\"uses\":[\"zfs \\u003e space 5925914041408872576 \\u003e log \\u003e mirror 11643308628144396865 \\u003e disk 9523780891956275038\"]}",
+   "source": "snapshot:8"
+  }
+ ]
+}

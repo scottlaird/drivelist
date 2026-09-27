@@ -1,0 +1,33 @@
+{
+ "drive": {
+  "driveId": "6",
+  "wwn": "0x5000c500b3928e24",
+  "vendor": "ATA",
+  "model": "ST8000DM004-2CX1",
+  "serial": "ZCT0ELAY",
+  "sizeBytes": "8001563222016",
+  "bus": "BUS_SAS",
+  "status": "ok",
+  "firstSeen": "2026-09-13T01:41:39Z",
+  "lastSeen": "2026-09-27T19:41:38Z",
+  "current": {
+   "hostname": "nas",
+   "enclosure": "0x5000ccab020094ff",
+   "bay": "57",
+   "devName": "sdab",
+   "uses": [
+    "zfs > space 5925914041408872576 > raidz2 16950899211129714203 > spare 9322934535608033256 > disk 17885295320081759272"
+   ],
+   "firstSeen": "2026-09-13T22:23:00Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "enclosureVia": "expander-11:0",
+   "enclosureName": "nas-hgst-u60-1",
+   "bayLabel": "57"
+  },
+  "memberState": "REMOVED"
+ },
+ "keys": [
+  "serial:ST8000DM004-2CX1/ZCT0ELAY",
+  "wwn:0x5000c500b3928e24"
+ ]
+}

@@ -1,0 +1,3542 @@
+{
+ "drive": {
+  "driveId": "40",
+  "wwn": "0x5000cca2548ef9d4",
+  "vendor": "HGST",
+  "model": "H7280A520SUN8.0T",
+  "serial": "001619PJML2V_VKJJML2V",
+  "sizeBytes": "8001563222016",
+  "bus": "BUS_SAS",
+  "status": "ok",
+  "firstSeen": "2026-09-13T01:41:39Z",
+  "lastSeen": "2026-09-27T19:41:38Z",
+  "current": {
+   "hostname": "nas",
+   "enclosure": "0x5000ccab020094ff",
+   "bay": "50",
+   "devName": "sdbi",
+   "uses": [
+    "zfs > space 5925914041408872576 > raidz2 5236016460003016805 > disk 14117335847534821566"
+   ],
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "enclosureVia": "expander-11:0",
+   "enclosureName": "nas-hgst-u60-1",
+   "bayLabel": "50"
+  },
+  "memberState": "ONLINE"
+ },
+ "samples": [
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-27T15:25:20Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7657",
+    "tempC": 36,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "291909543000000",
+    "writeBytes": "56605470000000"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-27T15:12:52Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7657",
+    "tempC": 36,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "291905226000000",
+    "writeBytes": "56605456000000"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-27T10:13:51Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7652",
+    "tempC": 37,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "291797235000000",
+    "writeBytes": "56605118000000"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-27T04:13:35Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7646",
+    "tempC": 39,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "291718810000000",
+    "writeBytes": "56604702000000"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-26T22:13:18Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7640",
+    "tempC": 40,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "291692353000000",
+    "writeBytes": "56604282000000"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-26T16:13:01Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7634",
+    "tempC": 38,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "291580787000000",
+    "writeBytes": "56603904000000"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-26T12:16:46Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7630",
+    "tempC": 37,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "291516218000000",
+    "writeBytes": "56603193000000"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-26T10:12:44Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7628",
+    "tempC": 37,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "291493871000000",
+    "writeBytes": "56603072000000"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-26T04:12:28Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7622",
+    "tempC": 38,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "291489279000000",
+    "writeBytes": "56602689000000"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-25T22:12:11Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7616",
+    "tempC": 39,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "291489263000000",
+    "writeBytes": "56602268000000"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-25T16:11:55Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7610",
+    "tempC": 39,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "291489187000000",
+    "writeBytes": "56601872000000"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-25T10:11:39Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7604",
+    "tempC": 39,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "291488208000000",
+    "writeBytes": "56601483000000"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-25T04:11:23Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7598",
+    "tempC": 39,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "291485632000000",
+    "writeBytes": "56601097000000"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-24T22:11:07Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7592",
+    "tempC": 40,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "291485584000000",
+    "writeBytes": "56600646000000"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-24T18:06:54Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7588",
+    "tempC": 39,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "291485560000000",
+    "writeBytes": "56600404000000"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-24T17:45:50Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7587",
+    "tempC": 38,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "291485560000000",
+    "writeBytes": "56600378000000"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-24T17:36:16Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7587",
+    "tempC": 39,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "291485560000000",
+    "writeBytes": "56600371000000"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-24T17:09:19Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7587",
+    "tempC": 38,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "291485560000000",
+    "writeBytes": "56600348000000"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-24T16:51:39Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7586",
+    "tempC": 38,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "291485553000000",
+    "writeBytes": "56600322000000"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-24T16:17:31Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7586",
+    "tempC": 38,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "291485553000000",
+    "writeBytes": "56600291000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-24T16:17:05Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7586",
+    "tempC": 38,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "291485553000000",
+    "writeBytes": "56600291000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-24T16:10:51Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7586",
+    "tempC": 38,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "291485553000000",
+    "writeBytes": "56600291000000"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-24T15:51:55Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7585",
+    "tempC": 38,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "291485553000000",
+    "writeBytes": "56600270000000"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-24T15:32:22Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7585",
+    "tempC": 38,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "291485549000000",
+    "writeBytes": "56600247000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-24T15:32:02Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7585",
+    "tempC": 38,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "291485549000000",
+    "writeBytes": "56600247000000"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-24T15:13:05Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7585",
+    "tempC": 38,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "291485549000000",
+    "writeBytes": "56600225000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-24T15:10:42Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7585",
+    "tempC": 38,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "291485549000000",
+    "writeBytes": "56600225000000"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-24T15:08:44Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7585",
+    "tempC": 38,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "291485549000000",
+    "writeBytes": "56600224000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-24T15:07:58Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7585",
+    "tempC": 38,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "291485549000000",
+    "writeBytes": "56600224000000"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-24T14:56:37Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7584",
+    "tempC": 38,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "291485547000000",
+    "writeBytes": "56600194000000"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-24T14:56:11Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7584",
+    "tempC": 38,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "291485547000000",
+    "writeBytes": "56600193000000"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-24T14:52:21Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7584",
+    "tempC": 38,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "291485547000000",
+    "writeBytes": "56600192000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-24T14:49:27Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7584",
+    "tempC": 38,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "291485547000000",
+    "writeBytes": "56600192000000"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-24T14:37:30Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7584",
+    "tempC": 38,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "291485547000000",
+    "writeBytes": "56600177000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-24T14:35:38Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7584",
+    "tempC": 38,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "291485547000000",
+    "writeBytes": "56600177000000"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-24T14:19:45Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7584",
+    "tempC": 38,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "291485546000000",
+    "writeBytes": "56600158000000"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-24T14:15:24Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7584",
+    "tempC": 38,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "291485546000000",
+    "writeBytes": "56600157000000"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-24T14:00:33Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7584",
+    "tempC": 38,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "291485546000000",
+    "writeBytes": "56600141000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-24T14:00:23Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7584",
+    "tempC": 38,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "291485546000000",
+    "writeBytes": "56600141000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-24T13:45:17Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7583",
+    "tempC": 38,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "291485545000000",
+    "writeBytes": "56600123000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-24T13:37:51Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7583",
+    "tempC": 38,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "291485545000000",
+    "writeBytes": "56600119000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-24T13:23:10Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7583",
+    "tempC": 38,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "291485538000000",
+    "writeBytes": "56600104000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-24T13:20:27Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7583",
+    "tempC": 38,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "291485538000000",
+    "writeBytes": "56600101000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-24T13:15:30Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7583",
+    "tempC": 39,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "291485538000000",
+    "writeBytes": "56600093000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-24T13:15:20Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7583",
+    "tempC": 39,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "291485538000000",
+    "writeBytes": "56600093000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-24T13:15:09Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7583",
+    "tempC": 39,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "291485538000000",
+    "writeBytes": "56600093000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-24T13:14:54Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7583",
+    "tempC": 38,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "291485538000000",
+    "writeBytes": "56600093000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-24T13:14:23Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7583",
+    "tempC": 38,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "291485538000000",
+    "writeBytes": "56600093000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-24T10:10:33Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7580",
+    "tempC": 39,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "291450511000000",
+    "writeBytes": "56599888000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-24T09:40:06Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7579",
+    "tempC": 39,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "291449565000000",
+    "writeBytes": "56599855000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-24T09:30:44Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7579",
+    "tempC": 39,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "291449537000000",
+    "writeBytes": "56599844000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-24T09:30:28Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7579",
+    "tempC": 39,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "291449537000000",
+    "writeBytes": "56599844000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-24T09:23:59Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7579",
+    "tempC": 39,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "291449533000000",
+    "writeBytes": "56599835000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-24T08:43:53Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7578",
+    "tempC": 39,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "291449434000000",
+    "writeBytes": "56599650000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-24T08:36:10Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7578",
+    "tempC": 39,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "291449320000000",
+    "writeBytes": "56599643000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-24T08:25:06Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7578",
+    "tempC": 39,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "291449267000000",
+    "writeBytes": "56599633000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-24T08:22:58Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7578",
+    "tempC": 39,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "291449246000000",
+    "writeBytes": "56599631000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-24T08:18:01Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7578",
+    "tempC": 39,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "291449226000000",
+    "writeBytes": "56599622000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-24T07:42:06Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7577",
+    "tempC": 39,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "291449140000000",
+    "writeBytes": "56599552000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-24T07:27:46Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7577",
+    "tempC": 39,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "291449140000000",
+    "writeBytes": "56599539000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-24T07:22:23Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7577",
+    "tempC": 39,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "291449140000000",
+    "writeBytes": "56599535000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-24T07:21:52Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7577",
+    "tempC": 39,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "291449140000000",
+    "writeBytes": "56599535000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-24T07:15:49Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7577",
+    "tempC": 40,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "291449140000000",
+    "writeBytes": "56599528000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-24T07:08:03Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7577",
+    "tempC": 40,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "291449140000000",
+    "writeBytes": "56599521000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-24T07:04:59Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7577",
+    "tempC": 39,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "291449140000000",
+    "writeBytes": "56599520000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-24T07:04:33Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7577",
+    "tempC": 39,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "291449140000000",
+    "writeBytes": "56599520000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-24T06:58:05Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7576",
+    "tempC": 40,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "291449140000000",
+    "writeBytes": "56599507000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-24T06:55:35Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7576",
+    "tempC": 40,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "291449140000000",
+    "writeBytes": "56599506000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-24T06:49:06Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7576",
+    "tempC": 40,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "291449140000000",
+    "writeBytes": "56599500000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-24T06:34:21Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7576",
+    "tempC": 40,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "291449134000000",
+    "writeBytes": "56599484000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-24T06:32:48Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7576",
+    "tempC": 40,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "291449134000000",
+    "writeBytes": "56599483000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-24T06:24:47Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7576",
+    "tempC": 40,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "291449134000000",
+    "writeBytes": "56599477000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-24T06:19:40Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7576",
+    "tempC": 40,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "291449134000000",
+    "writeBytes": "56599471000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-24T06:16:56Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7576",
+    "tempC": 40,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "291449134000000",
+    "writeBytes": "56599468000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-24T06:15:19Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7576",
+    "tempC": 40,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "291449134000000",
+    "writeBytes": "56599465000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-24T06:12:20Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7576",
+    "tempC": 40,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "291449134000000",
+    "writeBytes": "56599464000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-24T06:04:08Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7576",
+    "tempC": 40,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "291449134000000",
+    "writeBytes": "56599457000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-24T06:03:53Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7576",
+    "tempC": 40,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "291449134000000",
+    "writeBytes": "56599457000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-24T06:02:05Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7576",
+    "tempC": 40,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "291449134000000",
+    "writeBytes": "56599456000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-24T06:01:45Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7576",
+    "tempC": 40,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "291449134000000",
+    "writeBytes": "56599455000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-24T06:00:18Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7576",
+    "tempC": 40,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "291449134000000",
+    "writeBytes": "56599451000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-24T05:59:57Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7575",
+    "tempC": 40,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "291449134000000",
+    "writeBytes": "56599451000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-24T05:43:14Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7575",
+    "tempC": 40,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "291449134000000",
+    "writeBytes": "56599438000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-24T05:31:07Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7575",
+    "tempC": 40,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "291449133000000",
+    "writeBytes": "56599426000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-24T05:24:12Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7575",
+    "tempC": 40,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "291449133000000",
+    "writeBytes": "56599420000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-24T05:09:42Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7575",
+    "tempC": 40,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "291449133000000",
+    "writeBytes": "56599409000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-24T05:07:59Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7575",
+    "tempC": 40,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "291449133000000",
+    "writeBytes": "56599406000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-24T05:05:36Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7575",
+    "tempC": 40,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "291449133000000",
+    "writeBytes": "56599404000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-24T04:51:05Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7574",
+    "tempC": 40,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "291449133000000",
+    "writeBytes": "56599383000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-24T04:47:15Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7574",
+    "tempC": 40,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "291449133000000",
+    "writeBytes": "56599381000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-24T04:10:10Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7574",
+    "tempC": 40,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "291449132000000",
+    "writeBytes": "56599348000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-24T03:55:42Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7573",
+    "tempC": 40,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "291449132000000",
+    "writeBytes": "56599334000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-24T03:47:57Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7573",
+    "tempC": 41,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "291449132000000",
+    "writeBytes": "56599323000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-24T03:30:37Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7573",
+    "tempC": 41,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "291449132000000",
+    "writeBytes": "56599308000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-24T03:24:44Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7573",
+    "tempC": 41,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "291449132000000",
+    "writeBytes": "56599306000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-24T03:11:05Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7573",
+    "tempC": 41,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "291449132000000",
+    "writeBytes": "56599293000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-24T02:41:28Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7572",
+    "tempC": 41,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "291449132000000",
+    "writeBytes": "56599247000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-24T02:36:26Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7572",
+    "tempC": 41,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "291449132000000",
+    "writeBytes": "56599245000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-24T02:34:39Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7572",
+    "tempC": 41,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "291449132000000",
+    "writeBytes": "56599245000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-24T02:21:25Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7572",
+    "tempC": 41,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "291449132000000",
+    "writeBytes": "56599229000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-24T02:08:32Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7572",
+    "tempC": 41,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "291449132000000",
+    "writeBytes": "56599216000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-24T01:15:42Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7571",
+    "tempC": 42,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "291449125000000",
+    "writeBytes": "56599112000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-24T00:35:10Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7570",
+    "tempC": 42,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "291449125000000",
+    "writeBytes": "56599068000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-24T00:32:16Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7570",
+    "tempC": 41,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "291449125000000",
+    "writeBytes": "56599066000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-23T22:09:51Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7568",
+    "tempC": 41,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "291449123000000",
+    "writeBytes": "56598928000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-23T20:46:19Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7566",
+    "tempC": 41,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "291449071000000",
+    "writeBytes": "56598826000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-23T18:25:26Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7564",
+    "tempC": 41,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "291449070000000",
+    "writeBytes": "56598696000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-23T16:09:26Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7562",
+    "tempC": 40,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "291449070000000",
+    "writeBytes": "56598567000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-23T11:08:06Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7557",
+    "tempC": 41,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "291448767000000",
+    "writeBytes": "56598225000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-23T11:07:50Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7557",
+    "tempC": 41,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "291448766000000",
+    "writeBytes": "56598225000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-23T11:07:26Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7557",
+    "tempC": 41,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "291448766000000",
+    "writeBytes": "56598225000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-23T11:07:09Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7557",
+    "tempC": 41,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "291448766000000",
+    "writeBytes": "56598225000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-23T11:06:55Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7557",
+    "tempC": 41,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "291448766000000",
+    "writeBytes": "56598225000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-23T10:09:04Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7556",
+    "tempC": 41,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "291448696000000",
+    "writeBytes": "56598166000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-23T04:08:45Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7550",
+    "tempC": 40,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "291258811000000",
+    "writeBytes": "56597793000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-22T22:08:26Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7544",
+    "tempC": 42,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "290985757000000",
+    "writeBytes": "56597357000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-22T16:08:03Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7538",
+    "tempC": 40,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "290710321000000",
+    "writeBytes": "56596958000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-22T10:07:44Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7532",
+    "tempC": 39,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "290578604000000",
+    "writeBytes": "56596575000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-22T04:07:25Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7526",
+    "tempC": 41,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "290513261000000",
+    "writeBytes": "56596191000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-21T22:07:06Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7520",
+    "tempC": 42,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "290477895000000",
+    "writeBytes": "56595633000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-21T19:24:18Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7517",
+    "tempC": 42,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "290423905000000",
+    "writeBytes": "56595463000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-21T16:06:43Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7514",
+    "tempC": 40,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "290365682000000",
+    "writeBytes": "56595262000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-21T10:06:22Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7508",
+    "tempC": 40,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "290263985000000",
+    "writeBytes": "56594866000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-21T04:05:58Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7502",
+    "tempC": 41,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "290023945000000",
+    "writeBytes": "56593312000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-21T03:53:29Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7501",
+    "tempC": 41,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "290014021000000",
+    "writeBytes": "56592746000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-21T03:43:08Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7501",
+    "tempC": 41,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "290006121000000",
+    "writeBytes": "56592296000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-21T03:28:39Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7501",
+    "tempC": 41,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "289994555000000",
+    "writeBytes": "56591144000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-21T01:42:24Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7499",
+    "tempC": 42,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "289910087000000",
+    "writeBytes": "56584260000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-20T19:42:03Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7493",
+    "tempC": 42,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "289624428000000",
+    "writeBytes": "56583896000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-20T15:23:15Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7489",
+    "tempC": 39,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "289524293000000",
+    "writeBytes": "56577350000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-20T14:22:03Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7488",
+    "tempC": 39,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "289504308000000",
+    "writeBytes": "56577243000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-20T08:33:28Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7482",
+    "tempC": 40,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "289382623000000",
+    "writeBytes": "56576863000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-20T08:21:33Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7482",
+    "tempC": 40,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "289378673000000",
+    "writeBytes": "56576848000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-20T07:43:52Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7481",
+    "tempC": 40,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "289365896000000",
+    "writeBytes": "56576802000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-20T07:43:15Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7481",
+    "tempC": 41,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "289365685000000",
+    "writeBytes": "56576802000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-20T02:21:14Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7476",
+    "tempC": 41,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "289284886000000",
+    "writeBytes": "56566097000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-19T23:52:19Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7473",
+    "tempC": 41,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "289280286000000",
+    "writeBytes": "56560815000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-19T20:20:46Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7470",
+    "tempC": 41,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "289259696000000",
+    "writeBytes": "56555928000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-19T17:50:02Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7467",
+    "tempC": 40,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "289224730000000",
+    "writeBytes": "56555760000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-19T16:08:20Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7466",
+    "tempC": 40,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "289192749000000",
+    "writeBytes": "56555617000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-19T11:49:41Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7461",
+    "tempC": 40,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "289120259000000",
+    "writeBytes": "56555360000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-19T05:49:10Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7455",
+    "tempC": 40,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "288999294000000",
+    "writeBytes": "56554950000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-18T23:48:34Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7449",
+    "tempC": 41,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "288735714000000",
+    "writeBytes": "56554486000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-18T17:48:01Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7443",
+    "tempC": 40,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "288461192000000",
+    "writeBytes": "56554109000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-18T11:47:41Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7437",
+    "tempC": 40,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "288256614000000",
+    "writeBytes": "56553722000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-18T05:47:21Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7431",
+    "tempC": 40,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "288130301000000",
+    "writeBytes": "56553292000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-17T23:46:55Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7425",
+    "tempC": 43,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "288092534000000",
+    "writeBytes": "56552868000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-17T17:46:36Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7419",
+    "tempC": 41,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "288054480000000",
+    "writeBytes": "56552495000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-17T11:46:17Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7413",
+    "tempC": 40,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "288013096000000",
+    "writeBytes": "56552005000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-17T05:46:01Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7407",
+    "tempC": 41,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "287980354000000",
+    "writeBytes": "56551566000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-16T23:45:45Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7401",
+    "tempC": 42,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "287971439000000",
+    "writeBytes": "56551151000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-16T17:45:28Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7395",
+    "tempC": 40,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "287880681000000",
+    "writeBytes": "56550759000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-16T11:45:11Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7389",
+    "tempC": 39,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "287821473000000",
+    "writeBytes": "56550386000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-16T05:44:55Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7383",
+    "tempC": 41,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "287738934000000",
+    "writeBytes": "56549985000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-15T23:44:39Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7377",
+    "tempC": 42,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "287526683000000",
+    "writeBytes": "56549532000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-15T17:44:23Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7371",
+    "tempC": 39,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "287258309000000",
+    "writeBytes": "56549146000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-15T11:44:06Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7365",
+    "tempC": 40,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "286984502000000",
+    "writeBytes": "56548784000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-15T05:43:49Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7359",
+    "tempC": 39,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "286806274000000",
+    "writeBytes": "56548280000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-14T23:43:32Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7353",
+    "tempC": 41,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "286772528000000",
+    "writeBytes": "56547850000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-14T17:43:16Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7347",
+    "tempC": 40,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "286674627000000",
+    "writeBytes": "56547464000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-14T16:09:51Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7346",
+    "tempC": 40,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "286651162000000",
+    "writeBytes": "56547333000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-14T10:09:34Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7340",
+    "tempC": 40,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "286549475000000",
+    "writeBytes": "56546896000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-14T04:09:17Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7334",
+    "tempC": 41,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "286543759000000",
+    "writeBytes": "56546524000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-14T03:59:12Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7333",
+    "tempC": 41,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "286543759000000",
+    "writeBytes": "56546500000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-14T03:46:21Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7333",
+    "tempC": 41,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "286543759000000",
+    "writeBytes": "56546476000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-13T23:13:02Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7329",
+    "tempC": 42,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "286245133000000",
+    "writeBytes": "56545208000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-13T22:10:29Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7328",
+    "tempC": 41,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "285887381000000",
+    "writeBytes": "56545137000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-13T21:37:12Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7327",
+    "tempC": 41,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "285865582000000",
+    "writeBytes": "56545083000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-13T21:15:24Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7327",
+    "tempC": 42,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "285865582000000",
+    "writeBytes": "56545055000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-13T17:05:04Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7323",
+    "tempC": 41,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "285036680000000",
+    "writeBytes": "56544678000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-13T14:18:30Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7320",
+    "tempC": 42,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "284458247000000",
+    "writeBytes": "56544475000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-13T08:17:44Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7314",
+    "tempC": 42,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "283016235000000",
+    "writeBytes": "56544094000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-13T02:17:11Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7308",
+    "tempC": 42,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "282682970000000",
+    "writeBytes": "56543255000000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "devName": "sdbi",
+   "ts": "2026-09-13T02:09:15Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "7308",
+    "tempC": 42,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "282681124000000",
+    "writeBytes": "56543242000000"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  }
+ ]
+}

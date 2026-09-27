@@ -1,0 +1,28 @@
+{
+ "drive": {
+  "driveId": "54",
+  "wwn": "0x5000c500baa141ea",
+  "vendor": "ATA",
+  "model": "ST8000DM004-2CX1",
+  "serial": "WCT0VA8J",
+  "sizeBytes": "8001563222016",
+  "bus": "BUS_SAS",
+  "status": "ok",
+  "firstSeen": "2026-09-13T01:41:39Z",
+  "lastSeen": "2026-09-27T19:41:38Z",
+  "current": {
+   "hostname": "nas",
+   "enclosure": "0x5003048001e8967f",
+   "bay": "1",
+   "devName": "sdbw",
+   "uses": [
+    "zfs > space 5925914041408872576 > raidz2 9007031778331642784 > disk 5460098026287034887"
+   ],
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "enclosureVia": "expander-11:1",
+   "enclosureName": "nas-sc847-front"
+  },
+  "memberState": "ONLINE"
+ }
+}

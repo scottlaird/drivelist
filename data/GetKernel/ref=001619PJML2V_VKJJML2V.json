@@ -1,0 +1,381 @@
+{
+ "drive": {
+  "driveId": "40",
+  "wwn": "0x5000cca2548ef9d4",
+  "vendor": "HGST",
+  "model": "H7280A520SUN8.0T",
+  "serial": "001619PJML2V_VKJJML2V",
+  "sizeBytes": "8001563222016",
+  "bus": "BUS_SAS",
+  "status": "ok",
+  "firstSeen": "2026-09-13T01:41:39Z",
+  "lastSeen": "2026-09-27T19:41:38Z",
+  "current": {
+   "hostname": "nas",
+   "enclosure": "0x5000ccab020094ff",
+   "bay": "50",
+   "devName": "sdbi",
+   "uses": [
+    "zfs > space 5925914041408872576 > raidz2 5236016460003016805 > disk 14117335847534821566"
+   ],
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "enclosureVia": "expander-11:0",
+   "enclosureName": "nas-hgst-u60-1",
+   "bayLabel": "50"
+  },
+  "memberState": "ONLINE"
+ },
+ "samples": [
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "bucketStart": "2026-09-26T12:00:00Z",
+   "bucketSecs": 3600,
+   "class": "warning",
+   "scsiCode": "1:b:96",
+   "count": 6,
+   "sample": "sd 11:0:45:0: [sdbi] tag#5912 Sense Key : Recovered Error [current] [descriptor]  | sd 11:0:45:0: [sdbi] tag#5912 ASC=0xb <<vendor>>ASCQ=0x96 ",
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "bucketStart": "2026-09-26T12:00:00Z",
+   "bucketSecs": 3600,
+   "class": "warning",
+   "scsiCode": "1:b:97",
+   "count": 6,
+   "sample": "sd 11:0:45:0: [sdbi] tag#5954 Sense Key : Recovered Error [current] [descriptor]  | sd 11:0:45:0: [sdbi] tag#5954 ASC=0xb <<vendor>>ASCQ=0x97 ",
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "bucketStart": "2026-09-24T18:00:00Z",
+   "bucketSecs": 3600,
+   "class": "warning",
+   "scsiCode": "1:b:97",
+   "count": 1,
+   "sample": "sd 11:0:45:0: [sdbi] tag#974 Sense Key : Recovered Error [current] [descriptor]  | sd 11:0:45:0: [sdbi] tag#974 ASC=0xb <<vendor>>ASCQ=0x97 ",
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "bucketStart": "2026-09-24T17:00:00Z",
+   "bucketSecs": 3600,
+   "class": "warning",
+   "scsiCode": "1:b:97",
+   "count": 3,
+   "sample": "sd 11:0:45:0: [sdbi] tag#5402 Sense Key : Recovered Error [current] [descriptor]  | sd 11:0:45:0: [sdbi] tag#5402 ASC=0xb <<vendor>>ASCQ=0x97 ",
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "bucketStart": "2026-09-24T16:00:00Z",
+   "bucketSecs": 3600,
+   "class": "warning",
+   "scsiCode": "1:b:97",
+   "count": 3,
+   "sample": "sd 11:0:45:0: [sdbi] tag#3160 Sense Key : Recovered Error [current] [descriptor]  | sd 11:0:45:0: [sdbi] tag#3160 ASC=0xb <<vendor>>ASCQ=0x97 ",
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "bucketStart": "2026-09-24T15:00:00Z",
+   "bucketSecs": 3600,
+   "class": "warning",
+   "scsiCode": "1:b:97",
+   "count": 7,
+   "sample": "sd 11:0:45:0: [sdbi] tag#6812 Sense Key : Recovered Error [current] [descriptor]  | sd 11:0:45:0: [sdbi] tag#6812 ASC=0xb <<vendor>>ASCQ=0x97 ",
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "bucketStart": "2026-09-24T14:00:00Z",
+   "bucketSecs": 3600,
+   "class": "warning",
+   "scsiCode": "1:b:97",
+   "count": 12,
+   "sample": "sd 11:0:45:0: [sdbi] tag#3907 Sense Key : Recovered Error [current] [descriptor]  | sd 11:0:45:0: [sdbi] tag#3907 ASC=0xb <<vendor>>ASCQ=0x97 ",
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "bucketStart": "2026-09-24T13:00:00Z",
+   "bucketSecs": 3600,
+   "class": "warning",
+   "scsiCode": "1:b:96",
+   "count": 6,
+   "sample": "sd 11:0:45:0: [sdbi] tag#1496 Sense Key : Recovered Error [current] [descriptor]  | sd 11:0:45:0: [sdbi] tag#1496 ASC=0xb <<vendor>>ASCQ=0x96 ",
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "bucketStart": "2026-09-24T13:00:00Z",
+   "bucketSecs": 3600,
+   "class": "warning",
+   "scsiCode": "1:b:97",
+   "count": 10,
+   "sample": "sd 11:0:45:0: [sdbi] tag#1510 Sense Key : Recovered Error [current] [descriptor]  | sd 11:0:45:0: [sdbi] tag#1510 ASC=0xb <<vendor>>ASCQ=0x97 ",
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "bucketStart": "2026-09-24T09:00:00Z",
+   "bucketSecs": 3600,
+   "class": "warning",
+   "scsiCode": "1:b:97",
+   "count": 5,
+   "sample": "sd 11:0:45:0: [sdbi] tag#1796 Sense Key : Recovered Error [current] [descriptor]  | sd 11:0:45:0: [sdbi] tag#1796 ASC=0xb <<vendor>>ASCQ=0x97 ",
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "bucketStart": "2026-09-24T08:00:00Z",
+   "bucketSecs": 3600,
+   "class": "warning",
+   "scsiCode": "1:b:97",
+   "count": 5,
+   "sample": "sd 11:0:45:0: [sdbi] tag#1378 Sense Key : Recovered Error [current] [descriptor]  | sd 11:0:45:0: [sdbi] tag#1378 ASC=0xb <<vendor>>ASCQ=0x97 ",
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "bucketStart": "2026-09-24T07:00:00Z",
+   "bucketSecs": 3600,
+   "class": "warning",
+   "scsiCode": "1:b:97",
+   "count": 9,
+   "sample": "sd 11:0:45:0: [sdbi] tag#6839 Sense Key : Recovered Error [current] [descriptor]  | sd 11:0:45:0: [sdbi] tag#6839 ASC=0xb <<vendor>>ASCQ=0x97 ",
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "bucketStart": "2026-09-24T06:00:00Z",
+   "bucketSecs": 3600,
+   "class": "warning",
+   "scsiCode": "1:b:97",
+   "count": 15,
+   "sample": "sd 11:0:45:0: [sdbi] tag#5046 Sense Key : Recovered Error [current] [descriptor]  | sd 11:0:45:0: [sdbi] tag#5046 ASC=0xb <<vendor>>ASCQ=0x97 ",
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "bucketStart": "2026-09-24T05:00:00Z",
+   "bucketSecs": 3600,
+   "class": "warning",
+   "scsiCode": "1:b:97",
+   "count": 10,
+   "sample": "sd 11:0:45:0: [sdbi] tag#3198 Sense Key : Recovered Error [current] [descriptor]  | sd 11:0:45:0: [sdbi] tag#3198 ASC=0xb <<vendor>>ASCQ=0x97 ",
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "bucketStart": "2026-09-24T04:00:00Z",
+   "bucketSecs": 3600,
+   "class": "warning",
+   "scsiCode": "1:b:97",
+   "count": 2,
+   "sample": "sd 11:0:45:0: [sdbi] tag#1648 Sense Key : Recovered Error [current] [descriptor]  | sd 11:0:45:0: [sdbi] tag#1648 ASC=0xb <<vendor>>ASCQ=0x97 ",
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "bucketStart": "2026-09-24T03:00:00Z",
+   "bucketSecs": 3600,
+   "class": "warning",
+   "scsiCode": "1:b:97",
+   "count": 5,
+   "sample": "sd 11:0:45:0: [sdbi] tag#5510 Sense Key : Recovered Error [current] [descriptor]  | sd 11:0:45:0: [sdbi] tag#5510 ASC=0xb <<vendor>>ASCQ=0x97 ",
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "bucketStart": "2026-09-24T02:00:00Z",
+   "bucketSecs": 3600,
+   "class": "warning",
+   "scsiCode": "1:b:97",
+   "count": 5,
+   "sample": "sd 11:0:45:0: [sdbi] tag#1752 Sense Key : Recovered Error [current] [descriptor]  | sd 11:0:45:0: [sdbi] tag#1752 ASC=0xb <<vendor>>ASCQ=0x97 ",
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "bucketStart": "2026-09-24T01:00:00Z",
+   "bucketSecs": 3600,
+   "class": "warning",
+   "scsiCode": "1:b:97",
+   "count": 1,
+   "sample": "sd 11:0:45:0: [sdbi] tag#6529 Sense Key : Recovered Error [current] [descriptor]  | sd 11:0:45:0: [sdbi] tag#6529 ASC=0xb <<vendor>>ASCQ=0x97 ",
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "bucketStart": "2026-09-24T00:00:00Z",
+   "bucketSecs": 3600,
+   "class": "warning",
+   "scsiCode": "1:b:97",
+   "count": 2,
+   "sample": "sd 11:0:45:0: [sdbi] tag#4103 Sense Key : Recovered Error [current] [descriptor]  | sd 11:0:45:0: [sdbi] tag#4103 ASC=0xb <<vendor>>ASCQ=0x97 ",
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "bucketStart": "2026-09-23T20:00:00Z",
+   "bucketSecs": 3600,
+   "class": "warning",
+   "scsiCode": "1:b:97",
+   "count": 1,
+   "sample": "sd 11:0:45:0: [sdbi] tag#3198 Sense Key : Recovered Error [current] [descriptor]  | sd 11:0:45:0: [sdbi] tag#3198 ASC=0xb <<vendor>>ASCQ=0x97 ",
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "bucketStart": "2026-09-23T18:00:00Z",
+   "bucketSecs": 3600,
+   "class": "warning",
+   "scsiCode": "1:b:97",
+   "count": 1,
+   "sample": "sd 11:0:45:0: [sdbi] tag#5319 Sense Key : Recovered Error [current] [descriptor]  | sd 11:0:45:0: [sdbi] tag#5319 ASC=0xb <<vendor>>ASCQ=0x97 ",
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "bucketStart": "2026-09-23T11:00:00Z",
+   "bucketSecs": 3600,
+   "class": "warning",
+   "scsiCode": "1:b:96",
+   "count": 6,
+   "sample": "sd 11:0:45:0: [sdbi] tag#4724 Sense Key : Recovered Error [current] [descriptor]  | sd 11:0:45:0: [sdbi] tag#4724 ASC=0xb <<vendor>>ASCQ=0x96 ",
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "bucketStart": "2026-09-23T11:00:00Z",
+   "bucketSecs": 3600,
+   "class": "warning",
+   "scsiCode": "1:b:97",
+   "count": 6,
+   "sample": "sd 11:0:45:0: [sdbi] tag#4721 Sense Key : Recovered Error [current] [descriptor]  | sd 11:0:45:0: [sdbi] tag#4721 ASC=0xb <<vendor>>ASCQ=0x97 ",
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "bucketStart": "2026-09-21T19:00:00Z",
+   "bucketSecs": 3600,
+   "class": "warning",
+   "scsiCode": "1:b:96",
+   "count": 6,
+   "sample": "sd 11:0:45:0: [sdbi] tag#2441 Sense Key : Recovered Error [current] [descriptor]  | sd 11:0:45:0: [sdbi] tag#2441 ASC=0xb <<vendor>>ASCQ=0x96 ",
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548ef9d4",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJML2V_VKJJML2V"
+   },
+   "bucketStart": "2026-09-21T19:00:00Z",
+   "bucketSecs": 3600,
+   "class": "warning",
+   "scsiCode": "1:b:97",
+   "count": 6,
+   "sample": "sd 11:0:45:0: [sdbi] tag#2495 Sense Key : Recovered Error [current] [descriptor]  | sd 11:0:45:0: [sdbi] tag#2495 ASC=0xb <<vendor>>ASCQ=0x97 ",
+   "hostname": "nas"
+  }
+ ]
+}

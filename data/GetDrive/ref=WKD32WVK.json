@@ -1,0 +1,32 @@
+{
+ "drive": {
+  "driveId": "74",
+  "wwn": "0x5000c500c7913439",
+  "vendor": "ATA",
+  "model": "ST8000VN004-2M21",
+  "serial": "WKD32WVK",
+  "sizeBytes": "8001563222016",
+  "bus": "BUS_SAS",
+  "status": "ok",
+  "firstSeen": "2026-09-13T01:41:39Z",
+  "lastSeen": "2026-09-27T19:41:38Z",
+  "current": {
+   "hostname": "nas",
+   "enclosure": "0x5003048001e8967f",
+   "bay": "22",
+   "devName": "sdcp",
+   "uses": [
+    "zfs > space 5925914041408872576 > raidz2 9007031778331642784 > disk 13320454780145336341"
+   ],
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "enclosureVia": "expander-11:1",
+   "enclosureName": "nas-sc847-front"
+  },
+  "memberState": "ONLINE"
+ },
+ "keys": [
+  "serial:ST8000VN004-2M21/WKD32WVK",
+  "wwn:0x5000c500c7913439"
+ ]
+}

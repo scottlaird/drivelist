@@ -1,0 +1,46 @@
+{
+ "enclosure": {
+  "enclosure": "dmi:NM168S004999",
+  "hostname": "nas",
+  "via": "ata",
+  "drives": 2,
+  "firstSeen": "2026-09-14T03:46:13Z",
+  "lastSeen": "2026-09-27T19:41:38Z",
+  "product": "Supermicro Super Server",
+  "bays": 2,
+  "board": "X10SRW-F"
+ },
+ "bays": [
+  {
+   "label": "pci-0000:00:1f.2-ata-5",
+   "ids": [
+    "ata:pci-0000:00:1f.2-ata-5"
+   ],
+   "present": true,
+   "devName": "sda",
+   "serial": "S1E4NYAG204349",
+   "model": "SAMSUNG_MZ7WD960",
+   "status": "ok",
+   "uses": [
+    "mount > /boot/efi",
+    "zfs > bpool 6822782206755274061 > mirror 7879420759522091481 > disk 10940132855821023010",
+    "zfs > rpool 6335217808421659663 > mirror 10116968943579434558 > disk 13477747630627346864"
+   ]
+  },
+  {
+   "label": "pci-0000:00:1f.2-ata-6",
+   "ids": [
+    "ata:pci-0000:00:1f.2-ata-6"
+   ],
+   "present": true,
+   "devName": "sdb",
+   "serial": "S1E4NYAG205230",
+   "model": "SAMSUNG_MZ7WD960",
+   "status": "ok",
+   "uses": [
+    "zfs > bpool 6822782206755274061 > mirror 7879420759522091481 > disk 16883674818163482239",
+    "zfs > rpool 6335217808421659663 > mirror 10116968943579434558 > disk 4017281962645193462"
+   ]
+  }
+ ]
+}

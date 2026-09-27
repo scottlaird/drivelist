@@ -1,0 +1,1573 @@
+{
+ "drive": {
+  "driveId": "72",
+  "wwn": "0x5002538b48a797f0",
+  "vendor": "IBM-E051",
+  "model": "MZILT3T8HALS",
+  "serial": "C7XBG0YY0KA05147",
+  "sizeBytes": "3840755982336",
+  "bus": "BUS_SAS",
+  "status": "ok",
+  "firstSeen": "2026-09-13T01:41:39Z",
+  "lastSeen": "2026-09-27T19:41:38Z",
+  "current": {
+   "hostname": "nas",
+   "enclosure": "0x5003048001e8967f",
+   "bay": "20",
+   "devName": "sdcn",
+   "uses": [
+    "zfs > space 5925914041408872576 > mirror 737277534668809963 > disk 1161082729107973602"
+   ],
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "enclosureVia": "expander-11:1",
+   "enclosureName": "nas-sc847-front"
+  },
+  "memberState": "ONLINE"
+ },
+ "samples": [
+  {
+   "identity": {
+    "wwn": "0x5002538b48a797f0",
+    "model": "MZILT3T8HALS",
+    "serial": "C7XBG0YY0KA05147"
+   },
+   "devName": "sdcn",
+   "ts": "2026-09-27T15:25:25Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "45288",
+    "tempC": 29,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "130324419000000",
+    "writeBytes": "757351654000000",
+    "percentUsed": 1
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5002538b48a797f0",
+    "model": "MZILT3T8HALS",
+    "serial": "C7XBG0YY0KA05147"
+   },
+   "devName": "sdcn",
+   "ts": "2026-09-27T15:12:57Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "45288",
+    "tempC": 29,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "130324418000000",
+    "writeBytes": "757351232000000",
+    "percentUsed": 1
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5002538b48a797f0",
+    "model": "MZILT3T8HALS",
+    "serial": "C7XBG0YY0KA05147"
+   },
+   "devName": "sdcn",
+   "ts": "2026-09-27T10:13:56Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "45288",
+    "tempC": 29,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "130324377000000",
+    "writeBytes": "757341097000000",
+    "percentUsed": 1
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5002538b48a797f0",
+    "model": "MZILT3T8HALS",
+    "serial": "C7XBG0YY0KA05147"
+   },
+   "devName": "sdcn",
+   "ts": "2026-09-27T04:13:40Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "45288",
+    "tempC": 31,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "130323762000000",
+    "writeBytes": "757329083000000",
+    "percentUsed": 1
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5002538b48a797f0",
+    "model": "MZILT3T8HALS",
+    "serial": "C7XBG0YY0KA05147"
+   },
+   "devName": "sdcn",
+   "ts": "2026-09-26T22:13:23Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "45288",
+    "tempC": 32,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "130322924000000",
+    "writeBytes": "757317106000000",
+    "percentUsed": 1
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5002538b48a797f0",
+    "model": "MZILT3T8HALS",
+    "serial": "C7XBG0YY0KA05147"
+   },
+   "devName": "sdcn",
+   "ts": "2026-09-26T16:13:06Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "45288",
+    "tempC": 29,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "130322862000000",
+    "writeBytes": "757305127000000",
+    "percentUsed": 1
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5002538b48a797f0",
+    "model": "MZILT3T8HALS",
+    "serial": "C7XBG0YY0KA05147"
+   },
+   "devName": "sdcn",
+   "ts": "2026-09-26T10:12:49Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "45288",
+    "tempC": 30,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "130322772000000",
+    "writeBytes": "757293068000000",
+    "percentUsed": 1
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5002538b48a797f0",
+    "model": "MZILT3T8HALS",
+    "serial": "C7XBG0YY0KA05147"
+   },
+   "devName": "sdcn",
+   "ts": "2026-09-26T04:12:32Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "45288",
+    "tempC": 31,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "130322763000000",
+    "writeBytes": "757281076000000",
+    "percentUsed": 1
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5002538b48a797f0",
+    "model": "MZILT3T8HALS",
+    "serial": "C7XBG0YY0KA05147"
+   },
+   "devName": "sdcn",
+   "ts": "2026-09-25T22:12:16Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "45288",
+    "tempC": 31,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "130322757000000",
+    "writeBytes": "757269386000000",
+    "percentUsed": 1
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5002538b48a797f0",
+    "model": "MZILT3T8HALS",
+    "serial": "C7XBG0YY0KA05147"
+   },
+   "devName": "sdcn",
+   "ts": "2026-09-25T16:11:59Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "45288",
+    "tempC": 32,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "130322755000000",
+    "writeBytes": "757257662000000",
+    "percentUsed": 1
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5002538b48a797f0",
+    "model": "MZILT3T8HALS",
+    "serial": "C7XBG0YY0KA05147"
+   },
+   "devName": "sdcn",
+   "ts": "2026-09-25T10:11:44Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "45288",
+    "tempC": 32,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "130322744000000",
+    "writeBytes": "757246086000000",
+    "percentUsed": 1
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5002538b48a797f0",
+    "model": "MZILT3T8HALS",
+    "serial": "C7XBG0YY0KA05147"
+   },
+   "devName": "sdcn",
+   "ts": "2026-09-25T04:11:28Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "45288",
+    "tempC": 32,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "130322733000000",
+    "writeBytes": "757234102000000",
+    "percentUsed": 1
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5002538b48a797f0",
+    "model": "MZILT3T8HALS",
+    "serial": "C7XBG0YY0KA05147"
+   },
+   "devName": "sdcn",
+   "ts": "2026-09-24T22:11:12Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "45288",
+    "tempC": 32,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "130322732000000",
+    "writeBytes": "757221823000000",
+    "percentUsed": 1
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5002538b48a797f0",
+    "model": "MZILT3T8HALS",
+    "serial": "C7XBG0YY0KA05147"
+   },
+   "devName": "sdcn",
+   "ts": "2026-09-24T16:10:56Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "45288",
+    "tempC": 31,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "130322728000000",
+    "writeBytes": "757209667000000",
+    "percentUsed": 1
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5002538b48a797f0",
+    "model": "MZILT3T8HALS",
+    "serial": "C7XBG0YY0KA05147"
+   },
+   "devName": "sdcn",
+   "ts": "2026-09-24T10:10:37Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "45288",
+    "tempC": 31,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "130322713000000",
+    "writeBytes": "757197235000000",
+    "percentUsed": 1
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5002538b48a797f0",
+    "model": "MZILT3T8HALS",
+    "serial": "C7XBG0YY0KA05147"
+   },
+   "devName": "sdcn",
+   "ts": "2026-09-24T04:10:14Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "45288",
+    "tempC": 32,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "130322703000000",
+    "writeBytes": "757184867000000",
+    "percentUsed": 1
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5002538b48a797f0",
+    "model": "MZILT3T8HALS",
+    "serial": "C7XBG0YY0KA05147"
+   },
+   "devName": "sdcn",
+   "ts": "2026-09-23T22:09:56Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "45288",
+    "tempC": 33,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "130322702000000",
+    "writeBytes": "757172532000000",
+    "percentUsed": 1
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5002538b48a797f0",
+    "model": "MZILT3T8HALS",
+    "serial": "C7XBG0YY0KA05147"
+   },
+   "devName": "sdcn",
+   "ts": "2026-09-23T16:09:31Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "45288",
+    "tempC": 32,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "130322699000000",
+    "writeBytes": "757160196000000",
+    "percentUsed": 1
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5002538b48a797f0",
+    "model": "MZILT3T8HALS",
+    "serial": "C7XBG0YY0KA05147"
+   },
+   "devName": "sdcn",
+   "ts": "2026-09-23T10:09:08Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "45288",
+    "tempC": 33,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "130322691000000",
+    "writeBytes": "757147793000000",
+    "percentUsed": 1
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5002538b48a797f0",
+    "model": "MZILT3T8HALS",
+    "serial": "C7XBG0YY0KA05147"
+   },
+   "devName": "sdcn",
+   "ts": "2026-09-23T04:08:50Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "45288",
+    "tempC": 34,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "130322568000000",
+    "writeBytes": "757135500000000",
+    "percentUsed": 1
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5002538b48a797f0",
+    "model": "MZILT3T8HALS",
+    "serial": "C7XBG0YY0KA05147"
+   },
+   "devName": "sdcn",
+   "ts": "2026-09-22T22:08:30Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "45288",
+    "tempC": 34,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "130322532000000",
+    "writeBytes": "757123386000000",
+    "percentUsed": 1
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5002538b48a797f0",
+    "model": "MZILT3T8HALS",
+    "serial": "C7XBG0YY0KA05147"
+   },
+   "devName": "sdcn",
+   "ts": "2026-09-22T16:08:08Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "45288",
+    "tempC": 29,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "130322495000000",
+    "writeBytes": "757111265000000",
+    "percentUsed": 1
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5002538b48a797f0",
+    "model": "MZILT3T8HALS",
+    "serial": "C7XBG0YY0KA05147"
+   },
+   "devName": "sdcn",
+   "ts": "2026-09-22T10:07:48Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "45288",
+    "tempC": 33,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "130322457000000",
+    "writeBytes": "757099077000000",
+    "percentUsed": 1
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5002538b48a797f0",
+    "model": "MZILT3T8HALS",
+    "serial": "C7XBG0YY0KA05147"
+   },
+   "devName": "sdcn",
+   "ts": "2026-09-22T04:07:30Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "45288",
+    "tempC": 35,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "130321663000000",
+    "writeBytes": "757086572000000",
+    "percentUsed": 1
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5002538b48a797f0",
+    "model": "MZILT3T8HALS",
+    "serial": "C7XBG0YY0KA05147"
+   },
+   "devName": "sdcn",
+   "ts": "2026-09-21T22:07:10Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "45288",
+    "tempC": 35,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "130320953000000",
+    "writeBytes": "757074411000000",
+    "percentUsed": 1
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5002538b48a797f0",
+    "model": "MZILT3T8HALS",
+    "serial": "C7XBG0YY0KA05147"
+   },
+   "devName": "sdcn",
+   "ts": "2026-09-21T16:06:48Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "45288",
+    "tempC": 32,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "130320917000000",
+    "writeBytes": "757062367000000",
+    "percentUsed": 1
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5002538b48a797f0",
+    "model": "MZILT3T8HALS",
+    "serial": "C7XBG0YY0KA05147"
+   },
+   "devName": "sdcn",
+   "ts": "2026-09-21T10:06:27Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "45288",
+    "tempC": 33,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "130320828000000",
+    "writeBytes": "757050454000000",
+    "percentUsed": 1
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5002538b48a797f0",
+    "model": "MZILT3T8HALS",
+    "serial": "C7XBG0YY0KA05147"
+   },
+   "devName": "sdcn",
+   "ts": "2026-09-21T04:06:03Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "45288",
+    "tempC": 35,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "130320700000000",
+    "writeBytes": "757037857000000",
+    "percentUsed": 1
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5002538b48a797f0",
+    "model": "MZILT3T8HALS",
+    "serial": "C7XBG0YY0KA05147"
+   },
+   "devName": "sdcn",
+   "ts": "2026-09-21T03:53:34Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "45288",
+    "tempC": 35,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "130320699000000",
+    "writeBytes": "757037265000000",
+    "percentUsed": 1
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5002538b48a797f0",
+    "model": "MZILT3T8HALS",
+    "serial": "C7XBG0YY0KA05147"
+   },
+   "devName": "sdcn",
+   "ts": "2026-09-21T03:43:15Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "45288",
+    "tempC": 35,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "130320698000000",
+    "writeBytes": "757036801000000",
+    "percentUsed": 1
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5002538b48a797f0",
+    "model": "MZILT3T8HALS",
+    "serial": "C7XBG0YY0KA05147"
+   },
+   "devName": "sdcn",
+   "ts": "2026-09-21T03:28:45Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "45288",
+    "tempC": 35,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "130320696000000",
+    "writeBytes": "757036137000000",
+    "percentUsed": 1
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5002538b48a797f0",
+    "model": "MZILT3T8HALS",
+    "serial": "C7XBG0YY0KA05147"
+   },
+   "devName": "sdcn",
+   "ts": "2026-09-21T01:42:30Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "45288",
+    "tempC": 35,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "130320681000000",
+    "writeBytes": "757031617000000",
+    "percentUsed": 1
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5002538b48a797f0",
+    "model": "MZILT3T8HALS",
+    "serial": "C7XBG0YY0KA05147"
+   },
+   "devName": "sdcn",
+   "ts": "2026-09-20T19:42:09Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "45288",
+    "tempC": 33,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "130320623000000",
+    "writeBytes": "757018758000000",
+    "percentUsed": 1
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5002538b48a797f0",
+    "model": "MZILT3T8HALS",
+    "serial": "C7XBG0YY0KA05147"
+   },
+   "devName": "sdcn",
+   "ts": "2026-09-20T14:22:08Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "45288",
+    "tempC": 31,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "130320547000000",
+    "writeBytes": "757007249000000",
+    "percentUsed": 1
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5002538b48a797f0",
+    "model": "MZILT3T8HALS",
+    "serial": "C7XBG0YY0KA05147"
+   },
+   "devName": "sdcn",
+   "ts": "2026-09-20T08:21:38Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "45288",
+    "tempC": 32,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "130320418000000",
+    "writeBytes": "756994284000000",
+    "percentUsed": 1
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5002538b48a797f0",
+    "model": "MZILT3T8HALS",
+    "serial": "C7XBG0YY0KA05147"
+   },
+   "devName": "sdcn",
+   "ts": "2026-09-20T02:21:19Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "45288",
+    "tempC": 34,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "130319975000000",
+    "writeBytes": "756980462000000",
+    "percentUsed": 1
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5002538b48a797f0",
+    "model": "MZILT3T8HALS",
+    "serial": "C7XBG0YY0KA05147"
+   },
+   "devName": "sdcn",
+   "ts": "2026-09-19T20:20:50Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "45288",
+    "tempC": 33,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "130319042000000",
+    "writeBytes": "756966624000000",
+    "percentUsed": 1
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5002538b48a797f0",
+    "model": "MZILT3T8HALS",
+    "serial": "C7XBG0YY0KA05147"
+   },
+   "devName": "sdcn",
+   "ts": "2026-09-19T17:50:07Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "45288",
+    "tempC": 33,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "130318924000000",
+    "writeBytes": "756961331000000",
+    "percentUsed": 1
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5002538b48a797f0",
+    "model": "MZILT3T8HALS",
+    "serial": "C7XBG0YY0KA05147"
+   },
+   "devName": "sdcn",
+   "ts": "2026-09-19T11:49:45Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "45288",
+    "tempC": 32,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "130318763000000",
+    "writeBytes": "756949039000000",
+    "percentUsed": 1
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5002538b48a797f0",
+    "model": "MZILT3T8HALS",
+    "serial": "C7XBG0YY0KA05147"
+   },
+   "devName": "sdcn",
+   "ts": "2026-09-19T05:49:16Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "45288",
+    "tempC": 34,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "130318704000000",
+    "writeBytes": "756936968000000",
+    "percentUsed": 1
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5002538b48a797f0",
+    "model": "MZILT3T8HALS",
+    "serial": "C7XBG0YY0KA05147"
+   },
+   "devName": "sdcn",
+   "ts": "2026-09-18T23:48:39Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "45288",
+    "tempC": 35,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "130318674000000",
+    "writeBytes": "756924808000000",
+    "percentUsed": 1
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5002538b48a797f0",
+    "model": "MZILT3T8HALS",
+    "serial": "C7XBG0YY0KA05147"
+   },
+   "devName": "sdcn",
+   "ts": "2026-09-18T17:48:06Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "45288",
+    "tempC": 33,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "130318597000000",
+    "writeBytes": "756912728000000",
+    "percentUsed": 1
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5002538b48a797f0",
+    "model": "MZILT3T8HALS",
+    "serial": "C7XBG0YY0KA05147"
+   },
+   "devName": "sdcn",
+   "ts": "2026-09-18T11:47:46Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "45288",
+    "tempC": 32,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "130318556000000",
+    "writeBytes": "756900780000000",
+    "percentUsed": 1
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5002538b48a797f0",
+    "model": "MZILT3T8HALS",
+    "serial": "C7XBG0YY0KA05147"
+   },
+   "devName": "sdcn",
+   "ts": "2026-09-18T05:47:26Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "45288",
+    "tempC": 33,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "130318531000000",
+    "writeBytes": "756889161000000",
+    "percentUsed": 1
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5002538b48a797f0",
+    "model": "MZILT3T8HALS",
+    "serial": "C7XBG0YY0KA05147"
+   },
+   "devName": "sdcn",
+   "ts": "2026-09-17T23:47:00Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "45288",
+    "tempC": 37,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "130317489000000",
+    "writeBytes": "756877299000000",
+    "percentUsed": 1
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5002538b48a797f0",
+    "model": "MZILT3T8HALS",
+    "serial": "C7XBG0YY0KA05147"
+   },
+   "devName": "sdcn",
+   "ts": "2026-09-17T17:46:41Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "45288",
+    "tempC": 33,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "130317423000000",
+    "writeBytes": "756865234000000",
+    "percentUsed": 1
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5002538b48a797f0",
+    "model": "MZILT3T8HALS",
+    "serial": "C7XBG0YY0KA05147"
+   },
+   "devName": "sdcn",
+   "ts": "2026-09-17T11:46:23Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "45288",
+    "tempC": 32,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "130317392000000",
+    "writeBytes": "756853557000000",
+    "percentUsed": 1
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5002538b48a797f0",
+    "model": "MZILT3T8HALS",
+    "serial": "C7XBG0YY0KA05147"
+   },
+   "devName": "sdcn",
+   "ts": "2026-09-17T05:46:06Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "45288",
+    "tempC": 34,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "130317369000000",
+    "writeBytes": "756841794000000",
+    "percentUsed": 1
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5002538b48a797f0",
+    "model": "MZILT3T8HALS",
+    "serial": "C7XBG0YY0KA05147"
+   },
+   "devName": "sdcn",
+   "ts": "2026-09-16T23:45:50Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "45288",
+    "tempC": 35,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "130317206000000",
+    "writeBytes": "756830732000000",
+    "percentUsed": 1
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5002538b48a797f0",
+    "model": "MZILT3T8HALS",
+    "serial": "C7XBG0YY0KA05147"
+   },
+   "devName": "sdcn",
+   "ts": "2026-09-16T17:45:33Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "45288",
+    "tempC": 32,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "130317008000000",
+    "writeBytes": "756819572000000",
+    "percentUsed": 1
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5002538b48a797f0",
+    "model": "MZILT3T8HALS",
+    "serial": "C7XBG0YY0KA05147"
+   },
+   "devName": "sdcn",
+   "ts": "2026-09-16T11:45:16Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "45288",
+    "tempC": 32,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "130316894000000",
+    "writeBytes": "756808198000000",
+    "percentUsed": 1
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5002538b48a797f0",
+    "model": "MZILT3T8HALS",
+    "serial": "C7XBG0YY0KA05147"
+   },
+   "devName": "sdcn",
+   "ts": "2026-09-16T05:45:00Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "45288",
+    "tempC": 33,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "130316779000000",
+    "writeBytes": "756796817000000",
+    "percentUsed": 1
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5002538b48a797f0",
+    "model": "MZILT3T8HALS",
+    "serial": "C7XBG0YY0KA05147"
+   },
+   "devName": "sdcn",
+   "ts": "2026-09-15T23:44:44Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "45288",
+    "tempC": 34,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "130316726000000",
+    "writeBytes": "756785639000000",
+    "percentUsed": 1
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5002538b48a797f0",
+    "model": "MZILT3T8HALS",
+    "serial": "C7XBG0YY0KA05147"
+   },
+   "devName": "sdcn",
+   "ts": "2026-09-15T17:44:27Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "45288",
+    "tempC": 31,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "130316672000000",
+    "writeBytes": "756774313000000",
+    "percentUsed": 1
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5002538b48a797f0",
+    "model": "MZILT3T8HALS",
+    "serial": "C7XBG0YY0KA05147"
+   },
+   "devName": "sdcn",
+   "ts": "2026-09-15T11:44:10Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "45288",
+    "tempC": 32,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "130316655000000",
+    "writeBytes": "756763052000000",
+    "percentUsed": 1
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5002538b48a797f0",
+    "model": "MZILT3T8HALS",
+    "serial": "C7XBG0YY0KA05147"
+   },
+   "devName": "sdcn",
+   "ts": "2026-09-15T05:43:53Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "45288",
+    "tempC": 33,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "130316566000000",
+    "writeBytes": "756751958000000",
+    "percentUsed": 1
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5002538b48a797f0",
+    "model": "MZILT3T8HALS",
+    "serial": "C7XBG0YY0KA05147"
+   },
+   "devName": "sdcn",
+   "ts": "2026-09-14T23:43:37Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "45288",
+    "tempC": 34,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "130315924000000",
+    "writeBytes": "756740972000000",
+    "percentUsed": 1
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5002538b48a797f0",
+    "model": "MZILT3T8HALS",
+    "serial": "C7XBG0YY0KA05147"
+   },
+   "devName": "sdcn",
+   "ts": "2026-09-14T17:43:20Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "45288",
+    "tempC": 33,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "130315851000000",
+    "writeBytes": "756730066000000",
+    "percentUsed": 1
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5002538b48a797f0",
+    "model": "MZILT3T8HALS",
+    "serial": "C7XBG0YY0KA05147"
+   },
+   "devName": "sdcn",
+   "ts": "2026-09-14T16:09:57Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "45288",
+    "tempC": 32,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "130315836000000",
+    "writeBytes": "756727193000000",
+    "percentUsed": 1
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5002538b48a797f0",
+    "model": "MZILT3T8HALS",
+    "serial": "C7XBG0YY0KA05147"
+   },
+   "devName": "sdcn",
+   "ts": "2026-09-14T10:09:39Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "45288",
+    "tempC": 32,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "130315783000000",
+    "writeBytes": "756716312000000",
+    "percentUsed": 1
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5002538b48a797f0",
+    "model": "MZILT3T8HALS",
+    "serial": "C7XBG0YY0KA05147"
+   },
+   "devName": "sdcn",
+   "ts": "2026-09-14T04:09:22Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "45288",
+    "tempC": 33,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "130315771000000",
+    "writeBytes": "756705122000000",
+    "percentUsed": 1
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5002538b48a797f0",
+    "model": "MZILT3T8HALS",
+    "serial": "C7XBG0YY0KA05147"
+   },
+   "devName": "sdcn",
+   "ts": "2026-09-14T03:59:17Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "45288",
+    "tempC": 33,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "130315771000000",
+    "writeBytes": "756704819000000",
+    "percentUsed": 1
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5002538b48a797f0",
+    "model": "MZILT3T8HALS",
+    "serial": "C7XBG0YY0KA05147"
+   },
+   "devName": "sdcn",
+   "ts": "2026-09-14T03:46:25Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "45288",
+    "tempC": 33,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "130315771000000",
+    "writeBytes": "756704430000000",
+    "percentUsed": 1
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5002538b48a797f0",
+    "model": "MZILT3T8HALS",
+    "serial": "C7XBG0YY0KA05147"
+   },
+   "devName": "sdcn",
+   "ts": "2026-09-13T23:13:18Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "45288",
+    "tempC": 33,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "130315712000000",
+    "writeBytes": "756696147000000",
+    "percentUsed": 1
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5002538b48a797f0",
+    "model": "MZILT3T8HALS",
+    "serial": "C7XBG0YY0KA05147"
+   },
+   "devName": "sdcn",
+   "ts": "2026-09-13T22:10:44Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "45288",
+    "tempC": 33,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "130315704000000",
+    "writeBytes": "756694319000000",
+    "percentUsed": 1
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5002538b48a797f0",
+    "model": "MZILT3T8HALS",
+    "serial": "C7XBG0YY0KA05147"
+   },
+   "devName": "sdcn",
+   "ts": "2026-09-13T21:37:18Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "45288",
+    "tempC": 33,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "130308929000000",
+    "writeBytes": "756693349000000",
+    "percentUsed": 1
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5002538b48a797f0",
+    "model": "MZILT3T8HALS",
+    "serial": "C7XBG0YY0KA05147"
+   },
+   "devName": "sdcn",
+   "ts": "2026-09-13T21:15:33Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "45288",
+    "tempC": 33,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "130308928000000",
+    "writeBytes": "756692736000000",
+    "percentUsed": 1
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5002538b48a797f0",
+    "model": "MZILT3T8HALS",
+    "serial": "C7XBG0YY0KA05147"
+   },
+   "devName": "sdcn",
+   "ts": "2026-09-13T17:05:19Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "45288",
+    "tempC": 32,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "130308899000000",
+    "writeBytes": "756685613000000",
+    "percentUsed": 1
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5002538b48a797f0",
+    "model": "MZILT3T8HALS",
+    "serial": "C7XBG0YY0KA05147"
+   },
+   "devName": "sdcn",
+   "ts": "2026-09-13T14:18:44Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "45288",
+    "tempC": 32,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "130282431000000",
+    "writeBytes": "756680955000000",
+    "percentUsed": 1
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5002538b48a797f0",
+    "model": "MZILT3T8HALS",
+    "serial": "C7XBG0YY0KA05147"
+   },
+   "devName": "sdcn",
+   "ts": "2026-09-13T08:18:00Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "45288",
+    "tempC": 33,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "130218701000000",
+    "writeBytes": "756672036000000",
+    "percentUsed": 1
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5002538b48a797f0",
+    "model": "MZILT3T8HALS",
+    "serial": "C7XBG0YY0KA05147"
+   },
+   "devName": "sdcn",
+   "ts": "2026-09-13T02:17:16Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "45288",
+    "tempC": 34,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "130100359000000",
+    "writeBytes": "756662367000000",
+    "percentUsed": 1
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5002538b48a797f0",
+    "model": "MZILT3T8HALS",
+    "serial": "C7XBG0YY0KA05147"
+   },
+   "devName": "sdcn",
+   "ts": "2026-09-13T02:09:20Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "45288",
+    "tempC": 34,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "130100359000000",
+    "writeBytes": "756662151000000",
+    "percentUsed": 1
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  }
+ ]
+}

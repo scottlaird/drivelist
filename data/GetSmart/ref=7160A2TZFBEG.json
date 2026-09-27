@@ -1,0 +1,1501 @@
+{
+ "drive": {
+  "driveId": "19",
+  "wwn": "0x5000039b08ca908c",
+  "vendor": "ATA",
+  "model": "TOSHIBA_HDWG180",
+  "serial": "7160A2TZFBEG",
+  "sizeBytes": "8001563222016",
+  "bus": "BUS_SAS",
+  "status": "ok",
+  "firstSeen": "2026-09-13T01:41:39Z",
+  "lastSeen": "2026-09-27T19:41:38Z",
+  "current": {
+   "hostname": "nas",
+   "enclosure": "0x5000ccab020094ff",
+   "bay": "42",
+   "devName": "sdao",
+   "uses": [
+    "zfs > space 5925914041408872576 > raidz2 16950899211129714203 > disk 12228003088763601407"
+   ],
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "enclosureVia": "expander-11:0",
+   "enclosureName": "nas-hgst-u60-1",
+   "bayLabel": "42"
+  },
+  "memberState": "ONLINE"
+ },
+ "samples": [
+  {
+   "identity": {
+    "wwn": "0x5000039b08ca908c",
+    "model": "TOSHIBA_HDWG180",
+    "serial": "7160A2TZFBEG"
+   },
+   "devName": "sdao",
+   "ts": "2026-09-27T15:25:16Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "41524",
+    "tempC": 37,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000039b08ca908c",
+    "model": "TOSHIBA_HDWG180",
+    "serial": "7160A2TZFBEG"
+   },
+   "devName": "sdao",
+   "ts": "2026-09-27T15:12:48Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "41524",
+    "tempC": 36,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000039b08ca908c",
+    "model": "TOSHIBA_HDWG180",
+    "serial": "7160A2TZFBEG"
+   },
+   "devName": "sdao",
+   "ts": "2026-09-27T10:13:47Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "41519",
+    "tempC": 37,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000039b08ca908c",
+    "model": "TOSHIBA_HDWG180",
+    "serial": "7160A2TZFBEG"
+   },
+   "devName": "sdao",
+   "ts": "2026-09-27T04:13:30Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "41513",
+    "tempC": 38,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000039b08ca908c",
+    "model": "TOSHIBA_HDWG180",
+    "serial": "7160A2TZFBEG"
+   },
+   "devName": "sdao",
+   "ts": "2026-09-26T22:13:13Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "41507",
+    "tempC": 40,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000039b08ca908c",
+    "model": "TOSHIBA_HDWG180",
+    "serial": "7160A2TZFBEG"
+   },
+   "devName": "sdao",
+   "ts": "2026-09-26T16:12:56Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "41501",
+    "tempC": 37,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000039b08ca908c",
+    "model": "TOSHIBA_HDWG180",
+    "serial": "7160A2TZFBEG"
+   },
+   "devName": "sdao",
+   "ts": "2026-09-26T10:12:40Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "41495",
+    "tempC": 37,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000039b08ca908c",
+    "model": "TOSHIBA_HDWG180",
+    "serial": "7160A2TZFBEG"
+   },
+   "devName": "sdao",
+   "ts": "2026-09-26T04:12:24Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "41489",
+    "tempC": 38,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000039b08ca908c",
+    "model": "TOSHIBA_HDWG180",
+    "serial": "7160A2TZFBEG"
+   },
+   "devName": "sdao",
+   "ts": "2026-09-25T22:12:07Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "41483",
+    "tempC": 39,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000039b08ca908c",
+    "model": "TOSHIBA_HDWG180",
+    "serial": "7160A2TZFBEG"
+   },
+   "devName": "sdao",
+   "ts": "2026-09-25T16:11:51Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "41477",
+    "tempC": 39,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000039b08ca908c",
+    "model": "TOSHIBA_HDWG180",
+    "serial": "7160A2TZFBEG"
+   },
+   "devName": "sdao",
+   "ts": "2026-09-25T10:11:35Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "41471",
+    "tempC": 38,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000039b08ca908c",
+    "model": "TOSHIBA_HDWG180",
+    "serial": "7160A2TZFBEG"
+   },
+   "devName": "sdao",
+   "ts": "2026-09-25T04:11:19Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "41465",
+    "tempC": 38,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000039b08ca908c",
+    "model": "TOSHIBA_HDWG180",
+    "serial": "7160A2TZFBEG"
+   },
+   "devName": "sdao",
+   "ts": "2026-09-24T22:11:03Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "41459",
+    "tempC": 39,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000039b08ca908c",
+    "model": "TOSHIBA_HDWG180",
+    "serial": "7160A2TZFBEG"
+   },
+   "devName": "sdao",
+   "ts": "2026-09-24T16:10:47Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "41453",
+    "tempC": 37,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000039b08ca908c",
+    "model": "TOSHIBA_HDWG180",
+    "serial": "7160A2TZFBEG"
+   },
+   "devName": "sdao",
+   "ts": "2026-09-24T10:10:28Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "41447",
+    "tempC": 38,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000039b08ca908c",
+    "model": "TOSHIBA_HDWG180",
+    "serial": "7160A2TZFBEG"
+   },
+   "devName": "sdao",
+   "ts": "2026-09-24T04:10:06Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "41441",
+    "tempC": 40,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000039b08ca908c",
+    "model": "TOSHIBA_HDWG180",
+    "serial": "7160A2TZFBEG"
+   },
+   "devName": "sdao",
+   "ts": "2026-09-23T22:09:47Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "41435",
+    "tempC": 41,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000039b08ca908c",
+    "model": "TOSHIBA_HDWG180",
+    "serial": "7160A2TZFBEG"
+   },
+   "devName": "sdao",
+   "ts": "2026-09-23T16:09:22Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "41429",
+    "tempC": 40,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000039b08ca908c",
+    "model": "TOSHIBA_HDWG180",
+    "serial": "7160A2TZFBEG"
+   },
+   "devName": "sdao",
+   "ts": "2026-09-23T10:09:00Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "41423",
+    "tempC": 40,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000039b08ca908c",
+    "model": "TOSHIBA_HDWG180",
+    "serial": "7160A2TZFBEG"
+   },
+   "devName": "sdao",
+   "ts": "2026-09-23T04:08:40Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "41417",
+    "tempC": 40,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000039b08ca908c",
+    "model": "TOSHIBA_HDWG180",
+    "serial": "7160A2TZFBEG"
+   },
+   "devName": "sdao",
+   "ts": "2026-09-22T22:08:21Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "41411",
+    "tempC": 41,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000039b08ca908c",
+    "model": "TOSHIBA_HDWG180",
+    "serial": "7160A2TZFBEG"
+   },
+   "devName": "sdao",
+   "ts": "2026-09-22T16:07:59Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "41405",
+    "tempC": 39,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000039b08ca908c",
+    "model": "TOSHIBA_HDWG180",
+    "serial": "7160A2TZFBEG"
+   },
+   "devName": "sdao",
+   "ts": "2026-09-22T10:07:40Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "41399",
+    "tempC": 39,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000039b08ca908c",
+    "model": "TOSHIBA_HDWG180",
+    "serial": "7160A2TZFBEG"
+   },
+   "devName": "sdao",
+   "ts": "2026-09-22T04:07:21Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "41393",
+    "tempC": 41,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000039b08ca908c",
+    "model": "TOSHIBA_HDWG180",
+    "serial": "7160A2TZFBEG"
+   },
+   "devName": "sdao",
+   "ts": "2026-09-21T22:07:01Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "41387",
+    "tempC": 41,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000039b08ca908c",
+    "model": "TOSHIBA_HDWG180",
+    "serial": "7160A2TZFBEG"
+   },
+   "devName": "sdao",
+   "ts": "2026-09-21T16:06:38Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "41381",
+    "tempC": 39,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000039b08ca908c",
+    "model": "TOSHIBA_HDWG180",
+    "serial": "7160A2TZFBEG"
+   },
+   "devName": "sdao",
+   "ts": "2026-09-21T10:06:17Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "41375",
+    "tempC": 40,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000039b08ca908c",
+    "model": "TOSHIBA_HDWG180",
+    "serial": "7160A2TZFBEG"
+   },
+   "devName": "sdao",
+   "ts": "2026-09-21T04:05:53Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "41369",
+    "tempC": 41,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000039b08ca908c",
+    "model": "TOSHIBA_HDWG180",
+    "serial": "7160A2TZFBEG"
+   },
+   "devName": "sdao",
+   "ts": "2026-09-21T03:53:24Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "41368",
+    "tempC": 40,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000039b08ca908c",
+    "model": "TOSHIBA_HDWG180",
+    "serial": "7160A2TZFBEG"
+   },
+   "devName": "sdao",
+   "ts": "2026-09-21T03:43:03Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "41368",
+    "tempC": 41,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000039b08ca908c",
+    "model": "TOSHIBA_HDWG180",
+    "serial": "7160A2TZFBEG"
+   },
+   "devName": "sdao",
+   "ts": "2026-09-21T03:28:33Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "41368",
+    "tempC": 41,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000039b08ca908c",
+    "model": "TOSHIBA_HDWG180",
+    "serial": "7160A2TZFBEG"
+   },
+   "devName": "sdao",
+   "ts": "2026-09-21T01:42:20Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "41366",
+    "tempC": 41,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000039b08ca908c",
+    "model": "TOSHIBA_HDWG180",
+    "serial": "7160A2TZFBEG"
+   },
+   "devName": "sdao",
+   "ts": "2026-09-20T19:41:58Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "41360",
+    "tempC": 41,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000039b08ca908c",
+    "model": "TOSHIBA_HDWG180",
+    "serial": "7160A2TZFBEG"
+   },
+   "devName": "sdao",
+   "ts": "2026-09-20T14:21:59Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "41355",
+    "tempC": 39,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000039b08ca908c",
+    "model": "TOSHIBA_HDWG180",
+    "serial": "7160A2TZFBEG"
+   },
+   "devName": "sdao",
+   "ts": "2026-09-20T08:21:29Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "41349",
+    "tempC": 40,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000039b08ca908c",
+    "model": "TOSHIBA_HDWG180",
+    "serial": "7160A2TZFBEG"
+   },
+   "devName": "sdao",
+   "ts": "2026-09-20T02:21:10Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "41343",
+    "tempC": 40,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000039b08ca908c",
+    "model": "TOSHIBA_HDWG180",
+    "serial": "7160A2TZFBEG"
+   },
+   "devName": "sdao",
+   "ts": "2026-09-19T20:20:41Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "41337",
+    "tempC": 41,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000039b08ca908c",
+    "model": "TOSHIBA_HDWG180",
+    "serial": "7160A2TZFBEG"
+   },
+   "devName": "sdao",
+   "ts": "2026-09-19T17:49:57Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "41334",
+    "tempC": 40,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000039b08ca908c",
+    "model": "TOSHIBA_HDWG180",
+    "serial": "7160A2TZFBEG"
+   },
+   "devName": "sdao",
+   "ts": "2026-09-19T11:49:37Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "41328",
+    "tempC": 40,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000039b08ca908c",
+    "model": "TOSHIBA_HDWG180",
+    "serial": "7160A2TZFBEG"
+   },
+   "devName": "sdao",
+   "ts": "2026-09-19T05:49:05Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "41322",
+    "tempC": 40,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000039b08ca908c",
+    "model": "TOSHIBA_HDWG180",
+    "serial": "7160A2TZFBEG"
+   },
+   "devName": "sdao",
+   "ts": "2026-09-18T23:48:29Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "41316",
+    "tempC": 41,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000039b08ca908c",
+    "model": "TOSHIBA_HDWG180",
+    "serial": "7160A2TZFBEG"
+   },
+   "devName": "sdao",
+   "ts": "2026-09-18T17:47:56Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "41310",
+    "tempC": 40,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000039b08ca908c",
+    "model": "TOSHIBA_HDWG180",
+    "serial": "7160A2TZFBEG"
+   },
+   "devName": "sdao",
+   "ts": "2026-09-18T11:47:37Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "41304",
+    "tempC": 40,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000039b08ca908c",
+    "model": "TOSHIBA_HDWG180",
+    "serial": "7160A2TZFBEG"
+   },
+   "devName": "sdao",
+   "ts": "2026-09-18T05:47:17Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "41298",
+    "tempC": 40,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000039b08ca908c",
+    "model": "TOSHIBA_HDWG180",
+    "serial": "7160A2TZFBEG"
+   },
+   "devName": "sdao",
+   "ts": "2026-09-17T23:46:51Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "41292",
+    "tempC": 42,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000039b08ca908c",
+    "model": "TOSHIBA_HDWG180",
+    "serial": "7160A2TZFBEG"
+   },
+   "devName": "sdao",
+   "ts": "2026-09-17T17:46:32Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "41286",
+    "tempC": 41,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000039b08ca908c",
+    "model": "TOSHIBA_HDWG180",
+    "serial": "7160A2TZFBEG"
+   },
+   "devName": "sdao",
+   "ts": "2026-09-17T11:46:13Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "41280",
+    "tempC": 40,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000039b08ca908c",
+    "model": "TOSHIBA_HDWG180",
+    "serial": "7160A2TZFBEG"
+   },
+   "devName": "sdao",
+   "ts": "2026-09-17T05:45:57Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "41274",
+    "tempC": 39,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000039b08ca908c",
+    "model": "TOSHIBA_HDWG180",
+    "serial": "7160A2TZFBEG"
+   },
+   "devName": "sdao",
+   "ts": "2026-09-16T23:45:41Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "41268",
+    "tempC": 41,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000039b08ca908c",
+    "model": "TOSHIBA_HDWG180",
+    "serial": "7160A2TZFBEG"
+   },
+   "devName": "sdao",
+   "ts": "2026-09-16T17:45:24Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "41262",
+    "tempC": 40,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000039b08ca908c",
+    "model": "TOSHIBA_HDWG180",
+    "serial": "7160A2TZFBEG"
+   },
+   "devName": "sdao",
+   "ts": "2026-09-16T11:45:07Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "41256",
+    "tempC": 38,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000039b08ca908c",
+    "model": "TOSHIBA_HDWG180",
+    "serial": "7160A2TZFBEG"
+   },
+   "devName": "sdao",
+   "ts": "2026-09-16T05:44:51Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "41250",
+    "tempC": 41,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000039b08ca908c",
+    "model": "TOSHIBA_HDWG180",
+    "serial": "7160A2TZFBEG"
+   },
+   "devName": "sdao",
+   "ts": "2026-09-15T23:44:35Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "41244",
+    "tempC": 41,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000039b08ca908c",
+    "model": "TOSHIBA_HDWG180",
+    "serial": "7160A2TZFBEG"
+   },
+   "devName": "sdao",
+   "ts": "2026-09-15T17:44:18Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "41238",
+    "tempC": 38,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000039b08ca908c",
+    "model": "TOSHIBA_HDWG180",
+    "serial": "7160A2TZFBEG"
+   },
+   "devName": "sdao",
+   "ts": "2026-09-15T11:44:01Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "41232",
+    "tempC": 40,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000039b08ca908c",
+    "model": "TOSHIBA_HDWG180",
+    "serial": "7160A2TZFBEG"
+   },
+   "devName": "sdao",
+   "ts": "2026-09-15T05:43:44Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "41226",
+    "tempC": 39,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000039b08ca908c",
+    "model": "TOSHIBA_HDWG180",
+    "serial": "7160A2TZFBEG"
+   },
+   "devName": "sdao",
+   "ts": "2026-09-14T23:43:28Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "41220",
+    "tempC": 40,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000039b08ca908c",
+    "model": "TOSHIBA_HDWG180",
+    "serial": "7160A2TZFBEG"
+   },
+   "devName": "sdao",
+   "ts": "2026-09-14T17:43:11Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "41214",
+    "tempC": 40,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000039b08ca908c",
+    "model": "TOSHIBA_HDWG180",
+    "serial": "7160A2TZFBEG"
+   },
+   "devName": "sdao",
+   "ts": "2026-09-14T16:09:47Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "41213",
+    "tempC": 40,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000039b08ca908c",
+    "model": "TOSHIBA_HDWG180",
+    "serial": "7160A2TZFBEG"
+   },
+   "devName": "sdao",
+   "ts": "2026-09-14T10:09:29Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "41207",
+    "tempC": 40,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000039b08ca908c",
+    "model": "TOSHIBA_HDWG180",
+    "serial": "7160A2TZFBEG"
+   },
+   "devName": "sdao",
+   "ts": "2026-09-14T04:09:13Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "41201",
+    "tempC": 39,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000039b08ca908c",
+    "model": "TOSHIBA_HDWG180",
+    "serial": "7160A2TZFBEG"
+   },
+   "devName": "sdao",
+   "ts": "2026-09-14T03:59:08Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "41200",
+    "tempC": 39,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000039b08ca908c",
+    "model": "TOSHIBA_HDWG180",
+    "serial": "7160A2TZFBEG"
+   },
+   "devName": "sdao",
+   "ts": "2026-09-14T03:46:17Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "41200",
+    "tempC": 39,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000039b08ca908c",
+    "model": "TOSHIBA_HDWG180",
+    "serial": "7160A2TZFBEG"
+   },
+   "devName": "sdao",
+   "ts": "2026-09-13T23:12:48Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "41196",
+    "tempC": 41,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000039b08ca908c",
+    "model": "TOSHIBA_HDWG180",
+    "serial": "7160A2TZFBEG"
+   },
+   "devName": "sdao",
+   "ts": "2026-09-13T22:10:14Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "41195",
+    "tempC": 41,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000039b08ca908c",
+    "model": "TOSHIBA_HDWG180",
+    "serial": "7160A2TZFBEG"
+   },
+   "devName": "sdao",
+   "ts": "2026-09-13T21:37:06Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "41194",
+    "tempC": 41,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000039b08ca908c",
+    "model": "TOSHIBA_HDWG180",
+    "serial": "7160A2TZFBEG"
+   },
+   "devName": "sdao",
+   "ts": "2026-09-13T21:15:13Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "41194",
+    "tempC": 41,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000039b08ca908c",
+    "model": "TOSHIBA_HDWG180",
+    "serial": "7160A2TZFBEG"
+   },
+   "devName": "sdao",
+   "ts": "2026-09-13T17:04:50Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "41189",
+    "tempC": 41,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000039b08ca908c",
+    "model": "TOSHIBA_HDWG180",
+    "serial": "7160A2TZFBEG"
+   },
+   "devName": "sdao",
+   "ts": "2026-09-13T14:18:19Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "41187",
+    "tempC": 41,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000039b08ca908c",
+    "model": "TOSHIBA_HDWG180",
+    "serial": "7160A2TZFBEG"
+   },
+   "devName": "sdao",
+   "ts": "2026-09-13T08:17:31Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "41181",
+    "tempC": 41,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000039b08ca908c",
+    "model": "TOSHIBA_HDWG180",
+    "serial": "7160A2TZFBEG"
+   },
+   "devName": "sdao",
+   "ts": "2026-09-13T02:17:06Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "41175",
+    "tempC": 42,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000039b08ca908c",
+    "model": "TOSHIBA_HDWG180",
+    "serial": "7160A2TZFBEG"
+   },
+   "devName": "sdao",
+   "ts": "2026-09-13T02:09:10Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "41175",
+    "tempC": 42,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  }
+ ]
+}

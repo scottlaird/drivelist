@@ -1,0 +1,43 @@
+{
+ "enclosure": {
+  "enclosure": "dmi:OM259S069895",
+  "hostname": "backups",
+  "via": "pci",
+  "drives": 2,
+  "firstSeen": "2026-09-13T23:12:25Z",
+  "lastSeen": "2026-09-27T19:42:09Z",
+  "product": "Supermicro Super Server",
+  "bays": 2,
+  "board": "H13SAE-MF"
+ },
+ "bays": [
+  {
+   "label": "M.2-C1 PCIe 4.0 X4",
+   "ids": [
+    "pci:M.2-C1 PCIe 4.0 X4"
+   ],
+   "present": true,
+   "devName": "nvme0n1",
+   "serial": "BSE3N45261OA43O21",
+   "model": "SHPP51-1000GM",
+   "status": "ok",
+   "uses": [
+    "zfs > rpool 18354710647381807540 > mirror 5264883868435595074 > disk 5223049671745381668"
+   ]
+  },
+  {
+   "label": "M.2-C2 PCIe 4.0 X4",
+   "ids": [
+    "pci:M.2-C2 PCIe 4.0 X4"
+   ],
+   "present": true,
+   "devName": "nvme1n1",
+   "serial": "BSE3N45261OA43O1H",
+   "model": "SHPP51-1000GM",
+   "status": "ok",
+   "uses": [
+    "zfs > rpool 18354710647381807540 > mirror 5264883868435595074 > disk 1250468358385806965"
+   ]
+  }
+ ]
+}

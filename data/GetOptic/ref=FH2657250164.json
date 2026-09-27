@@ -1,0 +1,274 @@
+{
+ "row": {
+  "optic": {
+   "port": "swp1",
+   "ports": [
+    "swp1"
+   ],
+   "form": "QSFP28",
+   "identifier": "0x11 (QSFP28)",
+   "kind": "optical",
+   "vendor": "LUMENTUM",
+   "oui": "00:01:9c",
+   "part": "LQ210CR-CPA1",
+   "rev": "01",
+   "serial": "FH2657250164",
+   "dateCode": "170627",
+   "compliance": "100G Ethernet: 100G CWDM4 MSA with FEC",
+   "connector": "LC",
+   "wavelengthNm": 1311,
+   "link": "up",
+   "diagnostics": true,
+   "tempC": 41.68,
+   "voltageV": 3.4082,
+   "lanes": [
+    {
+     "lane": 1,
+     "biasMa": 24.682,
+     "txMw": 0.9129,
+     "rxMw": 0.6533
+    },
+    {
+     "lane": 2,
+     "biasMa": 24.21,
+     "txMw": 0.9518,
+     "rxMw": 0.828
+    },
+    {
+     "lane": 3,
+     "biasMa": 25.378,
+     "txMw": 0.9784,
+     "rxMw": 0.8584
+    },
+    {
+     "lane": 4,
+     "biasMa": 25.472,
+     "txMw": 0.8013,
+     "rxMw": 0.7714
+    }
+   ],
+   "thresholds": {
+    "bias_high_alarm": 81,
+    "bias_high_warning": 74.3,
+    "bias_low_alarm": 5,
+    "bias_low_warning": 10,
+    "rx_high_alarm": 3.5481,
+    "rx_high_warning": 2.8183,
+    "rx_low_alarm": 0.0281,
+    "rx_low_warning": 0.0446,
+    "temp_high_alarm": 75,
+    "temp_high_warning": 73,
+    "temp_low_alarm": -5,
+    "temp_low_warning": -3,
+    "tx_high_alarm": 4.4668,
+    "tx_high_warning": 2.8183,
+    "tx_low_alarm": 0.0891,
+    "tx_low_warning": 0.1412,
+    "voltage_high_alarm": 3.6036,
+    "voltage_high_warning": 3.5343,
+    "voltage_low_alarm": 3.0096,
+    "voltage_low_warning": 3.0723
+   }
+  },
+  "status": "ok",
+  "hostname": "switch3",
+  "present": true,
+  "firstSeen": "2026-09-27T15:26:32Z",
+  "lastSeen": "2026-09-27T19:42:02Z",
+  "sampledAt": "2026-09-27T19:42:02Z"
+ },
+ "placements": [
+  {
+   "hostname": "switch3",
+   "port": "swp1",
+   "ports": [
+    "swp1"
+   ],
+   "firstSeen": "2026-09-27T15:26:32Z",
+   "lastSeen": "2026-09-27T19:42:02Z"
+  }
+ ],
+ "samples": [
+  {
+   "ts": "2026-09-27T19:42:02Z",
+   "hostname": "switch3",
+   "port": "swp1",
+   "tempC": 41.68,
+   "voltageV": 3.4082,
+   "lanes": [
+    {
+     "lane": 1,
+     "biasMa": 24.682,
+     "txMw": 0.9129,
+     "rxMw": 0.6533
+    },
+    {
+     "lane": 2,
+     "biasMa": 24.21,
+     "txMw": 0.9518,
+     "rxMw": 0.828
+    },
+    {
+     "lane": 3,
+     "biasMa": 25.378,
+     "txMw": 0.9784,
+     "rxMw": 0.8584
+    },
+    {
+     "lane": 4,
+     "biasMa": 25.472,
+     "txMw": 0.8013,
+     "rxMw": 0.7714
+    }
+   ],
+   "link": "up"
+  },
+  {
+   "ts": "2026-09-27T18:56:56Z",
+   "hostname": "switch3",
+   "port": "swp1",
+   "tempC": 40.96,
+   "voltageV": 3.409,
+   "lanes": [
+    {
+     "lane": 1,
+     "biasMa": 24.504,
+     "txMw": 0.9158,
+     "rxMw": 0.6542
+    },
+    {
+     "lane": 2,
+     "biasMa": 24.07,
+     "txMw": 0.9552,
+     "rxMw": 0.8264
+    },
+    {
+     "lane": 3,
+     "biasMa": 25.138,
+     "txMw": 0.9797,
+     "rxMw": 0.8491
+    },
+    {
+     "lane": 4,
+     "biasMa": 25.244,
+     "txMw": 0.8007,
+     "rxMw": 0.7708
+    }
+   ],
+   "link": "up"
+  },
+  {
+   "ts": "2026-09-27T17:56:50Z",
+   "hostname": "switch3",
+   "port": "swp1",
+   "tempC": 39.89,
+   "voltageV": 3.4092,
+   "lanes": [
+    {
+     "lane": 1,
+     "biasMa": 24.254,
+     "txMw": 0.9193,
+     "rxMw": 0.6446
+    },
+    {
+     "lane": 2,
+     "biasMa": 23.872,
+     "txMw": 0.9636,
+     "rxMw": 0.8226
+    },
+    {
+     "lane": 3,
+     "biasMa": 24.806,
+     "txMw": 0.9773,
+     "rxMw": 0.8488
+    },
+    {
+     "lane": 4,
+     "biasMa": 24.92,
+     "txMw": 0.8003,
+     "rxMw": 0.7699
+    }
+   ],
+   "link": "up"
+  },
+  {
+   "ts": "2026-09-27T16:56:43Z",
+   "hostname": "switch3",
+   "port": "swp1",
+   "tempC": 39.14,
+   "voltageV": 3.4085,
+   "lanes": [
+    {
+     "lane": 1,
+     "biasMa": 24.086,
+     "txMw": 0.9234,
+     "rxMw": 0.6452
+    },
+    {
+     "lane": 2,
+     "biasMa": 23.738,
+     "txMw": 0.9612,
+     "rxMw": 0.8301
+    },
+    {
+     "lane": 3,
+     "biasMa": 24.578,
+     "txMw": 0.9751,
+     "rxMw": 0.8575
+    },
+    {
+     "lane": 4,
+     "biasMa": 24.704,
+     "txMw": 0.802,
+     "rxMw": 0.7707
+    }
+   ],
+   "link": "up"
+  },
+  {
+   "ts": "2026-09-27T15:56:36Z",
+   "hostname": "switch3",
+   "port": "swp1",
+   "tempC": 38.73,
+   "voltageV": 3.409,
+   "lanes": [
+    {
+     "lane": 1,
+     "biasMa": 23.994,
+     "txMw": 0.9219,
+     "rxMw": 0.6455
+    },
+    {
+     "lane": 2,
+     "biasMa": 23.666,
+     "txMw": 0.9633,
+     "rxMw": 0.8242
+    },
+    {
+     "lane": 3,
+     "biasMa": 24.456,
+     "txMw": 0.9783,
+     "rxMw": 0.8457
+    },
+    {
+     "lane": 4,
+     "biasMa": 24.586,
+     "txMw": 0.8002,
+     "rxMw": 0.7714
+    }
+   ],
+   "link": "up"
+  }
+ ],
+ "events": [
+  {
+   "eventId": "915",
+   "ts": "2026-09-27T15:26:32Z",
+   "kind": "optic_first_seen",
+   "hostname": "switch3",
+   "detail": "{\"form\":\"QSFP28\",\"part\":\"LQ210CR-CPA1\",\"port\":\"swp1\",\"serial\":\"FH2657250164\",\"vendor\":\"LUMENTUM\"}",
+   "source": "report",
+   "opticSerial": "FH2657250164"
+  }
+ ]
+}

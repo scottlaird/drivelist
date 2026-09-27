@@ -1,0 +1,62 @@
+{
+ "rows": [
+  {
+   "hostname": "server7",
+   "dimm": {
+    "slot": "Controller0-ChannelA-DIMM0",
+    "bank": "BANK 0",
+    "sizeBytes": "17179869184",
+    "ranks": 1,
+    "type": "DDR5",
+    "speedMts": 5200,
+    "manufacturer": "Crucial Technology",
+    "part": "CT16G56C46S5.M8G1",
+    "serial": "E8F495F7",
+    "edac": "mc0/MC#0_Chan#0_DIMM#0+mc0/MC#0_Chan#1_DIMM#0",
+    "edacType": "Unbuffered-DDR3",
+    "mapping": "exact",
+    "edacSizeBytes": "17179869184",
+    "totalWidth": 64,
+    "dataWidth": 64,
+    "edacMode": "SECDED"
+   },
+   "firstSeen": "2026-09-21T03:29:43Z",
+   "lastSeen": "2026-09-27T19:43:34Z"
+  },
+  {
+   "hostname": "server7",
+   "dimm": {
+    "slot": "Controller1-ChannelA-DIMM0",
+    "bank": "BANK 0",
+    "sizeBytes": "17179869184",
+    "ranks": 1,
+    "type": "DDR5",
+    "speedMts": 5200,
+    "manufacturer": "Crucial Technology",
+    "part": "CT16G56C46S5.M8D1",
+    "serial": "E9626CFC",
+    "edac": "mc1/MC#1_Chan#0_DIMM#0+mc1/MC#1_Chan#1_DIMM#0",
+    "edacType": "Unbuffered-DDR3",
+    "mapping": "exact",
+    "edacSizeBytes": "17179869184",
+    "totalWidth": 64,
+    "dataWidth": 64,
+    "edacMode": "SECDED"
+   },
+   "firstSeen": "2026-09-21T03:29:43Z",
+   "lastSeen": "2026-09-27T19:43:34Z"
+  }
+ ],
+ "hosts": [
+  {
+   "hostname": "server7",
+   "kernelBytes": "32834179072",
+   "firmwareBytes": "34359738368",
+   "edacBytes": "34359738368",
+   "modules": 2,
+   "correction": "none",
+   "edacMode": "SECDED",
+   "plainModules": 2
+  }
+ ]
+}

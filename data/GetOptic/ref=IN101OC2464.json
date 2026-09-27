@@ -1,0 +1,166 @@
+{
+ "row": {
+  "optic": {
+   "port": "enp5s0f0np0",
+   "ports": [
+    "enp5s0f0np0"
+   ],
+   "form": "SFP",
+   "identifier": "0x03 (SFP)",
+   "kind": "optical",
+   "vendor": "Intel Corp",
+   "oui": "00:1b:21",
+   "part": "FTLX8571D3BCV-IT",
+   "rev": "A",
+   "serial": "IN101OC2464",
+   "dateCode": "241217",
+   "compliance": "Ethernet: 1000BASE-SX",
+   "connector": "LC",
+   "wavelengthNm": 850,
+   "link": "up",
+   "diagnostics": true,
+   "tempC": 56,
+   "voltageV": 3.2588,
+   "lanes": [
+    {
+     "lane": 1,
+     "biasMa": 6.804,
+     "txMw": 0.6165,
+     "rxMw": 0.9009
+    }
+   ],
+   "thresholds": {
+    "bias_high_alarm": 15,
+    "bias_high_warning": 13,
+    "bias_low_alarm": 1,
+    "bias_low_warning": 2,
+    "rx_high_alarm": 1.5849,
+    "rx_high_warning": 1.2589,
+    "rx_low_alarm": 0.0501,
+    "rx_low_warning": 0.0631,
+    "temp_high_alarm": 90,
+    "temp_high_warning": 85,
+    "temp_low_alarm": -10,
+    "temp_low_warning": -5,
+    "tx_high_alarm": 1.5849,
+    "tx_high_warning": 1.2589,
+    "tx_low_alarm": 0.1995,
+    "tx_low_warning": 0.2512,
+    "voltage_high_alarm": 3.7,
+    "voltage_high_warning": 3.6,
+    "voltage_low_alarm": 2.9,
+    "voltage_low_warning": 3
+   }
+  },
+  "status": "ok",
+  "hostname": "server9",
+  "present": true,
+  "firstSeen": "2026-09-27T15:16:33Z",
+  "lastSeen": "2026-09-27T19:42:19Z",
+  "sampledAt": "2026-09-27T19:42:19Z"
+ },
+ "placements": [
+  {
+   "hostname": "server9",
+   "port": "enp5s0f0np0",
+   "ports": [
+    "enp5s0f0np0"
+   ],
+   "firstSeen": "2026-09-27T15:16:33Z",
+   "lastSeen": "2026-09-27T19:42:19Z"
+  }
+ ],
+ "samples": [
+  {
+   "ts": "2026-09-27T19:42:19Z",
+   "hostname": "server9",
+   "port": "enp5s0f0np0",
+   "tempC": 56,
+   "voltageV": 3.2588,
+   "lanes": [
+    {
+     "lane": 1,
+     "biasMa": 6.804,
+     "txMw": 0.6165,
+     "rxMw": 0.9009
+    }
+   ],
+   "link": "up"
+  },
+  {
+   "ts": "2026-09-27T18:57:10Z",
+   "hostname": "server9",
+   "port": "enp5s0f0np0",
+   "tempC": 56.41,
+   "voltageV": 3.2588,
+   "lanes": [
+    {
+     "lane": 1,
+     "biasMa": 6.804,
+     "txMw": 0.6165,
+     "rxMw": 0.8937
+    }
+   ],
+   "link": "up"
+  },
+  {
+   "ts": "2026-09-27T17:56:59Z",
+   "hostname": "server9",
+   "port": "enp5s0f0np0",
+   "tempC": 56.41,
+   "voltageV": 3.2588,
+   "lanes": [
+    {
+     "lane": 1,
+     "biasMa": 6.804,
+     "txMw": 0.6165,
+     "rxMw": 0.8937
+    }
+   ],
+   "link": "up"
+  },
+  {
+   "ts": "2026-09-27T16:56:50Z",
+   "hostname": "server9",
+   "port": "enp5s0f0np0",
+   "tempC": 56.41,
+   "voltageV": 3.2588,
+   "lanes": [
+    {
+     "lane": 1,
+     "biasMa": 6.804,
+     "txMw": 0.6261,
+     "rxMw": 0.8937
+    }
+   ],
+   "link": "up"
+  },
+  {
+   "ts": "2026-09-27T15:56:39Z",
+   "hostname": "server9",
+   "port": "enp5s0f0np0",
+   "tempC": 56.41,
+   "voltageV": 3.2588,
+   "lanes": [
+    {
+     "lane": 1,
+     "biasMa": 6.804,
+     "txMw": 0.6165,
+     "rxMw": 0.8937
+    }
+   ],
+   "link": "up"
+  }
+ ],
+ "events": [
+  {
+   "eventId": "908",
+   "ts": "2026-09-27T15:16:33Z",
+   "kind": "optic_first_seen",
+   "hostname": "server9",
+   "detail": "{\"form\":\"SFP\",\"part\":\"FTLX8571D3BCV-IT\",\"port\":\"enp5s0f0np0\",\"serial\":\"IN101OC2464\",\"vendor\":\"Intel Corp\"}",
+   "source": "report",
+   "opticSerial": "IN101OC2464"
+  }
+ ]
+}

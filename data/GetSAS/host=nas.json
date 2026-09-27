@@ -1,0 +1,3295 @@
+{
+ "nodes": [
+  {
+   "node": {
+    "kind": "hba",
+    "name": "host10",
+    "address": "0x500605b00c20d550",
+    "vendor": "mpt3sas",
+    "product": "SAS9300-8e",
+    "revision": "16.00.10.00"
+   },
+   "hostname": "nas",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "node": {
+    "kind": "hba",
+    "name": "host11",
+    "address": "0x500062b2047b51c5",
+    "vendor": "mpt3sas",
+    "product": "HBA 9400-8i8e",
+    "revision": "03.00.04.00"
+   },
+   "hostname": "nas",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "node": {
+    "kind": "expander",
+    "name": "expander-10:0",
+    "address": "0x500304800000007f",
+    "vendor": "LSI",
+    "product": "SAS2X36",
+    "revision": "0e12",
+    "parentAddress": "0x500605b00c20d550",
+    "upstreamPort": "port-10:0"
+   },
+   "hostname": "nas",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "node": {
+    "kind": "expander",
+    "name": "expander-11:0",
+    "address": "0x5000ccab0200947e",
+    "vendor": "HGST",
+    "product": "4U60_STOR_ENCL",
+    "revision": "0210",
+    "parentAddress": "0x500062b2047b51c5",
+    "upstreamPort": "port-11:0"
+   },
+   "hostname": "nas",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "node": {
+    "kind": "expander",
+    "name": "expander-11:1",
+    "address": "0x5003048001e8967f",
+    "vendor": "LSI",
+    "product": "SAS2X36",
+    "revision": "0e12",
+    "parentAddress": "0x500062b2047b51c5",
+    "upstreamPort": "port-11:9"
+   },
+   "hostname": "nas",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  }
+ ],
+ "phys": [
+  {
+   "phy": {
+    "ownerAddress": "0x500062b2047b51c5",
+    "name": "phy-11:0",
+    "port": "port-11:2",
+    "portWidth": 1,
+    "rate": "12.0 Gbit",
+    "rateGbit": 12,
+    "attachedKind": "drive",
+    "attached": "end_device-11:2",
+    "attachedAddress": "0x5000cca0506b3f51",
+    "devName": "sdr",
+    "bay": "7",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "host11",
+   "serial": "0SWWZEYA",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x500062b2047b51c5",
+    "phyId": 1,
+    "name": "phy-11:1",
+    "rate": "Unknown",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "host11",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x500062b2047b51c5",
+    "phyId": 2,
+    "name": "phy-11:2",
+    "port": "port-11:3",
+    "portWidth": 1,
+    "rate": "12.0 Gbit",
+    "rateGbit": 12,
+    "attachedKind": "drive",
+    "attached": "end_device-11:3",
+    "attachedAddress": "0x5000cca0506a96d1",
+    "devName": "sds",
+    "bay": "6",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "host11",
+   "serial": "0SWWM72A",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x500062b2047b51c5",
+    "phyId": 3,
+    "name": "phy-11:3",
+    "port": "port-11:4",
+    "portWidth": 1,
+    "rate": "12.0 Gbit",
+    "rateGbit": 12,
+    "attachedKind": "drive",
+    "attached": "end_device-11:4",
+    "attachedAddress": "0x5000cca0501c6729",
+    "devName": "sdt",
+    "bay": "2",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "host11",
+   "serial": "0SVHM7EA",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x500062b2047b51c5",
+    "phyId": 4,
+    "name": "phy-11:4",
+    "port": "port-11:5",
+    "portWidth": 1,
+    "rate": "6.0 Gbit",
+    "rateGbit": 6,
+    "attachedKind": "drive",
+    "attached": "end_device-11:5",
+    "attachedAddress": "0x5000cca04aafd555",
+    "devName": "sdu",
+    "bay": "5",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "host11",
+   "serial": "0LY3PSSA",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x500062b2047b51c5",
+    "phyId": 5,
+    "name": "phy-11:5",
+    "port": "port-11:6",
+    "portWidth": 1,
+    "rate": "12.0 Gbit",
+    "rateGbit": 12,
+    "attachedKind": "drive",
+    "attached": "end_device-11:6",
+    "attachedAddress": "0x5000cca0506abc6d",
+    "devName": "sdv",
+    "bay": "1",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "host11",
+   "serial": "0SWWPRRA",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x500062b2047b51c5",
+    "phyId": 6,
+    "name": "phy-11:6",
+    "port": "port-11:7",
+    "portWidth": 1,
+    "rate": "6.0 Gbit",
+    "rateGbit": 6,
+    "attachedKind": "drive",
+    "attached": "end_device-11:7",
+    "attachedAddress": "0x5000cca04aafd575",
+    "devName": "sdw",
+    "bay": "4",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "host11",
+   "serial": "0LY3PT0A",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x500062b2047b51c5",
+    "phyId": 7,
+    "name": "phy-11:7",
+    "port": "port-11:1",
+    "portWidth": 1,
+    "rate": "12.0 Gbit",
+    "rateGbit": 12,
+    "attachedKind": "drive",
+    "attached": "end_device-11:1",
+    "attachedAddress": "0x5000cca0506b5f1d",
+    "devName": "sdq",
+    "bay": "0",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "host11",
+   "serial": "0SWX1KLA",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x500062b2047b51c5",
+    "phyId": 8,
+    "name": "phy-11:8",
+    "port": "port-11:0",
+    "portWidth": 4,
+    "rate": "12.0 Gbit",
+    "rateGbit": 12,
+    "attachedKind": "expander",
+    "attached": "expander-11:0",
+    "attachedAddress": "0x5000ccab0200947e",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "host11",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x500062b2047b51c5",
+    "phyId": 9,
+    "name": "phy-11:9",
+    "port": "port-11:0",
+    "portWidth": 4,
+    "rate": "12.0 Gbit",
+    "rateGbit": 12,
+    "attachedKind": "expander",
+    "attached": "expander-11:0",
+    "attachedAddress": "0x5000ccab0200947e",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "host11",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x500062b2047b51c5",
+    "phyId": 10,
+    "name": "phy-11:10",
+    "port": "port-11:0",
+    "portWidth": 4,
+    "rate": "12.0 Gbit",
+    "rateGbit": 12,
+    "attachedKind": "expander",
+    "attached": "expander-11:0",
+    "attachedAddress": "0x5000ccab0200947e",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "host11",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x500062b2047b51c5",
+    "phyId": 11,
+    "name": "phy-11:11",
+    "port": "port-11:0",
+    "portWidth": 4,
+    "rate": "12.0 Gbit",
+    "rateGbit": 12,
+    "attachedKind": "expander",
+    "attached": "expander-11:0",
+    "attachedAddress": "0x5000ccab0200947e",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "host11",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x500062b2047b51c5",
+    "phyId": 12,
+    "name": "phy-11:12",
+    "port": "port-11:9",
+    "portWidth": 4,
+    "rate": "6.0 Gbit",
+    "rateGbit": 6,
+    "attachedKind": "expander",
+    "attached": "expander-11:1",
+    "attachedAddress": "0x5003048001e8967f",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "host11",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x500062b2047b51c5",
+    "phyId": 13,
+    "name": "phy-11:13",
+    "port": "port-11:9",
+    "portWidth": 4,
+    "rate": "6.0 Gbit",
+    "rateGbit": 6,
+    "attachedKind": "expander",
+    "attached": "expander-11:1",
+    "attachedAddress": "0x5003048001e8967f",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "host11",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x500062b2047b51c5",
+    "phyId": 14,
+    "name": "phy-11:14",
+    "port": "port-11:9",
+    "portWidth": 4,
+    "rate": "6.0 Gbit",
+    "rateGbit": 6,
+    "attachedKind": "expander",
+    "attached": "expander-11:1",
+    "attachedAddress": "0x5003048001e8967f",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "host11",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x500062b2047b51c5",
+    "phyId": 15,
+    "name": "phy-11:15",
+    "port": "port-11:9",
+    "portWidth": 4,
+    "rate": "6.0 Gbit",
+    "rateGbit": 6,
+    "attachedKind": "expander",
+    "attached": "expander-11:1",
+    "attachedAddress": "0x5003048001e8967f",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "host11",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x500062b2047b51c5",
+    "phyId": 16,
+    "name": "phy-11:16",
+    "port": "port-11:8",
+    "portWidth": 1,
+    "rate": "1.5 Gbit",
+    "rateGbit": 1.5,
+    "attachedKind": "device",
+    "attached": "end_device-11:8",
+    "attachedAddress": "0x510060b2047b51c0",
+    "bay": "16",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "host11",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x5000ccab0200947e",
+    "name": "phy-11:0:0",
+    "rate": "Unknown",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-11:0",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x5000ccab0200947e",
+    "phyId": 1,
+    "name": "phy-11:0:1",
+    "port": "port-11:0:0",
+    "portWidth": 1,
+    "rate": "12.0 Gbit",
+    "rateGbit": 12,
+    "attachedKind": "drive",
+    "attached": "end_device-11:0:0",
+    "attachedAddress": "0x5000c500caf7af6d",
+    "devName": "sdx",
+    "bay": "47",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-11:0",
+   "serial": "ZA1K2KC2",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x5000ccab0200947e",
+    "phyId": 2,
+    "name": "phy-11:0:2",
+    "port": "port-11:0:1",
+    "portWidth": 1,
+    "rate": "6.0 Gbit",
+    "rateGbit": 6,
+    "attachedKind": "drive",
+    "attached": "end_device-11:0:1",
+    "attachedAddress": "0x5000ccab02009402",
+    "devName": "sdy",
+    "bay": "58",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-11:0",
+   "serial": "ZCT0CQLK",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x5000ccab0200947e",
+    "phyId": 3,
+    "name": "phy-11:0:3",
+    "port": "port-11:0:2",
+    "portWidth": 1,
+    "rate": "12.0 Gbit",
+    "rateGbit": 12,
+    "attachedKind": "drive",
+    "attached": "end_device-11:0:2",
+    "attachedAddress": "0x5000cca23b178ae5",
+    "devName": "sdz",
+    "bay": "35",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-11:0",
+   "serial": "2EGDYBMR",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x5000ccab0200947e",
+    "phyId": 4,
+    "name": "phy-11:0:4",
+    "port": "port-11:0:3",
+    "portWidth": 1,
+    "rate": "12.0 Gbit",
+    "rateGbit": 12,
+    "attachedKind": "drive",
+    "attached": "end_device-11:0:3",
+    "attachedAddress": "0x5000cca26128b1f5",
+    "devName": "sdaa",
+    "bay": "23",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-11:0",
+   "serial": "VJGRBU1X",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x5000ccab0200947e",
+    "phyId": 5,
+    "name": "phy-11:0:5",
+    "rate": "Unknown",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-11:0",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x5000ccab0200947e",
+    "phyId": 6,
+    "name": "phy-11:0:6",
+    "port": "port-11:0:52",
+    "portWidth": 1,
+    "rate": "6.0 Gbit",
+    "rateGbit": 6,
+    "attachedKind": "drive",
+    "attached": "end_device-11:0:52",
+    "attachedAddress": "0x5000ccab02009406",
+    "devName": "sdab",
+    "bay": "57",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-11:0",
+   "serial": "ZCT0ELAY",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x5000ccab0200947e",
+    "phyId": 7,
+    "name": "phy-11:0:7",
+    "rate": "Unknown",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-11:0",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x5000ccab0200947e",
+    "phyId": 8,
+    "name": "phy-11:0:8",
+    "port": "port-11:0:5",
+    "portWidth": 1,
+    "rate": "12.0 Gbit",
+    "rateGbit": 12,
+    "attachedKind": "drive",
+    "attached": "end_device-11:0:5",
+    "attachedAddress": "0x5000cca26107ef79",
+    "devName": "sdac",
+    "bay": "11",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-11:0",
+   "serial": "VJG4B90X",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x5000ccab0200947e",
+    "phyId": 9,
+    "name": "phy-11:0:9",
+    "port": "port-11:0:6",
+    "portWidth": 1,
+    "rate": "12.0 Gbit",
+    "rateGbit": 12,
+    "attachedKind": "drive",
+    "attached": "end_device-11:0:6",
+    "attachedAddress": "0x5000c500cb04e931",
+    "devName": "sdad",
+    "bay": "46",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-11:0",
+   "serial": "ZA1K2WML",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x5000ccab0200947e",
+    "phyId": 10,
+    "name": "phy-11:0:10",
+    "port": "port-11:0:7",
+    "portWidth": 1,
+    "rate": "6.0 Gbit",
+    "rateGbit": 6,
+    "attachedKind": "drive",
+    "attached": "end_device-11:0:7",
+    "attachedAddress": "0x5000ccab0200940a",
+    "devName": "sdae",
+    "bay": "34",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-11:0",
+   "serial": "WSD5T2MP",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x5000ccab0200947e",
+    "phyId": 11,
+    "name": "phy-11:0:11",
+    "port": "port-11:0:8",
+    "portWidth": 1,
+    "rate": "12.0 Gbit",
+    "rateGbit": 12,
+    "attachedKind": "drive",
+    "attached": "end_device-11:0:8",
+    "attachedAddress": "0x5000cca23b00a599",
+    "devName": "sdaf",
+    "bay": "22",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-11:0",
+   "serial": "2EG0B0WJ",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x5000ccab0200947e",
+    "phyId": 12,
+    "name": "phy-11:0:12",
+    "port": "port-11:0:9",
+    "portWidth": 1,
+    "rate": "12.0 Gbit",
+    "rateGbit": 12,
+    "attachedKind": "drive",
+    "attached": "end_device-11:0:9",
+    "attachedAddress": "0x5000cca2548eeced",
+    "devName": "sdag",
+    "bay": "54",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-11:0",
+   "serial": "001619PJLREV_VKJJLREV",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x5000ccab0200947e",
+    "phyId": 13,
+    "name": "phy-11:0:13",
+    "port": "port-11:0:10",
+    "portWidth": 1,
+    "rate": "12.0 Gbit",
+    "rateGbit": 12,
+    "attachedKind": "drive",
+    "attached": "end_device-11:0:10",
+    "attachedAddress": "0x5000c500cafaac4d",
+    "devName": "sdah",
+    "bay": "45",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-11:0",
+   "serial": "ZA1K3KEZ",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x5000ccab0200947e",
+    "phyId": 14,
+    "name": "phy-11:0:14",
+    "port": "port-11:0:11",
+    "portWidth": 1,
+    "rate": "12.0 Gbit",
+    "rateGbit": 12,
+    "attachedKind": "drive",
+    "attached": "end_device-11:0:11",
+    "attachedAddress": "0x5000cca26103eb9d",
+    "devName": "sdai",
+    "bay": "10",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-11:0",
+   "serial": "VJG24UZX",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x5000ccab0200947e",
+    "phyId": 15,
+    "name": "phy-11:0:15",
+    "rate": "12.0 Gbit",
+    "rateGbit": 12,
+    "attachedKind": "upstream",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-11:0",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x5000ccab0200947e",
+    "phyId": 16,
+    "name": "phy-11:0:16",
+    "port": "port-11:0:12",
+    "portWidth": 1,
+    "rate": "12.0 Gbit",
+    "rateGbit": 12,
+    "attachedKind": "drive",
+    "attached": "end_device-11:0:12",
+    "attachedAddress": "0x5000cca23b0b7269",
+    "devName": "sdaj",
+    "bay": "21",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-11:0",
+   "serial": "2EG694WP",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x5000ccab0200947e",
+    "phyId": 17,
+    "name": "phy-11:0:17",
+    "port": "port-11:0:13",
+    "portWidth": 1,
+    "rate": "6.0 Gbit",
+    "rateGbit": 6,
+    "attachedKind": "drive",
+    "attached": "end_device-11:0:13",
+    "attachedAddress": "0x5000ccab02009411",
+    "devName": "sdak",
+    "bay": "9",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-11:0",
+   "serial": "WWZ62CA0",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x5000ccab0200947e",
+    "phyId": 18,
+    "name": "phy-11:0:18",
+    "rate": "Unknown",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-11:0",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x5000ccab0200947e",
+    "phyId": 19,
+    "name": "phy-11:0:19",
+    "port": "port-11:0:14",
+    "portWidth": 1,
+    "rate": "12.0 Gbit",
+    "rateGbit": 12,
+    "attachedKind": "drive",
+    "attached": "end_device-11:0:14",
+    "attachedAddress": "0x5000cca261035809",
+    "devName": "sdal",
+    "bay": "20",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-11:0",
+   "serial": "VJG1V09X",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x5000ccab0200947e",
+    "phyId": 20,
+    "name": "phy-11:0:20",
+    "rate": "12.0 Gbit",
+    "rateGbit": 12,
+    "attachedKind": "upstream",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-11:0",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x5000ccab0200947e",
+    "phyId": 21,
+    "name": "phy-11:0:21",
+    "rate": "12.0 Gbit",
+    "rateGbit": 12,
+    "attachedKind": "upstream",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-11:0",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x5000ccab0200947e",
+    "phyId": 22,
+    "name": "phy-11:0:22",
+    "port": "port-11:0:15",
+    "portWidth": 1,
+    "rate": "12.0 Gbit",
+    "rateGbit": 12,
+    "attachedKind": "drive",
+    "attached": "end_device-11:0:15",
+    "attachedAddress": "0x5000cca2548d06a5",
+    "devName": "sdam",
+    "bay": "53",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-11:0",
+   "serial": "001619PHKAHV_VKJHKAHV",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x5000ccab0200947e",
+    "phyId": 23,
+    "name": "phy-11:0:23",
+    "port": "port-11:0:16",
+    "portWidth": 1,
+    "rate": "12.0 Gbit",
+    "rateGbit": 12,
+    "attachedKind": "drive",
+    "attached": "end_device-11:0:16",
+    "attachedAddress": "0x5002538a06a030f2",
+    "devName": "sdan",
+    "bay": "43",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-11:0",
+   "serial": "P0NA0HA00158",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x5000ccab0200947e",
+    "phyId": 24,
+    "name": "phy-11:0:24",
+    "port": "port-11:0:17",
+    "portWidth": 1,
+    "rate": "6.0 Gbit",
+    "rateGbit": 6,
+    "attachedKind": "drive",
+    "attached": "end_device-11:0:17",
+    "attachedAddress": "0x5000ccab02009418",
+    "devName": "sdao",
+    "bay": "42",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-11:0",
+   "serial": "7160A2TZFBEG",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x5000ccab0200947e",
+    "phyId": 25,
+    "name": "phy-11:0:25",
+    "port": "port-11:0:18",
+    "portWidth": 1,
+    "rate": "12.0 Gbit",
+    "rateGbit": 12,
+    "attachedKind": "drive",
+    "attached": "end_device-11:0:18",
+    "attachedAddress": "0x5000cca23bb2bb49",
+    "devName": "sdap",
+    "bay": "19",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-11:0",
+   "serial": "2EK595JX",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x5000ccab0200947e",
+    "phyId": 26,
+    "name": "phy-11:0:26",
+    "port": "port-11:0:19",
+    "portWidth": 1,
+    "rate": "6.0 Gbit",
+    "rateGbit": 6,
+    "attachedKind": "drive",
+    "attached": "end_device-11:0:19",
+    "attachedAddress": "0x5000ccab0200941a",
+    "devName": "sdaq",
+    "bay": "8",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-11:0",
+   "serial": "VGJS0Y6K",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x5000ccab0200947e",
+    "phyId": 27,
+    "name": "phy-11:0:27",
+    "port": "port-11:0:20",
+    "portWidth": 1,
+    "rate": "6.0 Gbit",
+    "rateGbit": 6,
+    "attachedKind": "drive",
+    "attached": "end_device-11:0:20",
+    "attachedAddress": "0x5000ccab0200941b",
+    "devName": "sdar",
+    "bay": "7",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-11:0",
+   "serial": "VDJSBPBK",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x5000ccab0200947e",
+    "phyId": 28,
+    "name": "phy-11:0:28",
+    "rate": "12.0 Gbit",
+    "rateGbit": 12,
+    "attachedKind": "upstream",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-11:0",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x5000ccab0200947e",
+    "phyId": 29,
+    "name": "phy-11:0:29",
+    "port": "port-11:0:21",
+    "portWidth": 1,
+    "rate": "12.0 Gbit",
+    "rateGbit": 12,
+    "attachedKind": "drive",
+    "attached": "end_device-11:0:21",
+    "attachedAddress": "0x5000c500caf880c9",
+    "devName": "sdas",
+    "bay": "52",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-11:0",
+   "serial": "ZA1K2VPW",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x5000ccab0200947e",
+    "phyId": 30,
+    "name": "phy-11:0:30",
+    "port": "port-11:0:22",
+    "portWidth": 1,
+    "rate": "12.0 Gbit",
+    "rateGbit": 12,
+    "attachedKind": "drive",
+    "attached": "end_device-11:0:22",
+    "attachedAddress": "0x5000c500caf55bb9",
+    "devName": "sdat",
+    "bay": "41",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-11:0",
+   "serial": "ZA1K1X7E",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x5000ccab0200947e",
+    "phyId": 31,
+    "name": "phy-11:0:31",
+    "port": "port-11:0:23",
+    "portWidth": 1,
+    "rate": "12.0 Gbit",
+    "rateGbit": 12,
+    "attachedKind": "drive",
+    "attached": "end_device-11:0:23",
+    "attachedAddress": "0x5000cca2612a1afd",
+    "devName": "sdau",
+    "bay": "29",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-11:0",
+   "serial": "VJGS4VDX",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x5000ccab0200947e",
+    "phyId": 32,
+    "name": "phy-11:0:32",
+    "port": "port-11:0:24",
+    "portWidth": 1,
+    "rate": "6.0 Gbit",
+    "rateGbit": 6,
+    "attachedKind": "drive",
+    "attached": "end_device-11:0:24",
+    "attachedAddress": "0x5000ccab02009420",
+    "devName": "sdav",
+    "bay": "18",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-11:0",
+   "serial": "VJGSHAVX",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x5000ccab0200947e",
+    "phyId": 33,
+    "name": "phy-11:0:33",
+    "port": "port-11:0:25",
+    "portWidth": 1,
+    "rate": "6.0 Gbit",
+    "rateGbit": 6,
+    "attachedKind": "drive",
+    "attached": "end_device-11:0:25",
+    "attachedAddress": "0x5000ccab02009421",
+    "devName": "sdaw",
+    "bay": "28",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-11:0",
+   "serial": "2EKT63HX",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x5000ccab0200947e",
+    "phyId": 34,
+    "name": "phy-11:0:34",
+    "port": "port-11:0:26",
+    "portWidth": 1,
+    "rate": "6.0 Gbit",
+    "rateGbit": 6,
+    "attachedKind": "drive",
+    "attached": "end_device-11:0:26",
+    "attachedAddress": "0x5000ccab02009422",
+    "devName": "sdax",
+    "bay": "6",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-11:0",
+   "serial": "VGJSKZBK",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x5000ccab0200947e",
+    "phyId": 35,
+    "name": "phy-11:0:35",
+    "port": "port-11:0:27",
+    "portWidth": 1,
+    "rate": "12.0 Gbit",
+    "rateGbit": 12,
+    "attachedKind": "drive",
+    "attached": "end_device-11:0:27",
+    "attachedAddress": "0x5000cca2548f0109",
+    "devName": "sday",
+    "bay": "40",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-11:0",
+   "serial": "001619PJN1YV_VKJJN1YV",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x5000ccab0200947e",
+    "phyId": 36,
+    "name": "phy-11:0:36",
+    "port": "port-11:0:28",
+    "portWidth": 1,
+    "rate": "12.0 Gbit",
+    "rateGbit": 12,
+    "attachedKind": "drive",
+    "attached": "end_device-11:0:28",
+    "attachedAddress": "0x5000c500cb019b29",
+    "devName": "sdaz",
+    "bay": "17",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-11:0",
+   "serial": "ZA1K1FZN",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x5000ccab0200947e",
+    "phyId": 37,
+    "name": "phy-11:0:37",
+    "rate": "12.0 Gbit",
+    "rateGbit": 12,
+    "attachedKind": "upstream",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-11:0",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x5000ccab0200947e",
+    "phyId": 38,
+    "name": "phy-11:0:38",
+    "port": "port-11:0:29",
+    "portWidth": 1,
+    "rate": "12.0 Gbit",
+    "rateGbit": 12,
+    "attachedKind": "drive",
+    "attached": "end_device-11:0:29",
+    "attachedAddress": "0x5000cca25493d51d",
+    "devName": "sdba",
+    "bay": "51",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-11:0",
+   "serial": "001619PM9BVV_VKJM9BVV",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x5000ccab0200947e",
+    "phyId": 39,
+    "name": "phy-11:0:39",
+    "port": "port-11:0:30",
+    "portWidth": 1,
+    "rate": "12.0 Gbit",
+    "rateGbit": 12,
+    "attachedKind": "drive",
+    "attached": "end_device-11:0:30",
+    "attachedAddress": "0x5000cca2612a20a9",
+    "devName": "sdbb",
+    "bay": "16",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-11:0",
+   "serial": "VJGS573X",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x5000ccab0200947e",
+    "phyId": 40,
+    "name": "phy-11:0:40",
+    "port": "port-11:0:31",
+    "portWidth": 1,
+    "rate": "12.0 Gbit",
+    "rateGbit": 12,
+    "attachedKind": "drive",
+    "attached": "end_device-11:0:31",
+    "attachedAddress": "0x5000cca254301d65",
+    "devName": "sdbc",
+    "bay": "4",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-11:0",
+   "serial": "VKGVG9GX",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x5000ccab0200947e",
+    "phyId": 41,
+    "name": "phy-11:0:41",
+    "port": "port-11:0:32",
+    "portWidth": 1,
+    "rate": "12.0 Gbit",
+    "rateGbit": 12,
+    "attachedKind": "drive",
+    "attached": "end_device-11:0:32",
+    "attachedAddress": "0x5000cca2612879b9",
+    "devName": "sdbd",
+    "bay": "27",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-11:0",
+   "serial": "VJGR81YX",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x5000ccab0200947e",
+    "phyId": 42,
+    "name": "phy-11:0:42",
+    "port": "port-11:0:33",
+    "portWidth": 1,
+    "rate": "12.0 Gbit",
+    "rateGbit": 12,
+    "attachedKind": "drive",
+    "attached": "end_device-11:0:33",
+    "attachedAddress": "0x5002538a069d70f2",
+    "devName": "sdbe",
+    "bay": "39",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-11:0",
+   "serial": "P0NA0H912672",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x5000ccab0200947e",
+    "phyId": 43,
+    "name": "phy-11:0:43",
+    "port": "port-11:0:34",
+    "portWidth": 1,
+    "rate": "6.0 Gbit",
+    "rateGbit": 6,
+    "attachedKind": "drive",
+    "attached": "end_device-11:0:34",
+    "attachedAddress": "0x5000ccab0200942b",
+    "devName": "sdbf",
+    "bay": "15",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-11:0",
+   "serial": "VJGYXMPX",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x5000ccab0200947e",
+    "phyId": 44,
+    "name": "phy-11:0:44",
+    "port": "port-11:0:35",
+    "portWidth": 1,
+    "rate": "12.0 Gbit",
+    "rateGbit": 12,
+    "attachedKind": "drive",
+    "attached": "end_device-11:0:35",
+    "attachedAddress": "0x5002538a069524f2",
+    "devName": "sdbg",
+    "bay": "3",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-11:0",
+   "serial": "P0NA0H906141",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x5000ccab0200947e",
+    "phyId": 45,
+    "name": "phy-11:0:45",
+    "port": "port-11:0:36",
+    "portWidth": 1,
+    "rate": "12.0 Gbit",
+    "rateGbit": 12,
+    "attachedKind": "drive",
+    "attached": "end_device-11:0:36",
+    "attachedAddress": "0x5000cca254899e39",
+    "devName": "sdbh",
+    "bay": "38",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-11:0",
+   "serial": "001619PEP7BV_VKJEP7BV",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x5000ccab0200947e",
+    "phyId": 46,
+    "name": "phy-11:0:46",
+    "port": "port-11:0:37",
+    "portWidth": 1,
+    "rate": "12.0 Gbit",
+    "rateGbit": 12,
+    "attachedKind": "drive",
+    "attached": "end_device-11:0:37",
+    "attachedAddress": "0x5000cca2548ef9d5",
+    "devName": "sdbi",
+    "bay": "50",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-11:0",
+   "serial": "001619PJML2V_VKJJML2V",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x5000ccab0200947e",
+    "phyId": 47,
+    "name": "phy-11:0:47",
+    "port": "port-11:0:38",
+    "portWidth": 1,
+    "rate": "6.0 Gbit",
+    "rateGbit": 6,
+    "attachedKind": "drive",
+    "attached": "end_device-11:0:38",
+    "attachedAddress": "0x5000ccab0200942f",
+    "devName": "sdbj",
+    "bay": "26",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-11:0",
+   "serial": "WSD6LL44",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x5000ccab0200947e",
+    "phyId": 48,
+    "name": "phy-11:0:48",
+    "port": "port-11:0:39",
+    "portWidth": 1,
+    "rate": "6.0 Gbit",
+    "rateGbit": 6,
+    "attachedKind": "drive",
+    "attached": "end_device-11:0:39",
+    "attachedAddress": "0x5000ccab02009430",
+    "devName": "sdbk",
+    "bay": "2",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-11:0",
+   "serial": "WWZ61ANG",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x5000ccab0200947e",
+    "phyId": 49,
+    "name": "phy-11:0:49",
+    "port": "port-11:0:40",
+    "portWidth": 1,
+    "rate": "12.0 Gbit",
+    "rateGbit": 12,
+    "attachedKind": "drive",
+    "attached": "end_device-11:0:40",
+    "attachedAddress": "0x5000cca26128ceb9",
+    "devName": "sdbl",
+    "bay": "14",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-11:0",
+   "serial": "VJGREREX",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x5000ccab0200947e",
+    "phyId": 50,
+    "name": "phy-11:0:50",
+    "port": "port-11:0:41",
+    "portWidth": 1,
+    "rate": "12.0 Gbit",
+    "rateGbit": 12,
+    "attachedKind": "drive",
+    "attached": "end_device-11:0:41",
+    "attachedAddress": "0x5000cca2548d0809",
+    "devName": "sdbm",
+    "bay": "49",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-11:0",
+   "serial": "001619PHKEBV_VKJHKEBV",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x5000ccab0200947e",
+    "phyId": 51,
+    "name": "phy-11:0:51",
+    "port": "port-11:0:42",
+    "portWidth": 1,
+    "rate": "12.0 Gbit",
+    "rateGbit": 12,
+    "attachedKind": "drive",
+    "attached": "end_device-11:0:42",
+    "attachedAddress": "0x5000cca254804f69",
+    "devName": "sdbn",
+    "bay": "37",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-11:0",
+   "serial": "001619P8KK0V_VKJ8KK0V",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x5000ccab0200947e",
+    "phyId": 52,
+    "name": "phy-11:0:52",
+    "port": "port-11:0:43",
+    "portWidth": 1,
+    "rate": "12.0 Gbit",
+    "rateGbit": 12,
+    "attachedKind": "drive",
+    "attached": "end_device-11:0:43",
+    "attachedAddress": "0x5000cca23baa8ee5",
+    "devName": "sdbo",
+    "bay": "25",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-11:0",
+   "serial": "2EK0TUSX",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x5000ccab0200947e",
+    "phyId": 53,
+    "name": "phy-11:0:53",
+    "port": "port-11:0:44",
+    "portWidth": 1,
+    "rate": "12.0 Gbit",
+    "rateGbit": 12,
+    "attachedKind": "drive",
+    "attached": "end_device-11:0:44",
+    "attachedAddress": "0x5000cca254286799",
+    "devName": "sdbp",
+    "bay": "13",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-11:0",
+   "serial": "VKGR6VJX",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x5000ccab0200947e",
+    "phyId": 54,
+    "name": "phy-11:0:54",
+    "port": "port-11:0:45",
+    "portWidth": 1,
+    "rate": "12.0 Gbit",
+    "rateGbit": 12,
+    "attachedKind": "drive",
+    "attached": "end_device-11:0:45",
+    "attachedAddress": "0x5002538a06a04542",
+    "devName": "sdbq",
+    "bay": "1",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-11:0",
+   "serial": "P0NA0HA00483",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x5000ccab0200947e",
+    "phyId": 55,
+    "name": "phy-11:0:55",
+    "port": "port-11:0:46",
+    "portWidth": 1,
+    "rate": "12.0 Gbit",
+    "rateGbit": 12,
+    "attachedKind": "drive",
+    "attached": "end_device-11:0:46",
+    "attachedAddress": "0x5000cca2610763dd",
+    "devName": "sdbr",
+    "bay": "0",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-11:0",
+   "serial": "VJG41ZTX",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x5000ccab0200947e",
+    "phyId": 56,
+    "name": "phy-11:0:56",
+    "port": "port-11:0:47",
+    "portWidth": 1,
+    "rate": "12.0 Gbit",
+    "rateGbit": 12,
+    "attachedKind": "drive",
+    "attached": "end_device-11:0:47",
+    "attachedAddress": "0x5000cca26128b235",
+    "devName": "sdbs",
+    "bay": "24",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-11:0",
+   "serial": "VJGRBUKX",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x5000ccab0200947e",
+    "phyId": 57,
+    "name": "phy-11:0:57",
+    "port": "port-11:0:48",
+    "portWidth": 1,
+    "rate": "12.0 Gbit",
+    "rateGbit": 12,
+    "attachedKind": "drive",
+    "attached": "end_device-11:0:48",
+    "attachedAddress": "0x5000cca261035d89",
+    "devName": "sdbt",
+    "bay": "12",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-11:0",
+   "serial": "VJG1VBNX",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x5000ccab0200947e",
+    "phyId": 58,
+    "name": "phy-11:0:58",
+    "port": "port-11:0:49",
+    "portWidth": 1,
+    "rate": "12.0 Gbit",
+    "rateGbit": 12,
+    "attachedKind": "drive",
+    "attached": "end_device-11:0:49",
+    "attachedAddress": "0x5000cca2548ef93d",
+    "devName": "sdbu",
+    "bay": "36",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-11:0",
+   "serial": "001619PJMJVV_VKJJMJVV",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x5000ccab0200947e",
+    "phyId": 59,
+    "name": "phy-11:0:59",
+    "port": "port-11:0:50",
+    "portWidth": 1,
+    "rate": "12.0 Gbit",
+    "rateGbit": 12,
+    "attachedKind": "drive",
+    "attached": "end_device-11:0:50",
+    "attachedAddress": "0x5000cca260de6a95",
+    "devName": "sdbv",
+    "bay": "48",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-11:0",
+   "serial": "001851PY9YMV_VLKY9YMV",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x5000ccab0200947e",
+    "phyId": 60,
+    "name": "phy-11:0:60",
+    "rate": "Unknown",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-11:0",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x5000ccab0200947e",
+    "phyId": 61,
+    "name": "phy-11:0:61",
+    "rate": "Unknown",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-11:0",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x5000ccab0200947e",
+    "phyId": 62,
+    "name": "phy-11:0:62",
+    "rate": "Unknown",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-11:0",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x5000ccab0200947e",
+    "phyId": 63,
+    "name": "phy-11:0:63",
+    "rate": "Unknown",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-11:0",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x5000ccab0200947e",
+    "phyId": 64,
+    "name": "phy-11:0:64",
+    "rate": "12.0 Gbit",
+    "rateGbit": 12,
+    "attachedKind": "upstream",
+    "enabled": true,
+    "invalidDword": "59",
+    "disparityError": "60",
+    "lossDwordSync": "2"
+   },
+   "hostname": "nas",
+   "ownerName": "expander-11:0",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x5000ccab0200947e",
+    "phyId": 65,
+    "name": "phy-11:0:65",
+    "rate": "12.0 Gbit",
+    "rateGbit": 12,
+    "attachedKind": "upstream",
+    "enabled": true,
+    "invalidDword": "33",
+    "disparityError": "34",
+    "lossDwordSync": "1"
+   },
+   "hostname": "nas",
+   "ownerName": "expander-11:0",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x5000ccab0200947e",
+    "phyId": 66,
+    "name": "phy-11:0:66",
+    "rate": "12.0 Gbit",
+    "rateGbit": 12,
+    "attachedKind": "upstream",
+    "enabled": true,
+    "invalidDword": "71",
+    "disparityError": "73",
+    "lossDwordSync": "2"
+   },
+   "hostname": "nas",
+   "ownerName": "expander-11:0",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x5000ccab0200947e",
+    "phyId": 67,
+    "name": "phy-11:0:67",
+    "rate": "12.0 Gbit",
+    "rateGbit": 12,
+    "attachedKind": "upstream",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-11:0",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x5000ccab0200947e",
+    "phyId": 68,
+    "name": "phy-11:0:68",
+    "port": "port-11:0:51",
+    "portWidth": 1,
+    "rate": "12.0 Gbit",
+    "rateGbit": 12,
+    "attachedKind": "device",
+    "attached": "end_device-11:0:51",
+    "attachedAddress": "0x5000ccab0200947d",
+    "bay": "62",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-11:0",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x500304800000007f",
+    "name": "phy-10:0:0",
+    "rate": "6.0 Gbit",
+    "rateGbit": 6,
+    "attachedKind": "upstream",
+    "enabled": true,
+    "invalidDword": "12",
+    "disparityError": "12",
+    "lossDwordSync": "3"
+   },
+   "hostname": "nas",
+   "ownerName": "expander-10:0",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x500304800000007f",
+    "phyId": 1,
+    "name": "phy-10:0:1",
+    "rate": "6.0 Gbit",
+    "rateGbit": 6,
+    "attachedKind": "upstream",
+    "enabled": true,
+    "invalidDword": "12",
+    "disparityError": "9",
+    "lossDwordSync": "3"
+   },
+   "hostname": "nas",
+   "ownerName": "expander-10:0",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x500304800000007f",
+    "phyId": 2,
+    "name": "phy-10:0:2",
+    "rate": "6.0 Gbit",
+    "rateGbit": 6,
+    "attachedKind": "upstream",
+    "enabled": true,
+    "invalidDword": "12",
+    "disparityError": "11",
+    "lossDwordSync": "3"
+   },
+   "hostname": "nas",
+   "ownerName": "expander-10:0",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x500304800000007f",
+    "phyId": 3,
+    "name": "phy-10:0:3",
+    "rate": "6.0 Gbit",
+    "rateGbit": 6,
+    "attachedKind": "upstream",
+    "enabled": true,
+    "invalidDword": "12",
+    "disparityError": "11",
+    "lossDwordSync": "3"
+   },
+   "hostname": "nas",
+   "ownerName": "expander-10:0",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x500304800000007f",
+    "phyId": 4,
+    "name": "phy-10:0:4",
+    "rate": "Unknown",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-10:0",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x500304800000007f",
+    "phyId": 5,
+    "name": "phy-10:0:5",
+    "rate": "Unknown",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-10:0",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x500304800000007f",
+    "phyId": 6,
+    "name": "phy-10:0:6",
+    "rate": "Unknown",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-10:0",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x500304800000007f",
+    "phyId": 7,
+    "name": "phy-10:0:7",
+    "rate": "Unknown",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-10:0",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x500304800000007f",
+    "phyId": 8,
+    "name": "phy-10:0:8",
+    "port": "port-10:0:0",
+    "portWidth": 1,
+    "rate": "6.0 Gbit",
+    "rateGbit": 6,
+    "attachedKind": "drive",
+    "attached": "end_device-10:0:0",
+    "attachedAddress": "0x5000cca25206c809",
+    "devName": "sdc",
+    "bay": "0",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-10:0",
+   "serial": "7SG3RM2G",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x500304800000007f",
+    "phyId": 9,
+    "name": "phy-10:0:9",
+    "port": "port-10:0:1",
+    "portWidth": 1,
+    "rate": "6.0 Gbit",
+    "rateGbit": 6,
+    "attachedKind": "drive",
+    "attached": "end_device-10:0:1",
+    "attachedAddress": "0x5000cca25208683d",
+    "devName": "sdd",
+    "bay": "1",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-10:0",
+   "serial": "7SG4MAAG",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x500304800000007f",
+    "phyId": 10,
+    "name": "phy-10:0:10",
+    "port": "port-10:0:2",
+    "portWidth": 1,
+    "rate": "6.0 Gbit",
+    "rateGbit": 6,
+    "attachedKind": "drive",
+    "attached": "end_device-10:0:2",
+    "attachedAddress": "0x5000cca25207ef15",
+    "devName": "sde",
+    "bay": "2",
+    "enabled": true,
+    "invalidDword": "4",
+    "disparityError": "4",
+    "lossDwordSync": "1"
+   },
+   "hostname": "nas",
+   "ownerName": "expander-10:0",
+   "serial": "7SG4B86G",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x500304800000007f",
+    "phyId": 11,
+    "name": "phy-10:0:11",
+    "port": "port-10:0:3",
+    "portWidth": 1,
+    "rate": "6.0 Gbit",
+    "rateGbit": 6,
+    "attachedKind": "drive",
+    "attached": "end_device-10:0:3",
+    "attachedAddress": "0x5000cca25207d34d",
+    "devName": "sdf",
+    "bay": "3",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-10:0",
+   "serial": "7SG49DVG",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x500304800000007f",
+    "phyId": 12,
+    "name": "phy-10:0:12",
+    "port": "port-10:0:4",
+    "portWidth": 1,
+    "rate": "6.0 Gbit",
+    "rateGbit": 6,
+    "attachedKind": "drive",
+    "attached": "end_device-10:0:4",
+    "attachedAddress": "0x5000cca2520691dd",
+    "devName": "sdg",
+    "bay": "4",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-10:0",
+   "serial": "7SG3M07G",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x500304800000007f",
+    "phyId": 13,
+    "name": "phy-10:0:13",
+    "port": "port-10:0:5",
+    "portWidth": 1,
+    "rate": "6.0 Gbit",
+    "rateGbit": 6,
+    "attachedKind": "drive",
+    "attached": "end_device-10:0:5",
+    "attachedAddress": "0x5000cca2548efee1",
+    "devName": "sdh",
+    "bay": "5",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-10:0",
+   "serial": "001619PJMXHV_VKJJMXHV",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x500304800000007f",
+    "phyId": 14,
+    "name": "phy-10:0:14",
+    "port": "port-10:0:6",
+    "portWidth": 1,
+    "rate": "6.0 Gbit",
+    "rateGbit": 6,
+    "attachedKind": "drive",
+    "attached": "end_device-10:0:6",
+    "attachedAddress": "0x5000cca25207efc5",
+    "devName": "sdi",
+    "bay": "6",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-10:0",
+   "serial": "7SG4B9MG",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x500304800000007f",
+    "phyId": 15,
+    "name": "phy-10:0:15",
+    "port": "port-10:0:7",
+    "portWidth": 1,
+    "rate": "6.0 Gbit",
+    "rateGbit": 6,
+    "attachedKind": "drive",
+    "attached": "end_device-10:0:7",
+    "attachedAddress": "0x5000cca23bbd2a89",
+    "devName": "sdj",
+    "bay": "7",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-10:0",
+   "serial": "2EKB12BX",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x500304800000007f",
+    "phyId": 16,
+    "name": "phy-10:0:16",
+    "port": "port-10:0:8",
+    "portWidth": 1,
+    "rate": "6.0 Gbit",
+    "rateGbit": 6,
+    "attachedKind": "drive",
+    "attached": "end_device-10:0:8",
+    "attachedAddress": "0x5000cca2548cfced",
+    "devName": "sdk",
+    "bay": "8",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-10:0",
+   "serial": "001619PHJPEV_VKJHJPEV",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x500304800000007f",
+    "phyId": 17,
+    "name": "phy-10:0:17",
+    "port": "port-10:0:9",
+    "portWidth": 1,
+    "rate": "6.0 Gbit",
+    "rateGbit": 6,
+    "attachedKind": "drive",
+    "attached": "end_device-10:0:9",
+    "attachedAddress": "0x5000cca2548175a9",
+    "devName": "sdl",
+    "bay": "9",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-10:0",
+   "serial": "001619P964HV_VKJ964HV",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x500304800000007f",
+    "phyId": 18,
+    "name": "phy-10:0:18",
+    "rate": "Unknown",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-10:0",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x500304800000007f",
+    "phyId": 19,
+    "name": "phy-10:0:19",
+    "port": "port-10:0:10",
+    "portWidth": 1,
+    "rate": "6.0 Gbit",
+    "rateGbit": 6,
+    "attachedKind": "drive",
+    "attached": "end_device-10:0:10",
+    "attachedAddress": "0x5000cca2548ef571",
+    "devName": "sdm",
+    "bay": "11",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-10:0",
+   "serial": "001619PJM90V_VKJJM90V",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x500304800000007f",
+    "phyId": 20,
+    "name": "phy-10:0:20",
+    "port": "port-10:0:11",
+    "portWidth": 1,
+    "rate": "6.0 Gbit",
+    "rateGbit": 6,
+    "attachedKind": "drive",
+    "attached": "end_device-10:0:11",
+    "attachedAddress": "0x5000cca254905e45",
+    "devName": "sdn",
+    "bay": "12",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-10:0",
+   "serial": "001619PKD9YV_VKJKD9YV",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x500304800000007f",
+    "phyId": 21,
+    "name": "phy-10:0:21",
+    "port": "port-10:0:12",
+    "portWidth": 1,
+    "rate": "6.0 Gbit",
+    "rateGbit": 6,
+    "attachedKind": "drive",
+    "attached": "end_device-10:0:12",
+    "attachedAddress": "0x5000cca25490481d",
+    "devName": "sdo",
+    "bay": "13",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-10:0",
+   "serial": "001619PKAV6V_VKJKAV6V",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x500304800000007f",
+    "phyId": 22,
+    "name": "phy-10:0:22",
+    "port": "port-10:0:13",
+    "portWidth": 1,
+    "rate": "6.0 Gbit",
+    "rateGbit": 6,
+    "attachedKind": "drive",
+    "attached": "end_device-10:0:13",
+    "attachedAddress": "0x5000cca2547fac55",
+    "devName": "sdp",
+    "bay": "14",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-10:0",
+   "serial": "001619P86PAV_VKJ86PAV",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x500304800000007f",
+    "phyId": 23,
+    "name": "phy-10:0:23",
+    "rate": "Unknown",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-10:0",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x500304800000007f",
+    "phyId": 24,
+    "name": "phy-10:0:24",
+    "rate": "Unknown",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-10:0",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x500304800000007f",
+    "phyId": 25,
+    "name": "phy-10:0:25",
+    "rate": "Unknown",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-10:0",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x500304800000007f",
+    "phyId": 26,
+    "name": "phy-10:0:26",
+    "rate": "Unknown",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-10:0",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x500304800000007f",
+    "phyId": 27,
+    "name": "phy-10:0:27",
+    "rate": "Unknown",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-10:0",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x500304800000007f",
+    "phyId": 28,
+    "name": "phy-10:0:28",
+    "rate": "Unknown",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-10:0",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x500304800000007f",
+    "phyId": 29,
+    "name": "phy-10:0:29",
+    "rate": "Phy disabled",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-10:0",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x500304800000007f",
+    "phyId": 30,
+    "name": "phy-10:0:30",
+    "rate": "Phy disabled",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-10:0",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x500304800000007f",
+    "phyId": 31,
+    "name": "phy-10:0:31",
+    "rate": "Phy disabled",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-10:0",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x500304800000007f",
+    "phyId": 32,
+    "name": "phy-10:0:32",
+    "rate": "Phy disabled",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-10:0",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x500304800000007f",
+    "phyId": 33,
+    "name": "phy-10:0:33",
+    "rate": "Phy disabled",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-10:0",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x500304800000007f",
+    "phyId": 34,
+    "name": "phy-10:0:34",
+    "rate": "Phy disabled",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-10:0",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x500304800000007f",
+    "phyId": 35,
+    "name": "phy-10:0:35",
+    "rate": "Phy disabled",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-10:0",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x500304800000007f",
+    "phyId": 36,
+    "name": "phy-10:0:36",
+    "port": "port-10:0:14",
+    "portWidth": 1,
+    "rate": "6.0 Gbit",
+    "rateGbit": 6,
+    "attachedKind": "device",
+    "attached": "end_device-10:0:14",
+    "attachedAddress": "0x500304800000007d",
+    "bay": "21",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-10:0",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x500304800000007f",
+    "phyId": 37,
+    "name": "phy-10:0:37",
+    "rate": "Unknown",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-10:0",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x5003048001e8967f",
+    "name": "phy-11:1:0",
+    "rate": "Unknown",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-11:1",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x5003048001e8967f",
+    "phyId": 1,
+    "name": "phy-11:1:1",
+    "rate": "Unknown",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-11:1",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x5003048001e8967f",
+    "phyId": 2,
+    "name": "phy-11:1:2",
+    "rate": "Unknown",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-11:1",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x5003048001e8967f",
+    "phyId": 3,
+    "name": "phy-11:1:3",
+    "rate": "Unknown",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-11:1",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x5003048001e8967f",
+    "phyId": 4,
+    "name": "phy-11:1:4",
+    "rate": "Unknown",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-11:1",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x5003048001e8967f",
+    "phyId": 5,
+    "name": "phy-11:1:5",
+    "rate": "Unknown",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-11:1",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x5003048001e8967f",
+    "phyId": 6,
+    "name": "phy-11:1:6",
+    "rate": "Unknown",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-11:1",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x5003048001e8967f",
+    "phyId": 7,
+    "name": "phy-11:1:7",
+    "rate": "Unknown",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-11:1",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x5003048001e8967f",
+    "phyId": 8,
+    "name": "phy-11:1:8",
+    "rate": "6.0 Gbit",
+    "rateGbit": 6,
+    "attachedKind": "upstream",
+    "enabled": true,
+    "invalidDword": "28",
+    "disparityError": "27",
+    "lossDwordSync": "3"
+   },
+   "hostname": "nas",
+   "ownerName": "expander-11:1",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x5003048001e8967f",
+    "phyId": 9,
+    "name": "phy-11:1:9",
+    "rate": "6.0 Gbit",
+    "rateGbit": 6,
+    "attachedKind": "upstream",
+    "enabled": true,
+    "invalidDword": "28",
+    "disparityError": "27",
+    "lossDwordSync": "3"
+   },
+   "hostname": "nas",
+   "ownerName": "expander-11:1",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x5003048001e8967f",
+    "phyId": 10,
+    "name": "phy-11:1:10",
+    "rate": "6.0 Gbit",
+    "rateGbit": 6,
+    "attachedKind": "upstream",
+    "enabled": true,
+    "invalidDword": "28",
+    "disparityError": "28",
+    "lossDwordSync": "3"
+   },
+   "hostname": "nas",
+   "ownerName": "expander-11:1",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x5003048001e8967f",
+    "phyId": 11,
+    "name": "phy-11:1:11",
+    "rate": "6.0 Gbit",
+    "rateGbit": 6,
+    "attachedKind": "upstream",
+    "enabled": true,
+    "invalidDword": "28",
+    "disparityError": "28",
+    "lossDwordSync": "3"
+   },
+   "hostname": "nas",
+   "ownerName": "expander-11:1",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x5003048001e8967f",
+    "phyId": 12,
+    "name": "phy-11:1:12",
+    "rate": "Unknown",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-11:1",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x5003048001e8967f",
+    "phyId": 13,
+    "name": "phy-11:1:13",
+    "port": "port-11:1:0",
+    "portWidth": 1,
+    "rate": "6.0 Gbit",
+    "rateGbit": 6,
+    "attachedKind": "drive",
+    "attached": "end_device-11:1:0",
+    "attachedAddress": "0x5003048001e8964d",
+    "devName": "sdbw",
+    "bay": "1",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-11:1",
+   "serial": "WCT0VA8J",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x5003048001e8967f",
+    "phyId": 14,
+    "name": "phy-11:1:14",
+    "port": "port-11:1:1",
+    "portWidth": 1,
+    "rate": "6.0 Gbit",
+    "rateGbit": 6,
+    "attachedKind": "drive",
+    "attached": "end_device-11:1:1",
+    "attachedAddress": "0x5000cca052054ffd",
+    "devName": "sdbx",
+    "bay": "2",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-11:1",
+   "serial": "07V2XKRA",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x5003048001e8967f",
+    "phyId": 15,
+    "name": "phy-11:1:15",
+    "port": "port-11:1:2",
+    "portWidth": 1,
+    "rate": "6.0 Gbit",
+    "rateGbit": 6,
+    "attachedKind": "drive",
+    "attached": "end_device-11:1:2",
+    "attachedAddress": "0x5000cca23b0240e1",
+    "devName": "sdby",
+    "bay": "3",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-11:1",
+   "serial": "2EG17DZJ",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x5003048001e8967f",
+    "phyId": 16,
+    "name": "phy-11:1:16",
+    "port": "port-11:1:3",
+    "portWidth": 1,
+    "rate": "6.0 Gbit",
+    "rateGbit": 6,
+    "attachedKind": "drive",
+    "attached": "end_device-11:1:3",
+    "attachedAddress": "0x5000cca257b64c09",
+    "devName": "sdbz",
+    "bay": "4",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-11:1",
+   "serial": "7HK77YXF",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x5003048001e8967f",
+    "phyId": 17,
+    "name": "phy-11:1:17",
+    "port": "port-11:1:4",
+    "portWidth": 1,
+    "rate": "6.0 Gbit",
+    "rateGbit": 6,
+    "attachedKind": "drive",
+    "attached": "end_device-11:1:4",
+    "attachedAddress": "0x5003048001e89651",
+    "devName": "sdca",
+    "bay": "5",
+    "enabled": true,
+    "invalidDword": "4",
+    "disparityError": "4"
+   },
+   "hostname": "nas",
+   "ownerName": "expander-11:1",
+   "serial": "R6GBW8JY",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x5003048001e8967f",
+    "phyId": 18,
+    "name": "phy-11:1:18",
+    "rate": "Unknown",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-11:1",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x5003048001e8967f",
+    "phyId": 19,
+    "name": "phy-11:1:19",
+    "port": "port-11:1:5",
+    "portWidth": 1,
+    "rate": "6.0 Gbit",
+    "rateGbit": 6,
+    "attachedKind": "drive",
+    "attached": "end_device-11:1:5",
+    "attachedAddress": "0x5003048001e89653",
+    "devName": "sdcb",
+    "bay": "7",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-11:1",
+   "serial": "ZCT3BJRW",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x5003048001e8967f",
+    "phyId": 20,
+    "name": "phy-11:1:20",
+    "rate": "6.0 Gbit",
+    "rateGbit": 6,
+    "attachedKind": "upstream",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-11:1",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x5003048001e8967f",
+    "phyId": 21,
+    "name": "phy-11:1:21",
+    "port": "port-11:1:6",
+    "portWidth": 1,
+    "rate": "6.0 Gbit",
+    "rateGbit": 6,
+    "attachedKind": "drive",
+    "attached": "end_device-11:1:6",
+    "attachedAddress": "0x5000cca23b2fd45d",
+    "devName": "sdcc",
+    "bay": "9",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-11:1",
+   "serial": "2EGV9EPX",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x5003048001e8967f",
+    "phyId": 22,
+    "name": "phy-11:1:22",
+    "port": "port-11:1:7",
+    "portWidth": 1,
+    "rate": "6.0 Gbit",
+    "rateGbit": 6,
+    "attachedKind": "drive",
+    "attached": "end_device-11:1:7",
+    "attachedAddress": "0x5000cca252ae09ad",
+    "devName": "sdcd",
+    "bay": "10",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-11:1",
+   "serial": "7SK2R4TW",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x5003048001e8967f",
+    "phyId": 23,
+    "name": "phy-11:1:23",
+    "port": "port-11:1:8",
+    "portWidth": 1,
+    "rate": "6.0 Gbit",
+    "rateGbit": 6,
+    "attachedKind": "drive",
+    "attached": "end_device-11:1:8",
+    "attachedAddress": "0x5003048001e89657",
+    "devName": "sdce",
+    "bay": "11",
+    "enabled": true,
+    "invalidDword": "4",
+    "disparityError": "4"
+   },
+   "hostname": "nas",
+   "ownerName": "expander-11:1",
+   "serial": "2EK1WD8X",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x5003048001e8967f",
+    "phyId": 24,
+    "name": "phy-11:1:24",
+    "port": "port-11:1:9",
+    "portWidth": 1,
+    "rate": "6.0 Gbit",
+    "rateGbit": 6,
+    "attachedKind": "drive",
+    "attached": "end_device-11:1:9",
+    "attachedAddress": "0x5003048001e89658",
+    "devName": "sdcf",
+    "bay": "12",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-11:1",
+   "serial": "ZCT0FBMM",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x5003048001e8967f",
+    "phyId": 25,
+    "name": "phy-11:1:25",
+    "port": "port-11:1:10",
+    "portWidth": 1,
+    "rate": "6.0 Gbit",
+    "rateGbit": 6,
+    "attachedKind": "drive",
+    "attached": "end_device-11:1:10",
+    "attachedAddress": "0x5000cca2528a9da5",
+    "devName": "sdcg",
+    "bay": "13",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-11:1",
+   "serial": "7SJG77PW",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x5003048001e8967f",
+    "phyId": 26,
+    "name": "phy-11:1:26",
+    "port": "port-11:1:11",
+    "portWidth": 1,
+    "rate": "6.0 Gbit",
+    "rateGbit": 6,
+    "attachedKind": "drive",
+    "attached": "end_device-11:1:11",
+    "attachedAddress": "0x5002538b48a79982",
+    "devName": "sdch",
+    "bay": "14",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-11:1",
+   "serial": "C7XBG0ZP0KA05172",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x5003048001e8967f",
+    "phyId": 27,
+    "name": "phy-11:1:27",
+    "port": "port-11:1:12",
+    "portWidth": 1,
+    "rate": "6.0 Gbit",
+    "rateGbit": 6,
+    "attachedKind": "drive",
+    "attached": "end_device-11:1:12",
+    "attachedAddress": "0x5000cca23b0b5d6d",
+    "devName": "sdci",
+    "bay": "15",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-11:1",
+   "serial": "2EG67SKP",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x5003048001e8967f",
+    "phyId": 28,
+    "name": "phy-11:1:28",
+    "port": "port-11:1:13",
+    "portWidth": 1,
+    "rate": "6.0 Gbit",
+    "rateGbit": 6,
+    "attachedKind": "drive",
+    "attached": "end_device-11:1:13",
+    "attachedAddress": "0x5000cca23b0bd455",
+    "devName": "sdcj",
+    "bay": "16",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-11:1",
+   "serial": "2EG6HP1R",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x5003048001e8967f",
+    "phyId": 29,
+    "name": "phy-11:1:29",
+    "port": "port-11:1:14",
+    "portWidth": 1,
+    "rate": "6.0 Gbit",
+    "rateGbit": 6,
+    "attachedKind": "drive",
+    "attached": "end_device-11:1:14",
+    "attachedAddress": "0x5003048001e8965d",
+    "devName": "sdck",
+    "bay": "17",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-11:1",
+   "serial": "VLG32AEY",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x5003048001e8967f",
+    "phyId": 30,
+    "name": "phy-11:1:30",
+    "port": "port-11:1:15",
+    "portWidth": 1,
+    "rate": "6.0 Gbit",
+    "rateGbit": 6,
+    "attachedKind": "drive",
+    "attached": "end_device-11:1:15",
+    "attachedAddress": "0x5003048001e8965e",
+    "devName": "sdcl",
+    "bay": "18",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-11:1",
+   "serial": "71J0A191FBLG",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x5003048001e8967f",
+    "phyId": 31,
+    "name": "phy-11:1:31",
+    "port": "port-11:1:16",
+    "portWidth": 1,
+    "rate": "6.0 Gbit",
+    "rateGbit": 6,
+    "attachedKind": "drive",
+    "attached": "end_device-11:1:16",
+    "attachedAddress": "0x5002538b48a79942",
+    "devName": "sdcm",
+    "bay": "19",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-11:1",
+   "serial": "C7XBG0ZK0KA05168",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x5003048001e8967f",
+    "phyId": 32,
+    "name": "phy-11:1:32",
+    "port": "port-11:1:17",
+    "portWidth": 1,
+    "rate": "6.0 Gbit",
+    "rateGbit": 6,
+    "attachedKind": "drive",
+    "attached": "end_device-11:1:17",
+    "attachedAddress": "0x5002538b48a797f2",
+    "devName": "sdcn",
+    "bay": "20",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-11:1",
+   "serial": "C7XBG0YY0KA05147",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x5003048001e8967f",
+    "phyId": 33,
+    "name": "phy-11:1:33",
+    "port": "port-11:1:18",
+    "portWidth": 1,
+    "rate": "6.0 Gbit",
+    "rateGbit": 6,
+    "attachedKind": "drive",
+    "attached": "end_device-11:1:18",
+    "attachedAddress": "0x5000cca23b26cbe5",
+    "devName": "sdco",
+    "bay": "21",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-11:1",
+   "serial": "2EGPAEKV",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x5003048001e8967f",
+    "phyId": 34,
+    "name": "phy-11:1:34",
+    "port": "port-11:1:19",
+    "portWidth": 1,
+    "rate": "6.0 Gbit",
+    "rateGbit": 6,
+    "attachedKind": "drive",
+    "attached": "end_device-11:1:19",
+    "attachedAddress": "0x5003048001e89662",
+    "devName": "sdcp",
+    "bay": "22",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-11:1",
+   "serial": "WKD32WVK",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x5003048001e8967f",
+    "phyId": 35,
+    "name": "phy-11:1:35",
+    "port": "port-11:1:20",
+    "portWidth": 1,
+    "rate": "6.0 Gbit",
+    "rateGbit": 6,
+    "attachedKind": "drive",
+    "attached": "end_device-11:1:20",
+    "attachedAddress": "0x5000cca23b0b8a39",
+    "devName": "sdcq",
+    "bay": "23",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-11:1",
+   "serial": "2EG6AS1R",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x5003048001e8967f",
+    "phyId": 36,
+    "name": "phy-11:1:36",
+    "port": "port-11:1:21",
+    "portWidth": 1,
+    "rate": "6.0 Gbit",
+    "rateGbit": 6,
+    "attachedKind": "device",
+    "attached": "end_device-11:1:21",
+    "attachedAddress": "0x5003048001e8967d",
+    "bay": "24",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-11:1",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x5003048001e8967f",
+    "phyId": 37,
+    "name": "phy-11:1:37",
+    "rate": "Unknown",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "expander-11:1",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x500605b00c20d550",
+    "name": "phy-10:0",
+    "port": "port-10:0",
+    "portWidth": 4,
+    "rate": "6.0 Gbit",
+    "rateGbit": 6,
+    "attachedKind": "expander",
+    "attached": "expander-10:0",
+    "attachedAddress": "0x500304800000007f",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "host10",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x500605b00c20d550",
+    "phyId": 1,
+    "name": "phy-10:1",
+    "port": "port-10:0",
+    "portWidth": 4,
+    "rate": "6.0 Gbit",
+    "rateGbit": 6,
+    "attachedKind": "expander",
+    "attached": "expander-10:0",
+    "attachedAddress": "0x500304800000007f",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "host10",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x500605b00c20d550",
+    "phyId": 2,
+    "name": "phy-10:2",
+    "port": "port-10:0",
+    "portWidth": 4,
+    "rate": "6.0 Gbit",
+    "rateGbit": 6,
+    "attachedKind": "expander",
+    "attached": "expander-10:0",
+    "attachedAddress": "0x500304800000007f",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "host10",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x500605b00c20d550",
+    "phyId": 3,
+    "name": "phy-10:3",
+    "port": "port-10:0",
+    "portWidth": 4,
+    "rate": "6.0 Gbit",
+    "rateGbit": 6,
+    "attachedKind": "expander",
+    "attached": "expander-10:0",
+    "attachedAddress": "0x500304800000007f",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "host10",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x500605b00c20d550",
+    "phyId": 4,
+    "name": "phy-10:4",
+    "rate": "Unknown",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "host10",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x500605b00c20d550",
+    "phyId": 5,
+    "name": "phy-10:5",
+    "rate": "Unknown",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "host10",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x500605b00c20d550",
+    "phyId": 6,
+    "name": "phy-10:6",
+    "rate": "Unknown",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "host10",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  },
+  {
+   "phy": {
+    "ownerAddress": "0x500605b00c20d550",
+    "phyId": 7,
+    "name": "phy-10:7",
+    "rate": "Unknown",
+    "enabled": true
+   },
+   "hostname": "nas",
+   "ownerName": "host10",
+   "firstSeen": "2026-09-13T21:37:01Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  }
+ ]
+}

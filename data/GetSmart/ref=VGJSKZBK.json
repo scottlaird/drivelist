@@ -1,0 +1,1646 @@
+{
+ "drive": {
+  "driveId": "28",
+  "wwn": "0x5000cca0bee6e709",
+  "vendor": "ATA",
+  "model": "HGST_HUS728T8TAL",
+  "serial": "VGJSKZBK",
+  "sizeBytes": "8001563222016",
+  "bus": "BUS_SAS",
+  "status": "ok",
+  "firstSeen": "2026-09-13T01:41:39Z",
+  "lastSeen": "2026-09-27T19:41:38Z",
+  "current": {
+   "hostname": "nas",
+   "enclosure": "0x5000ccab020094ff",
+   "bay": "6",
+   "devName": "sdax",
+   "uses": [
+    "zfs > space 5925914041408872576 > raidz2 3388823558429738332 > disk 779833430179635364"
+   ],
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "enclosureVia": "expander-11:0",
+   "enclosureName": "nas-hgst-u60-1",
+   "bayLabel": "6"
+  },
+  "memberState": "ONLINE"
+ },
+ "samples": [
+  {
+   "identity": {
+    "wwn": "0x5000cca0bee6e709",
+    "model": "HGST_HUS728T8TAL",
+    "serial": "VGJSKZBK"
+   },
+   "devName": "sdax",
+   "ts": "2026-09-27T15:25:19Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "39666",
+    "tempC": 32,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "207620432390656",
+    "writeBytes": "18622209479168"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0bee6e709",
+    "model": "HGST_HUS728T8TAL",
+    "serial": "VGJSKZBK"
+   },
+   "devName": "sdax",
+   "ts": "2026-09-27T15:12:50Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "39666",
+    "tempC": 32,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "207617248573952",
+    "writeBytes": "18622199017984"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0bee6e709",
+    "model": "HGST_HUS728T8TAL",
+    "serial": "VGJSKZBK"
+   },
+   "devName": "sdax",
+   "ts": "2026-09-27T10:13:49Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "39661",
+    "tempC": 33,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "207543388903936",
+    "writeBytes": "18621953946112"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0bee6e709",
+    "model": "HGST_HUS728T8TAL",
+    "serial": "VGJSKZBK"
+   },
+   "devName": "sdax",
+   "ts": "2026-09-27T04:13:33Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "39655",
+    "tempC": 34,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "207478952307200",
+    "writeBytes": "18621663015424"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0bee6e709",
+    "model": "HGST_HUS728T8TAL",
+    "serial": "VGJSKZBK"
+   },
+   "devName": "sdax",
+   "ts": "2026-09-26T22:13:15Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "39649",
+    "tempC": 35,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "207437088430592",
+    "writeBytes": "18621357859328"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0bee6e709",
+    "model": "HGST_HUS728T8TAL",
+    "serial": "VGJSKZBK"
+   },
+   "devName": "sdax",
+   "ts": "2026-09-26T16:12:59Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "39643",
+    "tempC": 32,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "207363247942144",
+    "writeBytes": "18621081154048"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0bee6e709",
+    "model": "HGST_HUS728T8TAL",
+    "serial": "VGJSKZBK"
+   },
+   "devName": "sdax",
+   "ts": "2026-09-26T10:12:42Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "39637",
+    "tempC": 33,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "207302683007488",
+    "writeBytes": "18620507189760"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0bee6e709",
+    "model": "HGST_HUS728T8TAL",
+    "serial": "VGJSKZBK"
+   },
+   "devName": "sdax",
+   "ts": "2026-09-26T04:12:26Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "39631",
+    "tempC": 34,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "207299457657344",
+    "writeBytes": "18620239839744"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0bee6e709",
+    "model": "HGST_HUS728T8TAL",
+    "serial": "VGJSKZBK"
+   },
+   "devName": "sdax",
+   "ts": "2026-09-25T22:12:09Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "39625",
+    "tempC": 35,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "207299449686528",
+    "writeBytes": "18619936813568"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0bee6e709",
+    "model": "HGST_HUS728T8TAL",
+    "serial": "VGJSKZBK"
+   },
+   "devName": "sdax",
+   "ts": "2026-09-25T16:11:53Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "39619",
+    "tempC": 34,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "207299407460864",
+    "writeBytes": "18619650736640"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0bee6e709",
+    "model": "HGST_HUS728T8TAL",
+    "serial": "VGJSKZBK"
+   },
+   "devName": "sdax",
+   "ts": "2026-09-25T10:11:37Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "39613",
+    "tempC": 34,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "207298622827008",
+    "writeBytes": "18619383489024"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0bee6e709",
+    "model": "HGST_HUS728T8TAL",
+    "serial": "VGJSKZBK"
+   },
+   "devName": "sdax",
+   "ts": "2026-09-25T04:11:21Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "39607",
+    "tempC": 35,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "207296702241280",
+    "writeBytes": "18619103965696"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0bee6e709",
+    "model": "HGST_HUS728T8TAL",
+    "serial": "VGJSKZBK"
+   },
+   "devName": "sdax",
+   "ts": "2026-09-24T22:11:05Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "39601",
+    "tempC": 35,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "207296674134528",
+    "writeBytes": "18618782736896"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0bee6e709",
+    "model": "HGST_HUS728T8TAL",
+    "serial": "VGJSKZBK"
+   },
+   "devName": "sdax",
+   "ts": "2026-09-24T16:10:49Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "39595",
+    "tempC": 33,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "207296658377216",
+    "writeBytes": "18618528068096"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0bee6e709",
+    "model": "HGST_HUS728T8TAL",
+    "serial": "VGJSKZBK"
+   },
+   "devName": "sdax",
+   "ts": "2026-09-24T10:10:31Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "39589",
+    "tempC": 34,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "207271784712704",
+    "writeBytes": "18618255569408"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0bee6e709",
+    "model": "HGST_HUS728T8TAL",
+    "serial": "VGJSKZBK"
+   },
+   "devName": "sdax",
+   "ts": "2026-09-24T04:10:08Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "39583",
+    "tempC": 36,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "207270830860800",
+    "writeBytes": "18617872105984"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0bee6e709",
+    "model": "HGST_HUS728T8TAL",
+    "serial": "VGJSKZBK"
+   },
+   "devName": "sdax",
+   "ts": "2026-09-23T22:09:49Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "39577",
+    "tempC": 37,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "207270814091776",
+    "writeBytes": "18617582072320"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0bee6e709",
+    "model": "HGST_HUS728T8TAL",
+    "serial": "VGJSKZBK"
+   },
+   "devName": "sdax",
+   "ts": "2026-09-23T16:09:24Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "39571",
+    "tempC": 36,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "207270785567232",
+    "writeBytes": "18617315893760"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0bee6e709",
+    "model": "HGST_HUS728T8TAL",
+    "serial": "VGJSKZBK"
+   },
+   "devName": "sdax",
+   "ts": "2026-09-23T10:09:02Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "39565",
+    "tempC": 36,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "207270453479936",
+    "writeBytes": "18617029403136"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0bee6e709",
+    "model": "HGST_HUS728T8TAL",
+    "serial": "VGJSKZBK"
+   },
+   "devName": "sdax",
+   "ts": "2026-09-23T04:08:43Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "39559",
+    "tempC": 36,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "207132798315008",
+    "writeBytes": "18616758911488"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0bee6e709",
+    "model": "HGST_HUS728T8TAL",
+    "serial": "VGJSKZBK"
+   },
+   "devName": "sdax",
+   "ts": "2026-09-22T22:08:24Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "39553",
+    "tempC": 37,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "206931455441408",
+    "writeBytes": "18616453390848"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0bee6e709",
+    "model": "HGST_HUS728T8TAL",
+    "serial": "VGJSKZBK"
+   },
+   "devName": "sdax",
+   "ts": "2026-09-22T16:08:01Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "39547",
+    "tempC": 33,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "206726270024192",
+    "writeBytes": "18616172978688"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0bee6e709",
+    "model": "HGST_HUS728T8TAL",
+    "serial": "VGJSKZBK"
+   },
+   "devName": "sdax",
+   "ts": "2026-09-22T10:07:42Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "39541",
+    "tempC": 36,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "206635416218112",
+    "writeBytes": "18615898251776"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0bee6e709",
+    "model": "HGST_HUS728T8TAL",
+    "serial": "VGJSKZBK"
+   },
+   "devName": "sdax",
+   "ts": "2026-09-22T04:07:23Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "39535",
+    "tempC": 37,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "206580494866944",
+    "writeBytes": "18615616741888"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0bee6e709",
+    "model": "HGST_HUS728T8TAL",
+    "serial": "VGJSKZBK"
+   },
+   "devName": "sdax",
+   "ts": "2026-09-21T22:07:04Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "39529",
+    "tempC": 37,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "206527306480128",
+    "writeBytes": "18615220912640"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0bee6e709",
+    "model": "HGST_HUS728T8TAL",
+    "serial": "VGJSKZBK"
+   },
+   "devName": "sdax",
+   "ts": "2026-09-21T16:06:41Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "39523",
+    "tempC": 35,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "206456859736576",
+    "writeBytes": "18614965850624"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0bee6e709",
+    "model": "HGST_HUS728T8TAL",
+    "serial": "VGJSKZBK"
+   },
+   "devName": "sdax",
+   "ts": "2026-09-21T10:06:20Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "39517",
+    "tempC": 36,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "206387372431872",
+    "writeBytes": "18614679765504"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0bee6e709",
+    "model": "HGST_HUS728T8TAL",
+    "serial": "VGJSKZBK"
+   },
+   "devName": "sdax",
+   "ts": "2026-09-21T04:05:56Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "39511",
+    "tempC": 37,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "206209214794240",
+    "writeBytes": "18613599044096"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0bee6e709",
+    "model": "HGST_HUS728T8TAL",
+    "serial": "VGJSKZBK"
+   },
+   "devName": "sdax",
+   "ts": "2026-09-21T03:53:26Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "39511",
+    "tempC": 37,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "206202303339008",
+    "writeBytes": "18613204320768"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0bee6e709",
+    "model": "HGST_HUS728T8TAL",
+    "serial": "VGJSKZBK"
+   },
+   "devName": "sdax",
+   "ts": "2026-09-21T03:43:06Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "39511",
+    "tempC": 37,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "206196333341184",
+    "writeBytes": "18612889399808"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0bee6e709",
+    "model": "HGST_HUS728T8TAL",
+    "serial": "VGJSKZBK"
+   },
+   "devName": "sdax",
+   "ts": "2026-09-21T03:28:36Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "39510",
+    "tempC": 37,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "206187369798144",
+    "writeBytes": "18612116955648"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0bee6e709",
+    "model": "HGST_HUS728T8TAL",
+    "serial": "VGJSKZBK"
+   },
+   "devName": "sdax",
+   "ts": "2026-09-21T01:42:22Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "39508",
+    "tempC": 37,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "206124103490048",
+    "writeBytes": "18607495496192"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0bee6e709",
+    "model": "HGST_HUS728T8TAL",
+    "serial": "VGJSKZBK"
+   },
+   "devName": "sdax",
+   "ts": "2026-09-20T19:42:00Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "39502",
+    "tempC": 37,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "205888504453632",
+    "writeBytes": "18607233331712"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0bee6e709",
+    "model": "HGST_HUS728T8TAL",
+    "serial": "VGJSKZBK"
+   },
+   "devName": "sdax",
+   "ts": "2026-09-20T14:22:01Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "39497",
+    "tempC": 35,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "205790662683136",
+    "writeBytes": "18602584719872"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0bee6e709",
+    "model": "HGST_HUS728T8TAL",
+    "serial": "VGJSKZBK"
+   },
+   "devName": "sdax",
+   "ts": "2026-09-20T08:21:31Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "39491",
+    "tempC": 36,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "205702453512704",
+    "writeBytes": "18602307777024"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0bee6e709",
+    "model": "HGST_HUS728T8TAL",
+    "serial": "VGJSKZBK"
+   },
+   "devName": "sdax",
+   "ts": "2026-09-20T02:21:12Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "39485",
+    "tempC": 36,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "205624699480576",
+    "writeBytes": "18594991747584"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0bee6e709",
+    "model": "HGST_HUS728T8TAL",
+    "serial": "VGJSKZBK"
+   },
+   "devName": "sdax",
+   "ts": "2026-09-19T20:20:44Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "39479",
+    "tempC": 36,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "205589853575680",
+    "writeBytes": "18588073112064"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0bee6e709",
+    "model": "HGST_HUS728T8TAL",
+    "serial": "VGJSKZBK"
+   },
+   "devName": "sdax",
+   "ts": "2026-09-19T17:50:00Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "39477",
+    "tempC": 36,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "205556121127424",
+    "writeBytes": "18587960345088"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0bee6e709",
+    "model": "HGST_HUS728T8TAL",
+    "serial": "VGJSKZBK"
+   },
+   "devName": "sdax",
+   "ts": "2026-09-19T11:49:39Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "39471",
+    "tempC": 35,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "205483989047808",
+    "writeBytes": "18587672252928"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0bee6e709",
+    "model": "HGST_HUS728T8TAL",
+    "serial": "VGJSKZBK"
+   },
+   "devName": "sdax",
+   "ts": "2026-09-19T05:49:07Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "39465",
+    "tempC": 36,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "205402130196992",
+    "writeBytes": "18587378668032"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0bee6e709",
+    "model": "HGST_HUS728T8TAL",
+    "serial": "VGJSKZBK"
+   },
+   "devName": "sdax",
+   "ts": "2026-09-18T23:48:31Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "39459",
+    "tempC": 37,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "205209204410880",
+    "writeBytes": "18587059630592"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0bee6e709",
+    "model": "HGST_HUS728T8TAL",
+    "serial": "VGJSKZBK"
+   },
+   "devName": "sdax",
+   "ts": "2026-09-18T17:47:59Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "39453",
+    "tempC": 36,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "205007740914176",
+    "writeBytes": "18586790261248"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0bee6e709",
+    "model": "HGST_HUS728T8TAL",
+    "serial": "VGJSKZBK"
+   },
+   "devName": "sdax",
+   "ts": "2026-09-18T11:47:39Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "39447",
+    "tempC": 36,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "204856123996672",
+    "writeBytes": "18586508014080"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0bee6e709",
+    "model": "HGST_HUS728T8TAL",
+    "serial": "VGJSKZBK"
+   },
+   "devName": "sdax",
+   "ts": "2026-09-18T05:47:19Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "39441",
+    "tempC": 36,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "204769300306432",
+    "writeBytes": "18586210406912"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0bee6e709",
+    "model": "HGST_HUS728T8TAL",
+    "serial": "VGJSKZBK"
+   },
+   "devName": "sdax",
+   "ts": "2026-09-17T23:46:53Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "39435",
+    "tempC": 38,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "204729760868864",
+    "writeBytes": "18585905930752"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0bee6e709",
+    "model": "HGST_HUS728T8TAL",
+    "serial": "VGJSKZBK"
+   },
+   "devName": "sdax",
+   "ts": "2026-09-17T17:46:34Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "39429",
+    "tempC": 36,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "204706366024192",
+    "writeBytes": "18585645650432"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0bee6e709",
+    "model": "HGST_HUS728T8TAL",
+    "serial": "VGJSKZBK"
+   },
+   "devName": "sdax",
+   "ts": "2026-09-17T11:46:15Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "39423",
+    "tempC": 36,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "204681343269376",
+    "writeBytes": "18585293677056"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0bee6e709",
+    "model": "HGST_HUS728T8TAL",
+    "serial": "VGJSKZBK"
+   },
+   "devName": "sdax",
+   "ts": "2026-09-17T05:45:59Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "39417",
+    "tempC": 36,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "204658578029056",
+    "writeBytes": "18584987623936"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0bee6e709",
+    "model": "HGST_HUS728T8TAL",
+    "serial": "VGJSKZBK"
+   },
+   "devName": "sdax",
+   "ts": "2026-09-16T23:45:43Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "39411",
+    "tempC": 37,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "204645272177152",
+    "writeBytes": "18584690127360"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0bee6e709",
+    "model": "HGST_HUS728T8TAL",
+    "serial": "VGJSKZBK"
+   },
+   "devName": "sdax",
+   "ts": "2026-09-16T17:45:26Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "39405",
+    "tempC": 35,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "204574465481216",
+    "writeBytes": "18584408093184"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0bee6e709",
+    "model": "HGST_HUS728T8TAL",
+    "serial": "VGJSKZBK"
+   },
+   "devName": "sdax",
+   "ts": "2026-09-16T11:45:10Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "39399",
+    "tempC": 35,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "204533759093248",
+    "writeBytes": "18584138314240"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0bee6e709",
+    "model": "HGST_HUS728T8TAL",
+    "serial": "VGJSKZBK"
+   },
+   "devName": "sdax",
+   "ts": "2026-09-16T05:44:53Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "39393",
+    "tempC": 36,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "204476981787136",
+    "writeBytes": "18583848186368"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0bee6e709",
+    "model": "HGST_HUS728T8TAL",
+    "serial": "VGJSKZBK"
+   },
+   "devName": "sdax",
+   "ts": "2026-09-15T23:44:37Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "39387",
+    "tempC": 37,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "204323817560576",
+    "writeBytes": "18583526601216"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0bee6e709",
+    "model": "HGST_HUS728T8TAL",
+    "serial": "VGJSKZBK"
+   },
+   "devName": "sdax",
+   "ts": "2026-09-15T17:44:21Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "39381",
+    "tempC": 34,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "204125988157952",
+    "writeBytes": "18583261884928"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0bee6e709",
+    "model": "HGST_HUS728T8TAL",
+    "serial": "VGJSKZBK"
+   },
+   "devName": "sdax",
+   "ts": "2026-09-15T11:44:03Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "39375",
+    "tempC": 35,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "203922012916224",
+    "writeBytes": "18582999753216"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0bee6e709",
+    "model": "HGST_HUS728T8TAL",
+    "serial": "VGJSKZBK"
+   },
+   "devName": "sdax",
+   "ts": "2026-09-15T05:43:46Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "39369",
+    "tempC": 35,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "203800409995776",
+    "writeBytes": "18582642438656"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0bee6e709",
+    "model": "HGST_HUS728T8TAL",
+    "serial": "VGJSKZBK"
+   },
+   "devName": "sdax",
+   "ts": "2026-09-14T23:43:30Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "39363",
+    "tempC": 36,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "203762547931648",
+    "writeBytes": "18582338191872"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0bee6e709",
+    "model": "HGST_HUS728T8TAL",
+    "serial": "VGJSKZBK"
+   },
+   "devName": "sdax",
+   "ts": "2026-09-14T17:43:13Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "39357",
+    "tempC": 36,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "203699952708096",
+    "writeBytes": "18582066205184"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0bee6e709",
+    "model": "HGST_HUS728T8TAL",
+    "serial": "VGJSKZBK"
+   },
+   "devName": "sdax",
+   "ts": "2026-09-14T16:09:49Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "39355",
+    "tempC": 36,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "203682855569920",
+    "writeBytes": "18581971481088"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0bee6e709",
+    "model": "HGST_HUS728T8TAL",
+    "serial": "VGJSKZBK"
+   },
+   "devName": "sdax",
+   "ts": "2026-09-14T10:09:32Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "39349",
+    "tempC": 36,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "203612420438528",
+    "writeBytes": "18581669732864"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0bee6e709",
+    "model": "HGST_HUS728T8TAL",
+    "serial": "VGJSKZBK"
+   },
+   "devName": "sdax",
+   "ts": "2026-09-14T04:09:15Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "39343",
+    "tempC": 35,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "203608460368384",
+    "writeBytes": "18581392994816"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0bee6e709",
+    "model": "HGST_HUS728T8TAL",
+    "serial": "VGJSKZBK"
+   },
+   "devName": "sdax",
+   "ts": "2026-09-14T03:59:10Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "39343",
+    "tempC": 36,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "203608460306944",
+    "writeBytes": "18581377470976"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0bee6e709",
+    "model": "HGST_HUS728T8TAL",
+    "serial": "VGJSKZBK"
+   },
+   "devName": "sdax",
+   "ts": "2026-09-14T03:46:19Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "39343",
+    "tempC": 36,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "203608460265984",
+    "writeBytes": "18581362557440"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0bee6e709",
+    "model": "HGST_HUS728T8TAL",
+    "serial": "VGJSKZBK"
+   },
+   "devName": "sdax",
+   "ts": "2026-09-13T23:12:56Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "39338",
+    "tempC": 37,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "202717051648512",
+    "writeBytes": "18580479336960"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0bee6e709",
+    "model": "HGST_HUS728T8TAL",
+    "serial": "VGJSKZBK"
+   },
+   "devName": "sdax",
+   "ts": "2026-09-13T22:10:20Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "39337",
+    "tempC": 36,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "202353213127168",
+    "writeBytes": "18580427555328"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0bee6e709",
+    "model": "HGST_HUS728T8TAL",
+    "serial": "VGJSKZBK"
+   },
+   "devName": "sdax",
+   "ts": "2026-09-13T21:37:09Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "39336",
+    "tempC": 35,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "202330312468992",
+    "writeBytes": "18580391076352"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0bee6e709",
+    "model": "HGST_HUS728T8TAL",
+    "serial": "VGJSKZBK"
+   },
+   "devName": "sdax",
+   "ts": "2026-09-13T21:15:18Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "39336",
+    "tempC": 36,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "202330312391168",
+    "writeBytes": "18580372308480"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0bee6e709",
+    "model": "HGST_HUS728T8TAL",
+    "serial": "VGJSKZBK"
+   },
+   "devName": "sdax",
+   "ts": "2026-09-13T17:04:57Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "39332",
+    "tempC": 36,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "201050681612800",
+    "writeBytes": "18580104782336"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0bee6e709",
+    "model": "HGST_HUS728T8TAL",
+    "serial": "VGJSKZBK"
+   },
+   "devName": "sdax",
+   "ts": "2026-09-13T14:18:24Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "39329",
+    "tempC": 36,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "200345380411904",
+    "writeBytes": "18579964977664"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0bee6e709",
+    "model": "HGST_HUS728T8TAL",
+    "serial": "VGJSKZBK"
+   },
+   "devName": "sdax",
+   "ts": "2026-09-13T08:17:37Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "39323",
+    "tempC": 37,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "198925068569088",
+    "writeBytes": "18579699655168"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0bee6e709",
+    "model": "HGST_HUS728T8TAL",
+    "serial": "VGJSKZBK"
+   },
+   "devName": "sdax",
+   "ts": "2026-09-13T02:17:09Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "39317",
+    "tempC": 37,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "198652121618944",
+    "writeBytes": "18579122024960"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0bee6e709",
+    "model": "HGST_HUS728T8TAL",
+    "serial": "VGJSKZBK"
+   },
+   "devName": "sdax",
+   "ts": "2026-09-13T02:09:13Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "39317",
+    "tempC": 37,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "198650107251200",
+    "writeBytes": "18579113337344"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  }
+ ]
+}

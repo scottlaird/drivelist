@@ -1,0 +1,84 @@
+{
+ "row": {
+  "optic": {
+   "port": "enp68s0f0np0",
+   "ports": [
+    "enp68s0f0np0"
+   ],
+   "form": "SFP",
+   "identifier": "0x03 (SFP)",
+   "kind": "dac",
+   "vendor": "FS",
+   "oui": "00:02:c9",
+   "part": "S28-PC02",
+   "rev": "01",
+   "serial": "G1910037887-2",
+   "dateCode": "191127",
+   "compliance": "Extended: 25G Base-CR CA-S",
+   "connector": "Copper pigtail",
+   "link": "down",
+   "carrierChanges": "0"
+  },
+  "status": "ok",
+  "hostname": "server8",
+  "present": true,
+  "firstSeen": "2026-09-27T15:11:54Z",
+  "lastSeen": "2026-09-27T19:43:32Z",
+  "sampledAt": "2026-09-27T19:43:32Z",
+  "dark": true
+ },
+ "placements": [
+  {
+   "hostname": "server8",
+   "port": "enp68s0f0np0",
+   "ports": [
+    "enp68s0f0np0"
+   ],
+   "firstSeen": "2026-09-27T15:11:54Z",
+   "lastSeen": "2026-09-27T19:43:32Z"
+  }
+ ],
+ "samples": [
+  {
+   "ts": "2026-09-27T19:43:32Z",
+   "hostname": "server8",
+   "port": "enp68s0f0np0",
+   "link": "down"
+  },
+  {
+   "ts": "2026-09-27T18:57:25Z",
+   "hostname": "server8",
+   "port": "enp68s0f0np0",
+   "link": "down"
+  },
+  {
+   "ts": "2026-09-27T17:57:23Z",
+   "hostname": "server8",
+   "port": "enp68s0f0np0",
+   "link": "down"
+  },
+  {
+   "ts": "2026-09-27T16:57:20Z",
+   "hostname": "server8",
+   "port": "enp68s0f0np0",
+   "link": "down"
+  },
+  {
+   "ts": "2026-09-27T15:57:18Z",
+   "hostname": "server8",
+   "port": "enp68s0f0np0",
+   "link": "down"
+  }
+ ],
+ "events": [
+  {
+   "eventId": "848",
+   "ts": "2026-09-27T15:11:54Z",
+   "kind": "optic_first_seen",
+   "hostname": "server8",
+   "detail": "{\"form\":\"SFP\",\"part\":\"S28-PC02\",\"port\":\"enp68s0f0np0\",\"serial\":\"G1910037887-2\",\"vendor\":\"FS\"}",
+   "source": "report",
+   "opticSerial": "G1910037887-2"
+  }
+ ]
+}

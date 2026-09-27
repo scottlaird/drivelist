@@ -1,0 +1,144 @@
+{
+ "events": [
+  {
+   "eventId": "728",
+   "ts": "2026-09-21T04:15:26Z",
+   "kind": "dimm_changed",
+   "hostname": "server6",
+   "detail": "{\"change\":\"appeared\",\"edac\":\"mc0/CPU_SrcID#0_Ha#0_Chan#1_DIMM#1\",\"part\":\"NOT AVAILABLE\",\"serial\":\"\",\"size_bytes\":34359738368,\"slot\":\"PROC 1 DIMM 4\"}",
+   "source": "report"
+  },
+  {
+   "eventId": "727",
+   "ts": "2026-09-21T04:15:26Z",
+   "kind": "dimm_changed",
+   "hostname": "server6",
+   "detail": "{\"change\":\"appeared\",\"edac\":\"mc0/CPU_SrcID#0_Ha#0_Chan#1_DIMM#0\",\"part\":\"NOT AVAILABLE\",\"serial\":\"\",\"size_bytes\":34359738368,\"slot\":\"PROC 1 DIMM 3\"}",
+   "source": "report"
+  },
+  {
+   "eventId": "726",
+   "ts": "2026-09-21T04:15:26Z",
+   "kind": "dimm_changed",
+   "hostname": "server6",
+   "detail": "{\"change\":\"appeared\",\"edac\":\"mc0/CPU_SrcID#0_Ha#0_Chan#0_DIMM#1\",\"part\":\"NOT AVAILABLE\",\"serial\":\"\",\"size_bytes\":34359738368,\"slot\":\"PROC 1 DIMM 2\"}",
+   "source": "report"
+  },
+  {
+   "eventId": "725",
+   "ts": "2026-09-21T04:15:26Z",
+   "kind": "dimm_changed",
+   "hostname": "server6",
+   "detail": "{\"change\":\"appeared\",\"edac\":\"mc0/CPU_SrcID#0_Ha#0_Chan#0_DIMM#0\",\"part\":\"NOT AVAILABLE\",\"serial\":\"\",\"size_bytes\":34359738368,\"slot\":\"PROC 1 DIMM 1\"}",
+   "source": "report"
+  },
+  {
+   "eventId": "563",
+   "ts": "2026-09-14T06:48:30Z",
+   "kind": "moved_bay",
+   "serial": "0029030000044",
+   "wwn": "0x5000000000000046",
+   "hostname": "server6",
+   "detail": "{\"from_bay\":\"\",\"from_enclosure\":\"\",\"from_enclosure_via\":\"\",\"from_host\":\"server6\",\"from_uses\":[\"mount \\u003e /\",\"mount \\u003e /boot/efi\"],\"to_bay\":\"pci-0000:00:1f.2-ata-5\",\"to_bay_label\":\"M.2 SATA\",\"to_dev_name\":\"sda\",\"to_enclosure\":\"dmi:CN7824V3L8\",\"to_enclosure_via\":\"ata\",\"to_uses\":[\"mount \\u003e /\",\"mount \\u003e /boot/efi\"]}",
+   "source": "snapshot:47"
+  },
+  {
+   "eventId": "562",
+   "ts": "2026-09-14T06:48:30Z",
+   "kind": "moved_bay",
+   "serial": "S7U5NJ0Y114910Z",
+   "wwn": "eui.0025385151419204",
+   "hostname": "server6",
+   "detail": "{\"from_bay\":\"\",\"from_enclosure\":\"\",\"from_enclosure_via\":\"\",\"from_host\":\"server6\",\"from_uses\":[\"zfs \\u003e data3 4886974060788330011 \\u003e disk 4276253004973604622\"],\"to_bay\":\"2\",\"to_bay_label\":\"M.2 2\",\"to_dev_name\":\"nvme3n1\",\"to_enclosure\":\"dmi:CN7824V3L8\",\"to_enclosure_via\":\"pci\",\"to_uses\":[\"zfs \\u003e data3 4886974060788330011 \\u003e disk 4276253004973604622\"]}",
+   "source": "snapshot:47"
+  },
+  {
+   "eventId": "561",
+   "ts": "2026-09-14T06:48:30Z",
+   "kind": "moved_bay",
+   "serial": "7D620718193D00008557",
+   "wwn": "eui.6479a75340c000c3",
+   "hostname": "server6",
+   "detail": "{\"from_bay\":\"\",\"from_enclosure\":\"\",\"from_enclosure_via\":\"\",\"from_host\":\"server6\",\"from_uses\":[\"zfs \\u003e data4 12071317661975938558 \\u003e disk 1380984678337085650\"],\"to_bay\":\"1\",\"to_bay_label\":\"M.2 1\",\"to_dev_name\":\"nvme2n1\",\"to_enclosure\":\"dmi:CN7824V3L8\",\"to_enclosure_via\":\"pci\",\"to_uses\":[\"zfs \\u003e data4 12071317661975938558 \\u003e disk 1380984678337085650\"]}",
+   "source": "snapshot:47"
+  },
+  {
+   "eventId": "560",
+   "ts": "2026-09-14T06:48:30Z",
+   "kind": "moved_bay",
+   "serial": "S7U5NJ0Y220165V",
+   "wwn": "eui.002538525140cf12",
+   "hostname": "server6",
+   "detail": "{\"from_bay\":\"\",\"from_enclosure\":\"\",\"from_enclosure_via\":\"\",\"from_host\":\"server6\",\"from_uses\":[\"zfs \\u003e data2 12955032411672799560 \\u003e disk 6309270608912369856\"],\"to_bay\":\"PCI-E Slot 6/08.0\",\"to_bay_label\":\"card port 8\",\"to_dev_name\":\"nvme1n1\",\"to_enclosure\":\"dmi:CN7824V3L8\",\"to_enclosure_via\":\"pci\",\"to_uses\":[\"zfs \\u003e data2 12955032411672799560 \\u003e disk 6309270608912369856\"]}",
+   "source": "snapshot:47"
+  },
+  {
+   "eventId": "559",
+   "ts": "2026-09-14T06:48:30Z",
+   "kind": "moved_bay",
+   "serial": "S7U5NJ0Y225528K",
+   "wwn": "eui.0025385251415cf3",
+   "hostname": "server6",
+   "detail": "{\"from_bay\":\"\",\"from_enclosure\":\"\",\"from_enclosure_via\":\"\",\"from_host\":\"server6\",\"from_uses\":[\"zfs \\u003e data1 8745015803076599719 \\u003e disk 6438636062170316550\"],\"to_bay\":\"PCI-E Slot 6/00.0\",\"to_bay_label\":\"card port 0\",\"to_dev_name\":\"nvme0n1\",\"to_enclosure\":\"dmi:CN7824V3L8\",\"to_enclosure_via\":\"pci\",\"to_uses\":[\"zfs \\u003e data1 8745015803076599719 \\u003e disk 6438636062170316550\"]}",
+   "source": "snapshot:47"
+  },
+  {
+   "eventId": "493",
+   "ts": "2026-09-13T02:42:15Z",
+   "kind": "first_seen",
+   "serial": "0029030000044",
+   "wwn": "0x5000000000000046",
+   "hostname": "server6",
+   "detail": "{\"bay\":\"\",\"dev_name\":\"sda\",\"expander\":\"\",\"expander_dev\":\"\",\"uses\":[\"mount \\u003e /\",\"mount \\u003e /boot/efi\"]}",
+   "source": "snapshot:13"
+  },
+  {
+   "eventId": "492",
+   "ts": "2026-09-13T02:42:15Z",
+   "kind": "first_seen",
+   "serial": "S7U5NJ0Y114910Z",
+   "wwn": "eui.0025385151419204",
+   "hostname": "server6",
+   "detail": "{\"bay\":\"\",\"dev_name\":\"nvme3n1\",\"expander\":\"\",\"expander_dev\":\"\",\"uses\":[\"zfs \\u003e data3 4886974060788330011 \\u003e disk 4276253004973604622\"]}",
+   "source": "snapshot:13"
+  },
+  {
+   "eventId": "491",
+   "ts": "2026-09-13T02:42:15Z",
+   "kind": "first_seen",
+   "serial": "7D620718193D00008557",
+   "wwn": "eui.6479a75340c000c3",
+   "hostname": "server6",
+   "detail": "{\"bay\":\"\",\"dev_name\":\"nvme2n1\",\"expander\":\"\",\"expander_dev\":\"\",\"uses\":[\"zfs \\u003e data4 12071317661975938558 \\u003e disk 1380984678337085650\"]}",
+   "source": "snapshot:13"
+  },
+  {
+   "eventId": "490",
+   "ts": "2026-09-13T02:42:15Z",
+   "kind": "first_seen",
+   "serial": "S7U5NJ0Y220165V",
+   "wwn": "eui.002538525140cf12",
+   "hostname": "server6",
+   "detail": "{\"bay\":\"\",\"dev_name\":\"nvme1n1\",\"expander\":\"\",\"expander_dev\":\"\",\"uses\":[\"zfs \\u003e data2 12955032411672799560 \\u003e disk 6309270608912369856\"]}",
+   "source": "snapshot:13"
+  },
+  {
+   "eventId": "489",
+   "ts": "2026-09-13T02:42:15Z",
+   "kind": "first_seen",
+   "serial": "S7U5NJ0Y225528K",
+   "wwn": "eui.0025385251415cf3",
+   "hostname": "server6",
+   "detail": "{\"bay\":\"\",\"dev_name\":\"nvme0n1\",\"expander\":\"\",\"expander_dev\":\"\",\"uses\":[\"zfs \\u003e data1 8745015803076599719 \\u003e disk 6438636062170316550\"]}",
+   "source": "snapshot:13"
+  },
+  {
+   "eventId": "249",
+   "ts": "2026-09-13T02:42:15Z",
+   "kind": "host_first_seen",
+   "hostname": "server6",
+   "detail": "{\"hostname\":\"server6\",\"os\":\"linux\"}",
+   "source": "report"
+  }
+ ]
+}

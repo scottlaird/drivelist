@@ -1,0 +1,167 @@
+{
+ "row": {
+  "optic": {
+   "port": "enp18",
+   "ports": [
+    "enp18"
+   ],
+   "form": "SFP",
+   "identifier": "0x03 (SFP)",
+   "kind": "optical",
+   "vendor": "OEM",
+   "oui": "00:90:65",
+   "part": "SFP-10G-LR",
+   "rev": "A",
+   "serial": "202603271096",
+   "dateCode": "260326",
+   "compliance": "10G Ethernet: 10G Base-LR",
+   "connector": "LC",
+   "wavelengthNm": 1310,
+   "link": "up",
+   "diagnostics": true,
+   "tempC": 43.68,
+   "voltageV": 3.3371,
+   "lanes": [
+    {
+     "lane": 1,
+     "biasMa": 46.812,
+     "txMw": 0.691,
+     "rxMw": 0.785
+    }
+   ],
+   "thresholds": {
+    "bias_high_alarm": 85,
+    "bias_high_warning": 80,
+    "bias_low_alarm": 15,
+    "bias_low_warning": 20,
+    "rx_high_alarm": 1.7783,
+    "rx_high_warning": 1.122,
+    "rx_low_alarm": 0.0229,
+    "rx_low_warning": 0.0363,
+    "temp_high_alarm": 80,
+    "temp_high_warning": 70,
+    "temp_low_alarm": -10,
+    "temp_low_warning": 0,
+    "tx_high_alarm": 1.7783,
+    "tx_high_warning": 1.122,
+    "tx_low_alarm": 0.0955,
+    "tx_low_warning": 0.1514,
+    "voltage_high_alarm": 3.63,
+    "voltage_high_warning": 3.465,
+    "voltage_low_alarm": 2.97,
+    "voltage_low_warning": 3.135
+   },
+   "carrierChanges": "5"
+  },
+  "status": "ok",
+  "hostname": "switch1",
+  "present": true,
+  "firstSeen": "2026-09-27T15:26:04Z",
+  "lastSeen": "2026-09-27T19:42:22Z",
+  "sampledAt": "2026-09-27T19:42:22Z"
+ },
+ "placements": [
+  {
+   "hostname": "switch1",
+   "port": "enp18",
+   "ports": [
+    "enp18"
+   ],
+   "firstSeen": "2026-09-27T15:26:04Z",
+   "lastSeen": "2026-09-27T19:42:22Z"
+  }
+ ],
+ "samples": [
+  {
+   "ts": "2026-09-27T19:42:22Z",
+   "hostname": "switch1",
+   "port": "enp18",
+   "tempC": 43.68,
+   "voltageV": 3.3371,
+   "lanes": [
+    {
+     "lane": 1,
+     "biasMa": 46.812,
+     "txMw": 0.691,
+     "rxMw": 0.785
+    }
+   ],
+   "link": "up"
+  },
+  {
+   "ts": "2026-09-27T18:57:19Z",
+   "hostname": "switch1",
+   "port": "enp18",
+   "tempC": 44.61,
+   "voltageV": 3.3413,
+   "lanes": [
+    {
+     "lane": 1,
+     "biasMa": 47.262,
+     "txMw": 0.6887,
+     "rxMw": 0.786
+    }
+   ],
+   "link": "up"
+  },
+  {
+   "ts": "2026-09-27T17:57:16Z",
+   "hostname": "switch1",
+   "port": "enp18",
+   "tempC": 44.3,
+   "voltageV": 3.3385,
+   "lanes": [
+    {
+     "lane": 1,
+     "biasMa": 47.05,
+     "txMw": 0.6904,
+     "rxMw": 0.7828
+    }
+   ],
+   "link": "up"
+  },
+  {
+   "ts": "2026-09-27T16:57:12Z",
+   "hostname": "switch1",
+   "port": "enp18",
+   "tempC": 44.44,
+   "voltageV": 3.3384,
+   "lanes": [
+    {
+     "lane": 1,
+     "biasMa": 46.956,
+     "txMw": 0.6887,
+     "rxMw": 0.7884
+    }
+   ],
+   "link": "up"
+  },
+  {
+   "ts": "2026-09-27T15:57:08Z",
+   "hostname": "switch1",
+   "port": "enp18",
+   "tempC": 44.05,
+   "voltageV": 3.339,
+   "lanes": [
+    {
+     "lane": 1,
+     "biasMa": 46.77,
+     "txMw": 0.6921,
+     "rxMw": 0.7884
+    }
+   ],
+   "link": "up"
+  }
+ ],
+ "events": [
+  {
+   "eventId": "912",
+   "ts": "2026-09-27T15:26:04Z",
+   "kind": "optic_first_seen",
+   "hostname": "switch1",
+   "detail": "{\"form\":\"SFP\",\"part\":\"SFP-10G-LR\",\"port\":\"enp18\",\"serial\":\"202603271096\",\"vendor\":\"OEM\"}",
+   "source": "report",
+   "opticSerial": "202603271096"
+  }
+ ]
+}

@@ -1,0 +1,3232 @@
+{
+ "drive": {
+  "driveId": "99",
+  "wwn": "eui.0025384651a0a8a9",
+  "model": "Samsung SSD 990 PRO 4TB",
+  "serial": "S7KGNU0Y603825W",
+  "sizeBytes": "4000787030016",
+  "bus": "BUS_NVME",
+  "status": "ok",
+  "firstSeen": "2026-09-13T01:43:29Z",
+  "lastSeen": "2026-09-27T19:42:19Z",
+  "current": {
+   "hostname": "server9",
+   "enclosure": "dmi:MD337LA27FQQMQA00061",
+   "bay": "J3502",
+   "devName": "nvme0n1",
+   "uses": [
+    "zfs > data 10648486609276903990 > mirror 12388082022523346833 > disk 1259551880347934375"
+   ],
+   "firstSeen": "2026-09-13T23:12:36Z",
+   "lastSeen": "2026-09-27T19:42:19Z",
+   "enclosureVia": "pci",
+   "bayLabel": "M.2 1"
+  },
+  "memberState": "ONLINE"
+ },
+ "samples": [
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-27T18:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "80617",
+   "writeBytes": "1278497792",
+   "writeMs": "22411",
+   "ioMs": "12558",
+   "weightedMs": "25440",
+   "wAwaitMaxMs": 0.33540372670807456,
+   "utilMax": 0.003953096592330659,
+   "hostname": "server9",
+   "awaitWrites": "80617"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-27T17:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "83366",
+   "writeBytes": "1493260800",
+   "writeMs": "22680",
+   "ioMs": "12650",
+   "weightedMs": "25599",
+   "wAwaitMaxMs": 0.3304647160068847,
+   "utilMax": 0.0045,
+   "hostname": "server9",
+   "awaitWrites": "83366"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-27T16:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "79279",
+   "writeBytes": "1281875968",
+   "writeMs": "22298",
+   "ioMs": "12545",
+   "weightedMs": "25259",
+   "wAwaitMaxMs": 0.3390191897654584,
+   "utilMax": 0.00405135045015005,
+   "hostname": "server9",
+   "awaitWrites": "79279"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-27T15:00:00Z",
+   "bucketSecs": 2580,
+   "writes": "56624",
+   "writeBytes": "880100864",
+   "writeMs": "15987",
+   "ioMs": "9127",
+   "weightedMs": "18282",
+   "wAwaitMaxMs": 0.32174688057041,
+   "utilMax": 0.00396739402223741,
+   "hostname": "server9",
+   "awaitWrites": "56624"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-27T14:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "85258",
+   "writeBytes": "1606009344",
+   "writeMs": "22326",
+   "ioMs": "12528",
+   "weightedMs": "25066",
+   "wAwaitMaxMs": 0.3540175019888624,
+   "utilMax": 0.004467932580897921,
+   "hostname": "server9",
+   "awaitWrites": "85258"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-27T13:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "81112",
+   "writeBytes": "1499687424",
+   "writeMs": "22337",
+   "ioMs": "12471",
+   "weightedMs": "25256",
+   "wAwaitMaxMs": 0.3199672667757774,
+   "utilMax": 0.004650310020668045,
+   "hostname": "server9",
+   "awaitWrites": "81112"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-27T12:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "83356",
+   "writeBytes": "1589451776",
+   "writeMs": "21873",
+   "ioMs": "12138",
+   "weightedMs": "24408",
+   "wAwaitMaxMs": 0.32506004803843075,
+   "utilMax": 0.00390260173448966,
+   "hostname": "server9",
+   "awaitWrites": "83356"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-27T11:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "82369",
+   "writeBytes": "1554125824",
+   "writeMs": "22014",
+   "ioMs": "12191",
+   "weightedMs": "24737",
+   "wAwaitMaxMs": 0.31821998320738876,
+   "utilMax": 0.0047505542313269885,
+   "hostname": "server9",
+   "awaitWrites": "82369"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-27T10:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "86673",
+   "writeBytes": "1670056960",
+   "writeMs": "21900",
+   "ioMs": "12122",
+   "weightedMs": "24412",
+   "wAwaitMaxMs": 0.3232931726907631,
+   "utilMax": 0.004,
+   "hostname": "server9",
+   "awaitWrites": "86673"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-27T09:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "92719",
+   "writeBytes": "2576454656",
+   "writeMs": "24270",
+   "ioMs": "12992",
+   "weightedMs": "27474",
+   "wAwaitMaxMs": 0.31970935513169846,
+   "utilMax": 0.010384717962394987,
+   "hostname": "server9",
+   "awaitWrites": "92719"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-27T08:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "86115",
+   "writeBytes": "1629212160",
+   "writeMs": "22091",
+   "ioMs": "12400",
+   "weightedMs": "24800",
+   "wAwaitMaxMs": 0.33121019108280253,
+   "utilMax": 0.0039677908740809896,
+   "hostname": "server9",
+   "awaitWrites": "86115"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-27T07:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "82974",
+   "writeBytes": "1521404928",
+   "writeMs": "21632",
+   "ioMs": "12059",
+   "weightedMs": "24206",
+   "wAwaitMaxMs": 0.3556992724333064,
+   "utilMax": 0.003916927795186345,
+   "hostname": "server9",
+   "awaitWrites": "82974"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-27T06:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "80607",
+   "writeBytes": "1547045888",
+   "writeMs": "21944",
+   "ioMs": "12249",
+   "weightedMs": "24590",
+   "wAwaitMaxMs": 0.3356216628527841,
+   "utilMax": 0.0043840640106684444,
+   "hostname": "server9",
+   "awaitWrites": "80607"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-27T05:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "82324",
+   "writeBytes": "1619167744",
+   "writeMs": "22160",
+   "ioMs": "12392",
+   "weightedMs": "24950",
+   "wAwaitMaxMs": 0.3391859537110934,
+   "utilMax": 0.0045328800453288,
+   "hostname": "server9",
+   "awaitWrites": "82324"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-27T04:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "80074",
+   "writeBytes": "1321062400",
+   "writeMs": "22033",
+   "ioMs": "12469",
+   "weightedMs": "25001",
+   "wAwaitMaxMs": 0.32589285714285715,
+   "utilMax": 0.0039492101579684065,
+   "hostname": "server9",
+   "awaitWrites": "80074"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-27T03:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "86927",
+   "writeBytes": "1977257472",
+   "writeMs": "22927",
+   "ioMs": "12507",
+   "weightedMs": "25788",
+   "wAwaitMaxMs": 0.30848329048843187,
+   "utilMax": 0.006568199246490848,
+   "hostname": "server9",
+   "awaitWrites": "86927"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-27T02:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "84136",
+   "writeBytes": "1890918912",
+   "writeMs": "22122",
+   "ioMs": "12532",
+   "weightedMs": "25014",
+   "wAwaitMaxMs": 0.30258899676375406,
+   "utilMax": 0.003983798109779474,
+   "hostname": "server9",
+   "awaitWrites": "84136"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-27T01:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "81433",
+   "writeBytes": "1457873408",
+   "writeMs": "23002",
+   "ioMs": "13083",
+   "weightedMs": "26399",
+   "wAwaitMaxMs": 0.329811320754717,
+   "utilMax": 0.00451779611569559,
+   "hostname": "server9",
+   "awaitWrites": "81433"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-27T00:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "80101",
+   "writeBytes": "1358578688",
+   "writeMs": "22219",
+   "ioMs": "12586",
+   "weightedMs": "25236",
+   "wAwaitMaxMs": 0.3455631399317406,
+   "utilMax": 0.0039513171057019006,
+   "hostname": "server9",
+   "awaitWrites": "80101"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-26T23:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "82695",
+   "writeBytes": "1677239296",
+   "writeMs": "21938",
+   "ioMs": "12235",
+   "weightedMs": "24627",
+   "wAwaitMaxMs": 0.3084495488105004,
+   "utilMax": 0.00445,
+   "hostname": "server9",
+   "awaitWrites": "82695"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-26T22:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "82972",
+   "writeBytes": "1476221440",
+   "writeMs": "21986",
+   "ioMs": "12327",
+   "weightedMs": "24836",
+   "wAwaitMaxMs": 0.31703204047217537,
+   "utilMax": 0.004051012753188297,
+   "hostname": "server9",
+   "awaitWrites": "82972"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-26T21:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "89002",
+   "writeBytes": "1894682624",
+   "writeMs": "22356",
+   "ioMs": "12417",
+   "weightedMs": "25129",
+   "wAwaitMaxMs": 0.302158273381295,
+   "utilMax": 0.006166975015417437,
+   "hostname": "server9",
+   "awaitWrites": "89002"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-26T20:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "87121",
+   "writeBytes": "1633188864",
+   "writeMs": "22012",
+   "ioMs": "12328",
+   "weightedMs": "24686",
+   "wAwaitMaxMs": 0.3292600135777325,
+   "utilMax": 0.004033602240149343,
+   "hostname": "server9",
+   "awaitWrites": "87121"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-26T19:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "86733",
+   "writeBytes": "1418283520",
+   "writeMs": "22956",
+   "ioMs": "12970",
+   "weightedMs": "26210",
+   "wAwaitMaxMs": 0.34296875,
+   "utilMax": 0.004633642242816188,
+   "hostname": "server9",
+   "awaitWrites": "86733"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-26T18:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "89168",
+   "writeBytes": "1641596928",
+   "writeMs": "22086",
+   "ioMs": "12458",
+   "weightedMs": "24771",
+   "wAwaitMaxMs": 0.29024767801857587,
+   "utilMax": 0.003999400089986502,
+   "hostname": "server9",
+   "awaitWrites": "89168"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-26T17:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "90536",
+   "writeBytes": "1500616192",
+   "writeMs": "21941",
+   "ioMs": "12099",
+   "weightedMs": "24526",
+   "wAwaitMaxMs": 0.28785607196401797,
+   "utilMax": 0.004633873951961062,
+   "hostname": "server9",
+   "awaitWrites": "90536"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-26T16:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "87081",
+   "writeBytes": "1316057088",
+   "writeMs": "21983",
+   "ioMs": "12471",
+   "weightedMs": "24984",
+   "wAwaitMaxMs": 0.2972057578323455,
+   "utilMax": 0.003967989329776592,
+   "hostname": "server9",
+   "awaitWrites": "87081"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-26T15:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "214141",
+   "writeBytes": "14892695040",
+   "writeMs": "42953",
+   "ioMs": "15698",
+   "weightedMs": "46595",
+   "wAwaitMaxMs": 0.28728414442700156,
+   "utilMax": 0.03014648291032713,
+   "hostname": "server9",
+   "awaitWrites": "214141"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-26T14:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "82810",
+   "writeBytes": "1315174400",
+   "writeMs": "21799",
+   "ioMs": "12278",
+   "weightedMs": "24670",
+   "wAwaitMaxMs": 0.3291245791245791,
+   "utilMax": 0.0041493084485919015,
+   "hostname": "server9",
+   "awaitWrites": "82810"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-26T13:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "83813",
+   "writeBytes": "1473286144",
+   "writeMs": "22088",
+   "ioMs": "12407",
+   "weightedMs": "25089",
+   "wAwaitMaxMs": 0.31417910447761194,
+   "utilMax": 0.004618129074206832,
+   "hostname": "server9",
+   "awaitWrites": "83813"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-26T12:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "87890",
+   "writeBytes": "1712179712",
+   "writeMs": "22384",
+   "ioMs": "12692",
+   "weightedMs": "25529",
+   "wAwaitMaxMs": 0.3200953137410643,
+   "utilMax": 0.0048,
+   "hostname": "server9",
+   "awaitWrites": "87890"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-26T11:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "84279",
+   "writeBytes": "1437642752",
+   "writeMs": "21645",
+   "ioMs": "12069",
+   "weightedMs": "24351",
+   "wAwaitMaxMs": 0.31688511950655357,
+   "utilMax": 0.0039167319455324255,
+   "hostname": "server9",
+   "awaitWrites": "84279"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-26T10:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "81025",
+   "writeBytes": "1267142144",
+   "writeMs": "21343",
+   "ioMs": "11873",
+   "weightedMs": "23943",
+   "wAwaitMaxMs": 0.32918739635157546,
+   "utilMax": 0.00390084518312301,
+   "hostname": "server9",
+   "awaitWrites": "81025"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-26T09:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "89000",
+   "writeBytes": "1798299648",
+   "writeMs": "23016",
+   "ioMs": "12707",
+   "weightedMs": "26105",
+   "wAwaitMaxMs": 0.3090745732255166,
+   "utilMax": 0.005085367480325464,
+   "hostname": "server9",
+   "awaitWrites": "89000"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-26T08:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "81813",
+   "writeBytes": "1337697792",
+   "writeMs": "22058",
+   "ioMs": "12475",
+   "weightedMs": "25099",
+   "wAwaitMaxMs": 0.32210353327855384,
+   "utilMax": 0.004017135332455453,
+   "hostname": "server9",
+   "awaitWrites": "81813"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-26T07:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "83042",
+   "writeBytes": "1424665600",
+   "writeMs": "22153",
+   "ioMs": "12383",
+   "weightedMs": "25119",
+   "wAwaitMaxMs": 0.30472854640980734,
+   "utilMax": 0.004434811603867956,
+   "hostname": "server9",
+   "awaitWrites": "83042"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-26T06:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "81481",
+   "writeBytes": "1324244480",
+   "writeMs": "21894",
+   "ioMs": "12391",
+   "weightedMs": "24836",
+   "wAwaitMaxMs": 0.3142857142857143,
+   "utilMax": 0.0038516048353480618,
+   "hostname": "server9",
+   "awaitWrites": "81481"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-26T05:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "87284",
+   "writeBytes": "1508721152",
+   "writeMs": "22443",
+   "ioMs": "12592",
+   "weightedMs": "25418",
+   "wAwaitMaxMs": 0.3221936589545844,
+   "utilMax": 0.004495654200939093,
+   "hostname": "server9",
+   "awaitWrites": "87284"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-26T04:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "84922",
+   "writeBytes": "1368417792",
+   "writeMs": "21780",
+   "ioMs": "12275",
+   "weightedMs": "24657",
+   "wAwaitMaxMs": 0.31546707503828486,
+   "utilMax": 0.003983266945550908,
+   "hostname": "server9",
+   "awaitWrites": "84922"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-26T03:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "86517",
+   "writeBytes": "1668866560",
+   "writeMs": "22542",
+   "ioMs": "12599",
+   "weightedMs": "25559",
+   "wAwaitMaxMs": 0.3416252072968491,
+   "utilMax": 0.006351693785009336,
+   "hostname": "server9",
+   "awaitWrites": "86517"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-26T02:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "84091",
+   "writeBytes": "1322903040",
+   "writeMs": "21927",
+   "ioMs": "12413",
+   "weightedMs": "24978",
+   "wAwaitMaxMs": 0.3050440352281825,
+   "utilMax": 0.004067344557426238,
+   "hostname": "server9",
+   "awaitWrites": "84091"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-26T01:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "86374",
+   "writeBytes": "1541403136",
+   "writeMs": "21878",
+   "ioMs": "12113",
+   "weightedMs": "24622",
+   "wAwaitMaxMs": 0.29500657030223393,
+   "utilMax": 0.004150830166033207,
+   "hostname": "server9",
+   "awaitWrites": "86374"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-26T00:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "82782",
+   "writeBytes": "1322123776",
+   "writeMs": "21920",
+   "ioMs": "12293",
+   "weightedMs": "24816",
+   "wAwaitMaxMs": 0.32526690391459073,
+   "utilMax": 0.0038339723287214534,
+   "hostname": "server9",
+   "awaitWrites": "82782"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-25T23:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "83659",
+   "writeBytes": "1394214400",
+   "writeMs": "21630",
+   "ioMs": "11919",
+   "weightedMs": "24161",
+   "wAwaitMaxMs": 0.2936570086139389,
+   "utilMax": 0.004535449876609084,
+   "hostname": "server9",
+   "awaitWrites": "83659"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-25T22:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "82463",
+   "writeBytes": "1325662720",
+   "writeMs": "21559",
+   "ioMs": "12149",
+   "weightedMs": "24322",
+   "wAwaitMaxMs": 0.33430799220272905,
+   "utilMax": 0.003948617983705703,
+   "hostname": "server9",
+   "awaitWrites": "82463"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-25T21:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "96018",
+   "writeBytes": "2581298176",
+   "writeMs": "22894",
+   "ioMs": "12202",
+   "weightedMs": "25503",
+   "wAwaitMaxMs": 0.31811145510835914,
+   "utilMax": 0.0074,
+   "hostname": "server9",
+   "awaitWrites": "96018"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-25T20:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "85079",
+   "writeBytes": "1331571200",
+   "writeMs": "22028",
+   "ioMs": "12482",
+   "weightedMs": "25046",
+   "wAwaitMaxMs": 0.33039294306335204,
+   "utilMax": 0.003933333333333333,
+   "hostname": "server9",
+   "awaitWrites": "85079"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-25T19:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "86738",
+   "writeBytes": "1445907968",
+   "writeMs": "21981",
+   "ioMs": "12236",
+   "weightedMs": "24763",
+   "wAwaitMaxMs": 0.2956989247311828,
+   "utilMax": 0.00404986500449985,
+   "hostname": "server9",
+   "awaitWrites": "86738"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-25T18:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "85810",
+   "writeBytes": "1342416384",
+   "writeMs": "21504",
+   "ioMs": "11976",
+   "weightedMs": "24107",
+   "wAwaitMaxMs": 0.2977624784853701,
+   "utilMax": 0.003900520069342579,
+   "hostname": "server9",
+   "awaitWrites": "85810"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-25T17:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "86326",
+   "writeBytes": "1427031040",
+   "writeMs": "21824",
+   "ioMs": "12016",
+   "weightedMs": "24453",
+   "wAwaitMaxMs": 0.31497284716834756,
+   "utilMax": 0.004702351175587794,
+   "hostname": "server9",
+   "awaitWrites": "86326"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-25T16:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "83244",
+   "writeBytes": "1309615616",
+   "writeMs": "21820",
+   "ioMs": "12237",
+   "weightedMs": "24690",
+   "wAwaitMaxMs": 0.3117261471230881,
+   "utilMax": 0.004082652891184802,
+   "hostname": "server9",
+   "awaitWrites": "83244"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-25T15:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "88891",
+   "writeBytes": "1746048512",
+   "writeMs": "22714",
+   "ioMs": "12662",
+   "weightedMs": "25746",
+   "wAwaitMaxMs": 0.3268608414239482,
+   "utilMax": 0.006536710633827478,
+   "hostname": "server9",
+   "awaitWrites": "88891"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-25T14:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "84928",
+   "writeBytes": "1328223232",
+   "writeMs": "22102",
+   "ioMs": "12330",
+   "weightedMs": "24951",
+   "wAwaitMaxMs": 0.34032634032634035,
+   "utilMax": 0.004284761587195732,
+   "hostname": "server9",
+   "awaitWrites": "84928"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-25T13:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "82700",
+   "writeBytes": "1484512256",
+   "writeMs": "22112",
+   "ioMs": "12385",
+   "weightedMs": "25139",
+   "wAwaitMaxMs": 0.32042833607907745,
+   "utilMax": 0.00431882607970652,
+   "hostname": "server9",
+   "awaitWrites": "82700"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-25T12:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "79738",
+   "writeBytes": "1310327296",
+   "writeMs": "21954",
+   "ioMs": "12555",
+   "weightedMs": "25116",
+   "wAwaitMaxMs": 0.3362273086029992,
+   "utilMax": 0.004148755373387983,
+   "hostname": "server9",
+   "awaitWrites": "79738"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-25T11:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "84681",
+   "writeBytes": "1468973568",
+   "writeMs": "22616",
+   "ioMs": "12658",
+   "weightedMs": "25731",
+   "wAwaitMaxMs": 0.3299256505576208,
+   "utilMax": 0.004064634349491921,
+   "hostname": "server9",
+   "awaitWrites": "84681"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-25T10:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "82198",
+   "writeBytes": "1283514880",
+   "writeMs": "21598",
+   "ioMs": "12042",
+   "weightedMs": "24285",
+   "wAwaitMaxMs": 0.30785868781542897,
+   "utilMax": 0.0039000650010833516,
+   "hostname": "server9",
+   "awaitWrites": "82198"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-25T09:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "86767",
+   "writeBytes": "1744994816",
+   "writeMs": "22736",
+   "ioMs": "12623",
+   "weightedMs": "25762",
+   "wAwaitMaxMs": 0.31299524564183834,
+   "utilMax": 0.006235203894501684,
+   "hostname": "server9",
+   "awaitWrites": "86767"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-25T08:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "83038",
+   "writeBytes": "1324012032",
+   "writeMs": "21811",
+   "ioMs": "12220",
+   "weightedMs": "24542",
+   "wAwaitMaxMs": 0.34983498349834985,
+   "utilMax": 0.0039001950097504877,
+   "hostname": "server9",
+   "awaitWrites": "83038"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-25T07:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "83628",
+   "writeBytes": "1454700544",
+   "writeMs": "21607",
+   "ioMs": "11885",
+   "weightedMs": "24165",
+   "wAwaitMaxMs": 0.31704361873990305,
+   "utilMax": 0.004983250279162014,
+   "hostname": "server9",
+   "awaitWrites": "83628"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-25T06:00:00Z",
+   "bucketSecs": 3599,
+   "reads": "99",
+   "writes": "80817",
+   "readBytes": "1515520",
+   "writeBytes": "1303995904",
+   "readMs": "14",
+   "writeMs": "21952",
+   "ioMs": "12545",
+   "weightedMs": "25115",
+   "rAwaitMaxMs": 0.1414141414141414,
+   "wAwaitMaxMs": 0.32385261797026504,
+   "utilMax": 0.004217369561593599,
+   "hostname": "server9",
+   "awaitReads": "99",
+   "awaitWrites": "80817"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-25T05:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "84038",
+   "writeBytes": "1415678976",
+   "writeMs": "22081",
+   "ioMs": "12379",
+   "weightedMs": "24934",
+   "wAwaitMaxMs": 0.3019502353732347,
+   "utilMax": 0.004148340663734506,
+   "hostname": "server9",
+   "awaitWrites": "84038"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-25T04:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "87535",
+   "writeBytes": "1334692864",
+   "writeMs": "21482",
+   "ioMs": "11913",
+   "weightedMs": "23938",
+   "wAwaitMaxMs": 0.29288389513108615,
+   "utilMax": 0.0038493584402599567,
+   "hostname": "server9",
+   "awaitWrites": "87535"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-25T03:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "102045",
+   "writeBytes": "2614367232",
+   "writeMs": "24869",
+   "ioMs": "13078",
+   "weightedMs": "28016",
+   "wAwaitMaxMs": 0.3143068939955523,
+   "utilMax": 0.009532538955087076,
+   "hostname": "server9",
+   "awaitWrites": "102045"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-25T02:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "84625",
+   "writeBytes": "1285089280",
+   "writeMs": "22161",
+   "ioMs": "12484",
+   "weightedMs": "25191",
+   "wAwaitMaxMs": 0.3254355400696864,
+   "utilMax": 0.004483781711504484,
+   "hostname": "server9",
+   "awaitWrites": "84625"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-25T01:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "87912",
+   "writeBytes": "1483234304",
+   "writeMs": "22539",
+   "ioMs": "12699",
+   "weightedMs": "25693",
+   "wAwaitMaxMs": 0.3025210084033613,
+   "utilMax": 0.004951320352093892,
+   "hostname": "server9",
+   "awaitWrites": "87912"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-25T00:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "85702",
+   "writeBytes": "1328962048",
+   "writeMs": "22025",
+   "ioMs": "12325",
+   "weightedMs": "24813",
+   "wAwaitMaxMs": 0.3072289156626506,
+   "utilMax": 0.004185426046356511,
+   "hostname": "server9",
+   "awaitWrites": "85702"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-24T23:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "90246",
+   "writeBytes": "1434055680",
+   "writeMs": "22315",
+   "ioMs": "12586",
+   "weightedMs": "25335",
+   "wAwaitMaxMs": 0.3,
+   "utilMax": 0.0044355511088877775,
+   "hostname": "server9",
+   "awaitWrites": "90246"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-24T22:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "88662",
+   "writeBytes": "1605671424",
+   "writeMs": "22268",
+   "ioMs": "12633",
+   "weightedMs": "25220",
+   "wAwaitMaxMs": 0.2873134328358209,
+   "utilMax": 0.004066327806016165,
+   "hostname": "server9",
+   "awaitWrites": "88662"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-24T21:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "93094",
+   "writeBytes": "1759702016",
+   "writeMs": "22675",
+   "ioMs": "12272",
+   "weightedMs": "25268",
+   "wAwaitMaxMs": 0.28317373461012313,
+   "utilMax": 0.00658541871592671,
+   "hostname": "server9",
+   "awaitWrites": "93094"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-24T20:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "88944",
+   "writeBytes": "1296386560",
+   "writeMs": "22410",
+   "ioMs": "12508",
+   "weightedMs": "25256",
+   "wAwaitMaxMs": 0.3118811881188119,
+   "utilMax": 0.004719026179756545,
+   "hostname": "server9",
+   "awaitWrites": "88944"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-24T19:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "86312",
+   "writeBytes": "1456538624",
+   "writeMs": "22393",
+   "ioMs": "12572",
+   "weightedMs": "25401",
+   "wAwaitMaxMs": 0.2994488671157379,
+   "utilMax": 0.0048513745561242355,
+   "hostname": "server9",
+   "awaitWrites": "86312"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-24T18:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "85998",
+   "writeBytes": "1226313728",
+   "writeMs": "22154",
+   "ioMs": "12393",
+   "weightedMs": "25089",
+   "wAwaitMaxMs": 0.3169734151329243,
+   "utilMax": 0.004115980669888352,
+   "hostname": "server9",
+   "awaitWrites": "85998"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-24T17:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "89241",
+   "writeBytes": "1442530304",
+   "writeMs": "22801",
+   "ioMs": "12794",
+   "weightedMs": "25783",
+   "wAwaitMaxMs": 0.30890464933018125,
+   "utilMax": 0.004684816858671913,
+   "hostname": "server9",
+   "awaitWrites": "89241"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-24T16:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "91101",
+   "writeBytes": "1334082560",
+   "writeMs": "22787",
+   "ioMs": "12929",
+   "weightedMs": "25872",
+   "wAwaitMaxMs": 0.29328358208955224,
+   "utilMax": 0.004000066667777797,
+   "hostname": "server9",
+   "awaitWrites": "91101"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-24T15:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "92297",
+   "writeBytes": "1677787648",
+   "writeMs": "22806",
+   "ioMs": "12563",
+   "weightedMs": "25668",
+   "wAwaitMaxMs": 0.29594477998274377,
+   "utilMax": 0.006536601634150409,
+   "hostname": "server9",
+   "awaitWrites": "92297"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-24T14:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "91723",
+   "writeBytes": "1526541312",
+   "writeMs": "22383",
+   "ioMs": "12634",
+   "weightedMs": "25271",
+   "wAwaitMaxMs": 0.2866716306775875,
+   "utilMax": 0.004065921247771242,
+   "hostname": "server9",
+   "awaitWrites": "91723"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-24T13:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "91809",
+   "writeBytes": "1509595136",
+   "writeMs": "22731",
+   "ioMs": "12740",
+   "weightedMs": "25730",
+   "wAwaitMaxMs": 0.3007518796992481,
+   "utilMax": 0.004485127384287049,
+   "hostname": "server9",
+   "awaitWrites": "91809"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-24T12:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "89329",
+   "writeBytes": "1335474176",
+   "writeMs": "22140",
+   "ioMs": "12473",
+   "weightedMs": "24982",
+   "wAwaitMaxMs": 0.29575289575289576,
+   "utilMax": 0.004117421527280001,
+   "hostname": "server9",
+   "awaitWrites": "89329"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-24T11:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "95416",
+   "writeBytes": "1729529856",
+   "writeMs": "23011",
+   "ioMs": "12792",
+   "weightedMs": "25927",
+   "wAwaitMaxMs": 0.3213559322033898,
+   "utilMax": 0.004634801020323103,
+   "hostname": "server9",
+   "awaitWrites": "95416"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-24T10:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "90465",
+   "writeBytes": "1372342784",
+   "writeMs": "21878",
+   "ioMs": "12056",
+   "weightedMs": "24369",
+   "wAwaitMaxMs": 0.28054298642533937,
+   "utilMax": 0.0038317367763431903,
+   "hostname": "server9",
+   "awaitWrites": "90465"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-24T09:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "133988",
+   "writeBytes": "5900459520",
+   "writeMs": "28228",
+   "ioMs": "13478",
+   "weightedMs": "31154",
+   "wAwaitMaxMs": 0.2826217678893566,
+   "utilMax": 0.020253713180749804,
+   "hostname": "server9",
+   "awaitWrites": "133988"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-24T08:00:00Z",
+   "bucketSecs": 3599,
+   "reads": "570",
+   "writes": "92859",
+   "readBytes": "63943168",
+   "writeBytes": "1680885760",
+   "readMs": "82",
+   "writeMs": "21758",
+   "ioMs": "12145",
+   "weightedMs": "24363",
+   "rAwaitMaxMs": 0.14385964912280702,
+   "wAwaitMaxMs": 0.2926001357773252,
+   "utilMax": 0.004785008086163491,
+   "hostname": "server9",
+   "awaitReads": "570",
+   "awaitWrites": "92859"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-24T07:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "93816",
+   "writeBytes": "1707379712",
+   "writeMs": "22495",
+   "ioMs": "12714",
+   "weightedMs": "25531",
+   "wAwaitMaxMs": 0.2712230215827338,
+   "utilMax": 0.004735859124866596,
+   "hostname": "server9",
+   "awaitWrites": "93816"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-24T06:00:00Z",
+   "bucketSecs": 3600,
+   "reads": "110",
+   "writes": "88091",
+   "readBytes": "3025920",
+   "writeBytes": "1313061888",
+   "readMs": "28",
+   "writeMs": "21548",
+   "ioMs": "12033",
+   "weightedMs": "24225",
+   "rAwaitMaxMs": 0.2545454545454545,
+   "wAwaitMaxMs": 0.29901960784313725,
+   "utilMax": 0.003950065834430574,
+   "hostname": "server9",
+   "awaitReads": "110",
+   "awaitWrites": "88091"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-24T05:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "90872",
+   "writeBytes": "1512803328",
+   "writeMs": "21597",
+   "ioMs": "11973",
+   "weightedMs": "24172",
+   "wAwaitMaxMs": 0.2818287037037037,
+   "utilMax": 0.0041004783891454,
+   "hostname": "server9",
+   "awaitWrites": "90872"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-24T04:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "88427",
+   "writeBytes": "1273809920",
+   "writeMs": "21548",
+   "ioMs": "12042",
+   "weightedMs": "24142",
+   "wAwaitMaxMs": 0.29429206819866566,
+   "utilMax": 0.004012787638616004,
+   "hostname": "server9",
+   "awaitWrites": "88427"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-24T03:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "92940",
+   "writeBytes": "1669251584",
+   "writeMs": "22637",
+   "ioMs": "12282",
+   "weightedMs": "25421",
+   "wAwaitMaxMs": 0.28484848484848485,
+   "utilMax": 0.005936400473578015,
+   "hostname": "server9",
+   "awaitWrites": "92940"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-24T02:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "91835",
+   "writeBytes": "1635793408",
+   "writeMs": "22079",
+   "ioMs": "12491",
+   "weightedMs": "24936",
+   "wAwaitMaxMs": 0.28490718321226793,
+   "utilMax": 0.0039339889981663614,
+   "hostname": "server9",
+   "awaitWrites": "91835"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-24T01:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "91051",
+   "writeBytes": "1423870464",
+   "writeMs": "22131",
+   "ioMs": "12455",
+   "weightedMs": "25043",
+   "wAwaitMaxMs": 0.2816326530612245,
+   "utilMax": 0.00503291392383968,
+   "hostname": "server9",
+   "awaitWrites": "91051"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-24T00:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "87972",
+   "writeBytes": "1261304832",
+   "writeMs": "21850",
+   "ioMs": "12289",
+   "weightedMs": "24698",
+   "wAwaitMaxMs": 0.3076923076923077,
+   "utilMax": 0.003933398889981499,
+   "hostname": "server9",
+   "awaitWrites": "87972"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-23T23:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "92199",
+   "writeBytes": "1727667200",
+   "writeMs": "22872",
+   "ioMs": "13032",
+   "weightedMs": "26210",
+   "wAwaitMaxMs": 0.29055690072639223,
+   "utilMax": 0.005032746179612378,
+   "hostname": "server9",
+   "awaitWrites": "92199"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-23T22:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "89247",
+   "writeBytes": "1498693632",
+   "writeMs": "22375",
+   "ioMs": "12727",
+   "weightedMs": "25429",
+   "wAwaitMaxMs": 0.3090472377902322,
+   "utilMax": 0.004266311140738272,
+   "hostname": "server9",
+   "awaitWrites": "89247"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-23T21:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "94787",
+   "writeBytes": "1806360576",
+   "writeMs": "22421",
+   "ioMs": "12294",
+   "weightedMs": "25067",
+   "wAwaitMaxMs": 0.28275351591413767,
+   "utilMax": 0.006033433890564843,
+   "hostname": "server9",
+   "awaitWrites": "94787"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-23T20:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "91872",
+   "writeBytes": "1578657280",
+   "writeMs": "22016",
+   "ioMs": "12400",
+   "weightedMs": "24755",
+   "wAwaitMaxMs": 0.2845528455284553,
+   "utilMax": 0.003951053614297146,
+   "hostname": "server9",
+   "awaitWrites": "91872"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-23T19:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "90923",
+   "writeBytes": "1542282752",
+   "writeMs": "21867",
+   "ioMs": "12252",
+   "weightedMs": "24607",
+   "wAwaitMaxMs": 0.2887612797374898,
+   "utilMax": 0.0045675801827032075,
+   "hostname": "server9",
+   "awaitWrites": "90923"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-23T18:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "90953",
+   "writeBytes": "1505741824",
+   "writeMs": "21924",
+   "ioMs": "12265",
+   "weightedMs": "24551",
+   "wAwaitMaxMs": 0.32759856630824374,
+   "utilMax": 0.00395,
+   "hostname": "server9",
+   "awaitWrites": "90953"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-23T17:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "92190",
+   "writeBytes": "1399227904",
+   "writeMs": "22844",
+   "ioMs": "12816",
+   "weightedMs": "26028",
+   "wAwaitMaxMs": 0.2881880024737168,
+   "utilMax": 0.004402274508496056,
+   "hostname": "server9",
+   "awaitWrites": "92190"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-23T16:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "92335",
+   "writeBytes": "1599548928",
+   "writeMs": "21687",
+   "ioMs": "11988",
+   "weightedMs": "24069",
+   "wAwaitMaxMs": 0.2863768115942029,
+   "utilMax": 0.004217861727489456,
+   "hostname": "server9",
+   "awaitWrites": "92335"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-23T15:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "100027",
+   "writeBytes": "2614590976",
+   "writeMs": "24025",
+   "ioMs": "12827",
+   "weightedMs": "27036",
+   "wAwaitMaxMs": 0.3044914134742404,
+   "utilMax": 0.009665700096657001,
+   "hostname": "server9",
+   "awaitWrites": "100027"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-23T14:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "90811",
+   "writeBytes": "1608798720",
+   "writeMs": "22329",
+   "ioMs": "12726",
+   "weightedMs": "25379",
+   "wAwaitMaxMs": 0.2794017675050986,
+   "utilMax": 0.004097473224844679,
+   "hostname": "server9",
+   "awaitWrites": "90811"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-23T13:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "90900",
+   "writeBytes": "1617986560",
+   "writeMs": "22617",
+   "ioMs": "12715",
+   "weightedMs": "25647",
+   "wAwaitMaxMs": 0.29986149584487537,
+   "utilMax": 0.0047663489100726614,
+   "hostname": "server9",
+   "awaitWrites": "90900"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-23T12:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "90449",
+   "writeBytes": "1785666560",
+   "writeMs": "21983",
+   "ioMs": "12298",
+   "weightedMs": "24837",
+   "wAwaitMaxMs": 0.3020408163265306,
+   "utilMax": 0.0046166666666666665,
+   "hostname": "server9",
+   "awaitWrites": "90449"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-23T11:00:00Z",
+   "bucketSecs": 3599,
+   "reads": "547",
+   "writes": "94833",
+   "readBytes": "67920896",
+   "writeBytes": "1940737536",
+   "readMs": "189",
+   "writeMs": "22634",
+   "ioMs": "13052",
+   "weightedMs": "25916",
+   "rAwaitMaxMs": 0.36538461538461536,
+   "wAwaitMaxMs": 0.2782171099928109,
+   "utilMax": 0.005387373863731132,
+   "hostname": "server9",
+   "awaitReads": "547",
+   "awaitWrites": "94833"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-23T10:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "91974",
+   "writeBytes": "1534499328",
+   "writeMs": "22631",
+   "ioMs": "12827",
+   "weightedMs": "25650",
+   "wAwaitMaxMs": 0.2883977900552486,
+   "utilMax": 0.004283404723412057,
+   "hostname": "server9",
+   "awaitWrites": "91974"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-23T09:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "96591",
+   "writeBytes": "1805010432",
+   "writeMs": "22532",
+   "ioMs": "12277",
+   "weightedMs": "25074",
+   "wAwaitMaxMs": 0.3587588881706529,
+   "utilMax": 0.0056323007448634416,
+   "hostname": "server9",
+   "awaitWrites": "96591"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-23T08:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "87160",
+   "writeBytes": "1354275328",
+   "writeMs": "22194",
+   "ioMs": "12599",
+   "weightedMs": "25197",
+   "wAwaitMaxMs": 0.2997502081598668,
+   "utilMax": 0.004082652891184802,
+   "hostname": "server9",
+   "awaitWrites": "87160"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-23T07:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "90137",
+   "writeBytes": "1425587712",
+   "writeMs": "22573",
+   "ioMs": "12662",
+   "weightedMs": "25649",
+   "wAwaitMaxMs": 0.2870229007633588,
+   "utilMax": 0.004453340005003753,
+   "hostname": "server9",
+   "awaitWrites": "90137"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-23T06:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "87833",
+   "writeBytes": "1314477056",
+   "writeMs": "22222",
+   "ioMs": "12508",
+   "weightedMs": "25144",
+   "wAwaitMaxMs": 0.3333333333333333,
+   "utilMax": 0.0040505400720096014,
+   "hostname": "server9",
+   "awaitWrites": "87833"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-23T05:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "90969",
+   "writeBytes": "1461895680",
+   "writeMs": "22745",
+   "ioMs": "12793",
+   "weightedMs": "25805",
+   "wAwaitMaxMs": 0.2976190476190476,
+   "utilMax": 0.004683255279078682,
+   "hostname": "server9",
+   "awaitWrites": "90969"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-23T04:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "88025",
+   "writeBytes": "1281132544",
+   "writeMs": "22156",
+   "ioMs": "12550",
+   "weightedMs": "25139",
+   "wAwaitMaxMs": 0.28297161936560933,
+   "utilMax": 0.004302725059204163,
+   "hostname": "server9",
+   "awaitWrites": "88025"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-23T03:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "97675",
+   "writeBytes": "2083773952",
+   "writeMs": "23019",
+   "ioMs": "12883",
+   "weightedMs": "25970",
+   "wAwaitMaxMs": 0.2749360613810742,
+   "utilMax": 0.0068514844883058,
+   "hostname": "server9",
+   "awaitWrites": "97675"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-23T02:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "85942",
+   "writeBytes": "1315325952",
+   "writeMs": "22024",
+   "ioMs": "12272",
+   "weightedMs": "24815",
+   "wAwaitMaxMs": 0.34037735849056605,
+   "utilMax": 0.004001200360108033,
+   "hostname": "server9",
+   "awaitWrites": "85942"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-23T01:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "87881",
+   "writeBytes": "1441982976",
+   "writeMs": "22464",
+   "ioMs": "12664",
+   "weightedMs": "25529",
+   "wAwaitMaxMs": 0.31313131313131315,
+   "utilMax": 0.004470093738532875,
+   "hostname": "server9",
+   "awaitWrites": "87881"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-23T00:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "89217",
+   "writeBytes": "1575272448",
+   "writeMs": "22122",
+   "ioMs": "12394",
+   "weightedMs": "24785",
+   "wAwaitMaxMs": 0.32241630276564776,
+   "utilMax": 0.0040467625899280575,
+   "hostname": "server9",
+   "awaitWrites": "89217"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-22T23:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "89158",
+   "writeBytes": "1475681280",
+   "writeMs": "22323",
+   "ioMs": "12480",
+   "weightedMs": "25160",
+   "wAwaitMaxMs": 0.2962668784749801,
+   "utilMax": 0.004285118799499792,
+   "hostname": "server9",
+   "awaitWrites": "89158"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-22T22:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "87932",
+   "writeBytes": "1631943680",
+   "writeMs": "22445",
+   "ioMs": "12696",
+   "weightedMs": "25367",
+   "wAwaitMaxMs": 0.3374327440430438,
+   "utilMax": 0.004167986529067538,
+   "hostname": "server9",
+   "awaitWrites": "87932"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-22T21:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "100501",
+   "writeBytes": "2724840960",
+   "writeMs": "23644",
+   "ioMs": "12542",
+   "weightedMs": "26225",
+   "wAwaitMaxMs": 0.28450920245398775,
+   "utilMax": 0.010096129816903521,
+   "hostname": "server9",
+   "awaitWrites": "100501"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-22T20:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "88091",
+   "writeBytes": "1303553024",
+   "writeMs": "21788",
+   "ioMs": "12247",
+   "weightedMs": "24529",
+   "wAwaitMaxMs": 0.2963818321785989,
+   "utilMax": 0.00411810800446823,
+   "hostname": "server9",
+   "awaitWrites": "88091"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-22T19:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "89878",
+   "writeBytes": "1640414208",
+   "writeMs": "22104",
+   "ioMs": "12263",
+   "weightedMs": "24704",
+   "wAwaitMaxMs": 0.31017770597738287,
+   "utilMax": 0.00443666082895505,
+   "hostname": "server9",
+   "awaitWrites": "89878"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-22T18:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "92371",
+   "writeBytes": "1502608896",
+   "writeMs": "21577",
+   "ioMs": "12624",
+   "weightedMs": "25237",
+   "wAwaitMaxMs": 0.31511254019292606,
+   "utilMax": 0.004299211811167953,
+   "hostname": "server9",
+   "awaitWrites": "92371"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-22T17:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "87337",
+   "writeBytes": "1384049664",
+   "writeMs": "21883",
+   "ioMs": "12187",
+   "weightedMs": "24509",
+   "wAwaitMaxMs": 0.3256880733944954,
+   "utilMax": 0.004886265092388767,
+   "hostname": "server9",
+   "awaitWrites": "87337"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-22T16:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "89316",
+   "writeBytes": "1342558208",
+   "writeMs": "21910",
+   "ioMs": "12237",
+   "weightedMs": "24612",
+   "wAwaitMaxMs": 0.2985305491105955,
+   "utilMax": 0.00393267788701883,
+   "hostname": "server9",
+   "awaitWrites": "89316"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-22T15:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "92170",
+   "writeBytes": "1901919232",
+   "writeMs": "22497",
+   "ioMs": "12246",
+   "weightedMs": "25083",
+   "wAwaitMaxMs": 0.31002331002331,
+   "utilMax": 0.005750191673055768,
+   "hostname": "server9",
+   "awaitWrites": "92170"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-22T14:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "91724",
+   "writeBytes": "1476119040",
+   "writeMs": "22454",
+   "ioMs": "12806",
+   "weightedMs": "25461",
+   "wAwaitMaxMs": 0.29172714078374457,
+   "utilMax": 0.004231499683470496,
+   "hostname": "server9",
+   "awaitWrites": "91724"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-22T13:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "89484",
+   "writeBytes": "1398789632",
+   "writeMs": "22516",
+   "ioMs": "12586",
+   "weightedMs": "25529",
+   "wAwaitMaxMs": 0.2986206896551724,
+   "utilMax": 0.004299570042995701,
+   "hostname": "server9",
+   "awaitWrites": "89484"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-22T12:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "84977",
+   "writeBytes": "1305540608",
+   "writeMs": "22031",
+   "ioMs": "12531",
+   "weightedMs": "24994",
+   "wAwaitMaxMs": 0.3313559322033898,
+   "utilMax": 0.003935760385571102,
+   "hostname": "server9",
+   "awaitWrites": "84977"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-22T11:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "93299",
+   "writeBytes": "1709677568",
+   "writeMs": "22676",
+   "ioMs": "12723",
+   "weightedMs": "25680",
+   "wAwaitMaxMs": 0.30549110595514306,
+   "utilMax": 0.003950065834430574,
+   "hostname": "server9",
+   "awaitWrites": "93299"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-22T10:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "89352",
+   "writeBytes": "1442852352",
+   "writeMs": "22844",
+   "ioMs": "13057",
+   "weightedMs": "26050",
+   "wAwaitMaxMs": 0.3313333333333333,
+   "utilMax": 0.004662082285752343,
+   "hostname": "server9",
+   "awaitWrites": "89352"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-22T09:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "94769",
+   "writeBytes": "1868825088",
+   "writeMs": "23586",
+   "ioMs": "13325",
+   "weightedMs": "26916",
+   "wAwaitMaxMs": 0.30466605672461117,
+   "utilMax": 0.006170677607111289,
+   "hostname": "server9",
+   "awaitWrites": "94769"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-22T08:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "94915",
+   "writeBytes": "1531181568",
+   "writeMs": "21823",
+   "ioMs": "12204",
+   "weightedMs": "24307",
+   "wAwaitMaxMs": 0.2757404795486601,
+   "utilMax": 0.004066666666666666,
+   "hostname": "server9",
+   "awaitWrites": "94915"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-22T07:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "93612",
+   "writeBytes": "1568619520",
+   "writeMs": "22376",
+   "ioMs": "12508",
+   "weightedMs": "25217",
+   "wAwaitMaxMs": 0.29160419790104947,
+   "utilMax": 0.0045500758345972435,
+   "hostname": "server9",
+   "awaitWrites": "93612"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-22T06:00:00Z",
+   "bucketSecs": 2700,
+   "writes": "67726",
+   "writeBytes": "1019450368",
+   "writeMs": "16360",
+   "ioMs": "9245",
+   "weightedMs": "18397",
+   "wAwaitMaxMs": 0.27935533384497313,
+   "utilMax": 0.00393405457667239,
+   "hostname": "server9",
+   "awaitWrites": "67726"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-22T05:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "92346",
+   "writeBytes": "1456379392",
+   "writeMs": "22462",
+   "ioMs": "12587",
+   "weightedMs": "25402",
+   "wAwaitMaxMs": 0.29599345870809485,
+   "utilMax": 0.004366666666666666,
+   "hostname": "server9",
+   "awaitWrites": "92346"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-22T04:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "95451",
+   "writeBytes": "1660600320",
+   "writeMs": "22370",
+   "ioMs": "12626",
+   "weightedMs": "25169",
+   "wAwaitMaxMs": 0.29056047197640117,
+   "utilMax": 0.004167083375004167,
+   "hostname": "server9",
+   "awaitWrites": "95451"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-22T03:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "129872",
+   "writeBytes": "5382681088",
+   "writeMs": "27872",
+   "ioMs": "12950",
+   "weightedMs": "30686",
+   "wAwaitMaxMs": 0.29301655867530596,
+   "utilMax": 0.018405929874240026,
+   "hostname": "server9",
+   "awaitWrites": "129872"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-22T02:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "90867",
+   "writeBytes": "1329899520",
+   "writeMs": "22681",
+   "ioMs": "12848",
+   "weightedMs": "25878",
+   "wAwaitMaxMs": 0.3154121863799283,
+   "utilMax": 0.003963363863447127,
+   "hostname": "server9",
+   "awaitWrites": "90867"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-22T01:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "91640",
+   "writeBytes": "1568920576",
+   "writeMs": "22874",
+   "ioMs": "12999",
+   "weightedMs": "26121",
+   "wAwaitMaxMs": 0.30911583276216587,
+   "utilMax": 0.004682006764749987,
+   "hostname": "server9",
+   "awaitWrites": "91640"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-22T00:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "90325",
+   "writeBytes": "1480101888",
+   "writeMs": "22443",
+   "ioMs": "12775",
+   "weightedMs": "25450",
+   "wAwaitMaxMs": 0.2925327174749808,
+   "utilMax": 0.003897921108742004,
+   "hostname": "server9",
+   "awaitWrites": "90325"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-21T23:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "92132",
+   "writeBytes": "1530444288",
+   "writeMs": "22414",
+   "ioMs": "12621",
+   "weightedMs": "25331",
+   "wAwaitMaxMs": 0.2981007431874484,
+   "utilMax": 0.004867559052492957,
+   "hostname": "server9",
+   "awaitWrites": "92132"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-21T22:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "91290",
+   "writeBytes": "1624840704",
+   "writeMs": "22311",
+   "ioMs": "12666",
+   "weightedMs": "25216",
+   "wAwaitMaxMs": 0.2971948445792267,
+   "utilMax": 0.0039686509921627484,
+   "hostname": "server9",
+   "awaitWrites": "91290"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-21T21:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "102230",
+   "writeBytes": "1899902464",
+   "writeMs": "23467",
+   "ioMs": "13127",
+   "weightedMs": "26634",
+   "wAwaitMaxMs": 0.29485645933014354,
+   "utilMax": 0.006352223278147351,
+   "hostname": "server9",
+   "awaitWrites": "102230"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-21T20:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "89688",
+   "writeBytes": "1469885952",
+   "writeMs": "21639",
+   "ioMs": "12180",
+   "weightedMs": "24156",
+   "wAwaitMaxMs": 0.2930232558139535,
+   "utilMax": 0.0056166666666666665,
+   "hostname": "server9",
+   "awaitWrites": "89688"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-21T19:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "90030",
+   "writeBytes": "1431860224",
+   "writeMs": "22521",
+   "ioMs": "12680",
+   "weightedMs": "25571",
+   "wAwaitMaxMs": 0.3028263795423957,
+   "utilMax": 0.004933497783259442,
+   "hostname": "server9",
+   "awaitWrites": "90030"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-21T18:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "95431",
+   "writeBytes": "1699710976",
+   "writeMs": "22298",
+   "ioMs": "12673",
+   "weightedMs": "25161",
+   "wAwaitMaxMs": 0.2805232558139535,
+   "utilMax": 0.004149377593360996,
+   "hostname": "server9",
+   "awaitWrites": "95431"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-21T17:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "92310",
+   "writeBytes": "1533673984",
+   "writeMs": "22720",
+   "ioMs": "12813",
+   "weightedMs": "25823",
+   "wAwaitMaxMs": 0.3032427695004382,
+   "utilMax": 0.00478134110787172,
+   "hostname": "server9",
+   "awaitWrites": "92310"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-21T16:00:00Z",
+   "bucketSecs": 3599,
+   "reads": "88",
+   "writes": "89474",
+   "readBytes": "7698944",
+   "writeBytes": "1323967488",
+   "readMs": "18",
+   "writeMs": "22557",
+   "ioMs": "12739",
+   "weightedMs": "25616",
+   "rAwaitMaxMs": 0.20454545454545456,
+   "wAwaitMaxMs": 0.311624649859944,
+   "utilMax": 0.004132644559240127,
+   "hostname": "server9",
+   "awaitReads": "88",
+   "awaitWrites": "89474"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-21T15:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "93276",
+   "writeBytes": "1751842816",
+   "writeMs": "22748",
+   "ioMs": "12571",
+   "weightedMs": "25726",
+   "wAwaitMaxMs": 0.3214562354763749,
+   "utilMax": 0.0065861873478507355,
+   "hostname": "server9",
+   "awaitWrites": "93276"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-21T14:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "91214",
+   "writeBytes": "1302956032",
+   "writeMs": "22241",
+   "ioMs": "12556",
+   "weightedMs": "25168",
+   "wAwaitMaxMs": 0.2897125567322239,
+   "utilMax": 0.00395,
+   "hostname": "server9",
+   "awaitWrites": "91214"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-21T13:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "89441",
+   "writeBytes": "1387638784",
+   "writeMs": "22317",
+   "ioMs": "12415",
+   "weightedMs": "25212",
+   "wAwaitMaxMs": 0.3080279232111693,
+   "utilMax": 0.004184798012637756,
+   "hostname": "server9",
+   "awaitWrites": "89441"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-21T12:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "88799",
+   "writeBytes": "1295827968",
+   "writeMs": "22602",
+   "ioMs": "12849",
+   "weightedMs": "25756",
+   "wAwaitMaxMs": 0.3071593533487298,
+   "utilMax": 0.004067954852369917,
+   "hostname": "server9",
+   "awaitWrites": "88799"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-21T11:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "91680",
+   "writeBytes": "1732976640",
+   "writeMs": "22302",
+   "ioMs": "12397",
+   "weightedMs": "25071",
+   "wAwaitMaxMs": 0.3139801375095493,
+   "utilMax": 0.0047511085920048015,
+   "hostname": "server9",
+   "awaitWrites": "91680"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-21T10:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "93939",
+   "writeBytes": "1422383104",
+   "writeMs": "22242",
+   "ioMs": "12504",
+   "weightedMs": "25078",
+   "wAwaitMaxMs": 0.3095890410958904,
+   "utilMax": 0.003983532509958831,
+   "hostname": "server9",
+   "awaitWrites": "93939"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-21T09:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "102574",
+   "writeBytes": "2634690560",
+   "writeMs": "24743",
+   "ioMs": "12960",
+   "weightedMs": "27786",
+   "wAwaitMaxMs": 0.32936507936507936,
+   "utilMax": 0.009017568423509018,
+   "hostname": "server9",
+   "awaitWrites": "102574"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-21T08:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "87294",
+   "writeBytes": "1295650304",
+   "writeMs": "21672",
+   "ioMs": "12160",
+   "weightedMs": "24276",
+   "wAwaitMaxMs": 0.31029810298102983,
+   "utilMax": 0.003883074461702553,
+   "hostname": "server9",
+   "awaitWrites": "87294"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-21T07:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "87670",
+   "writeBytes": "1356911104",
+   "writeMs": "22270",
+   "ioMs": "12396",
+   "weightedMs": "25142",
+   "wAwaitMaxMs": 0.31921824104234525,
+   "utilMax": 0.004685519909291003,
+   "hostname": "server9",
+   "awaitWrites": "87670"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-21T06:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "86709",
+   "writeBytes": "1287334400",
+   "writeMs": "21339",
+   "ioMs": "11869",
+   "weightedMs": "23826",
+   "wAwaitMaxMs": 0.3017515923566879,
+   "utilMax": 0.003767231751429381,
+   "hostname": "server9",
+   "awaitWrites": "86709"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-21T05:00:00Z",
+   "bucketSecs": 3599,
+   "reads": "72",
+   "writes": "92581",
+   "readBytes": "8765952",
+   "writeBytes": "1585434112",
+   "readMs": "49",
+   "writeMs": "22565",
+   "ioMs": "12840",
+   "weightedMs": "25809",
+   "rAwaitMaxMs": 0.6805555555555556,
+   "wAwaitMaxMs": 0.3236151603498542,
+   "utilMax": 0.004584938061654912,
+   "hostname": "server9",
+   "awaitReads": "72",
+   "awaitWrites": "92581"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-21T04:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "86938",
+   "writeBytes": "1398497280",
+   "writeMs": "21525",
+   "ioMs": "11981",
+   "weightedMs": "24068",
+   "wAwaitMaxMs": 0.2974910394265233,
+   "utilMax": 0.004135263122790635,
+   "hostname": "server9",
+   "awaitWrites": "86938"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-21T03:00:00Z",
+   "bucketSecs": 360,
+   "writes": "8161",
+   "writeBytes": "113912320",
+   "writeMs": "2208",
+   "ioMs": "1282",
+   "weightedMs": "2541",
+   "wAwaitMaxMs": 0.2897553516819572,
+   "utilMax": 0.0037833333333333334,
+   "hostname": "server9",
+   "awaitWrites": "8161"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-21T02:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "85891",
+   "writeBytes": "1288549888",
+   "writeMs": "21823",
+   "ioMs": "12194",
+   "weightedMs": "24456",
+   "wAwaitMaxMs": 0.3107067879636109,
+   "utilMax": 0.004017671084437776,
+   "hostname": "server9",
+   "awaitWrites": "85891"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-21T01:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "86444",
+   "writeBytes": "1398681600",
+   "writeMs": "22794",
+   "ioMs": "12735",
+   "weightedMs": "25848",
+   "wAwaitMaxMs": 0.3062283737024221,
+   "utilMax": 0.004830193707423508,
+   "hostname": "server9",
+   "awaitWrites": "86444"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-21T00:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "92232",
+   "writeBytes": "1476419072",
+   "writeMs": "22790",
+   "ioMs": "12841",
+   "weightedMs": "25770",
+   "wAwaitMaxMs": 0.3617021276595745,
+   "utilMax": 0.004049797510124494,
+   "hostname": "server9",
+   "awaitWrites": "92232"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-20T23:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "86577",
+   "writeBytes": "1387595776",
+   "writeMs": "23163",
+   "ioMs": "12937",
+   "weightedMs": "26305",
+   "wAwaitMaxMs": 0.30497592295345105,
+   "utilMax": 0.00461289946543656,
+   "hostname": "server9",
+   "awaitWrites": "86577"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-20T22:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "86755",
+   "writeBytes": "1261302272",
+   "writeMs": "22494",
+   "ioMs": "12735",
+   "weightedMs": "25464",
+   "wAwaitMaxMs": 0.3183367416496251,
+   "utilMax": 0.004217369561593599,
+   "hostname": "server9",
+   "awaitWrites": "86755"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-20T21:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "91205",
+   "writeBytes": "1979868160",
+   "writeMs": "23523",
+   "ioMs": "13280",
+   "weightedMs": "26884",
+   "wAwaitMaxMs": 0.29368279569892475,
+   "utilMax": 0.006129757641375864,
+   "hostname": "server9",
+   "awaitWrites": "91205"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0025384651a0a8a9",
+    "model": "Samsung SSD 990 PRO 4TB",
+    "serial": "S7KGNU0Y603825W"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-20T20:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "83575",
+   "writeBytes": "1430697984",
+   "writeMs": "22898",
+   "ioMs": "13074",
+   "weightedMs": "26160",
+   "wAwaitMaxMs": 0.313588850174216,
+   "utilMax": 0.004284690151881429,
+   "hostname": "server9",
+   "awaitWrites": "83575"
+  }
+ ]
+}

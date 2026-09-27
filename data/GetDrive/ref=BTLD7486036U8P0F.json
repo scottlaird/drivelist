@@ -1,0 +1,31 @@
+{
+ "drive": {
+  "driveId": "1",
+  "wwn": "eui.0100000004000000e4d25c0000000000",
+  "model": "INTEL SSDPD2KS076T7M",
+  "serial": "BTLD7486036U8P0F",
+  "sizeBytes": "7681502044160",
+  "bus": "BUS_NVME",
+  "status": "ok",
+  "firstSeen": "2026-09-13T01:40:06Z",
+  "lastSeen": "2026-09-27T19:43:32Z",
+  "current": {
+   "hostname": "server8",
+   "enclosure": "dmi:KCS0GX0000TB",
+   "bay": "9-1",
+   "devName": "nvme0n1",
+   "uses": [
+    "zfs > fast 15353959934024797625 > mirror 6580501177608322094 > disk 12657478369450022007"
+   ],
+   "firstSeen": "2026-09-13T23:12:04Z",
+   "lastSeen": "2026-09-27T19:43:32Z",
+   "enclosureVia": "pci",
+   "enclosureName": "server8-front"
+  },
+  "memberState": "ONLINE"
+ },
+ "keys": [
+  "serial:INTEL SSDPD2KS076T7M/BTLD7486036U8P0F",
+  "wwn:eui.0100000004000000e4d25c0000000000"
+ ]
+}

@@ -1,0 +1,65 @@
+{
+ "drive": {
+  "driveId": "74",
+  "wwn": "0x5000c500c7913439",
+  "vendor": "ATA",
+  "model": "ST8000VN004-2M21",
+  "serial": "WKD32WVK",
+  "sizeBytes": "8001563222016",
+  "bus": "BUS_SAS",
+  "status": "ok",
+  "firstSeen": "2026-09-13T01:41:39Z",
+  "lastSeen": "2026-09-27T19:41:38Z",
+  "current": {
+   "hostname": "nas",
+   "enclosure": "0x5003048001e8967f",
+   "bay": "22",
+   "devName": "sdcp",
+   "uses": [
+    "zfs > space 5925914041408872576 > raidz2 9007031778331642784 > disk 13320454780145336341"
+   ],
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "enclosureVia": "expander-11:1",
+   "enclosureName": "nas-sc847-front"
+  },
+  "memberState": "ONLINE"
+ },
+ "placements": [
+  {
+   "hostname": "nas",
+   "enclosure": "0x5003048001e8967f",
+   "bay": "22",
+   "devName": "sdcp",
+   "uses": [
+    "zfs > space 5925914041408872576 > raidz2 9007031778331642784 > disk 13320454780145336341"
+   ],
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "enclosureVia": "expander-11:1",
+   "enclosureName": "nas-sc847-front"
+  }
+ ],
+ "events": [
+  {
+   "eventId": "335",
+   "ts": "2026-09-13T01:41:39Z",
+   "kind": "first_seen",
+   "serial": "WKD32WVK",
+   "wwn": "0x5000c500c7913439",
+   "hostname": "nas",
+   "detail": "{\"bay\":\"22\",\"dev_name\":\"sdcp\",\"expander\":\"expander-11:1\",\"expander_dev\":\"expander-11:1\",\"uses\":[\"zfs \\u003e space 5925914041408872576 \\u003e raidz2 9007031778331642784 \\u003e disk 13320454780145336341\"]}",
+   "source": "snapshot:2"
+  },
+  {
+   "eventId": "446",
+   "ts": "2026-09-13T02:09:06Z",
+   "kind": "member_state_changed",
+   "serial": "WKD32WVK",
+   "wwn": "0x5000c500c7913439",
+   "hostname": "nas",
+   "detail": "{\"from\":\"\",\"to\":\"ONLINE\",\"uses\":[\"zfs \\u003e space 5925914041408872576 \\u003e raidz2 9007031778331642784 \\u003e disk 13320454780145336341\"]}",
+   "source": "snapshot:8"
+  }
+ ]
+}

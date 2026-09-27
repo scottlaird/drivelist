@@ -1,0 +1,62 @@
+{
+ "enclosure": {
+  "enclosure": "dmi:MD296VS139QQMQA00078",
+  "hostname": "server14",
+  "via": "pci",
+  "drives": 2,
+  "firstSeen": "2026-09-19T21:13:23Z",
+  "lastSeen": "2026-09-27T19:42:28Z",
+  "product": "Micro Computer (HK) Tech Limited Venus Series",
+  "bays": 4,
+  "profile": "Minisforum MS-01, 3 x M.2 (PCIe 4.0 x4, 3.0 x4 with U.2 support, 3.0 x2) plus one PCIe x16 slot (x8 electrical)",
+  "board": "AHWSA"
+ },
+ "bays": [
+  {
+   "label": "M.2 PCIe 4.0 x4",
+   "ids": [
+    "pci:0000:00:06.0"
+   ],
+   "declared": true,
+   "present": true,
+   "devName": "nvme0n1",
+   "serial": "SNB5N481410205D1Y",
+   "model": "SHPP41-500GM",
+   "status": "ok"
+  },
+  {
+   "label": "M.2 PCIe 3.0 x4 / U.2",
+   "ids": [
+    "pci:0000:00:1c.4"
+   ],
+   "declared": true,
+   "present": true,
+   "devName": "nvme1n1",
+   "serial": "ASCBN54631070BS55",
+   "model": "SHPP41-500GM",
+   "status": "ok",
+   "uses": [
+    "mount > /boot",
+    "mount > /boot/grub",
+    "mount > /opt/vyatta/etc/config",
+    "mount > /usr/lib/live/mount/persistence",
+    "mount > /usr/lib/live/mount/persistence/boot/1.5-rolling-202501110007/grub",
+    "mount > /usr/lib/live/mount/persistence/container/storage/overlay"
+   ]
+  },
+  {
+   "label": "M.2 PCIe 3.0 x2",
+   "declared": true
+  },
+  {
+   "label": "PCIe slot",
+   "ids": [
+    "pci:0000:00:01.0"
+   ],
+   "declared": true
+  }
+ ],
+ "rows": 1,
+ "columns": 4,
+ "order": "row-major"
+}

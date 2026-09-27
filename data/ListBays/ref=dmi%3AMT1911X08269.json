@@ -1,0 +1,32 @@
+{
+ "enclosure": {
+  "enclosure": "dmi:MT1911X08269",
+  "hostname": "switch1",
+  "via": "ata",
+  "drives": 1,
+  "firstSeen": "2026-09-19T21:19:49Z",
+  "lastSeen": "2026-09-27T19:42:22Z",
+  "product": "Mellanox Technologies Ltd. MSN2010",
+  "bays": 1,
+  "board": "VMOD0004"
+ },
+ "bays": [
+  {
+   "label": "pci-0000:00:18.0-ata-1",
+   "ids": [
+    "ata:pci-0000:00:18.0-ata-1"
+   ],
+   "present": true,
+   "devName": "sda",
+   "serial": "J246760154",
+   "model": "TS256GMTS430S",
+   "status": "ok",
+   "uses": [
+    "mount > /boot",
+    "mount > /boot/grub",
+    "mount > /usr/lib/live/mount/persistence",
+    "mount > /usr/lib/live/mount/persistence/boot/2026.05.03-0041-rolling/grub"
+   ]
+  }
+ ]
+}

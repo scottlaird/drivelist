@@ -1,0 +1,84 @@
+{
+ "drive": {
+  "driveId": "148",
+  "wwn": "0x5000000000000363",
+  "vendor": "ATA",
+  "model": "NT-512_2242",
+  "serial": "0029030001043",
+  "sizeBytes": "512110190592",
+  "bus": "BUS_SATA",
+  "status": "ok",
+  "firstSeen": "2026-09-13T15:35:30Z",
+  "lastSeen": "2026-09-27T19:42:33Z",
+  "current": {
+   "hostname": "server2",
+   "enclosure": "dmi:CN7831V0S2",
+   "bay": "pci-0000:00:1f.2-ata-5",
+   "devName": "sda",
+   "uses": [
+    "mount > /",
+    "mount > /boot/efi",
+    "mount > /var/lib/kubelet/pods/1d13d106-0b0a-47a8-9c8d-8efa8172dc89/volume-subpaths/config/grafana/0",
+    "mount > /var/lib/kubelet/pods/1d13d106-0b0a-47a8-9c8d-8efa8172dc89/volume-subpaths/sc-dashboard-provider/grafana/3"
+   ],
+   "firstSeen": "2026-09-14T04:00:37Z",
+   "lastSeen": "2026-09-27T19:42:33Z",
+   "enclosureVia": "ata",
+   "bayLabel": "M.2 SATA"
+  }
+ },
+ "placements": [
+  {
+   "hostname": "server2",
+   "devName": "sda",
+   "uses": [
+    "mount > /",
+    "mount > /boot/efi",
+    "mount > /var/lib/kubelet/pods/1d13d106-0b0a-47a8-9c8d-8efa8172dc89/volume-subpaths/config/grafana/0",
+    "mount > /var/lib/kubelet/pods/1d13d106-0b0a-47a8-9c8d-8efa8172dc89/volume-subpaths/sc-dashboard-provider/grafana/3"
+   ],
+   "firstSeen": "2026-09-13T15:35:30Z",
+   "lastSeen": "2026-09-14T03:57:34Z",
+   "endedAt": "2026-09-14T04:00:37Z",
+   "endReason": "moved"
+  },
+  {
+   "hostname": "server2",
+   "enclosure": "dmi:CN7831V0S2",
+   "bay": "pci-0000:00:1f.2-ata-5",
+   "devName": "sda",
+   "uses": [
+    "mount > /",
+    "mount > /boot/efi",
+    "mount > /var/lib/kubelet/pods/1d13d106-0b0a-47a8-9c8d-8efa8172dc89/volume-subpaths/config/grafana/0",
+    "mount > /var/lib/kubelet/pods/1d13d106-0b0a-47a8-9c8d-8efa8172dc89/volume-subpaths/sc-dashboard-provider/grafana/3"
+   ],
+   "firstSeen": "2026-09-14T04:00:37Z",
+   "lastSeen": "2026-09-27T19:42:33Z",
+   "enclosureVia": "ata",
+   "bayLabel": "M.2 SATA"
+  }
+ ],
+ "events": [
+  {
+   "eventId": "499",
+   "ts": "2026-09-13T15:35:30Z",
+   "kind": "first_seen",
+   "serial": "0029030001043",
+   "wwn": "0x5000000000000363",
+   "hostname": "server2",
+   "detail": "{\"bay\":\"\",\"dev_name\":\"sda\",\"expander\":\"\",\"expander_dev\":\"\",\"uses\":[\"mount \\u003e /\",\"mount \\u003e /boot/efi\",\"mount \\u003e /var/lib/kubelet/pods/1d13d106-0b0a-47a8-9c8d-8efa8172dc89/volume-subpaths/config/grafana/0\",\"mount \\u003e /var/lib/kubelet/pods/1d13d106-0b0a-47a8-9c8d-8efa8172dc89/volume-subpaths/sc-dashboard-provider/grafana/3\"]}",
+   "source": "snapshot:15"
+  },
+  {
+   "eventId": "543",
+   "ts": "2026-09-14T04:00:37Z",
+   "kind": "moved_bay",
+   "serial": "0029030001043",
+   "wwn": "0x5000000000000363",
+   "hostname": "server2",
+   "detail": "{\"from_bay\":\"\",\"from_enclosure\":\"\",\"from_enclosure_via\":\"\",\"from_host\":\"server2\",\"from_uses\":[\"mount \\u003e /\",\"mount \\u003e /boot/efi\",\"mount \\u003e /var/lib/kubelet/pods/1d13d106-0b0a-47a8-9c8d-8efa8172dc89/volume-subpaths/config/grafana/0\",\"mount \\u003e /var/lib/kubelet/pods/1d13d106-0b0a-47a8-9c8d-8efa8172dc89/volume-subpaths/sc-dashboard-provider/grafana/3\"],\"to_bay\":\"pci-0000:00:1f.2-ata-5\",\"to_bay_label\":\"M.2 SATA\",\"to_dev_name\":\"sda\",\"to_enclosure\":\"dmi:CN7831V0S2\",\"to_enclosure_via\":\"ata\",\"to_uses\":[\"mount \\u003e /\",\"mount \\u003e /boot/efi\",\"mount \\u003e /var/lib/kubelet/pods/1d13d106-0b0a-47a8-9c8d-8efa8172dc89/volume-subpaths/config/grafana/0\",\"mount \\u003e /var/lib/kubelet/pods/1d13d106-0b0a-47a8-9c8d-8efa8172dc89/volume-subpaths/sc-dashboard-provider/grafana/3\"]}",
+   "source": "snapshot:43"
+  }
+ ]
+}

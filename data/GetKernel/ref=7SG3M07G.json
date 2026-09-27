@@ -1,0 +1,310 @@
+{
+ "drive": {
+  "driveId": "79",
+  "wwn": "0x5000cca2520691dc",
+  "vendor": "HGST",
+  "model": "HUH721008AL5204",
+  "serial": "7SG3M07G",
+  "sizeBytes": "8001563222016",
+  "bus": "BUS_SAS",
+  "status": "ok",
+  "firstSeen": "2026-09-13T01:41:39Z",
+  "lastSeen": "2026-09-27T19:41:38Z",
+  "current": {
+   "hostname": "nas",
+   "enclosure": "0x500304800000007f",
+   "bay": "4",
+   "devName": "sdg",
+   "uses": [
+    "zfs > space 5925914041408872576 > raidz2 12372305547527317295 > disk 15192423959397411076"
+   ],
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "enclosureVia": "expander-10:0",
+   "enclosureName": "nas-sc847-back"
+  },
+  "memberState": "ONLINE"
+ },
+ "samples": [
+  {
+   "identity": {
+    "wwn": "0x5000cca2520691dc",
+    "model": "HUH721008AL5204",
+    "serial": "7SG3M07G"
+   },
+   "bucketStart": "2026-09-24T14:00:00Z",
+   "bucketSecs": 3600,
+   "class": "warning",
+   "scsiCode": "1:b:96",
+   "count": 6,
+   "sample": "sd 10:0:4:0: [sdg] tag#8985 Sense Key : Recovered Error [current] [descriptor]  | sd 10:0:4:0: [sdg] tag#8985 ASC=0xb <<vendor>>ASCQ=0x96 ",
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2520691dc",
+    "model": "HUH721008AL5204",
+    "serial": "7SG3M07G"
+   },
+   "bucketStart": "2026-09-24T14:00:00Z",
+   "bucketSecs": 3600,
+   "class": "warning",
+   "scsiCode": "1:b:97",
+   "count": 6,
+   "sample": "sd 10:0:4:0: [sdg] tag#9334 Sense Key : Recovered Error [current] [descriptor]  | sd 10:0:4:0: [sdg] tag#9334 ASC=0xb <<vendor>>ASCQ=0x97 ",
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2520691dc",
+    "model": "HUH721008AL5204",
+    "serial": "7SG3M07G"
+   },
+   "bucketStart": "2026-09-24T13:00:00Z",
+   "bucketSecs": 3600,
+   "class": "warning",
+   "scsiCode": "1:b:96",
+   "count": 9,
+   "sample": "sd 10:0:4:0: [sdg] tag#9005 Sense Key : Recovered Error [current] [descriptor]  | sd 10:0:4:0: [sdg] tag#9005 ASC=0xb <<vendor>>ASCQ=0x96 ",
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2520691dc",
+    "model": "HUH721008AL5204",
+    "serial": "7SG3M07G"
+   },
+   "bucketStart": "2026-09-24T13:00:00Z",
+   "bucketSecs": 3600,
+   "class": "warning",
+   "scsiCode": "1:b:97",
+   "count": 9,
+   "sample": "sd 10:0:4:0: [sdg] tag#9075 Sense Key : Recovered Error [current] [descriptor]  | sd 10:0:4:0: [sdg] tag#9075 ASC=0xb <<vendor>>ASCQ=0x97 ",
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2520691dc",
+    "model": "HUH721008AL5204",
+    "serial": "7SG3M07G"
+   },
+   "bucketStart": "2026-09-24T09:00:00Z",
+   "bucketSecs": 3600,
+   "class": "warning",
+   "scsiCode": "1:b:96",
+   "count": 1,
+   "sample": "sd 10:0:4:0: [sdg] tag#9030 Sense Key : Recovered Error [current] [descriptor]  | sd 10:0:4:0: [sdg] tag#9030 ASC=0xb <<vendor>>ASCQ=0x96 ",
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2520691dc",
+    "model": "HUH721008AL5204",
+    "serial": "7SG3M07G"
+   },
+   "bucketStart": "2026-09-24T09:00:00Z",
+   "bucketSecs": 3600,
+   "class": "warning",
+   "scsiCode": "1:b:97",
+   "count": 1,
+   "sample": "sd 10:0:4:0: [sdg] tag#9156 Sense Key : Recovered Error [current] [descriptor]  | sd 10:0:4:0: [sdg] tag#9156 ASC=0xb <<vendor>>ASCQ=0x97 ",
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2520691dc",
+    "model": "HUH721008AL5204",
+    "serial": "7SG3M07G"
+   },
+   "bucketStart": "2026-09-24T08:00:00Z",
+   "bucketSecs": 3600,
+   "class": "warning",
+   "scsiCode": "1:b:96",
+   "count": 1,
+   "sample": "sd 10:0:4:0: [sdg] tag#9162 Sense Key : Recovered Error [current] [descriptor]  | sd 10:0:4:0: [sdg] tag#9162 ASC=0xb <<vendor>>ASCQ=0x96 ",
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2520691dc",
+    "model": "HUH721008AL5204",
+    "serial": "7SG3M07G"
+   },
+   "bucketStart": "2026-09-24T08:00:00Z",
+   "bucketSecs": 3600,
+   "class": "warning",
+   "scsiCode": "1:b:97",
+   "count": 1,
+   "sample": "sd 10:0:4:0: [sdg] tag#9157 Sense Key : Recovered Error [current] [descriptor]  | sd 10:0:4:0: [sdg] tag#9157 ASC=0xb <<vendor>>ASCQ=0x97 ",
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2520691dc",
+    "model": "HUH721008AL5204",
+    "serial": "7SG3M07G"
+   },
+   "bucketStart": "2026-09-24T07:00:00Z",
+   "bucketSecs": 3600,
+   "class": "warning",
+   "scsiCode": "1:b:96",
+   "count": 1,
+   "sample": "sd 10:0:4:0: [sdg] tag#8985 Sense Key : Recovered Error [current] [descriptor]  | sd 10:0:4:0: [sdg] tag#8985 ASC=0xb <<vendor>>ASCQ=0x96 ",
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2520691dc",
+    "model": "HUH721008AL5204",
+    "serial": "7SG3M07G"
+   },
+   "bucketStart": "2026-09-24T07:00:00Z",
+   "bucketSecs": 3600,
+   "class": "warning",
+   "scsiCode": "1:b:97",
+   "count": 1,
+   "sample": "sd 10:0:4:0: [sdg] tag#9169 Sense Key : Recovered Error [current] [descriptor]  | sd 10:0:4:0: [sdg] tag#9169 ASC=0xb <<vendor>>ASCQ=0x97 ",
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2520691dc",
+    "model": "HUH721008AL5204",
+    "serial": "7SG3M07G"
+   },
+   "bucketStart": "2026-09-24T06:00:00Z",
+   "bucketSecs": 3600,
+   "class": "warning",
+   "scsiCode": "1:b:96",
+   "count": 1,
+   "sample": "sd 10:0:4:0: [sdg] tag#3269 Sense Key : Recovered Error [current] [descriptor]  | sd 10:0:4:0: [sdg] tag#3269 ASC=0xb <<vendor>>ASCQ=0x96 ",
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2520691dc",
+    "model": "HUH721008AL5204",
+    "serial": "7SG3M07G"
+   },
+   "bucketStart": "2026-09-24T06:00:00Z",
+   "bucketSecs": 3600,
+   "class": "warning",
+   "scsiCode": "1:b:97",
+   "count": 1,
+   "sample": "sd 10:0:4:0: [sdg] tag#8984 Sense Key : Recovered Error [current] [descriptor]  | sd 10:0:4:0: [sdg] tag#8984 ASC=0xb <<vendor>>ASCQ=0x97 ",
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2520691dc",
+    "model": "HUH721008AL5204",
+    "serial": "7SG3M07G"
+   },
+   "bucketStart": "2026-09-23T10:00:00Z",
+   "bucketSecs": 3600,
+   "class": "warning",
+   "scsiCode": "1:b:96",
+   "count": 7,
+   "sample": "sd 10:0:4:0: [sdg] tag#8985 Sense Key : Recovered Error [current] [descriptor]  | sd 10:0:4:0: [sdg] tag#8985 ASC=0xb <<vendor>>ASCQ=0x96 ",
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2520691dc",
+    "model": "HUH721008AL5204",
+    "serial": "7SG3M07G"
+   },
+   "bucketStart": "2026-09-23T10:00:00Z",
+   "bucketSecs": 3600,
+   "class": "warning",
+   "scsiCode": "1:b:97",
+   "count": 7,
+   "sample": "sd 10:0:4:0: [sdg] tag#3224 Sense Key : Recovered Error [current] [descriptor]  | sd 10:0:4:0: [sdg] tag#3224 ASC=0xb <<vendor>>ASCQ=0x97 ",
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2520691dc",
+    "model": "HUH721008AL5204",
+    "serial": "7SG3M07G"
+   },
+   "bucketStart": "2026-09-23T09:00:00Z",
+   "bucketSecs": 3600,
+   "class": "warning",
+   "scsiCode": "1:b:96",
+   "count": 12,
+   "sample": "sd 10:0:4:0: [sdg] tag#3510 Sense Key : Recovered Error [current] [descriptor]  | sd 10:0:4:0: [sdg] tag#3510 ASC=0xb <<vendor>>ASCQ=0x96 ",
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2520691dc",
+    "model": "HUH721008AL5204",
+    "serial": "7SG3M07G"
+   },
+   "bucketStart": "2026-09-23T09:00:00Z",
+   "bucketSecs": 3600,
+   "class": "warning",
+   "scsiCode": "1:b:97",
+   "count": 13,
+   "sample": "sd 10:0:4:0: [sdg] tag#3620 Sense Key : Recovered Error [current] [descriptor]  | sd 10:0:4:0: [sdg] tag#3620 ASC=0xb <<vendor>>ASCQ=0x97 ",
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2520691dc",
+    "model": "HUH721008AL5204",
+    "serial": "7SG3M07G"
+   },
+   "bucketStart": "2026-09-22T09:00:00Z",
+   "bucketSecs": 3600,
+   "class": "warning",
+   "scsiCode": "1:b:96",
+   "count": 1,
+   "sample": "sd 10:0:4:0: [sdg] tag#7332 Sense Key : Recovered Error [current] [descriptor]  | sd 10:0:4:0: [sdg] tag#7332 ASC=0xb <<vendor>>ASCQ=0x96 ",
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2520691dc",
+    "model": "HUH721008AL5204",
+    "serial": "7SG3M07G"
+   },
+   "bucketStart": "2026-09-22T09:00:00Z",
+   "bucketSecs": 3600,
+   "class": "warning",
+   "scsiCode": "1:b:97",
+   "count": 1,
+   "sample": "sd 10:0:4:0: [sdg] tag#1167 Sense Key : Recovered Error [current] [descriptor]  | sd 10:0:4:0: [sdg] tag#1167 ASC=0xb <<vendor>>ASCQ=0x97 ",
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2520691dc",
+    "model": "HUH721008AL5204",
+    "serial": "7SG3M07G"
+   },
+   "bucketStart": "2026-09-21T07:00:00Z",
+   "bucketSecs": 3600,
+   "class": "warning",
+   "scsiCode": "1:b:96",
+   "count": 1,
+   "sample": "sd 10:0:4:0: [sdg] tag#5812 Sense Key : Recovered Error [current] [descriptor]  | sd 10:0:4:0: [sdg] tag#5812 ASC=0xb <<vendor>>ASCQ=0x96 ",
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2520691dc",
+    "model": "HUH721008AL5204",
+    "serial": "7SG3M07G"
+   },
+   "bucketStart": "2026-09-21T07:00:00Z",
+   "bucketSecs": 3600,
+   "class": "warning",
+   "scsiCode": "1:b:97",
+   "count": 1,
+   "sample": "sd 10:0:4:0: [sdg] tag#5771 Sense Key : Recovered Error [current] [descriptor]  | sd 10:0:4:0: [sdg] tag#5771 ASC=0xb <<vendor>>ASCQ=0x97 ",
+   "hostname": "nas"
+  }
+ ]
+}

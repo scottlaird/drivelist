@@ -1,0 +1,1645 @@
+{
+ "drive": {
+  "driveId": "91",
+  "wwn": "0x5000cca0506a96d0",
+  "vendor": "HITACHI",
+  "model": "HUSMM111CLAR1600",
+  "serial": "0SWWM72A",
+  "sizeBytes": "1600321314816",
+  "bus": "BUS_SAS",
+  "status": "ok",
+  "firstSeen": "2026-09-13T01:41:39Z",
+  "lastSeen": "2026-09-27T19:41:38Z",
+  "current": {
+   "hostname": "nas",
+   "enclosure": "0x500062b2047b51c0",
+   "bay": "6",
+   "devName": "sds",
+   "uses": [
+    "zfs > backups 12143466076769931197 > mirror 10433001683690774586 > disk 2013986898276113415"
+   ],
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "enclosureVia": "host11",
+   "enclosureName": "nas-front"
+  },
+  "memberState": "ONLINE"
+ },
+ "samples": [
+  {
+   "identity": {
+    "wwn": "0x5000cca0506a96d0",
+    "model": "HUSMM111CLAR1600",
+    "serial": "0SWWM72A"
+   },
+   "devName": "sds",
+   "ts": "2026-09-27T15:25:27Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "28430",
+    "tempC": 25,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1043531401000000",
+    "writeBytes": "1067096435000000",
+    "percentUsed": 4,
+    "selftestLast": "foreground short: completed @ 126h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0506a96d0",
+    "model": "HUSMM111CLAR1600",
+    "serial": "0SWWM72A"
+   },
+   "devName": "sds",
+   "ts": "2026-09-27T15:13:00Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "28430",
+    "tempC": 24,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1043529687000000",
+    "writeBytes": "1067094967000000",
+    "percentUsed": 4,
+    "selftestLast": "foreground short: completed @ 126h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0506a96d0",
+    "model": "HUSMM111CLAR1600",
+    "serial": "0SWWM72A"
+   },
+   "devName": "sds",
+   "ts": "2026-09-27T10:13:59Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "28425",
+    "tempC": 25,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1043500111000000",
+    "writeBytes": "1067055039000000",
+    "percentUsed": 4,
+    "selftestLast": "foreground short: completed @ 126h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0506a96d0",
+    "model": "HUSMM111CLAR1600",
+    "serial": "0SWWM72A"
+   },
+   "devName": "sds",
+   "ts": "2026-09-27T04:13:42Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "28419",
+    "tempC": 26,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1043484214000000",
+    "writeBytes": "1066891236000000",
+    "percentUsed": 4,
+    "selftestLast": "foreground short: completed @ 126h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0506a96d0",
+    "model": "HUSMM111CLAR1600",
+    "serial": "0SWWM72A"
+   },
+   "devName": "sds",
+   "ts": "2026-09-26T22:13:25Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "28413",
+    "tempC": 27,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1043484054000000",
+    "writeBytes": "1066649551999999",
+    "percentUsed": 4,
+    "selftestLast": "foreground short: completed @ 126h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0506a96d0",
+    "model": "HUSMM111CLAR1600",
+    "serial": "0SWWM72A"
+   },
+   "devName": "sds",
+   "ts": "2026-09-26T16:13:08Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "28407",
+    "tempC": 24,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1043478936000000",
+    "writeBytes": "1066497581000000",
+    "percentUsed": 4,
+    "selftestLast": "foreground short: completed @ 126h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0506a96d0",
+    "model": "HUSMM111CLAR1600",
+    "serial": "0SWWM72A"
+   },
+   "devName": "sds",
+   "ts": "2026-09-26T10:12:51Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "28401",
+    "tempC": 25,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1043463395000000",
+    "writeBytes": "1066443081999999",
+    "percentUsed": 4,
+    "selftestLast": "foreground short: completed @ 126h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0506a96d0",
+    "model": "HUSMM111CLAR1600",
+    "serial": "0SWWM72A"
+   },
+   "devName": "sds",
+   "ts": "2026-09-26T04:12:35Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "28395",
+    "tempC": 26,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1043459581000000",
+    "writeBytes": "1066324706999999",
+    "percentUsed": 4,
+    "selftestLast": "foreground short: completed @ 126h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0506a96d0",
+    "model": "HUSMM111CLAR1600",
+    "serial": "0SWWM72A"
+   },
+   "devName": "sds",
+   "ts": "2026-09-25T22:12:18Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "28389",
+    "tempC": 27,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1043459581000000",
+    "writeBytes": "1066324706999999",
+    "percentUsed": 4,
+    "selftestLast": "foreground short: completed @ 126h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0506a96d0",
+    "model": "HUSMM111CLAR1600",
+    "serial": "0SWWM72A"
+   },
+   "devName": "sds",
+   "ts": "2026-09-25T16:12:01Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "28383",
+    "tempC": 27,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1043459276000000",
+    "writeBytes": "1065953628000000",
+    "percentUsed": 4,
+    "selftestLast": "foreground short: completed @ 126h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0506a96d0",
+    "model": "HUSMM111CLAR1600",
+    "serial": "0SWWM72A"
+   },
+   "devName": "sds",
+   "ts": "2026-09-25T10:11:46Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "28377",
+    "tempC": 26,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1043456880000000",
+    "writeBytes": "1065669567000000",
+    "percentUsed": 4,
+    "selftestLast": "foreground short: completed @ 126h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0506a96d0",
+    "model": "HUSMM111CLAR1600",
+    "serial": "0SWWM72A"
+   },
+   "devName": "sds",
+   "ts": "2026-09-25T04:11:30Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "28371",
+    "tempC": 27,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1043453703000000",
+    "writeBytes": "1065544742000000",
+    "percentUsed": 4,
+    "selftestLast": "foreground short: completed @ 126h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0506a96d0",
+    "model": "HUSMM111CLAR1600",
+    "serial": "0SWWM72A"
+   },
+   "devName": "sds",
+   "ts": "2026-09-24T22:11:14Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "28365",
+    "tempC": 28,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1043453685000000",
+    "writeBytes": "1065537429999999",
+    "percentUsed": 4,
+    "selftestLast": "foreground short: completed @ 126h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0506a96d0",
+    "model": "HUSMM111CLAR1600",
+    "serial": "0SWWM72A"
+   },
+   "devName": "sds",
+   "ts": "2026-09-24T16:10:58Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "28359",
+    "tempC": 26,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1043453428000000",
+    "writeBytes": "1065144495000000",
+    "percentUsed": 4,
+    "selftestLast": "foreground short: completed @ 126h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0506a96d0",
+    "model": "HUSMM111CLAR1600",
+    "serial": "0SWWM72A"
+   },
+   "devName": "sds",
+   "ts": "2026-09-24T10:10:40Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "28353",
+    "tempC": 26,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1043445571000000",
+    "writeBytes": "1064904737000000",
+    "percentUsed": 4,
+    "selftestLast": "foreground short: completed @ 126h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0506a96d0",
+    "model": "HUSMM111CLAR1600",
+    "serial": "0SWWM72A"
+   },
+   "devName": "sds",
+   "ts": "2026-09-24T04:10:16Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "28347",
+    "tempC": 27,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1043444859000000",
+    "writeBytes": "1064599566000000",
+    "percentUsed": 4,
+    "selftestLast": "foreground short: completed @ 126h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0506a96d0",
+    "model": "HUSMM111CLAR1600",
+    "serial": "0SWWM72A"
+   },
+   "devName": "sds",
+   "ts": "2026-09-23T22:09:58Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "28341",
+    "tempC": 28,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1043444854000000",
+    "writeBytes": "1064207220999999",
+    "percentUsed": 4,
+    "selftestLast": "foreground short: completed @ 126h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0506a96d0",
+    "model": "HUSMM111CLAR1600",
+    "serial": "0SWWM72A"
+   },
+   "devName": "sds",
+   "ts": "2026-09-23T16:09:33Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "28335",
+    "tempC": 27,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1043444785000000",
+    "writeBytes": "1063814182000000",
+    "percentUsed": 4,
+    "selftestLast": "foreground short: completed @ 126h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0506a96d0",
+    "model": "HUSMM111CLAR1600",
+    "serial": "0SWWM72A"
+   },
+   "devName": "sds",
+   "ts": "2026-09-23T10:09:11Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "28329",
+    "tempC": 27,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1043441863000000",
+    "writeBytes": "1063471752000000",
+    "percentUsed": 4,
+    "selftestLast": "foreground short: completed @ 126h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0506a96d0",
+    "model": "HUSMM111CLAR1600",
+    "serial": "0SWWM72A"
+   },
+   "devName": "sds",
+   "ts": "2026-09-23T04:08:52Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "28323",
+    "tempC": 28,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1043431501000000",
+    "writeBytes": "1063377100000000",
+    "percentUsed": 4,
+    "selftestLast": "foreground short: completed @ 126h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0506a96d0",
+    "model": "HUSMM111CLAR1600",
+    "serial": "0SWWM72A"
+   },
+   "devName": "sds",
+   "ts": "2026-09-22T22:08:33Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "28317",
+    "tempC": 28,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1043421674000000",
+    "writeBytes": "1063323725000000",
+    "percentUsed": 4,
+    "selftestLast": "foreground short: completed @ 126h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0506a96d0",
+    "model": "HUSMM111CLAR1600",
+    "serial": "0SWWM72A"
+   },
+   "devName": "sds",
+   "ts": "2026-09-22T16:08:10Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "28311",
+    "tempC": 24,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1043403785000000",
+    "writeBytes": "1063272260000000",
+    "percentUsed": 4,
+    "selftestLast": "foreground short: completed @ 126h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0506a96d0",
+    "model": "HUSMM111CLAR1600",
+    "serial": "0SWWM72A"
+   },
+   "devName": "sds",
+   "ts": "2026-09-22T10:07:51Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "28305",
+    "tempC": 28,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1043368823000000",
+    "writeBytes": "1063223414000000",
+    "percentUsed": 4,
+    "selftestLast": "foreground short: completed @ 126h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0506a96d0",
+    "model": "HUSMM111CLAR1600",
+    "serial": "0SWWM72A"
+   },
+   "devName": "sds",
+   "ts": "2026-09-22T04:07:32Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "28299",
+    "tempC": 29,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1043356474000000",
+    "writeBytes": "1063015462000000",
+    "percentUsed": 4,
+    "selftestLast": "foreground short: completed @ 126h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0506a96d0",
+    "model": "HUSMM111CLAR1600",
+    "serial": "0SWWM72A"
+   },
+   "devName": "sds",
+   "ts": "2026-09-21T22:07:13Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "28293",
+    "tempC": 29,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1043356408000000",
+    "writeBytes": "1062761406999999",
+    "percentUsed": 4,
+    "selftestLast": "foreground short: completed @ 126h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0506a96d0",
+    "model": "HUSMM111CLAR1600",
+    "serial": "0SWWM72A"
+   },
+   "devName": "sds",
+   "ts": "2026-09-21T16:06:50Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "28287",
+    "tempC": 28,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1043347838000000",
+    "writeBytes": "1062622134000000",
+    "percentUsed": 4,
+    "selftestLast": "foreground short: completed @ 126h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0506a96d0",
+    "model": "HUSMM111CLAR1600",
+    "serial": "0SWWM72A"
+   },
+   "devName": "sds",
+   "ts": "2026-09-21T10:06:29Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "28281",
+    "tempC": 28,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1043333996000000",
+    "writeBytes": "1062566263000000",
+    "percentUsed": 4,
+    "selftestLast": "foreground short: completed @ 126h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0506a96d0",
+    "model": "HUSMM111CLAR1600",
+    "serial": "0SWWM72A"
+   },
+   "devName": "sds",
+   "ts": "2026-09-21T04:06:06Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "28275",
+    "tempC": 29,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1043321869000000",
+    "writeBytes": "1062512206999999",
+    "percentUsed": 4,
+    "selftestLast": "foreground short: completed @ 126h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0506a96d0",
+    "model": "HUSMM111CLAR1600",
+    "serial": "0SWWM72A"
+   },
+   "devName": "sds",
+   "ts": "2026-09-21T03:53:37Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "28275",
+    "tempC": 29,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1043321527000000",
+    "writeBytes": "1062510526000000",
+    "percentUsed": 4,
+    "selftestLast": "foreground short: completed @ 126h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0506a96d0",
+    "model": "HUSMM111CLAR1600",
+    "serial": "0SWWM72A"
+   },
+   "devName": "sds",
+   "ts": "2026-09-21T03:43:17Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "28275",
+    "tempC": 29,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1043321288000000",
+    "writeBytes": "1062509095999999",
+    "percentUsed": 4,
+    "selftestLast": "foreground short: completed @ 126h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0506a96d0",
+    "model": "HUSMM111CLAR1600",
+    "serial": "0SWWM72A"
+   },
+   "devName": "sds",
+   "ts": "2026-09-21T03:28:47Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "28274",
+    "tempC": 29,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1043320907000000",
+    "writeBytes": "1062507202000000",
+    "percentUsed": 4,
+    "selftestLast": "foreground short: completed @ 126h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0506a96d0",
+    "model": "HUSMM111CLAR1600",
+    "serial": "0SWWM72A"
+   },
+   "devName": "sds",
+   "ts": "2026-09-21T01:42:32Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "28273",
+    "tempC": 29,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1043318391000000",
+    "writeBytes": "1062491862999999",
+    "percentUsed": 4,
+    "selftestLast": "foreground short: completed @ 126h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0506a96d0",
+    "model": "HUSMM111CLAR1600",
+    "serial": "0SWWM72A"
+   },
+   "devName": "sds",
+   "ts": "2026-09-20T19:42:12Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "28267",
+    "tempC": 28,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1043307492000000",
+    "writeBytes": "1062439009000000",
+    "percentUsed": 4,
+    "selftestLast": "foreground short: completed @ 126h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0506a96d0",
+    "model": "HUSMM111CLAR1600",
+    "serial": "0SWWM72A"
+   },
+   "devName": "sds",
+   "ts": "2026-09-20T14:22:10Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "28261",
+    "tempC": 27,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1043284342000000",
+    "writeBytes": "1062394352000000",
+    "percentUsed": 4,
+    "selftestLast": "foreground short: completed @ 126h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0506a96d0",
+    "model": "HUSMM111CLAR1600",
+    "serial": "0SWWM72A"
+   },
+   "devName": "sds",
+   "ts": "2026-09-20T08:21:40Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "28255",
+    "tempC": 28,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1043254955000000",
+    "writeBytes": "1062334031999999",
+    "percentUsed": 4,
+    "selftestLast": "foreground short: completed @ 126h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0506a96d0",
+    "model": "HUSMM111CLAR1600",
+    "serial": "0SWWM72A"
+   },
+   "devName": "sds",
+   "ts": "2026-09-20T02:21:21Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "28249",
+    "tempC": 28,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1043226713000000",
+    "writeBytes": "1062226615000000",
+    "percentUsed": 4,
+    "selftestLast": "foreground short: completed @ 126h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0506a96d0",
+    "model": "HUSMM111CLAR1600",
+    "serial": "0SWWM72A"
+   },
+   "devName": "sds",
+   "ts": "2026-09-19T20:20:53Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "28243",
+    "tempC": 28,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1043221853000000",
+    "writeBytes": "1062019328000000",
+    "percentUsed": 4,
+    "selftestLast": "foreground short: completed @ 126h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0506a96d0",
+    "model": "HUSMM111CLAR1600",
+    "serial": "0SWWM72A"
+   },
+   "devName": "sds",
+   "ts": "2026-09-19T17:50:09Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "28241",
+    "tempC": 28,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1043221815000000",
+    "writeBytes": "1061872967000000",
+    "percentUsed": 4,
+    "selftestLast": "foreground short: completed @ 126h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0506a96d0",
+    "model": "HUSMM111CLAR1600",
+    "serial": "0SWWM72A"
+   },
+   "devName": "sds",
+   "ts": "2026-09-19T11:49:48Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "28235",
+    "tempC": 28,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1043209227000000",
+    "writeBytes": "1061739338999999",
+    "percentUsed": 4,
+    "selftestLast": "foreground short: completed @ 126h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0506a96d0",
+    "model": "HUSMM111CLAR1600",
+    "serial": "0SWWM72A"
+   },
+   "devName": "sds",
+   "ts": "2026-09-19T05:49:18Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "28229",
+    "tempC": 28,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1043190822000000",
+    "writeBytes": "1061684666999999",
+    "percentUsed": 4,
+    "selftestLast": "foreground short: completed @ 126h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0506a96d0",
+    "model": "HUSMM111CLAR1600",
+    "serial": "0SWWM72A"
+   },
+   "devName": "sds",
+   "ts": "2026-09-18T23:48:41Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "28223",
+    "tempC": 29,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1043178331000000",
+    "writeBytes": "1061628031000000",
+    "percentUsed": 4,
+    "selftestLast": "foreground short: completed @ 126h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0506a96d0",
+    "model": "HUSMM111CLAR1600",
+    "serial": "0SWWM72A"
+   },
+   "devName": "sds",
+   "ts": "2026-09-18T17:48:09Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "28217",
+    "tempC": 28,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1043164844000000",
+    "writeBytes": "1061573034999999",
+    "percentUsed": 4,
+    "selftestLast": "foreground short: completed @ 126h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0506a96d0",
+    "model": "HUSMM111CLAR1600",
+    "serial": "0SWWM72A"
+   },
+   "devName": "sds",
+   "ts": "2026-09-18T11:47:48Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "28211",
+    "tempC": 28,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1043135589000000",
+    "writeBytes": "1061520825999999",
+    "percentUsed": 4,
+    "selftestLast": "foreground short: completed @ 126h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0506a96d0",
+    "model": "HUSMM111CLAR1600",
+    "serial": "0SWWM72A"
+   },
+   "devName": "sds",
+   "ts": "2026-09-18T05:47:28Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "28205",
+    "tempC": 27,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1043098938000000",
+    "writeBytes": "1061471625999999",
+    "percentUsed": 4,
+    "selftestLast": "foreground short: completed @ 126h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0506a96d0",
+    "model": "HUSMM111CLAR1600",
+    "serial": "0SWWM72A"
+   },
+   "devName": "sds",
+   "ts": "2026-09-17T23:47:03Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "28199",
+    "tempC": 30,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1043098446000000",
+    "writeBytes": "1061171629000000",
+    "percentUsed": 4,
+    "selftestLast": "foreground short: completed @ 126h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0506a96d0",
+    "model": "HUSMM111CLAR1600",
+    "serial": "0SWWM72A"
+   },
+   "devName": "sds",
+   "ts": "2026-09-17T17:46:43Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "28193",
+    "tempC": 28,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1043097710000000",
+    "writeBytes": "1060897994000000",
+    "percentUsed": 4,
+    "selftestLast": "foreground short: completed @ 126h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0506a96d0",
+    "model": "HUSMM111CLAR1600",
+    "serial": "0SWWM72A"
+   },
+   "devName": "sds",
+   "ts": "2026-09-17T11:46:25Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "28187",
+    "tempC": 27,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1043076678000000",
+    "writeBytes": "1060827781000000",
+    "percentUsed": 4,
+    "selftestLast": "foreground short: completed @ 126h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0506a96d0",
+    "model": "HUSMM111CLAR1600",
+    "serial": "0SWWM72A"
+   },
+   "devName": "sds",
+   "ts": "2026-09-17T05:46:08Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "28181",
+    "tempC": 28,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1043066492000000",
+    "writeBytes": "1060595288000000",
+    "percentUsed": 4,
+    "selftestLast": "foreground short: completed @ 126h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0506a96d0",
+    "model": "HUSMM111CLAR1600",
+    "serial": "0SWWM72A"
+   },
+   "devName": "sds",
+   "ts": "2026-09-16T23:45:52Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "28175",
+    "tempC": 29,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1043066443000000",
+    "writeBytes": "1060238840000000",
+    "percentUsed": 4,
+    "selftestLast": "foreground short: completed @ 126h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0506a96d0",
+    "model": "HUSMM111CLAR1600",
+    "serial": "0SWWM72A"
+   },
+   "devName": "sds",
+   "ts": "2026-09-16T17:45:35Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "28169",
+    "tempC": 28,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1043063833000000",
+    "writeBytes": "1059963017000000",
+    "percentUsed": 4,
+    "selftestLast": "foreground short: completed @ 126h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0506a96d0",
+    "model": "HUSMM111CLAR1600",
+    "serial": "0SWWM72A"
+   },
+   "devName": "sds",
+   "ts": "2026-09-16T11:45:18Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "28163",
+    "tempC": 27,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1043047283000000",
+    "writeBytes": "1059906294999999",
+    "percentUsed": 4,
+    "selftestLast": "foreground short: completed @ 126h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0506a96d0",
+    "model": "HUSMM111CLAR1600",
+    "serial": "0SWWM72A"
+   },
+   "devName": "sds",
+   "ts": "2026-09-16T05:45:02Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "28157",
+    "tempC": 28,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1043029865000000",
+    "writeBytes": "1059850397000000",
+    "percentUsed": 4,
+    "selftestLast": "foreground short: completed @ 126h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0506a96d0",
+    "model": "HUSMM111CLAR1600",
+    "serial": "0SWWM72A"
+   },
+   "devName": "sds",
+   "ts": "2026-09-15T23:44:46Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "28151",
+    "tempC": 28,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1043011673000000",
+    "writeBytes": "1059795929999999",
+    "percentUsed": 4,
+    "selftestLast": "foreground short: completed @ 126h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0506a96d0",
+    "model": "HUSMM111CLAR1600",
+    "serial": "0SWWM72A"
+   },
+   "devName": "sds",
+   "ts": "2026-09-15T17:44:29Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "28145",
+    "tempC": 26,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1042996965000000",
+    "writeBytes": "1059740565000000",
+    "percentUsed": 4,
+    "selftestLast": "foreground short: completed @ 126h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0506a96d0",
+    "model": "HUSMM111CLAR1600",
+    "serial": "0SWWM72A"
+   },
+   "devName": "sds",
+   "ts": "2026-09-15T11:44:13Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "28139",
+    "tempC": 27,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1042974448000000",
+    "writeBytes": "1059687973999999",
+    "percentUsed": 4,
+    "selftestLast": "foreground short: completed @ 126h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0506a96d0",
+    "model": "HUSMM111CLAR1600",
+    "serial": "0SWWM72A"
+   },
+   "devName": "sds",
+   "ts": "2026-09-15T05:43:56Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "28133",
+    "tempC": 28,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1042957259000000",
+    "writeBytes": "1059645421000000",
+    "percentUsed": 4,
+    "selftestLast": "foreground short: completed @ 126h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0506a96d0",
+    "model": "HUSMM111CLAR1600",
+    "serial": "0SWWM72A"
+   },
+   "devName": "sds",
+   "ts": "2026-09-14T23:43:39Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "28127",
+    "tempC": 28,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1042957066000000",
+    "writeBytes": "1059343061999999",
+    "percentUsed": 4,
+    "selftestLast": "foreground short: completed @ 126h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0506a96d0",
+    "model": "HUSMM111CLAR1600",
+    "serial": "0SWWM72A"
+   },
+   "devName": "sds",
+   "ts": "2026-09-14T17:43:22Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "28121",
+    "tempC": 28,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1042954260000000",
+    "writeBytes": "1059092834000000",
+    "percentUsed": 4,
+    "selftestLast": "foreground short: completed @ 126h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0506a96d0",
+    "model": "HUSMM111CLAR1600",
+    "serial": "0SWWM72A"
+   },
+   "devName": "sds",
+   "ts": "2026-09-14T16:09:59Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "28119",
+    "tempC": 27,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1042951526000000",
+    "writeBytes": "1059077470999999",
+    "percentUsed": 4,
+    "selftestLast": "foreground short: completed @ 126h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0506a96d0",
+    "model": "HUSMM111CLAR1600",
+    "serial": "0SWWM72A"
+   },
+   "devName": "sds",
+   "ts": "2026-09-14T10:09:42Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "28113",
+    "tempC": 28,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1042939592000000",
+    "writeBytes": "1059018193999999",
+    "percentUsed": 4,
+    "selftestLast": "foreground short: completed @ 126h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0506a96d0",
+    "model": "HUSMM111CLAR1600",
+    "serial": "0SWWM72A"
+   },
+   "devName": "sds",
+   "ts": "2026-09-14T04:09:24Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "28107",
+    "tempC": 28,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1042938604000000",
+    "writeBytes": "1058838575999999",
+    "percentUsed": 4,
+    "selftestLast": "foreground short: completed @ 126h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0506a96d0",
+    "model": "HUSMM111CLAR1600",
+    "serial": "0SWWM72A"
+   },
+   "devName": "sds",
+   "ts": "2026-09-14T03:59:19Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "28107",
+    "tempC": 28,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1042938604000000",
+    "writeBytes": "1058838575999999",
+    "percentUsed": 4,
+    "selftestLast": "foreground short: completed @ 126h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0506a96d0",
+    "model": "HUSMM111CLAR1600",
+    "serial": "0SWWM72A"
+   },
+   "devName": "sds",
+   "ts": "2026-09-14T03:46:27Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "28107",
+    "tempC": 28,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1042938604000000",
+    "writeBytes": "1058838575999999",
+    "percentUsed": 4,
+    "selftestLast": "foreground short: completed @ 126h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0506a96d0",
+    "model": "HUSMM111CLAR1600",
+    "serial": "0SWWM72A"
+   },
+   "devName": "sds",
+   "ts": "2026-09-13T23:13:26Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "28102",
+    "tempC": 28,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1042923491000000",
+    "writeBytes": "1058775882000000",
+    "percentUsed": 4,
+    "selftestLast": "foreground short: completed @ 126h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0506a96d0",
+    "model": "HUSMM111CLAR1600",
+    "serial": "0SWWM72A"
+   },
+   "devName": "sds",
+   "ts": "2026-09-13T22:10:52Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "28101",
+    "tempC": 28,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1042922691000000",
+    "writeBytes": "1058757355000000",
+    "percentUsed": 4,
+    "selftestLast": "foreground short: completed @ 126h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0506a96d0",
+    "model": "HUSMM111CLAR1600",
+    "serial": "0SWWM72A"
+   },
+   "devName": "sds",
+   "ts": "2026-09-13T21:37:21Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "28100",
+    "tempC": 28,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1042922689000000",
+    "writeBytes": "1058720199000000",
+    "percentUsed": 4,
+    "selftestLast": "foreground short: completed @ 126h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0506a96d0",
+    "model": "HUSMM111CLAR1600",
+    "serial": "0SWWM72A"
+   },
+   "devName": "sds",
+   "ts": "2026-09-13T21:15:43Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "28100",
+    "tempC": 28,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1042922687000000",
+    "writeBytes": "1058696227999999",
+    "percentUsed": 4,
+    "selftestLast": "foreground short: completed @ 126h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0506a96d0",
+    "model": "HUSMM111CLAR1600",
+    "serial": "0SWWM72A"
+   },
+   "devName": "sds",
+   "ts": "2026-09-13T17:05:26Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "28096",
+    "tempC": 27,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1042915883000000",
+    "writeBytes": "1058563442000000",
+    "percentUsed": 4,
+    "selftestLast": "foreground short: completed @ 126h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0506a96d0",
+    "model": "HUSMM111CLAR1600",
+    "serial": "0SWWM72A"
+   },
+   "devName": "sds",
+   "ts": "2026-09-13T14:18:48Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "28093",
+    "tempC": 27,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1042915789000000",
+    "writeBytes": "1058416816000000",
+    "percentUsed": 4,
+    "selftestLast": "foreground short: completed @ 126h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0506a96d0",
+    "model": "HUSMM111CLAR1600",
+    "serial": "0SWWM72A"
+   },
+   "devName": "sds",
+   "ts": "2026-09-13T08:18:06Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "28087",
+    "tempC": 28,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1042915700000000",
+    "writeBytes": "1058105887000000",
+    "percentUsed": 4,
+    "selftestLast": "foreground short: completed @ 126h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0506a96d0",
+    "model": "HUSMM111CLAR1600",
+    "serial": "0SWWM72A"
+   },
+   "devName": "sds",
+   "ts": "2026-09-13T02:17:18Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "28081",
+    "tempC": 28,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1042915647000000",
+    "writeBytes": "1057957854000000",
+    "percentUsed": 4,
+    "selftestLast": "foreground short: completed @ 126h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca0506a96d0",
+    "model": "HUSMM111CLAR1600",
+    "serial": "0SWWM72A"
+   },
+   "devName": "sds",
+   "ts": "2026-09-13T02:09:22Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "28081",
+    "tempC": 28,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "1042915645000000",
+    "writeBytes": "1057948918000000",
+    "percentUsed": 4,
+    "selftestLast": "foreground short: completed @ 126h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  }
+ ]
+}

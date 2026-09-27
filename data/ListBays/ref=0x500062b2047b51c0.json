@@ -1,0 +1,110 @@
+{
+ "enclosure": {
+  "enclosure": "0x500062b2047b51c0",
+  "hostname": "nas",
+  "via": "host11",
+  "name": "nas-front",
+  "drives": 7,
+  "firstSeen": "2026-09-13T01:41:39Z",
+  "lastSeen": "2026-09-27T19:41:38Z",
+  "product": "mpt3sas HBA 9400-8i8e",
+  "bays": 8
+ },
+ "bays": [
+  {
+   "label": "0",
+   "ids": [
+    "sas:0"
+   ],
+   "present": true,
+   "devName": "sdq",
+   "serial": "0SWX1KLA",
+   "model": "HUSMM111CLAR1600",
+   "status": "ok",
+   "uses": [
+    "zfs > backups 12143466076769931197 > mirror 4044852472690946034 > disk 11828207356583110866"
+   ]
+  },
+  {
+   "label": "1",
+   "ids": [
+    "sas:1"
+   ],
+   "present": true,
+   "devName": "sdv",
+   "serial": "0SWWPRRA",
+   "model": "HUSMM111CLAR1600",
+   "status": "ok",
+   "uses": [
+    "zfs > backups 12143466076769931197 > mirror 4044852472690946034 > disk 16075576088670221827"
+   ]
+  },
+  {
+   "label": "2",
+   "ids": [
+    "sas:2"
+   ],
+   "present": true,
+   "devName": "sdt",
+   "serial": "0SVHM7EA",
+   "model": "HUSMM1616ASS200",
+   "status": "ok",
+   "uses": [
+    "zfs > backups 12143466076769931197 > mirror 10433001683690774586 > disk 7733054877028270239"
+   ]
+  },
+  {
+   "label": "4",
+   "ids": [
+    "sas:4"
+   ],
+   "present": true,
+   "devName": "sdw",
+   "serial": "0LY3PT0A",
+   "model": "HUSMH842_CLAR200",
+   "status": "ok",
+   "uses": [
+    "zfs > space 5925914041408872576 > log > mirror 11643308628144396865 > disk 6658585271831292557"
+   ]
+  },
+  {
+   "label": "5",
+   "ids": [
+    "sas:5"
+   ],
+   "present": true,
+   "devName": "sdu",
+   "serial": "0LY3PSSA",
+   "model": "HUSMH842_CLAR200",
+   "status": "ok",
+   "uses": [
+    "zfs > space 5925914041408872576 > log > mirror 11643308628144396865 > disk 9523780891956275038"
+   ]
+  },
+  {
+   "label": "6",
+   "ids": [
+    "sas:6"
+   ],
+   "present": true,
+   "devName": "sds",
+   "serial": "0SWWM72A",
+   "model": "HUSMM111CLAR1600",
+   "status": "ok",
+   "uses": [
+    "zfs > backups 12143466076769931197 > mirror 10433001683690774586 > disk 2013986898276113415"
+   ]
+  },
+  {
+   "label": "7",
+   "ids": [
+    "sas:7"
+   ],
+   "present": true,
+   "devName": "sdr",
+   "serial": "0SWWZEYA",
+   "model": "HUSMM111CLAR1600",
+   "status": "ok"
+  }
+ ]
+}

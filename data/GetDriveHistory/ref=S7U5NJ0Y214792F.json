@@ -1,0 +1,75 @@
+{
+ "drive": {
+  "driveId": "137",
+  "wwn": "eui.002538525140b952",
+  "model": "Samsung SSD 990 EVO Plus 1TB",
+  "serial": "S7U5NJ0Y214792F",
+  "sizeBytes": "1000204886016",
+  "bus": "BUS_NVME",
+  "status": "ok",
+  "firstSeen": "2026-09-13T02:42:09Z",
+  "lastSeen": "2026-09-27T19:43:24Z",
+  "current": {
+   "hostname": "server5",
+   "enclosure": "dmi:CN7817V0CB",
+   "bay": "2",
+   "devName": "nvme3n1",
+   "uses": [
+    "zfs > data3 2155466178248037867 > disk 11184083577238509718"
+   ],
+   "firstSeen": "2026-09-14T04:01:53Z",
+   "lastSeen": "2026-09-27T19:43:24Z",
+   "enclosureVia": "pci",
+   "bayLabel": "M.2 2"
+  },
+  "memberState": "ONLINE"
+ },
+ "placements": [
+  {
+   "hostname": "server5",
+   "devName": "nvme3n1",
+   "uses": [
+    "zfs > data3 2155466178248037867 > disk 11184083577238509718"
+   ],
+   "firstSeen": "2026-09-13T02:42:09Z",
+   "lastSeen": "2026-09-14T03:58:02Z",
+   "endedAt": "2026-09-14T04:01:53Z",
+   "endReason": "moved"
+  },
+  {
+   "hostname": "server5",
+   "enclosure": "dmi:CN7817V0CB",
+   "bay": "2",
+   "devName": "nvme3n1",
+   "uses": [
+    "zfs > data3 2155466178248037867 > disk 11184083577238509718"
+   ],
+   "firstSeen": "2026-09-14T04:01:53Z",
+   "lastSeen": "2026-09-27T19:43:24Z",
+   "enclosureVia": "pci",
+   "bayLabel": "M.2 2"
+  }
+ ],
+ "events": [
+  {
+   "eventId": "487",
+   "ts": "2026-09-13T02:42:09Z",
+   "kind": "first_seen",
+   "serial": "S7U5NJ0Y214792F",
+   "wwn": "eui.002538525140b952",
+   "hostname": "server5",
+   "detail": "{\"bay\":\"\",\"dev_name\":\"nvme3n1\",\"expander\":\"\",\"expander_dev\":\"\",\"uses\":[\"zfs \\u003e data3 2155466178248037867 \\u003e disk 11184083577238509718\"]}",
+   "source": "snapshot:12"
+  },
+  {
+   "eventId": "547",
+   "ts": "2026-09-14T04:01:53Z",
+   "kind": "moved_bay",
+   "serial": "S7U5NJ0Y214792F",
+   "wwn": "eui.002538525140b952",
+   "hostname": "server5",
+   "detail": "{\"from_bay\":\"\",\"from_enclosure\":\"\",\"from_enclosure_via\":\"\",\"from_host\":\"server5\",\"from_uses\":[\"zfs \\u003e data3 2155466178248037867 \\u003e disk 11184083577238509718\"],\"to_bay\":\"2\",\"to_bay_label\":\"M.2 2\",\"to_dev_name\":\"nvme3n1\",\"to_enclosure\":\"dmi:CN7817V0CB\",\"to_enclosure_via\":\"pci\",\"to_uses\":[\"zfs \\u003e data3 2155466178248037867 \\u003e disk 11184083577238509718\"]}",
+   "source": "snapshot:44"
+  }
+ ]
+}

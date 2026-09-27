@@ -1,0 +1,75 @@
+{
+ "events": [
+  {
+   "eventId": "907",
+   "ts": "2026-09-27T15:15:19Z",
+   "kind": "optic_alarm",
+   "hostname": "server10",
+   "detail": "{\"flag\":\"rx high warning\",\"form\":\"SFP\",\"part\":\"SFP-10GSR-85\",\"port\":\"enp1s0f1np1\",\"serial\":\"F2130434217\",\"vendor\":\"FS\"}",
+   "source": "report",
+   "opticSerial": "F2130434217"
+  },
+  {
+   "eventId": "906",
+   "ts": "2026-09-27T15:15:19Z",
+   "kind": "optic_first_seen",
+   "hostname": "server10",
+   "detail": "{\"form\":\"SFP\",\"part\":\"SFP-10GSR-85\",\"port\":\"enp1s0f1np1\",\"serial\":\"F2130434217\",\"vendor\":\"FS\"}",
+   "source": "report",
+   "opticSerial": "F2130434217"
+  },
+  {
+   "eventId": "905",
+   "ts": "2026-09-27T15:15:19Z",
+   "kind": "optic_first_seen",
+   "hostname": "server10",
+   "detail": "{\"form\":\"SFP\",\"part\":\"SFP-10GSR-85\",\"port\":\"enp1s0f0np0\",\"serial\":\"F169JU01615\",\"vendor\":\"FiberStore\"}",
+   "source": "report",
+   "opticSerial": "F169JU01615"
+  },
+  {
+   "eventId": "904",
+   "ts": "2026-09-27T15:15:19Z",
+   "kind": "dimm_changed",
+   "hostname": "server10",
+   "detail": "{\"change\":\"appeared\",\"edac\":\"\",\"part\":\"CT16G56C46S5.M8D1\",\"serial\":\"EB2F6777\",\"size_bytes\":17179869184,\"slot\":\"DIMM 0 (P0 CHANNEL B)\"}",
+   "source": "report"
+  },
+  {
+   "eventId": "903",
+   "ts": "2026-09-27T15:15:19Z",
+   "kind": "dimm_changed",
+   "hostname": "server10",
+   "detail": "{\"change\":\"appeared\",\"edac\":\"\",\"part\":\"CT16G56C46S5.M8D1\",\"serial\":\"EB2F64FF\",\"size_bytes\":17179869184,\"slot\":\"DIMM 0 (P0 CHANNEL A)\"}",
+   "source": "report"
+  },
+  {
+   "eventId": "523",
+   "ts": "2026-09-13T23:14:18Z",
+   "kind": "moved_bay",
+   "serial": "SNB5N481410605D4J",
+   "wwn": "nvme.1c5c-534e42354e34383134313036303544344a-5348505034312d353030474d-00000001",
+   "hostname": "server10",
+   "detail": "{\"from_bay\":\"\",\"from_enclosure\":\"\",\"from_enclosure_via\":\"\",\"from_host\":\"server10\",\"from_uses\":[\"mount \\u003e /\",\"mount \\u003e /boot/efi\"],\"to_bay\":\"J3502\",\"to_dev_name\":\"nvme0n1\",\"to_enclosure\":\"dmi:F1FXM794502C1040083\",\"to_enclosure_via\":\"pci\",\"to_uses\":[\"mount \\u003e /\",\"mount \\u003e /boot/efi\"]}",
+   "source": "snapshot:35"
+  },
+  {
+   "eventId": "379",
+   "ts": "2026-09-13T01:56:18Z",
+   "kind": "first_seen",
+   "serial": "SNB5N481410605D4J",
+   "wwn": "nvme.1c5c-534e42354e34383134313036303544344a-5348505034312d353030474d-00000001",
+   "hostname": "server10",
+   "detail": "{\"bay\":\"\",\"dev_name\":\"nvme0n1\",\"expander\":\"\",\"expander_dev\":\"\",\"uses\":[\"mount \\u003e /\",\"mount \\u003e /boot/efi\"]}",
+   "source": "snapshot:6"
+  },
+  {
+   "eventId": "124",
+   "ts": "2026-09-13T01:56:18Z",
+   "kind": "host_first_seen",
+   "hostname": "server10",
+   "detail": "{\"hostname\":\"server10\",\"os\":\"linux\"}",
+   "source": "report"
+  }
+ ]
+}

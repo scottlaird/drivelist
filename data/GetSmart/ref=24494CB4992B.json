@@ -1,0 +1,395 @@
+{
+ "drive": {
+  "driveId": "156",
+  "wwn": "eui.000000000000000100a075244cb4992b",
+  "model": "CT500P3PSSD8",
+  "serial": "24494CB4992B",
+  "sizeBytes": "500107862016",
+  "bus": "BUS_NVME",
+  "status": "ok",
+  "firstSeen": "2026-09-19T21:10:57Z",
+  "lastSeen": "2026-09-27T19:42:34Z",
+  "current": {
+   "hostname": "server13",
+   "enclosure": "dmi:B12455EF50051",
+   "bay": "0000:00:06.0",
+   "devName": "nvme0n1",
+   "uses": [
+    "mount > /",
+    "mount > /boot/efi",
+    "mount > /var/lib/kubelet/pods/5252b320-3fc1-41dc-8464-c41f6e27178b/volume-subpaths/config/grafana/0",
+    "mount > /var/lib/kubelet/pods/5252b320-3fc1-41dc-8464-c41f6e27178b/volume-subpaths/sc-dashboard-provider/grafana/3",
+    "mount > /var/lib/kubelet/pods/8c57675f-3a5b-4b58-aeee-f316f31c9fad/volume-subpaths/custom-dnsmasq/pihole/1",
+    "mount > /var/lib/kubelet/pods/8c57675f-3a5b-4b58-aeee-f316f31c9fad/volume-subpaths/custom-dnsmasq/pihole/2"
+   ],
+   "firstSeen": "2026-09-19T21:10:57Z",
+   "lastSeen": "2026-09-27T19:42:34Z",
+   "enclosureVia": "pci"
+  }
+ },
+ "samples": [
+  {
+   "identity": {
+    "wwn": "eui.000000000000000100a075244cb4992b",
+    "model": "CT500P3PSSD8",
+    "serial": "24494CB4992B"
+   },
+   "devName": "nvme0n1",
+   "ts": "2026-09-27T18:45:45Z",
+   "skipped": "error: exec: \"smartctl\": executable file not found in $PATH",
+   "hostname": "server13"
+  },
+  {
+   "identity": {
+    "wwn": "eui.000000000000000100a075244cb4992b",
+    "model": "CT500P3PSSD8",
+    "serial": "24494CB4992B"
+   },
+   "devName": "nvme0n1",
+   "ts": "2026-09-27T12:45:45Z",
+   "skipped": "error: exec: \"smartctl\": executable file not found in $PATH",
+   "hostname": "server13"
+  },
+  {
+   "identity": {
+    "wwn": "eui.000000000000000100a075244cb4992b",
+    "model": "CT500P3PSSD8",
+    "serial": "24494CB4992B"
+   },
+   "devName": "nvme0n1",
+   "ts": "2026-09-27T06:45:45Z",
+   "skipped": "error: exec: \"smartctl\": executable file not found in $PATH",
+   "hostname": "server13"
+  },
+  {
+   "identity": {
+    "wwn": "eui.000000000000000100a075244cb4992b",
+    "model": "CT500P3PSSD8",
+    "serial": "24494CB4992B"
+   },
+   "devName": "nvme0n1",
+   "ts": "2026-09-27T00:45:45Z",
+   "skipped": "error: exec: \"smartctl\": executable file not found in $PATH",
+   "hostname": "server13"
+  },
+  {
+   "identity": {
+    "wwn": "eui.000000000000000100a075244cb4992b",
+    "model": "CT500P3PSSD8",
+    "serial": "24494CB4992B"
+   },
+   "devName": "nvme0n1",
+   "ts": "2026-09-26T18:45:45Z",
+   "skipped": "error: exec: \"smartctl\": executable file not found in $PATH",
+   "hostname": "server13"
+  },
+  {
+   "identity": {
+    "wwn": "eui.000000000000000100a075244cb4992b",
+    "model": "CT500P3PSSD8",
+    "serial": "24494CB4992B"
+   },
+   "devName": "nvme0n1",
+   "ts": "2026-09-26T12:45:45Z",
+   "skipped": "error: exec: \"smartctl\": executable file not found in $PATH",
+   "hostname": "server13"
+  },
+  {
+   "identity": {
+    "wwn": "eui.000000000000000100a075244cb4992b",
+    "model": "CT500P3PSSD8",
+    "serial": "24494CB4992B"
+   },
+   "devName": "nvme0n1",
+   "ts": "2026-09-26T06:45:45Z",
+   "skipped": "error: exec: \"smartctl\": executable file not found in $PATH",
+   "hostname": "server13"
+  },
+  {
+   "identity": {
+    "wwn": "eui.000000000000000100a075244cb4992b",
+    "model": "CT500P3PSSD8",
+    "serial": "24494CB4992B"
+   },
+   "devName": "nvme0n1",
+   "ts": "2026-09-26T00:45:45Z",
+   "skipped": "error: exec: \"smartctl\": executable file not found in $PATH",
+   "hostname": "server13"
+  },
+  {
+   "identity": {
+    "wwn": "eui.000000000000000100a075244cb4992b",
+    "model": "CT500P3PSSD8",
+    "serial": "24494CB4992B"
+   },
+   "devName": "nvme0n1",
+   "ts": "2026-09-25T18:45:45Z",
+   "skipped": "error: exec: \"smartctl\": executable file not found in $PATH",
+   "hostname": "server13"
+  },
+  {
+   "identity": {
+    "wwn": "eui.000000000000000100a075244cb4992b",
+    "model": "CT500P3PSSD8",
+    "serial": "24494CB4992B"
+   },
+   "devName": "nvme0n1",
+   "ts": "2026-09-25T12:45:45Z",
+   "skipped": "error: exec: \"smartctl\": executable file not found in $PATH",
+   "hostname": "server13"
+  },
+  {
+   "identity": {
+    "wwn": "eui.000000000000000100a075244cb4992b",
+    "model": "CT500P3PSSD8",
+    "serial": "24494CB4992B"
+   },
+   "devName": "nvme0n1",
+   "ts": "2026-09-25T06:45:45Z",
+   "skipped": "error: exec: \"smartctl\": executable file not found in $PATH",
+   "hostname": "server13"
+  },
+  {
+   "identity": {
+    "wwn": "eui.000000000000000100a075244cb4992b",
+    "model": "CT500P3PSSD8",
+    "serial": "24494CB4992B"
+   },
+   "devName": "nvme0n1",
+   "ts": "2026-09-25T00:45:45Z",
+   "skipped": "error: exec: \"smartctl\": executable file not found in $PATH",
+   "hostname": "server13"
+  },
+  {
+   "identity": {
+    "wwn": "eui.000000000000000100a075244cb4992b",
+    "model": "CT500P3PSSD8",
+    "serial": "24494CB4992B"
+   },
+   "devName": "nvme0n1",
+   "ts": "2026-09-24T18:45:45Z",
+   "skipped": "error: exec: \"smartctl\": executable file not found in $PATH",
+   "hostname": "server13"
+  },
+  {
+   "identity": {
+    "wwn": "eui.000000000000000100a075244cb4992b",
+    "model": "CT500P3PSSD8",
+    "serial": "24494CB4992B"
+   },
+   "devName": "nvme0n1",
+   "ts": "2026-09-24T12:45:45Z",
+   "skipped": "error: exec: \"smartctl\": executable file not found in $PATH",
+   "hostname": "server13"
+  },
+  {
+   "identity": {
+    "wwn": "eui.000000000000000100a075244cb4992b",
+    "model": "CT500P3PSSD8",
+    "serial": "24494CB4992B"
+   },
+   "devName": "nvme0n1",
+   "ts": "2026-09-24T06:45:45Z",
+   "skipped": "error: exec: \"smartctl\": executable file not found in $PATH",
+   "hostname": "server13"
+  },
+  {
+   "identity": {
+    "wwn": "eui.000000000000000100a075244cb4992b",
+    "model": "CT500P3PSSD8",
+    "serial": "24494CB4992B"
+   },
+   "devName": "nvme0n1",
+   "ts": "2026-09-24T00:45:45Z",
+   "skipped": "error: exec: \"smartctl\": executable file not found in $PATH",
+   "hostname": "server13"
+  },
+  {
+   "identity": {
+    "wwn": "eui.000000000000000100a075244cb4992b",
+    "model": "CT500P3PSSD8",
+    "serial": "24494CB4992B"
+   },
+   "devName": "nvme0n1",
+   "ts": "2026-09-23T18:45:45Z",
+   "skipped": "error: exec: \"smartctl\": executable file not found in $PATH",
+   "hostname": "server13"
+  },
+  {
+   "identity": {
+    "wwn": "eui.000000000000000100a075244cb4992b",
+    "model": "CT500P3PSSD8",
+    "serial": "24494CB4992B"
+   },
+   "devName": "nvme0n1",
+   "ts": "2026-09-23T12:45:45Z",
+   "skipped": "error: exec: \"smartctl\": executable file not found in $PATH",
+   "hostname": "server13"
+  },
+  {
+   "identity": {
+    "wwn": "eui.000000000000000100a075244cb4992b",
+    "model": "CT500P3PSSD8",
+    "serial": "24494CB4992B"
+   },
+   "devName": "nvme0n1",
+   "ts": "2026-09-23T06:45:45Z",
+   "skipped": "error: exec: \"smartctl\": executable file not found in $PATH",
+   "hostname": "server13"
+  },
+  {
+   "identity": {
+    "wwn": "eui.000000000000000100a075244cb4992b",
+    "model": "CT500P3PSSD8",
+    "serial": "24494CB4992B"
+   },
+   "devName": "nvme0n1",
+   "ts": "2026-09-23T00:45:45Z",
+   "skipped": "error: exec: \"smartctl\": executable file not found in $PATH",
+   "hostname": "server13"
+  },
+  {
+   "identity": {
+    "wwn": "eui.000000000000000100a075244cb4992b",
+    "model": "CT500P3PSSD8",
+    "serial": "24494CB4992B"
+   },
+   "devName": "nvme0n1",
+   "ts": "2026-09-22T18:45:45Z",
+   "skipped": "error: exec: \"smartctl\": executable file not found in $PATH",
+   "hostname": "server13"
+  },
+  {
+   "identity": {
+    "wwn": "eui.000000000000000100a075244cb4992b",
+    "model": "CT500P3PSSD8",
+    "serial": "24494CB4992B"
+   },
+   "devName": "nvme0n1",
+   "ts": "2026-09-22T12:45:45Z",
+   "skipped": "error: exec: \"smartctl\": executable file not found in $PATH",
+   "hostname": "server13"
+  },
+  {
+   "identity": {
+    "wwn": "eui.000000000000000100a075244cb4992b",
+    "model": "CT500P3PSSD8",
+    "serial": "24494CB4992B"
+   },
+   "devName": "nvme0n1",
+   "ts": "2026-09-22T06:45:45Z",
+   "skipped": "error: exec: \"smartctl\": executable file not found in $PATH",
+   "hostname": "server13"
+  },
+  {
+   "identity": {
+    "wwn": "eui.000000000000000100a075244cb4992b",
+    "model": "CT500P3PSSD8",
+    "serial": "24494CB4992B"
+   },
+   "devName": "nvme0n1",
+   "ts": "2026-09-22T03:10:57Z",
+   "skipped": "error: exec: \"smartctl\": executable file not found in $PATH",
+   "hostname": "server13"
+  },
+  {
+   "identity": {
+    "wwn": "eui.000000000000000100a075244cb4992b",
+    "model": "CT500P3PSSD8",
+    "serial": "24494CB4992B"
+   },
+   "devName": "nvme0n1",
+   "ts": "2026-09-21T21:10:57Z",
+   "skipped": "error: exec: \"smartctl\": executable file not found in $PATH",
+   "hostname": "server13"
+  },
+  {
+   "identity": {
+    "wwn": "eui.000000000000000100a075244cb4992b",
+    "model": "CT500P3PSSD8",
+    "serial": "24494CB4992B"
+   },
+   "devName": "nvme0n1",
+   "ts": "2026-09-21T15:10:57Z",
+   "skipped": "error: exec: \"smartctl\": executable file not found in $PATH",
+   "hostname": "server13"
+  },
+  {
+   "identity": {
+    "wwn": "eui.000000000000000100a075244cb4992b",
+    "model": "CT500P3PSSD8",
+    "serial": "24494CB4992B"
+   },
+   "devName": "nvme0n1",
+   "ts": "2026-09-21T09:10:57Z",
+   "skipped": "error: exec: \"smartctl\": executable file not found in $PATH",
+   "hostname": "server13"
+  },
+  {
+   "identity": {
+    "wwn": "eui.000000000000000100a075244cb4992b",
+    "model": "CT500P3PSSD8",
+    "serial": "24494CB4992B"
+   },
+   "devName": "nvme0n1",
+   "ts": "2026-09-21T03:10:57Z",
+   "skipped": "error: exec: \"smartctl\": executable file not found in $PATH",
+   "hostname": "server13"
+  },
+  {
+   "identity": {
+    "wwn": "eui.000000000000000100a075244cb4992b",
+    "model": "CT500P3PSSD8",
+    "serial": "24494CB4992B"
+   },
+   "devName": "nvme0n1",
+   "ts": "2026-09-20T21:10:57Z",
+   "skipped": "error: exec: \"smartctl\": executable file not found in $PATH",
+   "hostname": "server13"
+  },
+  {
+   "identity": {
+    "wwn": "eui.000000000000000100a075244cb4992b",
+    "model": "CT500P3PSSD8",
+    "serial": "24494CB4992B"
+   },
+   "devName": "nvme0n1",
+   "ts": "2026-09-20T15:10:57Z",
+   "skipped": "error: exec: \"smartctl\": executable file not found in $PATH",
+   "hostname": "server13"
+  },
+  {
+   "identity": {
+    "wwn": "eui.000000000000000100a075244cb4992b",
+    "model": "CT500P3PSSD8",
+    "serial": "24494CB4992B"
+   },
+   "devName": "nvme0n1",
+   "ts": "2026-09-20T09:10:57Z",
+   "skipped": "error: exec: \"smartctl\": executable file not found in $PATH",
+   "hostname": "server13"
+  },
+  {
+   "identity": {
+    "wwn": "eui.000000000000000100a075244cb4992b",
+    "model": "CT500P3PSSD8",
+    "serial": "24494CB4992B"
+   },
+   "devName": "nvme0n1",
+   "ts": "2026-09-20T03:10:57Z",
+   "skipped": "error: exec: \"smartctl\": executable file not found in $PATH",
+   "hostname": "server13"
+  },
+  {
+   "identity": {
+    "wwn": "eui.000000000000000100a075244cb4992b",
+    "model": "CT500P3PSSD8",
+    "serial": "24494CB4992B"
+   },
+   "devName": "nvme0n1",
+   "ts": "2026-09-19T21:10:57Z",
+   "skipped": "error: exec: \"smartctl\": executable file not found in $PATH",
+   "hostname": "server13"
+  }
+ ]
+}

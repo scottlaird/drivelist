@@ -1,0 +1,55 @@
+{
+ "drive": {
+  "driveId": "163",
+  "wwn": "eui.0025384541a30f8c",
+  "model": "Samsung SSD 990 PRO 4TB",
+  "serial": "S7KGNU0X532643F",
+  "sizeBytes": "4000787030016",
+  "bus": "BUS_NVME",
+  "status": "ok",
+  "firstSeen": "2026-09-19T21:29:27Z",
+  "lastSeen": "2026-09-27T19:40:02Z",
+  "current": {
+   "hostname": "server16",
+   "enclosure": "dmi:MD496VS126QQMQA00010",
+   "bay": "0000:00:06.0",
+   "devName": "nvme0n1",
+   "uses": [
+    "mount > /",
+    "mount > /boot/efi"
+   ],
+   "firstSeen": "2026-09-19T21:29:27Z",
+   "lastSeen": "2026-09-27T19:40:02Z",
+   "enclosureVia": "pci",
+   "bayLabel": "M.2 PCIe 4.0 x4"
+  }
+ },
+ "placements": [
+  {
+   "hostname": "server16",
+   "enclosure": "dmi:MD496VS126QQMQA00010",
+   "bay": "0000:00:06.0",
+   "devName": "nvme0n1",
+   "uses": [
+    "mount > /",
+    "mount > /boot/efi"
+   ],
+   "firstSeen": "2026-09-19T21:29:27Z",
+   "lastSeen": "2026-09-27T19:40:02Z",
+   "enclosureVia": "pci",
+   "bayLabel": "M.2 PCIe 4.0 x4"
+  }
+ ],
+ "events": [
+  {
+   "eventId": "634",
+   "ts": "2026-09-19T21:29:27Z",
+   "kind": "first_seen",
+   "serial": "S7KGNU0X532643F",
+   "wwn": "eui.0025384541a30f8c",
+   "hostname": "server16",
+   "detail": "{\"bay\":\"0000:00:06.0\",\"bay_label\":\"M.2 PCIe 4.0 x4\",\"dev_name\":\"nvme0n1\",\"enclosure\":\"dmi:MD496VS126QQMQA00010\",\"enclosure_via\":\"pci\",\"uses\":[\"mount \\u003e /\",\"mount \\u003e /boot/efi\"]}",
+   "source": "snapshot:63"
+  }
+ ]
+}

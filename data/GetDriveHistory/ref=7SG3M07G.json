@@ -1,0 +1,65 @@
+{
+ "drive": {
+  "driveId": "79",
+  "wwn": "0x5000cca2520691dc",
+  "vendor": "HGST",
+  "model": "HUH721008AL5204",
+  "serial": "7SG3M07G",
+  "sizeBytes": "8001563222016",
+  "bus": "BUS_SAS",
+  "status": "ok",
+  "firstSeen": "2026-09-13T01:41:39Z",
+  "lastSeen": "2026-09-27T19:41:38Z",
+  "current": {
+   "hostname": "nas",
+   "enclosure": "0x500304800000007f",
+   "bay": "4",
+   "devName": "sdg",
+   "uses": [
+    "zfs > space 5925914041408872576 > raidz2 12372305547527317295 > disk 15192423959397411076"
+   ],
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "enclosureVia": "expander-10:0",
+   "enclosureName": "nas-sc847-back"
+  },
+  "memberState": "ONLINE"
+ },
+ "placements": [
+  {
+   "hostname": "nas",
+   "enclosure": "0x500304800000007f",
+   "bay": "4",
+   "devName": "sdg",
+   "uses": [
+    "zfs > space 5925914041408872576 > raidz2 12372305547527317295 > disk 15192423959397411076"
+   ],
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "enclosureVia": "expander-10:0",
+   "enclosureName": "nas-sc847-back"
+  }
+ ],
+ "events": [
+  {
+   "eventId": "340",
+   "ts": "2026-09-13T01:41:39Z",
+   "kind": "first_seen",
+   "serial": "7SG3M07G",
+   "wwn": "0x5000cca2520691dc",
+   "hostname": "nas",
+   "detail": "{\"bay\":\"4\",\"dev_name\":\"sdg\",\"expander\":\"expander-10:0\",\"expander_dev\":\"expander-10:0\",\"uses\":[\"zfs \\u003e space 5925914041408872576 \\u003e raidz2 12372305547527317295 \\u003e disk 15192423959397411076\"]}",
+   "source": "snapshot:2"
+  },
+  {
+   "eventId": "450",
+   "ts": "2026-09-13T02:09:06Z",
+   "kind": "member_state_changed",
+   "serial": "7SG3M07G",
+   "wwn": "0x5000cca2520691dc",
+   "hostname": "nas",
+   "detail": "{\"from\":\"\",\"to\":\"ONLINE\",\"uses\":[\"zfs \\u003e space 5925914041408872576 \\u003e raidz2 12372305547527317295 \\u003e disk 15192423959397411076\"]}",
+   "source": "snapshot:8"
+  }
+ ]
+}

@@ -1,0 +1,2428 @@
+{
+ "drive": {
+  "driveId": "1",
+  "wwn": "eui.0100000004000000e4d25c0000000000",
+  "model": "INTEL SSDPD2KS076T7M",
+  "serial": "BTLD7486036U8P0F",
+  "sizeBytes": "7681502044160",
+  "bus": "BUS_NVME",
+  "status": "ok",
+  "firstSeen": "2026-09-13T01:40:06Z",
+  "lastSeen": "2026-09-27T19:43:32Z",
+  "current": {
+   "hostname": "server8",
+   "enclosure": "dmi:KCS0GX0000TB",
+   "bay": "9-1",
+   "devName": "nvme0n1",
+   "uses": [
+    "zfs > fast 15353959934024797625 > mirror 6580501177608322094 > disk 12657478369450022007"
+   ],
+   "firstSeen": "2026-09-13T23:12:04Z",
+   "lastSeen": "2026-09-27T19:43:32Z",
+   "enclosureVia": "pci",
+   "enclosureName": "server8-front"
+  },
+  "memberState": "ONLINE"
+ },
+ "samples": [
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-27T18:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "126",
+   "writeBytes": "893440",
+   "writeMs": "6",
+   "ioMs": "6",
+   "weightedMs": "6",
+   "wAwaitMaxMs": 0.047619047619047616,
+   "utilMax": 0.00009998500224966255,
+   "hostname": "server8",
+   "awaitWrites": "126"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-27T17:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "442",
+   "writeBytes": "3286016",
+   "writeMs": "37",
+   "ioMs": "23",
+   "weightedMs": "37",
+   "wAwaitMaxMs": 0.1111111111111111,
+   "utilMax": 0.0002498126405196103,
+   "hostname": "server8",
+   "awaitWrites": "442"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-27T16:00:00Z",
+   "bucketSecs": 3600,
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-27T15:00:00Z",
+   "bucketSecs": 120,
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-27T14:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "152",
+   "writeBytes": "1229312",
+   "writeMs": "24",
+   "ioMs": "15",
+   "weightedMs": "24",
+   "wAwaitMaxMs": 0.15789473684210525,
+   "utilMax": 0.00025017095014926864,
+   "hostname": "server8",
+   "awaitWrites": "152"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-27T13:00:00Z",
+   "bucketSecs": 3600,
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-27T12:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "115",
+   "writeBytes": "926208",
+   "writeMs": "17",
+   "ioMs": "11",
+   "weightedMs": "17",
+   "wAwaitMaxMs": 0.14782608695652175,
+   "utilMax": 0.00018333333333333334,
+   "hostname": "server8",
+   "awaitWrites": "115"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-27T11:00:00Z",
+   "bucketSecs": 3600,
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-27T10:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "119",
+   "writeBytes": "880640",
+   "writeMs": "24",
+   "ioMs": "14",
+   "weightedMs": "24",
+   "wAwaitMaxMs": 0.20168067226890757,
+   "utilMax": 0.00023350067548409694,
+   "hostname": "server8",
+   "awaitWrites": "119"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-27T09:00:00Z",
+   "bucketSecs": 3600,
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-27T08:00:00Z",
+   "bucketSecs": 3599,
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-27T07:00:00Z",
+   "bucketSecs": 3600,
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-27T06:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "264",
+   "writeBytes": "2038272",
+   "writeMs": "53",
+   "ioMs": "33",
+   "weightedMs": "53",
+   "wAwaitMaxMs": 0.20075757575757575,
+   "utilMax": 0.00055,
+   "hostname": "server8",
+   "awaitWrites": "264"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-27T05:00:00Z",
+   "bucketSecs": 3600,
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-27T04:00:00Z",
+   "bucketSecs": 3599,
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-27T03:00:00Z",
+   "bucketSecs": 3599,
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-27T02:00:00Z",
+   "bucketSecs": 3600,
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-27T01:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "141",
+   "writeBytes": "1060352",
+   "writeMs": "18",
+   "ioMs": "14",
+   "weightedMs": "18",
+   "wAwaitMaxMs": 0.1276595744680851,
+   "utilMax": 0.0002333372222870381,
+   "hostname": "server8",
+   "awaitWrites": "141"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-27T00:00:00Z",
+   "bucketSecs": 3600,
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-26T23:00:00Z",
+   "bucketSecs": 3600,
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-26T22:00:00Z",
+   "bucketSecs": 3599,
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-26T21:00:00Z",
+   "bucketSecs": 3600,
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-26T20:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "107",
+   "writeBytes": "869888",
+   "writeMs": "38",
+   "ioMs": "21",
+   "weightedMs": "38",
+   "wAwaitMaxMs": 0.35514018691588783,
+   "utilMax": 0.00035006417843271264,
+   "hostname": "server8",
+   "awaitWrites": "107"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-26T19:00:00Z",
+   "bucketSecs": 3600,
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-26T18:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "270",
+   "writeBytes": "1995264",
+   "writeMs": "59",
+   "ioMs": "35",
+   "weightedMs": "59",
+   "wAwaitMaxMs": 0.27007299270072993,
+   "utilMax": 0.00035,
+   "hostname": "server8",
+   "awaitWrites": "270"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-26T17:00:00Z",
+   "bucketSecs": 3599,
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-26T16:00:00Z",
+   "bucketSecs": 3599,
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-26T15:00:00Z",
+   "bucketSecs": 3600,
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-26T14:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "111",
+   "writeBytes": "907264",
+   "writeMs": "19",
+   "ioMs": "11",
+   "weightedMs": "19",
+   "wAwaitMaxMs": 0.17117117117117117,
+   "utilMax": 0.0001833669506076114,
+   "hostname": "server8",
+   "awaitWrites": "111"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-26T13:00:00Z",
+   "bucketSecs": 3600,
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-26T12:00:00Z",
+   "bucketSecs": 3600,
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-26T11:00:00Z",
+   "bucketSecs": 3600,
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-26T10:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "115",
+   "writeBytes": "902656",
+   "writeMs": "26",
+   "ioMs": "14",
+   "weightedMs": "26",
+   "wAwaitMaxMs": 0.22608695652173913,
+   "utilMax": 0.00023333333333333333,
+   "hostname": "server8",
+   "awaitWrites": "115"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-26T09:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "236",
+   "writeBytes": "1677824",
+   "writeMs": "70",
+   "ioMs": "39",
+   "weightedMs": "70",
+   "wAwaitMaxMs": 0.3684210526315789,
+   "utilMax": 0.00038333333333333334,
+   "hostname": "server8",
+   "awaitWrites": "236"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-26T08:00:00Z",
+   "bucketSecs": 3599,
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-26T07:00:00Z",
+   "bucketSecs": 3599,
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-26T06:00:00Z",
+   "bucketSecs": 3600,
+   "reads": "99",
+   "writes": "445",
+   "readBytes": "1515520",
+   "writeBytes": "3319808",
+   "readMs": "20",
+   "writeMs": "59",
+   "ioMs": "47",
+   "weightedMs": "79",
+   "rAwaitMaxMs": 0.20202020202020202,
+   "wAwaitMaxMs": 0.14733542319749215,
+   "utilMax": 0.0006500866782237632,
+   "hostname": "server8",
+   "awaitReads": "99",
+   "awaitWrites": "445"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-26T05:00:00Z",
+   "bucketSecs": 3599,
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-26T04:00:00Z",
+   "bucketSecs": 3600,
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-26T03:00:00Z",
+   "bucketSecs": 3599,
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-26T02:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "423",
+   "writeBytes": "3321344",
+   "writeMs": "29",
+   "ioMs": "26",
+   "weightedMs": "29",
+   "wAwaitMaxMs": 0.06855791962174941,
+   "utilMax": 0.0004332972252312307,
+   "hostname": "server8",
+   "awaitWrites": "423"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-26T01:00:00Z",
+   "bucketSecs": 3599,
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-26T00:00:00Z",
+   "bucketSecs": 3600,
+   "reads": "165",
+   "writes": "102",
+   "readBytes": "876544",
+   "writeBytes": "918528",
+   "readMs": "6",
+   "writeMs": "10",
+   "ioMs": "13",
+   "weightedMs": "16",
+   "rAwaitMaxMs": 0.03636363636363636,
+   "wAwaitMaxMs": 0.09803921568627451,
+   "utilMax": 0.0001167308686444211,
+   "hostname": "server8",
+   "awaitReads": "165",
+   "awaitWrites": "102"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-25T23:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "271",
+   "writeBytes": "1814016",
+   "writeMs": "20",
+   "ioMs": "3415039",
+   "weightedMs": "20",
+   "wAwaitMaxMs": 0.07380073800738007,
+   "utilMax": 1,
+   "hostname": "server8",
+   "awaitWrites": "271"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-25T22:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "487",
+   "writeBytes": "6124032",
+   "writeMs": "35",
+   "ioMs": "29",
+   "weightedMs": "35",
+   "wAwaitMaxMs": 0.07894736842105263,
+   "utilMax": 0.0002667066726675668,
+   "hostname": "server8",
+   "awaitWrites": "487"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-25T21:00:00Z",
+   "bucketSecs": 3600,
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-25T20:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "141",
+   "writeBytes": "895488",
+   "writeMs": "11",
+   "ioMs": "8",
+   "weightedMs": "11",
+   "wAwaitMaxMs": 0.07801418439716312,
+   "utilMax": 0.000133357782260081,
+   "hostname": "server8",
+   "awaitWrites": "141"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-25T19:00:00Z",
+   "bucketSecs": 3600,
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-25T18:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "123",
+   "writeBytes": "739840",
+   "writeMs": "7",
+   "ioMs": "4",
+   "weightedMs": "7",
+   "wAwaitMaxMs": 0.056910569105691054,
+   "utilMax": 0.00006664556223862444,
+   "hostname": "server8",
+   "awaitWrites": "123"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-25T17:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "156",
+   "writeBytes": "821760",
+   "writeMs": "8",
+   "ioMs": "5",
+   "weightedMs": "8",
+   "wAwaitMaxMs": 0.05128205128205128,
+   "utilMax": 0.00008333333333333333,
+   "hostname": "server8",
+   "awaitWrites": "156"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-25T16:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "107",
+   "writeBytes": "735232",
+   "writeMs": "9",
+   "ioMs": "7",
+   "weightedMs": "9",
+   "wAwaitMaxMs": 0.08411214953271028,
+   "utilMax": 0.00011670946013538297,
+   "hostname": "server8",
+   "awaitWrites": "107"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-25T15:00:00Z",
+   "bucketSecs": 3600,
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-25T14:00:00Z",
+   "bucketSecs": 3599,
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-25T13:00:00Z",
+   "bucketSecs": 3599,
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-25T12:00:00Z",
+   "bucketSecs": 3600,
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-25T11:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "148",
+   "writeBytes": "874496",
+   "writeMs": "11",
+   "ioMs": "8",
+   "weightedMs": "11",
+   "wAwaitMaxMs": 0.07432432432432433,
+   "utilMax": 0.00013328890369876707,
+   "hostname": "server8",
+   "awaitWrites": "148"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-25T10:00:00Z",
+   "bucketSecs": 3599,
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-25T09:00:00Z",
+   "bucketSecs": 3599,
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-25T08:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "118",
+   "writeBytes": "716800",
+   "writeMs": "6",
+   "ioMs": "5",
+   "weightedMs": "6",
+   "wAwaitMaxMs": 0.05084745762711865,
+   "utilMax": 0.00008330834083108401,
+   "hostname": "server8",
+   "awaitWrites": "118"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-25T07:00:00Z",
+   "bucketSecs": 3599,
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-25T06:00:00Z",
+   "bucketSecs": 3600,
+   "reads": "79",
+   "readBytes": "2053632",
+   "readMs": "9",
+   "ioMs": "9",
+   "weightedMs": "9",
+   "rAwaitMaxMs": 0.11392405063291139,
+   "utilMax": 0.000149952515036905,
+   "hostname": "server8",
+   "awaitReads": "79"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-25T05:00:00Z",
+   "bucketSecs": 3599,
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-25T04:00:00Z",
+   "bucketSecs": 3599,
+   "reads": "65",
+   "readBytes": "466944",
+   "readMs": "5",
+   "ioMs": "5",
+   "weightedMs": "5",
+   "rAwaitMaxMs": 0.07692307692307693,
+   "utilMax": 0.0000833361112037068,
+   "hostname": "server8",
+   "awaitReads": "65"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-25T03:00:00Z",
+   "bucketSecs": 3600,
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-25T02:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "511",
+   "writeBytes": "3620352",
+   "writeMs": "38",
+   "ioMs": "5130",
+   "weightedMs": "38",
+   "wAwaitMaxMs": 0.10256410256410256,
+   "utilMax": 0.08525737131434283,
+   "hostname": "server8",
+   "awaitWrites": "511"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-25T01:00:00Z",
+   "bucketSecs": 3600,
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-25T00:00:00Z",
+   "bucketSecs": 3599,
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-24T23:00:00Z",
+   "bucketSecs": 3600,
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-24T22:00:00Z",
+   "bucketSecs": 3599,
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-24T21:00:00Z",
+   "bucketSecs": 3599,
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-24T20:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "233",
+   "writeBytes": "1459200",
+   "writeMs": "17",
+   "ioMs": "13",
+   "weightedMs": "17",
+   "wAwaitMaxMs": 0.08181818181818182,
+   "utilMax": 0.00011657729074376311,
+   "hostname": "server8",
+   "awaitWrites": "233"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-24T19:00:00Z",
+   "bucketSecs": 3600,
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-24T18:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "225",
+   "writeBytes": "1478144",
+   "writeMs": "19",
+   "ioMs": "14",
+   "weightedMs": "19",
+   "wAwaitMaxMs": 0.0990990990990991,
+   "utilMax": 0.00011672113653038084,
+   "hostname": "server8",
+   "awaitWrites": "225"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-24T17:00:00Z",
+   "bucketSecs": 3599,
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-24T16:00:00Z",
+   "bucketSecs": 3599,
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-24T15:00:00Z",
+   "bucketSecs": 3600,
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-24T14:00:00Z",
+   "bucketSecs": 3599,
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-24T13:00:00Z",
+   "bucketSecs": 3599,
+   "reads": "85",
+   "writes": "141",
+   "readBytes": "11141120",
+   "writeBytes": "777728",
+   "readMs": "172",
+   "writeMs": "10",
+   "ioMs": "51",
+   "weightedMs": "182",
+   "rAwaitMaxMs": 2.023529411764706,
+   "wAwaitMaxMs": 0.07092198581560284,
+   "utilMax": 0.0007333455557592627,
+   "hostname": "server8",
+   "awaitReads": "85",
+   "awaitWrites": "141"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-24T12:00:00Z",
+   "bucketSecs": 3600,
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-24T11:00:00Z",
+   "bucketSecs": 3599,
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-24T10:00:00Z",
+   "bucketSecs": 3599,
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-24T09:00:00Z",
+   "bucketSecs": 3599,
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-24T08:00:00Z",
+   "bucketSecs": 3600,
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-24T07:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "1104",
+   "writeBytes": "6796288",
+   "writeMs": "114",
+   "ioMs": "10303",
+   "weightedMs": "114",
+   "wAwaitMaxMs": 0.1259259259259259,
+   "utilMax": 0.17108333333333334,
+   "hostname": "server8",
+   "awaitWrites": "1104"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-24T06:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "131",
+   "writeBytes": "873472",
+   "writeMs": "9",
+   "ioMs": "6",
+   "weightedMs": "9",
+   "wAwaitMaxMs": 0.06870229007633588,
+   "utilMax": 0.0001,
+   "hostname": "server8",
+   "awaitWrites": "131"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-24T05:00:00Z",
+   "bucketSecs": 3599,
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-24T04:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "123",
+   "writeBytes": "814592",
+   "writeMs": "7",
+   "ioMs": "6",
+   "weightedMs": "7",
+   "wAwaitMaxMs": 0.056910569105691054,
+   "utilMax": 0.00009998000399920016,
+   "hostname": "server8",
+   "awaitWrites": "123"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-24T03:00:00Z",
+   "bucketSecs": 3599,
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-24T02:00:00Z",
+   "bucketSecs": 3600,
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-24T01:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "832",
+   "writeBytes": "6000128",
+   "writeMs": "61",
+   "ioMs": "5150",
+   "weightedMs": "61",
+   "wAwaitMaxMs": 0.1111111111111111,
+   "utilMax": 0.08560382609275276,
+   "hostname": "server8",
+   "awaitWrites": "832"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-24T00:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "234",
+   "writeBytes": "1466880",
+   "writeMs": "13",
+   "ioMs": "10",
+   "weightedMs": "13",
+   "wAwaitMaxMs": 0.06140350877192982,
+   "utilMax": 0.00010000333344444814,
+   "hostname": "server8",
+   "awaitWrites": "234"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-23T23:00:00Z",
+   "bucketSecs": 3600,
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-23T22:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "260",
+   "writeBytes": "1864192",
+   "writeMs": "11",
+   "ioMs": "12",
+   "weightedMs": "11",
+   "wAwaitMaxMs": 0.04310344827586207,
+   "utilMax": 0.00011664916929127298,
+   "hostname": "server8",
+   "awaitWrites": "260"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-23T21:00:00Z",
+   "bucketSecs": 3600,
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-23T20:00:00Z",
+   "bucketSecs": 3599,
+   "reads": "2",
+   "writes": "233",
+   "readBytes": "262144",
+   "writeBytes": "1536512",
+   "readMs": "2",
+   "writeMs": "18",
+   "ioMs": "14",
+   "weightedMs": "20",
+   "rAwaitMaxMs": 1,
+   "wAwaitMaxMs": 0.07964601769911504,
+   "utilMax": 0.00011668611435239207,
+   "hostname": "server8",
+   "awaitReads": "2",
+   "awaitWrites": "233"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-23T19:00:00Z",
+   "bucketSecs": 3600,
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-23T18:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "143",
+   "writeBytes": "792064",
+   "writeMs": "6",
+   "ioMs": "4",
+   "weightedMs": "6",
+   "wAwaitMaxMs": 0.04195804195804196,
+   "utilMax": 0.00006666444451851606,
+   "hostname": "server8",
+   "awaitWrites": "143"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-23T17:00:00Z",
+   "bucketSecs": 3600,
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-23T16:00:00Z",
+   "bucketSecs": 3599,
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-23T15:00:00Z",
+   "bucketSecs": 3599,
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-23T14:00:00Z",
+   "bucketSecs": 3599,
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-23T13:00:00Z",
+   "bucketSecs": 3600,
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-23T12:00:00Z",
+   "bucketSecs": 3600,
+   "reads": "66",
+   "writes": "115",
+   "readBytes": "8650752",
+   "writeBytes": "719872",
+   "readMs": "103",
+   "writeMs": "5",
+   "ioMs": "35",
+   "weightedMs": "108",
+   "rAwaitMaxMs": 1.75,
+   "wAwaitMaxMs": 0.043478260869565216,
+   "utilMax": 0.0004499325101234815,
+   "hostname": "server8",
+   "awaitReads": "66",
+   "awaitWrites": "115"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-23T11:00:00Z",
+   "bucketSecs": 3599,
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-23T10:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "126",
+   "writeBytes": "746496",
+   "writeMs": "8",
+   "ioMs": "5",
+   "weightedMs": "8",
+   "wAwaitMaxMs": 0.06349206349206349,
+   "utilMax": 0.0000833361112037068,
+   "hostname": "server8",
+   "awaitWrites": "126"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-23T09:00:00Z",
+   "bucketSecs": 3600,
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-23T08:00:00Z",
+   "bucketSecs": 3599,
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-23T07:00:00Z",
+   "bucketSecs": 3600,
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-23T06:00:00Z",
+   "bucketSecs": 3599,
+   "reads": "144",
+   "writes": "376",
+   "readBytes": "1900544",
+   "writeBytes": "2814464",
+   "readMs": "18",
+   "writeMs": "34",
+   "ioMs": "911",
+   "weightedMs": "52",
+   "rAwaitMaxMs": 0.125,
+   "wAwaitMaxMs": 0.09042553191489362,
+   "utilMax": 0.015185104928908373,
+   "hostname": "server8",
+   "awaitReads": "144",
+   "awaitWrites": "376"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-23T05:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "119",
+   "writeBytes": "1080320",
+   "writeMs": "10",
+   "ioMs": "12436477",
+   "weightedMs": "10",
+   "wAwaitMaxMs": 0.08403361344537816,
+   "utilMax": 1,
+   "hostname": "server8",
+   "awaitWrites": "119"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-23T04:00:00Z",
+   "bucketSecs": 3599,
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-23T03:00:00Z",
+   "bucketSecs": 3599,
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-23T02:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "355",
+   "writeBytes": "2747904",
+   "writeMs": "18",
+   "ioMs": "6036480",
+   "weightedMs": "18",
+   "wAwaitMaxMs": 0.05070422535211268,
+   "utilMax": 1,
+   "hostname": "server8",
+   "awaitWrites": "355"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-23T01:00:00Z",
+   "bucketSecs": 3599,
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-23T00:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "116",
+   "writeBytes": "734208",
+   "writeMs": "9",
+   "ioMs": "6",
+   "weightedMs": "9",
+   "wAwaitMaxMs": 0.07758620689655173,
+   "utilMax": 0.00009998500224966255,
+   "hostname": "server8",
+   "awaitWrites": "116"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-22T23:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "252",
+   "writeBytes": "1999360",
+   "writeMs": "21",
+   "ioMs": "15358",
+   "weightedMs": "21",
+   "wAwaitMaxMs": 0.09090909090909091,
+   "utilMax": 0.25589691443431295,
+   "hostname": "server8",
+   "awaitWrites": "252"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-22T22:00:00Z",
+   "bucketSecs": 3599,
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-22T21:00:00Z",
+   "bucketSecs": 3600,
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-22T20:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "576",
+   "writeBytes": "5999104",
+   "writeMs": "38",
+   "ioMs": "27",
+   "weightedMs": "38",
+   "wAwaitMaxMs": 0.08270676691729323,
+   "utilMax": 0.00015000250004166735,
+   "hostname": "server8",
+   "awaitWrites": "576"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-22T19:00:00Z",
+   "bucketSecs": 3600,
+   "reads": "2489",
+   "writes": "644",
+   "readBytes": "326238208",
+   "writeBytes": "3517440",
+   "readMs": "3631",
+   "writeMs": "39",
+   "ioMs": "1649",
+   "weightedMs": "3670",
+   "rAwaitMaxMs": 1.660649819494585,
+   "wAwaitMaxMs": 0.08403361344537816,
+   "utilMax": 0.02320038667311122,
+   "hostname": "server8",
+   "awaitReads": "2489",
+   "awaitWrites": "644"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-22T18:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "144",
+   "writeBytes": "738304",
+   "writeMs": "13",
+   "ioMs": "8",
+   "weightedMs": "13",
+   "wAwaitMaxMs": 0.09027777777777778,
+   "utilMax": 0.00013340225783321384,
+   "hostname": "server8",
+   "awaitWrites": "144"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-22T17:00:00Z",
+   "bucketSecs": 3600,
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-22T16:00:00Z",
+   "bucketSecs": 3599,
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-22T15:00:00Z",
+   "bucketSecs": 3600,
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-22T14:00:00Z",
+   "bucketSecs": 3600,
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-22T13:00:00Z",
+   "bucketSecs": 3599,
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-22T12:00:00Z",
+   "bucketSecs": 3599,
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-22T11:00:00Z",
+   "bucketSecs": 3600,
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-22T10:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "259",
+   "writeBytes": "1385984",
+   "writeMs": "16",
+   "ioMs": "363516",
+   "weightedMs": "16",
+   "wAwaitMaxMs": 0.06666666666666667,
+   "utilMax": 1,
+   "hostname": "server8",
+   "awaitWrites": "259"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-22T09:00:00Z",
+   "bucketSecs": 3600,
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-22T08:00:00Z",
+   "bucketSecs": 3599,
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-22T07:00:00Z",
+   "bucketSecs": 3600,
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-22T06:00:00Z",
+   "bucketSecs": 3599,
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-22T05:00:00Z",
+   "bucketSecs": 3600,
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-22T04:00:00Z",
+   "bucketSecs": 3599,
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-22T03:00:00Z",
+   "bucketSecs": 3600,
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-22T02:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "596",
+   "writeBytes": "3219456",
+   "writeMs": "32",
+   "ioMs": "25",
+   "weightedMs": "32",
+   "wAwaitMaxMs": 0.053691275167785234,
+   "utilMax": 0.0004166666666666667,
+   "hostname": "server8",
+   "awaitWrites": "596"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-22T01:00:00Z",
+   "bucketSecs": 3600,
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-22T00:00:00Z",
+   "bucketSecs": 3599,
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-21T23:00:00Z",
+   "bucketSecs": 3600,
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-21T22:00:00Z",
+   "bucketSecs": 3599,
+   "reads": "65",
+   "writes": "116",
+   "readBytes": "466944",
+   "writeBytes": "612864",
+   "readMs": "6",
+   "writeMs": "11",
+   "ioMs": "11",
+   "weightedMs": "17",
+   "rAwaitMaxMs": 0.09230769230769231,
+   "wAwaitMaxMs": 0.09482758620689655,
+   "utilMax": 0.00009998500224966255,
+   "hostname": "server8",
+   "awaitReads": "65",
+   "awaitWrites": "116"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-21T21:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "115",
+   "writeBytes": "676352",
+   "writeMs": "9",
+   "ioMs": "5",
+   "weightedMs": "9",
+   "wAwaitMaxMs": 0.0782608695652174,
+   "utilMax": 0.000083268106649791,
+   "hostname": "server8",
+   "awaitWrites": "115"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-21T20:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "169",
+   "writeBytes": "861184",
+   "writeMs": "16",
+   "ioMs": "10",
+   "weightedMs": "16",
+   "wAwaitMaxMs": 0.09467455621301775,
+   "utilMax": 0.00016661945782028424,
+   "hostname": "server8",
+   "awaitWrites": "169"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-21T19:00:00Z",
+   "bucketSecs": 3599,
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-21T18:00:00Z",
+   "bucketSecs": 3600,
+   "reads": "84",
+   "writes": "486",
+   "readBytes": "11010048",
+   "writeBytes": "2665984",
+   "readMs": "160",
+   "writeMs": "38",
+   "ioMs": "62",
+   "weightedMs": "198",
+   "rAwaitMaxMs": 1.9047619047619047,
+   "wAwaitMaxMs": 0.09565217391304348,
+   "utilMax": 0.0007165591827892483,
+   "hostname": "server8",
+   "awaitReads": "84",
+   "awaitWrites": "486"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-21T17:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "144",
+   "writeBytes": "753152",
+   "writeMs": "12",
+   "ioMs": "11",
+   "weightedMs": "12",
+   "wAwaitMaxMs": 0.08333333333333333,
+   "utilMax": 0.00018333333333333334,
+   "hostname": "server8",
+   "awaitWrites": "144"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-21T16:00:00Z",
+   "bucketSecs": 3600,
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-21T15:00:00Z",
+   "bucketSecs": 3599,
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-21T14:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "121",
+   "writeBytes": "742912",
+   "writeMs": "9",
+   "ioMs": "7",
+   "weightedMs": "9",
+   "wAwaitMaxMs": 0.0743801652892562,
+   "utilMax": 0.00011671335200746966,
+   "hostname": "server8",
+   "awaitWrites": "121"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-21T13:00:00Z",
+   "bucketSecs": 3600,
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-21T12:00:00Z",
+   "bucketSecs": 3599,
+   "reads": "147",
+   "readBytes": "19267584",
+   "readMs": "372",
+   "ioMs": "57",
+   "weightedMs": "372",
+   "rAwaitMaxMs": 2.5306122448979593,
+   "utilMax": 0.0009499841669305512,
+   "hostname": "server8",
+   "awaitReads": "147"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-21T11:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "282",
+   "writeBytes": "2103808",
+   "writeMs": "20",
+   "ioMs": "12",
+   "weightedMs": "20",
+   "wAwaitMaxMs": 0.08130081300813008,
+   "utilMax": 0.00010001833669506077,
+   "hostname": "server8",
+   "awaitWrites": "282"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-21T10:00:00Z",
+   "bucketSecs": 3600,
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-21T09:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "267",
+   "writeBytes": "4080128",
+   "writeMs": "20",
+   "ioMs": "17",
+   "weightedMs": "20",
+   "wAwaitMaxMs": 0.07874015748031496,
+   "utilMax": 0.00015,
+   "hostname": "server8",
+   "awaitWrites": "267"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-21T08:00:00Z",
+   "bucketSecs": 3599,
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-21T07:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "198",
+   "writeBytes": "1185792",
+   "writeMs": "13",
+   "ioMs": "9",
+   "weightedMs": "13",
+   "wAwaitMaxMs": 0.09375,
+   "utilMax": 0.00013326669998334166,
+   "hostname": "server8",
+   "awaitWrites": "198"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-21T06:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "48",
+   "writeBytes": "265216",
+   "writeMs": "4",
+   "ioMs": "3",
+   "weightedMs": "4",
+   "wAwaitMaxMs": 0.08333333333333333,
+   "utilMax": 0.00005,
+   "hostname": "server8",
+   "awaitWrites": "48"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-21T05:00:00Z",
+   "bucketSecs": 3599,
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-21T04:00:00Z",
+   "bucketSecs": 3240,
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-21T03:00:00Z",
+   "bucketSecs": 420,
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-21T02:00:00Z",
+   "bucketSecs": 3599,
+   "reads": "45",
+   "writes": "375",
+   "readBytes": "385024",
+   "writeBytes": "2584064",
+   "readMs": "2",
+   "writeMs": "28",
+   "ioMs": "19",
+   "weightedMs": "30",
+   "rAwaitMaxMs": 0.044444444444444446,
+   "wAwaitMaxMs": 0.07466666666666667,
+   "utilMax": 0.0002833805634272379,
+   "hostname": "server8",
+   "awaitReads": "45",
+   "awaitWrites": "375"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-21T01:00:00Z",
+   "bucketSecs": 3600,
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-21T00:00:00Z",
+   "bucketSecs": 3600,
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-20T23:00:00Z",
+   "bucketSecs": 3599,
+   "writes": "122",
+   "writeBytes": "873984",
+   "writeMs": "4",
+   "ioMs": "4",
+   "weightedMs": "4",
+   "wAwaitMaxMs": 0.03278688524590164,
+   "utilMax": 0.00006670224119530417,
+   "hostname": "server8",
+   "awaitWrites": "122"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-20T22:00:00Z",
+   "bucketSecs": 3600,
+   "hostname": "server8"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-20T21:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "157",
+   "writeBytes": "930816",
+   "writeMs": "16",
+   "ioMs": "11",
+   "weightedMs": "16",
+   "wAwaitMaxMs": 0.10191082802547771,
+   "utilMax": 0.00018333333333333334,
+   "hostname": "server8",
+   "awaitWrites": "157"
+  },
+  {
+   "identity": {
+    "wwn": "eui.0100000004000000e4d25c0000000000",
+    "model": "INTEL SSDPD2KS076T7M",
+    "serial": "BTLD7486036U8P0F"
+   },
+   "devName": "nvme0n1",
+   "bucketStart": "2026-09-20T20:00:00Z",
+   "bucketSecs": 3600,
+   "writes": "226",
+   "writeBytes": "1640960",
+   "writeMs": "18",
+   "ioMs": "13",
+   "weightedMs": "18",
+   "wAwaitMaxMs": 0.10569105691056911,
+   "utilMax": 0.00014999250037498125,
+   "hostname": "server8",
+   "awaitWrites": "226"
+  }
+ ]
+}

@@ -1,0 +1,65 @@
+{
+ "drive": {
+  "driveId": "59",
+  "wwn": "0x5000cca263c56678",
+  "vendor": "ATA",
+  "model": "HUH728080ALE601",
+  "serial": "R6GBW8JY",
+  "sizeBytes": "8001563222016",
+  "bus": "BUS_SAS",
+  "status": "ok",
+  "firstSeen": "2026-09-13T01:41:39Z",
+  "lastSeen": "2026-09-27T19:41:38Z",
+  "current": {
+   "hostname": "nas",
+   "enclosure": "0x5003048001e8967f",
+   "bay": "5",
+   "devName": "sdca",
+   "uses": [
+    "zfs > space 5925914041408872576 > raidz2 3388823558429738332 > disk 16809762363229148826"
+   ],
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "enclosureVia": "expander-11:1",
+   "enclosureName": "nas-sc847-front"
+  },
+  "memberState": "ONLINE"
+ },
+ "placements": [
+  {
+   "hostname": "nas",
+   "enclosure": "0x5003048001e8967f",
+   "bay": "5",
+   "devName": "sdca",
+   "uses": [
+    "zfs > space 5925914041408872576 > raidz2 3388823558429738332 > disk 16809762363229148826"
+   ],
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "enclosureVia": "expander-11:1",
+   "enclosureName": "nas-sc847-front"
+  }
+ ],
+ "events": [
+  {
+   "eventId": "320",
+   "ts": "2026-09-13T01:41:39Z",
+   "kind": "first_seen",
+   "serial": "R6GBW8JY",
+   "wwn": "0x5000cca263c56678",
+   "hostname": "nas",
+   "detail": "{\"bay\":\"5\",\"dev_name\":\"sdca\",\"expander\":\"expander-11:1\",\"expander_dev\":\"expander-11:1\",\"uses\":[\"zfs \\u003e space 5925914041408872576 \\u003e raidz2 3388823558429738332 \\u003e disk 16809762363229148826\"]}",
+   "source": "snapshot:2"
+  },
+  {
+   "eventId": "432",
+   "ts": "2026-09-13T02:09:06Z",
+   "kind": "member_state_changed",
+   "serial": "R6GBW8JY",
+   "wwn": "0x5000cca263c56678",
+   "hostname": "nas",
+   "detail": "{\"from\":\"\",\"to\":\"ONLINE\",\"uses\":[\"zfs \\u003e space 5925914041408872576 \\u003e raidz2 3388823558429738332 \\u003e disk 16809762363229148826\"]}",
+   "source": "snapshot:8"
+  }
+ ]
+}

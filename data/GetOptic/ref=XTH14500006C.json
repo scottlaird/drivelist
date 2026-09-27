@@ -1,0 +1,274 @@
+{
+ "row": {
+  "optic": {
+   "port": "swp63",
+   "ports": [
+    "swp63"
+   ],
+   "form": "QSFP+",
+   "identifier": "0x0d (QSFP+)",
+   "kind": "optical",
+   "vendor": "Arista Networks",
+   "oui": "00:1c:73",
+   "part": "QSFP-40G-UNIV",
+   "rev": "01",
+   "serial": "XTH14500006C",
+   "dateCode": "141210",
+   "compliance": "40G Ethernet: 40G Base-LR4",
+   "connector": "LC",
+   "wavelengthNm": 1310,
+   "link": "up",
+   "diagnostics": true,
+   "tempC": 37.61,
+   "voltageV": 3.3649,
+   "lanes": [
+    {
+     "lane": 1,
+     "biasMa": 36.098,
+     "txMw": 1.4837,
+     "rxMw": 1.2576
+    },
+    {
+     "lane": 2,
+     "biasMa": 36.404,
+     "txMw": 2.1673,
+     "rxMw": 2.2052
+    },
+    {
+     "lane": 3,
+     "biasMa": 38.058,
+     "txMw": 1.3806,
+     "rxMw": 1.2333
+    },
+    {
+     "lane": 4,
+     "biasMa": 39.306,
+     "txMw": 1.2614,
+     "rxMw": 1.8409
+    }
+   ],
+   "thresholds": {
+    "bias_high_alarm": 105,
+    "bias_high_warning": 105,
+    "bias_low_alarm": 8,
+    "bias_low_warning": 10,
+    "rx_high_alarm": 3.3884,
+    "rx_high_warning": 2.6915,
+    "rx_low_alarm": 0.017,
+    "rx_low_warning": 0.0427,
+    "temp_high_alarm": 78,
+    "temp_high_warning": 75,
+    "temp_low_alarm": -5,
+    "temp_low_warning": 0,
+    "tx_high_alarm": 5.3703,
+    "tx_high_warning": 3.1623,
+    "tx_low_alarm": 0.0794,
+    "tx_low_warning": 0.1995,
+    "voltage_high_alarm": 3.63,
+    "voltage_high_warning": 3.465,
+    "voltage_low_alarm": 2.97,
+    "voltage_low_warning": 3.1
+   }
+  },
+  "status": "ok",
+  "hostname": "switch3",
+  "present": true,
+  "firstSeen": "2026-09-27T15:26:32Z",
+  "lastSeen": "2026-09-27T19:42:02Z",
+  "sampledAt": "2026-09-27T19:42:02Z"
+ },
+ "placements": [
+  {
+   "hostname": "switch3",
+   "port": "swp63",
+   "ports": [
+    "swp63"
+   ],
+   "firstSeen": "2026-09-27T15:26:32Z",
+   "lastSeen": "2026-09-27T19:42:02Z"
+  }
+ ],
+ "samples": [
+  {
+   "ts": "2026-09-27T19:42:02Z",
+   "hostname": "switch3",
+   "port": "swp63",
+   "tempC": 37.61,
+   "voltageV": 3.3649,
+   "lanes": [
+    {
+     "lane": 1,
+     "biasMa": 36.098,
+     "txMw": 1.4837,
+     "rxMw": 1.2576
+    },
+    {
+     "lane": 2,
+     "biasMa": 36.404,
+     "txMw": 2.1673,
+     "rxMw": 2.2052
+    },
+    {
+     "lane": 3,
+     "biasMa": 38.058,
+     "txMw": 1.3806,
+     "rxMw": 1.2333
+    },
+    {
+     "lane": 4,
+     "biasMa": 39.306,
+     "txMw": 1.2614,
+     "rxMw": 1.8409
+    }
+   ],
+   "link": "up"
+  },
+  {
+   "ts": "2026-09-27T18:56:56Z",
+   "hostname": "switch3",
+   "port": "swp63",
+   "tempC": 37.11,
+   "voltageV": 3.3658,
+   "lanes": [
+    {
+     "lane": 1,
+     "biasMa": 35.954,
+     "txMw": 1.4748,
+     "rxMw": 1.2523
+    },
+    {
+     "lane": 2,
+     "biasMa": 36.118,
+     "txMw": 2.128,
+     "rxMw": 2.1856
+    },
+    {
+     "lane": 3,
+     "biasMa": 37.356,
+     "txMw": 1.3772,
+     "rxMw": 1.241
+    },
+    {
+     "lane": 4,
+     "biasMa": 38.886,
+     "txMw": 1.2665,
+     "rxMw": 1.8313
+    }
+   ],
+   "link": "up"
+  },
+  {
+   "ts": "2026-09-27T17:56:50Z",
+   "hostname": "switch3",
+   "port": "swp63",
+   "tempC": 35.66,
+   "voltageV": 3.3656,
+   "lanes": [
+    {
+     "lane": 1,
+     "biasMa": 35.382,
+     "txMw": 1.4896,
+     "rxMw": 1.2387
+    },
+    {
+     "lane": 2,
+     "biasMa": 35.688,
+     "txMw": 2.1308,
+     "rxMw": 2.1892
+    },
+    {
+     "lane": 3,
+     "biasMa": 36.796,
+     "txMw": 1.3571,
+     "rxMw": 1.2364
+    },
+    {
+     "lane": 4,
+     "biasMa": 38.324,
+     "txMw": 1.2573,
+     "rxMw": 1.8392
+    }
+   ],
+   "link": "up"
+  },
+  {
+   "ts": "2026-09-27T16:56:43Z",
+   "hostname": "switch3",
+   "port": "swp63",
+   "tempC": 34.93,
+   "voltageV": 3.3656,
+   "lanes": [
+    {
+     "lane": 1,
+     "biasMa": 35.094,
+     "txMw": 1.4808,
+     "rxMw": 1.2439
+    },
+    {
+     "lane": 2,
+     "biasMa": 35.688,
+     "txMw": 2.1638,
+     "rxMw": 2.1639
+    },
+    {
+     "lane": 3,
+     "biasMa": 36.656,
+     "txMw": 1.3807,
+     "rxMw": 1.2342
+    },
+    {
+     "lane": 4,
+     "biasMa": 38.184,
+     "txMw": 1.2508,
+     "rxMw": 1.8181
+    }
+   ],
+   "link": "up"
+  },
+  {
+   "ts": "2026-09-27T15:56:36Z",
+   "hostname": "switch3",
+   "port": "swp63",
+   "tempC": 34.45,
+   "voltageV": 3.366,
+   "lanes": [
+    {
+     "lane": 1,
+     "biasMa": 34.808,
+     "txMw": 1.472,
+     "rxMw": 1.2475
+    },
+    {
+     "lane": 2,
+     "biasMa": 35.4,
+     "txMw": 2.1265,
+     "rxMw": 2.1929
+    },
+    {
+     "lane": 3,
+     "biasMa": 36.516,
+     "txMw": 1.3739,
+     "rxMw": 1.2328
+    },
+    {
+     "lane": 4,
+     "biasMa": 38.044,
+     "txMw": 1.264,
+     "rxMw": 1.8294
+    }
+   ],
+   "link": "up"
+  }
+ ],
+ "events": [
+  {
+   "eventId": "920",
+   "ts": "2026-09-27T15:26:32Z",
+   "kind": "optic_first_seen",
+   "hostname": "switch3",
+   "detail": "{\"form\":\"QSFP+\",\"part\":\"QSFP-40G-UNIV\",\"port\":\"swp63\",\"serial\":\"XTH14500006C\",\"vendor\":\"Arista Networks\"}",
+   "source": "report",
+   "opticSerial": "XTH14500006C"
+  }
+ ]
+}

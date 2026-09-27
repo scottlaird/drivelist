@@ -1,0 +1,196 @@
+{
+ "row": {
+  "optic": {
+   "port": "enp1s0f1np1",
+   "ports": [
+    "enp1s0f1np1"
+   ],
+   "form": "SFP",
+   "identifier": "0x03 (SFP)",
+   "kind": "optical",
+   "vendor": "FS",
+   "oui": "64:9d:99",
+   "part": "SFP-10GSR-85",
+   "rev": "A",
+   "serial": "F2130434217",
+   "dateCode": "211020",
+   "compliance": "10G Ethernet: 10G Base-SR",
+   "connector": "LC",
+   "wavelengthNm": 850,
+   "link": "up",
+   "diagnostics": true,
+   "tempC": 55.31,
+   "voltageV": 3.2925,
+   "lanes": [
+    {
+     "lane": 1,
+     "biasMa": 7.2,
+     "txMw": 0.6075,
+     "rxMw": 0.903
+    }
+   ],
+   "thresholds": {
+    "bias_high_alarm": 12,
+    "bias_high_warning": 10.5,
+    "bias_low_alarm": 1,
+    "bias_low_warning": 2.5,
+    "rx_high_alarm": 1.2589,
+    "rx_high_warning": 0.7943,
+    "rx_low_alarm": 0.0646,
+    "rx_low_warning": 0.1023,
+    "temp_high_alarm": 80,
+    "temp_high_warning": 70,
+    "temp_low_alarm": -10,
+    "temp_low_warning": 0,
+    "tx_high_alarm": 1.2589,
+    "tx_high_warning": 0.7943,
+    "tx_low_alarm": 0.1175,
+    "tx_low_warning": 0.1862,
+    "voltage_high_alarm": 3.63,
+    "voltage_high_warning": 3.465,
+    "voltage_low_alarm": 2.97,
+    "voltage_low_warning": 3.135
+   },
+   "flags": [
+    "rx high warning"
+   ]
+  },
+  "status": "ok",
+  "hostname": "server10",
+  "present": true,
+  "firstSeen": "2026-09-27T15:15:19Z",
+  "lastSeen": "2026-09-27T19:40:53Z",
+  "sampledAt": "2026-09-27T19:40:53Z",
+  "problems": [
+   "rx high warning"
+  ]
+ },
+ "placements": [
+  {
+   "hostname": "server10",
+   "port": "enp1s0f1np1",
+   "ports": [
+    "enp1s0f1np1"
+   ],
+   "firstSeen": "2026-09-27T15:15:19Z",
+   "lastSeen": "2026-09-27T19:40:53Z"
+  }
+ ],
+ "samples": [
+  {
+   "ts": "2026-09-27T19:40:53Z",
+   "hostname": "server10",
+   "port": "enp1s0f1np1",
+   "tempC": 55.31,
+   "voltageV": 3.2925,
+   "lanes": [
+    {
+     "lane": 1,
+     "biasMa": 7.2,
+     "txMw": 0.6075,
+     "rxMw": 0.903
+    }
+   ],
+   "flags": [
+    "rx high warning"
+   ],
+   "link": "up"
+  },
+  {
+   "ts": "2026-09-27T18:55:47Z",
+   "hostname": "server10",
+   "port": "enp1s0f1np1",
+   "tempC": 55.73,
+   "voltageV": 3.2925,
+   "lanes": [
+    {
+     "lane": 1,
+     "biasMa": 7.248,
+     "txMw": 0.6075,
+     "rxMw": 0.896
+    }
+   ],
+   "flags": [
+    "rx high warning"
+   ],
+   "link": "up"
+  },
+  {
+   "ts": "2026-09-27T17:55:40Z",
+   "hostname": "server10",
+   "port": "enp1s0f1np1",
+   "tempC": 55.73,
+   "voltageV": 3.2925,
+   "lanes": [
+    {
+     "lane": 1,
+     "biasMa": 7.2,
+     "txMw": 0.6075,
+     "rxMw": 0.903
+    }
+   ],
+   "flags": [
+    "rx high warning"
+   ],
+   "link": "up"
+  },
+  {
+   "ts": "2026-09-27T16:55:32Z",
+   "hostname": "server10",
+   "port": "enp1s0f1np1",
+   "tempC": 55.73,
+   "voltageV": 3.2925,
+   "lanes": [
+    {
+     "lane": 1,
+     "biasMa": 7.248,
+     "txMw": 0.6075,
+     "rxMw": 0.903
+    }
+   ],
+   "flags": [
+    "rx high warning"
+   ],
+   "link": "up"
+  },
+  {
+   "ts": "2026-09-27T15:55:24Z",
+   "hostname": "server10",
+   "port": "enp1s0f1np1",
+   "tempC": 55.73,
+   "voltageV": 3.2925,
+   "lanes": [
+    {
+     "lane": 1,
+     "biasMa": 7.2,
+     "txMw": 0.6075,
+     "rxMw": 0.903
+    }
+   ],
+   "flags": [
+    "rx high warning"
+   ],
+   "link": "up"
+  }
+ ],
+ "events": [
+  {
+   "eventId": "907",
+   "ts": "2026-09-27T15:15:19Z",
+   "kind": "optic_alarm",
+   "hostname": "server10",
+   "detail": "{\"flag\":\"rx high warning\",\"form\":\"SFP\",\"part\":\"SFP-10GSR-85\",\"port\":\"enp1s0f1np1\",\"serial\":\"F2130434217\",\"vendor\":\"FS\"}",
+   "source": "report",
+   "opticSerial": "F2130434217"
+  },
+  {
+   "eventId": "906",
+   "ts": "2026-09-27T15:15:19Z",
+   "kind": "optic_first_seen",
+   "hostname": "server10",
+   "detail": "{\"form\":\"SFP\",\"part\":\"SFP-10GSR-85\",\"port\":\"enp1s0f1np1\",\"serial\":\"F2130434217\",\"vendor\":\"FS\"}",
+   "source": "report",
+   "opticSerial": "F2130434217"
+  }
+ ]
+}

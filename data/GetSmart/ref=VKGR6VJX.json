@@ -1,0 +1,1574 @@
+{
+ "drive": {
+  "driveId": "47",
+  "wwn": "0x5000cca254286798",
+  "vendor": "HITACHI",
+  "model": "HUH72808CLAR8000",
+  "serial": "VKGR6VJX",
+  "sizeBytes": "8001563222016",
+  "bus": "BUS_SAS",
+  "status": "ok",
+  "firstSeen": "2026-09-13T01:41:39Z",
+  "lastSeen": "2026-09-27T19:41:38Z",
+  "current": {
+   "hostname": "nas",
+   "enclosure": "0x5000ccab020094ff",
+   "bay": "13",
+   "devName": "sdbp",
+   "uses": [
+    "zfs > space 5925914041408872576 > raidz2 16950899211129714203 > disk 11897712593002579400"
+   ],
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "enclosureVia": "expander-11:0",
+   "enclosureName": "nas-hgst-u60-1",
+   "bayLabel": "13"
+  },
+  "memberState": "ONLINE"
+ },
+ "samples": [
+  {
+   "identity": {
+    "wwn": "0x5000cca254286798",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGR6VJX"
+   },
+   "devName": "sdbp",
+   "ts": "2026-09-27T15:25:21Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "26011",
+    "tempC": 31,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "343379523000000",
+    "writeBytes": "63092158000000",
+    "selftestLast": "short: completed @ 43767h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254286798",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGR6VJX"
+   },
+   "devName": "sdbp",
+   "ts": "2026-09-27T15:12:53Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "26011",
+    "tempC": 31,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "343374866000000",
+    "writeBytes": "63092148000000",
+    "selftestLast": "short: completed @ 43767h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254286798",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGR6VJX"
+   },
+   "devName": "sdbp",
+   "ts": "2026-09-27T10:13:52Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "26006",
+    "tempC": 32,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "343260626000000",
+    "writeBytes": "63091899000000",
+    "selftestLast": "short: completed @ 43767h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254286798",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGR6VJX"
+   },
+   "devName": "sdbp",
+   "ts": "2026-09-27T04:13:36Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "26000",
+    "tempC": 33,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "343155126000000",
+    "writeBytes": "63091582000000",
+    "selftestLast": "short: completed @ 43767h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254286798",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGR6VJX"
+   },
+   "devName": "sdbp",
+   "ts": "2026-09-26T22:13:19Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "25994",
+    "tempC": 34,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "343090622000000",
+    "writeBytes": "63091266000000",
+    "selftestLast": "short: completed @ 43767h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254286798",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGR6VJX"
+   },
+   "devName": "sdbp",
+   "ts": "2026-09-26T16:13:02Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "25988",
+    "tempC": 31,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "342969477000000",
+    "writeBytes": "63090978000000",
+    "selftestLast": "short: completed @ 43767h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254286798",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGR6VJX"
+   },
+   "devName": "sdbp",
+   "ts": "2026-09-26T10:12:45Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "25982",
+    "tempC": 32,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "342898623000000",
+    "writeBytes": "63090370000000",
+    "selftestLast": "short: completed @ 43767h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254286798",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGR6VJX"
+   },
+   "devName": "sdbp",
+   "ts": "2026-09-26T04:12:29Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "25976",
+    "tempC": 32,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "342895086000000",
+    "writeBytes": "63090096000000",
+    "selftestLast": "short: completed @ 43767h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254286798",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGR6VJX"
+   },
+   "devName": "sdbp",
+   "ts": "2026-09-25T22:12:12Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "25970",
+    "tempC": 33,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "342895076000000",
+    "writeBytes": "63089782000000",
+    "selftestLast": "short: completed @ 43767h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254286798",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGR6VJX"
+   },
+   "devName": "sdbp",
+   "ts": "2026-09-25T16:11:56Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "25964",
+    "tempC": 33,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "342895029000000",
+    "writeBytes": "63089491000000",
+    "selftestLast": "short: completed @ 43767h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254286798",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGR6VJX"
+   },
+   "devName": "sdbp",
+   "ts": "2026-09-25T10:11:40Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "25958",
+    "tempC": 33,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "342894131000000",
+    "writeBytes": "63089202000000",
+    "selftestLast": "short: completed @ 43767h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254286798",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGR6VJX"
+   },
+   "devName": "sdbp",
+   "ts": "2026-09-25T04:11:24Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "25952",
+    "tempC": 34,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "342892000000000",
+    "writeBytes": "63088910000000",
+    "selftestLast": "short: completed @ 43767h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254286798",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGR6VJX"
+   },
+   "devName": "sdbp",
+   "ts": "2026-09-24T22:11:08Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "25946",
+    "tempC": 34,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "342891951000000",
+    "writeBytes": "63088575000000",
+    "selftestLast": "short: completed @ 43767h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254286798",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGR6VJX"
+   },
+   "devName": "sdbp",
+   "ts": "2026-09-24T16:10:52Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "25940",
+    "tempC": 33,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "342891938000000",
+    "writeBytes": "63088307000000",
+    "selftestLast": "short: completed @ 43767h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254286798",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGR6VJX"
+   },
+   "devName": "sdbp",
+   "ts": "2026-09-24T10:10:34Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "25934",
+    "tempC": 33,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "342863068000000",
+    "writeBytes": "63088012000000",
+    "selftestLast": "short: completed @ 43767h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254286798",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGR6VJX"
+   },
+   "devName": "sdbp",
+   "ts": "2026-09-24T04:10:11Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "25928",
+    "tempC": 34,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "342862004000000",
+    "writeBytes": "63087607000000",
+    "selftestLast": "short: completed @ 43767h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254286798",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGR6VJX"
+   },
+   "devName": "sdbp",
+   "ts": "2026-09-23T22:09:52Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "25922",
+    "tempC": 35,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "342861979000000",
+    "writeBytes": "63087301000000",
+    "selftestLast": "short: completed @ 43767h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254286798",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGR6VJX"
+   },
+   "devName": "sdbp",
+   "ts": "2026-09-23T16:09:27Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "25916",
+    "tempC": 34,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "342861947000000",
+    "writeBytes": "63087025000000",
+    "selftestLast": "short: completed @ 43767h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254286798",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGR6VJX"
+   },
+   "devName": "sdbp",
+   "ts": "2026-09-23T10:09:05Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "25910",
+    "tempC": 34,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "342861619000000",
+    "writeBytes": "63086725000000",
+    "selftestLast": "short: completed @ 43767h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254286798",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGR6VJX"
+   },
+   "devName": "sdbp",
+   "ts": "2026-09-23T04:08:46Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "25904",
+    "tempC": 35,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "342655933000000",
+    "writeBytes": "63086437000000",
+    "selftestLast": "short: completed @ 43767h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254286798",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGR6VJX"
+   },
+   "devName": "sdbp",
+   "ts": "2026-09-22T22:08:27Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "25898",
+    "tempC": 36,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "342344922000000",
+    "writeBytes": "63086118000000",
+    "selftestLast": "short: completed @ 43767h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254286798",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGR6VJX"
+   },
+   "devName": "sdbp",
+   "ts": "2026-09-22T16:08:04Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "25892",
+    "tempC": 33,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "342036538000000",
+    "writeBytes": "63085821000000",
+    "selftestLast": "short: completed @ 43767h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254286798",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGR6VJX"
+   },
+   "devName": "sdbp",
+   "ts": "2026-09-22T10:07:45Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "25886",
+    "tempC": 34,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "341895730000000",
+    "writeBytes": "63085535000000",
+    "selftestLast": "short: completed @ 43767h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254286798",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGR6VJX"
+   },
+   "devName": "sdbp",
+   "ts": "2026-09-22T04:07:26Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "25880",
+    "tempC": 36,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "341803499000000",
+    "writeBytes": "63085244000000",
+    "selftestLast": "short: completed @ 43767h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254286798",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGR6VJX"
+   },
+   "devName": "sdbp",
+   "ts": "2026-09-21T22:07:07Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "25874",
+    "tempC": 36,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "341719145000000",
+    "writeBytes": "63084825000000",
+    "selftestLast": "short: completed @ 43767h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254286798",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGR6VJX"
+   },
+   "devName": "sdbp",
+   "ts": "2026-09-21T16:06:44Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "25868",
+    "tempC": 34,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "341609011000000",
+    "writeBytes": "63084548000000",
+    "selftestLast": "short: completed @ 43767h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254286798",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGR6VJX"
+   },
+   "devName": "sdbp",
+   "ts": "2026-09-21T10:06:23Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "25862",
+    "tempC": 34,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "341527373000000",
+    "writeBytes": "63084253000000",
+    "selftestLast": "short: completed @ 43767h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254286798",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGR6VJX"
+   },
+   "devName": "sdbp",
+   "ts": "2026-09-21T04:05:59Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "25856",
+    "tempC": 36,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "341266179000000",
+    "writeBytes": "63083130000000",
+    "selftestLast": "short: completed @ 43767h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254286798",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGR6VJX"
+   },
+   "devName": "sdbp",
+   "ts": "2026-09-21T03:53:30Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "25855",
+    "tempC": 36,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "341255287000000",
+    "writeBytes": "63082716000000",
+    "selftestLast": "short: completed @ 43767h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254286798",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGR6VJX"
+   },
+   "devName": "sdbp",
+   "ts": "2026-09-21T03:43:10Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "25855",
+    "tempC": 36,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "341246901000000",
+    "writeBytes": "63082386000000",
+    "selftestLast": "short: completed @ 43767h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254286798",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGR6VJX"
+   },
+   "devName": "sdbp",
+   "ts": "2026-09-21T03:28:40Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "25855",
+    "tempC": 36,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "341234336000000",
+    "writeBytes": "63081561000000",
+    "selftestLast": "short: completed @ 43767h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254286798",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGR6VJX"
+   },
+   "devName": "sdbp",
+   "ts": "2026-09-21T01:42:26Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "25853",
+    "tempC": 36,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "341139726000000",
+    "writeBytes": "63076564000000",
+    "selftestLast": "short: completed @ 43767h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254286798",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGR6VJX"
+   },
+   "devName": "sdbp",
+   "ts": "2026-09-20T19:42:04Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "25847",
+    "tempC": 36,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "340812592000000",
+    "writeBytes": "63076289000000",
+    "selftestLast": "short: completed @ 43767h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254286798",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGR6VJX"
+   },
+   "devName": "sdbp",
+   "ts": "2026-09-20T14:22:04Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "25842",
+    "tempC": 33,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "340678258000000",
+    "writeBytes": "63071607000000",
+    "selftestLast": "short: completed @ 43767h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254286798",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGR6VJX"
+   },
+   "devName": "sdbp",
+   "ts": "2026-09-20T08:21:34Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "25836",
+    "tempC": 34,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "340541243000000",
+    "writeBytes": "63071322000000",
+    "selftestLast": "short: completed @ 43767h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254286798",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGR6VJX"
+   },
+   "devName": "sdbp",
+   "ts": "2026-09-20T02:21:15Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "25830",
+    "tempC": 35,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "340419353000000",
+    "writeBytes": "63063793000000",
+    "selftestLast": "short: completed @ 43767h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254286798",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGR6VJX"
+   },
+   "devName": "sdbp",
+   "ts": "2026-09-19T20:20:47Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "25824",
+    "tempC": 35,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "340369803000000",
+    "writeBytes": "63056574000000",
+    "selftestLast": "short: completed @ 43767h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254286798",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGR6VJX"
+   },
+   "devName": "sdbp",
+   "ts": "2026-09-19T17:50:03Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "25821",
+    "tempC": 34,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "340310682000000",
+    "writeBytes": "63056451000000",
+    "selftestLast": "short: completed @ 43767h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254286798",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGR6VJX"
+   },
+   "devName": "sdbp",
+   "ts": "2026-09-19T11:49:42Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "25815",
+    "tempC": 34,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "340206140000000",
+    "writeBytes": "63056151000000",
+    "selftestLast": "short: completed @ 43767h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254286798",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGR6VJX"
+   },
+   "devName": "sdbp",
+   "ts": "2026-09-19T05:49:11Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "25809",
+    "tempC": 35,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "340102453000000",
+    "writeBytes": "63055848000000",
+    "selftestLast": "short: completed @ 43767h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254286798",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGR6VJX"
+   },
+   "devName": "sdbp",
+   "ts": "2026-09-18T23:48:35Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "25803",
+    "tempC": 36,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "339809749000000",
+    "writeBytes": "63055509000000",
+    "selftestLast": "short: completed @ 43767h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254286798",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGR6VJX"
+   },
+   "devName": "sdbp",
+   "ts": "2026-09-18T17:48:02Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "25797",
+    "tempC": 35,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "339503288000000",
+    "writeBytes": "63055235000000",
+    "selftestLast": "short: completed @ 43767h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254286798",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGR6VJX"
+   },
+   "devName": "sdbp",
+   "ts": "2026-09-18T11:47:42Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "25791",
+    "tempC": 34,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "339272261000000",
+    "writeBytes": "63054943000000",
+    "selftestLast": "short: completed @ 43767h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254286798",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGR6VJX"
+   },
+   "devName": "sdbp",
+   "ts": "2026-09-18T05:47:22Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "25785",
+    "tempC": 34,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "339143300000000",
+    "writeBytes": "63054630000000",
+    "selftestLast": "short: completed @ 43767h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254286798",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGR6VJX"
+   },
+   "devName": "sdbp",
+   "ts": "2026-09-17T23:46:56Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "25779",
+    "tempC": 38,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "339068820000000",
+    "writeBytes": "63054309000000",
+    "selftestLast": "short: completed @ 43767h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254286798",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGR6VJX"
+   },
+   "devName": "sdbp",
+   "ts": "2026-09-17T17:46:37Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "25773",
+    "tempC": 35,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "338999770000000",
+    "writeBytes": "63054038000000",
+    "selftestLast": "short: completed @ 43767h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254286798",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGR6VJX"
+   },
+   "devName": "sdbp",
+   "ts": "2026-09-17T11:46:19Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "25767",
+    "tempC": 34,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "338963629000000",
+    "writeBytes": "63053671000000",
+    "selftestLast": "short: completed @ 43767h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254286798",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGR6VJX"
+   },
+   "devName": "sdbp",
+   "ts": "2026-09-17T05:46:02Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "25761",
+    "tempC": 35,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "338936739000000",
+    "writeBytes": "63053352000000",
+    "selftestLast": "short: completed @ 43767h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254286798",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGR6VJX"
+   },
+   "devName": "sdbp",
+   "ts": "2026-09-16T23:45:46Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "25755",
+    "tempC": 37,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "338917582000000",
+    "writeBytes": "63053034000000",
+    "selftestLast": "short: completed @ 43767h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254286798",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGR6VJX"
+   },
+   "devName": "sdbp",
+   "ts": "2026-09-16T17:45:29Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "25749",
+    "tempC": 34,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "338795816000000",
+    "writeBytes": "63052739000000",
+    "selftestLast": "short: completed @ 43767h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254286798",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGR6VJX"
+   },
+   "devName": "sdbp",
+   "ts": "2026-09-16T11:45:12Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "25743",
+    "tempC": 34,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "338742177000000",
+    "writeBytes": "63052464000000",
+    "selftestLast": "short: completed @ 43767h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254286798",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGR6VJX"
+   },
+   "devName": "sdbp",
+   "ts": "2026-09-16T05:44:57Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "25737",
+    "tempC": 35,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "338675435000000",
+    "writeBytes": "63052168000000",
+    "selftestLast": "short: completed @ 43767h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254286798",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGR6VJX"
+   },
+   "devName": "sdbp",
+   "ts": "2026-09-15T23:44:40Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "25731",
+    "tempC": 36,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "338451899000000",
+    "writeBytes": "63051829000000",
+    "selftestLast": "short: completed @ 43767h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254286798",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGR6VJX"
+   },
+   "devName": "sdbp",
+   "ts": "2026-09-15T17:44:24Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "25725",
+    "tempC": 33,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "338145797000000",
+    "writeBytes": "63051535000000",
+    "selftestLast": "short: completed @ 43767h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254286798",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGR6VJX"
+   },
+   "devName": "sdbp",
+   "ts": "2026-09-15T11:44:07Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "25719",
+    "tempC": 34,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "337839255000000",
+    "writeBytes": "63051269000000",
+    "selftestLast": "short: completed @ 43767h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254286798",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGR6VJX"
+   },
+   "devName": "sdbp",
+   "ts": "2026-09-15T05:43:50Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "25713",
+    "tempC": 34,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "337652867000000",
+    "writeBytes": "63050901000000",
+    "selftestLast": "short: completed @ 43767h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254286798",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGR6VJX"
+   },
+   "devName": "sdbp",
+   "ts": "2026-09-14T23:43:33Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "25707",
+    "tempC": 35,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "337581173000000",
+    "writeBytes": "63050580000000",
+    "selftestLast": "short: completed @ 43767h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254286798",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGR6VJX"
+   },
+   "devName": "sdbp",
+   "ts": "2026-09-14T17:43:17Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "25701",
+    "tempC": 35,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "337462808000000",
+    "writeBytes": "63050297000000",
+    "selftestLast": "short: completed @ 43767h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254286798",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGR6VJX"
+   },
+   "devName": "sdbp",
+   "ts": "2026-09-14T16:09:53Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "25700",
+    "tempC": 34,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "337443230000000",
+    "writeBytes": "63050202000000",
+    "selftestLast": "short: completed @ 43767h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254286798",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGR6VJX"
+   },
+   "devName": "sdbp",
+   "ts": "2026-09-14T10:09:35Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "25694",
+    "tempC": 34,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "337360357000000",
+    "writeBytes": "63049871000000",
+    "selftestLast": "short: completed @ 43767h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254286798",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGR6VJX"
+   },
+   "devName": "sdbp",
+   "ts": "2026-09-14T04:09:18Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "25688",
+    "tempC": 35,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "337355988000000",
+    "writeBytes": "63049583000000",
+    "selftestLast": "short: completed @ 43767h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254286798",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGR6VJX"
+   },
+   "devName": "sdbp",
+   "ts": "2026-09-14T03:59:13Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "25687",
+    "tempC": 35,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "337355988000000",
+    "writeBytes": "63049569000000",
+    "selftestLast": "short: completed @ 43767h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254286798",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGR6VJX"
+   },
+   "devName": "sdbp",
+   "ts": "2026-09-14T03:46:21Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "25687",
+    "tempC": 35,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "337355987000000",
+    "writeBytes": "63049551000000",
+    "selftestLast": "short: completed @ 43767h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254286798",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGR6VJX"
+   },
+   "devName": "sdbp",
+   "ts": "2026-09-13T23:13:07Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "25683",
+    "tempC": 35,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "336461668000000",
+    "writeBytes": "63048613000000",
+    "selftestLast": "short: completed @ 43767h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254286798",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGR6VJX"
+   },
+   "devName": "sdbp",
+   "ts": "2026-09-13T22:10:34Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "25682",
+    "tempC": 35,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "336167092000000",
+    "writeBytes": "63048561000000",
+    "selftestLast": "short: completed @ 43767h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254286798",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGR6VJX"
+   },
+   "devName": "sdbp",
+   "ts": "2026-09-13T21:37:13Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "25681",
+    "tempC": 35,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "336011626000000",
+    "writeBytes": "63048523000000",
+    "selftestLast": "short: completed @ 43767h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254286798",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGR6VJX"
+   },
+   "devName": "sdbp",
+   "ts": "2026-09-13T21:15:27Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "25681",
+    "tempC": 35,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "335886116000000",
+    "writeBytes": "63048504000000",
+    "selftestLast": "short: completed @ 43767h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254286798",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGR6VJX"
+   },
+   "devName": "sdbp",
+   "ts": "2026-09-13T17:05:08Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "25677",
+    "tempC": 35,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "334673618000000",
+    "writeBytes": "63048226000000",
+    "selftestLast": "short: completed @ 43767h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254286798",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGR6VJX"
+   },
+   "devName": "sdbp",
+   "ts": "2026-09-13T14:18:34Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "25674",
+    "tempC": 35,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "333946691000000",
+    "writeBytes": "63048075000000",
+    "selftestLast": "short: completed @ 43767h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254286798",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGR6VJX"
+   },
+   "devName": "sdbp",
+   "ts": "2026-09-13T08:17:48Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "25668",
+    "tempC": 36,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "332512476000000",
+    "writeBytes": "63047798000000",
+    "selftestLast": "short: completed @ 43767h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254286798",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGR6VJX"
+   },
+   "devName": "sdbp",
+   "ts": "2026-09-13T02:17:12Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "25662",
+    "tempC": 36,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "332231593000000",
+    "writeBytes": "63047181000000",
+    "selftestLast": "short: completed @ 43767h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca254286798",
+    "model": "HUH72808CLAR8000",
+    "serial": "VKGR6VJX"
+   },
+   "devName": "sdbp",
+   "ts": "2026-09-13T02:09:16Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "25662",
+    "tempC": 36,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "332227814000000",
+    "writeBytes": "63047171000000",
+    "selftestLast": "short: completed @ 43767h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  }
+ ]
+}

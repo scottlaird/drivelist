@@ -1,0 +1,75 @@
+{
+ "drive": {
+  "driveId": "77",
+  "wwn": "0x5000cca25207ef14",
+  "vendor": "HGST",
+  "model": "HUH721008AL5204",
+  "serial": "7SG4B86G",
+  "sizeBytes": "8001563222016",
+  "bus": "BUS_SAS",
+  "status": "ok",
+  "firstSeen": "2026-09-13T01:41:39Z",
+  "lastSeen": "2026-09-27T19:41:38Z",
+  "current": {
+   "hostname": "nas",
+   "enclosure": "0x500304800000007f",
+   "bay": "2",
+   "devName": "sde",
+   "uses": [
+    "zfs > space 5925914041408872576 > raidz2 5204885172110344134 > disk 5369926289127318604"
+   ],
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "enclosureVia": "expander-10:0",
+   "enclosureName": "nas-sc847-back"
+  },
+  "memberState": "ONLINE"
+ },
+ "placements": [
+  {
+   "hostname": "nas",
+   "enclosure": "0x500304800000007f",
+   "bay": "2",
+   "devName": "sde",
+   "uses": [
+    "zfs > space 5925914041408872576 > raidz2 5204885172110344134 > disk 5369926289127318604"
+   ],
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "enclosureVia": "expander-10:0",
+   "enclosureName": "nas-sc847-back"
+  }
+ ],
+ "events": [
+  {
+   "eventId": "338",
+   "ts": "2026-09-13T01:41:39Z",
+   "kind": "first_seen",
+   "serial": "7SG4B86G",
+   "wwn": "0x5000cca25207ef14",
+   "hostname": "nas",
+   "detail": "{\"bay\":\"2\",\"dev_name\":\"sde\",\"expander\":\"expander-10:0\",\"expander_dev\":\"expander-10:0\",\"uses\":[\"zfs \\u003e space 5925914041408872576 \\u003e raidz2 5204885172110344134 \\u003e disk 5369926289127318604\"]}",
+   "source": "snapshot:2"
+  },
+  {
+   "eventId": "448",
+   "ts": "2026-09-13T02:09:06Z",
+   "kind": "member_state_changed",
+   "serial": "7SG4B86G",
+   "wwn": "0x5000cca25207ef14",
+   "hostname": "nas",
+   "detail": "{\"from\":\"\",\"to\":\"ONLINE\",\"uses\":[\"zfs \\u003e space 5925914041408872576 \\u003e raidz2 5204885172110344134 \\u003e disk 5369926289127318604\"]}",
+   "source": "snapshot:8"
+  },
+  {
+   "eventId": "223",
+   "ts": "2026-09-13T02:09:21Z",
+   "kind": "smart_warning",
+   "serial": "7SG4B86G",
+   "wwn": "0x5000cca25207ef14",
+   "hostname": "nas",
+   "detail": "{\"dev_name\":\"sde\",\"healthy\":true,\"protocol\":\"SCSI\",\"reasons\":[\"reallocated 3\"]}",
+   "source": "smart"
+  }
+ ]
+}

@@ -1,0 +1,83 @@
+{
+ "row": {
+  "optic": {
+   "port": "swp61",
+   "ports": [
+    "swp61"
+   ],
+   "form": "SFP",
+   "identifier": "0x03 (SFP)",
+   "kind": "dac",
+   "vendor": "FS",
+   "oui": "00:02:c9",
+   "part": "S28-PC02",
+   "rev": "01",
+   "serial": "G1910037893-2",
+   "dateCode": "191127",
+   "compliance": "Passive Cable",
+   "connector": "Copper pigtail",
+   "link": "down"
+  },
+  "status": "ok",
+  "hostname": "switch3",
+  "present": true,
+  "firstSeen": "2026-09-27T15:26:32Z",
+  "lastSeen": "2026-09-27T19:42:02Z",
+  "sampledAt": "2026-09-27T19:42:02Z",
+  "dark": true
+ },
+ "placements": [
+  {
+   "hostname": "switch3",
+   "port": "swp61",
+   "ports": [
+    "swp61"
+   ],
+   "firstSeen": "2026-09-27T15:26:32Z",
+   "lastSeen": "2026-09-27T19:42:02Z"
+  }
+ ],
+ "samples": [
+  {
+   "ts": "2026-09-27T19:42:02Z",
+   "hostname": "switch3",
+   "port": "swp61",
+   "link": "down"
+  },
+  {
+   "ts": "2026-09-27T18:56:56Z",
+   "hostname": "switch3",
+   "port": "swp61",
+   "link": "down"
+  },
+  {
+   "ts": "2026-09-27T17:56:50Z",
+   "hostname": "switch3",
+   "port": "swp61",
+   "link": "down"
+  },
+  {
+   "ts": "2026-09-27T16:56:43Z",
+   "hostname": "switch3",
+   "port": "swp61",
+   "link": "down"
+  },
+  {
+   "ts": "2026-09-27T15:56:36Z",
+   "hostname": "switch3",
+   "port": "swp61",
+   "link": "down"
+  }
+ ],
+ "events": [
+  {
+   "eventId": "919",
+   "ts": "2026-09-27T15:26:32Z",
+   "kind": "optic_first_seen",
+   "hostname": "switch3",
+   "detail": "{\"form\":\"SFP\",\"part\":\"S28-PC02\",\"port\":\"swp61\",\"serial\":\"G1910037893-2\",\"vendor\":\"FS\"}",
+   "source": "report",
+   "opticSerial": "G1910037893-2"
+  }
+ ]
+}

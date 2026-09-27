@@ -1,0 +1,166 @@
+{
+ "row": {
+  "optic": {
+   "port": "eth3",
+   "ports": [
+    "eth3"
+   ],
+   "form": "SFP",
+   "identifier": "0x03 (SFP)",
+   "kind": "optical",
+   "vendor": "FiberStore",
+   "oui": "00:90:65",
+   "part": "SFP-10GSR-85",
+   "rev": "A",
+   "serial": "F169JU01614",
+   "dateCode": "160929",
+   "compliance": "10G Ethernet: 10G Base-SR",
+   "connector": "LC",
+   "wavelengthNm": 850,
+   "link": "up",
+   "diagnostics": true,
+   "tempC": 56.09,
+   "voltageV": 3.353,
+   "lanes": [
+    {
+     "lane": 1,
+     "biasMa": 10.202,
+     "txMw": 0.2402,
+     "rxMw": 0.6657
+    }
+   ],
+   "thresholds": {
+    "bias_high_alarm": 15,
+    "bias_high_warning": 12,
+    "bias_low_alarm": 0,
+    "bias_low_warning": 0,
+    "rx_high_alarm": 1.9953,
+    "rx_high_warning": 1.5849,
+    "rx_low_alarm": 0.049,
+    "rx_low_warning": 0.0776,
+    "temp_high_alarm": 80,
+    "temp_high_warning": 75,
+    "temp_low_alarm": -15,
+    "temp_low_warning": -10,
+    "tx_high_alarm": 1.9953,
+    "tx_high_warning": 1.5849,
+    "tx_low_alarm": 0.1175,
+    "tx_low_warning": 0.1862,
+    "voltage_high_alarm": 3.6,
+    "voltage_high_warning": 3.5,
+    "voltage_low_alarm": 3,
+    "voltage_low_warning": 3.1
+   }
+  },
+  "status": "ok",
+  "hostname": "server14",
+  "present": true,
+  "firstSeen": "2026-09-27T15:26:46Z",
+  "lastSeen": "2026-09-27T19:42:28Z",
+  "sampledAt": "2026-09-27T19:42:28Z"
+ },
+ "placements": [
+  {
+   "hostname": "server14",
+   "port": "eth3",
+   "ports": [
+    "eth3"
+   ],
+   "firstSeen": "2026-09-27T15:26:46Z",
+   "lastSeen": "2026-09-27T19:42:28Z"
+  }
+ ],
+ "samples": [
+  {
+   "ts": "2026-09-27T19:42:28Z",
+   "hostname": "server14",
+   "port": "eth3",
+   "tempC": 56.09,
+   "voltageV": 3.353,
+   "lanes": [
+    {
+     "lane": 1,
+     "biasMa": 10.202,
+     "txMw": 0.2402,
+     "rxMw": 0.6657
+    }
+   ],
+   "link": "up"
+  },
+  {
+   "ts": "2026-09-27T18:57:20Z",
+   "hostname": "server14",
+   "port": "eth3",
+   "tempC": 56.74,
+   "voltageV": 3.3522,
+   "lanes": [
+    {
+     "lane": 1,
+     "biasMa": 10.2,
+     "txMw": 0.2371,
+     "rxMw": 0.6605
+    }
+   ],
+   "link": "up"
+  },
+  {
+   "ts": "2026-09-27T17:57:10Z",
+   "hostname": "server14",
+   "port": "eth3",
+   "tempC": 56.63,
+   "voltageV": 3.352,
+   "lanes": [
+    {
+     "lane": 1,
+     "biasMa": 10.202,
+     "txMw": 0.2375,
+     "rxMw": 0.6605
+    }
+   ],
+   "link": "up"
+  },
+  {
+   "ts": "2026-09-27T16:57:01Z",
+   "hostname": "server14",
+   "port": "eth3",
+   "tempC": 56.58,
+   "voltageV": 3.352,
+   "lanes": [
+    {
+     "lane": 1,
+     "biasMa": 10.2,
+     "txMw": 0.2378,
+     "rxMw": 0.6611
+    }
+   ],
+   "link": "up"
+  },
+  {
+   "ts": "2026-09-27T15:56:51Z",
+   "hostname": "server14",
+   "port": "eth3",
+   "tempC": 56.48,
+   "voltageV": 3.3524,
+   "lanes": [
+    {
+     "lane": 1,
+     "biasMa": 10.2,
+     "txMw": 0.2385,
+     "rxMw": 0.6628
+    }
+   ],
+   "link": "up"
+  }
+ ],
+ "events": [
+  {
+   "eventId": "925",
+   "ts": "2026-09-27T15:26:46Z",
+   "kind": "optic_first_seen",
+   "hostname": "server14",
+   "detail": "{\"form\":\"SFP\",\"part\":\"SFP-10GSR-85\",\"port\":\"eth3\",\"serial\":\"F169JU01614\",\"vendor\":\"FiberStore\"}",
+   "source": "report",
+   "opticSerial": "F169JU01614"
+  }
+ ]
+}

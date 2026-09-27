@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>drivelist</title>
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' https://cdn.jsdelivr.net/npm/mermaid@11.17.2/; style-src 'self' 'unsafe-inline'; connect-src 'self'; img-src 'self' data:; base-uri 'none'; form-action 'none'">
+<meta name="drivelist-demo" content="demo.json">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <a class="brand" href="#/">drivelist</a>
+  <nav>
+    <a href="#/">Summary</a>
+    <a href="#/hosts">Hosts</a>
+    <a href="#/drives">Drives</a>
+    <a href="#/enclosures">Enclosures</a>
+    <a href="#/smart">SMART</a>
+    <a href="#/memory">Memory</a>
+    <a href="#/optics">Optics</a>
+    <a href="#/io">I/O</a>
+    <a href="#/sas-errors">SAS errors</a>
+    <a href="#/events">Events</a>
+    <a href="#/missing">Missing</a>
+  </nav>
+  <button id="token" type="button" title="Change the token">token</button>
+</header>
+<main id="main"></main>
+<footer>
+  <hr>
+  <p>Generated via <a href="https://github.com/scottlaird/drivelist" rel="noopener">drivelist</a></p>
+</footer>
+<script src="app.js"></script>
+</body>
+</html>

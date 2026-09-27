@@ -1,0 +1,54 @@
+{
+ "drive": {
+  "driveId": "154",
+  "vendor": "ATA",
+  "model": "SATA_SSD",
+  "serial": "240102AA01601",
+  "sizeBytes": "512110190592",
+  "bus": "BUS_SATA",
+  "status": "ok",
+  "firstSeen": "2026-09-19T21:08:19Z",
+  "lastSeen": "2026-09-27T19:39:33Z",
+  "current": {
+   "hostname": "server11",
+   "devName": "sda",
+   "uses": [
+    "mount > /",
+    "mount > /boot/efi",
+    "mount > /var/lib/kubelet/pods/77c1606a-37cc-421f-8194-a73032c0f641/volume-subpaths/custom-dnsmasq/pihole/1",
+    "mount > /var/lib/kubelet/pods/77c1606a-37cc-421f-8194-a73032c0f641/volume-subpaths/custom-dnsmasq/pihole/2",
+    "mount > /var/lib/kubelet/pods/a0c993bb-0487-472a-965f-a986c5179cdc/volume-subpaths/config/grafana/0",
+    "mount > /var/lib/kubelet/pods/a0c993bb-0487-472a-965f-a986c5179cdc/volume-subpaths/sc-dashboard-provider/grafana/3"
+   ],
+   "firstSeen": "2026-09-19T21:08:19Z",
+   "lastSeen": "2026-09-27T19:39:33Z"
+  }
+ },
+ "placements": [
+  {
+   "hostname": "server11",
+   "devName": "sda",
+   "uses": [
+    "mount > /",
+    "mount > /boot/efi",
+    "mount > /var/lib/kubelet/pods/77c1606a-37cc-421f-8194-a73032c0f641/volume-subpaths/custom-dnsmasq/pihole/1",
+    "mount > /var/lib/kubelet/pods/77c1606a-37cc-421f-8194-a73032c0f641/volume-subpaths/custom-dnsmasq/pihole/2",
+    "mount > /var/lib/kubelet/pods/a0c993bb-0487-472a-965f-a986c5179cdc/volume-subpaths/config/grafana/0",
+    "mount > /var/lib/kubelet/pods/a0c993bb-0487-472a-965f-a986c5179cdc/volume-subpaths/sc-dashboard-provider/grafana/3"
+   ],
+   "firstSeen": "2026-09-19T21:08:19Z",
+   "lastSeen": "2026-09-27T19:39:33Z"
+  }
+ ],
+ "events": [
+  {
+   "eventId": "617",
+   "ts": "2026-09-19T21:08:19Z",
+   "kind": "first_seen",
+   "serial": "240102AA01601",
+   "hostname": "server11",
+   "detail": "{\"bay\":\"\",\"dev_name\":\"sda\",\"enclosure\":\"\",\"enclosure_via\":\"\",\"uses\":[\"mount \\u003e /\",\"mount \\u003e /boot/efi\",\"mount \\u003e /var/lib/kubelet/pods/77c1606a-37cc-421f-8194-a73032c0f641/volume-subpaths/custom-dnsmasq/pihole/1\",\"mount \\u003e /var/lib/kubelet/pods/77c1606a-37cc-421f-8194-a73032c0f641/volume-subpaths/custom-dnsmasq/pihole/2\",\"mount \\u003e /var/lib/kubelet/pods/a0c993bb-0487-472a-965f-a986c5179cdc/volume-subpaths/config/grafana/0\",\"mount \\u003e /var/lib/kubelet/pods/a0c993bb-0487-472a-965f-a986c5179cdc/volume-subpaths/sc-dashboard-provider/grafana/3\"]}",
+   "source": "snapshot:55"
+  }
+ ]
+}

@@ -1,0 +1,48 @@
+{
+ "drive": {
+  "driveId": "76",
+  "wwn": "0x5000cca25208683c",
+  "vendor": "HGST",
+  "model": "HUH721008AL5204",
+  "serial": "7SG4MAAG",
+  "sizeBytes": "8001563222016",
+  "bus": "BUS_SAS",
+  "status": "ok",
+  "firstSeen": "2026-09-13T01:41:39Z",
+  "lastSeen": "2026-09-27T19:41:38Z",
+  "current": {
+   "hostname": "nas",
+   "enclosure": "0x500304800000007f",
+   "bay": "1",
+   "devName": "sdd",
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "enclosureVia": "expander-10:0",
+   "enclosureName": "nas-sc847-back"
+  }
+ },
+ "placements": [
+  {
+   "hostname": "nas",
+   "enclosure": "0x500304800000007f",
+   "bay": "1",
+   "devName": "sdd",
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "enclosureVia": "expander-10:0",
+   "enclosureName": "nas-sc847-back"
+  }
+ ],
+ "events": [
+  {
+   "eventId": "337",
+   "ts": "2026-09-13T01:41:39Z",
+   "kind": "first_seen",
+   "serial": "7SG4MAAG",
+   "wwn": "0x5000cca25208683c",
+   "hostname": "nas",
+   "detail": "{\"bay\":\"1\",\"dev_name\":\"sdd\",\"expander\":\"expander-10:0\",\"expander_dev\":\"expander-10:0\",\"uses\":[]}",
+   "source": "snapshot:2"
+  }
+ ]
+}

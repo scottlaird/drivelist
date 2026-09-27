@@ -1,0 +1,157 @@
+{
+ "rows": [
+  {
+   "optic": {
+    "port": "enp1s0f1np1",
+    "ports": [
+     "enp1s0f1np1"
+    ],
+    "form": "SFP",
+    "identifier": "0x03 (SFP)",
+    "kind": "optical",
+    "vendor": "FS",
+    "oui": "64:9d:99",
+    "part": "SFP-10GSR-85",
+    "rev": "A",
+    "serial": "F2130434217",
+    "dateCode": "211020",
+    "compliance": "10G Ethernet: 10G Base-SR",
+    "connector": "LC",
+    "wavelengthNm": 850,
+    "link": "up",
+    "diagnostics": true,
+    "tempC": 55.31,
+    "voltageV": 3.2925,
+    "lanes": [
+     {
+      "lane": 1,
+      "biasMa": 7.2,
+      "txMw": 0.6075,
+      "rxMw": 0.903
+     }
+    ],
+    "thresholds": {
+     "bias_high_alarm": 12,
+     "bias_high_warning": 10.5,
+     "bias_low_alarm": 1,
+     "bias_low_warning": 2.5,
+     "rx_high_alarm": 1.2589,
+     "rx_high_warning": 0.7943,
+     "rx_low_alarm": 0.0646,
+     "rx_low_warning": 0.1023,
+     "temp_high_alarm": 80,
+     "temp_high_warning": 70,
+     "temp_low_alarm": -10,
+     "temp_low_warning": 0,
+     "tx_high_alarm": 1.2589,
+     "tx_high_warning": 0.7943,
+     "tx_low_alarm": 0.1175,
+     "tx_low_warning": 0.1862,
+     "voltage_high_alarm": 3.63,
+     "voltage_high_warning": 3.465,
+     "voltage_low_alarm": 2.97,
+     "voltage_low_warning": 3.135
+    },
+    "flags": [
+     "rx high warning"
+    ]
+   },
+   "status": "ok",
+   "hostname": "server10",
+   "present": true,
+   "firstSeen": "2026-09-27T15:15:19Z",
+   "lastSeen": "2026-09-27T19:40:53Z",
+   "sampledAt": "2026-09-27T19:40:53Z",
+   "problems": [
+    "rx high warning"
+   ]
+  },
+  {
+   "optic": {
+    "port": "enp22",
+    "ports": [
+     "enp22"
+    ],
+    "form": "QSFP+",
+    "identifier": "0x0d (QSFP+)",
+    "kind": "optical",
+    "vendor": "Arista Networks",
+    "oui": "00:1c:73",
+    "part": "QSFP-40G-UNIV",
+    "rev": "20",
+    "serial": "XLA164600338",
+    "dateCode": "16110900",
+    "compliance": "40G Ethernet: 40G Base-LR4",
+    "connector": "LC",
+    "wavelengthNm": 1310,
+    "link": "down",
+    "diagnostics": true,
+    "tempC": 57.03,
+    "voltageV": 3.3265,
+    "lanes": [
+     {
+      "lane": 1,
+      "biasMa": 44.582,
+      "txMw": 1.4837,
+      "rxMw": 0.7307
+     },
+     {
+      "lane": 2,
+      "biasMa": 63.392,
+      "txMw": 1.4827,
+      "rxMw": 0.7034
+     },
+     {
+      "lane": 3,
+      "biasMa": 42.018,
+      "txMw": 1.542,
+      "rxMw": 0.658
+     },
+     {
+      "lane": 4,
+      "biasMa": 43.1,
+      "txMw": 1.5217,
+      "rxMw": 0.78
+     }
+    ],
+    "thresholds": {
+     "bias_high_alarm": 100,
+     "bias_high_warning": 90,
+     "bias_low_alarm": 0.2,
+     "bias_low_warning": 0.3,
+     "rx_high_alarm": 2.8184,
+     "rx_high_warning": 2.5119,
+     "rx_low_alarm": 0.01,
+     "rx_low_warning": 0.0199,
+     "temp_high_alarm": 70,
+     "temp_high_warning": 65,
+     "temp_low_alarm": -5,
+     "temp_low_warning": 0,
+     "tx_high_alarm": 2.2387,
+     "tx_high_warning": 1.9952,
+     "tx_low_alarm": 0.425,
+     "tx_low_warning": 0.4575,
+     "voltage_high_alarm": 3.63,
+     "voltage_high_warning": 3.465,
+     "voltage_low_alarm": 2.97,
+     "voltage_low_warning": 3.135
+    },
+    "carrierChanges": "9470",
+    "flaps": 2,
+    "flapsDay": 10,
+    "flapHours": 1
+   },
+   "status": "bad",
+   "hostname": "switch1",
+   "present": true,
+   "firstSeen": "2026-09-27T15:36:04Z",
+   "lastSeen": "2026-09-27T19:42:22Z",
+   "sampledAt": "2026-09-27T19:42:22Z",
+   "problems": [
+    "marked bad",
+    "link flapped 10 times in the last day"
+   ],
+   "dark": true
+  }
+ ]
+}

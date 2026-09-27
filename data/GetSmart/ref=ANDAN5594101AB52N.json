@@ -1,0 +1,1300 @@
+{
+ "drive": {
+  "driveId": "129",
+  "wwn": "eui.ace42e00457faf562ee4ac0000000001",
+  "model": "SHPP41-1000GM",
+  "serial": "ANDAN5594101AB52N",
+  "sizeBytes": "1000204886016",
+  "bus": "BUS_NVME",
+  "status": "ok",
+  "firstSeen": "2026-09-13T02:42:07Z",
+  "lastSeen": "2026-09-27T19:43:13Z",
+  "current": {
+   "hostname": "server4",
+   "enclosure": "dmi:CN7831V0PR",
+   "bay": "PCI-E Slot 6/00.0",
+   "devName": "nvme0n1",
+   "uses": [
+    "zfs > data3 14800375083732622048 > disk 14556138555044844710"
+   ],
+   "firstSeen": "2026-09-14T06:17:22Z",
+   "lastSeen": "2026-09-27T19:43:13Z",
+   "enclosureVia": "pci",
+   "bayLabel": "card port 0"
+  },
+  "memberState": "ONLINE"
+ },
+ "samples": [
+  {
+   "identity": {
+    "wwn": "eui.ace42e00457faf562ee4ac0000000001",
+    "model": "SHPP41-1000GM",
+    "serial": "ANDAN5594101AB52N"
+   },
+   "devName": "nvme0n1",
+   "ts": "2026-09-27T16:15:09Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "12846",
+    "tempC": 45,
+    "uncorrectable": "0",
+    "readBytes": "4089857536000",
+    "writeBytes": "150710107136000",
+    "percentUsed": 8
+   },
+   "hostname": "server4",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "eui.ace42e00457faf562ee4ac0000000001",
+    "model": "SHPP41-1000GM",
+    "serial": "ANDAN5594101AB52N"
+   },
+   "devName": "nvme0n1",
+   "ts": "2026-09-27T10:15:09Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "12840",
+    "tempC": 45,
+    "uncorrectable": "0",
+    "readBytes": "4089857024000",
+    "writeBytes": "150689423360000",
+    "percentUsed": 8
+   },
+   "hostname": "server4",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "eui.ace42e00457faf562ee4ac0000000001",
+    "model": "SHPP41-1000GM",
+    "serial": "ANDAN5594101AB52N"
+   },
+   "devName": "nvme0n1",
+   "ts": "2026-09-27T04:15:08Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "12834",
+    "tempC": 47,
+    "uncorrectable": "0",
+    "readBytes": "4089850368000",
+    "writeBytes": "150667911680000",
+    "percentUsed": 8
+   },
+   "hostname": "server4",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "eui.ace42e00457faf562ee4ac0000000001",
+    "model": "SHPP41-1000GM",
+    "serial": "ANDAN5594101AB52N"
+   },
+   "devName": "nvme0n1",
+   "ts": "2026-09-26T22:15:08Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "12828",
+    "tempC": 47,
+    "uncorrectable": "0",
+    "readBytes": "4089843200000",
+    "writeBytes": "150648118272000",
+    "percentUsed": 8
+   },
+   "hostname": "server4",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "eui.ace42e00457faf562ee4ac0000000001",
+    "model": "SHPP41-1000GM",
+    "serial": "ANDAN5594101AB52N"
+   },
+   "devName": "nvme0n1",
+   "ts": "2026-09-26T16:15:08Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "12822",
+    "tempC": 45,
+    "uncorrectable": "0",
+    "readBytes": "4089842688000",
+    "writeBytes": "150630328832000",
+    "percentUsed": 8
+   },
+   "hostname": "server4",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "eui.ace42e00457faf562ee4ac0000000001",
+    "model": "SHPP41-1000GM",
+    "serial": "ANDAN5594101AB52N"
+   },
+   "devName": "nvme0n1",
+   "ts": "2026-09-26T10:15:07Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "12816",
+    "tempC": 46,
+    "uncorrectable": "0",
+    "readBytes": "4089842688000",
+    "writeBytes": "150606433792000",
+    "percentUsed": 8
+   },
+   "hostname": "server4",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "eui.ace42e00457faf562ee4ac0000000001",
+    "model": "SHPP41-1000GM",
+    "serial": "ANDAN5594101AB52N"
+   },
+   "devName": "nvme0n1",
+   "ts": "2026-09-26T04:15:07Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "12810",
+    "tempC": 47,
+    "uncorrectable": "0",
+    "readBytes": "4089842688000",
+    "writeBytes": "150589459456000",
+    "percentUsed": 8
+   },
+   "hostname": "server4",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "eui.ace42e00457faf562ee4ac0000000001",
+    "model": "SHPP41-1000GM",
+    "serial": "ANDAN5594101AB52N"
+   },
+   "devName": "nvme0n1",
+   "ts": "2026-09-25T22:15:07Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "12804",
+    "tempC": 47,
+    "uncorrectable": "0",
+    "readBytes": "4089741312000",
+    "writeBytes": "150571136000000",
+    "percentUsed": 8
+   },
+   "hostname": "server4",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "eui.ace42e00457faf562ee4ac0000000001",
+    "model": "SHPP41-1000GM",
+    "serial": "ANDAN5594101AB52N"
+   },
+   "devName": "nvme0n1",
+   "ts": "2026-09-25T16:15:06Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "12798",
+    "tempC": 47,
+    "uncorrectable": "0",
+    "readBytes": "4089741312000",
+    "writeBytes": "150556156928000",
+    "percentUsed": 8
+   },
+   "hostname": "server4",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "eui.ace42e00457faf562ee4ac0000000001",
+    "model": "SHPP41-1000GM",
+    "serial": "ANDAN5594101AB52N"
+   },
+   "devName": "nvme0n1",
+   "ts": "2026-09-25T10:15:06Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "12792",
+    "tempC": 47,
+    "uncorrectable": "0",
+    "readBytes": "4089741312000",
+    "writeBytes": "150537483776000",
+    "percentUsed": 8
+   },
+   "hostname": "server4",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "eui.ace42e00457faf562ee4ac0000000001",
+    "model": "SHPP41-1000GM",
+    "serial": "ANDAN5594101AB52N"
+   },
+   "devName": "nvme0n1",
+   "ts": "2026-09-25T04:15:06Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "12786",
+    "tempC": 47,
+    "uncorrectable": "0",
+    "readBytes": "4089741312000",
+    "writeBytes": "150519705600000",
+    "percentUsed": 8
+   },
+   "hostname": "server4",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "eui.ace42e00457faf562ee4ac0000000001",
+    "model": "SHPP41-1000GM",
+    "serial": "ANDAN5594101AB52N"
+   },
+   "devName": "nvme0n1",
+   "ts": "2026-09-24T22:15:05Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "12780",
+    "tempC": 47,
+    "uncorrectable": "0",
+    "readBytes": "4089736192000",
+    "writeBytes": "150501751808000",
+    "percentUsed": 8
+   },
+   "hostname": "server4",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "eui.ace42e00457faf562ee4ac0000000001",
+    "model": "SHPP41-1000GM",
+    "serial": "ANDAN5594101AB52N"
+   },
+   "devName": "nvme0n1",
+   "ts": "2026-09-24T16:15:05Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "12774",
+    "tempC": 47,
+    "uncorrectable": "0",
+    "readBytes": "4089736192000",
+    "writeBytes": "150479712768000",
+    "percentUsed": 8
+   },
+   "hostname": "server4",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "eui.ace42e00457faf562ee4ac0000000001",
+    "model": "SHPP41-1000GM",
+    "serial": "ANDAN5594101AB52N"
+   },
+   "devName": "nvme0n1",
+   "ts": "2026-09-24T10:15:05Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "12768",
+    "tempC": 47,
+    "uncorrectable": "0",
+    "readBytes": "4089736192000",
+    "writeBytes": "150461404672000",
+    "percentUsed": 8
+   },
+   "hostname": "server4",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "eui.ace42e00457faf562ee4ac0000000001",
+    "model": "SHPP41-1000GM",
+    "serial": "ANDAN5594101AB52N"
+   },
+   "devName": "nvme0n1",
+   "ts": "2026-09-24T04:15:05Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "12762",
+    "tempC": 48,
+    "uncorrectable": "0",
+    "readBytes": "4089734144000",
+    "writeBytes": "150444366848000",
+    "percentUsed": 8
+   },
+   "hostname": "server4",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "eui.ace42e00457faf562ee4ac0000000001",
+    "model": "SHPP41-1000GM",
+    "serial": "ANDAN5594101AB52N"
+   },
+   "devName": "nvme0n1",
+   "ts": "2026-09-23T22:15:04Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "12756",
+    "tempC": 48,
+    "uncorrectable": "0",
+    "readBytes": "4089728512000",
+    "writeBytes": "150428944384000",
+    "percentUsed": 8
+   },
+   "hostname": "server4",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "eui.ace42e00457faf562ee4ac0000000001",
+    "model": "SHPP41-1000GM",
+    "serial": "ANDAN5594101AB52N"
+   },
+   "devName": "nvme0n1",
+   "ts": "2026-09-23T16:15:04Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "12750",
+    "tempC": 48,
+    "uncorrectable": "0",
+    "readBytes": "4089659392000",
+    "writeBytes": "150412183040000",
+    "percentUsed": 8
+   },
+   "hostname": "server4",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "eui.ace42e00457faf562ee4ac0000000001",
+    "model": "SHPP41-1000GM",
+    "serial": "ANDAN5594101AB52N"
+   },
+   "devName": "nvme0n1",
+   "ts": "2026-09-23T10:15:04Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "12744",
+    "tempC": 48,
+    "uncorrectable": "0",
+    "readBytes": "4089659392000",
+    "writeBytes": "150395597824000",
+    "percentUsed": 8
+   },
+   "hostname": "server4",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "eui.ace42e00457faf562ee4ac0000000001",
+    "model": "SHPP41-1000GM",
+    "serial": "ANDAN5594101AB52N"
+   },
+   "devName": "nvme0n1",
+   "ts": "2026-09-23T04:15:03Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "12738",
+    "tempC": 49,
+    "uncorrectable": "0",
+    "readBytes": "4089659392000",
+    "writeBytes": "150378571264000",
+    "percentUsed": 8
+   },
+   "hostname": "server4",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "eui.ace42e00457faf562ee4ac0000000001",
+    "model": "SHPP41-1000GM",
+    "serial": "ANDAN5594101AB52N"
+   },
+   "devName": "nvme0n1",
+   "ts": "2026-09-22T22:15:03Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "12732",
+    "tempC": 49,
+    "uncorrectable": "0",
+    "readBytes": "4089654272000",
+    "writeBytes": "150358366208000",
+    "percentUsed": 8
+   },
+   "hostname": "server4",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "eui.ace42e00457faf562ee4ac0000000001",
+    "model": "SHPP41-1000GM",
+    "serial": "ANDAN5594101AB52N"
+   },
+   "devName": "nvme0n1",
+   "ts": "2026-09-22T16:15:02Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "12726",
+    "tempC": 45,
+    "uncorrectable": "0",
+    "readBytes": "4089654272000",
+    "writeBytes": "150341874688000",
+    "percentUsed": 8
+   },
+   "hostname": "server4",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "eui.ace42e00457faf562ee4ac0000000001",
+    "model": "SHPP41-1000GM",
+    "serial": "ANDAN5594101AB52N"
+   },
+   "devName": "nvme0n1",
+   "ts": "2026-09-22T10:15:02Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "12720",
+    "tempC": 48,
+    "uncorrectable": "0",
+    "readBytes": "4089654272000",
+    "writeBytes": "150325903872000",
+    "percentUsed": 8
+   },
+   "hostname": "server4",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "eui.ace42e00457faf562ee4ac0000000001",
+    "model": "SHPP41-1000GM",
+    "serial": "ANDAN5594101AB52N"
+   },
+   "devName": "nvme0n1",
+   "ts": "2026-09-22T04:15:02Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "12714",
+    "tempC": 50,
+    "uncorrectable": "0",
+    "readBytes": "4089654272000",
+    "writeBytes": "150308543488000",
+    "percentUsed": 8
+   },
+   "hostname": "server4",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "eui.ace42e00457faf562ee4ac0000000001",
+    "model": "SHPP41-1000GM",
+    "serial": "ANDAN5594101AB52N"
+   },
+   "devName": "nvme0n1",
+   "ts": "2026-09-21T22:15:01Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "12709",
+    "tempC": 50,
+    "uncorrectable": "0",
+    "readBytes": "4089646080000",
+    "writeBytes": "150289214464000",
+    "percentUsed": 8
+   },
+   "hostname": "server4",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "eui.ace42e00457faf562ee4ac0000000001",
+    "model": "SHPP41-1000GM",
+    "serial": "ANDAN5594101AB52N"
+   },
+   "devName": "nvme0n1",
+   "ts": "2026-09-21T16:15:01Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "12703",
+    "tempC": 48,
+    "uncorrectable": "0",
+    "readBytes": "4089646080000",
+    "writeBytes": "150268043776000",
+    "percentUsed": 8
+   },
+   "hostname": "server4",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "eui.ace42e00457faf562ee4ac0000000001",
+    "model": "SHPP41-1000GM",
+    "serial": "ANDAN5594101AB52N"
+   },
+   "devName": "nvme0n1",
+   "ts": "2026-09-21T10:15:00Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "12697",
+    "tempC": 47,
+    "uncorrectable": "0",
+    "readBytes": "4089646080000",
+    "writeBytes": "150252061184000",
+    "percentUsed": 8
+   },
+   "hostname": "server4",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "eui.ace42e00457faf562ee4ac0000000001",
+    "model": "SHPP41-1000GM",
+    "serial": "ANDAN5594101AB52N"
+   },
+   "devName": "nvme0n1",
+   "ts": "2026-09-21T04:15:00Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "12691",
+    "tempC": 49,
+    "uncorrectable": "0",
+    "readBytes": "4089626624000",
+    "writeBytes": "150237085696000",
+    "percentUsed": 8
+   },
+   "hostname": "server4",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "eui.ace42e00457faf562ee4ac0000000001",
+    "model": "SHPP41-1000GM",
+    "serial": "ANDAN5594101AB52N"
+   },
+   "devName": "nvme0n1",
+   "ts": "2026-09-21T00:12:22Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "12687",
+    "tempC": 49,
+    "uncorrectable": "0",
+    "readBytes": "4089626624000",
+    "writeBytes": "150226889216000",
+    "percentUsed": 8
+   },
+   "hostname": "server4",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "eui.ace42e00457faf562ee4ac0000000001",
+    "model": "SHPP41-1000GM",
+    "serial": "ANDAN5594101AB52N"
+   },
+   "devName": "nvme0n1",
+   "ts": "2026-09-20T18:12:22Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "12681",
+    "tempC": 47,
+    "uncorrectable": "0",
+    "readBytes": "4089619968000",
+    "writeBytes": "150209186304000",
+    "percentUsed": 8
+   },
+   "hostname": "server4",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "eui.ace42e00457faf562ee4ac0000000001",
+    "model": "SHPP41-1000GM",
+    "serial": "ANDAN5594101AB52N"
+   },
+   "devName": "nvme0n1",
+   "ts": "2026-09-20T12:12:21Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "12675",
+    "tempC": 47,
+    "uncorrectable": "0",
+    "readBytes": "4089619968000",
+    "writeBytes": "150192105984000",
+    "percentUsed": 8
+   },
+   "hostname": "server4",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "eui.ace42e00457faf562ee4ac0000000001",
+    "model": "SHPP41-1000GM",
+    "serial": "ANDAN5594101AB52N"
+   },
+   "devName": "nvme0n1",
+   "ts": "2026-09-20T06:12:21Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "12669",
+    "tempC": 48,
+    "uncorrectable": "0",
+    "readBytes": "4089619968000",
+    "writeBytes": "150166131200000",
+    "percentUsed": 8
+   },
+   "hostname": "server4"
+  },
+  {
+   "identity": {
+    "wwn": "eui.ace42e00457faf562ee4ac0000000001",
+    "model": "SHPP41-1000GM",
+    "serial": "ANDAN5594101AB52N"
+   },
+   "devName": "nvme0n1",
+   "ts": "2026-09-20T01:27:07Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "12664",
+    "tempC": 49,
+    "uncorrectable": "0",
+    "readBytes": "4089619968000",
+    "writeBytes": "150152613376000",
+    "percentUsed": 8
+   },
+   "hostname": "server4"
+  },
+  {
+   "identity": {
+    "wwn": "eui.ace42e00457faf562ee4ac0000000001",
+    "model": "SHPP41-1000GM",
+    "serial": "ANDAN5594101AB52N"
+   },
+   "devName": "nvme0n1",
+   "ts": "2026-09-19T19:27:07Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "12658",
+    "tempC": 48,
+    "uncorrectable": "0",
+    "readBytes": "4089615872000",
+    "writeBytes": "150134070784000",
+    "percentUsed": 8
+   },
+   "hostname": "server4"
+  },
+  {
+   "identity": {
+    "wwn": "eui.ace42e00457faf562ee4ac0000000001",
+    "model": "SHPP41-1000GM",
+    "serial": "ANDAN5594101AB52N"
+   },
+   "devName": "nvme0n1",
+   "ts": "2026-09-19T13:27:06Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "12652",
+    "tempC": 47,
+    "uncorrectable": "0",
+    "readBytes": "4089615872000",
+    "writeBytes": "150113690624000",
+    "percentUsed": 8
+   },
+   "hostname": "server4"
+  },
+  {
+   "identity": {
+    "wwn": "eui.ace42e00457faf562ee4ac0000000001",
+    "model": "SHPP41-1000GM",
+    "serial": "ANDAN5594101AB52N"
+   },
+   "devName": "nvme0n1",
+   "ts": "2026-09-19T07:27:06Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "12646",
+    "tempC": 48,
+    "uncorrectable": "0",
+    "readBytes": "4089614336000",
+    "writeBytes": "150094468608000",
+    "percentUsed": 8
+   },
+   "hostname": "server4"
+  },
+  {
+   "identity": {
+    "wwn": "eui.ace42e00457faf562ee4ac0000000001",
+    "model": "SHPP41-1000GM",
+    "serial": "ANDAN5594101AB52N"
+   },
+   "devName": "nvme0n1",
+   "ts": "2026-09-19T01:27:05Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "12640",
+    "tempC": 49,
+    "uncorrectable": "0",
+    "readBytes": "4089614336000",
+    "writeBytes": "150080252416000",
+    "percentUsed": 8
+   },
+   "hostname": "server4"
+  },
+  {
+   "identity": {
+    "wwn": "eui.ace42e00457faf562ee4ac0000000001",
+    "model": "SHPP41-1000GM",
+    "serial": "ANDAN5594101AB52N"
+   },
+   "devName": "nvme0n1",
+   "ts": "2026-09-18T19:27:05Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "12634",
+    "tempC": 48,
+    "uncorrectable": "0",
+    "readBytes": "4089607680000",
+    "writeBytes": "150057704448000",
+    "percentUsed": 8
+   },
+   "hostname": "server4"
+  },
+  {
+   "identity": {
+    "wwn": "eui.ace42e00457faf562ee4ac0000000001",
+    "model": "SHPP41-1000GM",
+    "serial": "ANDAN5594101AB52N"
+   },
+   "devName": "nvme0n1",
+   "ts": "2026-09-18T13:27:05Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "12628",
+    "tempC": 47,
+    "uncorrectable": "0",
+    "readBytes": "4089607680000",
+    "writeBytes": "150038615552000",
+    "percentUsed": 8
+   },
+   "hostname": "server4"
+  },
+  {
+   "identity": {
+    "wwn": "eui.ace42e00457faf562ee4ac0000000001",
+    "model": "SHPP41-1000GM",
+    "serial": "ANDAN5594101AB52N"
+   },
+   "devName": "nvme0n1",
+   "ts": "2026-09-18T07:27:04Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "12622",
+    "tempC": 48,
+    "uncorrectable": "0",
+    "readBytes": "4089607168000",
+    "writeBytes": "150020480512000",
+    "percentUsed": 8
+   },
+   "hostname": "server4"
+  },
+  {
+   "identity": {
+    "wwn": "eui.ace42e00457faf562ee4ac0000000001",
+    "model": "SHPP41-1000GM",
+    "serial": "ANDAN5594101AB52N"
+   },
+   "devName": "nvme0n1",
+   "ts": "2026-09-18T01:27:04Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "12616",
+    "tempC": 50,
+    "uncorrectable": "0",
+    "readBytes": "4089607168000",
+    "writeBytes": "149998784512000",
+    "percentUsed": 8
+   },
+   "hostname": "server4"
+  },
+  {
+   "identity": {
+    "wwn": "eui.ace42e00457faf562ee4ac0000000001",
+    "model": "SHPP41-1000GM",
+    "serial": "ANDAN5594101AB52N"
+   },
+   "devName": "nvme0n1",
+   "ts": "2026-09-17T19:27:04Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "12610",
+    "tempC": 49,
+    "uncorrectable": "0",
+    "readBytes": "4089383424000",
+    "writeBytes": "149980962304000",
+    "percentUsed": 8
+   },
+   "hostname": "server4"
+  },
+  {
+   "identity": {
+    "wwn": "eui.ace42e00457faf562ee4ac0000000001",
+    "model": "SHPP41-1000GM",
+    "serial": "ANDAN5594101AB52N"
+   },
+   "devName": "nvme0n1",
+   "ts": "2026-09-17T13:27:03Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "12604",
+    "tempC": 47,
+    "uncorrectable": "0",
+    "readBytes": "4089383424000",
+    "writeBytes": "149965542400000",
+    "percentUsed": 8
+   },
+   "hostname": "server4"
+  },
+  {
+   "identity": {
+    "wwn": "eui.ace42e00457faf562ee4ac0000000001",
+    "model": "SHPP41-1000GM",
+    "serial": "ANDAN5594101AB52N"
+   },
+   "devName": "nvme0n1",
+   "ts": "2026-09-17T07:27:03Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "12598",
+    "tempC": 48,
+    "uncorrectable": "0",
+    "readBytes": "4089383424000",
+    "writeBytes": "149950256640000",
+    "percentUsed": 8
+   },
+   "hostname": "server4"
+  },
+  {
+   "identity": {
+    "wwn": "eui.ace42e00457faf562ee4ac0000000001",
+    "model": "SHPP41-1000GM",
+    "serial": "ANDAN5594101AB52N"
+   },
+   "devName": "nvme0n1",
+   "ts": "2026-09-17T01:27:03Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "12592",
+    "tempC": 49,
+    "uncorrectable": "0",
+    "readBytes": "4089368576000",
+    "writeBytes": "149934504448000",
+    "percentUsed": 8
+   },
+   "hostname": "server4"
+  },
+  {
+   "identity": {
+    "wwn": "eui.ace42e00457faf562ee4ac0000000001",
+    "model": "SHPP41-1000GM",
+    "serial": "ANDAN5594101AB52N"
+   },
+   "devName": "nvme0n1",
+   "ts": "2026-09-16T19:27:02Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "12586",
+    "tempC": 48,
+    "uncorrectable": "0",
+    "readBytes": "4089357312000",
+    "writeBytes": "149914548224000",
+    "percentUsed": 8
+   },
+   "hostname": "server4"
+  },
+  {
+   "identity": {
+    "wwn": "eui.ace42e00457faf562ee4ac0000000001",
+    "model": "SHPP41-1000GM",
+    "serial": "ANDAN5594101AB52N"
+   },
+   "devName": "nvme0n1",
+   "ts": "2026-09-16T18:17:27Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "12585",
+    "tempC": 48,
+    "uncorrectable": "0",
+    "readBytes": "4089357312000",
+    "writeBytes": "149911046144000",
+    "percentUsed": 8
+   },
+   "hostname": "server4"
+  },
+  {
+   "identity": {
+    "wwn": "eui.ace42e00457faf562ee4ac0000000001",
+    "model": "SHPP41-1000GM",
+    "serial": "ANDAN5594101AB52N"
+   },
+   "devName": "nvme0n1",
+   "ts": "2026-09-16T12:17:26Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "12579",
+    "tempC": 48,
+    "uncorrectable": "0",
+    "readBytes": "4089357312000",
+    "writeBytes": "149896297472000",
+    "percentUsed": 8
+   },
+   "hostname": "server4"
+  },
+  {
+   "identity": {
+    "wwn": "eui.ace42e00457faf562ee4ac0000000001",
+    "model": "SHPP41-1000GM",
+    "serial": "ANDAN5594101AB52N"
+   },
+   "devName": "nvme0n1",
+   "ts": "2026-09-16T06:17:24Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "12573",
+    "tempC": 48,
+    "uncorrectable": "0",
+    "readBytes": "4089095680000",
+    "writeBytes": "149875988992000",
+    "percentUsed": 8
+   },
+   "hostname": "server4"
+  },
+  {
+   "identity": {
+    "wwn": "eui.ace42e00457faf562ee4ac0000000001",
+    "model": "SHPP41-1000GM",
+    "serial": "ANDAN5594101AB52N"
+   },
+   "devName": "nvme0n1",
+   "ts": "2026-09-16T00:17:24Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "12567",
+    "tempC": 48,
+    "uncorrectable": "0",
+    "readBytes": "4089095168000",
+    "writeBytes": "149856494080000",
+    "percentUsed": 8
+   },
+   "hostname": "server4"
+  },
+  {
+   "identity": {
+    "wwn": "eui.ace42e00457faf562ee4ac0000000001",
+    "model": "SHPP41-1000GM",
+    "serial": "ANDAN5594101AB52N"
+   },
+   "devName": "nvme0n1",
+   "ts": "2026-09-15T18:17:23Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "12561",
+    "tempC": 47,
+    "uncorrectable": "0",
+    "readBytes": "4089087488000",
+    "writeBytes": "149837765632000",
+    "percentUsed": 8
+   },
+   "hostname": "server4"
+  },
+  {
+   "identity": {
+    "wwn": "eui.ace42e00457faf562ee4ac0000000001",
+    "model": "SHPP41-1000GM",
+    "serial": "ANDAN5594101AB52N"
+   },
+   "devName": "nvme0n1",
+   "ts": "2026-09-15T12:17:23Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "12555",
+    "tempC": 47,
+    "uncorrectable": "0",
+    "readBytes": "4089087488000",
+    "writeBytes": "149819711488000",
+    "percentUsed": 8
+   },
+   "hostname": "server4"
+  },
+  {
+   "identity": {
+    "wwn": "eui.ace42e00457faf562ee4ac0000000001",
+    "model": "SHPP41-1000GM",
+    "serial": "ANDAN5594101AB52N"
+   },
+   "devName": "nvme0n1",
+   "ts": "2026-09-15T06:17:23Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "12549",
+    "tempC": 48,
+    "uncorrectable": "0",
+    "readBytes": "4089086464000",
+    "writeBytes": "149805667328000",
+    "percentUsed": 8
+   },
+   "hostname": "server4"
+  },
+  {
+   "identity": {
+    "wwn": "eui.ace42e00457faf562ee4ac0000000001",
+    "model": "SHPP41-1000GM",
+    "serial": "ANDAN5594101AB52N"
+   },
+   "devName": "nvme0n1",
+   "ts": "2026-09-15T00:17:22Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "12543",
+    "tempC": 48,
+    "uncorrectable": "0",
+    "readBytes": "4089086464000",
+    "writeBytes": "149792303104000",
+    "percentUsed": 8
+   },
+   "hostname": "server4"
+  },
+  {
+   "identity": {
+    "wwn": "eui.ace42e00457faf562ee4ac0000000001",
+    "model": "SHPP41-1000GM",
+    "serial": "ANDAN5594101AB52N"
+   },
+   "devName": "nvme0n1",
+   "ts": "2026-09-14T18:17:22Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "12537",
+    "tempC": 48,
+    "uncorrectable": "0",
+    "readBytes": "4089078784000",
+    "writeBytes": "149775975424000",
+    "percentUsed": 8
+   },
+   "hostname": "server4"
+  },
+  {
+   "identity": {
+    "wwn": "eui.ace42e00457faf562ee4ac0000000001",
+    "model": "SHPP41-1000GM",
+    "serial": "ANDAN5594101AB52N"
+   },
+   "devName": "nvme0n1",
+   "ts": "2026-09-14T12:17:22Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "12531",
+    "tempC": 47,
+    "uncorrectable": "0",
+    "readBytes": "4089078784000",
+    "writeBytes": "149759096320000",
+    "percentUsed": 8
+   },
+   "hostname": "server4"
+  },
+  {
+   "identity": {
+    "wwn": "eui.ace42e00457faf562ee4ac0000000001",
+    "model": "SHPP41-1000GM",
+    "serial": "ANDAN5594101AB52N"
+   },
+   "devName": "nvme0n1",
+   "ts": "2026-09-14T06:17:22Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "12525",
+    "tempC": 48,
+    "uncorrectable": "0",
+    "readBytes": "4089070080000",
+    "writeBytes": "149740131328000",
+    "percentUsed": 8
+   },
+   "hostname": "server4"
+  },
+  {
+   "identity": {
+    "wwn": "eui.ace42e00457faf562ee4ac0000000001",
+    "model": "SHPP41-1000GM",
+    "serial": "ANDAN5594101AB52N"
+   },
+   "devName": "nvme0n1",
+   "ts": "2026-09-14T05:07:44Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "12524",
+    "tempC": 48,
+    "uncorrectable": "0",
+    "readBytes": "4089070080000",
+    "writeBytes": "149736695808000",
+    "percentUsed": 8
+   },
+   "hostname": "server4"
+  },
+  {
+   "identity": {
+    "wwn": "eui.ace42e00457faf562ee4ac0000000001",
+    "model": "SHPP41-1000GM",
+    "serial": "ANDAN5594101AB52N"
+   },
+   "devName": "nvme0n1",
+   "ts": "2026-09-13T23:07:43Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "12518",
+    "tempC": 48,
+    "uncorrectable": "0",
+    "readBytes": "4089064448000",
+    "writeBytes": "149719097344000",
+    "percentUsed": 8
+   },
+   "hostname": "server4"
+  },
+  {
+   "identity": {
+    "wwn": "eui.ace42e00457faf562ee4ac0000000001",
+    "model": "SHPP41-1000GM",
+    "serial": "ANDAN5594101AB52N"
+   },
+   "devName": "nvme0n1",
+   "ts": "2026-09-13T17:07:43Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "12512",
+    "tempC": 48,
+    "uncorrectable": "0",
+    "readBytes": "4089063424000",
+    "writeBytes": "149702385664000",
+    "percentUsed": 8
+   },
+   "hostname": "server4"
+  },
+  {
+   "identity": {
+    "wwn": "eui.ace42e00457faf562ee4ac0000000001",
+    "model": "SHPP41-1000GM",
+    "serial": "ANDAN5594101AB52N"
+   },
+   "devName": "nvme0n1",
+   "ts": "2026-09-13T14:42:08Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "12509",
+    "tempC": 48,
+    "uncorrectable": "0",
+    "readBytes": "4089063424000",
+    "writeBytes": "149694825472000",
+    "percentUsed": 8
+   },
+   "hostname": "server4"
+  },
+  {
+   "identity": {
+    "wwn": "eui.ace42e00457faf562ee4ac0000000001",
+    "model": "SHPP41-1000GM",
+    "serial": "ANDAN5594101AB52N"
+   },
+   "devName": "nvme0n1",
+   "ts": "2026-09-13T08:42:08Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "12504",
+    "tempC": 49,
+    "uncorrectable": "0",
+    "readBytes": "4089063424000",
+    "writeBytes": "149679843328000",
+    "percentUsed": 8
+   },
+   "hostname": "server4"
+  },
+  {
+   "identity": {
+    "wwn": "eui.ace42e00457faf562ee4ac0000000001",
+    "model": "SHPP41-1000GM",
+    "serial": "ANDAN5594101AB52N"
+   },
+   "devName": "nvme0n1",
+   "ts": "2026-09-13T02:42:07Z",
+   "summary": {
+    "protocol": "NVMe",
+    "healthy": true,
+    "powerOnHours": "12498",
+    "tempC": 48,
+    "uncorrectable": "0",
+    "readBytes": "4089063424000",
+    "writeBytes": "149655538176000",
+    "percentUsed": 8
+   },
+   "hostname": "server4",
+   "hasRaw": true
+  }
+ ]
+}

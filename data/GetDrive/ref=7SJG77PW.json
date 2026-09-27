@@ -1,0 +1,32 @@
+{
+ "drive": {
+  "driveId": "65",
+  "wwn": "0x5000cca2528a9da4",
+  "vendor": "HGST",
+  "model": "HUH721008AL4200",
+  "serial": "7SJG77PW",
+  "sizeBytes": "8001563222016",
+  "bus": "BUS_SAS",
+  "status": "ok",
+  "firstSeen": "2026-09-13T01:41:39Z",
+  "lastSeen": "2026-09-27T19:41:38Z",
+  "current": {
+   "hostname": "nas",
+   "enclosure": "0x5003048001e8967f",
+   "bay": "13",
+   "devName": "sdcg",
+   "uses": [
+    "zfs > backups 12143466076769931197 > raidz2 5338052500984404557 > disk 1541146137294520958"
+   ],
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "enclosureVia": "expander-11:1",
+   "enclosureName": "nas-sc847-front"
+  },
+  "memberState": "ONLINE"
+ },
+ "keys": [
+  "serial:HUH721008AL4200/7SJG77PW",
+  "wwn:0x5000cca2528a9da4"
+ ]
+}

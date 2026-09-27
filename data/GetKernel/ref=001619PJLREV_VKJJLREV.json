@@ -1,0 +1,115 @@
+{
+ "drive": {
+  "driveId": "11",
+  "wwn": "0x5000cca2548eecec",
+  "vendor": "HGST",
+  "model": "H7280A520SUN8.0T",
+  "serial": "001619PJLREV_VKJJLREV",
+  "sizeBytes": "8001563222016",
+  "bus": "BUS_SAS",
+  "status": "suspect",
+  "firstSeen": "2026-09-13T01:41:39Z",
+  "lastSeen": "2026-09-27T19:41:38Z",
+  "current": {
+   "hostname": "nas",
+   "enclosure": "0x5000ccab020094ff",
+   "bay": "54",
+   "devName": "sdag",
+   "uses": [
+    "zfs > space 5925914041408872576 > raidz2 5236016460003016805 > disk 9810514795403010748"
+   ],
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "enclosureVia": "expander-11:0",
+   "enclosureName": "nas-hgst-u60-1",
+   "bayLabel": "54"
+  },
+  "memberState": "FAULTED"
+ },
+ "samples": [
+  {
+   "identity": {
+    "wwn": "0x5000cca2548eecec",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJLREV_VKJJLREV"
+   },
+   "bucketStart": "2026-09-24T13:00:00Z",
+   "bucketSecs": 3600,
+   "class": "predictive_failure",
+   "scsiCode": "1:5d:90",
+   "count": 1,
+   "sample": "sd 11:0:17:0: [sdag] tag#2736 Sense Key : Recovered Error [current] [descriptor]  | sd 11:0:17:0: [sdag] tag#2736 ASC=0x5d <<vendor>>ASCQ=0x90 ",
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548eecec",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJLREV_VKJJLREV"
+   },
+   "bucketStart": "2026-09-24T13:00:00Z",
+   "bucketSecs": 3600,
+   "class": "predictive_failure",
+   "scsiCode": "1:5d:fd",
+   "count": 1,
+   "sample": "sd 11:0:17:0: [sdag] tag#2737 Sense Key : Recovered Error [current] [descriptor]  | sd 11:0:17:0: [sdag] tag#2737 ASC=0x5d <<vendor>>ASCQ=0xfd ",
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548eecec",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJLREV_VKJJLREV"
+   },
+   "bucketStart": "2026-09-24T13:00:00Z",
+   "bucketSecs": 3600,
+   "class": "warning",
+   "scsiCode": "1:b:94",
+   "count": 1,
+   "sample": "sd 11:0:17:0: [sdag] tag#2738 Sense Key : Recovered Error [current] [descriptor]  | sd 11:0:17:0: [sdag] tag#2738 ASC=0xb <<vendor>>ASCQ=0x94 ",
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548eecec",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJLREV_VKJJLREV"
+   },
+   "bucketStart": "2026-09-24T13:00:00Z",
+   "bucketSecs": 3600,
+   "class": "warning",
+   "scsiCode": "1:b:95",
+   "count": 1,
+   "sample": "sd 11:0:17:0: [sdag] tag#2739 Sense Key : Recovered Error [current] [descriptor]  | sd 11:0:17:0: [sdag] tag#2739 ASC=0xb <<vendor>>ASCQ=0x95 ",
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548eecec",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJLREV_VKJJLREV"
+   },
+   "bucketStart": "2026-09-24T13:00:00Z",
+   "bucketSecs": 3600,
+   "class": "warning",
+   "scsiCode": "1:b:96",
+   "count": 5,
+   "sample": "sd 11:0:17:0: [sdag] tag#2740 Sense Key : Recovered Error [current] [descriptor]  | sd 11:0:17:0: [sdag] tag#2740 ASC=0xb <<vendor>>ASCQ=0x96 ",
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca2548eecec",
+    "model": "H7280A520SUN8.0T",
+    "serial": "001619PJLREV_VKJJLREV"
+   },
+   "bucketStart": "2026-09-24T13:00:00Z",
+   "bucketSecs": 3600,
+   "class": "warning",
+   "scsiCode": "1:b:97",
+   "count": 7,
+   "sample": "sd 11:0:17:0: [sdag] tag#2745 Sense Key : Recovered Error [current] [descriptor]  | sd 11:0:17:0: [sdag] tag#2745 ASC=0xb <<vendor>>ASCQ=0x97 ",
+   "hostname": "nas"
+  }
+ ]
+}

@@ -1,0 +1,77 @@
+{
+ "drive": {
+  "driveId": "40",
+  "wwn": "0x5000cca2548ef9d4",
+  "vendor": "HGST",
+  "model": "H7280A520SUN8.0T",
+  "serial": "001619PJML2V_VKJJML2V",
+  "sizeBytes": "8001563222016",
+  "bus": "BUS_SAS",
+  "status": "ok",
+  "firstSeen": "2026-09-13T01:41:39Z",
+  "lastSeen": "2026-09-27T19:41:38Z",
+  "current": {
+   "hostname": "nas",
+   "enclosure": "0x5000ccab020094ff",
+   "bay": "50",
+   "devName": "sdbi",
+   "uses": [
+    "zfs > space 5925914041408872576 > raidz2 5236016460003016805 > disk 14117335847534821566"
+   ],
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "enclosureVia": "expander-11:0",
+   "enclosureName": "nas-hgst-u60-1",
+   "bayLabel": "50"
+  },
+  "memberState": "ONLINE"
+ },
+ "placements": [
+  {
+   "hostname": "nas",
+   "enclosure": "0x5000ccab020094ff",
+   "bay": "50",
+   "devName": "sdbi",
+   "uses": [
+    "zfs > space 5925914041408872576 > raidz2 5236016460003016805 > disk 14117335847534821566"
+   ],
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "enclosureVia": "expander-11:0",
+   "enclosureName": "nas-hgst-u60-1",
+   "bayLabel": "50"
+  }
+ ],
+ "events": [
+  {
+   "eventId": "301",
+   "ts": "2026-09-13T01:41:39Z",
+   "kind": "first_seen",
+   "serial": "001619PJML2V_VKJJML2V",
+   "wwn": "0x5000cca2548ef9d4",
+   "hostname": "nas",
+   "detail": "{\"bay\":\"50\",\"dev_name\":\"sdbi\",\"expander\":\"expander-11:0\",\"expander_dev\":\"expander-11:0\",\"uses\":[\"zfs \\u003e space 5925914041408872576 \\u003e raidz2 5236016460003016805 \\u003e disk 14117335847534821566\"]}",
+   "source": "snapshot:2"
+  },
+  {
+   "eventId": "416",
+   "ts": "2026-09-13T02:09:06Z",
+   "kind": "member_state_changed",
+   "serial": "001619PJML2V_VKJJML2V",
+   "wwn": "0x5000cca2548ef9d4",
+   "hostname": "nas",
+   "detail": "{\"from\":\"\",\"to\":\"ONLINE\",\"uses\":[\"zfs \\u003e space 5925914041408872576 \\u003e raidz2 5236016460003016805 \\u003e disk 14117335847534821566\"]}",
+   "source": "snapshot:8"
+  },
+  {
+   "eventId": "611",
+   "ts": "2026-09-19T16:00:00Z",
+   "kind": "kernel_warning",
+   "serial": "001619PJML2V_VKJJML2V",
+   "wwn": "0x5000cca2548ef9d4",
+   "hostname": "nas",
+   "detail": "{\"class\":\"medium_error\",\"code\":\"\",\"count\":1,\"dev_name\":\"sdbi\",\"sample\":\"sd 11:0:45:0: [sdbi] tag#5494 Add. Sense: Recovered data without ECC - data auto-reallocated\"}",
+   "source": "kernel"
+  }
+ ]
+}

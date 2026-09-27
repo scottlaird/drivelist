@@ -1,0 +1,96 @@
+{
+ "enclosure": {
+  "enclosure": "dmi:CN7831V0PR",
+  "hostname": "server4",
+  "via": "pci",
+  "drives": 5,
+  "firstSeen": "2026-09-14T06:17:22Z",
+  "lastSeen": "2026-09-27T19:43:13Z",
+  "product": "HP ProLiant m510 Server Cartridge",
+  "bays": 5,
+  "profile": "HPE ProLiant m510 Moonshot cartridge: 2 x M.2 NVMe and 1 x M.2 SATA on board, plus a 2 x M.2 carrier card",
+  "board": "ProLiant m510 Server Cartridge"
+ },
+ "bays": [
+  {
+   "label": "M.2 1",
+   "ids": [
+    "pci:1"
+   ],
+   "declared": true,
+   "present": true,
+   "devName": "nvme2n1",
+   "serial": "S7U5NJ0Y231176D",
+   "model": "Samsung SSD 990 EVO Plus 1TB",
+   "status": "ok",
+   "uses": [
+    "zfs > data1 526293722137710250 > disk 12873712008740273794"
+   ]
+  },
+  {
+   "label": "M.2 2",
+   "ids": [
+    "pci:2"
+   ],
+   "declared": true,
+   "present": true,
+   "devName": "nvme3n1",
+   "serial": "6D130711104C92238464",
+   "model": "Sabrent Rocket 4.0 1TB",
+   "status": "ok",
+   "uses": [
+    "zfs > data2 16432252615811681372 > disk 7810004745390297246"
+   ]
+  },
+  {
+   "label": "M.2 SATA",
+   "ids": [
+    "ata:pci-0000:00:1f.2-ata-5"
+   ],
+   "declared": true,
+   "present": true,
+   "devName": "sda",
+   "serial": "0029030000034",
+   "model": "NT-512_2242",
+   "status": "ok",
+   "uses": [
+    "mount > /",
+    "mount > /boot/efi",
+    "mount > /var/lib/kubelet/pods/27ac825c-298f-40a2-b3da-6a905955277b/volumes/kubernetes.io~local-volume/pvc-f81c1381-45a6-400f-a13b-1b6d7cb27911"
+   ]
+  },
+  {
+   "label": "card port 0",
+   "ids": [
+    "pci:PCI-E Slot 6/00.0"
+   ],
+   "declared": true,
+   "present": true,
+   "devName": "nvme0n1",
+   "serial": "ANDAN5594101AB52N",
+   "model": "SHPP41-1000GM",
+   "status": "ok",
+   "uses": [
+    "zfs > data3 14800375083732622048 > disk 14556138555044844710"
+   ]
+  },
+  {
+   "label": "card port 8",
+   "ids": [
+    "pci:PCI-E Slot 6/08.0"
+   ],
+   "declared": true,
+   "present": true,
+   "devName": "nvme1n1",
+   "serial": "S5H7NS0NC15217L",
+   "model": "Samsung SSD 970 EVO 500GB",
+   "status": "ok",
+   "uses": [
+    "zfs > data4 3508075802515951370 > disk 17312631305430522147"
+   ]
+  }
+ ],
+ "rows": 1,
+ "columns": 5,
+ "order": "row-major"
+}

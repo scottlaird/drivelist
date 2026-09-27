@@ -1,0 +1,162 @@
+{
+ "drive": {
+  "driveId": "31",
+  "wwn": "0x500253850025cbf1",
+  "vendor": "ATA",
+  "model": "SAMSUNG_MZ7WD960",
+  "serial": "S1E4NYAG205230",
+  "sizeBytes": "960197124096",
+  "bus": "BUS_SATA",
+  "status": "ok",
+  "firstSeen": "2026-09-13T01:41:39Z",
+  "lastSeen": "2026-09-27T19:41:38Z",
+  "current": {
+   "hostname": "nas",
+   "enclosure": "dmi:NM168S004999",
+   "bay": "pci-0000:00:1f.2-ata-6",
+   "devName": "sdb",
+   "uses": [
+    "zfs > bpool 6822782206755274061 > mirror 7879420759522091481 > disk 16883674818163482239",
+    "zfs > rpool 6335217808421659663 > mirror 10116968943579434558 > disk 4017281962645193462"
+   ],
+   "firstSeen": "2026-09-14T03:46:13Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "enclosureVia": "ata"
+  },
+  "memberState": "ONLINE"
+ },
+ "placements": [
+  {
+   "hostname": "nas",
+   "enclosure": "0x500062b2047b51c0",
+   "devName": "sdb",
+   "uses": [
+    "zfs > bpool 6822782206755274061 > mirror 7879420759522091481 > disk 16883674818163482239",
+    "zfs > rpool 6335217808421659663 > mirror 10116968943579434558 > disk 4017281962645193462"
+   ],
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-13T22:07:08Z",
+   "endedAt": "2026-09-13T22:10:03Z",
+   "endReason": "moved",
+   "enclosureVia": "host11",
+   "enclosureName": "nas-front"
+  },
+  {
+   "hostname": "nas",
+   "devName": "sdb",
+   "uses": [
+    "zfs > bpool 6822782206755274061 > mirror 7879420759522091481 > disk 16883674818163482239",
+    "zfs > rpool 6335217808421659663 > mirror 10116968943579434558 > disk 4017281962645193462"
+   ],
+   "firstSeen": "2026-09-13T22:10:03Z",
+   "lastSeen": "2026-09-14T03:44:09Z",
+   "endedAt": "2026-09-14T03:46:13Z",
+   "endReason": "moved"
+  },
+  {
+   "hostname": "nas",
+   "enclosure": "dmi:NM168S004999",
+   "bay": "pci-0000:00:1f.2-ata-6",
+   "devName": "sdb",
+   "uses": [
+    "zfs > bpool 6822782206755274061 > mirror 7879420759522091481 > disk 16883674818163482239",
+    "zfs > rpool 6335217808421659663 > mirror 10116968943579434558 > disk 4017281962645193462"
+   ],
+   "firstSeen": "2026-09-14T03:46:13Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "enclosureVia": "ata"
+  }
+ ],
+ "events": [
+  {
+   "eventId": "292",
+   "ts": "2026-09-13T01:41:39Z",
+   "kind": "first_seen",
+   "serial": "S1E4NYAG205230",
+   "wwn": "0x500253850025cbf1",
+   "hostname": "nas",
+   "detail": "{\"bay\":\"\",\"dev_name\":\"sdb\",\"expander\":\"\",\"expander_dev\":\"\",\"uses\":[\"zfs \\u003e bpool 6822782206755274061 \\u003e mirror 7879420759522091481 \\u003e disk 16883674818163482239\",\"zfs \\u003e rpool 6335217808421659663 \\u003e mirror 10116968943579434558 \\u003e disk 4017281962645193462\"]}",
+   "source": "snapshot:2"
+  },
+  {
+   "eventId": "407",
+   "ts": "2026-09-13T02:09:06Z",
+   "kind": "member_state_changed",
+   "serial": "S1E4NYAG205230",
+   "wwn": "0x500253850025cbf1",
+   "hostname": "nas",
+   "detail": "{\"from\":\"\",\"to\":\"ONLINE\",\"uses\":[\"zfs \\u003e bpool 6822782206755274061 \\u003e mirror 7879420759522091481 \\u003e disk 16883674818163482239\",\"zfs \\u003e rpool 6335217808421659663 \\u003e mirror 10116968943579434558 \\u003e disk 4017281962645193462\"]}",
+   "source": "snapshot:8"
+  },
+  {
+   "eventId": "219",
+   "ts": "2026-09-13T02:09:14Z",
+   "kind": "smart_warning",
+   "serial": "S1E4NYAG205230",
+   "wwn": "0x500253850025cbf1",
+   "hostname": "nas",
+   "detail": "{\"dev_name\":\"sdb\",\"healthy\":true,\"protocol\":\"ATA\",\"reasons\":[\"reallocated 725\"]}",
+   "source": "smart"
+  },
+  {
+   "eventId": "516",
+   "ts": "2026-09-13T22:10:03Z",
+   "kind": "moved_bay",
+   "serial": "S1E4NYAG205230",
+   "wwn": "0x500253850025cbf1",
+   "hostname": "nas",
+   "detail": "{\"from_bay\":\"\",\"from_enclosure\":\"0x500062b2047b51c0\",\"from_enclosure_name\":\"nas-front\",\"from_enclosure_via\":\"host11\",\"from_host\":\"nas\",\"from_uses\":[\"zfs \\u003e bpool 6822782206755274061 \\u003e mirror 7879420759522091481 \\u003e disk 16883674818163482239\",\"zfs \\u003e rpool 6335217808421659663 \\u003e mirror 10116968943579434558 \\u003e disk 4017281962645193462\"],\"to_bay\":\"\",\"to_dev_name\":\"sdb\",\"to_enclosure\":\"\",\"to_enclosure_via\":\"\",\"to_uses\":[\"zfs \\u003e bpool 6822782206755274061 \\u003e mirror 7879420759522091481 \\u003e disk 16883674818163482239\",\"zfs \\u003e rpool 6335217808421659663 \\u003e mirror 10116968943579434558 \\u003e disk 4017281962645193462\"]}",
+   "source": "snapshot:30"
+  },
+  {
+   "eventId": "528",
+   "ts": "2026-09-14T03:46:13Z",
+   "kind": "moved_bay",
+   "serial": "S1E4NYAG205230",
+   "wwn": "0x500253850025cbf1",
+   "hostname": "nas",
+   "detail": "{\"from_bay\":\"\",\"from_enclosure\":\"\",\"from_enclosure_via\":\"\",\"from_host\":\"nas\",\"from_uses\":[\"zfs \\u003e bpool 6822782206755274061 \\u003e mirror 7879420759522091481 \\u003e disk 16883674818163482239\",\"zfs \\u003e rpool 6335217808421659663 \\u003e mirror 10116968943579434558 \\u003e disk 4017281962645193462\"],\"to_bay\":\"pci-0000:00:1f.2-ata-6\",\"to_dev_name\":\"sdb\",\"to_enclosure\":\"dmi:NM168S004999\",\"to_enclosure_via\":\"ata\",\"to_uses\":[\"zfs \\u003e bpool 6822782206755274061 \\u003e mirror 7879420759522091481 \\u003e disk 16883674818163482239\",\"zfs \\u003e rpool 6335217808421659663 \\u003e mirror 10116968943579434558 \\u003e disk 4017281962645193462\"]}",
+   "source": "snapshot:38"
+  },
+  {
+   "eventId": "589",
+   "ts": "2026-09-16T17:45:27Z",
+   "kind": "smart_warning",
+   "serial": "S1E4NYAG205230",
+   "wwn": "0x500253850025cbf1",
+   "hostname": "nas",
+   "detail": "{\"dev_name\":\"sdb\",\"healthy\":true,\"protocol\":\"ATA\",\"reasons\":[\"reallocated 726\"]}",
+   "source": "smart"
+  },
+  {
+   "eventId": "609",
+   "ts": "2026-09-19T05:49:09Z",
+   "kind": "smart_warning",
+   "serial": "S1E4NYAG205230",
+   "wwn": "0x500253850025cbf1",
+   "hostname": "nas",
+   "detail": "{\"dev_name\":\"sdb\",\"healthy\":true,\"protocol\":\"ATA\",\"reasons\":[\"reallocated 728\"]}",
+   "source": "smart"
+  },
+  {
+   "eventId": "750",
+   "ts": "2026-09-22T10:07:43Z",
+   "kind": "smart_warning",
+   "serial": "S1E4NYAG205230",
+   "wwn": "0x500253850025cbf1",
+   "hostname": "nas",
+   "detail": "{\"dev_name\":\"sdb\",\"healthy\":true,\"protocol\":\"ATA\",\"reasons\":[\"reallocated 729\"]}",
+   "source": "smart"
+  },
+  {
+   "eventId": "776",
+   "ts": "2026-09-25T04:11:22Z",
+   "kind": "smart_warning",
+   "serial": "S1E4NYAG205230",
+   "wwn": "0x500253850025cbf1",
+   "hostname": "nas",
+   "detail": "{\"dev_name\":\"sdb\",\"healthy\":true,\"protocol\":\"ATA\",\"reasons\":[\"reallocated 730\"]}",
+   "source": "smart"
+  }
+ ]
+}

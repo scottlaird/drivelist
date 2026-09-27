@@ -1,0 +1,78 @@
+{
+ "drive": {
+  "driveId": "138",
+  "wwn": "0x5000000000000201",
+  "vendor": "ATA",
+  "model": "NT-512_2242",
+  "serial": "0029030000199",
+  "sizeBytes": "512110190592",
+  "bus": "BUS_SATA",
+  "status": "ok",
+  "firstSeen": "2026-09-13T02:42:09Z",
+  "lastSeen": "2026-09-27T19:43:24Z",
+  "current": {
+   "hostname": "server5",
+   "enclosure": "dmi:CN7817V0CB",
+   "bay": "pci-0000:00:1f.2-ata-5",
+   "devName": "sda",
+   "uses": [
+    "mount > /",
+    "mount > /boot/efi"
+   ],
+   "firstSeen": "2026-09-14T04:01:53Z",
+   "lastSeen": "2026-09-27T19:43:24Z",
+   "enclosureVia": "ata",
+   "bayLabel": "M.2 SATA"
+  }
+ },
+ "placements": [
+  {
+   "hostname": "server5",
+   "devName": "sda",
+   "uses": [
+    "mount > /",
+    "mount > /boot/efi"
+   ],
+   "firstSeen": "2026-09-13T02:42:09Z",
+   "lastSeen": "2026-09-14T03:58:02Z",
+   "endedAt": "2026-09-14T04:01:53Z",
+   "endReason": "moved"
+  },
+  {
+   "hostname": "server5",
+   "enclosure": "dmi:CN7817V0CB",
+   "bay": "pci-0000:00:1f.2-ata-5",
+   "devName": "sda",
+   "uses": [
+    "mount > /",
+    "mount > /boot/efi"
+   ],
+   "firstSeen": "2026-09-14T04:01:53Z",
+   "lastSeen": "2026-09-27T19:43:24Z",
+   "enclosureVia": "ata",
+   "bayLabel": "M.2 SATA"
+  }
+ ],
+ "events": [
+  {
+   "eventId": "488",
+   "ts": "2026-09-13T02:42:09Z",
+   "kind": "first_seen",
+   "serial": "0029030000199",
+   "wwn": "0x5000000000000201",
+   "hostname": "server5",
+   "detail": "{\"bay\":\"\",\"dev_name\":\"sda\",\"expander\":\"\",\"expander_dev\":\"\",\"uses\":[\"mount \\u003e /\",\"mount \\u003e /boot/efi\"]}",
+   "source": "snapshot:12"
+  },
+  {
+   "eventId": "548",
+   "ts": "2026-09-14T04:01:53Z",
+   "kind": "moved_bay",
+   "serial": "0029030000199",
+   "wwn": "0x5000000000000201",
+   "hostname": "server5",
+   "detail": "{\"from_bay\":\"\",\"from_enclosure\":\"\",\"from_enclosure_via\":\"\",\"from_host\":\"server5\",\"from_uses\":[\"mount \\u003e /\",\"mount \\u003e /boot/efi\"],\"to_bay\":\"pci-0000:00:1f.2-ata-5\",\"to_bay_label\":\"M.2 SATA\",\"to_dev_name\":\"sda\",\"to_enclosure\":\"dmi:CN7817V0CB\",\"to_enclosure_via\":\"ata\",\"to_uses\":[\"mount \\u003e /\",\"mount \\u003e /boot/efi\"]}",
+   "source": "snapshot:44"
+  }
+ ]
+}

@@ -1,0 +1,54 @@
+{
+ "events": [
+  {
+   "eventId": "706",
+   "ts": "2026-09-21T04:10:02Z",
+   "kind": "dimm_changed",
+   "hostname": "server15",
+   "detail": "{\"change\":\"appeared\",\"edac\":\"mc1/MC#1_Chan#0_DIMM#0+mc1/MC#1_Chan#1_DIMM#0\",\"part\":\"CT32G56C46S5.M16D1\",\"serial\":\"E9428856\",\"size_bytes\":34359738368,\"slot\":\"Controller1-ChannelA-DIMM0\"}",
+   "source": "report"
+  },
+  {
+   "eventId": "705",
+   "ts": "2026-09-21T04:10:02Z",
+   "kind": "dimm_changed",
+   "hostname": "server15",
+   "detail": "{\"change\":\"appeared\",\"edac\":\"mc0/MC#0_Chan#0_DIMM#0+mc0/MC#0_Chan#1_DIMM#0\",\"part\":\"CT32G56C46S5.M16D1\",\"serial\":\"E9428D8F\",\"size_bytes\":34359738368,\"slot\":\"Controller0-ChannelA-DIMM0\"}",
+   "source": "report"
+  },
+  {
+   "eventId": "643",
+   "ts": "2026-09-20T03:13:57Z",
+   "kind": "host_resumed",
+   "hostname": "server15",
+   "detail": "{\"silent_secs\":19768,\"stale_since\":1789854269}",
+   "source": "report"
+  },
+  {
+   "eventId": "635",
+   "ts": "2026-09-19T21:44:29Z",
+   "kind": "host_stale",
+   "hostname": "server15",
+   "detail": "{\"last_report\":1789853352,\"silent_secs\":917}",
+   "source": "sweeper"
+  },
+  {
+   "eventId": "632",
+   "ts": "2026-09-19T21:29:12Z",
+   "kind": "first_seen",
+   "serial": "S7KGNU0X503990T",
+   "wwn": "eui.0025384541a02e7a",
+   "hostname": "server15",
+   "detail": "{\"bay\":\"0000:00:1d.0\",\"dev_name\":\"nvme0n1\",\"enclosure\":\"dmi:MF196VS126QQMQA00359\",\"enclosure_via\":\"pci\",\"uses\":[\"mount \\u003e /\",\"mount \\u003e /boot/efi\"]}",
+   "source": "snapshot:62"
+  },
+  {
+   "eventId": "631",
+   "ts": "2026-09-19T21:29:12Z",
+   "kind": "host_first_seen",
+   "hostname": "server15",
+   "detail": "{\"hostname\":\"server15\",\"os\":\"linux\"}",
+   "source": "report"
+  }
+ ]
+}

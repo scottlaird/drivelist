@@ -1,0 +1,1573 @@
+{
+ "drive": {
+  "driveId": "67",
+  "wwn": "0x5000cca23b0b5d6c",
+  "vendor": "HGST",
+  "model": "HUH728080AL4200",
+  "serial": "2EG67SKP",
+  "sizeBytes": "8001563222016",
+  "bus": "BUS_SAS",
+  "status": "ok",
+  "firstSeen": "2026-09-13T01:41:39Z",
+  "lastSeen": "2026-09-27T19:41:38Z",
+  "current": {
+   "hostname": "nas",
+   "enclosure": "0x5003048001e8967f",
+   "bay": "15",
+   "devName": "sdci",
+   "uses": [
+    "zfs > backups 12143466076769931197 > raidz2 5338052500984404557 > disk 3322808112866682979"
+   ],
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "enclosureVia": "expander-11:1",
+   "enclosureName": "nas-sc847-front"
+  },
+  "memberState": "ONLINE"
+ },
+ "samples": [
+  {
+   "identity": {
+    "wwn": "0x5000cca23b0b5d6c",
+    "model": "HUH728080AL4200",
+    "serial": "2EG67SKP"
+   },
+   "devName": "sdci",
+   "ts": "2026-09-27T15:25:25Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "14023",
+    "tempC": 30,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "207516125000000",
+    "writeBytes": "33659720999999",
+    "selftestLast": "short: completed @ 36313h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca23b0b5d6c",
+    "model": "HUH728080AL4200",
+    "serial": "2EG67SKP"
+   },
+   "devName": "sdci",
+   "ts": "2026-09-27T15:12:57Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "14023",
+    "tempC": 30,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "207516103000000",
+    "writeBytes": "33659718999999",
+    "selftestLast": "short: completed @ 36313h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca23b0b5d6c",
+    "model": "HUH728080AL4200",
+    "serial": "2EG67SKP"
+   },
+   "devName": "sdci",
+   "ts": "2026-09-27T10:13:56Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "14018",
+    "tempC": 30,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "207515298000000",
+    "writeBytes": "33659676000000",
+    "selftestLast": "short: completed @ 36313h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca23b0b5d6c",
+    "model": "HUH728080AL4200",
+    "serial": "2EG67SKP"
+   },
+   "devName": "sdci",
+   "ts": "2026-09-27T04:13:39Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "14012",
+    "tempC": 32,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "207512341000000",
+    "writeBytes": "33659377999999",
+    "selftestLast": "short: completed @ 36313h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca23b0b5d6c",
+    "model": "HUH728080AL4200",
+    "serial": "2EG67SKP"
+   },
+   "devName": "sdci",
+   "ts": "2026-09-26T22:13:22Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "14006",
+    "tempC": 32,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "207508085000000",
+    "writeBytes": "33659326000000",
+    "selftestLast": "short: completed @ 36313h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca23b0b5d6c",
+    "model": "HUH728080AL4200",
+    "serial": "2EG67SKP"
+   },
+   "devName": "sdci",
+   "ts": "2026-09-26T16:13:05Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "14000",
+    "tempC": 30,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "207505367000000",
+    "writeBytes": "33659273999999",
+    "selftestLast": "short: completed @ 36313h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca23b0b5d6c",
+    "model": "HUH728080AL4200",
+    "serial": "2EG67SKP"
+   },
+   "devName": "sdci",
+   "ts": "2026-09-26T10:12:48Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "13994",
+    "tempC": 30,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "207504260000000",
+    "writeBytes": "33659222000000",
+    "selftestLast": "short: completed @ 36313h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca23b0b5d6c",
+    "model": "HUH728080AL4200",
+    "serial": "2EG67SKP"
+   },
+   "devName": "sdci",
+   "ts": "2026-09-26T04:12:32Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "13988",
+    "tempC": 30,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "207502025000000",
+    "writeBytes": "33659045000000",
+    "selftestLast": "short: completed @ 36313h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca23b0b5d6c",
+    "model": "HUH728080AL4200",
+    "serial": "2EG67SKP"
+   },
+   "devName": "sdci",
+   "ts": "2026-09-25T22:12:15Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "13982",
+    "tempC": 32,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "207502025000000",
+    "writeBytes": "33659045000000",
+    "selftestLast": "short: completed @ 36313h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca23b0b5d6c",
+    "model": "HUH728080AL4200",
+    "serial": "2EG67SKP"
+   },
+   "devName": "sdci",
+   "ts": "2026-09-25T16:11:59Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "13976",
+    "tempC": 32,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "207495097000000",
+    "writeBytes": "33658997000000",
+    "selftestLast": "short: completed @ 36313h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca23b0b5d6c",
+    "model": "HUH728080AL4200",
+    "serial": "2EG67SKP"
+   },
+   "devName": "sdci",
+   "ts": "2026-09-25T10:11:43Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "13970",
+    "tempC": 32,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "207489838000000",
+    "writeBytes": "33658945000000",
+    "selftestLast": "short: completed @ 36313h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca23b0b5d6c",
+    "model": "HUH728080AL4200",
+    "serial": "2EG67SKP"
+   },
+   "devName": "sdci",
+   "ts": "2026-09-25T04:11:27Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "13964",
+    "tempC": 32,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "207487574000000",
+    "writeBytes": "33658604000000",
+    "selftestLast": "short: completed @ 36313h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca23b0b5d6c",
+    "model": "HUH728080AL4200",
+    "serial": "2EG67SKP"
+   },
+   "devName": "sdci",
+   "ts": "2026-09-24T22:11:11Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "13958",
+    "tempC": 33,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "207487470000000",
+    "writeBytes": "33658603000000",
+    "selftestLast": "short: completed @ 36313h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca23b0b5d6c",
+    "model": "HUH728080AL4200",
+    "serial": "2EG67SKP"
+   },
+   "devName": "sdci",
+   "ts": "2026-09-24T16:10:55Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "13952",
+    "tempC": 31,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "207480145000000",
+    "writeBytes": "33658551000000",
+    "selftestLast": "short: completed @ 36313h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca23b0b5d6c",
+    "model": "HUH728080AL4200",
+    "serial": "2EG67SKP"
+   },
+   "devName": "sdci",
+   "ts": "2026-09-24T10:10:37Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "13946",
+    "tempC": 32,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "207475649000000",
+    "writeBytes": "33658498000000",
+    "selftestLast": "short: completed @ 36313h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca23b0b5d6c",
+    "model": "HUH728080AL4200",
+    "serial": "2EG67SKP"
+   },
+   "devName": "sdci",
+   "ts": "2026-09-24T04:10:14Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "13940",
+    "tempC": 33,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "207470055000000",
+    "writeBytes": "33658228000000",
+    "selftestLast": "short: completed @ 36313h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca23b0b5d6c",
+    "model": "HUH728080AL4200",
+    "serial": "2EG67SKP"
+   },
+   "devName": "sdci",
+   "ts": "2026-09-23T22:09:55Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "13934",
+    "tempC": 33,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "207462723000000",
+    "writeBytes": "33658176000000",
+    "selftestLast": "short: completed @ 36313h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca23b0b5d6c",
+    "model": "HUH728080AL4200",
+    "serial": "2EG67SKP"
+   },
+   "devName": "sdci",
+   "ts": "2026-09-23T16:09:31Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "13928",
+    "tempC": 33,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "207455424000000",
+    "writeBytes": "33658125000000",
+    "selftestLast": "short: completed @ 36313h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca23b0b5d6c",
+    "model": "HUH728080AL4200",
+    "serial": "2EG67SKP"
+   },
+   "devName": "sdci",
+   "ts": "2026-09-23T10:09:08Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "13922",
+    "tempC": 34,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "207449036000000",
+    "writeBytes": "33658072999999",
+    "selftestLast": "short: completed @ 36313h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca23b0b5d6c",
+    "model": "HUH728080AL4200",
+    "serial": "2EG67SKP"
+   },
+   "devName": "sdci",
+   "ts": "2026-09-23T04:08:50Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "13916",
+    "tempC": 34,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "207447192000000",
+    "writeBytes": "33657802000000",
+    "selftestLast": "short: completed @ 36313h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca23b0b5d6c",
+    "model": "HUH728080AL4200",
+    "serial": "2EG67SKP"
+   },
+   "devName": "sdci",
+   "ts": "2026-09-22T22:08:30Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "13910",
+    "tempC": 35,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "207446086000000",
+    "writeBytes": "33657750000000",
+    "selftestLast": "short: completed @ 36313h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca23b0b5d6c",
+    "model": "HUH728080AL4200",
+    "serial": "2EG67SKP"
+   },
+   "devName": "sdci",
+   "ts": "2026-09-22T16:08:07Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "13904",
+    "tempC": 31,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "207445025000000",
+    "writeBytes": "33657699000000",
+    "selftestLast": "short: completed @ 36313h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca23b0b5d6c",
+    "model": "HUH728080AL4200",
+    "serial": "2EG67SKP"
+   },
+   "devName": "sdci",
+   "ts": "2026-09-22T10:07:48Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "13898",
+    "tempC": 34,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "207444086000000",
+    "writeBytes": "33657463000000",
+    "selftestLast": "short: completed @ 36313h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca23b0b5d6c",
+    "model": "HUH728080AL4200",
+    "serial": "2EG67SKP"
+   },
+   "devName": "sdci",
+   "ts": "2026-09-22T04:07:29Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "13892",
+    "tempC": 35,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "207440288000000",
+    "writeBytes": "33657411000000",
+    "selftestLast": "short: completed @ 36313h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca23b0b5d6c",
+    "model": "HUH728080AL4200",
+    "serial": "2EG67SKP"
+   },
+   "devName": "sdci",
+   "ts": "2026-09-21T22:07:10Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "13885",
+    "tempC": 36,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "207435777000000",
+    "writeBytes": "33657358999999",
+    "selftestLast": "short: completed @ 36313h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca23b0b5d6c",
+    "model": "HUH728080AL4200",
+    "serial": "2EG67SKP"
+   },
+   "devName": "sdci",
+   "ts": "2026-09-21T16:06:47Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "13879",
+    "tempC": 32,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "207433243000000",
+    "writeBytes": "33657307000000",
+    "selftestLast": "short: completed @ 36313h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca23b0b5d6c",
+    "model": "HUH728080AL4200",
+    "serial": "2EG67SKP"
+   },
+   "devName": "sdci",
+   "ts": "2026-09-21T10:06:26Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "13873",
+    "tempC": 33,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "207432125000000",
+    "writeBytes": "33657256000000",
+    "selftestLast": "short: completed @ 36313h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca23b0b5d6c",
+    "model": "HUH728080AL4200",
+    "serial": "2EG67SKP"
+   },
+   "devName": "sdci",
+   "ts": "2026-09-21T04:06:03Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "13867",
+    "tempC": 35,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "207431005000000",
+    "writeBytes": "33657002000000",
+    "selftestLast": "short: completed @ 36313h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca23b0b5d6c",
+    "model": "HUH728080AL4200",
+    "serial": "2EG67SKP"
+   },
+   "devName": "sdci",
+   "ts": "2026-09-21T03:53:34Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "13867",
+    "tempC": 35,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "207430987000000",
+    "writeBytes": "33657000000000",
+    "selftestLast": "short: completed @ 36313h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca23b0b5d6c",
+    "model": "HUH728080AL4200",
+    "serial": "2EG67SKP"
+   },
+   "devName": "sdci",
+   "ts": "2026-09-21T03:43:14Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "13867",
+    "tempC": 36,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "207430946000000",
+    "writeBytes": "33656999000000",
+    "selftestLast": "short: completed @ 36313h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca23b0b5d6c",
+    "model": "HUH728080AL4200",
+    "serial": "2EG67SKP"
+   },
+   "devName": "sdci",
+   "ts": "2026-09-21T03:28:44Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "13867",
+    "tempC": 35,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "207430924000000",
+    "writeBytes": "33656997000000",
+    "selftestLast": "short: completed @ 36313h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca23b0b5d6c",
+    "model": "HUH728080AL4200",
+    "serial": "2EG67SKP"
+   },
+   "devName": "sdci",
+   "ts": "2026-09-21T01:42:29Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "13865",
+    "tempC": 36,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "207430622000000",
+    "writeBytes": "33656982000000",
+    "selftestLast": "short: completed @ 36313h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca23b0b5d6c",
+    "model": "HUH728080AL4200",
+    "serial": "2EG67SKP"
+   },
+   "devName": "sdci",
+   "ts": "2026-09-20T19:42:08Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "13859",
+    "tempC": 34,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "207429543000000",
+    "writeBytes": "33656930000000",
+    "selftestLast": "short: completed @ 36313h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca23b0b5d6c",
+    "model": "HUH728080AL4200",
+    "serial": "2EG67SKP"
+   },
+   "devName": "sdci",
+   "ts": "2026-09-20T14:22:07Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "13854",
+    "tempC": 32,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "207428630000000",
+    "writeBytes": "33656884000000",
+    "selftestLast": "short: completed @ 36313h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca23b0b5d6c",
+    "model": "HUH728080AL4200",
+    "serial": "2EG67SKP"
+   },
+   "devName": "sdci",
+   "ts": "2026-09-20T08:21:37Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "13848",
+    "tempC": 33,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "207427564000000",
+    "writeBytes": "33621411000000",
+    "selftestLast": "short: completed @ 36313h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca23b0b5d6c",
+    "model": "HUH728080AL4200",
+    "serial": "2EG67SKP"
+   },
+   "devName": "sdci",
+   "ts": "2026-09-20T02:21:19Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "13842",
+    "tempC": 35,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "207425471000000",
+    "writeBytes": "33621358999999",
+    "selftestLast": "short: completed @ 36313h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca23b0b5d6c",
+    "model": "HUH728080AL4200",
+    "serial": "2EG67SKP"
+   },
+   "devName": "sdci",
+   "ts": "2026-09-19T20:20:50Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "13836",
+    "tempC": 33,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "207421658000000",
+    "writeBytes": "33621305999999",
+    "selftestLast": "short: completed @ 36313h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca23b0b5d6c",
+    "model": "HUH728080AL4200",
+    "serial": "2EG67SKP"
+   },
+   "devName": "sdci",
+   "ts": "2026-09-19T17:50:06Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "13833",
+    "tempC": 33,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "207418948000000",
+    "writeBytes": "33621285000000",
+    "selftestLast": "short: completed @ 36313h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca23b0b5d6c",
+    "model": "HUH728080AL4200",
+    "serial": "2EG67SKP"
+   },
+   "devName": "sdci",
+   "ts": "2026-09-19T11:49:45Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "13827",
+    "tempC": 33,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "207416438000000",
+    "writeBytes": "33621233999999",
+    "selftestLast": "short: completed @ 36313h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca23b0b5d6c",
+    "model": "HUH728080AL4200",
+    "serial": "2EG67SKP"
+   },
+   "devName": "sdci",
+   "ts": "2026-09-19T05:49:15Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "13821",
+    "tempC": 34,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "207415329000000",
+    "writeBytes": "33621182000000",
+    "selftestLast": "short: completed @ 36313h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca23b0b5d6c",
+    "model": "HUH728080AL4200",
+    "serial": "2EG67SKP"
+   },
+   "devName": "sdci",
+   "ts": "2026-09-18T23:48:38Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "13815",
+    "tempC": 36,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "207414139000000",
+    "writeBytes": "33621129999999",
+    "selftestLast": "short: completed @ 36313h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca23b0b5d6c",
+    "model": "HUH728080AL4200",
+    "serial": "2EG67SKP"
+   },
+   "devName": "sdci",
+   "ts": "2026-09-18T17:48:06Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "13809",
+    "tempC": 33,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "207412988000000",
+    "writeBytes": "33621078000000",
+    "selftestLast": "short: completed @ 36313h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca23b0b5d6c",
+    "model": "HUH728080AL4200",
+    "serial": "2EG67SKP"
+   },
+   "devName": "sdci",
+   "ts": "2026-09-18T11:47:45Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "13803",
+    "tempC": 33,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "207411951000000",
+    "writeBytes": "33621025999999",
+    "selftestLast": "short: completed @ 36313h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca23b0b5d6c",
+    "model": "HUH728080AL4200",
+    "serial": "2EG67SKP"
+   },
+   "devName": "sdci",
+   "ts": "2026-09-18T05:47:25Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "13797",
+    "tempC": 33,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "207410934000000",
+    "writeBytes": "33620974000000",
+    "selftestLast": "short: completed @ 36313h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca23b0b5d6c",
+    "model": "HUH728080AL4200",
+    "serial": "2EG67SKP"
+   },
+   "devName": "sdci",
+   "ts": "2026-09-17T23:47:00Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "13791",
+    "tempC": 37,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "207405413000000",
+    "writeBytes": "33620923000000",
+    "selftestLast": "short: completed @ 36313h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca23b0b5d6c",
+    "model": "HUH728080AL4200",
+    "serial": "2EG67SKP"
+   },
+   "devName": "sdci",
+   "ts": "2026-09-17T17:46:40Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "13785",
+    "tempC": 33,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "207400427000000",
+    "writeBytes": "33620870000000",
+    "selftestLast": "short: completed @ 36313h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca23b0b5d6c",
+    "model": "HUH728080AL4200",
+    "serial": "2EG67SKP"
+   },
+   "devName": "sdci",
+   "ts": "2026-09-17T11:46:22Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "13779",
+    "tempC": 33,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "207399032000000",
+    "writeBytes": "33620819000000",
+    "selftestLast": "short: completed @ 36313h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca23b0b5d6c",
+    "model": "HUH728080AL4200",
+    "serial": "2EG67SKP"
+   },
+   "devName": "sdci",
+   "ts": "2026-09-17T05:46:05Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "13773",
+    "tempC": 34,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "207394699000000",
+    "writeBytes": "33620767000000",
+    "selftestLast": "short: completed @ 36313h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca23b0b5d6c",
+    "model": "HUH728080AL4200",
+    "serial": "2EG67SKP"
+   },
+   "devName": "sdci",
+   "ts": "2026-09-16T23:45:49Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "13767",
+    "tempC": 35,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "207388118000000",
+    "writeBytes": "33620714000000",
+    "selftestLast": "short: completed @ 36313h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca23b0b5d6c",
+    "model": "HUH728080AL4200",
+    "serial": "2EG67SKP"
+   },
+   "devName": "sdci",
+   "ts": "2026-09-16T17:45:33Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "13761",
+    "tempC": 32,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "207382982000000",
+    "writeBytes": "33620661999999",
+    "selftestLast": "short: completed @ 36313h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca23b0b5d6c",
+    "model": "HUH728080AL4200",
+    "serial": "2EG67SKP"
+   },
+   "devName": "sdci",
+   "ts": "2026-09-16T11:45:16Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "13755",
+    "tempC": 32,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "207381847000000",
+    "writeBytes": "33620610999999",
+    "selftestLast": "short: completed @ 36313h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca23b0b5d6c",
+    "model": "HUH728080AL4200",
+    "serial": "2EG67SKP"
+   },
+   "devName": "sdci",
+   "ts": "2026-09-16T05:45:00Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "13749",
+    "tempC": 34,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "207380686000000",
+    "writeBytes": "33620559000000",
+    "selftestLast": "short: completed @ 36313h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca23b0b5d6c",
+    "model": "HUH728080AL4200",
+    "serial": "2EG67SKP"
+   },
+   "devName": "sdci",
+   "ts": "2026-09-15T23:44:43Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "13743",
+    "tempC": 34,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "207379567000000",
+    "writeBytes": "33620508000000",
+    "selftestLast": "short: completed @ 36313h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca23b0b5d6c",
+    "model": "HUH728080AL4200",
+    "serial": "2EG67SKP"
+   },
+   "devName": "sdci",
+   "ts": "2026-09-15T17:44:27Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "13737",
+    "tempC": 32,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "207378427000000",
+    "writeBytes": "33620457000000",
+    "selftestLast": "short: completed @ 36313h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca23b0b5d6c",
+    "model": "HUH728080AL4200",
+    "serial": "2EG67SKP"
+   },
+   "devName": "sdci",
+   "ts": "2026-09-15T11:44:10Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "13731",
+    "tempC": 33,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "207377338000000",
+    "writeBytes": "33620405000000",
+    "selftestLast": "short: completed @ 36313h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca23b0b5d6c",
+    "model": "HUH728080AL4200",
+    "serial": "2EG67SKP"
+   },
+   "devName": "sdci",
+   "ts": "2026-09-15T05:43:53Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "13725",
+    "tempC": 34,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "207376425000000",
+    "writeBytes": "33620364000000",
+    "selftestLast": "short: completed @ 36313h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca23b0b5d6c",
+    "model": "HUH728080AL4200",
+    "serial": "2EG67SKP"
+   },
+   "devName": "sdci",
+   "ts": "2026-09-14T23:43:36Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "13719",
+    "tempC": 35,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "207370824000000",
+    "writeBytes": "33620313000000",
+    "selftestLast": "short: completed @ 36313h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca23b0b5d6c",
+    "model": "HUH728080AL4200",
+    "serial": "2EG67SKP"
+   },
+   "devName": "sdci",
+   "ts": "2026-09-14T17:43:20Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "13713",
+    "tempC": 33,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "207366121000000",
+    "writeBytes": "33620261000000",
+    "selftestLast": "short: completed @ 36313h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca23b0b5d6c",
+    "model": "HUH728080AL4200",
+    "serial": "2EG67SKP"
+   },
+   "devName": "sdci",
+   "ts": "2026-09-14T16:09:56Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "13712",
+    "tempC": 33,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "207365807000000",
+    "writeBytes": "33620247000000",
+    "selftestLast": "short: completed @ 36313h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca23b0b5d6c",
+    "model": "HUH728080AL4200",
+    "serial": "2EG67SKP"
+   },
+   "devName": "sdci",
+   "ts": "2026-09-14T10:09:39Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "13706",
+    "tempC": 33,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "207364609000000",
+    "writeBytes": "33620195000000",
+    "selftestLast": "short: completed @ 36313h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca23b0b5d6c",
+    "model": "HUH728080AL4200",
+    "serial": "2EG67SKP"
+   },
+   "devName": "sdci",
+   "ts": "2026-09-14T04:09:21Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "13700",
+    "tempC": 34,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "207361246000000",
+    "writeBytes": "33620169000000",
+    "selftestLast": "short: completed @ 36313h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca23b0b5d6c",
+    "model": "HUH728080AL4200",
+    "serial": "2EG67SKP"
+   },
+   "devName": "sdci",
+   "ts": "2026-09-14T03:59:16Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "13699",
+    "tempC": 34,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "207361246000000",
+    "writeBytes": "33620169000000",
+    "selftestLast": "short: completed @ 36313h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca23b0b5d6c",
+    "model": "HUH728080AL4200",
+    "serial": "2EG67SKP"
+   },
+   "devName": "sdci",
+   "ts": "2026-09-14T03:46:24Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "13699",
+    "tempC": 34,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "207361246000000",
+    "writeBytes": "33620169000000",
+    "selftestLast": "short: completed @ 36313h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca23b0b5d6c",
+    "model": "HUH728080AL4200",
+    "serial": "2EG67SKP"
+   },
+   "devName": "sdci",
+   "ts": "2026-09-13T23:13:17Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "13695",
+    "tempC": 33,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "207359966000000",
+    "writeBytes": "33620140000000",
+    "selftestLast": "short: completed @ 36313h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca23b0b5d6c",
+    "model": "HUH728080AL4200",
+    "serial": "2EG67SKP"
+   },
+   "devName": "sdci",
+   "ts": "2026-09-13T22:10:42Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "13694",
+    "tempC": 33,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "207359657000000",
+    "writeBytes": "33620131000000",
+    "selftestLast": "short: completed @ 36313h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca23b0b5d6c",
+    "model": "HUH728080AL4200",
+    "serial": "2EG67SKP"
+   },
+   "devName": "sdci",
+   "ts": "2026-09-13T21:37:18Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "13693",
+    "tempC": 33,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "207358970000000",
+    "writeBytes": "33620125999999",
+    "selftestLast": "short: completed @ 36313h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca23b0b5d6c",
+    "model": "HUH728080AL4200",
+    "serial": "2EG67SKP"
+   },
+   "devName": "sdci",
+   "ts": "2026-09-13T21:15:33Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "13693",
+    "tempC": 33,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "207358496000000",
+    "writeBytes": "33620123000000",
+    "selftestLast": "short: completed @ 36313h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca23b0b5d6c",
+    "model": "HUH728080AL4200",
+    "serial": "2EG67SKP"
+   },
+   "devName": "sdci",
+   "ts": "2026-09-13T17:05:18Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "13688",
+    "tempC": 33,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "207356021000000",
+    "writeBytes": "33620086000000",
+    "selftestLast": "short: completed @ 36313h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca23b0b5d6c",
+    "model": "HUH728080AL4200",
+    "serial": "2EG67SKP"
+   },
+   "devName": "sdci",
+   "ts": "2026-09-13T14:18:42Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "13686",
+    "tempC": 33,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "207353330000000",
+    "writeBytes": "33620063000000",
+    "selftestLast": "short: completed @ 36313h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca23b0b5d6c",
+    "model": "HUH728080AL4200",
+    "serial": "2EG67SKP"
+   },
+   "devName": "sdci",
+   "ts": "2026-09-13T08:17:58Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "13680",
+    "tempC": 34,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "207347693000000",
+    "writeBytes": "33620011000000",
+    "selftestLast": "short: completed @ 36313h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca23b0b5d6c",
+    "model": "HUH728080AL4200",
+    "serial": "2EG67SKP"
+   },
+   "devName": "sdci",
+   "ts": "2026-09-13T02:17:15Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "13674",
+    "tempC": 34,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "207344976000000",
+    "writeBytes": "33619987000000",
+    "selftestLast": "short: completed @ 36313h"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca23b0b5d6c",
+    "model": "HUH728080AL4200",
+    "serial": "2EG67SKP"
+   },
+   "devName": "sdci",
+   "ts": "2026-09-13T02:09:19Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "13674",
+    "tempC": 34,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "207344796000000",
+    "writeBytes": "33619985000000",
+    "selftestLast": "short: completed @ 36313h"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  }
+ ]
+}

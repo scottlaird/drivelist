@@ -1,0 +1,490 @@
+{
+ "row": {
+  "optic": {
+   "port": "ens2f0np0",
+   "ports": [
+    "ens2f0np0"
+   ],
+   "form": "QSFP28",
+   "identifier": "0x11 (QSFP28)",
+   "kind": "optical",
+   "vendor": "LUMENTUM",
+   "oui": "00:01:9c",
+   "part": "LQ210CR-CPA1",
+   "rev": "01",
+   "serial": "FH1757250160",
+   "dateCode": "170628",
+   "compliance": "100G Ethernet: 100G CWDM4 MSA with FEC",
+   "connector": "LC",
+   "wavelengthNm": 1311,
+   "link": "up",
+   "diagnostics": true,
+   "tempC": 58.24,
+   "voltageV": 3.3218,
+   "lanes": [
+    {
+     "lane": 1,
+     "biasMa": 25.96,
+     "txMw": 0.5807,
+     "rxMw": 1.2135
+    },
+    {
+     "lane": 2,
+     "biasMa": 27.25,
+     "txMw": 0.6967,
+     "rxMw": 1.2688
+    },
+    {
+     "lane": 3,
+     "biasMa": 29.3,
+     "txMw": 0.7266,
+     "rxMw": 1.2796
+    },
+    {
+     "lane": 4,
+     "biasMa": 35.474,
+     "txMw": 0.6385,
+     "rxMw": 1.0536
+    }
+   ],
+   "thresholds": {
+    "bias_high_alarm": 81,
+    "bias_high_warning": 74.3,
+    "bias_low_alarm": 5,
+    "bias_low_warning": 10,
+    "rx_high_alarm": 3.5481,
+    "rx_high_warning": 2.8183,
+    "rx_low_alarm": 0.0281,
+    "rx_low_warning": 0.0446,
+    "temp_high_alarm": 75,
+    "temp_high_warning": 73,
+    "temp_low_alarm": -5,
+    "temp_low_warning": -3,
+    "tx_high_alarm": 4.4668,
+    "tx_high_warning": 2.8183,
+    "tx_low_alarm": 0.0891,
+    "tx_low_warning": 0.1412,
+    "voltage_high_alarm": 3.6036,
+    "voltage_high_warning": 3.5343,
+    "voltage_low_alarm": 3.0096,
+    "voltage_low_warning": 3.0723
+   }
+  },
+  "status": "ok",
+  "hostname": "nas",
+  "present": true,
+  "firstSeen": "2026-09-27T15:12:44Z",
+  "lastSeen": "2026-09-27T19:41:38Z",
+  "sampledAt": "2026-09-27T19:41:38Z"
+ },
+ "placements": [
+  {
+   "hostname": "nas",
+   "port": "ens2f0np0",
+   "ports": [
+    "ens2f0np0"
+   ],
+   "firstSeen": "2026-09-27T15:12:44Z",
+   "lastSeen": "2026-09-27T19:41:38Z"
+  }
+ ],
+ "samples": [
+  {
+   "ts": "2026-09-27T19:41:38Z",
+   "hostname": "nas",
+   "port": "ens2f0np0",
+   "tempC": 58.24,
+   "voltageV": 3.3218,
+   "lanes": [
+    {
+     "lane": 1,
+     "biasMa": 25.96,
+     "txMw": 0.5807,
+     "rxMw": 1.2135
+    },
+    {
+     "lane": 2,
+     "biasMa": 27.25,
+     "txMw": 0.6967,
+     "rxMw": 1.2688
+    },
+    {
+     "lane": 3,
+     "biasMa": 29.3,
+     "txMw": 0.7266,
+     "rxMw": 1.2796
+    },
+    {
+     "lane": 4,
+     "biasMa": 35.474,
+     "txMw": 0.6385,
+     "rxMw": 1.0536
+    }
+   ],
+   "link": "up"
+  },
+  {
+   "ts": "2026-09-27T18:56:23Z",
+   "hostname": "nas",
+   "port": "ens2f0np0",
+   "tempC": 57.53,
+   "voltageV": 3.324,
+   "lanes": [
+    {
+     "lane": 1,
+     "biasMa": 25.71,
+     "txMw": 0.5758,
+     "rxMw": 1.2063
+    },
+    {
+     "lane": 2,
+     "biasMa": 26.986,
+     "txMw": 0.6977,
+     "rxMw": 1.2712
+    },
+    {
+     "lane": 3,
+     "biasMa": 29.002,
+     "txMw": 0.7268,
+     "rxMw": 1.2718
+    },
+    {
+     "lane": 4,
+     "biasMa": 35.23,
+     "txMw": 0.6374,
+     "rxMw": 1.0485
+    }
+   ],
+   "link": "up"
+  },
+  {
+   "ts": "2026-09-27T17:56:02Z",
+   "hostname": "nas",
+   "port": "ens2f0np0",
+   "tempC": 57.46,
+   "voltageV": 3.3228,
+   "lanes": [
+    {
+     "lane": 1,
+     "biasMa": 25.682,
+     "txMw": 0.5766,
+     "rxMw": 1.2039
+    },
+    {
+     "lane": 2,
+     "biasMa": 26.956,
+     "txMw": 0.6938,
+     "rxMw": 1.2754
+    },
+    {
+     "lane": 3,
+     "biasMa": 28.968,
+     "txMw": 0.7221,
+     "rxMw": 1.2619
+    },
+    {
+     "lane": 4,
+     "biasMa": 35.204,
+     "txMw": 0.6371,
+     "rxMw": 1.042
+    }
+   ],
+   "link": "up"
+  },
+  {
+   "ts": "2026-09-27T16:55:43Z",
+   "hostname": "nas",
+   "port": "ens2f0np0",
+   "tempC": 57.63,
+   "voltageV": 3.3234,
+   "lanes": [
+    {
+     "lane": 1,
+     "biasMa": 25.736,
+     "txMw": 0.5784,
+     "rxMw": 1.2036
+    },
+    {
+     "lane": 2,
+     "biasMa": 27.014,
+     "txMw": 0.6972,
+     "rxMw": 1.2722
+    },
+    {
+     "lane": 3,
+     "biasMa": 29.034,
+     "txMw": 0.7259,
+     "rxMw": 1.2638
+    },
+    {
+     "lane": 4,
+     "biasMa": 35.258,
+     "txMw": 0.6386,
+     "rxMw": 1.0386
+    }
+   ],
+   "link": "up"
+  },
+  {
+   "ts": "2026-09-27T15:55:23Z",
+   "hostname": "nas",
+   "port": "ens2f0np0",
+   "tempC": 56.75,
+   "voltageV": 3.323,
+   "lanes": [
+    {
+     "lane": 1,
+     "biasMa": 25.436,
+     "txMw": 0.5748,
+     "rxMw": 1.2011
+    },
+    {
+     "lane": 2,
+     "biasMa": 26.694,
+     "txMw": 0.6946,
+     "rxMw": 1.2736
+    },
+    {
+     "lane": 3,
+     "biasMa": 28.674,
+     "txMw": 0.7191,
+     "rxMw": 1.2537
+    },
+    {
+     "lane": 4,
+     "biasMa": 34.966,
+     "txMw": 0.6379,
+     "rxMw": 1.0368
+    }
+   ],
+   "link": "up"
+  }
+ ],
+ "events": [
+  {
+   "eventId": "873",
+   "ts": "2026-09-27T15:12:44Z",
+   "kind": "optic_alarm",
+   "hostname": "nas",
+   "detail": "{\"flag\":\"rx low warning lane 4\",\"form\":\"QSFP28\",\"part\":\"LQ210CR-CPA1\",\"port\":\"ens2f0np0\",\"serial\":\"FH1757250160\",\"vendor\":\"LUMENTUM\"}",
+   "source": "report",
+   "opticSerial": "FH1757250160"
+  },
+  {
+   "eventId": "872",
+   "ts": "2026-09-27T15:12:44Z",
+   "kind": "optic_alarm",
+   "hostname": "nas",
+   "detail": "{\"flag\":\"rx low alarm lane 4\",\"form\":\"QSFP28\",\"part\":\"LQ210CR-CPA1\",\"port\":\"ens2f0np0\",\"serial\":\"FH1757250160\",\"vendor\":\"LUMENTUM\"}",
+   "source": "report",
+   "opticSerial": "FH1757250160"
+  },
+  {
+   "eventId": "871",
+   "ts": "2026-09-27T15:12:44Z",
+   "kind": "optic_alarm",
+   "hostname": "nas",
+   "detail": "{\"flag\":\"rx low warning lane 3\",\"form\":\"QSFP28\",\"part\":\"LQ210CR-CPA1\",\"port\":\"ens2f0np0\",\"serial\":\"FH1757250160\",\"vendor\":\"LUMENTUM\"}",
+   "source": "report",
+   "opticSerial": "FH1757250160"
+  },
+  {
+   "eventId": "870",
+   "ts": "2026-09-27T15:12:44Z",
+   "kind": "optic_alarm",
+   "hostname": "nas",
+   "detail": "{\"flag\":\"rx low alarm lane 3\",\"form\":\"QSFP28\",\"part\":\"LQ210CR-CPA1\",\"port\":\"ens2f0np0\",\"serial\":\"FH1757250160\",\"vendor\":\"LUMENTUM\"}",
+   "source": "report",
+   "opticSerial": "FH1757250160"
+  },
+  {
+   "eventId": "869",
+   "ts": "2026-09-27T15:12:44Z",
+   "kind": "optic_alarm",
+   "hostname": "nas",
+   "detail": "{\"flag\":\"rx low warning lane 2\",\"form\":\"QSFP28\",\"part\":\"LQ210CR-CPA1\",\"port\":\"ens2f0np0\",\"serial\":\"FH1757250160\",\"vendor\":\"LUMENTUM\"}",
+   "source": "report",
+   "opticSerial": "FH1757250160"
+  },
+  {
+   "eventId": "868",
+   "ts": "2026-09-27T15:12:44Z",
+   "kind": "optic_alarm",
+   "hostname": "nas",
+   "detail": "{\"flag\":\"rx low alarm lane 2\",\"form\":\"QSFP28\",\"part\":\"LQ210CR-CPA1\",\"port\":\"ens2f0np0\",\"serial\":\"FH1757250160\",\"vendor\":\"LUMENTUM\"}",
+   "source": "report",
+   "opticSerial": "FH1757250160"
+  },
+  {
+   "eventId": "867",
+   "ts": "2026-09-27T15:12:44Z",
+   "kind": "optic_alarm",
+   "hostname": "nas",
+   "detail": "{\"flag\":\"rx low warning lane 1\",\"form\":\"QSFP28\",\"part\":\"LQ210CR-CPA1\",\"port\":\"ens2f0np0\",\"serial\":\"FH1757250160\",\"vendor\":\"LUMENTUM\"}",
+   "source": "report",
+   "opticSerial": "FH1757250160"
+  },
+  {
+   "eventId": "866",
+   "ts": "2026-09-27T15:12:44Z",
+   "kind": "optic_alarm",
+   "hostname": "nas",
+   "detail": "{\"flag\":\"rx low alarm lane 1\",\"form\":\"QSFP28\",\"part\":\"LQ210CR-CPA1\",\"port\":\"ens2f0np0\",\"serial\":\"FH1757250160\",\"vendor\":\"LUMENTUM\"}",
+   "source": "report",
+   "opticSerial": "FH1757250160"
+  },
+  {
+   "eventId": "865",
+   "ts": "2026-09-27T15:12:44Z",
+   "kind": "optic_alarm",
+   "hostname": "nas",
+   "detail": "{\"flag\":\"tx low warning lane 4\",\"form\":\"QSFP28\",\"part\":\"LQ210CR-CPA1\",\"port\":\"ens2f0np0\",\"serial\":\"FH1757250160\",\"vendor\":\"LUMENTUM\"}",
+   "source": "report",
+   "opticSerial": "FH1757250160"
+  },
+  {
+   "eventId": "864",
+   "ts": "2026-09-27T15:12:44Z",
+   "kind": "optic_alarm",
+   "hostname": "nas",
+   "detail": "{\"flag\":\"tx low alarm lane 4\",\"form\":\"QSFP28\",\"part\":\"LQ210CR-CPA1\",\"port\":\"ens2f0np0\",\"serial\":\"FH1757250160\",\"vendor\":\"LUMENTUM\"}",
+   "source": "report",
+   "opticSerial": "FH1757250160"
+  },
+  {
+   "eventId": "863",
+   "ts": "2026-09-27T15:12:44Z",
+   "kind": "optic_alarm",
+   "hostname": "nas",
+   "detail": "{\"flag\":\"tx low warning lane 3\",\"form\":\"QSFP28\",\"part\":\"LQ210CR-CPA1\",\"port\":\"ens2f0np0\",\"serial\":\"FH1757250160\",\"vendor\":\"LUMENTUM\"}",
+   "source": "report",
+   "opticSerial": "FH1757250160"
+  },
+  {
+   "eventId": "862",
+   "ts": "2026-09-27T15:12:44Z",
+   "kind": "optic_alarm",
+   "hostname": "nas",
+   "detail": "{\"flag\":\"tx low alarm lane 3\",\"form\":\"QSFP28\",\"part\":\"LQ210CR-CPA1\",\"port\":\"ens2f0np0\",\"serial\":\"FH1757250160\",\"vendor\":\"LUMENTUM\"}",
+   "source": "report",
+   "opticSerial": "FH1757250160"
+  },
+  {
+   "eventId": "861",
+   "ts": "2026-09-27T15:12:44Z",
+   "kind": "optic_alarm",
+   "hostname": "nas",
+   "detail": "{\"flag\":\"tx low warning lane 2\",\"form\":\"QSFP28\",\"part\":\"LQ210CR-CPA1\",\"port\":\"ens2f0np0\",\"serial\":\"FH1757250160\",\"vendor\":\"LUMENTUM\"}",
+   "source": "report",
+   "opticSerial": "FH1757250160"
+  },
+  {
+   "eventId": "860",
+   "ts": "2026-09-27T15:12:44Z",
+   "kind": "optic_alarm",
+   "hostname": "nas",
+   "detail": "{\"flag\":\"tx low alarm lane 2\",\"form\":\"QSFP28\",\"part\":\"LQ210CR-CPA1\",\"port\":\"ens2f0np0\",\"serial\":\"FH1757250160\",\"vendor\":\"LUMENTUM\"}",
+   "source": "report",
+   "opticSerial": "FH1757250160"
+  },
+  {
+   "eventId": "859",
+   "ts": "2026-09-27T15:12:44Z",
+   "kind": "optic_alarm",
+   "hostname": "nas",
+   "detail": "{\"flag\":\"tx low warning lane 1\",\"form\":\"QSFP28\",\"part\":\"LQ210CR-CPA1\",\"port\":\"ens2f0np0\",\"serial\":\"FH1757250160\",\"vendor\":\"LUMENTUM\"}",
+   "source": "report",
+   "opticSerial": "FH1757250160"
+  },
+  {
+   "eventId": "858",
+   "ts": "2026-09-27T15:12:44Z",
+   "kind": "optic_alarm",
+   "hostname": "nas",
+   "detail": "{\"flag\":\"tx low alarm lane 1\",\"form\":\"QSFP28\",\"part\":\"LQ210CR-CPA1\",\"port\":\"ens2f0np0\",\"serial\":\"FH1757250160\",\"vendor\":\"LUMENTUM\"}",
+   "source": "report",
+   "opticSerial": "FH1757250160"
+  },
+  {
+   "eventId": "857",
+   "ts": "2026-09-27T15:12:44Z",
+   "kind": "optic_alarm",
+   "hostname": "nas",
+   "detail": "{\"flag\":\"bias low warning lane 4\",\"form\":\"QSFP28\",\"part\":\"LQ210CR-CPA1\",\"port\":\"ens2f0np0\",\"serial\":\"FH1757250160\",\"vendor\":\"LUMENTUM\"}",
+   "source": "report",
+   "opticSerial": "FH1757250160"
+  },
+  {
+   "eventId": "856",
+   "ts": "2026-09-27T15:12:44Z",
+   "kind": "optic_alarm",
+   "hostname": "nas",
+   "detail": "{\"flag\":\"bias low alarm lane 4\",\"form\":\"QSFP28\",\"part\":\"LQ210CR-CPA1\",\"port\":\"ens2f0np0\",\"serial\":\"FH1757250160\",\"vendor\":\"LUMENTUM\"}",
+   "source": "report",
+   "opticSerial": "FH1757250160"
+  },
+  {
+   "eventId": "855",
+   "ts": "2026-09-27T15:12:44Z",
+   "kind": "optic_alarm",
+   "hostname": "nas",
+   "detail": "{\"flag\":\"bias low warning lane 3\",\"form\":\"QSFP28\",\"part\":\"LQ210CR-CPA1\",\"port\":\"ens2f0np0\",\"serial\":\"FH1757250160\",\"vendor\":\"LUMENTUM\"}",
+   "source": "report",
+   "opticSerial": "FH1757250160"
+  },
+  {
+   "eventId": "854",
+   "ts": "2026-09-27T15:12:44Z",
+   "kind": "optic_alarm",
+   "hostname": "nas",
+   "detail": "{\"flag\":\"bias low alarm lane 3\",\"form\":\"QSFP28\",\"part\":\"LQ210CR-CPA1\",\"port\":\"ens2f0np0\",\"serial\":\"FH1757250160\",\"vendor\":\"LUMENTUM\"}",
+   "source": "report",
+   "opticSerial": "FH1757250160"
+  },
+  {
+   "eventId": "853",
+   "ts": "2026-09-27T15:12:44Z",
+   "kind": "optic_alarm",
+   "hostname": "nas",
+   "detail": "{\"flag\":\"bias low warning lane 2\",\"form\":\"QSFP28\",\"part\":\"LQ210CR-CPA1\",\"port\":\"ens2f0np0\",\"serial\":\"FH1757250160\",\"vendor\":\"LUMENTUM\"}",
+   "source": "report",
+   "opticSerial": "FH1757250160"
+  },
+  {
+   "eventId": "852",
+   "ts": "2026-09-27T15:12:44Z",
+   "kind": "optic_alarm",
+   "hostname": "nas",
+   "detail": "{\"flag\":\"bias low alarm lane 2\",\"form\":\"QSFP28\",\"part\":\"LQ210CR-CPA1\",\"port\":\"ens2f0np0\",\"serial\":\"FH1757250160\",\"vendor\":\"LUMENTUM\"}",
+   "source": "report",
+   "opticSerial": "FH1757250160"
+  },
+  {
+   "eventId": "851",
+   "ts": "2026-09-27T15:12:44Z",
+   "kind": "optic_alarm",
+   "hostname": "nas",
+   "detail": "{\"flag\":\"bias low warning lane 1\",\"form\":\"QSFP28\",\"part\":\"LQ210CR-CPA1\",\"port\":\"ens2f0np0\",\"serial\":\"FH1757250160\",\"vendor\":\"LUMENTUM\"}",
+   "source": "report",
+   "opticSerial": "FH1757250160"
+  },
+  {
+   "eventId": "850",
+   "ts": "2026-09-27T15:12:44Z",
+   "kind": "optic_alarm",
+   "hostname": "nas",
+   "detail": "{\"flag\":\"bias low alarm lane 1\",\"form\":\"QSFP28\",\"part\":\"LQ210CR-CPA1\",\"port\":\"ens2f0np0\",\"serial\":\"FH1757250160\",\"vendor\":\"LUMENTUM\"}",
+   "source": "report",
+   "opticSerial": "FH1757250160"
+  },
+  {
+   "eventId": "849",
+   "ts": "2026-09-27T15:12:44Z",
+   "kind": "optic_first_seen",
+   "hostname": "nas",
+   "detail": "{\"form\":\"QSFP28\",\"part\":\"LQ210CR-CPA1\",\"port\":\"ens2f0np0\",\"serial\":\"FH1757250160\",\"vendor\":\"LUMENTUM\"}",
+   "source": "report",
+   "opticSerial": "FH1757250160"
+  }
+ ]
+}

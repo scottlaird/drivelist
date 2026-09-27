@@ -1,0 +1,33 @@
+{
+ "drive": {
+  "driveId": "39",
+  "wwn": "0x5000cca254899e38",
+  "vendor": "HGST",
+  "model": "H7280A520SUN8.0T",
+  "serial": "001619PEP7BV_VKJEP7BV",
+  "sizeBytes": "8001563222016",
+  "bus": "BUS_SAS",
+  "status": "ok",
+  "firstSeen": "2026-09-13T01:41:39Z",
+  "lastSeen": "2026-09-27T19:41:38Z",
+  "current": {
+   "hostname": "nas",
+   "enclosure": "0x5000ccab020094ff",
+   "bay": "38",
+   "devName": "sdbh",
+   "uses": [
+    "zfs > space 5925914041408872576 > raidz2 1731578064309998343 > disk 3095252915821648391"
+   ],
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "enclosureVia": "expander-11:0",
+   "enclosureName": "nas-hgst-u60-1",
+   "bayLabel": "38"
+  },
+  "memberState": "ONLINE"
+ },
+ "keys": [
+  "serial:H7280A520SUN8.0T/001619PEP7BV_VKJEP7BV",
+  "wwn:0x5000cca254899e38"
+ ]
+}

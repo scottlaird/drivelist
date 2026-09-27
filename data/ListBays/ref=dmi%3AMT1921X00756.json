@@ -1,0 +1,32 @@
+{
+ "enclosure": {
+  "enclosure": "dmi:MT1921X00756",
+  "hostname": "switch3",
+  "via": "ata",
+  "drives": 1,
+  "firstSeen": "2026-09-19T21:23:24Z",
+  "lastSeen": "2026-09-27T19:42:02Z",
+  "product": "Mellanox Technologies Ltd. MSN3800",
+  "bays": 1,
+  "board": "VMOD0007"
+ },
+ "bays": [
+  {
+   "label": "pci-0000:00:1f.2-ata-1",
+   "ids": [
+    "ata:pci-0000:00:1f.2-ata-1"
+   ],
+   "present": true,
+   "devName": "sda",
+   "serial": "J569680618",
+   "model": "TS512GMTS430S",
+   "status": "ok",
+   "uses": [
+    "mount > /boot",
+    "mount > /boot/grub",
+    "mount > /usr/lib/live/mount/persistence",
+    "mount > /usr/lib/live/mount/persistence/boot/2026.05.18-0045-rolling/grub"
+   ]
+  }
+ ]
+}

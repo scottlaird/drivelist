@@ -1,0 +1,72 @@
+{
+ "enclosure": {
+  "enclosure": "dmi:MD337LA27FQQMQA00061",
+  "hostname": "server9",
+  "via": "pci",
+  "drives": 3,
+  "firstSeen": "2026-09-13T23:12:36Z",
+  "lastSeen": "2026-09-27T19:42:19Z",
+  "product": "Micro Computer (HK) Tech Limited MS-A2",
+  "bays": 4,
+  "profile": "Minisforum MS-A2, 3 x M.2 2280 (PCIe 4.0 x4) plus one PCIe 5.0 x16 slot (x4 electrical)",
+  "board": "F1WSA"
+ },
+ "bays": [
+  {
+   "label": "M.2 1",
+   "ids": [
+    "pci:J3502"
+   ],
+   "declared": true,
+   "present": true,
+   "devName": "nvme0n1",
+   "serial": "S7KGNU0Y603825W",
+   "model": "Samsung SSD 990 PRO 4TB",
+   "status": "ok",
+   "uses": [
+    "zfs > data 10648486609276903990 > mirror 12388082022523346833 > disk 1259551880347934375"
+   ]
+  },
+  {
+   "label": "M.2 2",
+   "ids": [
+    "pci:0000:00:01.3"
+   ],
+   "declared": true,
+   "present": true,
+   "devName": "nvme1n1",
+   "serial": "S7KGNJ0Y518120V",
+   "model": "Samsung SSD 990 PRO 4TB",
+   "status": "ok",
+   "uses": [
+    "zfs > data 10648486609276903990 > mirror 12388082022523346833 > disk 17602928664478798752"
+   ]
+  },
+  {
+   "label": "M.2 3",
+   "ids": [
+    "pci:0000:00:01.4"
+   ],
+   "declared": true,
+   "present": true,
+   "devName": "nvme2n1",
+   "serial": "S7KHNU0Y717729D",
+   "model": "Samsung SSD 990 PRO 2TB",
+   "status": "ok",
+   "uses": [
+    "mount > /",
+    "mount > /boot/efi"
+   ]
+  },
+  {
+   "label": "PCIe slot",
+   "ids": [
+    "pci:PCIE4"
+   ],
+   "declared": true
+  }
+ ],
+ "rows": 1,
+ "columns": 4,
+ "order": "row-major"
+}

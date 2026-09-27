@@ -1,0 +1,2497 @@
+{
+ "drives": [
+  {
+   "driveId": "89",
+   "wwn": "0x5000cca0506b5f1c",
+   "vendor": "HITACHI",
+   "model": "HUSMM111CLAR1600",
+   "serial": "0SWX1KLA",
+   "sizeBytes": "1600321314816",
+   "bus": "BUS_SAS",
+   "status": "ok",
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "current": {
+    "hostname": "nas",
+    "enclosure": "0x500062b2047b51c0",
+    "bay": "0",
+    "devName": "sdq",
+    "uses": [
+     "zfs > backups 12143466076769931197 > mirror 4044852472690946034 > disk 11828207356583110866"
+    ],
+    "firstSeen": "2026-09-13T01:41:39Z",
+    "lastSeen": "2026-09-27T19:41:38Z",
+    "enclosureVia": "host11",
+    "enclosureName": "nas-front"
+   },
+   "memberState": "ONLINE"
+  },
+  {
+   "driveId": "94",
+   "wwn": "0x5000cca0506abc6c",
+   "vendor": "HITACHI",
+   "model": "HUSMM111CLAR1600",
+   "serial": "0SWWPRRA",
+   "sizeBytes": "1600321314816",
+   "bus": "BUS_SAS",
+   "status": "ok",
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "current": {
+    "hostname": "nas",
+    "enclosure": "0x500062b2047b51c0",
+    "bay": "1",
+    "devName": "sdv",
+    "uses": [
+     "zfs > backups 12143466076769931197 > mirror 4044852472690946034 > disk 16075576088670221827"
+    ],
+    "firstSeen": "2026-09-13T01:41:39Z",
+    "lastSeen": "2026-09-27T19:41:38Z",
+    "enclosureVia": "host11",
+    "enclosureName": "nas-front"
+   },
+   "memberState": "ONLINE"
+  },
+  {
+   "driveId": "92",
+   "wwn": "0x5000cca0501c6728",
+   "vendor": "HGST",
+   "model": "HUSMM1616ASS200",
+   "serial": "0SVHM7EA",
+   "sizeBytes": "1600321314816",
+   "bus": "BUS_SAS",
+   "status": "ok",
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "current": {
+    "hostname": "nas",
+    "enclosure": "0x500062b2047b51c0",
+    "bay": "2",
+    "devName": "sdt",
+    "uses": [
+     "zfs > backups 12143466076769931197 > mirror 10433001683690774586 > disk 7733054877028270239"
+    ],
+    "firstSeen": "2026-09-13T01:41:39Z",
+    "lastSeen": "2026-09-27T19:41:38Z",
+    "enclosureVia": "host11",
+    "enclosureName": "nas-front"
+   },
+   "memberState": "ONLINE"
+  },
+  {
+   "driveId": "95",
+   "wwn": "0x5000cca04aafd574",
+   "vendor": "HITACHI",
+   "model": "HUSMH842_CLAR200",
+   "serial": "0LY3PT0A",
+   "sizeBytes": "200049647616",
+   "bus": "BUS_SAS",
+   "status": "ok",
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "current": {
+    "hostname": "nas",
+    "enclosure": "0x500062b2047b51c0",
+    "bay": "4",
+    "devName": "sdw",
+    "uses": [
+     "zfs > space 5925914041408872576 > log > mirror 11643308628144396865 > disk 6658585271831292557"
+    ],
+    "firstSeen": "2026-09-13T01:41:39Z",
+    "lastSeen": "2026-09-27T19:41:38Z",
+    "enclosureVia": "host11",
+    "enclosureName": "nas-front"
+   },
+   "memberState": "ONLINE"
+  },
+  {
+   "driveId": "93",
+   "wwn": "0x5000cca04aafd554",
+   "vendor": "HITACHI",
+   "model": "HUSMH842_CLAR200",
+   "serial": "0LY3PSSA",
+   "sizeBytes": "200049647616",
+   "bus": "BUS_SAS",
+   "status": "ok",
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "current": {
+    "hostname": "nas",
+    "enclosure": "0x500062b2047b51c0",
+    "bay": "5",
+    "devName": "sdu",
+    "uses": [
+     "zfs > space 5925914041408872576 > log > mirror 11643308628144396865 > disk 9523780891956275038"
+    ],
+    "firstSeen": "2026-09-13T01:41:39Z",
+    "lastSeen": "2026-09-27T19:41:38Z",
+    "enclosureVia": "host11",
+    "enclosureName": "nas-front"
+   },
+   "memberState": "ONLINE"
+  },
+  {
+   "driveId": "91",
+   "wwn": "0x5000cca0506a96d0",
+   "vendor": "HITACHI",
+   "model": "HUSMM111CLAR1600",
+   "serial": "0SWWM72A",
+   "sizeBytes": "1600321314816",
+   "bus": "BUS_SAS",
+   "status": "ok",
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "current": {
+    "hostname": "nas",
+    "enclosure": "0x500062b2047b51c0",
+    "bay": "6",
+    "devName": "sds",
+    "uses": [
+     "zfs > backups 12143466076769931197 > mirror 10433001683690774586 > disk 2013986898276113415"
+    ],
+    "firstSeen": "2026-09-13T01:41:39Z",
+    "lastSeen": "2026-09-27T19:41:38Z",
+    "enclosureVia": "host11",
+    "enclosureName": "nas-front"
+   },
+   "memberState": "ONLINE"
+  },
+  {
+   "driveId": "90",
+   "wwn": "0x5000cca0506b3f50",
+   "vendor": "HITACHI",
+   "model": "HUSMM111CLAR1600",
+   "serial": "0SWWZEYA",
+   "bus": "BUS_SAS",
+   "status": "ok",
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "current": {
+    "hostname": "nas",
+    "enclosure": "0x500062b2047b51c0",
+    "bay": "7",
+    "devName": "sdr",
+    "firstSeen": "2026-09-13T01:41:39Z",
+    "lastSeen": "2026-09-27T19:41:38Z",
+    "enclosureVia": "host11",
+    "enclosureName": "nas-front"
+   }
+  },
+  {
+   "driveId": "49",
+   "wwn": "0x5000cca2610763dc",
+   "vendor": "HITACHI",
+   "model": "HUH72808CLAR8000",
+   "serial": "VJG41ZTX",
+   "sizeBytes": "8001563222016",
+   "bus": "BUS_SAS",
+   "status": "ok",
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "current": {
+    "hostname": "nas",
+    "enclosure": "0x5000ccab020094ff",
+    "bay": "0",
+    "devName": "sdbr",
+    "uses": [
+     "zfs > space 5925914041408872576 > raidz2 3388823558429738332 > disk 17108523430413874900"
+    ],
+    "firstSeen": "2026-09-13T01:41:39Z",
+    "lastSeen": "2026-09-27T19:41:38Z",
+    "enclosureVia": "expander-11:0",
+    "enclosureName": "nas-hgst-u60-1",
+    "bayLabel": "0"
+   },
+   "memberState": "ONLINE"
+  },
+  {
+   "driveId": "48",
+   "wwn": "0x5002538a06a04540",
+   "vendor": "SAMSUNG",
+   "model": "P1633N19_EMC1920",
+   "serial": "P0NA0HA00483",
+   "sizeBytes": "1920924123136",
+   "bus": "BUS_SAS",
+   "status": "ok",
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "current": {
+    "hostname": "nas",
+    "enclosure": "0x5000ccab020094ff",
+    "bay": "1",
+    "devName": "sdbq",
+    "uses": [
+     "zfs > l2arc space > disk 11947748110017711895"
+    ],
+    "firstSeen": "2026-09-13T01:41:39Z",
+    "lastSeen": "2026-09-27T19:41:38Z",
+    "enclosureVia": "expander-11:0",
+    "enclosureName": "nas-hgst-u60-1",
+    "bayLabel": "1"
+   },
+   "memberState": "ONLINE"
+  },
+  {
+   "driveId": "42",
+   "wwn": "0x5000c500e8e71bc2",
+   "vendor": "ATA",
+   "model": "ST8000VN004-3CP1",
+   "serial": "WWZ61ANG",
+   "sizeBytes": "8001563222016",
+   "bus": "BUS_SAS",
+   "status": "ok",
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "current": {
+    "hostname": "nas",
+    "enclosure": "0x5000ccab020094ff",
+    "bay": "2",
+    "devName": "sdbk",
+    "uses": [
+     "zfs > space 5925914041408872576 > raidz2 9007031778331642784 > disk 4275947122481209035"
+    ],
+    "firstSeen": "2026-09-13T01:41:39Z",
+    "lastSeen": "2026-09-27T19:41:38Z",
+    "enclosureVia": "expander-11:0",
+    "enclosureName": "nas-hgst-u60-1",
+    "bayLabel": "2"
+   },
+   "memberState": "ONLINE"
+  },
+  {
+   "driveId": "38",
+   "wwn": "0x5002538a069524f0",
+   "vendor": "SAMSUNG",
+   "model": "P1633N19_EMC1920",
+   "serial": "P0NA0H906141",
+   "sizeBytes": "1920924123136",
+   "bus": "BUS_SAS",
+   "status": "ok",
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "current": {
+    "hostname": "nas",
+    "enclosure": "0x5000ccab020094ff",
+    "bay": "3",
+    "devName": "sdbg",
+    "uses": [
+     "zfs > l2arc space > disk 14309469848396800428"
+    ],
+    "firstSeen": "2026-09-13T01:41:39Z",
+    "lastSeen": "2026-09-27T19:41:38Z",
+    "enclosureVia": "expander-11:0",
+    "enclosureName": "nas-hgst-u60-1",
+    "bayLabel": "3"
+   },
+   "memberState": "ONLINE"
+  },
+  {
+   "driveId": "34",
+   "wwn": "0x5000cca254301d64",
+   "vendor": "HITACHI",
+   "model": "HUH72808CLAR8000",
+   "serial": "VKGVG9GX",
+   "sizeBytes": "8001563222016",
+   "bus": "BUS_SAS",
+   "status": "ok",
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "current": {
+    "hostname": "nas",
+    "enclosure": "0x5000ccab020094ff",
+    "bay": "4",
+    "devName": "sdbc",
+    "uses": [
+     "zfs > backups 12143466076769931197 > raidz2 5338052500984404557 > disk 18335223806475789631"
+    ],
+    "firstSeen": "2026-09-13T01:41:39Z",
+    "lastSeen": "2026-09-27T19:41:38Z",
+    "enclosureVia": "expander-11:0",
+    "enclosureName": "nas-hgst-u60-1",
+    "bayLabel": "4"
+   },
+   "memberState": "ONLINE"
+  },
+  {
+   "driveId": "28",
+   "wwn": "0x5000cca0bee6e709",
+   "vendor": "ATA",
+   "model": "HGST_HUS728T8TAL",
+   "serial": "VGJSKZBK",
+   "sizeBytes": "8001563222016",
+   "bus": "BUS_SAS",
+   "status": "ok",
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "current": {
+    "hostname": "nas",
+    "enclosure": "0x5000ccab020094ff",
+    "bay": "6",
+    "devName": "sdax",
+    "uses": [
+     "zfs > space 5925914041408872576 > raidz2 3388823558429738332 > disk 779833430179635364"
+    ],
+    "firstSeen": "2026-09-13T01:41:39Z",
+    "lastSeen": "2026-09-27T19:41:38Z",
+    "enclosureVia": "expander-11:0",
+    "enclosureName": "nas-hgst-u60-1",
+    "bayLabel": "6"
+   },
+   "memberState": "ONLINE"
+  },
+  {
+   "driveId": "22",
+   "wwn": "0x5000cca0bbe6cf6c",
+   "vendor": "ATA",
+   "model": "HGST_HUS728T8TAL",
+   "serial": "VDJSBPBK",
+   "sizeBytes": "8001563222016",
+   "bus": "BUS_SAS",
+   "status": "ok",
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "current": {
+    "hostname": "nas",
+    "enclosure": "0x5000ccab020094ff",
+    "bay": "7",
+    "devName": "sdar",
+    "uses": [
+     "zfs > space 5925914041408872576 > raidz2 5204885172110344134 > disk 17157010119101828456"
+    ],
+    "firstSeen": "2026-09-13T01:41:39Z",
+    "lastSeen": "2026-09-27T19:41:38Z",
+    "enclosureVia": "expander-11:0",
+    "enclosureName": "nas-hgst-u60-1",
+    "bayLabel": "7"
+   },
+   "memberState": "ONLINE"
+  },
+  {
+   "driveId": "21",
+   "wwn": "0x5000cca0bee6a714",
+   "vendor": "ATA",
+   "model": "HGST_HUS728T8TAL",
+   "serial": "VGJS0Y6K",
+   "sizeBytes": "8001563222016",
+   "bus": "BUS_SAS",
+   "status": "ok",
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "current": {
+    "hostname": "nas",
+    "enclosure": "0x5000ccab020094ff",
+    "bay": "8",
+    "devName": "sdaq",
+    "uses": [
+     "zfs > space 5925914041408872576 > raidz2 16950899211129714203 > disk 11330324464113506692"
+    ],
+    "firstSeen": "2026-09-13T01:41:39Z",
+    "lastSeen": "2026-09-27T19:41:38Z",
+    "enclosureVia": "expander-11:0",
+    "enclosureName": "nas-hgst-u60-1",
+    "bayLabel": "8"
+   },
+   "memberState": "ONLINE"
+  },
+  {
+   "driveId": "15",
+   "wwn": "0x5000c500e8e71e56",
+   "vendor": "ATA",
+   "model": "ST8000VN004-3CP1",
+   "serial": "WWZ62CA0",
+   "sizeBytes": "8001563222016",
+   "bus": "BUS_SAS",
+   "status": "ok",
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "current": {
+    "hostname": "nas",
+    "enclosure": "0x5000ccab020094ff",
+    "bay": "9",
+    "devName": "sdak",
+    "uses": [
+     "zfs > backups 12143466076769931197 > raidz2 5338052500984404557 > disk 17976892840358164373"
+    ],
+    "firstSeen": "2026-09-13T01:41:39Z",
+    "lastSeen": "2026-09-27T19:41:38Z",
+    "enclosureVia": "expander-11:0",
+    "enclosureName": "nas-hgst-u60-1",
+    "bayLabel": "9"
+   },
+   "memberState": "ONLINE"
+  },
+  {
+   "driveId": "13",
+   "wwn": "0x5000cca26103eb9c",
+   "vendor": "HITACHI",
+   "model": "HUH72808CLAR8000",
+   "serial": "VJG24UZX",
+   "sizeBytes": "8001563222016",
+   "bus": "BUS_SAS",
+   "status": "ok",
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "current": {
+    "hostname": "nas",
+    "enclosure": "0x5000ccab020094ff",
+    "bay": "10",
+    "devName": "sdai",
+    "uses": [
+     "zfs > space 5925914041408872576 > raidz2 12372305547527317295 > disk 4484622911110778645"
+    ],
+    "firstSeen": "2026-09-13T01:41:39Z",
+    "lastSeen": "2026-09-27T19:41:38Z",
+    "enclosureVia": "expander-11:0",
+    "enclosureName": "nas-hgst-u60-1",
+    "bayLabel": "10"
+   },
+   "memberState": "ONLINE"
+  },
+  {
+   "driveId": "7",
+   "wwn": "0x5000cca26107ef78",
+   "vendor": "HITACHI",
+   "model": "HUH72808CLAR8000",
+   "serial": "VJG4B90X",
+   "sizeBytes": "8001563222016",
+   "bus": "BUS_SAS",
+   "status": "ok",
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "current": {
+    "hostname": "nas",
+    "enclosure": "0x5000ccab020094ff",
+    "bay": "11",
+    "devName": "sdac",
+    "uses": [
+     "zfs > space 5925914041408872576 > raidz2 12372305547527317295 > disk 7178308151547831118"
+    ],
+    "firstSeen": "2026-09-13T01:41:39Z",
+    "lastSeen": "2026-09-27T19:41:38Z",
+    "enclosureVia": "expander-11:0",
+    "enclosureName": "nas-hgst-u60-1",
+    "bayLabel": "11"
+   },
+   "memberState": "ONLINE"
+  },
+  {
+   "driveId": "51",
+   "wwn": "0x5000cca261035d88",
+   "vendor": "HITACHI",
+   "model": "HUH72808CLAR8000",
+   "serial": "VJG1VBNX",
+   "sizeBytes": "8001563222016",
+   "bus": "BUS_SAS",
+   "status": "ok",
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "current": {
+    "hostname": "nas",
+    "enclosure": "0x5000ccab020094ff",
+    "bay": "12",
+    "devName": "sdbt",
+    "uses": [
+     "zfs > space 5925914041408872576 > raidz2 16950899211129714203 > disk 15663109361216978631"
+    ],
+    "firstSeen": "2026-09-13T01:41:39Z",
+    "lastSeen": "2026-09-27T19:41:38Z",
+    "enclosureVia": "expander-11:0",
+    "enclosureName": "nas-hgst-u60-1",
+    "bayLabel": "12"
+   },
+   "memberState": "ONLINE"
+  },
+  {
+   "driveId": "47",
+   "wwn": "0x5000cca254286798",
+   "vendor": "HITACHI",
+   "model": "HUH72808CLAR8000",
+   "serial": "VKGR6VJX",
+   "sizeBytes": "8001563222016",
+   "bus": "BUS_SAS",
+   "status": "ok",
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "current": {
+    "hostname": "nas",
+    "enclosure": "0x5000ccab020094ff",
+    "bay": "13",
+    "devName": "sdbp",
+    "uses": [
+     "zfs > space 5925914041408872576 > raidz2 16950899211129714203 > disk 11897712593002579400"
+    ],
+    "firstSeen": "2026-09-13T01:41:39Z",
+    "lastSeen": "2026-09-27T19:41:38Z",
+    "enclosureVia": "expander-11:0",
+    "enclosureName": "nas-hgst-u60-1",
+    "bayLabel": "13"
+   },
+   "memberState": "ONLINE"
+  },
+  {
+   "driveId": "43",
+   "wwn": "0x5000cca26128ceb8",
+   "vendor": "HITACHI",
+   "model": "HUH72808CLAR8000",
+   "serial": "VJGREREX",
+   "sizeBytes": "8001563222016",
+   "bus": "BUS_SAS",
+   "status": "ok",
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "current": {
+    "hostname": "nas",
+    "enclosure": "0x5000ccab020094ff",
+    "bay": "14",
+    "devName": "sdbl",
+    "uses": [
+     "zfs > space 5925914041408872576 > raidz2 1731578064309998343 > disk 886436519714569443"
+    ],
+    "firstSeen": "2026-09-13T01:41:39Z",
+    "lastSeen": "2026-09-27T19:41:38Z",
+    "enclosureVia": "expander-11:0",
+    "enclosureName": "nas-hgst-u60-1",
+    "bayLabel": "14"
+   },
+   "memberState": "ONLINE"
+  },
+  {
+   "driveId": "37",
+   "wwn": "0x5000cca261cd9a41",
+   "vendor": "ATA",
+   "model": "HUH728080ALE601",
+   "serial": "VJGYXMPX",
+   "sizeBytes": "8001563222016",
+   "bus": "BUS_SAS",
+   "status": "ok",
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "current": {
+    "hostname": "nas",
+    "enclosure": "0x5000ccab020094ff",
+    "bay": "15",
+    "devName": "sdbf",
+    "uses": [
+     "zfs > space 5925914041408872576 > raidz2 12372305547527317295 > disk 15837447166093813087"
+    ],
+    "firstSeen": "2026-09-13T01:41:39Z",
+    "lastSeen": "2026-09-27T19:41:38Z",
+    "enclosureVia": "expander-11:0",
+    "enclosureName": "nas-hgst-u60-1",
+    "bayLabel": "15"
+   },
+   "memberState": "ONLINE"
+  },
+  {
+   "driveId": "33",
+   "wwn": "0x5000cca2612a20a8",
+   "vendor": "HITACHI",
+   "model": "HUH72808CLAR8000",
+   "serial": "VJGS573X",
+   "sizeBytes": "8001563222016",
+   "bus": "BUS_SAS",
+   "status": "ok",
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "current": {
+    "hostname": "nas",
+    "enclosure": "0x5000ccab020094ff",
+    "bay": "16",
+    "devName": "sdbb",
+    "uses": [
+     "zfs > space 5925914041408872576 > raidz2 5204885172110344134 > disk 9753708214178611793"
+    ],
+    "firstSeen": "2026-09-13T01:41:39Z",
+    "lastSeen": "2026-09-27T19:41:38Z",
+    "enclosureVia": "expander-11:0",
+    "enclosureName": "nas-hgst-u60-1",
+    "bayLabel": "16"
+   },
+   "memberState": "ONLINE"
+  },
+  {
+   "driveId": "30",
+   "wwn": "0x5000c500cb019b2b",
+   "vendor": "SEAGATE",
+   "model": "STMPSED1CLAR8000",
+   "serial": "ZA1K1FZN",
+   "sizeBytes": "8001563222016",
+   "bus": "BUS_SAS",
+   "status": "ok",
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "current": {
+    "hostname": "nas",
+    "enclosure": "0x5000ccab020094ff",
+    "bay": "17",
+    "devName": "sdaz",
+    "uses": [
+     "zfs > space 5925914041408872576 > raidz2 12372305547527317295 > disk 2305530796469611037"
+    ],
+    "firstSeen": "2026-09-13T01:41:39Z",
+    "lastSeen": "2026-09-27T19:41:38Z",
+    "enclosureVia": "expander-11:0",
+    "enclosureName": "nas-hgst-u60-1",
+    "bayLabel": "17"
+   },
+   "memberState": "ONLINE"
+  },
+  {
+   "driveId": "26",
+   "wwn": "0x5000cca261caae28",
+   "vendor": "ATA",
+   "model": "HUH728080ALE601",
+   "serial": "VJGSHAVX",
+   "sizeBytes": "8001563222016",
+   "bus": "BUS_SAS",
+   "status": "ok",
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "current": {
+    "hostname": "nas",
+    "enclosure": "0x5000ccab020094ff",
+    "bay": "18",
+    "devName": "sdav",
+    "uses": [
+     "zfs > space 5925914041408872576 > raidz2 3388823558429738332 > disk 15584877991290069928"
+    ],
+    "firstSeen": "2026-09-13T01:41:39Z",
+    "lastSeen": "2026-09-27T19:41:38Z",
+    "enclosureVia": "expander-11:0",
+    "enclosureName": "nas-hgst-u60-1",
+    "bayLabel": "18"
+   },
+   "memberState": "ONLINE"
+  },
+  {
+   "driveId": "20",
+   "wwn": "0x5000cca23bb2bb48",
+   "vendor": "HITACHI",
+   "model": "HUH72808CLAR8000",
+   "serial": "2EK595JX",
+   "sizeBytes": "8001563222016",
+   "bus": "BUS_SAS",
+   "status": "ok",
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "current": {
+    "hostname": "nas",
+    "enclosure": "0x5000ccab020094ff",
+    "bay": "19",
+    "devName": "sdap",
+    "uses": [
+     "zfs > space 5925914041408872576 > raidz2 5204885172110344134 > disk 2969812317754238394"
+    ],
+    "firstSeen": "2026-09-13T01:41:39Z",
+    "lastSeen": "2026-09-27T19:41:38Z",
+    "enclosureVia": "expander-11:0",
+    "enclosureName": "nas-hgst-u60-1",
+    "bayLabel": "19"
+   },
+   "memberState": "ONLINE"
+  },
+  {
+   "driveId": "16",
+   "wwn": "0x5000cca261035808",
+   "vendor": "HITACHI",
+   "model": "HUH72808CLAR8000",
+   "serial": "VJG1V09X",
+   "sizeBytes": "8001563222016",
+   "bus": "BUS_SAS",
+   "status": "ok",
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "current": {
+    "hostname": "nas",
+    "enclosure": "0x5000ccab020094ff",
+    "bay": "20",
+    "devName": "sdal",
+    "uses": [
+     "zfs > space 5925914041408872576 > raidz2 12372305547527317295 > disk 12983238309654781705"
+    ],
+    "firstSeen": "2026-09-13T01:41:39Z",
+    "lastSeen": "2026-09-27T19:41:38Z",
+    "enclosureVia": "expander-11:0",
+    "enclosureName": "nas-hgst-u60-1",
+    "bayLabel": "20"
+   },
+   "memberState": "ONLINE"
+  },
+  {
+   "driveId": "14",
+   "wwn": "0x5000cca23b0b7268",
+   "vendor": "HGST",
+   "model": "HUH728080AL4200",
+   "serial": "2EG694WP",
+   "sizeBytes": "8001563222016",
+   "bus": "BUS_SAS",
+   "status": "ok",
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "current": {
+    "hostname": "nas",
+    "enclosure": "0x5000ccab020094ff",
+    "bay": "21",
+    "devName": "sdaj",
+    "firstSeen": "2026-09-13T01:41:39Z",
+    "lastSeen": "2026-09-27T19:41:38Z",
+    "enclosureVia": "expander-11:0",
+    "enclosureName": "nas-hgst-u60-1",
+    "bayLabel": "21"
+   }
+  },
+  {
+   "driveId": "10",
+   "wwn": "0x5000cca23b00a598",
+   "vendor": "HGST",
+   "model": "HUH728080AL4200",
+   "serial": "2EG0B0WJ",
+   "sizeBytes": "8001563222016",
+   "bus": "BUS_SAS",
+   "status": "ok",
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "current": {
+    "hostname": "nas",
+    "enclosure": "0x5000ccab020094ff",
+    "bay": "22",
+    "devName": "sdaf",
+    "uses": [
+     "zfs > backups 12143466076769931197 > raidz2 5338052500984404557 > disk 16774907883495458181"
+    ],
+    "firstSeen": "2026-09-13T01:41:39Z",
+    "lastSeen": "2026-09-27T19:41:38Z",
+    "enclosureVia": "expander-11:0",
+    "enclosureName": "nas-hgst-u60-1",
+    "bayLabel": "22"
+   },
+   "memberState": "ONLINE"
+  },
+  {
+   "driveId": "5",
+   "wwn": "0x5000cca26128b1f4",
+   "vendor": "HITACHI",
+   "model": "HUH72808CLAR8000",
+   "serial": "VJGRBU1X",
+   "sizeBytes": "8001563222016",
+   "bus": "BUS_SAS",
+   "status": "ok",
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "current": {
+    "hostname": "nas",
+    "enclosure": "0x5000ccab020094ff",
+    "bay": "23",
+    "devName": "sdaa",
+    "uses": [
+     "zfs > space 5925914041408872576 > raidz2 3388823558429738332 > disk 18371018139643991268"
+    ],
+    "firstSeen": "2026-09-13T01:41:39Z",
+    "lastSeen": "2026-09-27T19:41:38Z",
+    "enclosureVia": "expander-11:0",
+    "enclosureName": "nas-hgst-u60-1",
+    "bayLabel": "23"
+   },
+   "memberState": "ONLINE"
+  },
+  {
+   "driveId": "50",
+   "wwn": "0x5000cca26128b234",
+   "vendor": "HITACHI",
+   "model": "HUH72808CLAR8000",
+   "serial": "VJGRBUKX",
+   "sizeBytes": "8001563222016",
+   "bus": "BUS_SAS",
+   "status": "ok",
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "current": {
+    "hostname": "nas",
+    "enclosure": "0x5000ccab020094ff",
+    "bay": "24",
+    "devName": "sdbs",
+    "uses": [
+     "zfs > space 5925914041408872576 > raidz2 16950899211129714203 > disk 7674628401698022491"
+    ],
+    "firstSeen": "2026-09-13T01:41:39Z",
+    "lastSeen": "2026-09-27T19:41:38Z",
+    "enclosureVia": "expander-11:0",
+    "enclosureName": "nas-hgst-u60-1",
+    "bayLabel": "24"
+   },
+   "memberState": "ONLINE"
+  },
+  {
+   "driveId": "46",
+   "wwn": "0x5000cca23baa8ee4",
+   "vendor": "HITACHI",
+   "model": "HUH72808CLAR8000",
+   "serial": "2EK0TUSX",
+   "sizeBytes": "8001563222016",
+   "bus": "BUS_SAS",
+   "status": "ok",
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "current": {
+    "hostname": "nas",
+    "enclosure": "0x5000ccab020094ff",
+    "bay": "25",
+    "devName": "sdbo",
+    "uses": [
+     "zfs > space 5925914041408872576 > raidz2 9007031778331642784 > disk 13919307554659960383"
+    ],
+    "firstSeen": "2026-09-13T01:41:39Z",
+    "lastSeen": "2026-09-27T19:41:38Z",
+    "enclosureVia": "expander-11:0",
+    "enclosureName": "nas-hgst-u60-1",
+    "bayLabel": "25"
+   },
+   "memberState": "ONLINE"
+  },
+  {
+   "driveId": "41",
+   "wwn": "0x5000c500e3f9397c",
+   "vendor": "ATA",
+   "model": "ST8000VN004-2M21",
+   "serial": "WSD6LL44",
+   "sizeBytes": "8001563222016",
+   "bus": "BUS_SAS",
+   "status": "ok",
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "current": {
+    "hostname": "nas",
+    "enclosure": "0x5000ccab020094ff",
+    "bay": "26",
+    "devName": "sdbj",
+    "uses": [
+     "zfs > space 5925914041408872576 > raidz2 16950899211129714203 > disk 2622484631566025123"
+    ],
+    "firstSeen": "2026-09-13T01:41:39Z",
+    "lastSeen": "2026-09-27T19:41:38Z",
+    "enclosureVia": "expander-11:0",
+    "enclosureName": "nas-hgst-u60-1",
+    "bayLabel": "26"
+   },
+   "memberState": "ONLINE"
+  },
+  {
+   "driveId": "35",
+   "wwn": "0x5000cca2612879b8",
+   "vendor": "HITACHI",
+   "model": "HUH72808CLAR8000",
+   "serial": "VJGR81YX",
+   "sizeBytes": "8001563222016",
+   "bus": "BUS_SAS",
+   "status": "ok",
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "current": {
+    "hostname": "nas",
+    "enclosure": "0x5000ccab020094ff",
+    "bay": "27",
+    "devName": "sdbd",
+    "uses": [
+     "zfs > space 5925914041408872576 > raidz2 1731578064309998343 > disk 18396237114283760904"
+    ],
+    "firstSeen": "2026-09-13T01:41:39Z",
+    "lastSeen": "2026-09-27T19:41:38Z",
+    "enclosureVia": "expander-11:0",
+    "enclosureName": "nas-hgst-u60-1",
+    "bayLabel": "27"
+   },
+   "memberState": "ONLINE"
+  },
+  {
+   "driveId": "27",
+   "wwn": "0x5000cca23bf5465d",
+   "vendor": "ATA",
+   "model": "HUH728080ALE601",
+   "serial": "2EKT63HX",
+   "sizeBytes": "8001563222016",
+   "bus": "BUS_SAS",
+   "status": "ok",
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "current": {
+    "hostname": "nas",
+    "enclosure": "0x5000ccab020094ff",
+    "bay": "28",
+    "devName": "sdaw",
+    "uses": [
+     "zfs > space 5925914041408872576 > raidz2 1731578064309998343 > disk 4424673123196391603"
+    ],
+    "firstSeen": "2026-09-13T01:41:39Z",
+    "lastSeen": "2026-09-27T19:41:38Z",
+    "enclosureVia": "expander-11:0",
+    "enclosureName": "nas-hgst-u60-1",
+    "bayLabel": "28"
+   },
+   "memberState": "ONLINE"
+  },
+  {
+   "driveId": "25",
+   "wwn": "0x5000cca2612a1afc",
+   "vendor": "HITACHI",
+   "model": "HUH72808CLAR8000",
+   "serial": "VJGS4VDX",
+   "sizeBytes": "8001563222016",
+   "bus": "BUS_SAS",
+   "status": "ok",
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "current": {
+    "hostname": "nas",
+    "enclosure": "0x5000ccab020094ff",
+    "bay": "29",
+    "devName": "sdau",
+    "uses": [
+     "zfs > space 5925914041408872576 > raidz2 12372305547527317295 > disk 1709552244939736735"
+    ],
+    "firstSeen": "2026-09-13T01:41:39Z",
+    "lastSeen": "2026-09-27T19:41:38Z",
+    "enclosureVia": "expander-11:0",
+    "enclosureName": "nas-hgst-u60-1",
+    "bayLabel": "29"
+   },
+   "memberState": "ONLINE"
+  },
+  {
+   "driveId": "9",
+   "wwn": "0x5000c500e38e0986",
+   "vendor": "ATA",
+   "model": "ST8000VN004-2M21",
+   "serial": "WSD5T2MP",
+   "sizeBytes": "8001563222016",
+   "bus": "BUS_SAS",
+   "status": "ok",
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "current": {
+    "hostname": "nas",
+    "enclosure": "0x5000ccab020094ff",
+    "bay": "34",
+    "devName": "sdae",
+    "uses": [
+     "zfs > space 5925914041408872576 > raidz2 3388823558429738332 > disk 8173906984701470597"
+    ],
+    "firstSeen": "2026-09-13T01:41:39Z",
+    "lastSeen": "2026-09-27T19:41:38Z",
+    "enclosureVia": "expander-11:0",
+    "enclosureName": "nas-hgst-u60-1",
+    "bayLabel": "34"
+   },
+   "memberState": "ONLINE"
+  },
+  {
+   "driveId": "98",
+   "wwn": "0x5000cca23b178ae4",
+   "vendor": "HGST",
+   "model": "HUH728080AL4200",
+   "serial": "2EGDYBMR",
+   "sizeBytes": "8001563222016",
+   "bus": "BUS_SAS",
+   "status": "ok",
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "current": {
+    "hostname": "nas",
+    "enclosure": "0x5000ccab020094ff",
+    "bay": "35",
+    "devName": "sdz",
+    "uses": [
+     "zfs > backups 12143466076769931197 > raidz2 5338052500984404557 > disk 16862381265388060190"
+    ],
+    "firstSeen": "2026-09-13T01:41:39Z",
+    "lastSeen": "2026-09-27T19:41:38Z",
+    "enclosureVia": "expander-11:0",
+    "enclosureName": "nas-hgst-u60-1",
+    "bayLabel": "35"
+   },
+   "memberState": "ONLINE"
+  },
+  {
+   "driveId": "52",
+   "wwn": "0x5000cca2548ef93c",
+   "vendor": "HGST",
+   "model": "H7280A520SUN8.0T",
+   "serial": "001619PJMJVV_VKJJMJVV",
+   "sizeBytes": "8001563222016",
+   "bus": "BUS_SAS",
+   "status": "ok",
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "current": {
+    "hostname": "nas",
+    "enclosure": "0x5000ccab020094ff",
+    "bay": "36",
+    "devName": "sdbu",
+    "uses": [
+     "zfs > space 5925914041408872576 > raidz2 5236016460003016805 > disk 17283963709945061389"
+    ],
+    "firstSeen": "2026-09-13T01:41:39Z",
+    "lastSeen": "2026-09-27T19:41:38Z",
+    "enclosureVia": "expander-11:0",
+    "enclosureName": "nas-hgst-u60-1",
+    "bayLabel": "36"
+   },
+   "memberState": "ONLINE"
+  },
+  {
+   "driveId": "45",
+   "wwn": "0x5000cca254804f68",
+   "vendor": "HGST",
+   "model": "H7280A520SUN8.0T",
+   "serial": "001619P8KK0V_VKJ8KK0V",
+   "sizeBytes": "8001563222016",
+   "bus": "BUS_SAS",
+   "status": "ok",
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "current": {
+    "hostname": "nas",
+    "enclosure": "0x5000ccab020094ff",
+    "bay": "37",
+    "devName": "sdbn",
+    "uses": [
+     "zfs > space 5925914041408872576 > raidz2 1731578064309998343 > disk 13028152974510422910"
+    ],
+    "firstSeen": "2026-09-13T01:41:39Z",
+    "lastSeen": "2026-09-27T19:41:38Z",
+    "enclosureVia": "expander-11:0",
+    "enclosureName": "nas-hgst-u60-1",
+    "bayLabel": "37"
+   },
+   "memberState": "ONLINE"
+  },
+  {
+   "driveId": "39",
+   "wwn": "0x5000cca254899e38",
+   "vendor": "HGST",
+   "model": "H7280A520SUN8.0T",
+   "serial": "001619PEP7BV_VKJEP7BV",
+   "sizeBytes": "8001563222016",
+   "bus": "BUS_SAS",
+   "status": "ok",
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "current": {
+    "hostname": "nas",
+    "enclosure": "0x5000ccab020094ff",
+    "bay": "38",
+    "devName": "sdbh",
+    "uses": [
+     "zfs > space 5925914041408872576 > raidz2 1731578064309998343 > disk 3095252915821648391"
+    ],
+    "firstSeen": "2026-09-13T01:41:39Z",
+    "lastSeen": "2026-09-27T19:41:38Z",
+    "enclosureVia": "expander-11:0",
+    "enclosureName": "nas-hgst-u60-1",
+    "bayLabel": "38"
+   },
+   "memberState": "ONLINE"
+  },
+  {
+   "driveId": "36",
+   "wwn": "0x5002538a069d70f0",
+   "vendor": "SAMSUNG",
+   "model": "P1633N19_EMC1920",
+   "serial": "P0NA0H912672",
+   "sizeBytes": "1920924123136",
+   "bus": "BUS_SAS",
+   "status": "ok",
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "current": {
+    "hostname": "nas",
+    "enclosure": "0x5000ccab020094ff",
+    "bay": "39",
+    "devName": "sdbe",
+    "uses": [
+     "zfs > l2arc space > disk 9633240364690830390"
+    ],
+    "firstSeen": "2026-09-13T01:41:39Z",
+    "lastSeen": "2026-09-27T19:41:38Z",
+    "enclosureVia": "expander-11:0",
+    "enclosureName": "nas-hgst-u60-1",
+    "bayLabel": "39"
+   },
+   "memberState": "ONLINE"
+  },
+  {
+   "driveId": "29",
+   "wwn": "0x5000cca2548f0108",
+   "vendor": "HGST",
+   "model": "H7280A520SUN8.0T",
+   "serial": "001619PJN1YV_VKJJN1YV",
+   "sizeBytes": "8001563222016",
+   "bus": "BUS_SAS",
+   "status": "ok",
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "current": {
+    "hostname": "nas",
+    "enclosure": "0x5000ccab020094ff",
+    "bay": "40",
+    "devName": "sday",
+    "uses": [
+     "zfs > space 5925914041408872576 > raidz2 1731578064309998343 > disk 10240545959618689249"
+    ],
+    "firstSeen": "2026-09-13T01:41:39Z",
+    "lastSeen": "2026-09-27T19:41:38Z",
+    "enclosureVia": "expander-11:0",
+    "enclosureName": "nas-hgst-u60-1",
+    "bayLabel": "40"
+   },
+   "memberState": "ONLINE"
+  },
+  {
+   "driveId": "24",
+   "wwn": "0x5000c500caf55bbb",
+   "vendor": "SEAGATE",
+   "model": "STMPSED1CLAR8000",
+   "serial": "ZA1K1X7E",
+   "sizeBytes": "8001563222016",
+   "bus": "BUS_SAS",
+   "status": "ok",
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "current": {
+    "hostname": "nas",
+    "enclosure": "0x5000ccab020094ff",
+    "bay": "41",
+    "devName": "sdat",
+    "uses": [
+     "zfs > space 5925914041408872576 > raidz2 1731578064309998343 > disk 5376298655796057137"
+    ],
+    "firstSeen": "2026-09-13T01:41:39Z",
+    "lastSeen": "2026-09-27T19:41:38Z",
+    "enclosureVia": "expander-11:0",
+    "enclosureName": "nas-hgst-u60-1",
+    "bayLabel": "41"
+   },
+   "memberState": "ONLINE"
+  },
+  {
+   "driveId": "19",
+   "wwn": "0x5000039b08ca908c",
+   "vendor": "ATA",
+   "model": "TOSHIBA_HDWG180",
+   "serial": "7160A2TZFBEG",
+   "sizeBytes": "8001563222016",
+   "bus": "BUS_SAS",
+   "status": "ok",
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "current": {
+    "hostname": "nas",
+    "enclosure": "0x5000ccab020094ff",
+    "bay": "42",
+    "devName": "sdao",
+    "uses": [
+     "zfs > space 5925914041408872576 > raidz2 16950899211129714203 > disk 12228003088763601407"
+    ],
+    "firstSeen": "2026-09-13T01:41:39Z",
+    "lastSeen": "2026-09-27T19:41:38Z",
+    "enclosureVia": "expander-11:0",
+    "enclosureName": "nas-hgst-u60-1",
+    "bayLabel": "42"
+   },
+   "memberState": "ONLINE"
+  },
+  {
+   "driveId": "18",
+   "wwn": "0x5002538a06a030f0",
+   "vendor": "SAMSUNG",
+   "model": "P1633N19_EMC1920",
+   "serial": "P0NA0HA00158",
+   "sizeBytes": "1920924123136",
+   "bus": "BUS_SAS",
+   "status": "ok",
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "current": {
+    "hostname": "nas",
+    "enclosure": "0x5000ccab020094ff",
+    "bay": "43",
+    "devName": "sdan",
+    "uses": [
+     "zfs > l2arc space > disk 16862988291587455250"
+    ],
+    "firstSeen": "2026-09-13T01:41:39Z",
+    "lastSeen": "2026-09-27T19:41:38Z",
+    "enclosureVia": "expander-11:0",
+    "enclosureName": "nas-hgst-u60-1",
+    "bayLabel": "43"
+   },
+   "memberState": "ONLINE"
+  },
+  {
+   "driveId": "12",
+   "wwn": "0x5000c500cafaac4f",
+   "vendor": "SEAGATE",
+   "model": "STMPSED1CLAR8000",
+   "serial": "ZA1K3KEZ",
+   "sizeBytes": "8001563222016",
+   "bus": "BUS_SAS",
+   "status": "ok",
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "current": {
+    "hostname": "nas",
+    "enclosure": "0x5000ccab020094ff",
+    "bay": "45",
+    "devName": "sdah",
+    "uses": [
+     "zfs > spare space > disk 6934462713112163834"
+    ],
+    "firstSeen": "2026-09-13T01:41:39Z",
+    "lastSeen": "2026-09-27T19:41:38Z",
+    "enclosureVia": "expander-11:0",
+    "enclosureName": "nas-hgst-u60-1",
+    "bayLabel": "45"
+   },
+   "memberState": "INUSE"
+  },
+  {
+   "driveId": "8",
+   "wwn": "0x5000c500cb04e933",
+   "vendor": "SEAGATE",
+   "model": "STMPSED1CLAR8000",
+   "serial": "ZA1K2WML",
+   "sizeBytes": "8001563222016",
+   "bus": "BUS_SAS",
+   "status": "ok",
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "current": {
+    "hostname": "nas",
+    "enclosure": "0x5000ccab020094ff",
+    "bay": "46",
+    "devName": "sdad",
+    "uses": [
+     "zfs > space 5925914041408872576 > raidz2 9007031778331642784 > disk 16788047725255307764"
+    ],
+    "firstSeen": "2026-09-13T01:41:39Z",
+    "lastSeen": "2026-09-27T19:41:38Z",
+    "enclosureVia": "expander-11:0",
+    "enclosureName": "nas-hgst-u60-1",
+    "bayLabel": "46"
+   },
+   "memberState": "ONLINE"
+  },
+  {
+   "driveId": "96",
+   "wwn": "0x5000c500caf7af6f",
+   "vendor": "SEAGATE",
+   "model": "STMPSED1CLAR8000",
+   "serial": "ZA1K2KC2",
+   "sizeBytes": "8001563222016",
+   "bus": "BUS_SAS",
+   "status": "ok",
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "current": {
+    "hostname": "nas",
+    "enclosure": "0x5000ccab020094ff",
+    "bay": "47",
+    "devName": "sdx",
+    "uses": [
+     "zfs > space 5925914041408872576 > raidz2 5204885172110344134 > disk 4011944550979922045"
+    ],
+    "firstSeen": "2026-09-13T01:41:39Z",
+    "lastSeen": "2026-09-27T19:41:38Z",
+    "enclosureVia": "expander-11:0",
+    "enclosureName": "nas-hgst-u60-1",
+    "bayLabel": "47"
+   },
+   "memberState": "ONLINE"
+  },
+  {
+   "driveId": "53",
+   "wwn": "0x5000cca260de6a94",
+   "vendor": "HGST",
+   "model": "H7280A520SUN8.0T",
+   "serial": "001851PY9YMV_VLKY9YMV",
+   "sizeBytes": "8001563222016",
+   "bus": "BUS_SAS",
+   "status": "ok",
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "current": {
+    "hostname": "nas",
+    "enclosure": "0x5000ccab020094ff",
+    "bay": "48",
+    "devName": "sdbv",
+    "firstSeen": "2026-09-13T01:41:39Z",
+    "lastSeen": "2026-09-27T19:41:38Z",
+    "enclosureVia": "expander-11:0",
+    "enclosureName": "nas-hgst-u60-1",
+    "bayLabel": "48"
+   }
+  },
+  {
+   "driveId": "44",
+   "wwn": "0x5000cca2548d0808",
+   "vendor": "HGST",
+   "model": "H7280A520SUN8.0T",
+   "serial": "001619PHKEBV_VKJHKEBV",
+   "sizeBytes": "8001563222016",
+   "bus": "BUS_SAS",
+   "status": "ok",
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "current": {
+    "hostname": "nas",
+    "enclosure": "0x5000ccab020094ff",
+    "bay": "49",
+    "devName": "sdbm",
+    "uses": [
+     "zfs > space 5925914041408872576 > raidz2 5236016460003016805 > disk 6116510512297950695"
+    ],
+    "firstSeen": "2026-09-13T01:41:39Z",
+    "lastSeen": "2026-09-27T19:41:38Z",
+    "enclosureVia": "expander-11:0",
+    "enclosureName": "nas-hgst-u60-1",
+    "bayLabel": "49"
+   },
+   "memberState": "ONLINE"
+  },
+  {
+   "driveId": "40",
+   "wwn": "0x5000cca2548ef9d4",
+   "vendor": "HGST",
+   "model": "H7280A520SUN8.0T",
+   "serial": "001619PJML2V_VKJJML2V",
+   "sizeBytes": "8001563222016",
+   "bus": "BUS_SAS",
+   "status": "ok",
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "current": {
+    "hostname": "nas",
+    "enclosure": "0x5000ccab020094ff",
+    "bay": "50",
+    "devName": "sdbi",
+    "uses": [
+     "zfs > space 5925914041408872576 > raidz2 5236016460003016805 > disk 14117335847534821566"
+    ],
+    "firstSeen": "2026-09-13T01:41:39Z",
+    "lastSeen": "2026-09-27T19:41:38Z",
+    "enclosureVia": "expander-11:0",
+    "enclosureName": "nas-hgst-u60-1",
+    "bayLabel": "50"
+   },
+   "memberState": "ONLINE"
+  },
+  {
+   "driveId": "32",
+   "wwn": "0x5000cca25493d51c",
+   "vendor": "HGST",
+   "model": "H7280A520SUN8.0T",
+   "serial": "001619PM9BVV_VKJM9BVV",
+   "sizeBytes": "8001563222016",
+   "bus": "BUS_SAS",
+   "status": "ok",
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "current": {
+    "hostname": "nas",
+    "enclosure": "0x5000ccab020094ff",
+    "bay": "51",
+    "devName": "sdba",
+    "uses": [
+     "zfs > space 5925914041408872576 > raidz2 5236016460003016805 > disk 386918665121169072"
+    ],
+    "firstSeen": "2026-09-13T01:41:39Z",
+    "lastSeen": "2026-09-27T19:41:38Z",
+    "enclosureVia": "expander-11:0",
+    "enclosureName": "nas-hgst-u60-1",
+    "bayLabel": "51"
+   },
+   "memberState": "ONLINE"
+  },
+  {
+   "driveId": "23",
+   "wwn": "0x5000c500caf880cb",
+   "vendor": "SEAGATE",
+   "model": "STMPSED1CLAR8000",
+   "serial": "ZA1K2VPW",
+   "sizeBytes": "8001563222016",
+   "bus": "BUS_SAS",
+   "status": "ok",
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "current": {
+    "hostname": "nas",
+    "enclosure": "0x5000ccab020094ff",
+    "bay": "52",
+    "devName": "sdas",
+    "uses": [
+     "zfs > space 5925914041408872576 > raidz2 16950899211129714203 > disk 1171797100647372475"
+    ],
+    "firstSeen": "2026-09-13T01:41:39Z",
+    "lastSeen": "2026-09-27T19:41:38Z",
+    "enclosureVia": "expander-11:0",
+    "enclosureName": "nas-hgst-u60-1",
+    "bayLabel": "52"
+   },
+   "memberState": "ONLINE"
+  },
+  {
+   "driveId": "17",
+   "wwn": "0x5000cca2548d06a4",
+   "vendor": "HGST",
+   "model": "H7280A520SUN8.0T",
+   "serial": "001619PHKAHV_VKJHKAHV",
+   "sizeBytes": "8001563222016",
+   "bus": "BUS_SAS",
+   "status": "ok",
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "current": {
+    "hostname": "nas",
+    "enclosure": "0x5000ccab020094ff",
+    "bay": "53",
+    "devName": "sdam",
+    "uses": [
+     "zfs > space 5925914041408872576 > raidz2 5236016460003016805 > disk 18306089983861482320"
+    ],
+    "firstSeen": "2026-09-13T01:41:39Z",
+    "lastSeen": "2026-09-27T19:41:38Z",
+    "enclosureVia": "expander-11:0",
+    "enclosureName": "nas-hgst-u60-1",
+    "bayLabel": "53"
+   },
+   "memberState": "ONLINE"
+  },
+  {
+   "driveId": "11",
+   "wwn": "0x5000cca2548eecec",
+   "vendor": "HGST",
+   "model": "H7280A520SUN8.0T",
+   "serial": "001619PJLREV_VKJJLREV",
+   "sizeBytes": "8001563222016",
+   "bus": "BUS_SAS",
+   "status": "suspect",
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "current": {
+    "hostname": "nas",
+    "enclosure": "0x5000ccab020094ff",
+    "bay": "54",
+    "devName": "sdag",
+    "uses": [
+     "zfs > space 5925914041408872576 > raidz2 5236016460003016805 > disk 9810514795403010748"
+    ],
+    "firstSeen": "2026-09-13T01:41:39Z",
+    "lastSeen": "2026-09-27T19:41:38Z",
+    "enclosureVia": "expander-11:0",
+    "enclosureName": "nas-hgst-u60-1",
+    "bayLabel": "54"
+   },
+   "memberState": "FAULTED"
+  },
+  {
+   "driveId": "6",
+   "wwn": "0x5000c500b3928e24",
+   "vendor": "ATA",
+   "model": "ST8000DM004-2CX1",
+   "serial": "ZCT0ELAY",
+   "sizeBytes": "8001563222016",
+   "bus": "BUS_SAS",
+   "status": "ok",
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "current": {
+    "hostname": "nas",
+    "enclosure": "0x5000ccab020094ff",
+    "bay": "57",
+    "devName": "sdab",
+    "uses": [
+     "zfs > space 5925914041408872576 > raidz2 16950899211129714203 > spare 9322934535608033256 > disk 17885295320081759272"
+    ],
+    "firstSeen": "2026-09-13T22:23:00Z",
+    "lastSeen": "2026-09-27T19:41:38Z",
+    "enclosureVia": "expander-11:0",
+    "enclosureName": "nas-hgst-u60-1",
+    "bayLabel": "57"
+   },
+   "memberState": "REMOVED"
+  },
+  {
+   "driveId": "97",
+   "wwn": "0x5000c500b32d1a9c",
+   "vendor": "ATA",
+   "model": "ST8000DM004-2CX1",
+   "serial": "ZCT0CQLK",
+   "sizeBytes": "8001563222016",
+   "bus": "BUS_SAS",
+   "status": "ok",
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "current": {
+    "hostname": "nas",
+    "enclosure": "0x5000ccab020094ff",
+    "bay": "58",
+    "devName": "sdy",
+    "uses": [
+     "zfs > spare backups > disk 891643583844207151"
+    ],
+    "firstSeen": "2026-09-13T01:41:39Z",
+    "lastSeen": "2026-09-27T19:41:38Z",
+    "enclosureVia": "expander-11:0",
+    "enclosureName": "nas-hgst-u60-1",
+    "bayLabel": "58"
+   },
+   "memberState": "INUSE"
+  },
+  {
+   "driveId": "58",
+   "wwn": "0x5000cca25206c808",
+   "vendor": "HGST",
+   "model": "HUH721008AL5204",
+   "serial": "7SG3RM2G",
+   "sizeBytes": "8001563222016",
+   "bus": "BUS_SAS",
+   "status": "ok",
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "current": {
+    "hostname": "nas",
+    "enclosure": "0x500304800000007f",
+    "bay": "0",
+    "devName": "sdc",
+    "firstSeen": "2026-09-13T01:41:39Z",
+    "lastSeen": "2026-09-27T19:41:38Z",
+    "enclosureVia": "expander-10:0",
+    "enclosureName": "nas-sc847-back"
+   }
+  },
+  {
+   "driveId": "76",
+   "wwn": "0x5000cca25208683c",
+   "vendor": "HGST",
+   "model": "HUH721008AL5204",
+   "serial": "7SG4MAAG",
+   "sizeBytes": "8001563222016",
+   "bus": "BUS_SAS",
+   "status": "ok",
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "current": {
+    "hostname": "nas",
+    "enclosure": "0x500304800000007f",
+    "bay": "1",
+    "devName": "sdd",
+    "firstSeen": "2026-09-13T01:41:39Z",
+    "lastSeen": "2026-09-27T19:41:38Z",
+    "enclosureVia": "expander-10:0",
+    "enclosureName": "nas-sc847-back"
+   }
+  },
+  {
+   "driveId": "77",
+   "wwn": "0x5000cca25207ef14",
+   "vendor": "HGST",
+   "model": "HUH721008AL5204",
+   "serial": "7SG4B86G",
+   "sizeBytes": "8001563222016",
+   "bus": "BUS_SAS",
+   "status": "ok",
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "current": {
+    "hostname": "nas",
+    "enclosure": "0x500304800000007f",
+    "bay": "2",
+    "devName": "sde",
+    "uses": [
+     "zfs > space 5925914041408872576 > raidz2 5204885172110344134 > disk 5369926289127318604"
+    ],
+    "firstSeen": "2026-09-13T01:41:39Z",
+    "lastSeen": "2026-09-27T19:41:38Z",
+    "enclosureVia": "expander-10:0",
+    "enclosureName": "nas-sc847-back"
+   },
+   "memberState": "ONLINE"
+  },
+  {
+   "driveId": "78",
+   "wwn": "0x5000cca25207d34c",
+   "vendor": "HGST",
+   "model": "HUH721008AL5204",
+   "serial": "7SG49DVG",
+   "sizeBytes": "8001563222016",
+   "bus": "BUS_SAS",
+   "status": "ok",
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "current": {
+    "hostname": "nas",
+    "enclosure": "0x500304800000007f",
+    "bay": "3",
+    "devName": "sdf",
+    "uses": [
+     "zfs > space 5925914041408872576 > raidz2 5204885172110344134 > disk 6199030208081625901"
+    ],
+    "firstSeen": "2026-09-13T01:41:39Z",
+    "lastSeen": "2026-09-27T19:41:38Z",
+    "enclosureVia": "expander-10:0",
+    "enclosureName": "nas-sc847-back"
+   },
+   "memberState": "ONLINE"
+  },
+  {
+   "driveId": "79",
+   "wwn": "0x5000cca2520691dc",
+   "vendor": "HGST",
+   "model": "HUH721008AL5204",
+   "serial": "7SG3M07G",
+   "sizeBytes": "8001563222016",
+   "bus": "BUS_SAS",
+   "status": "ok",
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "current": {
+    "hostname": "nas",
+    "enclosure": "0x500304800000007f",
+    "bay": "4",
+    "devName": "sdg",
+    "uses": [
+     "zfs > space 5925914041408872576 > raidz2 12372305547527317295 > disk 15192423959397411076"
+    ],
+    "firstSeen": "2026-09-13T01:41:39Z",
+    "lastSeen": "2026-09-27T19:41:38Z",
+    "enclosureVia": "expander-10:0",
+    "enclosureName": "nas-sc847-back"
+   },
+   "memberState": "ONLINE"
+  },
+  {
+   "driveId": "80",
+   "wwn": "0x5000cca2548efee0",
+   "vendor": "HGST",
+   "model": "H7280A520SUN8.0T",
+   "serial": "001619PJMXHV_VKJJMXHV",
+   "sizeBytes": "8001563222016",
+   "bus": "BUS_SAS",
+   "status": "ok",
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "current": {
+    "hostname": "nas",
+    "enclosure": "0x500304800000007f",
+    "bay": "5",
+    "devName": "sdh",
+    "uses": [
+     "zfs > space 5925914041408872576 > raidz2 3388823558429738332 > disk 13797029297166725296"
+    ],
+    "firstSeen": "2026-09-13T01:41:39Z",
+    "lastSeen": "2026-09-27T19:41:38Z",
+    "enclosureVia": "expander-10:0",
+    "enclosureName": "nas-sc847-back"
+   },
+   "memberState": "ONLINE"
+  },
+  {
+   "driveId": "81",
+   "wwn": "0x5000cca25207efc4",
+   "vendor": "HGST",
+   "model": "HUH721008AL5204",
+   "serial": "7SG4B9MG",
+   "sizeBytes": "8001563222016",
+   "bus": "BUS_SAS",
+   "status": "ok",
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "current": {
+    "hostname": "nas",
+    "enclosure": "0x500304800000007f",
+    "bay": "6",
+    "devName": "sdi",
+    "uses": [
+     "zfs > space 5925914041408872576 > raidz2 5204885172110344134 > disk 12789853407961503446"
+    ],
+    "firstSeen": "2026-09-13T01:41:39Z",
+    "lastSeen": "2026-09-27T19:41:38Z",
+    "enclosureVia": "expander-10:0",
+    "enclosureName": "nas-sc847-back"
+   },
+   "memberState": "ONLINE"
+  },
+  {
+   "driveId": "82",
+   "wwn": "0x5000cca23bbd2a88",
+   "vendor": "HGST",
+   "model": "HUH728080AL4200",
+   "serial": "2EKB12BX",
+   "sizeBytes": "8001563222016",
+   "bus": "BUS_SAS",
+   "status": "ok",
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "current": {
+    "hostname": "nas",
+    "enclosure": "0x500304800000007f",
+    "bay": "7",
+    "devName": "sdj",
+    "uses": [
+     "zfs > backups 12143466076769931197 > raidz2 17954131499336888302 > disk 6405638789467097001"
+    ],
+    "firstSeen": "2026-09-13T01:41:39Z",
+    "lastSeen": "2026-09-27T19:41:38Z",
+    "enclosureVia": "expander-10:0",
+    "enclosureName": "nas-sc847-back"
+   },
+   "memberState": "ONLINE"
+  },
+  {
+   "driveId": "83",
+   "wwn": "0x5000cca2548cfcec",
+   "vendor": "HGST",
+   "model": "H7280A520SUN8.0T",
+   "serial": "001619PHJPEV_VKJHJPEV",
+   "sizeBytes": "8001563222016",
+   "bus": "BUS_SAS",
+   "status": "ok",
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "current": {
+    "hostname": "nas",
+    "enclosure": "0x500304800000007f",
+    "bay": "8",
+    "devName": "sdk",
+    "uses": [
+     "zfs > space 5925914041408872576 > raidz2 12372305547527317295 > disk 5227188687168818047"
+    ],
+    "firstSeen": "2026-09-13T01:41:39Z",
+    "lastSeen": "2026-09-27T19:41:38Z",
+    "enclosureVia": "expander-10:0",
+    "enclosureName": "nas-sc847-back"
+   },
+   "memberState": "ONLINE"
+  },
+  {
+   "driveId": "84",
+   "wwn": "0x5000cca2548175a8",
+   "vendor": "HGST",
+   "model": "H7280A520SUN8.0T",
+   "serial": "001619P964HV_VKJ964HV",
+   "sizeBytes": "8001563222016",
+   "bus": "BUS_SAS",
+   "status": "ok",
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "current": {
+    "hostname": "nas",
+    "enclosure": "0x500304800000007f",
+    "bay": "9",
+    "devName": "sdl",
+    "uses": [
+     "zfs > space 5925914041408872576 > raidz2 5204885172110344134 > disk 13160228476946060421"
+    ],
+    "firstSeen": "2026-09-13T01:41:39Z",
+    "lastSeen": "2026-09-27T19:41:38Z",
+    "enclosureVia": "expander-10:0",
+    "enclosureName": "nas-sc847-back"
+   },
+   "memberState": "ONLINE"
+  },
+  {
+   "driveId": "85",
+   "wwn": "0x5000cca2548ef570",
+   "vendor": "HGST",
+   "model": "H7280A520SUN8.0T",
+   "serial": "001619PJM90V_VKJJM90V",
+   "sizeBytes": "8001563222016",
+   "bus": "BUS_SAS",
+   "status": "ok",
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "current": {
+    "hostname": "nas",
+    "enclosure": "0x500304800000007f",
+    "bay": "11",
+    "devName": "sdm",
+    "uses": [
+     "zfs > space 5925914041408872576 > raidz2 9007031778331642784 > disk 3409693676319033394"
+    ],
+    "firstSeen": "2026-09-13T01:41:39Z",
+    "lastSeen": "2026-09-27T19:41:38Z",
+    "enclosureVia": "expander-10:0",
+    "enclosureName": "nas-sc847-back"
+   },
+   "memberState": "ONLINE"
+  },
+  {
+   "driveId": "86",
+   "wwn": "0x5000cca254905e44",
+   "vendor": "HGST",
+   "model": "H7280A520SUN8.0T",
+   "serial": "001619PKD9YV_VKJKD9YV",
+   "sizeBytes": "8001563222016",
+   "bus": "BUS_SAS",
+   "status": "ok",
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "current": {
+    "hostname": "nas",
+    "enclosure": "0x500304800000007f",
+    "bay": "12",
+    "devName": "sdn",
+    "uses": [
+     "zfs > space 5925914041408872576 > raidz2 9007031778331642784 > disk 3487896885370626489"
+    ],
+    "firstSeen": "2026-09-13T01:41:39Z",
+    "lastSeen": "2026-09-27T19:41:38Z",
+    "enclosureVia": "expander-10:0",
+    "enclosureName": "nas-sc847-back"
+   },
+   "memberState": "ONLINE"
+  },
+  {
+   "driveId": "87",
+   "wwn": "0x5000cca25490481c",
+   "vendor": "HGST",
+   "model": "H7280A520SUN8.0T",
+   "serial": "001619PKAV6V_VKJKAV6V",
+   "sizeBytes": "8001563222016",
+   "bus": "BUS_SAS",
+   "status": "ok",
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "current": {
+    "hostname": "nas",
+    "enclosure": "0x500304800000007f",
+    "bay": "13",
+    "devName": "sdo",
+    "uses": [
+     "zfs > space 5925914041408872576 > raidz2 9007031778331642784 > disk 15351399526994441874"
+    ],
+    "firstSeen": "2026-09-13T01:41:39Z",
+    "lastSeen": "2026-09-27T19:41:38Z",
+    "enclosureVia": "expander-10:0",
+    "enclosureName": "nas-sc847-back"
+   },
+   "memberState": "ONLINE"
+  },
+  {
+   "driveId": "88",
+   "wwn": "0x5000cca2547fac54",
+   "vendor": "HGST",
+   "model": "H7280A520SUN8.0T",
+   "serial": "001619P86PAV_VKJ86PAV",
+   "sizeBytes": "7865536647168",
+   "bus": "BUS_SAS",
+   "status": "ok",
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "current": {
+    "hostname": "nas",
+    "enclosure": "0x500304800000007f",
+    "bay": "14",
+    "devName": "sdp",
+    "uses": [
+     "zfs > backups 12143466076769931197 > raidz2 17954131499336888302 > disk 11687791957475096531"
+    ],
+    "firstSeen": "2026-09-13T01:41:39Z",
+    "lastSeen": "2026-09-27T19:41:38Z",
+    "enclosureVia": "expander-10:0",
+    "enclosureName": "nas-sc847-back"
+   },
+   "memberState": "ONLINE"
+  },
+  {
+   "driveId": "54",
+   "wwn": "0x5000c500baa141ea",
+   "vendor": "ATA",
+   "model": "ST8000DM004-2CX1",
+   "serial": "WCT0VA8J",
+   "sizeBytes": "8001563222016",
+   "bus": "BUS_SAS",
+   "status": "ok",
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "current": {
+    "hostname": "nas",
+    "enclosure": "0x5003048001e8967f",
+    "bay": "1",
+    "devName": "sdbw",
+    "uses": [
+     "zfs > space 5925914041408872576 > raidz2 9007031778331642784 > disk 5460098026287034887"
+    ],
+    "firstSeen": "2026-09-13T01:41:39Z",
+    "lastSeen": "2026-09-27T19:41:38Z",
+    "enclosureVia": "expander-11:1",
+    "enclosureName": "nas-sc847-front"
+   },
+   "memberState": "ONLINE"
+  },
+  {
+   "driveId": "55",
+   "wwn": "0x5000cca052054ffc",
+   "vendor": "HGST",
+   "model": "HUSMR1680ASS204",
+   "serial": "07V2XKRA",
+   "sizeBytes": "800166076416",
+   "bus": "BUS_SAS",
+   "status": "ok",
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "current": {
+    "hostname": "nas",
+    "enclosure": "0x5003048001e8967f",
+    "bay": "2",
+    "devName": "sdbx",
+    "firstSeen": "2026-09-13T01:41:39Z",
+    "lastSeen": "2026-09-27T19:41:38Z",
+    "enclosureVia": "expander-11:1",
+    "enclosureName": "nas-sc847-front"
+   }
+  },
+  {
+   "driveId": "56",
+   "wwn": "0x5000cca23b0240e0",
+   "vendor": "HGST",
+   "model": "HUH728080AL4200",
+   "serial": "2EG17DZJ",
+   "sizeBytes": "8001563222016",
+   "bus": "BUS_SAS",
+   "status": "ok",
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "current": {
+    "hostname": "nas",
+    "enclosure": "0x5003048001e8967f",
+    "bay": "3",
+    "devName": "sdby",
+    "uses": [
+     "zfs > backups 12143466076769931197 > raidz2 17954131499336888302 > disk 17267404244838488514"
+    ],
+    "firstSeen": "2026-09-13T01:41:39Z",
+    "lastSeen": "2026-09-27T19:41:38Z",
+    "enclosureVia": "expander-11:1",
+    "enclosureName": "nas-sc847-front"
+   },
+   "memberState": "ONLINE"
+  },
+  {
+   "driveId": "57",
+   "wwn": "0x5000cca257b64c08",
+   "vendor": "HGST",
+   "model": "HUH721008AL4200",
+   "serial": "7HK77YXF",
+   "sizeBytes": "8001563222016",
+   "bus": "BUS_SAS",
+   "status": "ok",
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "current": {
+    "hostname": "nas",
+    "enclosure": "0x5003048001e8967f",
+    "bay": "4",
+    "devName": "sdbz",
+    "uses": [
+     "zfs > backups 12143466076769931197 > raidz2 17954131499336888302 > disk 12734872772442045668"
+    ],
+    "firstSeen": "2026-09-13T01:41:39Z",
+    "lastSeen": "2026-09-27T19:41:38Z",
+    "enclosureVia": "expander-11:1",
+    "enclosureName": "nas-sc847-front"
+   },
+   "memberState": "ONLINE"
+  },
+  {
+   "driveId": "59",
+   "wwn": "0x5000cca263c56678",
+   "vendor": "ATA",
+   "model": "HUH728080ALE601",
+   "serial": "R6GBW8JY",
+   "sizeBytes": "8001563222016",
+   "bus": "BUS_SAS",
+   "status": "ok",
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "current": {
+    "hostname": "nas",
+    "enclosure": "0x5003048001e8967f",
+    "bay": "5",
+    "devName": "sdca",
+    "uses": [
+     "zfs > space 5925914041408872576 > raidz2 3388823558429738332 > disk 16809762363229148826"
+    ],
+    "firstSeen": "2026-09-13T01:41:39Z",
+    "lastSeen": "2026-09-27T19:41:38Z",
+    "enclosureVia": "expander-11:1",
+    "enclosureName": "nas-sc847-front"
+   },
+   "memberState": "ONLINE"
+  },
+  {
+   "driveId": "60",
+   "wwn": "0x5000c500c74b82b9",
+   "vendor": "ATA",
+   "model": "ST8000DM004-2CX1",
+   "serial": "ZCT3BJRW",
+   "sizeBytes": "8001563222016",
+   "bus": "BUS_SAS",
+   "status": "ok",
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "current": {
+    "hostname": "nas",
+    "enclosure": "0x5003048001e8967f",
+    "bay": "7",
+    "devName": "sdcb",
+    "uses": [
+     "zfs > space 5925914041408872576 > raidz2 5236016460003016805 > disk 10354587686331016347"
+    ],
+    "firstSeen": "2026-09-13T01:41:39Z",
+    "lastSeen": "2026-09-27T19:41:38Z",
+    "enclosureVia": "expander-11:1",
+    "enclosureName": "nas-sc847-front"
+   },
+   "memberState": "ONLINE"
+  },
+  {
+   "driveId": "61",
+   "wwn": "0x5000cca23b2fd45c",
+   "vendor": "HGST",
+   "model": "HUH728080AL5200",
+   "serial": "2EGV9EPX",
+   "sizeBytes": "8001563222016",
+   "bus": "BUS_SAS",
+   "status": "ok",
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "current": {
+    "hostname": "nas",
+    "enclosure": "0x5003048001e8967f",
+    "bay": "9",
+    "devName": "sdcc",
+    "uses": [
+     "zfs > backups 12143466076769931197 > raidz2 17954131499336888302 > disk 686487638661057379"
+    ],
+    "firstSeen": "2026-09-13T01:41:39Z",
+    "lastSeen": "2026-09-27T19:41:38Z",
+    "enclosureVia": "expander-11:1",
+    "enclosureName": "nas-sc847-front"
+   },
+   "memberState": "ONLINE"
+  },
+  {
+   "driveId": "62",
+   "wwn": "0x5000cca252ae09ac",
+   "vendor": "HGST",
+   "model": "HUH721008AL4200",
+   "serial": "7SK2R4TW",
+   "sizeBytes": "8001563222016",
+   "bus": "BUS_SAS",
+   "status": "ok",
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "current": {
+    "hostname": "nas",
+    "enclosure": "0x5003048001e8967f",
+    "bay": "10",
+    "devName": "sdcd",
+    "uses": [
+     "zfs > backups 12143466076769931197 > raidz2 17954131499336888302 > disk 3016384749925427947"
+    ],
+    "firstSeen": "2026-09-13T01:41:39Z",
+    "lastSeen": "2026-09-27T19:41:38Z",
+    "enclosureVia": "expander-11:1",
+    "enclosureName": "nas-sc847-front"
+   },
+   "memberState": "ONLINE"
+  },
+  {
+   "driveId": "63",
+   "wwn": "0x5000cca23beb21b9",
+   "vendor": "ATA",
+   "model": "HUH728080ALE601",
+   "serial": "2EK1WD8X",
+   "sizeBytes": "8001563222016",
+   "bus": "BUS_SAS",
+   "status": "ok",
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "current": {
+    "hostname": "nas",
+    "enclosure": "0x5003048001e8967f",
+    "bay": "11",
+    "devName": "sdce",
+    "uses": [
+     "zfs > space 5925914041408872576 > raidz2 3388823558429738332 > disk 1541592169950923378"
+    ],
+    "firstSeen": "2026-09-13T01:41:39Z",
+    "lastSeen": "2026-09-27T19:41:38Z",
+    "enclosureVia": "expander-11:1",
+    "enclosureName": "nas-sc847-front"
+   },
+   "memberState": "ONLINE"
+  },
+  {
+   "driveId": "64",
+   "wwn": "0x5000c500b3a24ea0",
+   "vendor": "ATA",
+   "model": "ST8000DM004-2CX1",
+   "serial": "ZCT0FBMM",
+   "sizeBytes": "8001563222016",
+   "bus": "BUS_SAS",
+   "status": "ok",
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "current": {
+    "hostname": "nas",
+    "enclosure": "0x5003048001e8967f",
+    "bay": "12",
+    "devName": "sdcf",
+    "firstSeen": "2026-09-13T01:41:39Z",
+    "lastSeen": "2026-09-27T19:41:38Z",
+    "enclosureVia": "expander-11:1",
+    "enclosureName": "nas-sc847-front"
+   }
+  },
+  {
+   "driveId": "65",
+   "wwn": "0x5000cca2528a9da4",
+   "vendor": "HGST",
+   "model": "HUH721008AL4200",
+   "serial": "7SJG77PW",
+   "sizeBytes": "8001563222016",
+   "bus": "BUS_SAS",
+   "status": "ok",
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "current": {
+    "hostname": "nas",
+    "enclosure": "0x5003048001e8967f",
+    "bay": "13",
+    "devName": "sdcg",
+    "uses": [
+     "zfs > backups 12143466076769931197 > raidz2 5338052500984404557 > disk 1541146137294520958"
+    ],
+    "firstSeen": "2026-09-13T01:41:39Z",
+    "lastSeen": "2026-09-27T19:41:38Z",
+    "enclosureVia": "expander-11:1",
+    "enclosureName": "nas-sc847-front"
+   },
+   "memberState": "ONLINE"
+  },
+  {
+   "driveId": "66",
+   "wwn": "0x5002538b48a79980",
+   "vendor": "IBM-E051",
+   "model": "MZILT3T8HALS",
+   "serial": "C7XBG0ZP0KA05172",
+   "sizeBytes": "3840755982336",
+   "bus": "BUS_SAS",
+   "status": "ok",
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "current": {
+    "hostname": "nas",
+    "enclosure": "0x5003048001e8967f",
+    "bay": "14",
+    "devName": "sdch",
+    "uses": [
+     "zfs > space 5925914041408872576 > mirror 737277534668809963 > disk 238920797006525894"
+    ],
+    "firstSeen": "2026-09-13T01:41:39Z",
+    "lastSeen": "2026-09-27T19:41:38Z",
+    "enclosureVia": "expander-11:1",
+    "enclosureName": "nas-sc847-front"
+   },
+   "memberState": "ONLINE"
+  },
+  {
+   "driveId": "67",
+   "wwn": "0x5000cca23b0b5d6c",
+   "vendor": "HGST",
+   "model": "HUH728080AL4200",
+   "serial": "2EG67SKP",
+   "sizeBytes": "8001563222016",
+   "bus": "BUS_SAS",
+   "status": "ok",
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "current": {
+    "hostname": "nas",
+    "enclosure": "0x5003048001e8967f",
+    "bay": "15",
+    "devName": "sdci",
+    "uses": [
+     "zfs > backups 12143466076769931197 > raidz2 5338052500984404557 > disk 3322808112866682979"
+    ],
+    "firstSeen": "2026-09-13T01:41:39Z",
+    "lastSeen": "2026-09-27T19:41:38Z",
+    "enclosureVia": "expander-11:1",
+    "enclosureName": "nas-sc847-front"
+   },
+   "memberState": "ONLINE"
+  },
+  {
+   "driveId": "68",
+   "wwn": "0x5000cca23b0bd454",
+   "vendor": "HGST",
+   "model": "HUH728080AL4200",
+   "serial": "2EG6HP1R",
+   "sizeBytes": "8001563222016",
+   "bus": "BUS_SAS",
+   "status": "ok",
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "current": {
+    "hostname": "nas",
+    "enclosure": "0x5003048001e8967f",
+    "bay": "16",
+    "devName": "sdcj",
+    "uses": [
+     "zfs > backups 12143466076769931197 > raidz2 17954131499336888302 > disk 13607477501350774139"
+    ],
+    "firstSeen": "2026-09-13T01:41:39Z",
+    "lastSeen": "2026-09-27T19:41:38Z",
+    "enclosureVia": "expander-11:1",
+    "enclosureName": "nas-sc847-front"
+   },
+   "memberState": "ONLINE"
+  },
+  {
+   "driveId": "69",
+   "wwn": "0x5000cca260c165e2",
+   "vendor": "ATA",
+   "model": "HUH728080ALE601",
+   "serial": "VLG32AEY",
+   "sizeBytes": "8001563222016",
+   "bus": "BUS_SAS",
+   "status": "ok",
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "current": {
+    "hostname": "nas",
+    "enclosure": "0x5003048001e8967f",
+    "bay": "17",
+    "devName": "sdck",
+    "uses": [
+     "zfs > space 5925914041408872576 > raidz2 1731578064309998343 > disk 17320259033768849942"
+    ],
+    "firstSeen": "2026-09-13T01:41:39Z",
+    "lastSeen": "2026-09-27T19:41:38Z",
+    "enclosureVia": "expander-11:1",
+    "enclosureName": "nas-sc847-front"
+   },
+   "memberState": "ONLINE"
+  },
+  {
+   "driveId": "70",
+   "wwn": "0x5000039b08d8b993",
+   "vendor": "ATA",
+   "model": "TOSHIBA_HDWR180",
+   "serial": "71J0A191FBLG",
+   "sizeBytes": "8001563222016",
+   "bus": "BUS_SAS",
+   "status": "ok",
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "current": {
+    "hostname": "nas",
+    "enclosure": "0x5003048001e8967f",
+    "bay": "18",
+    "devName": "sdcl",
+    "uses": [
+     "zfs > space 5925914041408872576 > raidz2 5236016460003016805 > disk 6614421116723416414"
+    ],
+    "firstSeen": "2026-09-13T01:41:39Z",
+    "lastSeen": "2026-09-27T19:41:38Z",
+    "enclosureVia": "expander-11:1",
+    "enclosureName": "nas-sc847-front"
+   },
+   "memberState": "ONLINE"
+  },
+  {
+   "driveId": "71",
+   "wwn": "0x5002538b48a79940",
+   "vendor": "IBM-E051",
+   "model": "MZILT3T8HALS",
+   "serial": "C7XBG0ZK0KA05168",
+   "sizeBytes": "3840755982336",
+   "bus": "BUS_SAS",
+   "status": "ok",
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "current": {
+    "hostname": "nas",
+    "enclosure": "0x5003048001e8967f",
+    "bay": "19",
+    "devName": "sdcm",
+    "uses": [
+     "zfs > space 5925914041408872576 > mirror 737277534668809963 > disk 2613912595685689289"
+    ],
+    "firstSeen": "2026-09-13T01:41:39Z",
+    "lastSeen": "2026-09-27T19:41:38Z",
+    "enclosureVia": "expander-11:1",
+    "enclosureName": "nas-sc847-front"
+   },
+   "memberState": "ONLINE"
+  },
+  {
+   "driveId": "72",
+   "wwn": "0x5002538b48a797f0",
+   "vendor": "IBM-E051",
+   "model": "MZILT3T8HALS",
+   "serial": "C7XBG0YY0KA05147",
+   "sizeBytes": "3840755982336",
+   "bus": "BUS_SAS",
+   "status": "ok",
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "current": {
+    "hostname": "nas",
+    "enclosure": "0x5003048001e8967f",
+    "bay": "20",
+    "devName": "sdcn",
+    "uses": [
+     "zfs > space 5925914041408872576 > mirror 737277534668809963 > disk 1161082729107973602"
+    ],
+    "firstSeen": "2026-09-13T01:41:39Z",
+    "lastSeen": "2026-09-27T19:41:38Z",
+    "enclosureVia": "expander-11:1",
+    "enclosureName": "nas-sc847-front"
+   },
+   "memberState": "ONLINE"
+  },
+  {
+   "driveId": "73",
+   "wwn": "0x5000cca23b26cbe4",
+   "vendor": "HGST",
+   "model": "HUH728080AL4200",
+   "serial": "2EGPAEKV",
+   "sizeBytes": "8001563222016",
+   "bus": "BUS_SAS",
+   "status": "ok",
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "current": {
+    "hostname": "nas",
+    "enclosure": "0x5003048001e8967f",
+    "bay": "21",
+    "devName": "sdco",
+    "uses": [
+     "zfs > backups 12143466076769931197 > raidz2 5338052500984404557 > disk 2922563178447707709"
+    ],
+    "firstSeen": "2026-09-13T01:41:39Z",
+    "lastSeen": "2026-09-27T19:41:38Z",
+    "enclosureVia": "expander-11:1",
+    "enclosureName": "nas-sc847-front"
+   },
+   "memberState": "ONLINE"
+  },
+  {
+   "driveId": "74",
+   "wwn": "0x5000c500c7913439",
+   "vendor": "ATA",
+   "model": "ST8000VN004-2M21",
+   "serial": "WKD32WVK",
+   "sizeBytes": "8001563222016",
+   "bus": "BUS_SAS",
+   "status": "ok",
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "current": {
+    "hostname": "nas",
+    "enclosure": "0x5003048001e8967f",
+    "bay": "22",
+    "devName": "sdcp",
+    "uses": [
+     "zfs > space 5925914041408872576 > raidz2 9007031778331642784 > disk 13320454780145336341"
+    ],
+    "firstSeen": "2026-09-13T01:41:39Z",
+    "lastSeen": "2026-09-27T19:41:38Z",
+    "enclosureVia": "expander-11:1",
+    "enclosureName": "nas-sc847-front"
+   },
+   "memberState": "ONLINE"
+  },
+  {
+   "driveId": "75",
+   "wwn": "0x5000cca23b0b8a38",
+   "vendor": "HGST",
+   "model": "HUH728080AL4200",
+   "serial": "2EG6AS1R",
+   "sizeBytes": "8001563222016",
+   "bus": "BUS_SAS",
+   "status": "ok",
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "current": {
+    "hostname": "nas",
+    "enclosure": "0x5003048001e8967f",
+    "bay": "23",
+    "devName": "sdcq",
+    "uses": [
+     "zfs > backups 12143466076769931197 > raidz2 5338052500984404557 > disk 10946084812727461689"
+    ],
+    "firstSeen": "2026-09-13T01:41:39Z",
+    "lastSeen": "2026-09-27T19:41:38Z",
+    "enclosureVia": "expander-11:1",
+    "enclosureName": "nas-sc847-front"
+   },
+   "memberState": "ONLINE"
+  },
+  {
+   "driveId": "4",
+   "wwn": "0x500253850025c532",
+   "vendor": "ATA",
+   "model": "SAMSUNG_MZ7WD960",
+   "serial": "S1E4NYAG204349",
+   "sizeBytes": "960197124096",
+   "bus": "BUS_SATA",
+   "status": "ok",
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "current": {
+    "hostname": "nas",
+    "enclosure": "dmi:NM168S004999",
+    "bay": "pci-0000:00:1f.2-ata-5",
+    "devName": "sda",
+    "uses": [
+     "mount > /boot/efi",
+     "zfs > bpool 6822782206755274061 > mirror 7879420759522091481 > disk 10940132855821023010",
+     "zfs > rpool 6335217808421659663 > mirror 10116968943579434558 > disk 13477747630627346864"
+    ],
+    "firstSeen": "2026-09-14T03:46:13Z",
+    "lastSeen": "2026-09-27T19:41:38Z",
+    "enclosureVia": "ata"
+   },
+   "memberState": "ONLINE"
+  },
+  {
+   "driveId": "31",
+   "wwn": "0x500253850025cbf1",
+   "vendor": "ATA",
+   "model": "SAMSUNG_MZ7WD960",
+   "serial": "S1E4NYAG205230",
+   "sizeBytes": "960197124096",
+   "bus": "BUS_SATA",
+   "status": "ok",
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "current": {
+    "hostname": "nas",
+    "enclosure": "dmi:NM168S004999",
+    "bay": "pci-0000:00:1f.2-ata-6",
+    "devName": "sdb",
+    "uses": [
+     "zfs > bpool 6822782206755274061 > mirror 7879420759522091481 > disk 16883674818163482239",
+     "zfs > rpool 6335217808421659663 > mirror 10116968943579434558 > disk 4017281962645193462"
+    ],
+    "firstSeen": "2026-09-14T03:46:13Z",
+    "lastSeen": "2026-09-27T19:41:38Z",
+    "enclosureVia": "ata"
+   },
+   "memberState": "ONLINE"
+  }
+ ]
+}

@@ -1,0 +1,121 @@
+{
+ "events": [
+  {
+   "eventId": "910",
+   "ts": "2026-09-27T15:17:42Z",
+   "kind": "optic_first_seen",
+   "hostname": "server7",
+   "detail": "{\"form\":\"SFP\",\"part\":\"SFP-10G-LR\",\"port\":\"enp2s0f0np0\",\"serial\":\"202603271086\",\"vendor\":\"OEM\"}",
+   "source": "report",
+   "opticSerial": "202603271086"
+  },
+  {
+   "eventId": "698",
+   "ts": "2026-09-21T03:43:05Z",
+   "kind": "dimm_changed",
+   "hostname": "server7",
+   "detail": "{\"change\":\"vanished\",\"edac\":\"mc1/ch1/slot0\",\"last_seen\":1789961983,\"part\":\"\",\"serial\":\"\",\"size_bytes\":8589934592,\"slot\":\"\"}",
+   "source": "report"
+  },
+  {
+   "eventId": "697",
+   "ts": "2026-09-21T03:43:05Z",
+   "kind": "dimm_changed",
+   "hostname": "server7",
+   "detail": "{\"change\":\"vanished\",\"edac\":\"mc1/ch0/slot0\",\"last_seen\":1789961983,\"part\":\"\",\"serial\":\"\",\"size_bytes\":8589934592,\"slot\":\"\"}",
+   "source": "report"
+  },
+  {
+   "eventId": "696",
+   "ts": "2026-09-21T03:43:05Z",
+   "kind": "dimm_changed",
+   "hostname": "server7",
+   "detail": "{\"change\":\"vanished\",\"edac\":\"mc0/ch1/slot0\",\"last_seen\":1789961983,\"part\":\"\",\"serial\":\"\",\"size_bytes\":8589934592,\"slot\":\"\"}",
+   "source": "report"
+  },
+  {
+   "eventId": "695",
+   "ts": "2026-09-21T03:43:05Z",
+   "kind": "dimm_changed",
+   "hostname": "server7",
+   "detail": "{\"change\":\"vanished\",\"edac\":\"mc0/ch0/slot0\",\"last_seen\":1789961983,\"part\":\"\",\"serial\":\"\",\"size_bytes\":8589934592,\"slot\":\"\"}",
+   "source": "report"
+  },
+  {
+   "eventId": "669",
+   "ts": "2026-09-21T03:29:43Z",
+   "kind": "dimm_changed",
+   "hostname": "server7",
+   "detail": "{\"change\":\"appeared\",\"edac\":\"mc1/ch1/slot0\",\"part\":\"\",\"serial\":\"\",\"size_bytes\":8589934592,\"slot\":\"\"}",
+   "source": "report"
+  },
+  {
+   "eventId": "668",
+   "ts": "2026-09-21T03:29:43Z",
+   "kind": "dimm_changed",
+   "hostname": "server7",
+   "detail": "{\"change\":\"appeared\",\"edac\":\"mc1/ch0/slot0\",\"part\":\"\",\"serial\":\"\",\"size_bytes\":8589934592,\"slot\":\"\"}",
+   "source": "report"
+  },
+  {
+   "eventId": "667",
+   "ts": "2026-09-21T03:29:43Z",
+   "kind": "dimm_changed",
+   "hostname": "server7",
+   "detail": "{\"change\":\"appeared\",\"edac\":\"mc0/ch1/slot0\",\"part\":\"\",\"serial\":\"\",\"size_bytes\":8589934592,\"slot\":\"\"}",
+   "source": "report"
+  },
+  {
+   "eventId": "666",
+   "ts": "2026-09-21T03:29:43Z",
+   "kind": "dimm_changed",
+   "hostname": "server7",
+   "detail": "{\"change\":\"appeared\",\"edac\":\"mc0/ch0/slot0\",\"part\":\"\",\"serial\":\"\",\"size_bytes\":8589934592,\"slot\":\"\"}",
+   "source": "report"
+  },
+  {
+   "eventId": "665",
+   "ts": "2026-09-21T03:29:43Z",
+   "kind": "dimm_changed",
+   "hostname": "server7",
+   "detail": "{\"change\":\"appeared\",\"edac\":\"\",\"part\":\"CT16G56C46S5.M8D1\",\"serial\":\"E9626CFC\",\"size_bytes\":17179869184,\"slot\":\"Controller1-ChannelA-DIMM0\"}",
+   "source": "report"
+  },
+  {
+   "eventId": "664",
+   "ts": "2026-09-21T03:29:43Z",
+   "kind": "dimm_changed",
+   "hostname": "server7",
+   "detail": "{\"change\":\"appeared\",\"edac\":\"\",\"part\":\"CT16G56C46S5.M8G1\",\"serial\":\"E8F495F7\",\"size_bytes\":17179869184,\"slot\":\"Controller0-ChannelA-DIMM0\"}",
+   "source": "report"
+  },
+  {
+   "eventId": "531",
+   "ts": "2026-09-14T03:47:51Z",
+   "kind": "moved_bay",
+   "serial": "50026B738289A711",
+   "wwn": "eui.00000000000000000026b738289a7115",
+   "hostname": "server7",
+   "detail": "{\"from_bay\":\"\",\"from_enclosure\":\"\",\"from_enclosure_via\":\"\",\"from_host\":\"server7\",\"from_uses\":[\"mount \\u003e /\",\"mount \\u003e /boot/efi\"],\"to_bay\":\"0000:00:1d.0\",\"to_dev_name\":\"nvme0n1\",\"to_enclosure\":\"dmi:MD317HS139EDMPA00028\",\"to_enclosure_via\":\"pci\",\"to_uses\":[\"mount \\u003e /\",\"mount \\u003e /boot/efi\"]}",
+   "source": "snapshot:40"
+  },
+  {
+   "eventId": "378",
+   "ts": "2026-09-13T01:54:50Z",
+   "kind": "first_seen",
+   "serial": "50026B738289A711",
+   "wwn": "eui.00000000000000000026b738289a7115",
+   "hostname": "server7",
+   "detail": "{\"bay\":\"\",\"dev_name\":\"nvme0n1\",\"expander\":\"\",\"expander_dev\":\"\",\"uses\":[\"mount \\u003e /\",\"mount \\u003e /boot/efi\"]}",
+   "source": "snapshot:5"
+  },
+  {
+   "eventId": "122",
+   "ts": "2026-09-13T01:54:50Z",
+   "kind": "host_first_seen",
+   "hostname": "server7",
+   "detail": "{\"hostname\":\"server7\",\"os\":\"linux\"}",
+   "source": "report"
+  }
+ ]
+}

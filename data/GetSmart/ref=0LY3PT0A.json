@@ -1,0 +1,1573 @@
+{
+ "drive": {
+  "driveId": "95",
+  "wwn": "0x5000cca04aafd574",
+  "vendor": "HITACHI",
+  "model": "HUSMH842_CLAR200",
+  "serial": "0LY3PT0A",
+  "sizeBytes": "200049647616",
+  "bus": "BUS_SAS",
+  "status": "ok",
+  "firstSeen": "2026-09-13T01:41:39Z",
+  "lastSeen": "2026-09-27T19:41:38Z",
+  "current": {
+   "hostname": "nas",
+   "enclosure": "0x500062b2047b51c0",
+   "bay": "4",
+   "devName": "sdw",
+   "uses": [
+    "zfs > space 5925914041408872576 > log > mirror 11643308628144396865 > disk 6658585271831292557"
+   ],
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "enclosureVia": "host11",
+   "enclosureName": "nas-front"
+  },
+  "memberState": "ONLINE"
+ },
+ "samples": [
+  {
+   "identity": {
+    "wwn": "0x5000cca04aafd574",
+    "model": "HUSMH842_CLAR200",
+    "serial": "0LY3PT0A"
+   },
+   "devName": "sdw",
+   "ts": "2026-09-27T15:25:28Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "18695",
+    "tempC": 24,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "133387756000000",
+    "writeBytes": "187924254000000",
+    "percentUsed": 2
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca04aafd574",
+    "model": "HUSMH842_CLAR200",
+    "serial": "0LY3PT0A"
+   },
+   "devName": "sdw",
+   "ts": "2026-09-27T15:13:00Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "18695",
+    "tempC": 24,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "133387756000000",
+    "writeBytes": "187924242000000",
+    "percentUsed": 2
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca04aafd574",
+    "model": "HUSMH842_CLAR200",
+    "serial": "0LY3PT0A"
+   },
+   "devName": "sdw",
+   "ts": "2026-09-27T10:13:59Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "18690",
+    "tempC": 24,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "133387756000000",
+    "writeBytes": "187923141000000",
+    "percentUsed": 2
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca04aafd574",
+    "model": "HUSMH842_CLAR200",
+    "serial": "0LY3PT0A"
+   },
+   "devName": "sdw",
+   "ts": "2026-09-27T04:13:42Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "18684",
+    "tempC": 25,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "133387756000000",
+    "writeBytes": "187921299000000",
+    "percentUsed": 2
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca04aafd574",
+    "model": "HUSMH842_CLAR200",
+    "serial": "0LY3PT0A"
+   },
+   "devName": "sdw",
+   "ts": "2026-09-26T22:13:25Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "18678",
+    "tempC": 26,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "133387756000000",
+    "writeBytes": "187920032000000",
+    "percentUsed": 2
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca04aafd574",
+    "model": "HUSMH842_CLAR200",
+    "serial": "0LY3PT0A"
+   },
+   "devName": "sdw",
+   "ts": "2026-09-26T16:13:08Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "18672",
+    "tempC": 24,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "133387756000000",
+    "writeBytes": "187918744000000",
+    "percentUsed": 2
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca04aafd574",
+    "model": "HUSMH842_CLAR200",
+    "serial": "0LY3PT0A"
+   },
+   "devName": "sdw",
+   "ts": "2026-09-26T10:12:51Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "18666",
+    "tempC": 24,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "133387756000000",
+    "writeBytes": "187903747000000",
+    "percentUsed": 2
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca04aafd574",
+    "model": "HUSMH842_CLAR200",
+    "serial": "0LY3PT0A"
+   },
+   "devName": "sdw",
+   "ts": "2026-09-26T04:12:35Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "18660",
+    "tempC": 26,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "133387756000000",
+    "writeBytes": "187902351000000",
+    "percentUsed": 2
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca04aafd574",
+    "model": "HUSMH842_CLAR200",
+    "serial": "0LY3PT0A"
+   },
+   "devName": "sdw",
+   "ts": "2026-09-25T22:12:18Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "18654",
+    "tempC": 26,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "133387756000000",
+    "writeBytes": "187900946000000",
+    "percentUsed": 2
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca04aafd574",
+    "model": "HUSMH842_CLAR200",
+    "serial": "0LY3PT0A"
+   },
+   "devName": "sdw",
+   "ts": "2026-09-25T16:12:02Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "18648",
+    "tempC": 26,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "133387756000000",
+    "writeBytes": "187898790000000",
+    "percentUsed": 2
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca04aafd574",
+    "model": "HUSMH842_CLAR200",
+    "serial": "0LY3PT0A"
+   },
+   "devName": "sdw",
+   "ts": "2026-09-25T10:11:46Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "18642",
+    "tempC": 26,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "133387756000000",
+    "writeBytes": "187897596000000",
+    "percentUsed": 2
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca04aafd574",
+    "model": "HUSMH842_CLAR200",
+    "serial": "0LY3PT0A"
+   },
+   "devName": "sdw",
+   "ts": "2026-09-25T04:11:30Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "18636",
+    "tempC": 27,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "133387756000000",
+    "writeBytes": "187896201000000",
+    "percentUsed": 2
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca04aafd574",
+    "model": "HUSMH842_CLAR200",
+    "serial": "0LY3PT0A"
+   },
+   "devName": "sdw",
+   "ts": "2026-09-24T22:11:14Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "18630",
+    "tempC": 27,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "133387756000000",
+    "writeBytes": "187893950000000",
+    "percentUsed": 2
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca04aafd574",
+    "model": "HUSMH842_CLAR200",
+    "serial": "0LY3PT0A"
+   },
+   "devName": "sdw",
+   "ts": "2026-09-24T16:10:58Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "18624",
+    "tempC": 25,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "133387756000000",
+    "writeBytes": "187892766000000",
+    "percentUsed": 2
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca04aafd574",
+    "model": "HUSMH842_CLAR200",
+    "serial": "0LY3PT0A"
+   },
+   "devName": "sdw",
+   "ts": "2026-09-24T10:10:40Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "18618",
+    "tempC": 26,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "133387752000000",
+    "writeBytes": "187891277000000",
+    "percentUsed": 2
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca04aafd574",
+    "model": "HUSMH842_CLAR200",
+    "serial": "0LY3PT0A"
+   },
+   "devName": "sdw",
+   "ts": "2026-09-24T04:10:16Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "18612",
+    "tempC": 27,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "133387752000000",
+    "writeBytes": "187885700000000",
+    "percentUsed": 2
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca04aafd574",
+    "model": "HUSMH842_CLAR200",
+    "serial": "0LY3PT0A"
+   },
+   "devName": "sdw",
+   "ts": "2026-09-23T22:09:58Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "18606",
+    "tempC": 27,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "133387752000000",
+    "writeBytes": "187884365000000",
+    "percentUsed": 2
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca04aafd574",
+    "model": "HUSMH842_CLAR200",
+    "serial": "0LY3PT0A"
+   },
+   "devName": "sdw",
+   "ts": "2026-09-23T16:09:34Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "18600",
+    "tempC": 27,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "133387752000000",
+    "writeBytes": "187882974000000",
+    "percentUsed": 2
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca04aafd574",
+    "model": "HUSMH842_CLAR200",
+    "serial": "0LY3PT0A"
+   },
+   "devName": "sdw",
+   "ts": "2026-09-23T10:09:11Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "18594",
+    "tempC": 27,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "133387752000000",
+    "writeBytes": "187881077000000",
+    "percentUsed": 2
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca04aafd574",
+    "model": "HUSMH842_CLAR200",
+    "serial": "0LY3PT0A"
+   },
+   "devName": "sdw",
+   "ts": "2026-09-23T04:08:52Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "18588",
+    "tempC": 28,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "133387752000000",
+    "writeBytes": "187879571000000",
+    "percentUsed": 2
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca04aafd574",
+    "model": "HUSMH842_CLAR200",
+    "serial": "0LY3PT0A"
+   },
+   "devName": "sdw",
+   "ts": "2026-09-22T22:08:33Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "18582",
+    "tempC": 28,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "133387752000000",
+    "writeBytes": "187878341000000",
+    "percentUsed": 2
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca04aafd574",
+    "model": "HUSMH842_CLAR200",
+    "serial": "0LY3PT0A"
+   },
+   "devName": "sdw",
+   "ts": "2026-09-22T16:08:11Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "18576",
+    "tempC": 24,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "133387752000000",
+    "writeBytes": "187876432000000",
+    "percentUsed": 2
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca04aafd574",
+    "model": "HUSMH842_CLAR200",
+    "serial": "0LY3PT0A"
+   },
+   "devName": "sdw",
+   "ts": "2026-09-22T10:07:51Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "18570",
+    "tempC": 27,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "133387752000000",
+    "writeBytes": "187875141000000",
+    "percentUsed": 2
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca04aafd574",
+    "model": "HUSMH842_CLAR200",
+    "serial": "0LY3PT0A"
+   },
+   "devName": "sdw",
+   "ts": "2026-09-22T04:07:32Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "18564",
+    "tempC": 28,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "133387752000000",
+    "writeBytes": "187873379000000",
+    "percentUsed": 2
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca04aafd574",
+    "model": "HUSMH842_CLAR200",
+    "serial": "0LY3PT0A"
+   },
+   "devName": "sdw",
+   "ts": "2026-09-21T22:07:13Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "18558",
+    "tempC": 28,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "133387752000000",
+    "writeBytes": "187868121000000",
+    "percentUsed": 2
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca04aafd574",
+    "model": "HUSMH842_CLAR200",
+    "serial": "0LY3PT0A"
+   },
+   "devName": "sdw",
+   "ts": "2026-09-21T16:06:51Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "18552",
+    "tempC": 26,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "133387752000000",
+    "writeBytes": "187866864000000",
+    "percentUsed": 2
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca04aafd574",
+    "model": "HUSMH842_CLAR200",
+    "serial": "0LY3PT0A"
+   },
+   "devName": "sdw",
+   "ts": "2026-09-21T10:06:29Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "18546",
+    "tempC": 27,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "133387752000000",
+    "writeBytes": "187865555000000",
+    "percentUsed": 2
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca04aafd574",
+    "model": "HUSMH842_CLAR200",
+    "serial": "0LY3PT0A"
+   },
+   "devName": "sdw",
+   "ts": "2026-09-21T04:06:06Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "18540",
+    "tempC": 28,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "133387752000000",
+    "writeBytes": "187863699000000",
+    "percentUsed": 2
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca04aafd574",
+    "model": "HUSMH842_CLAR200",
+    "serial": "0LY3PT0A"
+   },
+   "devName": "sdw",
+   "ts": "2026-09-21T03:53:37Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "18540",
+    "tempC": 28,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "133387752000000",
+    "writeBytes": "187863680000000",
+    "percentUsed": 2
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca04aafd574",
+    "model": "HUSMH842_CLAR200",
+    "serial": "0LY3PT0A"
+   },
+   "devName": "sdw",
+   "ts": "2026-09-21T03:43:17Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "18540",
+    "tempC": 28,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "133387752000000",
+    "writeBytes": "187863668000000",
+    "percentUsed": 2
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca04aafd574",
+    "model": "HUSMH842_CLAR200",
+    "serial": "0LY3PT0A"
+   },
+   "devName": "sdw",
+   "ts": "2026-09-21T03:28:48Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "18539",
+    "tempC": 28,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "133387752000000",
+    "writeBytes": "187863648000000",
+    "percentUsed": 2
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca04aafd574",
+    "model": "HUSMH842_CLAR200",
+    "serial": "0LY3PT0A"
+   },
+   "devName": "sdw",
+   "ts": "2026-09-21T01:42:32Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "18538",
+    "tempC": 28,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "133387752000000",
+    "writeBytes": "187862981000000",
+    "percentUsed": 2
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca04aafd574",
+    "model": "HUSMH842_CLAR200",
+    "serial": "0LY3PT0A"
+   },
+   "devName": "sdw",
+   "ts": "2026-09-20T19:42:12Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "18532",
+    "tempC": 28,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "133387752000000",
+    "writeBytes": "187861933000000",
+    "percentUsed": 2
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca04aafd574",
+    "model": "HUSMH842_CLAR200",
+    "serial": "0LY3PT0A"
+   },
+   "devName": "sdw",
+   "ts": "2026-09-20T14:22:10Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "18526",
+    "tempC": 26,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "133387752000000",
+    "writeBytes": "187859963000000",
+    "percentUsed": 2
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca04aafd574",
+    "model": "HUSMH842_CLAR200",
+    "serial": "0LY3PT0A"
+   },
+   "devName": "sdw",
+   "ts": "2026-09-20T08:21:40Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "18520",
+    "tempC": 27,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "133387752000000",
+    "writeBytes": "187858643000000",
+    "percentUsed": 2
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca04aafd574",
+    "model": "HUSMH842_CLAR200",
+    "serial": "0LY3PT0A"
+   },
+   "devName": "sdw",
+   "ts": "2026-09-20T02:21:22Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "18514",
+    "tempC": 28,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "133387752000000",
+    "writeBytes": "187857606000000",
+    "percentUsed": 2
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca04aafd574",
+    "model": "HUSMH842_CLAR200",
+    "serial": "0LY3PT0A"
+   },
+   "devName": "sdw",
+   "ts": "2026-09-19T20:20:53Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "18508",
+    "tempC": 27,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "133387752000000",
+    "writeBytes": "187814743000000",
+    "percentUsed": 2
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca04aafd574",
+    "model": "HUSMH842_CLAR200",
+    "serial": "0LY3PT0A"
+   },
+   "devName": "sdw",
+   "ts": "2026-09-19T17:50:09Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "18506",
+    "tempC": 27,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "133387752000000",
+    "writeBytes": "187814383000000",
+    "percentUsed": 2
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca04aafd574",
+    "model": "HUSMH842_CLAR200",
+    "serial": "0LY3PT0A"
+   },
+   "devName": "sdw",
+   "ts": "2026-09-19T11:49:48Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "18500",
+    "tempC": 27,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "133387752000000",
+    "writeBytes": "187813274000000",
+    "percentUsed": 2
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca04aafd574",
+    "model": "HUSMH842_CLAR200",
+    "serial": "0LY3PT0A"
+   },
+   "devName": "sdw",
+   "ts": "2026-09-19T05:49:19Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "18494",
+    "tempC": 28,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "133387752000000",
+    "writeBytes": "187811728000000",
+    "percentUsed": 2
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca04aafd574",
+    "model": "HUSMH842_CLAR200",
+    "serial": "0LY3PT0A"
+   },
+   "devName": "sdw",
+   "ts": "2026-09-18T23:48:42Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "18488",
+    "tempC": 28,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "133387752000000",
+    "writeBytes": "187809694000000",
+    "percentUsed": 2
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca04aafd574",
+    "model": "HUSMH842_CLAR200",
+    "serial": "0LY3PT0A"
+   },
+   "devName": "sdw",
+   "ts": "2026-09-18T17:48:09Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "18482",
+    "tempC": 27,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "133387752000000",
+    "writeBytes": "187808547000000",
+    "percentUsed": 2
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca04aafd574",
+    "model": "HUSMH842_CLAR200",
+    "serial": "0LY3PT0A"
+   },
+   "devName": "sdw",
+   "ts": "2026-09-18T11:47:49Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "18476",
+    "tempC": 27,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "133387752000000",
+    "writeBytes": "187807339000000",
+    "percentUsed": 2
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca04aafd574",
+    "model": "HUSMH842_CLAR200",
+    "serial": "0LY3PT0A"
+   },
+   "devName": "sdw",
+   "ts": "2026-09-18T05:47:28Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "18470",
+    "tempC": 27,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "133387752000000",
+    "writeBytes": "187805412000000",
+    "percentUsed": 2
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca04aafd574",
+    "model": "HUSMH842_CLAR200",
+    "serial": "0LY3PT0A"
+   },
+   "devName": "sdw",
+   "ts": "2026-09-17T23:47:03Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "18464",
+    "tempC": 29,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "133387752000000",
+    "writeBytes": "187804227000000",
+    "percentUsed": 2
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca04aafd574",
+    "model": "HUSMH842_CLAR200",
+    "serial": "0LY3PT0A"
+   },
+   "devName": "sdw",
+   "ts": "2026-09-17T17:46:43Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "18458",
+    "tempC": 27,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "133387752000000",
+    "writeBytes": "187803179000000",
+    "percentUsed": 2
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca04aafd574",
+    "model": "HUSMH842_CLAR200",
+    "serial": "0LY3PT0A"
+   },
+   "devName": "sdw",
+   "ts": "2026-09-17T11:46:25Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "18452",
+    "tempC": 27,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "133387752000000",
+    "writeBytes": "187799782000000",
+    "percentUsed": 2
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca04aafd574",
+    "model": "HUSMH842_CLAR200",
+    "serial": "0LY3PT0A"
+   },
+   "devName": "sdw",
+   "ts": "2026-09-17T05:46:08Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "18446",
+    "tempC": 28,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "133387752000000",
+    "writeBytes": "187797708000000",
+    "percentUsed": 2
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca04aafd574",
+    "model": "HUSMH842_CLAR200",
+    "serial": "0LY3PT0A"
+   },
+   "devName": "sdw",
+   "ts": "2026-09-16T23:45:52Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "18440",
+    "tempC": 28,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "133387752000000",
+    "writeBytes": "187796504000000",
+    "percentUsed": 2
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca04aafd574",
+    "model": "HUSMH842_CLAR200",
+    "serial": "0LY3PT0A"
+   },
+   "devName": "sdw",
+   "ts": "2026-09-16T17:45:36Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "18434",
+    "tempC": 26,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "133387752000000",
+    "writeBytes": "187794911000000",
+    "percentUsed": 2
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca04aafd574",
+    "model": "HUSMH842_CLAR200",
+    "serial": "0LY3PT0A"
+   },
+   "devName": "sdw",
+   "ts": "2026-09-16T11:45:19Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "18428",
+    "tempC": 26,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "133387752000000",
+    "writeBytes": "187793792000000",
+    "percentUsed": 2
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca04aafd574",
+    "model": "HUSMH842_CLAR200",
+    "serial": "0LY3PT0A"
+   },
+   "devName": "sdw",
+   "ts": "2026-09-16T05:45:03Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "18422",
+    "tempC": 27,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "133387752000000",
+    "writeBytes": "187792085000000",
+    "percentUsed": 2
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca04aafd574",
+    "model": "HUSMH842_CLAR200",
+    "serial": "0LY3PT0A"
+   },
+   "devName": "sdw",
+   "ts": "2026-09-15T23:44:46Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "18416",
+    "tempC": 28,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "133387752000000",
+    "writeBytes": "187790454000000",
+    "percentUsed": 2
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca04aafd574",
+    "model": "HUSMH842_CLAR200",
+    "serial": "0LY3PT0A"
+   },
+   "devName": "sdw",
+   "ts": "2026-09-15T17:44:30Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "18410",
+    "tempC": 25,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "133387752000000",
+    "writeBytes": "187789440000000",
+    "percentUsed": 2
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca04aafd574",
+    "model": "HUSMH842_CLAR200",
+    "serial": "0LY3PT0A"
+   },
+   "devName": "sdw",
+   "ts": "2026-09-15T11:44:13Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "18404",
+    "tempC": 26,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "133387752000000",
+    "writeBytes": "187788497000000",
+    "percentUsed": 2
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca04aafd574",
+    "model": "HUSMH842_CLAR200",
+    "serial": "0LY3PT0A"
+   },
+   "devName": "sdw",
+   "ts": "2026-09-15T05:43:56Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "18398",
+    "tempC": 28,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "133387752000000",
+    "writeBytes": "187785061000000",
+    "percentUsed": 2
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca04aafd574",
+    "model": "HUSMH842_CLAR200",
+    "serial": "0LY3PT0A"
+   },
+   "devName": "sdw",
+   "ts": "2026-09-14T23:43:39Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "18392",
+    "tempC": 28,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "133387752000000",
+    "writeBytes": "187784207000000",
+    "percentUsed": 2
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca04aafd574",
+    "model": "HUSMH842_CLAR200",
+    "serial": "0LY3PT0A"
+   },
+   "devName": "sdw",
+   "ts": "2026-09-14T17:43:23Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "18386",
+    "tempC": 27,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "133387752000000",
+    "writeBytes": "187783000000000",
+    "percentUsed": 2
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca04aafd574",
+    "model": "HUSMH842_CLAR200",
+    "serial": "0LY3PT0A"
+   },
+   "devName": "sdw",
+   "ts": "2026-09-14T16:09:59Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "18384",
+    "tempC": 27,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "133387752000000",
+    "writeBytes": "187782693000000",
+    "percentUsed": 2
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca04aafd574",
+    "model": "HUSMH842_CLAR200",
+    "serial": "0LY3PT0A"
+   },
+   "devName": "sdw",
+   "ts": "2026-09-14T10:09:42Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "18378",
+    "tempC": 27,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "133387752000000",
+    "writeBytes": "187781373000000",
+    "percentUsed": 2
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca04aafd574",
+    "model": "HUSMH842_CLAR200",
+    "serial": "0LY3PT0A"
+   },
+   "devName": "sdw",
+   "ts": "2026-09-14T04:09:24Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "18372",
+    "tempC": 28,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "133387752000000",
+    "writeBytes": "187780035000000",
+    "percentUsed": 2
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca04aafd574",
+    "model": "HUSMH842_CLAR200",
+    "serial": "0LY3PT0A"
+   },
+   "devName": "sdw",
+   "ts": "2026-09-14T03:59:19Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "18372",
+    "tempC": 28,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "133387752000000",
+    "writeBytes": "187780021000000",
+    "percentUsed": 2
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca04aafd574",
+    "model": "HUSMH842_CLAR200",
+    "serial": "0LY3PT0A"
+   },
+   "devName": "sdw",
+   "ts": "2026-09-14T03:46:27Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "18372",
+    "tempC": 28,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "133387752000000",
+    "writeBytes": "187780007000000",
+    "percentUsed": 2
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca04aafd574",
+    "model": "HUSMH842_CLAR200",
+    "serial": "0LY3PT0A"
+   },
+   "devName": "sdw",
+   "ts": "2026-09-13T23:13:26Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "18367",
+    "tempC": 27,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "133387752000000",
+    "writeBytes": "187779150000000",
+    "percentUsed": 2
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca04aafd574",
+    "model": "HUSMH842_CLAR200",
+    "serial": "0LY3PT0A"
+   },
+   "devName": "sdw",
+   "ts": "2026-09-13T22:10:52Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "18366",
+    "tempC": 27,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "133387752000000",
+    "writeBytes": "187778846000000",
+    "percentUsed": 2
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca04aafd574",
+    "model": "HUSMH842_CLAR200",
+    "serial": "0LY3PT0A"
+   },
+   "devName": "sdw",
+   "ts": "2026-09-13T21:37:21Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "18366",
+    "tempC": 27,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "133387752000000",
+    "writeBytes": "187778788000000",
+    "percentUsed": 2
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca04aafd574",
+    "model": "HUSMH842_CLAR200",
+    "serial": "0LY3PT0A"
+   },
+   "devName": "sdw",
+   "ts": "2026-09-13T21:15:43Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "18365",
+    "tempC": 27,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "133387752000000",
+    "writeBytes": "187778750000000",
+    "percentUsed": 2
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca04aafd574",
+    "model": "HUSMH842_CLAR200",
+    "serial": "0LY3PT0A"
+   },
+   "devName": "sdw",
+   "ts": "2026-09-13T17:05:26Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "18361",
+    "tempC": 27,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "133387752000000",
+    "writeBytes": "187775905000000",
+    "percentUsed": 2
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca04aafd574",
+    "model": "HUSMH842_CLAR200",
+    "serial": "0LY3PT0A"
+   },
+   "devName": "sdw",
+   "ts": "2026-09-13T14:18:49Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "18358",
+    "tempC": 27,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "133387752000000",
+    "writeBytes": "187774806000000",
+    "percentUsed": 2
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca04aafd574",
+    "model": "HUSMH842_CLAR200",
+    "serial": "0LY3PT0A"
+   },
+   "devName": "sdw",
+   "ts": "2026-09-13T08:18:06Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "18352",
+    "tempC": 28,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "133387752000000",
+    "writeBytes": "187773204000000",
+    "percentUsed": 2
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca04aafd574",
+    "model": "HUSMH842_CLAR200",
+    "serial": "0LY3PT0A"
+   },
+   "devName": "sdw",
+   "ts": "2026-09-13T02:17:18Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "18346",
+    "tempC": 28,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "133387750999999",
+    "writeBytes": "187757923000000",
+    "percentUsed": 2
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000cca04aafd574",
+    "model": "HUSMH842_CLAR200",
+    "serial": "0LY3PT0A"
+   },
+   "devName": "sdw",
+   "ts": "2026-09-13T02:09:23Z",
+   "summary": {
+    "protocol": "SCSI",
+    "healthy": true,
+    "powerOnHours": "18346",
+    "tempC": 28,
+    "reallocated": "0",
+    "uncorrectable": "0",
+    "readBytes": "133387750999999",
+    "writeBytes": "187757911000000",
+    "percentUsed": 2
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  }
+ ]
+}

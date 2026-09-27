@@ -1,0 +1,1646 @@
+{
+ "drive": {
+  "driveId": "42",
+  "wwn": "0x5000c500e8e71bc2",
+  "vendor": "ATA",
+  "model": "ST8000VN004-3CP1",
+  "serial": "WWZ61ANG",
+  "sizeBytes": "8001563222016",
+  "bus": "BUS_SAS",
+  "status": "ok",
+  "firstSeen": "2026-09-13T01:41:39Z",
+  "lastSeen": "2026-09-27T19:41:38Z",
+  "current": {
+   "hostname": "nas",
+   "enclosure": "0x5000ccab020094ff",
+   "bay": "2",
+   "devName": "sdbk",
+   "uses": [
+    "zfs > space 5925914041408872576 > raidz2 9007031778331642784 > disk 4275947122481209035"
+   ],
+   "firstSeen": "2026-09-13T01:41:39Z",
+   "lastSeen": "2026-09-27T19:41:38Z",
+   "enclosureVia": "expander-11:0",
+   "enclosureName": "nas-hgst-u60-1",
+   "bayLabel": "2"
+  },
+  "memberState": "ONLINE"
+ },
+ "samples": [
+  {
+   "identity": {
+    "wwn": "0x5000c500e8e71bc2",
+    "model": "ST8000VN004-3CP1",
+    "serial": "WWZ61ANG"
+   },
+   "devName": "sdbk",
+   "ts": "2026-09-27T15:25:21Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "18555",
+    "tempC": 31,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "124900099308032",
+    "writeBytes": "10094419020800"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8e71bc2",
+    "model": "ST8000VN004-3CP1",
+    "serial": "WWZ61ANG"
+   },
+   "devName": "sdbk",
+   "ts": "2026-09-27T15:12:52Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "18555",
+    "tempC": 31,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "124897254631936",
+    "writeBytes": "10094408530944"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8e71bc2",
+    "model": "ST8000VN004-3CP1",
+    "serial": "WWZ61ANG"
+   },
+   "devName": "sdbk",
+   "ts": "2026-09-27T10:13:52Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "18550",
+    "tempC": 31,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "124826232220160",
+    "writeBytes": "10094156041216"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8e71bc2",
+    "model": "ST8000VN004-3CP1",
+    "serial": "WWZ61ANG"
+   },
+   "devName": "sdbk",
+   "ts": "2026-09-27T04:13:35Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "18544",
+    "tempC": 33,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "124768473864704",
+    "writeBytes": "10093839633408"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8e71bc2",
+    "model": "ST8000VN004-3CP1",
+    "serial": "WWZ61ANG"
+   },
+   "devName": "sdbk",
+   "ts": "2026-09-26T22:13:18Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "18538",
+    "tempC": 34,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "124725018167808",
+    "writeBytes": "10093516504064"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8e71bc2",
+    "model": "ST8000VN004-3CP1",
+    "serial": "WWZ61ANG"
+   },
+   "devName": "sdbk",
+   "ts": "2026-09-26T16:13:01Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "18532",
+    "tempC": 31,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "124660373432832",
+    "writeBytes": "10093221059584"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8e71bc2",
+    "model": "ST8000VN004-3CP1",
+    "serial": "WWZ61ANG"
+   },
+   "devName": "sdbk",
+   "ts": "2026-09-26T10:12:44Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "18526",
+    "tempC": 31,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "124602227747328",
+    "writeBytes": "10092618951680"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8e71bc2",
+    "model": "ST8000VN004-3CP1",
+    "serial": "WWZ61ANG"
+   },
+   "devName": "sdbk",
+   "ts": "2026-09-26T04:12:28Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "18520",
+    "tempC": 32,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "124599047670272",
+    "writeBytes": "10092331088896"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8e71bc2",
+    "model": "ST8000VN004-3CP1",
+    "serial": "WWZ61ANG"
+   },
+   "devName": "sdbk",
+   "ts": "2026-09-25T22:12:11Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "18514",
+    "tempC": 33,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "124599043201536",
+    "writeBytes": "10092011645952"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8e71bc2",
+    "model": "ST8000VN004-3CP1",
+    "serial": "WWZ61ANG"
+   },
+   "devName": "sdbk",
+   "ts": "2026-09-25T16:11:55Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "18508",
+    "tempC": 33,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "124599006665216",
+    "writeBytes": "10091702459392"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8e71bc2",
+    "model": "ST8000VN004-3CP1",
+    "serial": "WWZ61ANG"
+   },
+   "devName": "sdbk",
+   "ts": "2026-09-25T10:11:39Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "18502",
+    "tempC": 33,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "124598050716160",
+    "writeBytes": "10091421920256"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8e71bc2",
+    "model": "ST8000VN004-3CP1",
+    "serial": "WWZ61ANG"
+   },
+   "devName": "sdbk",
+   "ts": "2026-09-25T04:11:23Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "18496",
+    "tempC": 34,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "124596122487296",
+    "writeBytes": "10091121642496"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8e71bc2",
+    "model": "ST8000VN004-3CP1",
+    "serial": "WWZ61ANG"
+   },
+   "devName": "sdbk",
+   "ts": "2026-09-24T22:11:07Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "18490",
+    "tempC": 34,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "124596093639168",
+    "writeBytes": "10090786929664"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8e71bc2",
+    "model": "ST8000VN004-3CP1",
+    "serial": "WWZ61ANG"
+   },
+   "devName": "sdbk",
+   "ts": "2026-09-24T16:10:51Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "18484",
+    "tempC": 32,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "124596075915776",
+    "writeBytes": "10090515033088"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8e71bc2",
+    "model": "ST8000VN004-3CP1",
+    "serial": "WWZ61ANG"
+   },
+   "devName": "sdbk",
+   "ts": "2026-09-24T10:10:33Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "18478",
+    "tempC": 33,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "124571266312704",
+    "writeBytes": "10090217053184"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8e71bc2",
+    "model": "ST8000VN004-3CP1",
+    "serial": "WWZ61ANG"
+   },
+   "devName": "sdbk",
+   "ts": "2026-09-24T04:10:10Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "18472",
+    "tempC": 34,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "124570357565952",
+    "writeBytes": "10089811868672"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8e71bc2",
+    "model": "ST8000VN004-3CP1",
+    "serial": "WWZ61ANG"
+   },
+   "devName": "sdbk",
+   "ts": "2026-09-23T22:09:51Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "18466",
+    "tempC": 35,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "124570336410112",
+    "writeBytes": "10089504467968"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8e71bc2",
+    "model": "ST8000VN004-3CP1",
+    "serial": "WWZ61ANG"
+   },
+   "devName": "sdbk",
+   "ts": "2026-09-23T16:09:27Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "18460",
+    "tempC": 33,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "124570305788416",
+    "writeBytes": "10089224248320"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8e71bc2",
+    "model": "ST8000VN004-3CP1",
+    "serial": "WWZ61ANG"
+   },
+   "devName": "sdbk",
+   "ts": "2026-09-23T10:09:04Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "18454",
+    "tempC": 34,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "124570021865984",
+    "writeBytes": "10088924040192"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8e71bc2",
+    "model": "ST8000VN004-3CP1",
+    "serial": "WWZ61ANG"
+   },
+   "devName": "sdbk",
+   "ts": "2026-09-23T04:08:45Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "18448",
+    "tempC": 35,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "124443054766592",
+    "writeBytes": "10088636443648"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8e71bc2",
+    "model": "ST8000VN004-3CP1",
+    "serial": "WWZ61ANG"
+   },
+   "devName": "sdbk",
+   "ts": "2026-09-22T22:08:26Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "18442",
+    "tempC": 36,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "124265631214080",
+    "writeBytes": "10088317262848"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8e71bc2",
+    "model": "ST8000VN004-3CP1",
+    "serial": "WWZ61ANG"
+   },
+   "devName": "sdbk",
+   "ts": "2026-09-22T16:08:03Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "18436",
+    "tempC": 32,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "124086634572288",
+    "writeBytes": "10088013134848"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8e71bc2",
+    "model": "ST8000VN004-3CP1",
+    "serial": "WWZ61ANG"
+   },
+   "devName": "sdbk",
+   "ts": "2026-09-22T10:07:44Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "18430",
+    "tempC": 34,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "124001761298944",
+    "writeBytes": "10087726726144"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8e71bc2",
+    "model": "ST8000VN004-3CP1",
+    "serial": "WWZ61ANG"
+   },
+   "devName": "sdbk",
+   "ts": "2026-09-22T04:07:25Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "18424",
+    "tempC": 36,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "123952214866432",
+    "writeBytes": "10087432567808"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8e71bc2",
+    "model": "ST8000VN004-3CP1",
+    "serial": "WWZ61ANG"
+   },
+   "devName": "sdbk",
+   "ts": "2026-09-21T22:07:06Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "18418",
+    "tempC": 37,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "123897559415296",
+    "writeBytes": "10087010372608"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8e71bc2",
+    "model": "ST8000VN004-3CP1",
+    "serial": "WWZ61ANG"
+   },
+   "devName": "sdbk",
+   "ts": "2026-09-21T16:06:43Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "18412",
+    "tempC": 34,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "123836841122304",
+    "writeBytes": "10086740036608"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8e71bc2",
+    "model": "ST8000VN004-3CP1",
+    "serial": "WWZ61ANG"
+   },
+   "devName": "sdbk",
+   "ts": "2026-09-21T10:06:22Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "18406",
+    "tempC": 34,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "123768975751680",
+    "writeBytes": "10086439357440"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8e71bc2",
+    "model": "ST8000VN004-3CP1",
+    "serial": "WWZ61ANG"
+   },
+   "devName": "sdbk",
+   "ts": "2026-09-21T04:05:58Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "18400",
+    "tempC": 36,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "123607059728896",
+    "writeBytes": "10085333281792"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8e71bc2",
+    "model": "ST8000VN004-3CP1",
+    "serial": "WWZ61ANG"
+   },
+   "devName": "sdbk",
+   "ts": "2026-09-21T03:53:29Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "18400",
+    "tempC": 36,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "123600286919168",
+    "writeBytes": "10084923956224"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8e71bc2",
+    "model": "ST8000VN004-3CP1",
+    "serial": "WWZ61ANG"
+   },
+   "devName": "sdbk",
+   "ts": "2026-09-21T03:43:09Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "18399",
+    "tempC": 36,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "123594692614656",
+    "writeBytes": "10084598803456"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8e71bc2",
+    "model": "ST8000VN004-3CP1",
+    "serial": "WWZ61ANG"
+   },
+   "devName": "sdbk",
+   "ts": "2026-09-21T03:28:39Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "18399",
+    "tempC": 36,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "123586847836672",
+    "writeBytes": "10083812322304"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8e71bc2",
+    "model": "ST8000VN004-3CP1",
+    "serial": "WWZ61ANG"
+   },
+   "devName": "sdbk",
+   "ts": "2026-09-21T01:42:25Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "18397",
+    "tempC": 37,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "123529691449856",
+    "writeBytes": "10079072214016"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8e71bc2",
+    "model": "ST8000VN004-3CP1",
+    "serial": "WWZ61ANG"
+   },
+   "devName": "sdbk",
+   "ts": "2026-09-20T19:42:03Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "18391",
+    "tempC": 36,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "123315013954048",
+    "writeBytes": "10078787845120"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8e71bc2",
+    "model": "ST8000VN004-3CP1",
+    "serial": "WWZ61ANG"
+   },
+   "devName": "sdbk",
+   "ts": "2026-09-20T14:22:03Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "18386",
+    "tempC": 33,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "123226448976384",
+    "writeBytes": "10074121165824"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8e71bc2",
+    "model": "ST8000VN004-3CP1",
+    "serial": "WWZ61ANG"
+   },
+   "devName": "sdbk",
+   "ts": "2026-09-20T08:21:33Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "18380",
+    "tempC": 34,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "123144423307776",
+    "writeBytes": "10073832832000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8e71bc2",
+    "model": "ST8000VN004-3CP1",
+    "serial": "WWZ61ANG"
+   },
+   "devName": "sdbk",
+   "ts": "2026-09-20T02:21:14Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "18374",
+    "tempC": 36,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "123074069080576",
+    "writeBytes": "10066483616768"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8e71bc2",
+    "model": "ST8000VN004-3CP1",
+    "serial": "WWZ61ANG"
+   },
+   "devName": "sdbk",
+   "ts": "2026-09-19T20:20:46Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "18368",
+    "tempC": 35,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "123037196163584",
+    "writeBytes": "10059461614592"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8e71bc2",
+    "model": "ST8000VN004-3CP1",
+    "serial": "WWZ61ANG"
+   },
+   "devName": "sdbk",
+   "ts": "2026-09-19T17:50:02Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "18365",
+    "tempC": 34,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "123003937937920",
+    "writeBytes": "10059341622272"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8e71bc2",
+    "model": "ST8000VN004-3CP1",
+    "serial": "WWZ61ANG"
+   },
+   "devName": "sdbk",
+   "ts": "2026-09-19T11:49:41Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "18359",
+    "tempC": 34,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "122942864529920",
+    "writeBytes": "10059037662208"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8e71bc2",
+    "model": "ST8000VN004-3CP1",
+    "serial": "WWZ61ANG"
+   },
+   "devName": "sdbk",
+   "ts": "2026-09-19T05:49:10Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "18353",
+    "tempC": 36,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "122863075715584",
+    "writeBytes": "10058722024448"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8e71bc2",
+    "model": "ST8000VN004-3CP1",
+    "serial": "WWZ61ANG"
+   },
+   "devName": "sdbk",
+   "ts": "2026-09-18T23:48:34Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "18347",
+    "tempC": 37,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "122688180193792",
+    "writeBytes": "10058382793728"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8e71bc2",
+    "model": "ST8000VN004-3CP1",
+    "serial": "WWZ61ANG"
+   },
+   "devName": "sdbk",
+   "ts": "2026-09-18T17:48:01Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "18341",
+    "tempC": 35,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "122511272372736",
+    "writeBytes": "10058101111808"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8e71bc2",
+    "model": "ST8000VN004-3CP1",
+    "serial": "WWZ61ANG"
+   },
+   "devName": "sdbk",
+   "ts": "2026-09-18T11:47:42Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "18335",
+    "tempC": 35,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "122376004442624",
+    "writeBytes": "10057803615232"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8e71bc2",
+    "model": "ST8000VN004-3CP1",
+    "serial": "WWZ61ANG"
+   },
+   "devName": "sdbk",
+   "ts": "2026-09-18T05:47:21Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "18329",
+    "tempC": 35,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "122297592457728",
+    "writeBytes": "10057485794304"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8e71bc2",
+    "model": "ST8000VN004-3CP1",
+    "serial": "WWZ61ANG"
+   },
+   "devName": "sdbk",
+   "ts": "2026-09-17T23:46:56Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "18323",
+    "tempC": 38,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "122260398410240",
+    "writeBytes": "10057162955776"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8e71bc2",
+    "model": "ST8000VN004-3CP1",
+    "serial": "WWZ61ANG"
+   },
+   "devName": "sdbk",
+   "ts": "2026-09-17T17:46:36Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "18317",
+    "tempC": 35,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "122237547842048",
+    "writeBytes": "10056884665344"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8e71bc2",
+    "model": "ST8000VN004-3CP1",
+    "serial": "WWZ61ANG"
+   },
+   "devName": "sdbk",
+   "ts": "2026-09-17T11:46:18Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "18311",
+    "tempC": 34,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "122214731930112",
+    "writeBytes": "10056514550784"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8e71bc2",
+    "model": "ST8000VN004-3CP1",
+    "serial": "WWZ61ANG"
+   },
+   "devName": "sdbk",
+   "ts": "2026-09-17T05:46:01Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "18305",
+    "tempC": 35,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "122192040864256",
+    "writeBytes": "10056183999488"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8e71bc2",
+    "model": "ST8000VN004-3CP1",
+    "serial": "WWZ61ANG"
+   },
+   "devName": "sdbk",
+   "ts": "2026-09-16T23:45:45Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "18299",
+    "tempC": 37,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "122177739909632",
+    "writeBytes": "10055865216000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8e71bc2",
+    "model": "ST8000VN004-3CP1",
+    "serial": "WWZ61ANG"
+   },
+   "devName": "sdbk",
+   "ts": "2026-09-16T17:45:28Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "18293",
+    "tempC": 34,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "122111028050432",
+    "writeBytes": "10055568641024"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8e71bc2",
+    "model": "ST8000VN004-3CP1",
+    "serial": "WWZ61ANG"
+   },
+   "devName": "sdbk",
+   "ts": "2026-09-16T11:45:12Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "18287",
+    "tempC": 33,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "122076765792768",
+    "writeBytes": "10055282797568"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8e71bc2",
+    "model": "ST8000VN004-3CP1",
+    "serial": "WWZ61ANG"
+   },
+   "devName": "sdbk",
+   "ts": "2026-09-16T05:44:56Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "18281",
+    "tempC": 35,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "122021574416896",
+    "writeBytes": "10054981180416"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8e71bc2",
+    "model": "ST8000VN004-3CP1",
+    "serial": "WWZ61ANG"
+   },
+   "devName": "sdbk",
+   "ts": "2026-09-15T23:44:39Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "18275",
+    "tempC": 36,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "121878842522112",
+    "writeBytes": "10054640147456"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8e71bc2",
+    "model": "ST8000VN004-3CP1",
+    "serial": "WWZ61ANG"
+   },
+   "devName": "sdbk",
+   "ts": "2026-09-15T17:44:23Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "18269",
+    "tempC": 33,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "121704394185216",
+    "writeBytes": "10054358776832"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8e71bc2",
+    "model": "ST8000VN004-3CP1",
+    "serial": "WWZ61ANG"
+   },
+   "devName": "sdbk",
+   "ts": "2026-09-15T11:44:06Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "18263",
+    "tempC": 34,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "121525815695872",
+    "writeBytes": "10054084041728"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8e71bc2",
+    "model": "ST8000VN004-3CP1",
+    "serial": "WWZ61ANG"
+   },
+   "devName": "sdbk",
+   "ts": "2026-09-15T05:43:49Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "18257",
+    "tempC": 34,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "121414163999232",
+    "writeBytes": "10053706963968"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8e71bc2",
+    "model": "ST8000VN004-3CP1",
+    "serial": "WWZ61ANG"
+   },
+   "devName": "sdbk",
+   "ts": "2026-09-14T23:43:32Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "18251",
+    "tempC": 35,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "121378566785536",
+    "writeBytes": "10053384330240"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8e71bc2",
+    "model": "ST8000VN004-3CP1",
+    "serial": "WWZ61ANG"
+   },
+   "devName": "sdbk",
+   "ts": "2026-09-14T17:43:16Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "18245",
+    "tempC": 35,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "121323304122880",
+    "writeBytes": "10053096602624"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8e71bc2",
+    "model": "ST8000VN004-3CP1",
+    "serial": "WWZ61ANG"
+   },
+   "devName": "sdbk",
+   "ts": "2026-09-14T16:09:52Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "18244",
+    "tempC": 35,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "121308780935680",
+    "writeBytes": "10052995402752"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8e71bc2",
+    "model": "ST8000VN004-3CP1",
+    "serial": "WWZ61ANG"
+   },
+   "devName": "sdbk",
+   "ts": "2026-09-14T10:09:35Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "18238",
+    "tempC": 34,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "121239991036416",
+    "writeBytes": "10052672384000"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8e71bc2",
+    "model": "ST8000VN004-3CP1",
+    "serial": "WWZ61ANG"
+   },
+   "devName": "sdbk",
+   "ts": "2026-09-14T04:09:17Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "18232",
+    "tempC": 34,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "121235999697408",
+    "writeBytes": "10052371573760"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8e71bc2",
+    "model": "ST8000VN004-3CP1",
+    "serial": "WWZ61ANG"
+   },
+   "devName": "sdbk",
+   "ts": "2026-09-14T03:59:12Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "18232",
+    "tempC": 34,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "121235999697408",
+    "writeBytes": "10052359101440"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8e71bc2",
+    "model": "ST8000VN004-3CP1",
+    "serial": "WWZ61ANG"
+   },
+   "devName": "sdbk",
+   "ts": "2026-09-14T03:46:21Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "18231",
+    "tempC": 34,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "121235999648256",
+    "writeBytes": "10052339383296"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8e71bc2",
+    "model": "ST8000VN004-3CP1",
+    "serial": "WWZ61ANG"
+   },
+   "devName": "sdbk",
+   "ts": "2026-09-13T23:13:03Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "18227",
+    "tempC": 36,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "120154233936384",
+    "writeBytes": "10051423312896"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8e71bc2",
+    "model": "ST8000VN004-3CP1",
+    "serial": "WWZ61ANG"
+   },
+   "devName": "sdbk",
+   "ts": "2026-09-13T22:10:30Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "18226",
+    "tempC": 35,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "119848476068352",
+    "writeBytes": "10051368971264"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8e71bc2",
+    "model": "ST8000VN004-3CP1",
+    "serial": "WWZ61ANG"
+   },
+   "devName": "sdbk",
+   "ts": "2026-09-13T21:37:12Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "18225",
+    "tempC": 34,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "119828934167040",
+    "writeBytes": "10051329133568"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8e71bc2",
+    "model": "ST8000VN004-3CP1",
+    "serial": "WWZ61ANG"
+   },
+   "devName": "sdbk",
+   "ts": "2026-09-13T21:15:24Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "18225",
+    "tempC": 35,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "119793482385920",
+    "writeBytes": "10051308514304"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8e71bc2",
+    "model": "ST8000VN004-3CP1",
+    "serial": "WWZ61ANG"
+   },
+   "devName": "sdbk",
+   "ts": "2026-09-13T17:05:05Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "18221",
+    "tempC": 35,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "118594052233728",
+    "writeBytes": "10051032902656"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8e71bc2",
+    "model": "ST8000VN004-3CP1",
+    "serial": "WWZ61ANG"
+   },
+   "devName": "sdbk",
+   "ts": "2026-09-13T14:18:31Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "18218",
+    "tempC": 36,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "117960217631232",
+    "writeBytes": "10050884369408"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8e71bc2",
+    "model": "ST8000VN004-3CP1",
+    "serial": "WWZ61ANG"
+   },
+   "devName": "sdbk",
+   "ts": "2026-09-13T08:17:45Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "18212",
+    "tempC": 36,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "116629312956928",
+    "writeBytes": "10050599951360"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8e71bc2",
+    "model": "ST8000VN004-3CP1",
+    "serial": "WWZ61ANG"
+   },
+   "devName": "sdbk",
+   "ts": "2026-09-13T02:17:12Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "18206",
+    "tempC": 36,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "116396092361216",
+    "writeBytes": "10049996434432"
+   },
+   "hostname": "nas"
+  },
+  {
+   "identity": {
+    "wwn": "0x5000c500e8e71bc2",
+    "model": "ST8000VN004-3CP1",
+    "serial": "WWZ61ANG"
+   },
+   "devName": "sdbk",
+   "ts": "2026-09-13T02:09:15Z",
+   "summary": {
+    "protocol": "ATA",
+    "healthy": true,
+    "powerOnHours": "18206",
+    "tempC": 36,
+    "reallocated": "0",
+    "pending": "0",
+    "uncorrectable": "0",
+    "crcErrors": "0",
+    "readBytes": "116394712500736",
+    "writeBytes": "10049986993152"
+   },
+   "hostname": "nas",
+   "hasRaw": true
+  }
+ ]
+}

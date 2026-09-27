@@ -1,0 +1,112 @@
+{
+ "enclosure": {
+  "enclosure": "dmi:KCS0GX0000TB",
+  "hostname": "server8",
+  "via": "pci",
+  "name": "server8-front",
+  "drives": 3,
+  "firstSeen": "2026-09-13T23:12:04Z",
+  "lastSeen": "2026-09-27T19:43:32Z",
+  "product": "ASUSTeK COMPUTER INC. RS500A-E10-RS12U",
+  "bays": 13,
+  "profile": "ASUS RS500A-E10-RS12U, 12 x 2.5\" front bays",
+  "board": "KRPA-U16 Series"
+ },
+ "bays": [
+  {
+   "label": "1",
+   "declared": true
+  },
+  {
+   "label": "2",
+   "declared": true
+  },
+  {
+   "label": "3",
+   "declared": true
+  },
+  {
+   "label": "4",
+   "declared": true
+  },
+  {
+   "label": "5",
+   "declared": true
+  },
+  {
+   "label": "6",
+   "declared": true
+  },
+  {
+   "label": "7",
+   "declared": true
+  },
+  {
+   "label": "8",
+   "declared": true
+  },
+  {
+   "label": "9",
+   "declared": true
+  },
+  {
+   "label": "10",
+   "declared": true
+  },
+  {
+   "label": "11",
+   "declared": true
+  },
+  {
+   "label": "12",
+   "declared": true
+  },
+  {
+   "label": "M.2 onboard",
+   "ids": [
+    "pci:0000:40:01.2"
+   ],
+   "declared": true,
+   "present": true,
+   "devName": "nvme2n1",
+   "serial": "7F6007041D9D02909994",
+   "model": "Sabrent Rocket 4.0 1TB",
+   "status": "ok",
+   "uses": [
+    "mount > /",
+    "mount > /boot/efi"
+   ]
+  },
+  {
+   "label": "10-1",
+   "ids": [
+    "pci:10-1"
+   ],
+   "present": true,
+   "devName": "nvme1n1",
+   "serial": "BTLD7486046B8P0F",
+   "model": "INTEL SSDPD2KS076T7M",
+   "status": "ok",
+   "uses": [
+    "zfs > fast 15353959934024797625 > mirror 6580501177608322094 > disk 12717556308881655532"
+   ]
+  },
+  {
+   "label": "9-1",
+   "ids": [
+    "pci:9-1"
+   ],
+   "present": true,
+   "devName": "nvme0n1",
+   "serial": "BTLD7486036U8P0F",
+   "model": "INTEL SSDPD2KS076T7M",
+   "status": "ok",
+   "uses": [
+    "zfs > fast 15353959934024797625 > mirror 6580501177608322094 > disk 12657478369450022007"
+   ]
+  }
+ ],
+ "rows": 2,
+ "columns": 7,
+ "order": "column-major"
+}
