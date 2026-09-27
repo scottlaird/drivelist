@@ -2,6 +2,7 @@ package store
 
 import (
 	"errors"
+	"strconv"
 	"strings"
 	"testing"
 	"time"
@@ -41,6 +42,25 @@ func TestOpticProblems(t *testing.T) {
 	if p, _ := OpticProblems(sr4("swp1", 0.02), StatusBad, false); len(p) != 1 || p[0] != "marked bad" {
 		t.Errorf("marked = %v", p)
 	}
+	// Latched flags the reading contradicts, as a ConnectX serves them:
+	// every low flag set, every value healthy. None of them count.
+	latched := sr4("swp1", 0.75)
+	latched.Thresholds = map[string]float64{"bias_low_alarm": 5, "bias_low_warning": 10, "rx_low_alarm": 0.05, "rx_low_warning": 0.1, "tx_low_alarm": 0.1}
+	for i := range latched.Lanes {
+		latched.Lanes[i].BiasMA = f(25)
+		n := strconv.Itoa(latched.Lanes[i].Lane)
+		latched.Flags = append(latched.Flags, "bias low alarm lane "+n, "bias low warning lane "+n, "tx low alarm lane "+n, "rx low alarm lane "+n, "rx low warning lane "+n)
+	}
+	latched.Flags = append(latched.Flags, "temp high alarm") // no temp_high_alarm threshold to check: it stands
+	if p, _ := OpticProblems(latched, StatusOK, true); len(p) != 1 || p[0] != "temp high alarm" {
+		t.Errorf("latched flags = %v", p)
+	}
+	// ...but a latched flag the reading bears out stands.
+	latched.Lanes[2].RxMW = f(0.03)
+	if p, _ := OpticProblems(latched, StatusOK, true); len(p) != 2 || p[0] != "rx low alarm lane 3" || p[1] != "temp high alarm" {
+		t.Errorf("a real one among latched = %v", p)
+	}
+
 	// A single-lane SFP names no lane, matching its flags.
 	sfp := Optic{Link: "up", Lanes: []OpticLane{{Lane: 1, RxMW: f(0.018)}}, Thresholds: map[string]float64{"rx_low_alarm": 0.02}, Flags: []string{"rx low alarm"}}
 	if p, _ := OpticProblems(sfp, StatusOK, true); len(p) != 1 || p[0] != "rx low alarm" {
@@ -91,6 +111,9 @@ func TestIngestOptics(t *testing.T) {
 	report(hostA, sr4("swp1", 0.04, "rx low alarm lane 3"), dac)
 	h.advance(5 * time.Minute)
 	report(hostA, sr4("swp1", 0.04, "rx low alarm lane 3"), dac) // same flag: no second event
+	// A latched flag on a healthy lane is no event either.
+	h.advance(time.Minute)
+	report(hostA, sr4("swp1", 0.04, "rx low alarm lane 3", "rx low alarm lane 1"), dac)
 	if n := h.count(`SELECT COUNT(*) FROM optic_sample`); n != 4 {
 		t.Errorf("samples = %d, want 2 hours x 2 optics", n)
 	}
