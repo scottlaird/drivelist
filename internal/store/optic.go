@@ -107,8 +107,62 @@ func darkFlag(flag string) bool {
 	return len(f) >= 2 && f[1] == "low" && (f[0] == "rx" || f[0] == "tx" || f[0] == "bias")
 }
 
+// CurrentFlags drops the flags the module's own reading contradicts. The
+// alarm and warning flags are latched: they trip when a value crosses a
+// threshold and clear only when read, and some NIC firmware (Mellanox
+// ConnectX) serves a cached copy that is never cleared, so the low
+// bias, TX and RX flags every module trips at power-up, before its
+// lasers are on, stay set forever. A flag stands when the value it is
+// about is past its threshold now, or when there is no value or no
+// threshold to check it against.
+func CurrentFlags(o Optic) []string {
+	var out []string
+	for _, flag := range o.Flags {
+		f := strings.Fields(flag) // "rx low alarm lane 3", "temp high warning"
+		if len(f) < 3 {
+			out = append(out, flag)
+			continue
+		}
+		q, side, kind := f[0], f[1], f[2]
+		lane := 0
+		if len(f) >= 5 && f[3] == "lane" {
+			lane, _ = strconv.Atoi(f[4])
+		}
+		var v *float64
+		switch q {
+		case "temp":
+			v = o.TempC
+		case "voltage":
+			v = o.VoltageV
+		case "bias", "tx", "rx":
+			for _, l := range o.Lanes {
+				if l.Lane == lane || (lane == 0 && len(o.Lanes) == 1) {
+					switch q {
+					case "bias":
+						v = l.BiasMA
+					case "tx":
+						v = l.TxMW
+					case "rx":
+						v = l.RxMW
+					}
+				}
+			}
+		}
+		limit, ok := o.Thresholds[q+"_"+side+"_"+kind]
+		if v == nil || !ok || (side == "high" && limit == 0) {
+			out = append(out, flag)
+			continue
+		}
+		if (side == "low" && *v < limit) || (side == "high" && *v > limit) {
+			out = append(out, flag)
+		}
+	}
+	return out
+}
+
 // OpticProblems is what is wrong with an optic by its latest reading
-// and its status: the flags the module raised, and any measurement past
+// and its status: the flags the module raised that its reading bears out
+// (see CurrentFlags), and any measurement past
 // one of the module's own thresholds that it did not flag (not every
 // module implements the flags), named the same way ("rx low warning
 // lane 3"). On a dark port, low light is expected and left out; dark
@@ -129,7 +183,7 @@ func OpticProblems(o Optic, status string, current bool) (problems []string, dar
 		return problems, false
 	}
 	dark = opticDark(o.Link)
-	for _, f := range o.Flags {
+	for _, f := range CurrentFlags(o) {
 		if dark && darkFlag(f) {
 			continue
 		}
@@ -174,7 +228,15 @@ func OpticProblems(o Optic, status string, current bool) (problems []string, dar
 		check("tx", l.TxMW, lane)
 		check("rx", l.RxMW, lane)
 	}
-	return problems, dark
+	// An alarm covers the warning on the same side of the same lane.
+	kept := problems[:0]
+	for _, p := range problems {
+		if strings.Contains(p, " warning") && seen[strings.Replace(p, " warning", " alarm", 1)] {
+			continue
+		}
+		kept = append(kept, p)
+	}
+	return kept, dark
 }
 
 func jsonText(v any, empty string) string {
@@ -222,7 +284,7 @@ func (t *tx) ingestOptics(host *hostRow, r Report) error {
 		if key == "" {
 			key = fmt.Sprintf("port:%d:%s", host.id, o.Port)
 		}
-		id, prevFlags, created, err := t.upsertOptic(key, o)
+		id, prevFlags, created, err := t.upsertOptic(key, o, CurrentFlags(o))
 		if err != nil {
 			return err
 		}
@@ -288,11 +350,13 @@ func (t *tx) ingestOptics(host *hostRow, r Report) error {
 			return err
 		}
 
+		// Events only for flags the reading bears out; a latched flag
+		// that stays set without cause is not news on any report.
 		was := map[string]bool{}
 		for _, f := range prevFlags {
 			was[f] = true
 		}
-		for _, f := range o.Flags {
+		for _, f := range CurrentFlags(o) {
 			if was[f] || (opticDark(o.Link) && darkFlag(f)) {
 				continue
 			}
@@ -324,7 +388,7 @@ func (t *tx) ingestOptics(host *hostRow, r Report) error {
 
 // upsertOptic finds or creates the optic for key, refreshing what the
 // module says of itself, and returns the flags it had raised before.
-func (t *tx) upsertOptic(key string, o Optic) (id int64, prevFlags []string, created bool, err error) {
+func (t *tx) upsertOptic(key string, o Optic, flagsNow []string) (id int64, prevFlags []string, created bool, err error) {
 	var flags string
 	err = t.QueryRowContext(t.ctx, `SELECT optic_id, flags FROM optic WHERE key = ?`, key).Scan(&id, &flags)
 	thresholds := jsonText(o.Thresholds, "{}")
@@ -333,7 +397,7 @@ func (t *tx) upsertOptic(key string, o Optic) (id int64, prevFlags []string, cre
 		res, err := t.ExecContext(t.ctx, `
 			INSERT INTO optic (key, form, identifier, kind, vendor, oui, part, rev, serial, date_code, compliance, connector, wavelength_nm, diagnostics, thresholds, flags, first_seen, last_seen)
 			VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
-			key, o.Form, o.Identifier, o.Kind, o.Vendor, o.OUI, o.Part, o.Rev, o.Serial, o.DateCode, o.Compliance, o.Connector, o.Wavelength, o.Diagnostics, thresholds, jsonText(o.Flags, "[]"), t.obs, t.obs)
+			key, o.Form, o.Identifier, o.Kind, o.Vendor, o.OUI, o.Part, o.Rev, o.Serial, o.DateCode, o.Compliance, o.Connector, o.Wavelength, o.Diagnostics, thresholds, jsonText(flagsNow, "[]"), t.obs, t.obs)
 		if err != nil {
 			return 0, nil, false, err
 		}
@@ -346,7 +410,7 @@ func (t *tx) upsertOptic(key string, o Optic) (id int64, prevFlags []string, cre
 	_, err = t.ExecContext(t.ctx, `
 		UPDATE optic SET form = ?, identifier = ?, kind = ?, oui = ?, rev = ?, date_code = ?, compliance = ?, connector = ?, wavelength_nm = ?, diagnostics = ?,
 			thresholds = CASE WHEN ? = '{}' THEN thresholds ELSE ? END, flags = ?, last_seen = ? WHERE optic_id = ?`,
-		o.Form, o.Identifier, o.Kind, o.OUI, o.Rev, o.DateCode, o.Compliance, o.Connector, o.Wavelength, o.Diagnostics, thresholds, thresholds, jsonText(o.Flags, "[]"), t.obs, id)
+		o.Form, o.Identifier, o.Kind, o.OUI, o.Rev, o.DateCode, o.Compliance, o.Connector, o.Wavelength, o.Diagnostics, thresholds, thresholds, jsonText(flagsNow, "[]"), t.obs, id)
 	return id, prevFlags, false, err
 }
 
