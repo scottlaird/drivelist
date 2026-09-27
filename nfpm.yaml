@@ -16,8 +16,10 @@ homepage: https://github.com/scottlaird/drivelist
 license: Apache-2.0
 depends:
   - udev
+  - ethtool   # ethtool -m reads the modules in the network ports
 recommends:
   - zfsutils-linux
+  - smartmontools   # smartctl, for SMART sampling; without it every drive's sample is skipped
 contents:
   - src: dist/drivelist-bin
     dst: /usr/bin/drivelist
