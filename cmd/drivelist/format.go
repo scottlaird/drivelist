@@ -408,6 +408,8 @@ func describe(e *pb.Event) string {
 			where = slot + " (" + str(d, "code") + ")"
 		}
 		return fmt.Sprintf("hardware      %s  %s %s ×%v  %s", host, str(d, "class"), where, num(d, "count"), str(d, "sample"))
+	case "optic_first_seen", "optic_appeared", "optic_vanished", "optic_moved", "optic_alarm", "optic_status_changed", "optic_note":
+		return opticEventText(e.GetKind(), host, d, strings.TrimPrefix(e.GetSource(), "user:"))
 	case "memory_errors":
 		grew, _ := d["grew"].(map[string]any)
 		total, _ := d["total"].(map[string]any)
@@ -448,4 +450,30 @@ func usageArgs(min, max int, usage string) cobra.PositionalArgs {
 		}
 		return nil
 	}
+}
+
+// opticEventText describes an event about an optic.
+func opticEventText(kind, host string, d map[string]any, actor string) string {
+	what := strings.TrimSpace(str(d, "part") + " " + str(d, "serial"))
+	switch kind {
+	case "optic_first_seen":
+		return fmt.Sprintf("optic seen    %s %s  %s %s", host, str(d, "port"), str(d, "form"), what)
+	case "optic_appeared":
+		return fmt.Sprintf("optic back    %s %s  %s", host, str(d, "port"), what)
+	case "optic_vanished":
+		return fmt.Sprintf("optic gone    %s %s  %s", host, str(d, "port"), what)
+	case "optic_moved":
+		from := str(d, "from_port")
+		if fh := str(d, "from_host"); fh != "" {
+			from = fh + " " + from
+		}
+		return fmt.Sprintf("optic moved   %s %s  %s  (from %s)", host, str(d, "port"), what, from)
+	case "optic_alarm":
+		return fmt.Sprintf("optic alarm   %s %s  %s  %s", host, str(d, "port"), what, str(d, "flag"))
+	case "optic_status_changed":
+		return fmt.Sprintf("optic status  %s  %s -> %s by %s: %q", what, str(d, "previous"), str(d, "status"), actor, str(d, "note"))
+	case "optic_note":
+		return fmt.Sprintf("optic note    %s  %s: %q", what, actor, str(d, "note"))
+	}
+	return kind
 }

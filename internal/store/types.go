@@ -91,6 +91,8 @@ type Report struct {
 	DIMMs           []DIMM // empty from agents before 0.9 or hosts that describe none
 	MemTotalBytes   uint64 // the kernel's MemTotal; 0 when the agent did not say
 	MemCorrection   string // the firmware's error correction for the array; "" when unknown
+	Optics          []Optic
+	OpticsCollected bool // the agent looked; false from older agents, so an empty list is not every optic leaving
 }
 
 // DIMM is one memory module as an agent reports it: the firmware's
@@ -237,10 +239,17 @@ const (
 	EventSASErrors          = "sas_errors"           // a phy's error counters grew; once per phy per day
 	EventSASNodeChanged     = "sas_node_changed"     // an HBA or expander appeared, vanished, or changed firmware
 	EventHostMerged         = "host_merged"
-	EventHostRebooted       = "host_rebooted"  // host-level: the agent reports a new boot id
-	EventHardwareError      = "hardware_error" // host-level: the kernel logged a memory or machine-check error; once per class, location and day
-	EventMemoryErrors       = "memory_errors"  // host-level: a module's EDAC counts grew; once per module per day
-	EventDimmChanged        = "dimm_changed"   // host-level: a module appeared, vanished, or was replaced (its serial changed)
+	EventHostRebooted       = "host_rebooted"        // host-level: the agent reports a new boot id
+	EventHardwareError      = "hardware_error"       // host-level: the kernel logged a memory or machine-check error; once per class, location and day
+	EventMemoryErrors       = "memory_errors"        // host-level: a module's EDAC counts grew; once per module per day
+	EventDimmChanged        = "dimm_changed"         // host-level: a module appeared, vanished, or was replaced (its serial changed)
+	EventOpticFirstSeen     = "optic_first_seen"     // an optic the fleet has not seen before, in a port
+	EventOpticAppeared      = "optic_appeared"       // a known optic back in a port after leaving
+	EventOpticVanished      = "optic_vanished"       // an optic gone from its port
+	EventOpticMoved         = "optic_moved"          // an optic in another port or on another host
+	EventOpticAlarm         = "optic_alarm"          // the module raised an alarm or warning flag; once per optic, flag and day
+	EventOpticStatusChanged = "optic_status_changed" // a person changed the optic's status
+	EventOpticNote          = "optic_note"           // a person noted something about the optic
 )
 
 // Placement end reasons.

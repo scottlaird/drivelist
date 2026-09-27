@@ -72,6 +72,7 @@ type Event struct {
 	Hostname string
 	Detail   string // JSON object
 	Source   string
+	Optic    string // the optic's serial, when the event is about one
 }
 
 // Ghost is an open pool member with no present device.
@@ -536,8 +537,8 @@ func (s *Store) placements(ctx context.Context, tail string, args ...any) ([]Pla
 
 func (s *Store) events(ctx context.Context, tail string, args ...any) ([]Event, error) {
 	rows, err := s.db.QueryContext(ctx, `
-		SELECT e.event_id, e.ts, e.kind, COALESCE(d.serial, ''), COALESCE(d.wwn, ''), COALESCE(h.hostname, ''), e.detail, e.source
-		FROM event e LEFT JOIN drive d ON d.drive_id = e.drive_id LEFT JOIN host h ON h.host_id = e.host_id `+tail, args...)
+		SELECT e.event_id, e.ts, e.kind, COALESCE(d.serial, ''), COALESCE(d.wwn, ''), COALESCE(h.hostname, ''), e.detail, e.source, COALESCE(o.serial, '')
+		FROM event e LEFT JOIN drive d ON d.drive_id = e.drive_id LEFT JOIN host h ON h.host_id = e.host_id LEFT JOIN optic o ON o.optic_id = e.optic_id `+tail, args...)
 	if err != nil {
 		return nil, err
 	}
@@ -546,7 +547,7 @@ func (s *Store) events(ctx context.Context, tail string, args ...any) ([]Event, 
 	for rows.Next() {
 		var e Event
 		var ts int64
-		if err := rows.Scan(&e.ID, &ts, &e.Kind, &e.Serial, &e.WWN, &e.Hostname, &e.Detail, &e.Source); err != nil {
+		if err := rows.Scan(&e.ID, &ts, &e.Kind, &e.Serial, &e.WWN, &e.Hostname, &e.Detail, &e.Source, &e.Optic); err != nil {
 			return nil, err
 		}
 		e.TS = time.Unix(ts, 0).UTC()

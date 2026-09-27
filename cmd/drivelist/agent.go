@@ -49,6 +49,7 @@ can show it. Needs the agent token.`,
 				StatusPath: stateDir + "/status.json",
 				SAS:        collectSAS,
 				Memory:     collectMemory,
+				Optics:     collectOptics,
 			}, connectSender{client}, collectAll, slog.Default())
 			if err != nil {
 				return err

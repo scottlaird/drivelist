@@ -120,3 +120,23 @@ func TestSASFlatten(t *testing.T) {
 		t.Errorf("unattached phy = %+v", p)
 	}
 }
+
+func TestOptics(t *testing.T) {
+	temp, rx := 38.0, 0.05
+	req := &pb.ReportInventoryRequest{}
+	Optics(req, []collect.Optic{{Port: "swp1s0", Ports: []string{"swp1s0", "swp1s1"}, Form: "QSFP28", Serial: "MT1", TempC: &temp,
+		Lanes: []collect.OpticLane{{Lane: 3, RxMW: &rx}}, Thresholds: map[string]float64{"rx_low_warning": 0.1}, Flags: []string{"rx low warning lane 3"}}}, true)
+	if !req.OpticsCollected || len(req.Optics) != 1 {
+		t.Fatalf("req = %v", req)
+	}
+	o := req.Optics[0]
+	if o.Port != "swp1s0" || len(o.Ports) != 2 || o.GetTempC() != 38 || len(o.Lanes) != 1 || o.Lanes[0].Lane != 3 || o.Lanes[0].GetRxMw() != 0.05 || o.Lanes[0].TxMw != nil ||
+		o.Thresholds["rx_low_warning"] != 0.1 || o.Flags[0] != "rx low warning lane 3" {
+		t.Errorf("optic = %v", o)
+	}
+	empty := &pb.ReportInventoryRequest{}
+	Optics(empty, nil, true)
+	if !empty.OpticsCollected || len(empty.Optics) != 0 {
+		t.Errorf("no optics, collected = %v", empty)
+	}
+}

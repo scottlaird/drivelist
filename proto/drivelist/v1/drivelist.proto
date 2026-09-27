@@ -79,6 +79,14 @@ service Query {
   rpc ListSmart(ListSmartRequest) returns (ListSmartResponse);
   // ListDimms lists every host's memory modules with their error counts.
   rpc ListDimms(ListDimmsRequest) returns (ListDimmsResponse);
+  // ListOptics lists the modules in the fleet's network ports with their
+  // latest readings, problems first.
+  rpc ListOptics(ListOpticsRequest) returns (ListOpticsResponse);
+  // GetOptic returns one optic: where it has been, its hourly readings,
+  // and its events.
+  rpc GetOptic(GetOpticRequest) returns (GetOpticResponse);
+  // AnnotateOptic records a manual status change or note on an optic.
+  rpc AnnotateOptic(AnnotateRequest) returns (AnnotateResponse);
 }
 
 // ---------- shared ----------
@@ -171,6 +179,8 @@ message ReportInventoryRequest {
   repeated Dimm dimms = 10;           // memory modules, empty from agents before 0.9 or hosts that describe none
   uint64 mem_total_bytes = 11;        // the kernel's MemTotal, to check the modules against; 0 when unknown
   string mem_correction = 12;         // the firmware's error correction for the memory array (SMBIOS type 16): "none", "parity", "single-bit ECC", "multi-bit ECC", "CRC"; "" when unknown
+  repeated Optic optics = 13;         // the modules in the host's network ports
+  bool optics_collected = 14;         // the agent looked for optics; false from agents before 0.9, or when ethtool is missing, so an empty list then is not every optic leaving
 }
 
 // SasNode is an HBA or expander: something with phys of its own.
@@ -210,6 +220,42 @@ message SasPhy {
 // Dimm is one memory module: what the firmware says of it (SMBIOS type
 // 17) joined to the kernel's EDAC error counts for it. A module EDAC does
 // not know has no edac; an EDAC entry no slot matched has no slot.
+// Optic is one pluggable module in a network port (SFP, QSFP, QSFP-DD,
+// OSFP; optical or copper) as ethtool -m decodes its EEPROM. Unset
+// measurements are ones the module does not report, never zero.
+message Optic {
+  string port = 1;                    // the interface it was read through: "enp1s0f0", "swp7"
+  repeated string ports = 2;          // every interface reading the same module, for a port split into breakouts
+  string form = 3;                    // "SFP", "QSFP28", "QSFP-DD", "OSFP"
+  string identifier = 4;              // as ethtool prints it: "0x11 (QSFP28)"
+  string kind = 5;                    // "optical" | "aoc" | "dac" | ""
+  string vendor = 6;
+  string oui = 7;
+  string part = 8;
+  string rev = 9;
+  string serial = 10;
+  string date_code = 11;
+  string compliance = 12;             // "10G Ethernet: 10G Base-SR"
+  string connector = 13;              // "LC", "MPO 1x12", "No separable connector"
+  double wavelength_nm = 14;
+  string link = 15;                   // the interface's operstate
+  bool diagnostics = 16;              // it reports any measurement at all
+  optional double temp_c = 17;
+  optional double voltage_v = 18;
+  repeated OpticLane lanes = 19;
+  map<string, double> thresholds = 20; // the module's own: "rx_low_warning" -> mW, "temp_high_alarm" -> °C, ...
+  repeated string flags = 21;         // alarm and warning flags raised now: "rx low warning lane 2"
+}
+
+// OpticLane is one lane's measurements: 1 for an SFP, up to 4 for a QSFP,
+// up to 8 per bank for CMIS (QSFP-DD, OSFP) and 16 for OSFP-XD.
+message OpticLane {
+  uint32 lane = 1;
+  optional double bias_ma = 2;
+  optional double tx_mw = 3;
+  optional double rx_mw = 4;
+}
+
 message Dimm {
   string slot = 1;                    // the firmware's device locator: "DIMM_C2", "DIMMB1"
   string bank = 2;                    // the firmware's bank locator
@@ -465,6 +511,63 @@ message ListSmartResponse {
   repeated SmartRow rows = 1;         // problems first, then by host and slot
 }
 
+message ListOpticsRequest {
+  string host = 1;                    // "" for every host
+  bool problems = 2;                  // only optics with a problem
+  bool all = 3;                       // include optics not in any port now, at their last place
+}
+
+// OpticRow is one optic with its latest reading and where it is.
+message OpticRow {
+  Optic optic = 1;                    // identity, the port it is in (or was last), and the latest reading
+  string status = 2;                  // ok | suspect | bad | shelved | retired
+  string hostname = 3;
+  bool present = 4;                   // in a port now
+  google.protobuf.Timestamp first_seen = 5;
+  google.protobuf.Timestamp last_seen = 6;
+  google.protobuf.Timestamp sampled_at = 7;   // the latest reading
+  repeated string problems = 8;       // "rx low warning lane 3", "marked bad"; empty when fine
+  bool dark = 9;                      // the port's link is down, so low levels are expected and not counted
+}
+
+message ListOpticsResponse {
+  repeated OpticRow rows = 1;         // problems first, then by host and port
+}
+
+message GetOpticRequest {
+  string ref = 1;                     // serial, an unambiguous prefix of one, or HOST:PORT for the module in that port now
+  google.protobuf.Timestamp since = 2; // readings since; unset for a week
+}
+
+message OpticPlacement {
+  string hostname = 1;
+  string port = 2;
+  repeated string ports = 3;
+  google.protobuf.Timestamp first_seen = 4;
+  google.protobuf.Timestamp last_seen = 5;
+  google.protobuf.Timestamp ended_at = 6;     // unset while it is there
+  string end_reason = 7;              // "vanished" | "moved" | "port"
+}
+
+// OpticSample is one hour's reading: the last one taken in the hour.
+message OpticSample {
+  google.protobuf.Timestamp ts = 1;
+  string hostname = 2;
+  string port = 3;
+  optional double temp_c = 4;
+  optional double voltage_v = 5;
+  repeated OpticLane lanes = 6;
+  repeated string flags = 7;
+  string link = 8;
+}
+
+message GetOpticResponse {
+  OpticRow row = 1;
+  repeated OpticPlacement placements = 2;     // newest first
+  repeated OpticSample samples = 3;           // newest first
+  repeated Event events = 4;                  // newest first
+}
+
 message ListDimmsRequest {
   string host = 1;                    // "" for every host
   bool problems = 2;                  // only modules with errors: any uncorrected, or corrected in the last day
@@ -612,6 +715,7 @@ message Event {
   string hostname = 6;                // when the event is about, or happened on, a host
   string detail = 7;                  // JSON object; keys depend on kind
   string source = 8;                  // "snapshot:123" | "user:scott@laptop" | "sweeper"
+  string optic_serial = 9;            // of the optic, when the event is about one
 }
 
 message ListHostsRequest {}

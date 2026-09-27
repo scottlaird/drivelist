@@ -253,3 +253,12 @@ func optKey(p *uint64) any {
 	}
 	return float64(*p)
 }
+
+// optFloatKey is a sort key for an optional float: the value, or nil
+// (which sorts last).
+func optFloatKey(p *float64) any {
+	if p == nil {
+		return nil
+	}
+	return *p
+}

@@ -112,6 +112,9 @@ func (c *Collector) captureLinux(dir string) error {
 	if err := c.captureMemory(dir); err != nil {
 		return err
 	}
+	if err := c.captureOptics(dir); err != nil {
+		return err
+	}
 	if err := c.captureNVMeSlots(dir); err != nil {
 		return err
 	}

@@ -89,6 +89,12 @@ const (
 	QueryListSmartProcedure = "/drivelist.v1.Query/ListSmart"
 	// QueryListDimmsProcedure is the fully-qualified name of the Query's ListDimms RPC.
 	QueryListDimmsProcedure = "/drivelist.v1.Query/ListDimms"
+	// QueryListOpticsProcedure is the fully-qualified name of the Query's ListOptics RPC.
+	QueryListOpticsProcedure = "/drivelist.v1.Query/ListOptics"
+	// QueryGetOpticProcedure is the fully-qualified name of the Query's GetOptic RPC.
+	QueryGetOpticProcedure = "/drivelist.v1.Query/GetOptic"
+	// QueryAnnotateOpticProcedure is the fully-qualified name of the Query's AnnotateOptic RPC.
+	QueryAnnotateOpticProcedure = "/drivelist.v1.Query/AnnotateOptic"
 )
 
 // CollectorClient is a client for the drivelist.v1.Collector service.
@@ -337,6 +343,14 @@ type QueryClient interface {
 	ListSmart(context.Context, *connect.Request[drivelistv1.ListSmartRequest]) (*connect.Response[drivelistv1.ListSmartResponse], error)
 	// ListDimms lists every host's memory modules with their error counts.
 	ListDimms(context.Context, *connect.Request[drivelistv1.ListDimmsRequest]) (*connect.Response[drivelistv1.ListDimmsResponse], error)
+	// ListOptics lists the modules in the fleet's network ports with their
+	// latest readings, problems first.
+	ListOptics(context.Context, *connect.Request[drivelistv1.ListOpticsRequest]) (*connect.Response[drivelistv1.ListOpticsResponse], error)
+	// GetOptic returns one optic: where it has been, its hourly readings,
+	// and its events.
+	GetOptic(context.Context, *connect.Request[drivelistv1.GetOpticRequest]) (*connect.Response[drivelistv1.GetOpticResponse], error)
+	// AnnotateOptic records a manual status change or note on an optic.
+	AnnotateOptic(context.Context, *connect.Request[drivelistv1.AnnotateRequest]) (*connect.Response[drivelistv1.AnnotateResponse], error)
 }
 
 // NewQueryClient constructs a client for the drivelist.v1.Query service. By default, it uses the
@@ -476,6 +490,24 @@ func NewQueryClient(httpClient connect.HTTPClient, baseURL string, opts ...conne
 			connect.WithSchema(queryMethods.ByName("ListDimms")),
 			connect.WithClientOptions(opts...),
 		),
+		listOptics: connect.NewClient[drivelistv1.ListOpticsRequest, drivelistv1.ListOpticsResponse](
+			httpClient,
+			baseURL+QueryListOpticsProcedure,
+			connect.WithSchema(queryMethods.ByName("ListOptics")),
+			connect.WithClientOptions(opts...),
+		),
+		getOptic: connect.NewClient[drivelistv1.GetOpticRequest, drivelistv1.GetOpticResponse](
+			httpClient,
+			baseURL+QueryGetOpticProcedure,
+			connect.WithSchema(queryMethods.ByName("GetOptic")),
+			connect.WithClientOptions(opts...),
+		),
+		annotateOptic: connect.NewClient[drivelistv1.AnnotateRequest, drivelistv1.AnnotateResponse](
+			httpClient,
+			baseURL+QueryAnnotateOpticProcedure,
+			connect.WithSchema(queryMethods.ByName("AnnotateOptic")),
+			connect.WithClientOptions(opts...),
+		),
 	}
 }
 
@@ -502,6 +534,9 @@ type queryClient struct {
 	listBays        *connect.Client[drivelistv1.ListBaysRequest, drivelistv1.ListBaysResponse]
 	listSmart       *connect.Client[drivelistv1.ListSmartRequest, drivelistv1.ListSmartResponse]
 	listDimms       *connect.Client[drivelistv1.ListDimmsRequest, drivelistv1.ListDimmsResponse]
+	listOptics      *connect.Client[drivelistv1.ListOpticsRequest, drivelistv1.ListOpticsResponse]
+	getOptic        *connect.Client[drivelistv1.GetOpticRequest, drivelistv1.GetOpticResponse]
+	annotateOptic   *connect.Client[drivelistv1.AnnotateRequest, drivelistv1.AnnotateResponse]
 }
 
 // ListHosts calls drivelist.v1.Query.ListHosts.
@@ -609,6 +644,21 @@ func (c *queryClient) ListDimms(ctx context.Context, req *connect.Request[drivel
 	return c.listDimms.CallUnary(ctx, req)
 }
 
+// ListOptics calls drivelist.v1.Query.ListOptics.
+func (c *queryClient) ListOptics(ctx context.Context, req *connect.Request[drivelistv1.ListOpticsRequest]) (*connect.Response[drivelistv1.ListOpticsResponse], error) {
+	return c.listOptics.CallUnary(ctx, req)
+}
+
+// GetOptic calls drivelist.v1.Query.GetOptic.
+func (c *queryClient) GetOptic(ctx context.Context, req *connect.Request[drivelistv1.GetOpticRequest]) (*connect.Response[drivelistv1.GetOpticResponse], error) {
+	return c.getOptic.CallUnary(ctx, req)
+}
+
+// AnnotateOptic calls drivelist.v1.Query.AnnotateOptic.
+func (c *queryClient) AnnotateOptic(ctx context.Context, req *connect.Request[drivelistv1.AnnotateRequest]) (*connect.Response[drivelistv1.AnnotateResponse], error) {
+	return c.annotateOptic.CallUnary(ctx, req)
+}
+
 // QueryHandler is an implementation of the drivelist.v1.Query service.
 type QueryHandler interface {
 	ListHosts(context.Context, *connect.Request[drivelistv1.ListHostsRequest]) (*connect.Response[drivelistv1.ListHostsResponse], error)
@@ -661,6 +711,14 @@ type QueryHandler interface {
 	ListSmart(context.Context, *connect.Request[drivelistv1.ListSmartRequest]) (*connect.Response[drivelistv1.ListSmartResponse], error)
 	// ListDimms lists every host's memory modules with their error counts.
 	ListDimms(context.Context, *connect.Request[drivelistv1.ListDimmsRequest]) (*connect.Response[drivelistv1.ListDimmsResponse], error)
+	// ListOptics lists the modules in the fleet's network ports with their
+	// latest readings, problems first.
+	ListOptics(context.Context, *connect.Request[drivelistv1.ListOpticsRequest]) (*connect.Response[drivelistv1.ListOpticsResponse], error)
+	// GetOptic returns one optic: where it has been, its hourly readings,
+	// and its events.
+	GetOptic(context.Context, *connect.Request[drivelistv1.GetOpticRequest]) (*connect.Response[drivelistv1.GetOpticResponse], error)
+	// AnnotateOptic records a manual status change or note on an optic.
+	AnnotateOptic(context.Context, *connect.Request[drivelistv1.AnnotateRequest]) (*connect.Response[drivelistv1.AnnotateResponse], error)
 }
 
 // NewQueryHandler builds an HTTP handler from the service implementation. It returns the path on
@@ -796,6 +854,24 @@ func NewQueryHandler(svc QueryHandler, opts ...connect.HandlerOption) (string, h
 		connect.WithSchema(queryMethods.ByName("ListDimms")),
 		connect.WithHandlerOptions(opts...),
 	)
+	queryListOpticsHandler := connect.NewUnaryHandler(
+		QueryListOpticsProcedure,
+		svc.ListOptics,
+		connect.WithSchema(queryMethods.ByName("ListOptics")),
+		connect.WithHandlerOptions(opts...),
+	)
+	queryGetOpticHandler := connect.NewUnaryHandler(
+		QueryGetOpticProcedure,
+		svc.GetOptic,
+		connect.WithSchema(queryMethods.ByName("GetOptic")),
+		connect.WithHandlerOptions(opts...),
+	)
+	queryAnnotateOpticHandler := connect.NewUnaryHandler(
+		QueryAnnotateOpticProcedure,
+		svc.AnnotateOptic,
+		connect.WithSchema(queryMethods.ByName("AnnotateOptic")),
+		connect.WithHandlerOptions(opts...),
+	)
 	return "/drivelist.v1.Query/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
 		case QueryListHostsProcedure:
@@ -840,6 +916,12 @@ func NewQueryHandler(svc QueryHandler, opts ...connect.HandlerOption) (string, h
 			queryListSmartHandler.ServeHTTP(w, r)
 		case QueryListDimmsProcedure:
 			queryListDimmsHandler.ServeHTTP(w, r)
+		case QueryListOpticsProcedure:
+			queryListOpticsHandler.ServeHTTP(w, r)
+		case QueryGetOpticProcedure:
+			queryGetOpticHandler.ServeHTTP(w, r)
+		case QueryAnnotateOpticProcedure:
+			queryAnnotateOpticHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -931,4 +1013,16 @@ func (UnimplementedQueryHandler) ListSmart(context.Context, *connect.Request[dri
 
 func (UnimplementedQueryHandler) ListDimms(context.Context, *connect.Request[drivelistv1.ListDimmsRequest]) (*connect.Response[drivelistv1.ListDimmsResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("drivelist.v1.Query.ListDimms is not implemented"))
+}
+
+func (UnimplementedQueryHandler) ListOptics(context.Context, *connect.Request[drivelistv1.ListOpticsRequest]) (*connect.Response[drivelistv1.ListOpticsResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("drivelist.v1.Query.ListOptics is not implemented"))
+}
+
+func (UnimplementedQueryHandler) GetOptic(context.Context, *connect.Request[drivelistv1.GetOpticRequest]) (*connect.Response[drivelistv1.GetOpticResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("drivelist.v1.Query.GetOptic is not implemented"))
+}
+
+func (UnimplementedQueryHandler) AnnotateOptic(context.Context, *connect.Request[drivelistv1.AnnotateRequest]) (*connect.Response[drivelistv1.AnnotateResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("drivelist.v1.Query.AnnotateOptic is not implemented"))
 }

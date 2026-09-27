@@ -83,6 +83,9 @@ func (s *Store) Ingest(ctx context.Context, r Report) (IngestResult, error) {
 	if err := t.ingestDIMMs(host, r); err != nil {
 		return IngestResult{}, err
 	}
+	if err := t.ingestOptics(host, r); err != nil {
+		return IngestResult{}, err
+	}
 	if r.Complete {
 		if err := t.noteEnclosures(host, r, rows); err != nil {
 			return IngestResult{}, err

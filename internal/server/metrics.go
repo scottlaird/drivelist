@@ -10,6 +10,7 @@ import (
 	"github.com/prometheus/client_golang/prometheus/collectors"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 
+	"github.com/scottlaird/drivelist/collect"
 	"github.com/scottlaird/drivelist/internal/store"
 )
 
@@ -68,10 +69,15 @@ var (
 	descScrapeError    = prometheus.NewDesc("drivelist_scrape_error", "1 if reading the fleet summary failed on this scrape.", nil, nil)
 	descSASErrors      = prometheus.NewDesc("drivelist_sas_phy_errors_total", "SAS error counter of one phy since the host booted, as last reported. counter is invalid_dword, disparity_error, loss_dword_sync or phy_reset_problem.", []string{"host", "node", "phy", "port", "attached", "device", "counter"}, nil)
 	descSASRate        = prometheus.NewDesc("drivelist_sas_phy_rate_gbit", "Negotiated link rate of one phy in Gbit/s, 0 without a link.", []string{"host", "node", "phy", "port", "attached", "device"}, nil)
+	descOpticTemp      = prometheus.NewDesc("drivelist_optic_temperature_celsius", "Temperature of one optic in a port, as last reported.", []string{"host", "port", "serial", "part"}, nil)
+	descOpticRx        = prometheus.NewDesc("drivelist_optic_rx_power_dbm", "Received optical power of one lane of an optic in dBm; absent when the module reports none or zero.", []string{"host", "port", "serial", "part", "lane"}, nil)
+	descOpticTx        = prometheus.NewDesc("drivelist_optic_tx_power_dbm", "Transmitted optical power of one lane of an optic in dBm.", []string{"host", "port", "serial", "part", "lane"}, nil)
+	descOpticBias      = prometheus.NewDesc("drivelist_optic_tx_bias_milliamps", "Laser bias current of one lane of an optic.", []string{"host", "port", "serial", "part", "lane"}, nil)
+	descOpticProblem   = prometheus.NewDesc("drivelist_optic_problem", "1 when an optic in a port has a problem: a flag it raised, a reading past its own threshold, or a suspect or bad mark.", []string{"host", "port", "serial", "part"}, nil)
 )
 
 func (c *fleetCollector) Describe(ch chan<- *prometheus.Desc) {
-	for _, d := range []*prometheus.Desc{descHostDrives, descHostMissing, descHostGhosts, descHostStale, descHostLastReport, descDrives, descKernelWarn, descEvents24, descScrapeError, descSASErrors, descSASRate} {
+	for _, d := range []*prometheus.Desc{descHostDrives, descHostMissing, descHostGhosts, descHostStale, descHostLastReport, descDrives, descKernelWarn, descEvents24, descScrapeError, descSASErrors, descSASRate, descOpticTemp, descOpticRx, descOpticTx, descOpticBias, descOpticProblem} {
 		ch <- d
 	}
 }
@@ -103,6 +109,35 @@ func (c *fleetCollector) Collect(ch chan<- prometheus.Metric) {
 	}
 	ch <- prometheus.MustNewConstMetric(descKernelWarn, prometheus.GaugeValue, float64(m.KernelWarnings24))
 	ch <- prometheus.MustNewConstMetric(descEvents24, prometheus.GaugeValue, float64(m.Events24))
+
+	// Optic levels are per-device series too: drift in received power is
+	// what they are watched for.
+	if optics, err := c.store.ListOptics(ctx, "", false, false); err == nil {
+		for _, r := range optics {
+			o := r.Optic
+			labels := []string{r.Hostname, o.Port, o.Serial, o.Part}
+			problem := 0.0
+			if len(r.Problems) > 0 {
+				problem = 1
+			}
+			ch <- prometheus.MustNewConstMetric(descOpticProblem, prometheus.GaugeValue, problem, labels...)
+			if o.TempC != nil {
+				ch <- prometheus.MustNewConstMetric(descOpticTemp, prometheus.GaugeValue, *o.TempC, labels...)
+			}
+			for _, l := range o.Lanes {
+				ll := append(append([]string(nil), labels...), strconv.Itoa(l.Lane))
+				if d := collect.DBm(l.RxMW); d != nil {
+					ch <- prometheus.MustNewConstMetric(descOpticRx, prometheus.GaugeValue, *d, ll...)
+				}
+				if d := collect.DBm(l.TxMW); d != nil {
+					ch <- prometheus.MustNewConstMetric(descOpticTx, prometheus.GaugeValue, *d, ll...)
+				}
+				if l.BiasMA != nil {
+					ch <- prometheus.MustNewConstMetric(descOpticBias, prometheus.GaugeValue, *l.BiasMA, ll...)
+				}
+			}
+		}
+	}
 
 	// Per-phy SAS counters are the exception to "no per-device series":
 	// watching them climb over time is the reason they are collected.

@@ -32,7 +32,7 @@ const (
 )
 
 // The event kinds the page's filter offers; see pageEvents in ui/app.js.
-var eventKinds = []string{"first_seen", "appeared", "vanished", "reappeared", "moved_host", "moved_bay", "use_changed", "enclosure_renamed", "member_state_changed", "status_changed", "note", "merged", "host_merged", "smart_warning", "kernel_warning", "sas_link_changed", "sas_attached_changed", "sas_port_changed", "sas_errors", "sas_node_changed", "host_first_seen", "host_stale", "host_resumed", "host_rebooted", "hardware_error", "memory_errors", "dimm_changed", "report_degraded", "pool_missing_member", "identity_conflict"}
+var eventKinds = []string{"first_seen", "appeared", "vanished", "reappeared", "moved_host", "moved_bay", "use_changed", "enclosure_renamed", "member_state_changed", "status_changed", "note", "merged", "host_merged", "smart_warning", "kernel_warning", "sas_link_changed", "sas_attached_changed", "sas_port_changed", "sas_errors", "sas_node_changed", "host_first_seen", "host_stale", "host_resumed", "host_rebooted", "hardware_error", "memory_errors", "dimm_changed", "optic_first_seen", "optic_appeared", "optic_vanished", "optic_moved", "optic_alarm", "optic_status_changed", "optic_note", "report_degraded", "pool_missing_member", "identity_conflict"}
 
 // Manifest is demo.json: what the page reads to know it is a demo.
 type Manifest struct {
@@ -99,6 +99,15 @@ func Export(ctx context.Context, q drivelistv1connect.QueryClient, dir string, n
 	w.call("ListSmart", map[string]any{"problems": true}, func() (proto.Message, error) {
 		return unwrap(q.ListSmart(ctx, connect.NewRequest(&pb.ListSmartRequest{Problems: true})))
 	})
+	optics, err := q.ListOptics(ctx, connect.NewRequest(&pb.ListOpticsRequest{}))
+	if err != nil {
+		return nil, err
+	}
+	w.save("ListOptics", nil, optics.Msg)
+	for _, args := range []map[string]any{{"problems": true}, {"all": true}, {"problems": true, "all": true}} {
+		req := &pb.ListOpticsRequest{Problems: args["problems"] == true, All: args["all"] == true}
+		w.call("ListOptics", args, func() (proto.Message, error) { return unwrap(q.ListOptics(ctx, connect.NewRequest(req))) })
+	}
 	w.call("ListDimms", nil, func() (proto.Message, error) {
 		return unwrap(q.ListDimms(ctx, connect.NewRequest(&pb.ListDimmsRequest{})))
 	})
@@ -139,6 +148,9 @@ func Export(ctx context.Context, q drivelistv1connect.QueryClient, dir string, n
 		w.call("GetSAS", map[string]any{"host": shown}, func() (proto.Message, error) {
 			return unwrap(q.GetSAS(ctx, connect.NewRequest(&pb.GetSASRequest{Host: real})))
 		})
+		w.call("ListOptics", map[string]any{"host": shown}, func() (proto.Message, error) {
+			return unwrap(q.ListOptics(ctx, connect.NewRequest(&pb.ListOpticsRequest{Host: real})))
+		})
 		w.call("ListDimms", map[string]any{"host": shown}, func() (proto.Message, error) {
 			return unwrap(q.ListDimms(ctx, connect.NewRequest(&pb.ListDimmsRequest{Host: real})))
 		})
@@ -150,6 +162,23 @@ func Export(ctx context.Context, q drivelistv1connect.QueryClient, dir string, n
 		key := e.Enclosure
 		w.call("ListBays", map[string]any{"ref": san.Text(key)}, func() (proto.Message, error) {
 			return unwrap(q.ListBays(ctx, connect.NewRequest(&pb.ListBaysRequest{Ref: key})))
+		})
+	}
+
+	// Per optic; the page links optics by serial.
+	seenOptic := map[string]bool{}
+	allOptics, err := q.ListOptics(ctx, connect.NewRequest(&pb.ListOpticsRequest{All: true}))
+	if err != nil {
+		return nil, err
+	}
+	for _, r := range allOptics.Msg.Rows {
+		serial := r.GetOptic().GetSerial()
+		if serial == "" || seenOptic[serial] {
+			continue
+		}
+		seenOptic[serial] = true
+		w.call("GetOptic", map[string]any{"ref": san.Text(serial)}, func() (proto.Message, error) {
+			return unwrap(q.GetOptic(ctx, connect.NewRequest(&pb.GetOpticRequest{Ref: serial, Since: since(ioWindow)})))
 		})
 	}
 

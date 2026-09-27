@@ -166,6 +166,26 @@ func FromInventory(host *pb.HostIdentity, inv *drivelist.Inventory, topo *collec
 	return req
 }
 
+// Optics attaches the modules in the host's network ports to a report.
+// collected says the agent looked, so an empty list means none.
+func Optics(req *pb.ReportInventoryRequest, optics []collect.Optic, collected bool) {
+	req.OpticsCollected = collected
+	for _, o := range optics {
+		req.Optics = append(req.Optics, Optic(o))
+	}
+}
+
+// Optic converts one module for the wire.
+func Optic(o collect.Optic) *pb.Optic {
+	out := &pb.Optic{Port: o.Port, Ports: o.Ports, Form: o.Form, Identifier: o.Identifier, Kind: o.Kind, Vendor: o.Vendor, Oui: o.OUI, Part: o.Part,
+		Rev: o.Rev, Serial: o.Serial, DateCode: o.DateCode, Compliance: o.Compliance, Connector: o.Connector, WavelengthNm: o.Wavelength,
+		Link: o.Link, Diagnostics: o.Diagnostics, TempC: o.TempC, VoltageV: o.VoltageV, Thresholds: o.Thresholds, Flags: o.Flags}
+	for _, l := range o.Lanes {
+		out.Lanes = append(out.Lanes, &pb.OpticLane{Lane: uint32(l.Lane), BiasMa: l.BiasMA, TxMw: l.TxMW, RxMw: l.RxMW})
+	}
+	return out
+}
+
 // Memory attaches the host's memory modules to a report.
 func Memory(req *pb.ReportInventoryRequest, mem *collect.MemoryInventory) {
 	if mem == nil {

@@ -268,6 +268,13 @@
       case 'host_rebooted': return 'host rebooted' + (d.up_secs ? '  up ' + gap(d.up_secs) + ' before' : '') + (d.silent_secs ? '  silent ' + gap(d.silent_secs) : '');
       case 'hardware_error': return 'hardware  ' + d.class + ' ' + (d.slot ? d.slot + ' (' + (d.code || '') + ')' : (d.code || '')) + ' ×' + d.count + '  ' + (d.sample || '');
       case 'memory_errors': return 'memory errors  ' + (d.label || d.slot || d.edac || '') + ' ' + (d.serial || '') + '  +' + ((d.grew || {}).ce || 0) + ' corrected, +' + ((d.grew || {}).ue || 0) + ' uncorrected (' + ((d.total || {}).ce || 0) + '/' + ((d.total || {}).ue || 0) + ' since boot)';
+      case 'optic_first_seen': return 'optic seen  ' + (d.port || '') + '  ' + (d.form || '') + ' ' + (d.part || '');
+      case 'optic_appeared': return 'optic back  ' + (d.port || '') + '  ' + (d.part || '');
+      case 'optic_vanished': return 'optic gone  ' + (d.port || '') + '  ' + (d.part || '');
+      case 'optic_moved': return 'optic moved  ' + (d.port || '') + '  ' + (d.part || '') + '  (from ' + [d.from_host, d.from_port].filter(Boolean).join(' ') + ')';
+      case 'optic_alarm': return 'optic alarm  ' + (d.port || '') + '  ' + (d.part || '') + '  ' + (d.flag || '');
+      case 'optic_status_changed': return 'optic status  ' + (d.previous || '') + ' -> ' + (d.status || '') + ' by ' + actor + (d.note ? ': ' + d.note : '');
+      case 'optic_note': return 'optic note  ' + actor + ': ' + (d.note || '');
       case 'dimm_changed': return 'dimm ' + d.change + '  ' + (d.slot || d.edac || '') + '  ' + (d.part || '') + ' ' + (d.serial || '') + (d.change === 'replaced' ? ' (was ' + (d.from_part || '') + ' ' + (d.from_serial || '') + ')' : '');
       case 'report_degraded': return 'report degraded  unidentified ' + JSON.stringify(d.unidentified || []);
       case 'pool_missing_member': return 'pool member missing  ' + (d.pool || '') + ' ' + (d.path || '');
@@ -278,7 +285,7 @@
   const eventCols = [
     { name: 'time', header: 'TIME', value: e => when(e.ts), sort: e => e.ts ? new Date(e.ts).getTime() : null },
     { name: 'host', header: 'HOST', value: e => e.hostname ? link(e.hostname, '#/host/' + enc(e.hostname)) : '-', sort: e => e.hostname || null },
-    { name: 'drive', header: 'DRIVE', value: e => e.serial ? link(e.serial, '#/drive/' + enc(e.serial)) : '-', sort: e => e.serial || null, mono: true },
+    { name: 'drive', header: 'DRIVE', value: e => e.serial ? link(e.serial, '#/drive/' + enc(e.serial)) : (e.opticSerial ? link(e.opticSerial, '#/optic/' + enc(e.opticSerial)) : '-'), sort: e => e.serial || e.opticSerial || null, mono: true },
     { name: 'kind', header: 'KIND', value: e => e.kind },
     { name: 'event', header: 'EVENT', value: e => describe(e) },
     { name: 'source', header: 'SOURCE', value: e => e.source || '', extra: true },
@@ -413,6 +420,102 @@
     { name: 'edacmode', header: 'EDAC', value: m => dash(m.edacMode) },
     { name: 'note', header: 'CHECK', value: m => m.note || 'agree', cls: m => m.note ? 'warn' : 'ok' },
   ];
+  // ---------- optics ----------
+  const dbmOf = mw => { const v = num(mw); return v && v > 0 ? 10 * Math.log10(v) : null; };
+  const dbmText = mw => { const d = dbmOf(mw); return d === null ? '-' : d.toFixed(1); };
+  function worstLane(o, key) {
+    let best = null, lane = 0;
+    for (const l of (o.lanes || [])) {
+      const v = num(l[key]);
+      if (v === null || v === undefined || Number.isNaN(v)) continue;
+      if (best === null || v < best) { best = v; lane = l.lane; }
+    }
+    return { best, lane, text: best === null ? '-' : dbmText(best) + ((o.lanes || []).length > 1 ? ' L' + lane : '') };
+  }
+  const tempOf = o => (o.tempC === undefined || o.tempC === null) ? '-' : Number(o.tempC).toFixed(1) + '°C';
+  const opticCols = [
+    { name: 'host', header: 'HOST', value: r => r.hostname ? (r.present ? link(r.hostname, '#/host/' + enc(r.hostname)) : el('span', null, '(', link(r.hostname, '#/host/' + enc(r.hostname)), ')')) : '-', sort: r => r.hostname || null },
+    { name: 'port', header: 'PORT', value: r => dash(r.optic.port) + ((r.optic.ports || []).length > 1 ? ' +' + (r.optic.ports.length - 1) : ''), sort: r => r.optic.port || null, mono: true },
+    { name: 'form', header: 'FORM', value: r => dash(r.optic.form) },
+    { name: 'kind', header: 'KIND', value: r => dash(r.optic.kind) },
+    { name: 'part', header: 'PART', value: r => dash(r.optic.part), mono: true },
+    { name: 'serial', header: 'SERIAL', value: r => r.optic.serial ? link(r.optic.serial, '#/optic/' + enc(r.optic.serial)) : '-', sort: r => r.optic.serial || null, mono: true },
+    { name: 'temp', header: 'TEMP', value: r => tempOf(r.optic), sort: r => r.optic.tempC === undefined ? null : Number(r.optic.tempC), num: true },
+    { name: 'rx', header: 'RX dBm', value: r => worstLane(r.optic, 'rxMw').text, sort: r => worstLane(r.optic, 'rxMw').best, num: true },
+    { name: 'tx', header: 'TX dBm', value: r => worstLane(r.optic, 'txMw').text, sort: r => worstLane(r.optic, 'txMw').best, num: true },
+    { name: 'link', header: 'LINK', value: r => dash(r.optic.link) },
+    { name: 'status', header: 'STATUS', value: r => r.status, cls: r => r.status === 'ok' ? '' : 'warn' },
+    { name: 'problems', header: 'PROBLEMS', value: r => (r.problems || []).length ? r.problems.join('; ') : '-', cls: r => (r.problems || []).length ? 'bad' : '' },
+    { name: 'vendor', header: 'VENDOR', value: r => dash(r.optic.vendor), extra: true },
+    { name: 'compliance', header: 'TYPE', value: r => dash(r.optic.compliance), extra: true },
+    { name: 'wavelength', header: 'NM', value: r => r.optic.wavelengthNm || '-', sort: r => r.optic.wavelengthNm || null, num: true, extra: true },
+    { name: 'lanes', header: 'LANES', value: r => (r.optic.lanes || []).length, sort: r => (r.optic.lanes || []).length, num: true, extra: true },
+    { name: 'date', header: 'DATE', value: r => dash(r.optic.dateCode), extra: true },
+    { name: 'read', header: 'READ', value: r => r.sampledAt ? ago(r.sampledAt) : '-', sort: r => r.sampledAt ? new Date(r.sampledAt).getTime() : null, extra: true },
+    { name: 'since', header: 'FIRST SEEN', value: r => when(r.firstSeen), sort: r => r.firstSeen ? new Date(r.firstSeen).getTime() : null, extra: true },
+  ];
+  async function pageOptics(q) {
+    const problems = q.get('problems') === '1', all = q.get('all') === '1';
+    const res = await rpc('ListOptics', { problems, all });
+    const go = (p, a) => { location.hash = '#/optics' + (p || a ? '?' + [p ? 'problems=1' : '', a ? 'all=1' : ''].filter(Boolean).join('&') : ''); };
+    const tp = el('input', { type: 'checkbox' }); tp.checked = problems; tp.addEventListener('change', () => go(tp.checked, all));
+    const ta = el('input', { type: 'checkbox' }); ta.checked = all; ta.addEventListener('change', () => go(problems, ta.checked));
+    main.append(heading('Optics', 'the modules in every network port, with the lowest lane\'s levels; problems first'),
+      el('div', { class: 'toolbar' }, el('label', null, tp, ' problems only'), el('label', null, ta, ' include optics in no port')));
+    if (!(res.rows || []).length) main.append(el('p', { class: 'note', text: problems ? 'no optic has a problem' : 'no optics reported' }));
+    else main.append(table({ key: 'optics', columns: opticCols, rows: res.rows }));
+  }
+  const laneCols = [
+    { name: 'lane', header: 'LANE', value: l => l.lane, sort: l => l.lane, num: true },
+    { name: 'bias', header: 'BIAS mA', value: l => l.biasMa === undefined ? '-' : Number(l.biasMa).toFixed(2), sort: l => l.biasMa === undefined ? null : Number(l.biasMa), num: true },
+    { name: 'txmw', header: 'TX mW', value: l => l.txMw === undefined ? '-' : Number(l.txMw).toFixed(4), sort: l => l.txMw === undefined ? null : Number(l.txMw), num: true },
+    { name: 'tx', header: 'TX dBm', value: l => dbmText(l.txMw), sort: l => dbmOf(l.txMw), num: true },
+    { name: 'rxmw', header: 'RX mW', value: l => l.rxMw === undefined ? '-' : Number(l.rxMw).toFixed(4), sort: l => l.rxMw === undefined ? null : Number(l.rxMw), num: true },
+    { name: 'rx', header: 'RX dBm', value: l => dbmText(l.rxMw), sort: l => dbmOf(l.rxMw), num: true },
+  ];
+  const lanesText = (lanes, key) => (lanes || []).length ? lanes.map(l => dbmText(l[key])).join(' ') : '-';
+  const opticSampleCols = [
+    { name: 'hour', header: 'HOUR', value: s => when(s.ts), sort: s => new Date(s.ts).getTime() },
+    { name: 'host', header: 'HOST', value: s => dash(s.hostname) },
+    { name: 'port', header: 'PORT', value: s => dash(s.port), mono: true },
+    { name: 'link', header: 'LINK', value: s => dash(s.link) },
+    { name: 'temp', header: 'TEMP', value: s => tempOf(s), sort: s => s.tempC === undefined ? null : Number(s.tempC), num: true },
+    { name: 'rx', header: 'RX dBm', value: s => lanesText(s.lanes, 'rxMw'), mono: true },
+    { name: 'tx', header: 'TX dBm', value: s => lanesText(s.lanes, 'txMw'), mono: true },
+    { name: 'flags', header: 'FLAGS', value: s => (s.flags || []).length ? s.flags.join('; ') : '-' },
+  ];
+  async function pageOptic(ref) {
+    const res = await rpc('GetOptic', { ref, since: sinceDays(7) });
+    const r = res.row, o = r.optic;
+    main.append(heading(o.vendor + ' ' + o.part, [o.form, o.kind, o.compliance, o.wavelengthNm ? o.wavelengthNm + 'nm' : ''].filter(Boolean).join(', ')));
+    const where = r.hostname ? el('span', null, link(r.hostname, '#/host/' + enc(r.hostname)), ' ' + (o.port || '') + ((o.ports || []).length > 1 ? ' (' + o.ports.join(' ') + ')' : '') + (r.present ? '' : ', not in any port now')) : '-';
+    main.append(kv([
+      ['serial', el('span', { class: 'mono', text: o.serial || '-' })], ['status', el('span', { class: r.status === 'ok' ? 'ok' : 'warn', text: r.status })],
+      ['where', where], ['link', o.link], ['temperature', tempOf(o)], ['voltage', o.voltageV === undefined ? '-' : Number(o.voltageV).toFixed(3) + ' V'],
+      ['problems', (r.problems || []).length ? el('span', { class: 'bad', text: r.problems.join('; ') }) : (r.dark ? 'none (link down: low light expected)' : 'none')],
+      ['revision', o.rev], ['date code', o.dateCode], ['vendor OUI', o.oui], ['connector', o.connector], ['first seen', when(r.firstSeen)], ['read', r.sampledAt ? ago(r.sampledAt) : '-'],
+    ]));
+    if ((o.lanes || []).length) main.append(el('h2', { text: 'Lanes' }), table({ key: 'optic.lanes', columns: laneCols, rows: o.lanes }));
+    const th = o.thresholds || {};
+    const thRows = ['temp', 'voltage', 'bias', 'tx', 'rx'].map(qn => {
+      const cell = lvl => { const v = th[qn + '_' + lvl]; if (v === undefined) return '-'; return (qn === 'tx' || qn === 'rx') ? dbmText(v) + ' dBm' : String(v) + ({ temp: '°C', voltage: ' V', bias: ' mA' })[qn]; };
+      return { q: qn, la: cell('low_alarm'), lw: cell('low_warning'), hw: cell('high_warning'), ha: cell('high_alarm') };
+    }).filter(x => x.la !== '-' || x.lw !== '-' || x.hw !== '-' || x.ha !== '-');
+    if (thRows.length) main.append(el('h2', { text: 'Thresholds (the module\'s own)' }), table({ key: 'optic.thresholds', rows: thRows, columns: [
+      { name: 'q', header: 'MEASURE', value: x => x.q }, { name: 'la', header: 'LOW ALARM', value: x => x.la, num: true }, { name: 'lw', header: 'LOW WARNING', value: x => x.lw, num: true },
+      { name: 'hw', header: 'HIGH WARNING', value: x => x.hw, num: true }, { name: 'ha', header: 'HIGH ALARM', value: x => x.ha, num: true },
+    ] }));
+    if ((res.placements || []).length) main.append(el('h2', { text: 'Where it has been' }), table({ key: 'optic.placements', rows: res.placements, columns: [
+      { name: 'host', header: 'HOST', value: p => link(p.hostname, '#/host/' + enc(p.hostname)), sort: p => p.hostname },
+      { name: 'port', header: 'PORT', value: p => p.port, mono: true },
+      { name: 'from', header: 'FROM', value: p => when(p.firstSeen), sort: p => new Date(p.firstSeen).getTime() },
+      { name: 'until', header: 'UNTIL', value: p => p.endedAt ? when(p.endedAt) : 'now', sort: p => p.endedAt ? new Date(p.endedAt).getTime() : Infinity },
+      { name: 'why', header: 'WHY', value: p => dash(p.endReason) },
+    ] }));
+    if ((res.samples || []).length) main.append(el('h2', { text: 'Hourly readings, last 7 days' }), table({ key: 'optic.samples', columns: opticSampleCols, rows: res.samples }));
+    if ((res.events || []).length) main.append(el('h2', { text: 'Events' }), table({ key: 'optic.events', columns: eventCols.filter(c => c.name !== 'drive'), rows: res.events }));
+  }
+
   const phyCols = [
     { name: 'node', header: 'NODE', value: p => p.ownerName || p.phy.ownerAddress, mono: true },
     { name: 'phy', header: 'PHY', value: p => p.phy.phyId || 0, sort: p => p.phy.phyId || 0, num: true },
@@ -448,11 +551,12 @@
     return t;
   }
   async function pageSummary() {
-    const [hosts, drives, missing, events, smart, sas, hw, memory] = await Promise.all([
+    const [hosts, drives, missing, events, smart, sas, hw, memory, opticProblems] = await Promise.all([
       rpc('ListHosts'), rpc('ListDrives'), rpc('ListMissing'), rpc('ListEvents', { limit: 15 }),
       rpc('ListSmart', { problems: true }), rpc('ListSASErrors', { since: sinceDays(7) }), rpc('ListEvents', { limit: 500, kinds: ['hardware_error'] }),
-      rpc('ListDimms', { problems: true }),
+      rpc('ListDimms', { problems: true }), rpc('ListOptics', { problems: true }),
     ]);
+    const badOptics = (opticProblems.rows || []);
     const badDimms = (memory.rows || []);
     const badDimmHosts = [...new Set(badDimms.map(r => r.hostname))].sort();
     const weekAgo = now() - 7 * 86400000;
@@ -487,6 +591,7 @@
       tile('smart problems', problems, { href: '#/smart?problems=1', cls: problems ? 'warn' : '' }),
       tile('sas errors, 7d', sasRows, { href: '#/sas-errors', sub: sasRows ? 'phys with counter growth' : 'no counter growth', cls: sasRows ? 'warn' : '' }),
       tile('hardware errors, 7d', hwHosts.size, { href: '#/events?kind=hardware_error', sub: hwHosts.size ? [...hwHosts].sort().join(', ') : 'no memory or machine-check errors', cls: hwHosts.size ? 'bad' : '' }),
+      tile('optic problems', badOptics.length, { href: '#/optics?problems=1', sub: badOptics.length ? badOptics.slice(0, 4).map(r => r.hostname + ' ' + r.optic.port).join(', ') + (badOptics.length > 4 ? ', …' : '') : 'every optic within its limits', cls: badOptics.length ? 'bad' : '' }),
       tile('memory problems', badDimms.length, { href: '#/memory?problems=1', sub: badDimms.length ? badDimms.map(r => r.hostname + ' ' + (r.dimm.slot || r.dimm.edac)).join(', ') : 'no module with errors', cls: badDimms.length ? 'bad' : '' }),
     );
     if (byStatus.shelved || byStatus.retired || notOK) {
@@ -502,7 +607,7 @@
     main.append(heading('Hosts'), table({ key: 'hosts', columns: hostCols, rows: res.hosts || [] }));
   }
   async function pageHost(name) {
-    const [hosts, drives, encls, events, dimms] = await Promise.all([rpc('ListHosts'), rpc('ListDrives', { host: name }), rpc('ListEnclosures'), rpc('ListEvents', { host: name, limit: 100 }), rpc('ListDimms', { host: name })]);
+    const [hosts, drives, encls, events, dimms, optics] = await Promise.all([rpc('ListHosts'), rpc('ListDrives', { host: name }), rpc('ListEnclosures'), rpc('ListEvents', { host: name, limit: 100 }), rpc('ListDimms', { host: name }), rpc('ListOptics', { host: name })]);
     const h = (hosts.hosts || []).find(x => x.hostname === name);
     if (!h) throw new Error('no host ' + name);
     main.append(heading(h.hostname), kv([
@@ -514,6 +619,7 @@
     ]));
     const mine = (encls.enclosures || []).filter(e => e.hostname === name);
     if (mine.length) { main.append(el('h2', { text: 'Enclosures' }), table({ key: 'host.enclosures', columns: enclosureCols.filter(c => c.name !== 'host'), rows: mine })); }
+    if ((optics.rows || []).length) { main.append(el('h2', { text: 'Optics' }), table({ key: 'host.optics', columns: opticCols.filter(c => c.name !== 'host'), rows: optics.rows })); }
     if ((dimms.rows || []).length) {
       const m = (dimms.hosts || [])[0];
       main.append(el('h2', { text: 'Memory' }));
@@ -683,7 +789,7 @@
   async function pageEvents(q) {
     const kind = q.get('kind') || '';
     const res = await rpc('ListEvents', { limit: 500, kinds: kind ? [kind] : [] });
-    const kinds = ['', 'first_seen', 'appeared', 'vanished', 'reappeared', 'moved_host', 'moved_bay', 'use_changed', 'enclosure_renamed', 'member_state_changed', 'status_changed', 'note', 'merged', 'host_merged', 'smart_warning', 'kernel_warning', 'sas_link_changed', 'sas_attached_changed', 'sas_port_changed', 'sas_errors', 'sas_node_changed', 'host_first_seen', 'host_stale', 'host_resumed', 'host_rebooted', 'hardware_error', 'memory_errors', 'dimm_changed', 'report_degraded', 'pool_missing_member', 'identity_conflict'];
+    const kinds = ['', 'first_seen', 'appeared', 'vanished', 'reappeared', 'moved_host', 'moved_bay', 'use_changed', 'enclosure_renamed', 'member_state_changed', 'status_changed', 'note', 'merged', 'host_merged', 'smart_warning', 'kernel_warning', 'sas_link_changed', 'sas_attached_changed', 'sas_port_changed', 'sas_errors', 'sas_node_changed', 'host_first_seen', 'host_stale', 'host_resumed', 'host_rebooted', 'hardware_error', 'memory_errors', 'dimm_changed', 'optic_first_seen', 'optic_appeared', 'optic_vanished', 'optic_moved', 'optic_alarm', 'optic_status_changed', 'optic_note', 'report_degraded', 'pool_missing_member', 'identity_conflict'];
     const sel = el('select');
     for (const k of kinds) { const o = el('option', { value: k, text: k || 'every kind' }); if (k === kind) o.selected = true; sel.append(o); }
     sel.addEventListener('change', () => { location.hash = '#/events' + (sel.value ? '?kind=' + enc(sel.value) : ''); });
@@ -871,6 +977,8 @@
     [/^\/enclosure\/([^/]+)$/, m => pageEnclosure(decodeURIComponent(m[1]))],
     [/^\/smart$/, (m, q) => pageSmart(q)],
     [/^\/memory$/, (m, q) => pageMemory(q)],
+    [/^\/optics$/, (m, q) => pageOptics(q)],
+    [/^\/optic\/([^/]+)$/, m => pageOptic(decodeURIComponent(m[1]))],
     [/^\/io$/, (m, q) => pageIO(q)],
     [/^\/sas-errors$/, () => pageSASErrors()],
     [/^\/sas\/([^/]+)$/, m => pageSAS(decodeURIComponent(m[1]))],

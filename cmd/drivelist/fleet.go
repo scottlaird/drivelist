@@ -29,6 +29,8 @@ func fleetCommands(cfg *clientConfig) []*cobra.Command {
 		newDrivesCmd(cfg),
 		newSmartCmd(cfg),
 		newDimmsCmd(cfg),
+		newOpticsCmd(cfg),
+		newOpticCmd(cfg),
 		newDriveCmd(cfg),
 		newEventsCmd(cfg),
 		newMissingCmd(cfg),
@@ -178,6 +180,11 @@ a schedule, the server turns them into I/O buckets.`,
 			req := report.FromInventory(report.Host(), inv, topo, time.Now(), collectErr)
 			if mem, err := collectMemory(); err == nil {
 				report.Memory(req, mem)
+			}
+			if optics, err := collectOptics(); err == nil {
+				report.Optics(req, optics, true)
+			} else {
+				fmt.Fprintf(cmd.ErrOrStderr(), "drivelist: optics unreadable, reporting without them: %v\n", err)
 			}
 			if output != "" {
 				bundle := &pb.ReportBundle{Inventory: req}

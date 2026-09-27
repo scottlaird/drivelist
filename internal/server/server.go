@@ -91,6 +91,7 @@ func (s *Server) Handler() http.Handler {
 // mutatingProcedures are the Query procedures a viewer may not call.
 var mutatingProcedures = map[string]bool{
 	"/drivelist.v1.Query/Annotate":      true,
+	"/drivelist.v1.Query/AnnotateOptic": true,
 	"/drivelist.v1.Query/MergeDrives":   true,
 	"/drivelist.v1.Query/MergeHosts":    true,
 	"/drivelist.v1.Query/Rebuild":       true,
@@ -321,6 +322,49 @@ func (s *Server) nameEvents(ctx context.Context, evs []*pb.Event) error {
 	}
 	bayLabels(models, s.store.BayLabel, evs)
 	return nil
+}
+
+func (s *Server) ListOptics(ctx context.Context, req *connect.Request[pb.ListOpticsRequest]) (*connect.Response[pb.ListOpticsResponse], error) {
+	rows, err := s.store.ListOptics(ctx, req.Msg.GetHost(), req.Msg.GetProblems(), req.Msg.GetAll())
+	if err != nil {
+		return nil, storeErr(err)
+	}
+	out := &pb.ListOpticsResponse{}
+	for _, r := range rows {
+		out.Rows = append(out.Rows, opticRowToProto(r))
+	}
+	return connect.NewResponse(out), nil
+}
+
+func (s *Server) GetOptic(ctx context.Context, req *connect.Request[pb.GetOpticRequest]) (*connect.Response[pb.GetOpticResponse], error) {
+	var since time.Time
+	if t := req.Msg.GetSince(); t != nil {
+		since = t.AsTime()
+	}
+	d, err := s.store.GetOptic(ctx, req.Msg.GetRef(), since)
+	if err != nil {
+		return nil, storeErr(err)
+	}
+	out := &pb.GetOpticResponse{Row: opticRowToProto(d.Row)}
+	for _, p := range d.Placements {
+		out.Placements = append(out.Placements, &pb.OpticPlacement{Hostname: p.Hostname, Port: p.Port, Ports: p.Ports, FirstSeen: ts(p.FirstSeen), LastSeen: ts(p.LastSeen), EndedAt: ts(p.EndedAt), EndReason: p.EndReason})
+	}
+	for _, sm := range d.Samples {
+		out.Samples = append(out.Samples, &pb.OpticSample{Ts: ts(sm.TS), Hostname: sm.Hostname, Port: sm.Port, TempC: sm.TempC, VoltageV: sm.VoltageV, Lanes: opticLanesToProto(sm.Lanes), Flags: sm.Flags, Link: sm.Link})
+	}
+	for _, e := range d.Events {
+		out.Events = append(out.Events, eventToProto(e))
+	}
+	return connect.NewResponse(out), nil
+}
+
+func (s *Server) AnnotateOptic(ctx context.Context, req *connect.Request[pb.AnnotateRequest]) (*connect.Response[pb.AnnotateResponse], error) {
+	ev, err := s.store.AnnotateOptic(ctx, req.Msg.GetRef(), req.Msg.GetStatus(), req.Msg.GetNote(), req.Msg.GetActor())
+	if err != nil {
+		return nil, storeErr(err)
+	}
+	s.log.Info("optic annotated", "optic", req.Msg.GetRef(), "kind", ev.Kind, "actor", req.Msg.GetActor())
+	return connect.NewResponse(&pb.AnnotateResponse{Event: eventToProto(ev)}), nil
 }
 
 func (s *Server) ListDimms(ctx context.Context, req *connect.Request[pb.ListDimmsRequest]) (*connect.Response[pb.ListDimmsResponse], error) {
