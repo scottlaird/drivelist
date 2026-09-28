@@ -185,7 +185,8 @@ drivelist events --since 24h      # everything that happened
 Every listing takes `--fields a,b,c` to choose columns,
 `--allfields` for all of them, `--sort a,-b` to sort, and `--json`.
 
-One drive or optic, by serial (or any unambiguous prefix of one):
+One drive or optic, by serial (or any unambiguous prefix of one; two
+drives that share a serial are named `MODEL/SERIAL`):
 
 ```
 drivelist drive VJG24UZX                  # where it is now, its status

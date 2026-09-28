@@ -7,6 +7,7 @@ import (
 	"encoding/hex"
 	"encoding/json"
 	"fmt"
+	"github.com/scottlaird/drivelist"
 	"slices"
 	"sort"
 	"strings"
@@ -49,6 +50,17 @@ func (s *Store) Ingest(ctx context.Context, r Report) (IngestResult, error) {
 	if host.lastObserved.Valid && t.obs < host.lastObserved.Int64 {
 		return IngestResult{RejectReason: "stale"}, nil
 	}
+
+	// Agents before 0.9.4 report a BMC's virtual media as drives; they are
+	// not tracked (see drivelist.VirtualMedia).
+	devices := r.Devices[:0:0]
+	for _, d := range r.Devices {
+		if d.Bus == "usb" && drivelist.VirtualMedia(d.Identity.Vendor, d.Identity.Model) {
+			continue
+		}
+		devices = append(devices, d)
+	}
+	r.Devices = devices
 
 	rows := make([]devRow, len(r.Devices))
 	for i, d := range r.Devices {

@@ -194,6 +194,7 @@ func slotBase(name string) string {
 var dmiPlaceholders = map[string]bool{
 	"": true, "default string": true, "to be filled by o.e.m.": true, "system serial number": true, "not specified": true,
 	"none": true, "n/a": true, "unknown": true, "not applicable": true, "0123456789": true, "0000000000": true, "123456789": true,
+	"system product name": true, "system manufacturer": true,
 }
 
 // dmiChassis identifies the chassis from DMI: a key from the first real
@@ -209,11 +210,20 @@ func dmiChassis(sys string) (key, model, board string) {
 			break
 		}
 	}
-	model = strings.TrimSpace(sysAttr(id, "sys_vendor") + " " + sysAttr(id, "product_name"))
 	board = sysAttr(id, "board_name")
 	if dmiPlaceholders[strings.ToLower(board)] {
 		board = ""
 	}
+	// A consumer board's firmware often leaves the product as "System
+	// Product Name"; the board's own name is the better description then.
+	vendor, product := sysAttr(id, "sys_vendor"), sysAttr(id, "product_name")
+	if dmiPlaceholders[strings.ToLower(vendor)] {
+		vendor = sysAttr(id, "board_vendor")
+	}
+	if dmiPlaceholders[strings.ToLower(product)] {
+		product = board
+	}
+	model = strings.TrimSpace(vendor + " " + product)
 	return key, model, board
 }
 
@@ -237,7 +247,7 @@ func (c *Collector) captureNVMeSlots(dir string) error {
 			}
 		}
 	}
-	for _, name := range []string{"sys_vendor", "product_name", "product_serial", "chassis_serial", "board_serial", "board_name"} {
+	for _, name := range []string{"sys_vendor", "product_name", "product_serial", "chassis_serial", "board_serial", "board_name", "board_vendor"} {
 		if err := c.copySys(dir, "/class/dmi/id/"+name); err != nil {
 			slog.Debug("capture: dmi", "attr", name, "err", err) // some need root; some boards lack some
 		}

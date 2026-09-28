@@ -65,3 +65,32 @@ func TestDevicePredicates(t *testing.T) {
 		t.Error("mounted disk: Unused() = true, want false")
 	}
 }
+
+func TestVirtualMedia(t *testing.T) {
+	for _, tc := range []struct {
+		vendor, model string
+		want          bool
+	}{
+		{"AMI", "Virtual_HDisk0", true},
+		{"AMI", "Virtual_CDROM0", true},
+		{"ATEN", "Virtual CDROM", true},
+		{"iDRAC", "Virtual Floppy", true},
+		{"Linux", "File-Stor Gadget", true},
+		{"Samsung", "Portable SSD T7", false},
+		{"WD", "My Passport 25E2", false},
+		{"SanDisk", "Extreme Pro", false},
+		{"Virtualware", "Drive", false},
+	} {
+		if got := VirtualMedia(tc.vendor, tc.model); got != tc.want {
+			t.Errorf("VirtualMedia(%q, %q) = %v, want %v", tc.vendor, tc.model, got, tc.want)
+		}
+	}
+	d := &Device{Model: "Virtual_HDisk0", Attribs: map[string]string{"ID_BUS": "usb", "ID_VENDOR": "AMI"}}
+	if !d.VirtualMedia() {
+		t.Error("an AMI virtual disk on USB is virtual media")
+	}
+	d.Attribs["ID_BUS"] = "scsi"
+	if d.VirtualMedia() {
+		t.Error("only a USB device is taken for virtual media")
+	}
+}

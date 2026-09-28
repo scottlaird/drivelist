@@ -70,6 +70,19 @@ func TestDMIChassisPlaceholders(t *testing.T) {
 	if key, _, board := dmiChassis(dir); key != "dmi:BRD-42" || board != "AHWSA" {
 		t.Errorf("board serial fallback: %q board %q", key, board)
 	}
+	// An ASUS workstation board: "System Product Name" is a placeholder,
+	// and the board names the machine instead.
+	writeAttr("sys_vendor", "ASUS")
+	writeAttr("product_name", "System Product Name")
+	writeAttr("board_name", "Pro WS WRX90E-SAGE SE")
+	if _, model, _ := dmiChassis(dir); model != "ASUS Pro WS WRX90E-SAGE SE" {
+		t.Errorf("placeholder product name: model %q", model)
+	}
+	writeAttr("sys_vendor", "System manufacturer")
+	writeAttr("board_vendor", "ASUSTeK COMPUTER INC.")
+	if _, model, _ := dmiChassis(dir); model != "ASUSTeK COMPUTER INC. Pro WS WRX90E-SAGE SE" {
+		t.Errorf("placeholder vendor: model %q", model)
+	}
 	if nvmeController(&drivelist.Device{Attribs: map[string]string{"ID_PATH": "pci-0000:85:00.0-nvme-1"}}) != "0000:85:00.0" {
 		t.Error("ID_PATH not parsed")
 	}

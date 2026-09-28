@@ -217,7 +217,7 @@ func (s *Store) ResolveDrive(ctx context.Context, ref string) (int64, error) {
 	lower := strings.ToLower(ref)
 	rows, err := s.db.QueryContext(ctx, `
 		SELECT COALESCE(merged_into, drive_id), serial, wwn, model FROM drive WHERE (
-			serial = ?1 OR lower(wwn) = ?2 OR lower(wwn) = '0x' || ?2
+			serial = ?1 OR lower(wwn) = ?2 OR lower(wwn) = '0x' || ?2 OR model || '/' || serial = ?1
 			OR serial LIKE ?1 || '%' OR lower(wwn) LIKE ?2 || '%' OR lower(wwn) LIKE '0x' || ?2 || '%')
 		ORDER BY drive_id`, ref, lower)
 	if err != nil {
@@ -240,6 +240,11 @@ func (s *Store) ResolveDrive(ctx context.Context, ref string) (int64, error) {
 		}
 		seen[c.id] = true
 		w := strings.ToLower(c.wwn)
+		if c.model+"/"+c.serial == ref {
+			// MODEL/SERIAL names exactly one drive where the serial alone
+			// names several (drives that share a serial number).
+			return c.id, nil
+		}
 		if c.serial == ref || w == lower || w == "0x"+lower {
 			exact = append(exact, c)
 		} else {
@@ -259,9 +264,15 @@ func (s *Store) ResolveDrive(ctx context.Context, ref string) (int64, error) {
 	case 1:
 		return pick[0].id, nil
 	}
+	// Each candidate as a reference that names it alone.
 	names := make([]string, len(pick))
 	for i, c := range pick {
-		names[i] = fmt.Sprintf("%s (%s %s)", c.serial, c.model, c.wwn)
+		switch {
+		case c.wwn != "":
+			names[i] = fmt.Sprintf("%s (%s, serial %s)", c.wwn, c.model, c.serial)
+		default:
+			names[i] = c.model + "/" + c.serial
+		}
 	}
 	return 0, &AmbiguousError{Ref: ref, Candidates: names}
 }
