@@ -1,0 +1,30 @@
+{
+  "match": {
+    "model": "ASUS Pro WS WRX80E-SAGE SE WIFI",
+    "board": "Pro WS WRX80E-SAGE SE WIFI"
+  },
+  "title": "ASUS Pro WS WRX80E-SAGE SE WIFI, 3 x onboard M.2 (PCIe 4.0 x4)",
+  "layout": {
+    "rows": 1,
+    "columns": 3,
+    "order": "row-major"
+  },
+  "notes": "The firmware describes none of the M.2 slots in SMBIOS, so each is identified by the bridge above it. 0000:20:01.2 and 0000:20:01.3 are CPU root ports. 0000:20:01.1/00.0/00.0 is a root port with a switch below it, which is how a slot wired through the WRX80 chipset looks. Which physical slot is M.2_1, M.2_2 or M.2_3 is assumed from bridge order and has not been checked against the board. Drives on a bifurcated adapter card in a PCIe slot appear as that slot's root ports (0000:60:03.1 to .4 for one card on scottdesk); the card itself cannot be recognised, so they are left unnamed.",
+  "bays": [
+    {
+      "bay": "M.2_1",
+      "pci": "0000:20:01.1/00.0/00.0",
+      "note": "behind the chipset; label unverified"
+    },
+    {
+      "bay": "M.2_2",
+      "pci": "0000:20:01.2",
+      "note": "CPU; label unverified"
+    },
+    {
+      "bay": "M.2_3",
+      "pci": "0000:20:01.3",
+      "note": "CPU; label unverified"
+    }
+  ]
+}
