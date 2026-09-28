@@ -149,3 +149,18 @@ func TestM510Profile(t *testing.T) {
 		t.Error("the bare slot designation maps to a bay")
 	}
 }
+
+// TestWRX80ESage: the profile matches the board as scottdesk reports it,
+// and names its three onboard M.2 slots from the identities it reported;
+// the bifurcated card's lanes stay unnamed.
+func TestWRX80ESage(t *testing.T) {
+	p := Embedded().Lookup("ASUS Pro WS WRX80E-SAGE SE WIFI", "Pro WS WRX80E-SAGE SE WIFI")
+	if p == nil {
+		t.Fatal("no profile for the WRX80E-SAGE SE WIFI")
+	}
+	for id, want := range map[string]string{"0000:20:01.1/00.0/00.0": "M.2_1", "0000:20:01.2": "M.2_2", "0000:20:01.3": "M.2_3", "0000:60:03.1": ""} {
+		if got, _ := p.Label("pci", id); got != want {
+			t.Errorf("Label(pci, %s) = %q, want %q", id, got, want)
+		}
+	}
+}
