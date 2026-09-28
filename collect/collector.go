@@ -82,6 +82,14 @@ func (c *Collector) collectLinux() (*drivelist.Inventory, error) {
 	if err != nil {
 		return inv, err
 	}
+	// A BMC's virtual media is not a drive; see drivelist.VirtualMedia.
+	kept := inv.Devices[:0]
+	for _, d := range inv.Devices {
+		if !d.VirtualMedia() {
+			kept = append(kept, d)
+		}
+	}
+	inv.Devices = kept
 	for _, annotate := range []func(*drivelist.Inventory) error{
 		c.zfsAnnotator(),
 		c.annotateMounts,

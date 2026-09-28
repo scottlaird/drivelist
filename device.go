@@ -55,6 +55,25 @@ func (d *Device) IsEmptyBay() bool {
 }
 
 // Unused reports whether no use has been found for the device.
+// VirtualMedia reports whether a vendor and model are a BMC's virtual
+// media rather than a drive: the USB storage a management controller
+// presents for mounting images remotely (AMI's "Virtual_HDisk0" and
+// "Virtual_CDROM0", Supermicro's "Virtual CDROM", iDRAC's "Virtual
+// Floppy", OpenBMC's "File-Stor Gadget"). They report no media until an
+// image is attached, and every controller of a kind shares one fake
+// serial number, so tracking them would have the same "drive" in every
+// host at once. Callers check the bus is USB as well.
+func VirtualMedia(vendor, model string) bool {
+	m := " " + strings.ToLower(strings.NewReplacer("_", " ", "-", " ").Replace(model)) + " "
+	return strings.Contains(m, " virtual ") || strings.Contains(m, "file stor gadget") || strings.Contains(m, "file cd gadget")
+}
+
+// VirtualMedia reports whether this device is a BMC's virtual media;
+// see the package function.
+func (d *Device) VirtualMedia() bool {
+	return d.Attribs["ID_BUS"] == "usb" && VirtualMedia(d.Attribs["ID_VENDOR"], d.Model)
+}
+
 func (d *Device) Unused() bool {
 	return len(d.Uses) == 0
 }
