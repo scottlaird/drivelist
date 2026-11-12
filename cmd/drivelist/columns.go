@@ -324,6 +324,7 @@ var dimmCols = []col[*pb.DimmRow]{
 	{name: "ecc", header: "ECC", value: func(r *pb.DimmRow) string { return eccText(r.Dimm) }, key: func(r *pb.DimmRow) any { return r.Dimm.TotalWidth > r.Dimm.DataWidth }},
 	{name: "part", header: "PART", value: func(r *pb.DimmRow) string { return orDash(r.Dimm.Part) }},
 	{name: "serial", header: "SERIAL", value: func(r *pb.DimmRow) string { return orDash(r.Dimm.Serial) }},
+	{name: "status", header: "STATUS", value: func(r *pb.DimmRow) string { return orDash(r.Status) }},
 	{name: "ce", header: "CE", value: func(r *pb.DimmRow) string { return fmt.Sprint(r.Dimm.Ce) }, key: func(r *pb.DimmRow) any { return r.Dimm.Ce }},
 	{name: "ue", header: "UE", value: func(r *pb.DimmRow) string { return fmt.Sprint(r.Dimm.Ue) }, key: func(r *pb.DimmRow) any { return r.Dimm.Ue }},
 	{name: "ce24h", header: "CE 24H", value: func(r *pb.DimmRow) string { return fmt.Sprint(r.CeDay) }, key: func(r *pb.DimmRow) any { return r.CeDay }},

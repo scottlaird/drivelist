@@ -29,6 +29,7 @@ func fleetCommands(cfg *clientConfig) []*cobra.Command {
 		newDrivesCmd(cfg),
 		newSmartCmd(cfg),
 		newDimmsCmd(cfg),
+		newDimmCmd(cfg),
 		newOpticsCmd(cfg),
 		newOpticCmd(cfg),
 		newDriveCmd(cfg),

@@ -425,6 +425,13 @@ func describe(e *pb.Event) string {
 		default:
 			return fmt.Sprintf("dimm %-8s %s  %s  %s %s", str(d, "change"), host, label, str(d, "part"), str(d, "serial"))
 		}
+	case "dimm_status_changed", "dimm_note":
+		what := strings.TrimSpace(str(d, "part") + " " + str(d, "serial"))
+		actor := strings.TrimPrefix(e.GetSource(), "user:")
+		if e.GetKind() == "dimm_note" {
+			return fmt.Sprintf("dimm note     %s %s  %s  %s: %q", host, str(d, "slot"), what, actor, str(d, "note"))
+		}
+		return fmt.Sprintf("dimm status   %s %s  %s  %s -> %s by %s: %q", host, str(d, "slot"), what, str(d, "previous"), str(d, "status"), actor, str(d, "note"))
 	case "report_degraded":
 		return fmt.Sprintf("degraded      %s  unidentified %v", host, d["unidentified"])
 	}

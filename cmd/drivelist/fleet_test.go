@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"net/http"
 	"net/http/httptest"
 	"os"
@@ -369,5 +370,54 @@ func TestReportOutputAndIngest(t *testing.T) {
 	}
 	if _, _, err := run(t, "admin", "ingest", filepath.Join(t.TempDir(), "missing.json")); err == nil {
 		t.Error("ingest of a missing file succeeded")
+	}
+}
+
+// TestDimmMark: a memory module is marked and shown by serial and by
+// HOST:SLOT; its status shows in dimms; one with a placeholder serial
+// can't be marked.
+func TestDimmMark(t *testing.T) {
+	fleetEnv(t)
+	t.Setenv("DRIVELIST_AGENT_TOKEN", "")
+	file := filepath.Join(t.TempDir(), "bundle.json")
+	if _, _, err := run(t, "report", "--output", file); err != nil {
+		t.Fatal(err)
+	}
+	// The fixture describes no memory; add two modules to its report.
+	data, _ := os.ReadFile(file)
+	var bundle map[string]any
+	if err := json.Unmarshal(data, &bundle); err != nil {
+		t.Fatal(err)
+	}
+	inv := bundle["inventory"].(map[string]any)
+	inv["dimms"] = []any{
+		map[string]any{"slot": "DIMM 0 (P0 CHANNEL A)", "bank": "P0 CHANNEL A", "sizeBytes": "17179869184", "type": "DDR5", "part": "CBD48S40BS8MA-16", "serial": "F41B398A"},
+		map[string]any{"slot": "DIMM 0 (P0 CHANNEL B)", "bank": "P0 CHANNEL B", "sizeBytes": "17179869184", "type": "DDR5", "part": "CMSX16", "serial": "00000000"},
+	}
+	data, _ = json.Marshal(bundle)
+	os.WriteFile(file, data, 0o644)
+	mustRun(t, "admin", "ingest", file)
+	host := inv["host"].(map[string]any)["hostname"].(string)
+
+	out := mustRun(t, "dimm", "f41b", "mark", "suspect", "--note", "panicked twice")
+	if !strings.Contains(out, "dimm status") || !strings.Contains(out, "ok -> suspect by tester@here") || !strings.Contains(out, "F41B398A") {
+		t.Errorf("mark: %q", out)
+	}
+	if out := mustRun(t, "dimm", host+":DIMM 0 (P0 CHANNEL A)", "note", "memtest", "queued"); !strings.Contains(out, `"memtest queued"`) {
+		t.Errorf("note: %q", out)
+	}
+	out = mustRun(t, "dimms", "--problems")
+	if !strings.Contains(out, "STATUS") || !strings.Contains(out, "suspect") || strings.Contains(out, "CMSX16") {
+		t.Errorf("dimms --problems:\n%s", out)
+	}
+	out = mustRun(t, "dimm", "F41B398A")
+	if !strings.Contains(out, "status suspect") || !strings.Contains(out, "DIMM 0 (P0 CHANNEL A)") || !strings.Contains(out, "panicked twice") || !strings.Contains(out, "memtest queued") {
+		t.Errorf("dimm show:\n%s", out)
+	}
+	if _, errOut, err := run(t, "dimm", host+":DIMM 0 (P0 CHANNEL B)", "mark", "bad"); err == nil || !strings.Contains(errOut+err.Error(), "no usable serial") {
+		t.Errorf("mark of a placeholder serial: %v %q", err, errOut)
+	}
+	if _, errOut, err := run(t, "dimm", "F41B398A", "mark"); err == nil || !strings.Contains(errOut+err.Error(), "usage: drivelist dimm REF mark STATUS") {
+		t.Errorf("mark without a status: %v %q", err, errOut)
 	}
 }

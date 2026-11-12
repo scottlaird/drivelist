@@ -276,6 +276,8 @@
       case 'optic_flapping': return 'optic flapping  ' + (d.port || '') + '  ' + (d.part || '') + '  link changed ' + (d.flaps || 0) + ' times in an hour';
       case 'optic_status_changed': return 'optic status  ' + (d.previous || '') + ' -> ' + (d.status || '') + ' by ' + actor + (d.note ? ': ' + d.note : '');
       case 'optic_note': return 'optic note  ' + actor + ': ' + (d.note || '');
+      case 'dimm_status_changed': return 'dimm status  ' + (d.slot || '') + '  ' + (d.part || '') + ' ' + (d.serial || '') + '  ' + (d.previous || '') + ' -> ' + (d.status || '') + ' by ' + actor + (d.note ? ': ' + d.note : '');
+      case 'dimm_note': return 'dimm note  ' + (d.slot || '') + '  ' + (d.part || '') + ' ' + (d.serial || '') + '  ' + actor + ': ' + (d.note || '');
       case 'dimm_changed': return 'dimm ' + d.change + '  ' + (d.slot || d.edac || '') + '  ' + (d.part || '') + ' ' + (d.serial || '') + (d.change === 'replaced' ? ' (was ' + (d.from_part || '') + ' ' + (d.from_serial || '') + ')' : '');
       case 'report_degraded': return 'report degraded  unidentified ' + JSON.stringify(d.unidentified || []);
       case 'pool_missing_member': return 'pool member missing  ' + (d.pool || '') + ' ' + (d.path || '');
@@ -398,6 +400,7 @@
     { name: 'ecc', header: 'ECC', value: r => eccText(r.dimm), sort: r => eccText(r.dimm) },
     { name: 'part', header: 'PART', value: r => dash(r.dimm.part), mono: true },
     { name: 'serial', header: 'SERIAL', value: r => dash(r.dimm.serial), mono: true },
+    { name: 'status', header: 'STATUS', value: r => r.status || 'ok', cls: r => !r.status || r.status === 'ok' ? '' : (r.status === 'bad' ? 'bad' : 'warn') },
     { name: 'ce', header: 'CE', value: r => num(r.dimm.ce) || 0, sort: r => num(r.dimm.ce) || 0, num: true, cls: r => num(r.dimm.ce) > 0 ? 'warn' : '' },
     { name: 'ue', header: 'UE', value: r => num(r.dimm.ue) || 0, sort: r => num(r.dimm.ue) || 0, num: true, cls: r => num(r.dimm.ue) > 0 ? 'bad' : '' },
     { name: 'ce24h', header: 'CE 24H', value: r => num(r.ceDay) || 0, sort: r => num(r.ceDay) || 0, num: true, cls: r => num(r.ceDay) > 0 ? 'warn' : '' },
@@ -595,7 +598,7 @@
       tile('sas errors, 7d', sasRows, { href: '#/sas-errors', sub: sasRows ? 'phys with counter growth' : 'no counter growth', cls: sasRows ? 'warn' : '' }),
       tile('hardware errors, 7d', hwHosts.size, { href: '#/events?kind=hardware_error', sub: hwHosts.size ? [...hwHosts].sort().join(', ') : 'no memory or machine-check errors', cls: hwHosts.size ? 'bad' : '' }),
       tile('optic problems', badOptics.length, { href: '#/optics?problems=1', sub: badOptics.length ? badOptics.slice(0, 4).map(r => r.hostname + ' ' + r.optic.port).join(', ') + (badOptics.length > 4 ? ', …' : '') : 'every optic within its limits', cls: badOptics.length ? 'bad' : '' }),
-      tile('memory problems', badDimms.length, { href: '#/memory?problems=1', sub: badDimms.length ? badDimms.map(r => r.hostname + ' ' + (r.dimm.slot || r.dimm.edac)).join(', ') : 'no module with errors', cls: badDimms.length ? 'bad' : '' }),
+      tile('memory problems', badDimms.length, { href: '#/memory?problems=1', sub: badDimms.length ? badDimms.map(r => r.hostname + ' ' + (r.dimm.slot || r.dimm.edac)).join(', ') : 'no module with errors or marked', cls: badDimms.length ? 'bad' : '' }),
     );
     if (byStatus.shelved || byStatus.retired || notOK) {
       tiles.append(tile('not present', notOK, { href: '#/drives?absent=1', sub: [byStatus.shelved ? byStatus.shelved + ' shelved' : '', byStatus.retired ? byStatus.retired + ' retired' : ''].filter(Boolean).join(', ') || 'known but absent' }));
@@ -812,7 +815,7 @@
   async function pageEvents(q) {
     const kind = q.get('kind') || '';
     const res = await rpc('ListEvents', { limit: 500, kinds: kind ? [kind] : [] });
-    const kinds = ['', 'first_seen', 'appeared', 'vanished', 'reappeared', 'moved_host', 'moved_bay', 'use_changed', 'enclosure_renamed', 'member_state_changed', 'status_changed', 'note', 'merged', 'host_merged', 'smart_warning', 'kernel_warning', 'sas_link_changed', 'sas_attached_changed', 'sas_port_changed', 'sas_errors', 'sas_node_changed', 'host_first_seen', 'host_stale', 'host_resumed', 'host_rebooted', 'hardware_error', 'memory_errors', 'dimm_changed', 'optic_first_seen', 'optic_appeared', 'optic_vanished', 'optic_moved', 'optic_alarm', 'optic_flapping', 'optic_status_changed', 'optic_note', 'report_degraded', 'pool_missing_member', 'identity_conflict'];
+    const kinds = ['', 'first_seen', 'appeared', 'vanished', 'reappeared', 'moved_host', 'moved_bay', 'use_changed', 'enclosure_renamed', 'member_state_changed', 'status_changed', 'note', 'merged', 'host_merged', 'smart_warning', 'kernel_warning', 'sas_link_changed', 'sas_attached_changed', 'sas_port_changed', 'sas_errors', 'sas_node_changed', 'host_first_seen', 'host_stale', 'host_resumed', 'host_rebooted', 'hardware_error', 'memory_errors', 'dimm_changed', 'dimm_status_changed', 'dimm_note', 'optic_first_seen', 'optic_appeared', 'optic_vanished', 'optic_moved', 'optic_alarm', 'optic_flapping', 'optic_status_changed', 'optic_note', 'report_degraded', 'pool_missing_member', 'identity_conflict'];
     const sel = el('select');
     for (const k of kinds) { const o = el('option', { value: k, text: k || 'every kind' }); if (k === kind) o.selected = true; sel.append(o); }
     sel.addEventListener('change', () => { location.hash = '#/events' + (sel.value ? '?kind=' + enc(sel.value) : ''); });

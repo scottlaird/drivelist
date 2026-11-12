@@ -243,6 +243,8 @@ const (
 	EventHardwareError      = "hardware_error"       // host-level: the kernel logged a memory or machine-check error; once per class, location and day
 	EventMemoryErrors       = "memory_errors"        // host-level: a module's EDAC counts grew; once per module per day
 	EventDimmChanged        = "dimm_changed"         // host-level: a module appeared, vanished, or was replaced (its serial changed)
+	EventDimmStatusChanged  = "dimm_status_changed"  // a person changed a module's status; on the host it was last seen on
+	EventDimmNote           = "dimm_note"            // a person noted something about a module
 	EventOpticFirstSeen     = "optic_first_seen"     // an optic the fleet has not seen before, in a port
 	EventOpticAppeared      = "optic_appeared"       // a known optic back in a port after leaving
 	EventOpticVanished      = "optic_vanished"       // an optic gone from its port

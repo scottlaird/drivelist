@@ -406,7 +406,7 @@ func dimmToProto(d store.DIMM) *pb.Dimm {
 }
 
 func dimmRowToProto(r store.DIMMRow) *pb.DimmRow {
-	return &pb.DimmRow{Hostname: r.Hostname, Dimm: dimmToProto(r.DIMM), FirstSeen: ts(r.FirstSeen), LastSeen: ts(r.LastSeen), CeDay: r.CEDay, UeDay: r.UEDay, LastError: ts(r.LastError), Problem: r.Problem()}
+	return &pb.DimmRow{Hostname: r.Hostname, Dimm: dimmToProto(r.DIMM), FirstSeen: ts(r.FirstSeen), LastSeen: ts(r.LastSeen), CeDay: r.CEDay, UeDay: r.UEDay, LastError: ts(r.LastError), Problem: r.Problem(), Status: r.Status}
 }
 
 func diskStatsFromProto(stats []*pb.DiskStat) []collect.DiskStat {

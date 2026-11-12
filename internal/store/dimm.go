@@ -182,11 +182,15 @@ type DIMMRow struct {
 	CEDay     uint64 // growth counted in the last 24 h
 	UEDay     uint64
 	LastError time.Time // when a count last grew; zero if never
+	Status    string    // a person's status for the module; ok when none was set
 }
 
 // Problem reports whether the module needs attention: any uncorrected
-// error since boot, or corrected errors in the last day.
-func (r DIMMRow) Problem() bool { return r.DIMM.UE > 0 || r.UEDay > 0 || r.CEDay > 0 }
+// error since boot, corrected errors in the last day, or a person
+// marked it suspect or bad.
+func (r DIMMRow) Problem() bool {
+	return r.DIMM.UE > 0 || r.UEDay > 0 || r.CEDay > 0 || r.Status == StatusSuspect || r.Status == StatusBad
+}
 
 // ListDIMMs returns every present module, problems first, then by host
 // and slot. host narrows to one host; problems keeps only the ones
@@ -206,8 +210,9 @@ func (s *Store) ListDIMMs(ctx context.Context, host string, problems bool) ([]DI
 		SELECT h.hostname, `+dimmColumns+`,
 		  COALESCE((SELECT SUM(ce) FROM dimm_sample x WHERE x.host_id = d.host_id AND x.key = d.key AND x.ts >= MAX(`+fmt.Sprint(dayAgo)+`, d.first_seen)), 0),
 		  COALESCE((SELECT SUM(ue) FROM dimm_sample x WHERE x.host_id = d.host_id AND x.key = d.key AND x.ts >= MAX(`+fmt.Sprint(dayAgo)+`, d.first_seen)), 0),
-		  (SELECT MAX(ts) FROM dimm_sample x WHERE x.host_id = d.host_id AND x.key = d.key AND x.ts >= d.first_seen)
-		FROM dimm d JOIN host h USING (host_id) `+where+` ORDER BY h.hostname, d.slot, d.edac`, args...)
+		  (SELECT MAX(ts) FROM dimm_sample x WHERE x.host_id = d.host_id AND x.key = d.key AND x.ts >= d.first_seen),
+		  COALESCE(st.status, 'ok')
+		FROM dimm d JOIN host h USING (host_id) LEFT JOIN dimm_status st ON st.part = d.part AND st.serial = d.serial `+where+` ORDER BY h.hostname, d.slot, d.edac`, args...)
 	if err != nil {
 		return nil, err
 	}
@@ -219,7 +224,7 @@ func (s *Store) ListDIMMs(ctx context.Context, host string, problems bool) ([]DI
 		var key string
 		var last sql.NullInt64
 		if err := rows.Scan(&r.Hostname, &key, &d.Slot, &d.Bank, &d.SizeBytes, &d.Ranks, &d.Type, &d.SpeedMTs, &d.Manufacturer, &d.Part, &d.Serial, &d.EDAC, &d.EDACType, &d.EDACBytes, &d.Mapping, &d.CE, &d.UE, &d.TotalWidth, &d.DataWidth, &d.EDACMode, &d.firstSeen, &d.lastSeen, &d.gone,
-			&r.CEDay, &r.UEDay, &last); err != nil {
+			&r.CEDay, &r.UEDay, &last, &r.Status); err != nil {
 			return nil, err
 		}
 		r.DIMM, r.FirstSeen, r.LastSeen, r.LastError = d.DIMM, time.Unix(d.firstSeen, 0).UTC(), time.Unix(d.lastSeen, 0).UTC(), unix(last)
