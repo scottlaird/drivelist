@@ -87,6 +87,12 @@ service Query {
   rpc GetOptic(GetOpticRequest) returns (GetOpticResponse);
   // AnnotateOptic records a manual status change or note on an optic.
   rpc AnnotateOptic(AnnotateRequest) returns (AnnotateResponse);
+  // GetDimm returns one memory module: its status, the slots it has been
+  // seen in, and its events.
+  rpc GetDimm(GetDimmRequest) returns (GetDimmResponse);
+  // AnnotateDimm records a manual status change or note on a memory
+  // module. Only modules with a usable serial can carry one.
+  rpc AnnotateDimm(AnnotateRequest) returns (AnnotateResponse);
 }
 
 // ---------- shared ----------
@@ -588,6 +594,28 @@ message DimmRow {
   uint64 ue_day = 6;
   google.protobuf.Timestamp last_error = 7;   // when a count last grew; unset if never
   bool problem = 8;
+  string status = 9;                  // a person's status for the module: ok | suspect | bad | shelved | retired; ok when none was set
+}
+
+message GetDimmRequest {
+  string ref = 1;                     // serial, an unambiguous prefix of one, PART/SERIAL, or HOST:SLOT for the module in that slot
+}
+
+// DimmPlace is a slot a module has been seen in.
+message DimmPlace {
+  string hostname = 1;
+  Dimm dimm = 2;                      // as last reported there
+  google.protobuf.Timestamp first_seen = 3;
+  google.protobuf.Timestamp last_seen = 4;
+  google.protobuf.Timestamp gone_at = 5;      // unset while it is there
+}
+
+message GetDimmResponse {
+  string part = 1;
+  string serial = 2;
+  string status = 3;
+  repeated DimmPlace places = 4;      // newest first; the first is where it is now, unless gone_at is set
+  repeated Event events = 5;          // newest first
 }
 
 // MemorySummary is one host's memory three ways, for checking the module

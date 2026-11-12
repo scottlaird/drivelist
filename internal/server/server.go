@@ -92,6 +92,7 @@ func (s *Server) Handler() http.Handler {
 var mutatingProcedures = map[string]bool{
 	"/drivelist.v1.Query/Annotate":      true,
 	"/drivelist.v1.Query/AnnotateOptic": true,
+	"/drivelist.v1.Query/AnnotateDimm":  true,
 	"/drivelist.v1.Query/MergeDrives":   true,
 	"/drivelist.v1.Query/MergeHosts":    true,
 	"/drivelist.v1.Query/Rebuild":       true,
@@ -367,6 +368,30 @@ func (s *Server) AnnotateOptic(ctx context.Context, req *connect.Request[pb.Anno
 	return connect.NewResponse(&pb.AnnotateResponse{Event: eventToProto(ev)}), nil
 }
 
+func (s *Server) GetDimm(ctx context.Context, req *connect.Request[pb.GetDimmRequest]) (*connect.Response[pb.GetDimmResponse], error) {
+	d, err := s.store.GetDIMM(ctx, req.Msg.GetRef())
+	if err != nil {
+		return nil, storeErr(err)
+	}
+	out := &pb.GetDimmResponse{Part: d.Part, Serial: d.Serial, Status: d.Status}
+	for _, p := range d.Places {
+		out.Places = append(out.Places, &pb.DimmPlace{Hostname: p.Hostname, Dimm: dimmToProto(p.DIMM), FirstSeen: ts(p.FirstSeen), LastSeen: ts(p.LastSeen), GoneAt: ts(p.GoneAt)})
+	}
+	for _, e := range d.Events {
+		out.Events = append(out.Events, eventToProto(e))
+	}
+	return connect.NewResponse(out), nil
+}
+
+func (s *Server) AnnotateDimm(ctx context.Context, req *connect.Request[pb.AnnotateRequest]) (*connect.Response[pb.AnnotateResponse], error) {
+	ev, err := s.store.AnnotateDIMM(ctx, req.Msg.GetRef(), req.Msg.GetStatus(), req.Msg.GetNote(), req.Msg.GetActor())
+	if err != nil {
+		return nil, storeErr(err)
+	}
+	s.log.Info("dimm annotated", "dimm", req.Msg.GetRef(), "kind", ev.Kind, "actor", req.Msg.GetActor())
+	return connect.NewResponse(&pb.AnnotateResponse{Event: eventToProto(ev)}), nil
+}
+
 func (s *Server) ListDimms(ctx context.Context, req *connect.Request[pb.ListDimmsRequest]) (*connect.Response[pb.ListDimmsResponse], error) {
 	rows, err := s.store.ListDIMMs(ctx, req.Msg.GetHost(), req.Msg.GetProblems())
 	if err != nil {
@@ -625,6 +650,8 @@ func storeErr(err error) error {
 		return connect.NewError(connect.CodeNotFound, err)
 	case errors.As(err, &amb):
 		return connect.NewError(connect.CodeInvalidArgument, err)
+	case errors.Is(err, store.ErrNoSerial):
+		return connect.NewError(connect.CodeFailedPrecondition, err)
 	case strings.Contains(err.Error(), "is not one of") || strings.Contains(err.Error(), "nothing to record") || strings.Contains(err.Error(), "resolve to the same"):
 		return connect.NewError(connect.CodeInvalidArgument, err)
 	}

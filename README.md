@@ -177,7 +177,7 @@ drivelist drives [--host H]       # every drive and where it is
 drivelist smart --problems        # drives whose SMART says something is wrong
 drivelist missing                 # drives that vanished and are not marked bad
 drivelist io compare              # drives slower than their vdev's median
-drivelist dimms --problems        # memory modules with ECC errors
+drivelist dimms --problems        # memory modules with ECC errors or marked suspect/bad
 drivelist optics --problems       # optics out of limits or flapping
 drivelist events --since 24h      # everything that happened
 ```
@@ -185,8 +185,8 @@ drivelist events --since 24h      # everything that happened
 Every listing takes `--fields a,b,c` to choose columns,
 `--allfields` for all of them, `--sort a,-b` to sort, and `--json`.
 
-One drive or optic, by serial (or any unambiguous prefix of one; two
-drives that share a serial are named `MODEL/SERIAL`):
+One drive, optic or memory module, by serial (or any unambiguous prefix
+of one; two drives that share a serial are named `MODEL/SERIAL`):
 
 ```
 drivelist drive VJG24UZX                  # where it is now, its status
@@ -196,7 +196,12 @@ drivelist drive VJG24UZX mark suspect --note "3x slower than siblings"
 drivelist drive VJG24UZX note "RMA 4471 opened"
 drivelist optic MT1918FT01234             # every lane, its thresholds, where it has been
 drivelist optic sw1:swp4 history          # hourly levels and flaps; HOST:PORT works too
+drivelist dimm 802C0425                   # its status, the slots it has been in, its events
+drivelist dimm host1:DIMMA1 mark suspect --note "crashed twice"   # HOST:SLOT works too
 ```
+
+A memory module's status follows it by part and serial, so a module
+whose firmware reports no serial (or `00000000`) can't be marked.
 
 Marking a drive `bad`, `shelved` or `retired` means its absence is
 expected, so it drops out of `missing`.
